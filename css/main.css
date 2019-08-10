@@ -615,8 +615,8 @@ body {
 }
 
 /* -- End Nav -- */
-/* -- Navbar -- */
-.navbar {
+/* -- Toolbar -- */
+.toolbar {
   position: fixed;
   right: 0;
   bottom: -40px;
@@ -629,13 +629,13 @@ body {
   padding: 0 15px;
 }
 
-.navbar.is-animate {
+.toolbar.is-animate {
   bottom: 0;
   -webkit-transition-delay: .5s;
           transition-delay: .5s;
 }
 
-.navbar.is-animate .navbar-list-item:nth-child(1) {
+.toolbar.is-animate .toolbar-list-item:nth-child(1) {
   opacity: 1;
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
@@ -644,7 +644,7 @@ body {
           transition-delay: .6s;
 }
 
-.navbar.is-animate .navbar-list-item:nth-child(2) {
+.toolbar.is-animate .toolbar-list-item:nth-child(2) {
   opacity: 1;
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
@@ -653,7 +653,7 @@ body {
           transition-delay: .7s;
 }
 
-.navbar.is-animate .navbar-list-item:nth-child(3) {
+.toolbar.is-animate .toolbar-list-item:nth-child(3) {
   opacity: 1;
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
@@ -662,7 +662,7 @@ body {
           transition-delay: .8s;
 }
 
-.navbar.is-animate .navbar-list-item:nth-child(4) {
+.toolbar.is-animate .toolbar-list-item:nth-child(4) {
   opacity: 1;
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
@@ -671,7 +671,7 @@ body {
           transition-delay: .9s;
 }
 
-.navbar.is-animate .navbar-list-item:nth-child(5) {
+.toolbar.is-animate .toolbar-list-item:nth-child(5) {
   opacity: 1;
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
@@ -680,7 +680,7 @@ body {
           transition-delay: 1s;
 }
 
-.navbar-list {
+.toolbar-list {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -697,7 +697,7 @@ body {
   padding: 4px 0;
 }
 
-.navbar-list-item {
+.toolbar-list-item {
   opacity: 0;
   -webkit-transform: translateY(10px);
       -ms-transform: translateY(10px);
@@ -706,32 +706,32 @@ body {
   transition: all .3s ease-in-out;
 }
 
-.navbar-list-item:nth-child(1) .navbar-list-icon, .navbar-list-item:nth-child(5) .navbar-list-icon {
+.toolbar-list-item:nth-child(1) .toolbar-list-icon, .toolbar-list-item:nth-child(5) .toolbar-list-icon {
   width: 13.5px;
   height: 13.5px;
 }
 
-.navbar-list-item:nth-child(4) .navbar-list-icon {
+.toolbar-list-item:nth-child(4) .toolbar-list-icon {
   width: 14px;
   height: 14px;
 }
 
-.navbar-list-link {
+.toolbar-list-link {
   color: #666666;
   font-size: 8px;
   font-weight: 700;
   text-align: center;
 }
 
-.navbar-list-link:hover, .navbar-list-link.is-active {
+.toolbar-list-link:hover, .toolbar-list-link.is-active {
   color: #601dc0;
 }
 
-.navbar-list-link:hover .navbar-list-icon svg, .navbar-list-link.is-active .navbar-list-icon svg {
+.toolbar-list-link:hover .toolbar-list-icon svg, .toolbar-list-link.is-active .toolbar-list-icon svg {
   fill: #601dc0;
 }
 
-.navbar-list-icon {
+.toolbar-list-icon {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -749,13 +749,13 @@ body {
   margin: 0 auto;
 }
 
-.navbar-list-icon svg {
+.toolbar-list-icon svg {
   width: 100%;
   height: 100%;
   fill: #666666;
 }
 
-.navbar-list-text {
+.toolbar-list-text {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -772,7 +772,7 @@ body {
   margin: 3.5px 0 0;
 }
 
-/* -- End Navbar -- */
+/* -- End Toolbar -- */
 /* -- Responsive -- */
 @media only screen and (min-width: 375px) {
   .nav {
@@ -826,30 +826,30 @@ body {
     width: 18px;
     height: 18px;
   }
-  .navbar {
+  .toolbar {
     bottom: -48px;
     height: 48px;
   }
-  .navbar-list {
+  .toolbar-list {
     padding: 6px 0;
   }
-  .navbar-list-item:nth-child(1) .navbar-list-icon, .navbar-list-item:nth-child(5) .navbar-list-icon {
+  .toolbar-list-item:nth-child(1) .toolbar-list-icon, .toolbar-list-item:nth-child(5) .toolbar-list-icon {
     width: 16.5px;
     height: 16.5px;
   }
-  .navbar-list-item:nth-child(4) .navbar-list-icon {
+  .toolbar-list-item:nth-child(4) .toolbar-list-icon {
     width: 17px;
     height: 17px;
   }
-  .navbar-list-link {
+  .toolbar-list-link {
     font-size: 10px;
     font-weight: 400;
   }
-  .navbar-list-icon {
+  .toolbar-list-icon {
     width: 18.3px;
     height: 18.3px;
   }
-  .navbar-list-text {
+  .toolbar-list-text {
     height: 12px;
     margin: 3.8px 0 0;
   }
