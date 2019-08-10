@@ -254,14 +254,14 @@ body {
   bottom: 0;
   left: 0;
   height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
   visibility: hidden;
   -webkit-transform: translateX(-100%);
       -ms-transform: translateX(-100%);
           transform: translateX(-100%);
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
-  padding: 0 15px;
+  padding: 0 15px 55px;
 }
 
 .nav.is-open {
@@ -314,10 +314,34 @@ body {
   z-index: -1;
 }
 
+.nav-head.is-active {
+  z-index: 10;
+}
+
 .nav-head.is-active:after {
   background: #f9f9f9;
   -webkit-box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+.nav-head.is-active .nav-head-back {
+  right: 0;
+  left: 0;
+}
+
+.nav-head-back {
+  position: absolute;
+  right: -webkit-calc(-100% - 15px);
+  right: calc(-100% - 15px);
+  bottom: -37px;
+  left: -webkit-calc(100% + 15px);
+  left: calc(100% + 15px);
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.nav-head-back .nav-menu-back {
+  opacity: 1;
 }
 
 .nav-close {
@@ -354,6 +378,14 @@ body {
   width: 16px;
   height: 18px;
   background: url("../img/icons/user.svg") no-repeat center;
+}
+
+.nav-overflow {
+  overflow-x: hidden;
+  height: -webkit-calc(100vh - 119px);
+  height: calc(100vh - 119px);
+  padding: 0 15px;
+  margin: 0 -15px;
 }
 
 .nav-wrap {
@@ -451,6 +483,7 @@ body {
 }
 
 .nav-menu-back {
+  opacity: 0;
   padding: 12.5px 0 12.5px 40px;
 }
 
@@ -468,6 +501,8 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  top: -webkit-calc(50% - (20px / 2));
+  top: calc(50% - (20px / 2));
   left: 0;
   width: 20px;
   height: 20px;
@@ -738,10 +773,16 @@ body {
 /* -- End Navbar -- */
 /* -- Responsive -- */
 @media only screen and (min-width: 375px) {
+  .nav {
+    padding: 0 15px 63px;
+  }
   .nav-head {
     padding: 10px 0 21px;
   }
   .nav-head:after {
+    bottom: -43px;
+  }
+  .nav-head-back {
     bottom: -43px;
   }
   .nav-menu-link {
@@ -752,6 +793,8 @@ body {
     padding: 14.5px 0 14.5px 30px;
   }
   .nav-menu-arrow {
+    top: -webkit-calc(50% - (24px / 2));
+    top: calc(50% - (24px / 2));
     width: 24px;
     height: 24px;
   }

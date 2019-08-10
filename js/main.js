@@ -48,6 +48,8 @@ $(document).ready(function() {
 		$('.nav-wrap').css('min-height', totalHeight);
 		selected.next('ul').removeClass('is-hidden').addClass('is-active').end().parent('.has-child').parent('ul').addClass('is-out');
 		$('.nav-head').toggleClass('is-active', $('.nav-menu').hasClass('is-out'));
+		$('.nav-head-back').html('');
+		$('.nav-submenu.is-active:not(.is-out) > li:first-child').find('.js-back').clone().appendTo('.nav-head-back');
 	});
 	$(document).on('click', '.js-back', function() {
 		var selected = $(this);
@@ -57,6 +59,13 @@ $(document).ready(function() {
 		$('.nav-wrap').css('min-height', totalHeight);
 		selected.parent().parent('ul').removeClass('is-active').addClass('is-hidden').parent('.has-child').parent('ul').removeClass('is-out');
 		$('.nav-head').toggleClass('is-active', $('.nav-menu').hasClass('is-out'));
+
+		$('.nav-head-back').html('');
+		$('.nav-submenu.is-active:not(.is-out) > li:first-child').find('.js-back').clone().appendTo('.nav-head-back');
+	});
+	$(document).on('click', '.nav-head-back .js-back', function(event) {
+		event.preventDefault();
+		$('.nav-submenu.is-active:not(.is-out) > li:first-child').find('.js-back').trigger('click');
 	});
 
 	//
