@@ -77,7 +77,7 @@ $(document).ready(function() {
 		$('.js-logo polygon').css('fill-opacity', '1');
 		$('.js-logo').fadeOut('slow');
 		$('.js-preloader').delay(400).fadeOut('slow');
-		$('.navbar').addClass('is-animate');
+		$('.toolbar').addClass('is-animate');
 		var heightChild = $('.nav-menu').find('> li').outerHeight();
 				countChild = $('.nav-menu').find('> li').length;
 				totalHeight = heightChild * countChild;
