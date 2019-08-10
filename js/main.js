@@ -50,16 +50,14 @@ $(document).ready(function() {
 
 	// Load Event
 
-	$(window).on('load', function() {
-		$('.js-logo polygon').css('fill-opacity', '1');
-		$('.js-logo').fadeOut('slow');
-		$('.js-preloader').delay(400).fadeOut('slow');
-		$('.toolbar').addClass('is-animate');
-		var heightChild = $('.nav-menu').find('> li').outerHeight();
-				countChild = $('.nav-menu').find('> li').length;
-				totalHeight = heightChild * countChild;
-		$('.nav-wrap').css('min-height', totalHeight);
-	});
+	$('.js-logo polygon').css('fill-opacity', '1');
+	$('.js-logo').fadeOut('slow');
+	$('.js-preloader').delay(400).fadeOut('slow');
+	$('.toolbar').addClass('is-animate');
+	var heightChild = $('.nav-menu').find('> li').outerHeight();
+	countChild = $('.nav-menu').find('> li').length;
+	totalHeight = heightChild * countChild;
+	$('.nav-wrap').css('min-height', totalHeight);
 
 	//
 	
