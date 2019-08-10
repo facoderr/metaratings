@@ -1,28 +1,5 @@
 $(document).ready(function() {
 
-	//  Event
-
-	$('html').swipe({
-		swipeRight: function(event, direction, distance, duration, fingerCount) {
-			$('.js-toggle').addClass('is-active');
-			$('.nav').addClass('is-open');
-		},
-		swipeLeft: function(event, direction, distance, duration, fingerCount) {
-			var heightChild = $('.nav-menu').find('> li').outerHeight();
-				countChild = $('.nav-menu').find('> li').length;
-				totalHeight = heightChild * countChild;
-			$('.nav-wrap').css('min-height', totalHeight);
-			$('.nav-head').removeClass('is-active');
-			$('.nav-menu').removeClass('is-out');
-			$('.nav-submenu').removeClass('is-out').removeClass('is-active').addClass('is-hidden');
-			$('.js-toggle').removeClass('is-active');
-			$('.nav').removeClass('is-open');
-		},
-		threshold: 25
-	});
-
-	//
-
 	// Click Event
 
 	$(document).on('click', '.js-toggle', function() {
