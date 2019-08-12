@@ -3,8 +3,8 @@ $(document).ready(function() {
 	// Click Event
 
 	$(document).on('click', '.js-toggle', function() {
-		$(this).addClass('is-active');
-		$('.nav').addClass('is-open');
+		$(this).toggleClass('is-active');
+		$('.nav').toggleClass('is-open');
 	});
 	$(document).on('click', '.js-nav-close', function() {
 		var heightChild = $('.nav-menu').find('> li').outerHeight();
