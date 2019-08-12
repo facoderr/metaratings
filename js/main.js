@@ -44,16 +44,24 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('.nav-submenu.is-active:not(.is-out) > li:first-child').find('.js-back').trigger('click');
 	});
+	$(document).on('click', '.js-success', function() {
+		$('.js-modal-success').fadeIn().addClass('is-open');
+	});
+	$(document).on('click', '.js-modal-close', function() {
+		$('.js-modal-success').fadeOut().removeClass('is-open');
+	})
+	$(document).bind('mouseup touchend', function(e) {
+		if ($(e.target).closest('.modal-succes-block').length) return;
+			$('.js-modal-success').fadeOut().removeClass('is-open');
+	});
 
 	//
-
 
 	// Load Event
 
 	$('.js-logo polygon').css('fill-opacity', '1');
 	$('.js-logo').fadeOut('slow');
 	$('.js-preloader').delay(400).fadeOut('slow');
-	$('.toolbar').addClass('is-animate');
 	var heightChild = $('.nav-menu').find('> li').outerHeight();
 	countChild = $('.nav-menu').find('> li').length;
 	totalHeight = heightChild * countChild;
@@ -62,9 +70,23 @@ $(document).ready(function() {
 	let vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
 
+	setTimeout(function() {
+		if ($(window).width() <= 575) {
+			$('.toolbar').addClass('is-animate');
+		} else {
+			$('.toolbar').removeClass('is-animate');
+		}
+	}, 500);
+
 	window.addEventListener('resize', () => {
 		let vh = window.innerHeight * 0.01;
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+		if ($(window).width() <= 575) {
+			$('.toolbar').addClass('is-animate');
+		} else {
+			$('.toolbar').removeClass('is-animate');
+		}
 	});
 
 	//
