@@ -59,7 +59,6 @@ $(document).ready(function() {
 
 	// Load Event
 
-	$('.js-logo polygon').css('fill-opacity', '1');
 	$('.js-logo').fadeOut('slow');
 	$('.js-preloader').delay(400).fadeOut('slow');
 	var heightChild = $('.nav-menu').find('> li').outerHeight();

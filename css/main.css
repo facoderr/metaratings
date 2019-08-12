@@ -123,67 +123,84 @@ input::placeholder, textarea::placeholder {
   bottom: 0;
   left: 0;
   height: 100vh;
-  background: #601dc0;
+  background: linear-gradient(135deg, #601dc0, #2f0a64);
+  background-size: 200% 200%;
+  -webkit-animation: Gradient 5s ease infinite;
+          animation: Gradient 5s ease infinite;
   z-index: 9999;
 }
 
 .preloader-logo {
-  width: 50px;
-  height: 50px;
-  -webkit-filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
-          filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
-  -webkit-animation: shadowPulse 1s ease-in-out infinite alternate;
-          animation: shadowPulse 1s ease-in-out infinite alternate;
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  width: 70px;
+  height: 70px;
 }
 
 .preloader-logo path {
-  fill: #601dc0;
+  fill: transparent;
 }
 
 .preloader-logo polygon {
-  fill: #fff;
-  fill-opacity: 0;
+  fill: transparent;
   stroke: #fff;
   stroke-width: .5;
-  stroke-dashArray: 1100;
-  stroke-dashoffset: 1100;
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  animation-iteration: 1;
-  -webkit-animation-name: drawIn, fadeIn, fillIn;
-          animation-name: drawIn, fadeIn, fillIn;
-  -webkit-animation-duration: 5s, 1s, 1s;
-          animation-duration: 5s, 1s, 1s;
-  -webkit-animation-delay: .5s, 1.5s, 1.5s;
-          animation-delay: .5s, 1.5s, 1.5s;
+  stroke-dasharray: 10;
+  -webkit-animation: dashRotate 2s linear infinite alternate;
+          animation: dashRotate 2s linear infinite alternate;
 }
 
-@-webkit-keyframes shadowPulse {
-  0% {
-    -webkit-filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
-  }
+@-webkit-keyframes dashRotate {
   100% {
-    -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+    stroke-dashoffset: 30;
   }
 }
 
-@keyframes shadowPulse {
+@keyframes dashRotate {
+  100% {
+    stroke-dashoffset: 30;
+  }
+}
+
+@-webkit-keyframes Gradient {
   0% {
-    -webkit-filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+    background-position: 0% 50%;
   }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* -- Preloader -- */
+/* -- General -- */
+html {
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+body {
+  position: relative;
+  font: 16px "Helvetica", sans-serif;
+  color: #000;
+  background: #fff;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
 }
 
 @-webkit-keyframes drawIn {
@@ -226,25 +243,6 @@ input::placeholder, textarea::placeholder {
   100% {
     fill-opacity: 1;
   }
-}
-
-/* -- Preloader -- */
-/* -- General -- */
-html {
-  overflow-x: hidden;
-  width: 100vw;
-}
-
-body {
-  position: relative;
-  font: 16px "Helvetica", sans-serif;
-  color: #000;
-  background: #fff;
-  overflow: hidden;
-}
-
-.hidden {
-  display: none;
 }
 
 /* -- End General -- */
