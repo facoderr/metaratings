@@ -51,8 +51,8 @@ $(document).ready(function() {
 		$('.js-modal-success').fadeOut().removeClass('is-open');
 	})
 	$(document).bind('mouseup touchend', function(e) {
-		if ($(e.target).closest('.modal-succes-block').length) return;
-			$('.js-modal-success').fadeOut().removeClass('is-open');
+		if ($(e.target).closest('.modal-success-wrap').length) return;
+		$('.js-modal-success').fadeOut().removeClass('is-open');
 	});
 
 	//

@@ -737,8 +737,8 @@ body {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
-  -webkit-transition-delay: .6s;
-          transition-delay: .6s;
+  -webkit-transition-delay: .2s;
+          transition-delay: .2s;
 }
 
 .toolbar.is-animate .toolbar-list-item:nth-child(2) {
@@ -746,8 +746,8 @@ body {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
-  -webkit-transition-delay: .7s;
-          transition-delay: .7s;
+  -webkit-transition-delay: .3s;
+          transition-delay: .3s;
 }
 
 .toolbar.is-animate .toolbar-list-item:nth-child(3) {
@@ -755,8 +755,8 @@ body {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
-  -webkit-transition-delay: .8s;
-          transition-delay: .8s;
+  -webkit-transition-delay: .4s;
+          transition-delay: .4s;
 }
 
 .toolbar.is-animate .toolbar-list-item:nth-child(4) {
@@ -764,8 +764,8 @@ body {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
-  -webkit-transition-delay: .9s;
-          transition-delay: .9s;
+  -webkit-transition-delay: .5s;
+          transition-delay: .5s;
 }
 
 .toolbar.is-animate .toolbar-list-item:nth-child(5) {
@@ -773,8 +773,8 @@ body {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
-  -webkit-transition-delay: 1s;
-          transition-delay: 1s;
+  -webkit-transition-delay: .6s;
+          transition-delay: .6s;
 }
 
 .toolbar-list {
@@ -887,6 +887,22 @@ body {
           transform: scale(1);
 }
 
+.modal-success.is-open .modal-success-check {
+  fill-opacity: 0;
+  stroke: #20a94a;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  animation-iteration: 1;
+  -webkit-animation-name: drawIn, fadeIn, fillIn;
+          animation-name: drawIn, fadeIn, fillIn;
+  -webkit-animation-duration: 3s, 1s, 1s;
+          animation-duration: 3s, 1s, 1s;
+  -webkit-animation-delay: 0s, .3s, .3s;
+          animation-delay: 0s, .3s, .3s;
+}
+
 .modal-success-overlay {
   display: -webkit-box;
   display: -webkit-flex;
@@ -933,9 +949,37 @@ body {
 }
 
 .modal-success-icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 55px;
+  height: 55px;
+  margin: 15px auto;
+}
+
+.modal-success-icon svg {
   width: 50px;
   height: 50px;
-  margin: 20px 0;
+}
+
+.modal-success-round {
+  fill: #ddd;
+}
+
+.modal-success-check {
+  fill: #20a94a;
+  stroke-width: 1;
+  stroke-dashArray: 1100;
+  stroke-dashoffset: 1100;
 }
 
 .modal-success-subtitle {
@@ -975,9 +1019,7 @@ body {
     font-size: 30px;
   }
   .modal-success-icon {
-    width: 50px;
-    height: 50px;
-    margin: 20px 0;
+    margin: 18px auto;
   }
   .modal-success-subtitle {
     max-width: 293px;
