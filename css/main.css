@@ -272,7 +272,8 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 100vh;
+  height: -webkit-calc(var(--vh, 1vh) * 100);
+  height: calc(var(--vh, 1vh) * 100);
   background: #fff;
   overflow: hidden;
   visibility: hidden;
@@ -430,8 +431,8 @@ body {
 
 .nav-overflow {
   overflow-x: hidden;
-  height: -webkit-calc(100vh - 119px);
-  height: calc(100vh - 119px);
+  height: -webkit-calc((var(--vh, 1vh) * 100) - 118px);
+  height: calc((var(--vh, 1vh) * 100) - 118px);
   opacity: 0;
   -webkit-transform: translateY(100%);
       -ms-transform: translateY(100%);
@@ -854,6 +855,10 @@ body {
   }
   .nav-head-back {
     bottom: -37px;
+  }
+  .nav-overflow {
+    height: -webkit-calc((var(--vh, 1vh) * 100) - 119px);
+    height: calc((var(--vh, 1vh) * 100) - 119px);
   }
   .nav-menu-link {
     height: 37px;
