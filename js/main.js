@@ -59,6 +59,12 @@ $(document).ready(function() {
 	totalHeight = heightChild * countChild;
 	$('.nav-wrap').css('min-height', totalHeight);
 
+	//$(window).bind('pageshow', function(event) {
+		//if (event.originalEvent.persisted) {
+			//window.location.reload() 
+		//}
+	//});
+
 	//
 	
 });
