@@ -1713,7 +1713,10 @@ body {
     width: 190px;
   }
   .head-notify, .head-mail {
-    display: block;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
