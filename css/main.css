@@ -253,7 +253,7 @@ body {
   padding: 0 20px;
 }
 
-.head-tools-icon {
+.head-search, .head-notify, .head-mail {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -271,20 +271,20 @@ body {
   height: 24px;
 }
 
-.head-tools-icon:hover svg {
+.head-search:hover svg, .head-notify:hover svg, .head-mail:hover svg {
   fill: #601dc0;
 }
 
-.head-tools-icon:not(:last-child) {
+.head-search:not(:last-child), .head-notify:not(:last-child), .head-mail:not(:last-child) {
   margin: 0 15px 0 0;
 }
 
-.head-tools-icon:nth-child(2) svg {
+.head-search:nth-child(2) svg, .head-notify:nth-child(2) svg, .head-mail:nth-child(2) svg {
   width: 20px;
   height: 20px;
 }
 
-.head-tools-icon svg {
+.head-search svg, .head-notify svg, .head-mail svg {
   width: 18px;
   height: 18px;
   fill: #7c7c7c;
@@ -1459,7 +1459,7 @@ body {
     height: auto;
     font-size: 16px;
     text-transform: none;
-    color: #7c7c7c;
+    color: #666;
     border: none;
     padding: 0;
     z-index: 1;
@@ -1482,7 +1482,7 @@ body {
   .nav-menu-icon svg {
     width: 100%;
     height: 100%;
-    fill: #7c7c7c;
+    fill: #666;
   }
   .nav-menu-text {
     position: relative;
