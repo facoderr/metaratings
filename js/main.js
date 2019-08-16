@@ -51,6 +51,8 @@ $(document).ready(function() {
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 	if ($(window).width() <= 1099) {
+		$('head').remove('<meta name="viewport" content="width=device-width, initial-scale=1">');
+		$('head').append('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">');
 		$('.has-child').children('.js-child').on('click', function() { 
 			var selected = $(this);
 			heightChild = selected.next('ul').find('> li').outerHeight();
@@ -90,6 +92,8 @@ $(document).ready(function() {
 			}
 		});
 	} else {
+		$('head').remove('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">');
+		$('head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
 		$(document).on('mouseover', '.nav-menu-item', function() { 
 			$('.nav-head').addClass('is-active');
 			$('.js-search').removeClass('is-active');
@@ -137,6 +141,8 @@ $(document).ready(function() {
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 		if ($(window).width() <= 1099) {
+			$('head').remove('<meta name="viewport" content="width=device-width, initial-scale=1">');
+			$('head').append('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">');
 			$('.nav-menu').each(function() {
 				if ($('.not-child').hasClass('not-child')) {
 					$(this).find('.not-child').removeClass('not-child').addClass('has-child');
@@ -150,6 +156,8 @@ $(document).ready(function() {
 			});
 			$('.toolbar').addClass('is-animate');
 		} else {
+			$('head').remove('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">');
+			$('head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
 			$('.nav-menu').each(function() {
 				if ($('.has-child').hasClass('has-child')) {
 					$(this).find('.has-child').removeClass('has-child').addClass('not-child');
