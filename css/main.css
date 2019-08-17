@@ -293,7 +293,7 @@ body {
 .head-search svg, .head-notify svg, .head-mail svg {
   width: 18px;
   height: 18px;
-  fill: #808080;
+  fill: #737373;
 }
 
 .head-search.is-active svg {
@@ -906,7 +906,7 @@ body {
   left: 0;
   height: 48px;
   background: #fff;
-  border-top: 1px solid #808080;
+  border-top: 1px solid #737373;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   padding: 0 15px;
@@ -999,7 +999,7 @@ body {
 }
 
 .toolbar-list-link {
-  color: #808080;
+  color: #737373;
   font-size: 10px;
   text-align: center;
 }
@@ -1033,7 +1033,7 @@ body {
 .toolbar-list-icon svg {
   width: 18.3px;
   height: 18.3px;
-  fill: #808080;
+  fill: #737373;
 }
 
 .toolbar-list-text {
@@ -1167,7 +1167,7 @@ body {
 
 .modal-success-subtitle {
   max-width: 250px;
-  color: #95999f;
+  color: #737373;
   font-size: 14px;
   line-height: 1.25;
   margin: 0 auto;
@@ -1461,7 +1461,7 @@ body {
     height: auto;
     font-size: 16px;
     text-transform: none;
-    color: #808080;
+    color: #737373;
     border: none;
     padding: 0;
     z-index: 1;
@@ -1484,7 +1484,7 @@ body {
   .nav-menu-icon svg {
     width: 100%;
     height: 100%;
-    fill: #808080;
+    fill: #737373;
   }
   .nav-menu-text {
     position: relative;
