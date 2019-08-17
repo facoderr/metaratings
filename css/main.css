@@ -209,6 +209,12 @@ body {
   display: none;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input:focus {
+    font-size: 16px;
+  }
+}
+
 /* -- End General -- */
 /* -- Header -- */
 .head {
@@ -287,7 +293,7 @@ body {
 .head-search svg, .head-notify svg, .head-mail svg {
   width: 18px;
   height: 18px;
-  fill: #7c7c7c;
+  fill: #95999F;
 }
 
 .head-search.is-active svg {
@@ -1098,8 +1104,6 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
 }
 
 .modal-success-wrap {
@@ -1294,8 +1298,6 @@ body {
     left: 0;
     opacity: 0;
     visibility: hidden;
-    -webkit-backdrop-filter: blur(2px);
-            backdrop-filter: blur(2px);
   }
   .nav-head.is-active {
     z-index: auto;
@@ -1459,7 +1461,7 @@ body {
     height: auto;
     font-size: 16px;
     text-transform: none;
-    color: #666;
+    color: #95999F;
     border: none;
     padding: 0;
     z-index: 1;
@@ -1482,7 +1484,7 @@ body {
   .nav-menu-icon svg {
     width: 100%;
     height: 100%;
-    fill: #666;
+    fill: #95999F;
   }
   .nav-menu-text {
     position: relative;
@@ -1697,18 +1699,12 @@ body {
   }
 }
 
-@media only screen and (min-width: 1110px) {
+@media only screen and (min-width: 1240px) {
   .container {
     max-width: 1200px;
     padding: 0 140px;
     margin: 0;
   }
-  .head-notify, .head-mail {
-    display: none;
-  }
-}
-
-@media only screen and (min-width: 1270px) {
   .head-tools {
     width: 190px;
   }
@@ -1720,14 +1716,17 @@ body {
   }
 }
 
+@media only screen and (min-width: 1320px) {
+  .head-tools {
+    width: 260px;
+  }
+}
+
 @media only screen and (min-width: 1441px) {
   .container {
     max-width: 1064px;
     padding: 0 72px;
     margin: 0 auto;
-  }
-  .head-tools {
-    width: 260px;
   }
 }
 
