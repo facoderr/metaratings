@@ -45,8 +45,8 @@ $(document).ready(function() {
 		$('.nav').addClass('is-desktop');
 		$(document).on('mouseover', '.is-desktop .nav-menu-item', function() {
 			$('.is-desktop .nav-head').addClass('is-active');
-			$('.is-desktop .js-search').removeClass('is-active');
-			$('.is-desktop .nav-search').removeClass('is-active');
+			$('.js-search').removeClass('is-active');
+			$('.nav-search').removeClass('is-active');
 			if ($(this).hasClass('not-child')) {
 				$(this).parent().children('.is-desktop .nav-menu-item.not-child').removeClass('is-hover');
 				$(this).addClass('is-hover');
@@ -59,10 +59,10 @@ $(document).ready(function() {
 			$(this).parent().children('.is-desktop .nav-menu-item.not-child').removeClass('is-hover');
 		});
 		$(document).bind('mouseup touchend', function(e) {
-			if ($(e.target).closest('.is-desktop .nav-menu').length || $(e.target).closest('.is-desktop .nav-search').length) return;
-			$('.is-desktop .js-search').removeClass('is-active');
+			if ($(e.target).closest('.js-search').length || $(e.target).closest('.is-desktop .nav-menu').length || $(e.target).closest('.is-desktop .nav-search').length) return;
 			$('.is-desktop .nav-head').removeClass('is-active');
-			$('.is-desktop .nav-search').removeClass('is-active');
+			$('.js-search').removeClass('is-active');
+			$('.nav-search').removeClass('is-active');
 		});
 		$('.is-desktop .nav-menu').each(function() {
 			if ($('.has-child').hasClass('has-child')) {
