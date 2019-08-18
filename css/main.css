@@ -209,7 +209,37 @@ body {
   display: none;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+@media screen and (device-aspect-ratio: 2 / 3) {
+  input {
+    font: 16px/1 "Helvetica", sans-serif;
+  }
+  input:focus {
+    font-size: 16px;
+  }
+}
+
+@media screen and (device-aspect-ratio: 40 / 71) {
+  input {
+    font: 16px/1 "Helvetica", sans-serif;
+  }
+  input:focus {
+    font-size: 16px;
+  }
+}
+
+@media screen and (device-aspect-ratio: 375 / 667) {
+  input {
+    font: 16px/1 "Helvetica", sans-serif;
+  }
+  input:focus {
+    font-size: 16px;
+  }
+}
+
+@media screen and (device-aspect-ratio: 9 / 16) {
+  input {
+    font: 16px/1 "Helvetica", sans-serif;
+  }
   input:focus {
     font-size: 16px;
   }
@@ -304,7 +334,7 @@ body {
   display: none;
 }
 
-.head-notify:after, .head-mail:after {
+.head-notify:after, .head-notify:before, .head-mail:after, .head-mail:before {
   content: '';
   position: absolute;
   top: 1px;
@@ -318,6 +348,12 @@ body {
   transition: all .1s ease-in-out;
 }
 
+.head-notify:before, .head-mail:before {
+  width: 10px;
+  height: 10px;
+  border: 0px solid #fff;
+}
+
 .head-notify.is-active, .head-mail.is-active {
   -webkit-animation: vibrationIn .8s linear;
           animation: vibrationIn .8s linear;
@@ -327,6 +363,10 @@ body {
 
 .head-notify.is-active:after, .head-mail.is-active:after {
   border: 4px solid #ff0000;
+}
+
+.head-notify.is-active:before, .head-mail.is-active:before {
+  border: 2px solid #fff;
 }
 
 @-webkit-keyframes vibrationIn {
@@ -768,7 +808,7 @@ body {
           flex-grow: 2;
   width: 50%;
   height: 100%;
-  font-size: 14px;
+  font: 14px/1 "Helvetica", sans-serif;
   color: #000;
   background: #f9f9f9;
   border: 1px solid #f0f0f0;
@@ -1072,22 +1112,6 @@ body {
           transform: scale(1);
 }
 
-.modal-success.is-open .modal-success-check {
-  fill-opacity: 0;
-  stroke: #20a94a;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  animation-iteration: 1;
-  -webkit-animation-name: drawIn, fadeIn, fillIn;
-          animation-name: drawIn, fadeIn, fillIn;
-  -webkit-animation-duration: 3s, 1s, 1s;
-          animation-duration: 3s, 1s, 1s;
-  -webkit-animation-delay: 0s, .3s, .3s;
-          animation-delay: 0s, .3s, .3s;
-}
-
 .modal-success-overlay {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1152,17 +1176,43 @@ body {
 .modal-success-icon svg {
   width: 50px;
   height: 50px;
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
 }
 
-.modal-success-round {
-  fill: #ddd;
+.modal-success-circle {
+  opacity: 0;
+  stroke: #ddd;
+  stroke-dasharray: 300 300;
+  -webkit-animation: circleIn 1.3s cubic-bezier(0.5, 0, 0.5, 1) forwards 0.15s;
+          animation: circleIn 1.3s cubic-bezier(0.5, 0, 0.5, 1) forwards 0.15s;
+}
+
+.modal-success-circle-dash {
+  opacity: 0;
+  stroke: #ddd;
+  stroke-dasharray: 10 300;
+  -webkit-animation: circleDashIn 1.3s cubic-bezier(0.5, 0, 0.5, 1) forwards 0.05s;
+          animation: circleDashIn 1.3s cubic-bezier(0.5, 0, 0.5, 1) forwards 0.05s;
 }
 
 .modal-success-check {
-  fill: #20a94a;
-  stroke-width: 1;
-  stroke-dashArray: 1100;
-  stroke-dashoffset: 1100;
+  opacity: 0;
+  stroke: #20a94a;
+  stroke-linejoin: round;
+  stroke-dasharray: 60 100;
+  -webkit-animation: checkIn 1s cubic-bezier(0.5, 0, 0.6, 1) forwards 0.15s;
+          animation: checkIn 1s cubic-bezier(0.5, 0, 0.6, 1) forwards 0.15s;
+}
+
+.modal-success-check-dash {
+  stroke: #20a94a;
+  stroke-linejoin: round;
+  stroke-dasharray: 10 100;
+  -webkit-animation: checkDashIn 1s cubic-bezier(0.5, 0, 0.6, 1) forwards;
+          animation: checkDashIn 1s cubic-bezier(0.5, 0, 0.6, 1) forwards;
 }
 
 .modal-success-subtitle {
@@ -1191,45 +1241,87 @@ body {
   fill: #fff;
 }
 
-@-webkit-keyframes drawIn {
-  100% {
-    stroke-dashOffset: 0;
-  }
-}
-
-@keyframes drawIn {
-  100% {
-    stroke-dashOffset: 0;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  100% {
-    stroke-opacity: 0;
-  }
-}
-
-@keyframes fadeIn {
-  100% {
-    stroke-opacity: 0;
-  }
-}
-
-@-webkit-keyframes fillIn {
+@-webkit-keyframes circleIn {
   0% {
-    fill-opacity: 0;
+    opacity: 1;
+    stroke-dashoffset: 300;
   }
   100% {
-    fill-opacity: 1;
+    opacity: 1;
+    stroke-dashoffset: 0;
   }
 }
 
-@keyframes fillIn {
+@keyframes circleIn {
   0% {
-    fill-opacity: 0;
+    opacity: 1;
+    stroke-dashoffset: 300;
   }
   100% {
-    fill-opacity: 1;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes circleDashIn {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 320;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 20;
+  }
+}
+
+@keyframes circleDashIn {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 320;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 20;
+  }
+}
+
+@-webkit-keyframes checkIn {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 60;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkIn {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 60;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes checkDashIn {
+  0% {
+    stroke-dashoffset: 120;
+  }
+  100% {
+    stroke-dashoffset: 45;
+  }
+}
+
+@keyframes checkDashIn {
+  0% {
+    stroke-dashoffset: 120;
+  }
+  100% {
+    stroke-dashoffset: 45;
   }
 }
 
@@ -1622,7 +1714,7 @@ body {
     height: 46px;
   }
   .nav-search-input {
-    font-size: 16px;
+    font: 16px/1 "Helvetica", sans-serif;
     background: #fff;
     border: none;
     -webkit-border-radius: 0 8px 8px 0;

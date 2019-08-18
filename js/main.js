@@ -154,7 +154,6 @@ $(document).ready(function() {
 			inDesktop();
 			$('.toolbar').removeClass('is-animate');
 		}
-
 	});
 
 	//
