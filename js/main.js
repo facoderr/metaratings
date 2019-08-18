@@ -41,6 +41,7 @@ $(document).ready(function() {
 	// Responsive Function
 
 	function inDesktop() {
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
 		$('.nav').removeClass('is-mobile');
 		$('.nav').addClass('is-desktop');
 		$(document).on('mouseover', '.is-desktop .nav-menu-item', function() {
@@ -77,6 +78,7 @@ $(document).ready(function() {
 		});
 	}
 	function inMobile() {
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
 		$('.nav').removeClass('is-desktop');
 		$('.nav').addClass('is-mobile');
 		$(document).on('click', '.is-mobile .has-child > .js-child', function() {
