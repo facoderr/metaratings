@@ -21,8 +21,8 @@ $(document).ready(function() {
 	// Voice Event
 
 	$('.js-progress').each(function(){
-		let progressWidth = $(this).data('progress');
-		$('.js-progress').css('width', progressWidth + '%')
+		let progress = $(this).data('progress');
+		$(this).css('width', progress + '%')
 	});
 
 	//

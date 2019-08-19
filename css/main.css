@@ -940,6 +940,157 @@ body {
 }
 
 /* -- End Main -- */
+/* -- Voice -- */
+.voice {
+  position: relative;
+  padding: 40px 0;
+}
+
+.voice-title {
+  border-bottom: 1px solid #d5d5d5;
+  padding: 0 0 10px;
+  margin: 0 0 10px;
+}
+
+.voice-title h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.voice-result {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px;
+}
+
+.voice-result-yes span {
+  color: #20a94a;
+}
+
+.voice-result-no span {
+  color: #ea0101;
+}
+
+.voice-progress {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 6px;
+  margin: 10px 0;
+}
+
+.voice-progress-yes {
+  height: 100%;
+  background: #20a94a;
+  -webkit-border-radius: 3px 0 0 3px;
+          border-radius: 3px 0 0 3px;
+}
+
+.voice-progress-no {
+  height: 100%;
+  background: #ea0101;
+  -webkit-border-radius: 0 3px 3px 0;
+          border-radius: 0 3px 3px 0;
+}
+
+.voice-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.voice-else {
+  margin: 20px 0 0;
+}
+
+.voice-else-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.voice-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  background: transparent;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+}
+
+.voice-btn-yes, .voice-btn-no {
+  width: -webkit-calc(50% - 10px);
+  width: calc(50% - 10px);
+}
+
+.voice-btn-yes {
+  color: #20a94a;
+  border: 2px solid #20a94a;
+}
+
+.voice-btn-yes:hover {
+  color: #fff;
+  background: #20a94a;
+}
+
+.voice-btn-no {
+  color: #ea0101;
+  border: 2px solid #ea0101;
+}
+
+.voice-btn-no:hover {
+  color: #fff;
+  background: #ea0101;
+}
+
+.voice-btn-else {
+  width: 100%;
+  color: #601dc0;
+  border: 2px solid #601dc0;
+}
+
+.voice-btn-else:hover {
+  color: #fff;
+  background: #601dc0;
+}
+
+/* -- End Voice -- */
 /* -- Toolbar -- */
 .toolbar {
   position: fixed;
@@ -1769,6 +1920,18 @@ body {
   }
   .main {
     padding: 100px 0;
+  }
+  .voice-else-title {
+    font-size: 18px;
+  }
+  .voice-btn-yes, .voice-btn-no {
+    border: 2px solid #e9e9e9;
+  }
+  .voice-btn-yes:hover {
+    border: 2px solid #20a94a;
+  }
+  .voice-btn-no:hover {
+    border: 2px solid #ea0101;
   }
   .modal-success-wrap {
     width: 550px;
