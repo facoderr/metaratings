@@ -124,7 +124,11 @@ $(document).ready(function() {
 		$('.nav').addClass('is-desktop');
 		$('.nav-submenu').removeAttr('style');
 		$(document).on('mouseover', '.is-desktop .nav-menu-item', function() {
-			$('.is-desktop .nav-head').addClass('is-active');
+			if ($(this).children('.nav-submenu').length) {
+				$('.is-desktop .nav-head').addClass('is-active');
+			} else {
+				$('.is-desktop .nav-head').removeClass('is-active');
+			}
 			$('.is-desktop .nav-search').removeClass('is-active');
 			$('.js-search').removeClass('is-active');
 			$(this).siblings('.nav-menu-item').removeClass('is-hover');
