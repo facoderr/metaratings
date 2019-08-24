@@ -979,8 +979,6 @@ body {
 .feed-event .swiper-slide {
   width: auto;
   height: auto;
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
 }
 
 .feed-event .swiper-pagination-bullets {

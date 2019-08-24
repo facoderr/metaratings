@@ -3,9 +3,9 @@ $(document).ready(function() {
 	// Feed Mobile Event
 
 	let feedEvent = new Swiper('.feed-event .swiper-container', {
-		observer: true,
 		slidesPerView: 'auto',
-		centeredSlides: true,
+		slidesOffsetBefore: 15,
+		slidesOffsetAfter: 15,
 		spaceBetween: 10,
 		pagination: {
 			el: '.swiper-pagination',
@@ -18,19 +18,24 @@ $(document).ready(function() {
 						firstSlide = $('.feed-event .swiper-slide:first-child');
 						widthGutter = 30;
 						marginLeft = (widthContainer - widthSlide - widthGutter) / 2;
-				firstSlide.css('margin-left', -marginLeft);
 			},
 			reachBeginning: function () {
 				firstSlide = $('.feed-event .swiper-slide:first-child');
-				firstSlide.css('margin-left', -marginLeft);
+				firstSlide.animate({
+					'margin-left': 0
+				}, 300);
 			},
 			fromEdge: function () {
 				firstSlide = $('.feed-event .swiper-slide:first-child');
-				firstSlide.css('margin-left', 0);
+				firstSlide.animate({
+					'margin-left': marginLeft
+				}, 300);
 			},
 			reachEnd: function () {
 				firstSlide = $('.feed-event .swiper-slide:first-child');
-				firstSlide.css('margin-left', marginLeft);
+				firstSlide.animate({
+					'margin-left': 0
+				}, 300);
 			}
 		}
 	});
