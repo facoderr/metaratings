@@ -25,28 +25,35 @@ $(document).ready(function() {
 	
 	//
 
+	// Tab Event
 
-	// Voice Event
+	let clickedTab = $('.js-tabItem.is-active');
+			tabWrapper = $('.js-tabWrap');
+			activeTab = tabWrapper.find('.is-open');
+			activeTabHeight = activeTab.outerHeight();
 
-	$('.js-progress').each(function(){
-		let progress = $(this).data('progress');
-		$(this).css('width', progress + '%')
-	});
+	tabWrapper.css('min-height', activeTabHeight);
 
-	//
+	function tabInit() {
+		clickedTab = $('.js-tabItem.is-active');
+		activeTab.fadeOut(300, function() {
+			$('.js-tabBlock').removeClass('is-open');
+			let clickedTabIndex = clickedTab.index('.js-tabItem');
+			$('.js-tabBlock').eq(clickedTabIndex).addClass('is-open');
+			activeTab = tabWrapper.find('.is-open');
+			activeTabHeight = activeTab.outerHeight();
+			tabWrapper.stop().delay(50).animate({
+				'min-height': activeTabHeight
+			}, 250, function() {
+				activeTab.delay(50).fadeIn(250);
+			});
+		});
+	}
 
-
-	// Modal Event
-
-	$(document).on('click', '.js-success', function() {
-		$('.js-modal-success').fadeIn().addClass('is-open');
-	});
-	$(document).on('click', '.js-modal-close', function() {
-		$('.js-modal-success').fadeOut().removeClass('is-open');
-	})
-	$(document).bind('mouseup touchend', function(e) {
-		if ($(e.target).closest('.modal-success-wrap').length) return;
-		$('.js-modal-success').fadeOut().removeClass('is-open');
+	$('.js-tabList').on('click', '.js-tabItem', function() {
+		$('.js-tabItem').removeClass('is-active');
+		$(this).addClass('is-active');
+		tabInit();
 	});
 
 	//
