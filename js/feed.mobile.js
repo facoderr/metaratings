@@ -66,6 +66,13 @@ $(document).ready(function() {
 			tabWrapper.css('min-height', activeTabHeight);
 		}, 300);
 	});
+	$(document).bind('scroll', function() {
+		if ($(this).scrollTop() > 100) {
+			$('.js-inner-back').addClass('is-active');
+		} else {
+			$('.js-inner-back').removeClass('is-active');
+		}
+	});
 
 	//
 	

@@ -487,42 +487,494 @@
 	<!-- Main -->
 	<main class="main" role="main">
 		<div class="container">
-			<h1>Metaratings — всё о букмекерах в одном месте.</h1>
-			<p>
-				Мы создали Метарейтинг, чтобы вам не нужно было собирать разрозненную информацию о букмекерах по всему Интернету. Теперь чтобы узнать средневзвешенную оценку той или иной конторы и прочитать все отзывы о ней вам нужно зайти только на один сайт. Metaratings.ru даст вам самые объективные цифры, основанные на данных всех ведущих сайтов о беттинге, а также на отзывах и оценках игроков.
-			</p>
-			<a href="javascript:void(0);" class="main-btn js-success">Оставить отзыв</a>
+			<div class="main-row">
+				<aside class="feed-bar" role="feed">
+					<div class="feed-setting">
+						<div class="feed-setting-title">Настройки ленты</div>
+						<form action="/" class="feed-setting-form">
+							<label class="feed-setting-checkbox">
+								<input type="checkbox" name="setting-1">
+								<span>Прогнозы</span>
+							</label>
+							<label class="feed-setting-checkbox">
+								<input type="checkbox" name="setting-2">
+								<span>Жалобы</span>
+							</label>
+							<label class="feed-setting-checkbox">
+								<input type="checkbox" name="setting-3">
+								<span>Отзывы</span>
+							</label>
+							<label class="feed-setting-checkbox">
+								<input type="checkbox" name="setting-4">
+								<span>Комментарии</span>
+							</label>
+							<label class="feed-setting-checkbox">
+								<input type="checkbox" name="setting-5">
+								<span>Новости</span>
+							</label>
+							<label class="feed-setting-checkbox">
+								<input type="checkbox" name="setting-6">
+								<span>Материал</span>
+							</label>
+							<label class="feed-setting-checkbox">
+								<input type="checkbox" name="setting-7">
+								<span>Бонусы</span>
+							</label>
+							<div class="feed-setting-group">
+								<button type="reset" class="feed-setting-btn feed-setting-reset">
+									Сбросить
+								</button>
+								<button type="submit" class="feed-setting-btn feed-setting-apply">
+									Применить
+								</button>
+							</div>
+						</form>
+						<a href="javascript:void(0);" class="feed-setting-close js-setting-close">
+							<svg><use xlink:href="#close"></use></svg>
+						</a>
+					</div>
+					<div class="feed-bar-head">
+						<div class="feed-bar-title">
+							Лента
+							<div class="feed-bar-icon">
+								<svg><use xlink:href="#round"></use></svg>
+							</div>
+						</div>
+						<a href="javascript:void(0);" class="feed-bar-setting js-setting">
+							Настроить ленту
+						</a>
+					</div>
+					<div class="feed-bar-list">
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Прогноз</li>
+										<li>Футбол</li>
+									</ul>
+									<span class="feed-box-label feed-primary">От эксперта</span>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-forecast">
+										<span class="feed-forecast-player"></span>
+										<span class="feed-forecast-detail">
+											<span class="feed-forecast-odds">К: 4.36</span>
+											<span class="feed-forecast-time">
+												<span class="feed-forecast-date">24.06.18</span>
+												<span class="feed-forecast-clock">13:30</span>
+											</span>
+										</span>
+										<span class="feed-forecast-player"></span>
+									</span>
+									<span class="feed-box-title">
+										«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										1 мин. назад
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Новость</li>
+										<li>Баскетбол</li>
+									</ul>
+									<span class="feed-box-label feed-success">Новость дня</span>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-box-title">
+										Президент «ПСЖ» намерен установить рамки поведения для игроков
+									</span>
+									<span class="feed-box-subtitle">
+										Сумма перехода может составить 150 млн евро.
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										1 мин. назад
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Статья</li>
+										<li>Баскетбол</li>
+									</ul>
+									<span class="feed-box-label feed-primary">Эксклюзив</span>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-box-title">
+										Аленичев не будет уволен из «Енисея»
+									</span>
+									<span class="feed-box-subtitle">
+										Как сообщил министр спорта Красноярского края Сергей Алексеев, Дмитрий Аленичев
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										3 мин. назад
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Статья</li>
+										<li>Баскетбол</li>
+									</ul>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-box-title">
+										Президент «ПСЖ» намерен установить рамки поведения для игроков
+									</span>
+									<span class="feed-box-subtitle">
+										Сумма перехода может составить 150 млн евро.
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										1 мин. назад
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Прогноз</li>
+										<li>Футбол</li>
+									</ul>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-forecast">
+										<span class="feed-forecast-player"></span>
+										<span class="feed-forecast-detail">
+											<span class="feed-forecast-odds">К: 4.36</span>
+											<span class="feed-forecast-time">
+												<span class="feed-forecast-date">24.06.18</span>
+												<span class="feed-forecast-clock">13:30</span>
+											</span>
+										</span>
+										<span class="feed-forecast-player"></span>
+									</span>
+									<span class="feed-box-title">
+										«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										1 мин. назад
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Акция</li>
+										<li>Фрибет</li>
+									</ul>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-box-logo"></span>
+									<span class="feed-box-title">
+										«Марафон» дарит путешествие в Париж или фрибет 5000 рублей
+									</span>
+									<span class="feed-box-limit">
+										24/06/18 — 24/06/18
+									</span>
+								</span>
+								<span class="feed-box-btn">Получить 1000 ₽</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Жалоба</li>
+									</ul>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-box-logo"></span>
+									<span class="feed-comment-author">
+										<span class="feed-comment-photo"></span>
+										<span class="feed-comment-name">
+											Кирилл Фролов
+										</span>
+									</span>
+									<span class="feed-comment-title">
+										Блокировка счета
+									</span>
+									<span class="feed-box-subtitle">
+										Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										Вчера
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Комментарий</li>
+										<li>Прогноз</li>
+										<li>Футбол</li>
+									</ul>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-comment-author">
+										<span class="feed-comment-photo"></span>
+										<span class="feed-comment-name">
+											Кирилл Фролов
+										</span>
+									</span>
+									<span class="feed-comment-forecast">
+										<span class="feed-forecast">
+											<span class="feed-forecast-player"></span>
+											<span class="feed-forecast-detail">
+												<span class="feed-forecast-odds">К: 4.36</span>
+												<span class="feed-forecast-time">
+													<span class="feed-forecast-date">24.06.18</span>
+													<span class="feed-forecast-clock">13:30</span>
+												</span>
+											</span>
+											<span class="feed-forecast-player"></span>
+										</span>
+										<span class="feed-box-title">
+											«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
+										</span>
+									</span>
+									<span class="feed-box-subtitle">
+										На этой странице опубликованы самые качественные прогнозы, отобранные нами на основании логичности анализа.
+										На этой странице опубликованы самые качественные прогнозы, отобранные нами на основании логичности анализа.
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										Вчера
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Комментарий</li>
+										<li>Новость</li>
+										<li>Футбол</li>
+									</ul>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-comment-author">
+										<span class="feed-comment-photo"></span>
+										<span class="feed-comment-name">
+											Кирилл Фролов
+										</span>
+									</span>
+									<span class="feed-comment-event">
+										<span class="feed-comment-head">
+											<span class="feed-comment-tag">Футбол</span>
+											<span class="feed-comment-time">
+												<span class="feed-comment-date">26/03/19</span>
+												<span class="feed-comment-clock">12:24</span>
+											</span>
+										</span>
+										<span class="feed-box-title">
+											Президент «ПСЖ» намерен установить рамки поведения для игроков.
+										</span>
+									</span>
+									<span class="feed-box-subtitle">
+										Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки.
+										Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки.
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										<span class="feed-box-date">26/03/19</span>
+										<span class="feed-box-clock">12:24</span>
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Комментарий</li>
+										<li>Каппер</li>
+									</ul>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-comment-author">
+										<span class="feed-comment-photo"></span>
+										<span class="feed-comment-name">
+											Кирилл Фролов
+										</span>
+									</span>
+									<span class="feed-comment-user">
+										<span class="feed-comment-photo"></span>
+										<span class="feed-comment-name">
+											Борис Клюворотов
+											<span class="feed-comment-prof">Каппер</span>
+										</span>
+									</span>
+									<span class="feed-box-subtitle">
+										Полный мудак и прогнозы у него гавно, слил все бабки!
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										<span class="feed-box-date">26/03/19</span>
+										<span class="feed-box-clock">12:24</span>
+									</span>
+								</span>
+							</a>
+						</article>
+						<article class="feed-box">
+							<a href="feed-inner.html" class="feed-box-link">
+								<span class="feed-box-tools">
+									<ul class="feed-box-tag">
+										<li>Новость</li>
+										<li>Баскетбол</li>
+									</ul>
+									<span class="feed-box-label feed-success">Новость дня</span>
+								</span>
+								<span class="feed-box-info">
+									<span class="feed-box-title">
+										Президент «ПСЖ» намерен установить рамки поведения для игроков
+									</span>
+									<span class="feed-box-subtitle">
+										Сумма перехода может составить 150 млн евро.
+									</span>
+								</span>
+								<span class="feed-box-detail">
+									<span class="feed-box-review">
+										25
+									</span>
+									<span class="feed-box-view">
+										842
+									</span>
+									<span class="feed-box-time">
+										1 мин. назад
+									</span>
+								</span>
+							</a>
+						</article>
+					</div>
+				</aside>
 
-			<div class="voice">
-				<div class="voice-title">
-					<h2>Голосуй за прогноз!</h2>
-				</div>
-				<div class="voice-row">
-					<div class="voice-result">
-						<div class="voice-result-yes">
-							Пройдет: <span>78%</span>
+				<div class="main-content">
+					<h1>Metaratings — всё о букмекерах в одном месте.</h1>
+					<p>
+						Мы создали Метарейтинг, чтобы вам не нужно было собирать разрозненную информацию о букмекерах по всему Интернету. Теперь чтобы узнать средневзвешенную оценку той или иной конторы и прочитать все отзывы о ней вам нужно зайти только на один сайт. Metaratings.ru даст вам самые объективные цифры, основанные на данных всех ведущих сайтов о беттинге, а также на отзывах и оценках игроков.
+					</p>
+					<a href="javascript:void(0);" class="main-btn js-success">
+						Оставить отзыв
+					</a>
+
+					<div class="voice">
+						<div class="voice-title">
+							<h2>Голосуй за прогноз!</h2>
 						</div>
-						<div class="voice-result-no">
-							Не пройдет: <span>22%</span>
+						<div class="voice-row">
+							<div class="voice-result">
+								<div class="voice-result-yes">
+									Пройдет: <span>78%</span>
+								</div>
+								<div class="voice-result-no">
+									Не пройдет: <span>22%</span>
+								</div>
+							</div>
+							<div class="voice-progress">
+								<div class="voice-progress-yes js-progress" data-progress="78"></div>
+								<div class="voice-progress-no js-progress" data-progress="22"></div>
+							</div>
+							<div class="voice-group">
+								<button class="voice-btn voice-btn-yes">
+									Пройдет
+								</button>
+								<button class="voice-btn voice-btn-no">
+									Не пройдет
+								</button>
+							</div>
+							<div class="voice-else">
+								<div class="voice-else-title">Думаешь иначе?</div>
+								<button class="voice-btn voice-btn-else">
+									Дать свой прогноз
+								</button>
+							</div>
 						</div>
-					</div>
-					<div class="voice-progress">
-						<div class="voice-progress-yes js-progress" data-progress="78"></div>
-						<div class="voice-progress-no js-progress" data-progress="22"></div>
-					</div>
-					<div class="voice-group">
-						<button class="voice-btn voice-btn-yes">
-							Пройдет
-						</button>
-						<button class="voice-btn voice-btn-no">
-							Не пройдет
-						</button>
-					</div>
-					<div class="voice-else">
-						<div class="voice-else-title">Думаешь иначе?</div>
-						<button class="voice-btn voice-btn-else">
-							Дать свой прогноз
-						</button>
 					</div>
 				</div>
 			</div>
@@ -608,6 +1060,7 @@
 	<!-- End Modal -->
 
 	<script src="js/core.min.js"></script>
+	<script src="js/feed.desktop.js" async></script>
 	<script src="js/voice.js" async></script>
 	<script src="js/modal.js" async></script>
 	<script src="js/main.js" async></script>
