@@ -1426,6 +1426,8 @@ body {
 .feed-box-tag li:not(:last-child):after {
   content: '';
   position: absolute;
+  top: -webkit-calc(50% - (3px / 2));
+  top: calc(50% - (3px / 2));
   right: -14px;
   width: 3px;
   height: 3px;

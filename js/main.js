@@ -63,7 +63,7 @@ $(document).ready(function() {
 	let slinky = $('.nav-wrap').slinky({title: true});
 
 	function inMobile() {
-		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
 		if (typeof slinky !== 'undefined') {
 			slinky.destroy();
 		}
@@ -124,7 +124,7 @@ $(document).ready(function() {
 		});
 	}
 	function inDesktop() {
-		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
 		if (typeof slinky !== 'undefined') {
 			slinky.destroy();
 		}
