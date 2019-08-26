@@ -332,7 +332,7 @@ body {
 .head-search svg, .head-notify svg, .head-mail svg {
   width: 18px;
   height: 18px;
-  fill: #737373;
+  fill: rgba(0, 0, 0, 0.4);
 }
 
 .head-search.is-active svg {
@@ -1123,7 +1123,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
@@ -1203,7 +1203,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.4);
   font-weight: 700;
 }
 
@@ -1224,7 +1224,7 @@ body {
 .feed-daily-btn svg {
   width: 12px;
   height: 12px;
-  fill: #737373;
+  fill: rgba(0, 0, 0, 0.4);
   -webkit-transform: rotate(-90deg);
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg);
@@ -1262,7 +1262,7 @@ body {
 }
 
 .feed-daily-time {
-  color: #737373;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 13px;
   margin: 0 15px 0 0;
 }
@@ -1339,7 +1339,7 @@ body {
 
 .feed-topic-tag {
   display: block;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 14px;
   font-weight: 700;
   margin: 0 0 15px;
@@ -1414,7 +1414,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 13px;
   font-weight: 700;
 }
@@ -1431,7 +1431,7 @@ body {
   right: -14px;
   width: 3px;
   height: 3px;
-  background: #737373;
+  background: rgba(0, 0, 0, 0.4);
   -webkit-border-radius: 50%;
           border-radius: 50%;
 }
@@ -1509,7 +1509,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #7a7a7a;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 14px;
   margin: 15px 0 0;
 }
@@ -1526,27 +1526,10 @@ body {
 }
 
 .feed-box-review svg {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
+  fill: rgba(0, 0, 0, 0.4);
   margin: 0 7.5px 0 0;
-}
-
-.feed-box-view {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 0 0 20px;
-}
-
-.feed-box-view svg {
-  width: 16.5px;
-  height: 16.5px;
-  margin: 0 7px 0 0;
 }
 
 .feed-box-time {
@@ -1558,9 +1541,27 @@ body {
   margin: 0 0 0 10px;
 }
 
+.feed-box-logo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 107px;
+  margin: 5px 0 20px;
+}
+
+.feed-box-logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .feed-box-limit {
   display: block;
-  color: #7a7a7a;
+  color: rgba(0, 0, 0, 0.4);
   font-weight: 700;
   margin: 15px 0 10px;
 }
@@ -1645,7 +1646,7 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.6);
   font-size: 15px;
   font-weight: 700;
   margin: 10px 0 0;
@@ -1829,6 +1830,27 @@ body {
           border-radius: 15px;
 }
 
+.feed-bar-setting:hover {
+  -webkit-box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+.feed-bar-setting.is-active svg {
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.feed-bar-setting svg {
+  width: 12.8px;
+  height: 12.8px;
+  -webkit-transition-delay: .1s;
+          transition-delay: .1s;
+  margin: 0 6px 0 0;
+}
+
 .feed-bar .feed-box {
   position: static;
   margin: 0;
@@ -1880,6 +1902,7 @@ body {
 }
 
 .feed-bar .feed-box-tag li {
+  color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
 }
 
@@ -1888,6 +1911,7 @@ body {
 }
 
 .feed-bar .feed-box-tag li:not(:last-child):after {
+  color: rgba(0, 0, 0, 0.3);
   right: -10.5px;
 }
 
@@ -1902,11 +1926,22 @@ body {
 }
 
 .feed-bar .feed-box-detail {
+  color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
   margin: 10px 0 0;
 }
 
+.feed-bar .feed-box-review svg {
+  fill: rgba(0, 0, 0, 0.3);
+}
+
+.feed-bar .feed-box-logo {
+  width: 91px;
+  margin: 0 0 15px;
+}
+
 .feed-bar .feed-box-limit {
+  color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
   font-weight: 400;
   margin: 10px 0;
@@ -1961,8 +1996,16 @@ body {
           transform: translateY(0);
 }
 
+.feed-setting.is-open .feed-setting-close {
+  -webkit-transform: rotate(-360deg);
+      -ms-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+  -webkit-transition-delay: .1s;
+          transition-delay: .1s;
+}
+
 .feed-setting-title {
-  color: #c2c2c2;
+  color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
   text-align: center;
   margin: 0 0 20px;
@@ -2108,6 +2151,8 @@ body {
   right: 15px;
   width: 15px;
   height: 15px;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
 }
 
 .feed-setting-close:hover svg {
@@ -2132,7 +2177,7 @@ body {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.3);
   font-size: 10px;
   font-weight: 700;
   margin: 0 0 10px;
@@ -2199,14 +2244,14 @@ body {
 
 .feed-comment-prof {
   display: block;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.3);
   font-weight: 400;
   margin: 3px 0 0;
 }
 
 .feed-comment-forecast, .feed-comment-event, .feed-comment-user {
   display: block;
-  border: 1.5px solid #ececec;
+  border: 1.5px solid #e9e9e9;
   -webkit-border-radius: 8px;
           border-radius: 8px;
   padding: 10px;
@@ -2496,7 +2541,7 @@ body {
 }
 
 .toolbar-list-link {
-  color: #737373;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 10px;
   text-align: center;
 }
@@ -2530,7 +2575,7 @@ body {
 .toolbar-list-icon svg {
   width: 18.3px;
   height: 18.3px;
-  fill: #737373;
+  fill: rgba(0, 0, 0, 0.4);
 }
 
 .toolbar-list-text {
@@ -2674,7 +2719,7 @@ body {
 
 .modal-success-subtitle {
   max-width: 250px;
-  color: #737373;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 14px;
   line-height: 1.25;
   margin: 0 auto;
@@ -3015,7 +3060,7 @@ body {
     height: auto;
     font-size: 16px;
     text-transform: none;
-    color: #737373;
+    color: rgba(0, 0, 0, 0.4);
     border: none;
     opacity: 1;
     padding: 0;
@@ -3039,7 +3084,7 @@ body {
   .nav-menu-icon svg {
     width: 100%;
     height: 100%;
-    fill: #737373;
+    fill: rgba(0, 0, 0, 0.4);
   }
   .nav-menu-text {
     position: relative;
@@ -3487,6 +3532,10 @@ body {
   .feed-box-date {
     font-size: 12px;
     font-weight: 400;
+  }
+  .feed-box-logo {
+    width: 91px;
+    margin: 5px 0 15px;
   }
   .feed-box-btn {
     height: 30px;

@@ -10,18 +10,22 @@ $(document).ready(function() {
 	$(document).on('click', '.js-alert', function() {
 		$(this).toggleClass('is-active');
 	});
-	$(document).on('click', '.nav-search-input', function() {
-		setTimeout(function() {
-			$('.nav-overflow').animate({
-				scrollTop: $('.nav-search').offset().top + $('.nav-search').outerHeight()
-			}, 300);
-		}, 500);
-		setTimeout(function() {
-			$('body').animate({
-				scrollTop: $('body').offset().top
-			}, 300);
-		}, 500);
-	});
+	var uAg = navigator.userAgent.toLowerCase();
+	var isAndroid = uAg.indexOf('android') > -1;
+	if(isAndroid) {
+		$(document).on('click', '.js-search-input', function() {
+			setTimeout(function() {
+				$('.nav-overflow').animate({
+					scrollTop: $('.nav-search').offset().top + $('.nav-search').outerHeight()
+				}, 300);
+			}, 500);
+			setTimeout(function() {
+				$('html, body').animate({
+					scrollTop: $('html').offset().top
+				}, 300);
+			}, 500);
+		});
+	}
 	
 	//
 

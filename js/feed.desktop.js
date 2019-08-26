@@ -8,7 +8,7 @@ $(document).ready(function() {
 		$('.feed-setting').addClass('is-open');
 	});
 	$(document).on('click', '.js-setting-close', function() {
-		$(this).removeClass('is-active');
+		$('.js-setting').removeClass('is-active');
 		$('.feed-bar').removeClass('is-active');
 		$('.feed-setting').removeClass('is-open');
 	});
