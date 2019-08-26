@@ -1073,6 +1073,11 @@ body {
   margin: 0 0 12px;
 }
 
+.feed-event .feed-forecast-team {
+  width: 45px;
+  height: 45px;
+}
+
 .feed-event .feed-forecast-odds {
   width: 65px;
   height: 24px;
@@ -1459,7 +1464,6 @@ body {
 }
 
 .feed-box-info {
-  display: block;
   -webkit-box-flex: 2;
   -webkit-flex-grow: 2;
       -ms-flex-positive: 2;
@@ -1469,13 +1473,11 @@ body {
 }
 
 .feed-box-title {
-  display: block;
   font-weight: 700;
 }
 
 .feed-box-subtitle {
   position: relative;
-  display: block;
   overflow: hidden;
   margin: 15px 0 0;
 }
@@ -1533,7 +1535,14 @@ body {
 }
 
 .feed-box-time {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 0 0 auto;
 }
 
@@ -1560,7 +1569,6 @@ body {
 }
 
 .feed-box-limit {
-  display: block;
   color: rgba(0, 0, 0, 0.4);
   font-weight: 700;
   margin: 15px 0 10px;
@@ -1607,6 +1615,28 @@ body {
       -ms-flex-pack: distribute;
           justify-content: space-around;
   margin: 0 0 15px;
+}
+
+.feed-forecast-team {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 55px;
+  height: 55px;
+}
+
+.feed-forecast-team img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .feed-forecast-odds {
@@ -1796,13 +1826,14 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 21px;
-  height: 21px;
+  width: 20px;
+  height: 20px;
+  margin: 0 0 0 4px;
 }
 
 .feed-bar-icon svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   fill: #601dc0;
 }
 
@@ -1956,6 +1987,11 @@ body {
   margin: 0 0 10px;
 }
 
+.feed-bar .feed-forecast-team {
+  width: 40px;
+  height: 40px;
+}
+
 .feed-bar .feed-forecast-odds {
   width: 60px;
   height: 20px;
@@ -2038,6 +2074,7 @@ body {
 }
 
 .feed-setting-checkbox input:checked + span:after {
+  top: 50%;
   height: 0;
   opacity: 0;
   background: #601dc0;
@@ -2068,18 +2105,22 @@ body {
 .feed-setting-checkbox span:before, .feed-setting-checkbox span:after {
   content: '';
   position: absolute;
-  background: #d8d8d8;
+  background: #999;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
 
 .feed-setting-checkbox span:before {
+  top: -webkit-calc(50% - (1.4px / 2));
+  top: calc(50% - (1.4px / 2));
   right: 20px;
   width: 10px;
   height: 1.4px;
 }
 
 .feed-setting-checkbox span:after {
+  top: -webkit-calc(50% - (10px / 2));
+  top: calc(50% - (10px / 2));
   right: 24px;
   width: 1.4px;
   height: 10px;
@@ -2183,10 +2224,6 @@ body {
   margin: 0 0 10px;
 }
 
-.feed-comment-tag, .feed-comment-date, .feed-comment-clock {
-  display: block;
-}
-
 .feed-comment-time {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2203,7 +2240,6 @@ body {
 }
 
 .feed-comment-title {
-  display: block;
   font-size: 14px;
   font-weight: 700;
 }
@@ -2221,7 +2257,6 @@ body {
 }
 
 .feed-comment-photo {
-  display: block;
   width: 24px;
   height: 24px;
   background: url("../img/icons/user.svg") no-repeat center;
@@ -2237,20 +2272,17 @@ body {
 }
 
 .feed-comment-name {
-  display: block;
   font-size: 12px;
   margin: 0 0 0 10px;
 }
 
 .feed-comment-prof {
-  display: block;
   color: rgba(0, 0, 0, 0.3);
   font-weight: 400;
   margin: 3px 0 0;
 }
 
 .feed-comment-forecast, .feed-comment-event, .feed-comment-user {
-  display: block;
   border: 1.5px solid #e9e9e9;
   -webkit-border-radius: 8px;
           border-radius: 8px;
@@ -3461,6 +3493,10 @@ body {
   .feed-event .feed-forecast {
     margin: 0 0 10px;
   }
+  .feed-event .feed-forecast-team {
+    width: 40px;
+    height: 40px;
+  }
   .feed-event .feed-forecast-odds {
     width: 50px;
     height: 18px;
@@ -3543,6 +3579,10 @@ body {
   }
   .feed-forecast {
     margin: 0 0 10px;
+  }
+  .feed-forecast-team {
+    width: 40px;
+    height: 40px;
   }
   .feed-forecast-odds {
     width: 50px;

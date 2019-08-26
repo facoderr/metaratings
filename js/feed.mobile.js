@@ -2,6 +2,12 @@ $(document).ready(function() {
 
 	// Feed Mobile Event
 
+	let widthContainer = $('.feed-event .swiper-container').outerWidth();
+			widthSlide = $('.feed-event .swiper-slide').outerWidth();
+			firstSlide = $('.feed-event .swiper-slide').first();
+			widthGutter = 30;
+			marginLeft = (widthContainer - widthSlide - widthGutter) / 2;
+
 	let feedEvent = new Swiper('.feed-event .swiper-container', {
 		slidesPerView: 'auto',
 		slidesOffsetBefore: 15,
@@ -12,27 +18,17 @@ $(document).ready(function() {
 			clickable: true
 		},
 		on: {
-			init: function () {
-				let widthContainer = $('.feed-event .swiper-container').outerWidth();
-						widthSlide = $('.feed-event .swiper-slide').outerWidth();
-						firstSlide = $('.feed-event .swiper-slide:first-child');
-						widthGutter = 30;
-						marginLeft = (widthContainer - widthSlide - widthGutter) / 2;
-			},
 			reachBeginning: function () {
-				firstSlide = $('.feed-event .swiper-slide:first-child');
 				firstSlide.animate({
 					'margin-left': 0
 				}, 300);
 			},
 			fromEdge: function () {
-				firstSlide = $('.feed-event .swiper-slide:first-child');
 				firstSlide.animate({
 					'margin-left': marginLeft
 				}, 300);
 			},
 			reachEnd: function () {
-				firstSlide = $('.feed-event .swiper-slide:first-child');
 				firstSlide.animate({
 					'margin-left': 0
 				}, 300);
