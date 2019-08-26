@@ -2,6 +2,23 @@ $(document).ready(function() {
 
 	// Feed Desktop Event
 
+
+	let feedHeight = $('.feed-bar').outerHeight();
+
+	if ($(window).width() <= 1349 - 18) {
+		$('body').css('min-height', 'auto');
+	} else {
+		$('body').css('min-height', feedHeight + 100);
+	}
+
+	$(window).resize(function() {
+		if ($(window).width() <= 1349 - 18) {
+			$('body').css('min-height', 'auto');
+		} else {
+			$('body').css('min-height', feedHeight + 100);
+		}
+	});
+
 	$(document).on('click', '.js-setting', function() {
 		$(this).addClass('is-active');
 		$('.feed-bar').addClass('is-active');
