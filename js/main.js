@@ -17,8 +17,8 @@ $(document).ready(function() {
 			}, 300);
 		}, 500);
 		setTimeout(function() {
-			$('html, body').animate({
-				scrollTop: $('html').offset().top
+			$('body').animate({
+				scrollTop: $('body').offset().top
 			}, 300);
 		}, 500);
 	});
