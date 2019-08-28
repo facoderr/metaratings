@@ -28,16 +28,16 @@ $(document).ready(function() {
 	} else {
 		$(document).on('click', '.js-toggle', function() {
 			if ($(this).hasClass('is-active')) {
-				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
-			} else {
 				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
+			} else {
+				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
 			}
 		});
 		$(document).on('click', '.js-nav-close', function() {
 			if ($('.js-toggle').hasClass('is-active')) {
-				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
-			} else {
 				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
+			} else {
+				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
 			}
 		});
 	}
