@@ -84,24 +84,6 @@ input::placeholder, textarea::placeholder {
 
 /* -- End Reset -- */
 /* -- Fonts -- */
-@font-face {
-  font-family: "Helvetica";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  text-rendering: optimizeLegibility;
-  src: url("../fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"), url("../fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Helvetica";
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  text-rendering: optimizeLegibility;
-  src: url("../fonts/HelveticaBold/HelveticaBold.woff") format("woff"), url("../fonts/HelveticaBold/HelveticaBold.ttf") format("truetype");
-}
-
 /* -- End Fonts -- */
 /* -- Preloader -- */
 .preloader {
@@ -192,7 +174,7 @@ html {
 
 body {
   position: relative;
-  font: 16px "Helvetica", sans-serif;
+  font: 16px Helvetica Neue, Helvetica, Arial, sans-serif;
   color: #000;
   background: #fff;
   overflow: hidden;
@@ -825,7 +807,7 @@ body {
           flex-grow: 2;
   width: 50%;
   height: 100%;
-  font: 14px/1 "Helvetica", sans-serif;
+  font: 14px/1 Helvetica Neue, Helvetica, Arial, sans-serif;
   color: #000;
   background: #f9f9f9;
   border: 1px solid #f0f0f0;
@@ -2163,6 +2145,7 @@ body {
 }
 
 .feed-setting-apply {
+  font-weight: 700;
   color: #fff;
   background: #601dc0;
 }
@@ -3246,7 +3229,7 @@ body {
     height: 46px;
   }
   .nav-search-input {
-    font: 16px/1 "Helvetica", sans-serif;
+    font: 16px/1 Helvetica Neue, Helvetica, Arial, sans-serif;
     background: #fff;
     border: none;
     -webkit-border-radius: 0 8px 8px 0;

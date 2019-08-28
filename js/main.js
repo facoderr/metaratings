@@ -12,7 +12,7 @@ $(document).ready(function() {
 	});
 	var uAg = navigator.userAgent.toLowerCase();
 	var isAndroid = uAg.indexOf('android') > -1;
-	if(isAndroid) {
+	if (isAndroid) {
 		$(document).on('click', '.js-search-input', function() {
 			setTimeout(function() {
 				$('.nav-overflow').animate({
@@ -24,6 +24,13 @@ $(document).ready(function() {
 					scrollTop: $('html').offset().top
 				}, 300);
 			}, 500);
+		});
+	} else {
+		$(document).on('focus', '.js-search-input', function() {
+			$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
+		});
+		$(document).on('focusout', '.js-search-input', function() {
+			$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
 		});
 	}
 	
@@ -67,7 +74,6 @@ $(document).ready(function() {
 	let slinky = $('.nav-wrap').slinky({title: true});
 
 	function inMobile() {
-		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
 		if (typeof slinky !== 'undefined') {
 			slinky.destroy();
 		}
@@ -128,7 +134,6 @@ $(document).ready(function() {
 		});
 	}
 	function inDesktop() {
-		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
 		if (typeof slinky !== 'undefined') {
 			slinky.destroy();
 		}
