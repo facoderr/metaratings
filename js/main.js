@@ -10,8 +10,8 @@ $(document).ready(function() {
 	$(document).on('click', '.js-alert', function() {
 		$(this).toggleClass('is-active');
 	});
-	var uAg = navigator.userAgent.toLowerCase();
-	var isAndroid = uAg.indexOf('android') > -1;
+	let uAg = navigator.userAgent.toLowerCase();
+	let isAndroid = uAg.indexOf('android') > -1;
 	if (isAndroid) {
 		$(document).on('click', '.js-search-input', function() {
 			setTimeout(function() {
@@ -155,7 +155,7 @@ $(document).ready(function() {
 		}
 	}, 500);
 
-	var width = $(window).width();
+	let width = $(window).width();
 	$(window).resize(function() {
 		if ($(this).width() != width) {
 			width = $(this).width();
