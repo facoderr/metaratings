@@ -11,16 +11,16 @@ $(document).ready(function() {
 
 	function tabInit() {
 		clickedTab = $('.js-tabItem.is-active');
-		activeTab.fadeOut(300, function() {
+		activeTab.fadeOut(100, function() {
 			$('.js-tabBlock').removeClass('is-open');
 			let clickedTabIndex = clickedTab.index('.js-tabItem');
 			$('.js-tabBlock').eq(clickedTabIndex).addClass('is-open');
 			activeTab = tabWrapper.find('.is-open');
 			activeTabHeight = activeTab.outerHeight();
-			tabWrapper.stop().delay(50).animate({
+			tabWrapper.stop().delay(25).animate({
 				'min-height': activeTabHeight
-			}, 250, function() {
-				activeTab.delay(50).fadeIn(250);
+			}, 50, function() {
+				activeTab.delay(25).fadeIn(100);
 			});
 		});
 	}
