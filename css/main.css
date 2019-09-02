@@ -227,6 +227,10 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   right: 0;
   width: 110px;
   -webkit-transition: all .3s ease-in-out;
@@ -322,6 +326,7 @@ body {
 
 .head-notify, .head-mail {
   display: none;
+  margin: 0 auto 0 0;
 }
 
 .head-notify.is-active, .head-mail.is-active {
@@ -452,6 +457,10 @@ body {
   transition: all .3s ease-in-out, height 0s;
   padding: 0 15px 63px;
   z-index: 999;
+}
+
+.nav:before {
+  display: none;
 }
 
 .nav:after {
@@ -4018,9 +4027,9 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    right: -50px;
+    right: -100px;
     bottom: 0;
-    left: -50px;
+    left: -100px;
     background: #fff;
     -webkit-border-radius: 8px;
             border-radius: 8px;
