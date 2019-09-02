@@ -35,6 +35,14 @@ $(document).ready(function() {
 
 	// Reward Event
 
+	let uAg = navigator.userAgent.toLowerCase();
+	let isAndroid = uAg.indexOf('android') > -1;
+	if (isAndroid) {
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
+	} else {
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
+	}
+
 	let rewardTab = new Swiper('.reward-tabList .swiper-container', {
 		slidesPerView: 'auto',
 		slidesOffsetBefore: 15,
@@ -68,40 +76,25 @@ $(document).ready(function() {
 		}
 	});
 
-	let rewardSlider = {};
-
-	$('.reward-slider .swiper-container').each(function(index, element){
-		let $this = $(this);
-		$this.addClass('swiper-' + index);
-		$this.find('.swiper-button-prev').addClass('swiper-prev-' + index);
-		$this.find('.swiper-button-next').addClass('swiper-next-' + index);
-		rewardSlider[index] = new Swiper('.swiper-' + index, {
-			observer: true,
-			slidesPerView: 'auto',
-			slidesOffsetBefore: 15,
-			slidesOffsetAfter: 15,
-			spaceBetween: 10,
-			freeMode: true,
-			navigation: {
-				nextEl: '.swiper-next-' + index,
-				prevEl: '.swiper-prev-' + index,
+	let rewardSlider = new Swiper('.reward-slider .swiper-container', {
+		slidesPerView: 'auto',
+		slidesOffsetBefore: 15,
+		slidesOffsetAfter: 15,
+		spaceBetween: 10,
+		freeMode: true,
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+		breakpointsInverse: true,
+		breakpoints: {
+			992: {
+				slidesPerView: 3,
+				slidesOffsetBefore: 0,
+				slidesOffsetAfter: 0,
+				spaceBetween: 16,
+				freeMode: false
 			},
-			breakpointsInverse: true,
-			breakpoints: {
-				992: {
-					slidesPerView: 3,
-					slidesOffsetBefore: 0,
-					slidesOffsetAfter: 0,
-					spaceBetween: 16,
-					freeMode: false
-				},
-			}
-		});
-	});
-
-	$('.reward-box').each(function() {
-		if ($(this).find('.reward-primary').hasClass('reward-primary')) {
-			$(this).addClass('reward-primary-border');
 		}
 	});
 

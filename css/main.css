@@ -494,8 +494,8 @@ body {
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
-  -webkit-transition-delay: .1s;
-          transition-delay: .1s;
+  -webkit-transition-delay: .1s, 0s;
+          transition-delay: .1s, 0s;
 }
 
 .nav-head {
@@ -654,14 +654,14 @@ body {
 
 .nav-overflow {
   overflow-x: hidden;
-  height: -webkit-calc(100% - 118px);
-  height: calc(100% - 118px);
+  height: -webkit-calc(100% - 126px);
+  height: calc(100% - 126px);
   opacity: 0;
   -webkit-transform: translateY(100%);
       -ms-transform: translateY(100%);
           transform: translateY(100%);
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out, height .3s ease-in-out;
+  transition: all .3s ease-in-out, height .3s ease-in-out;
   padding: 0 15px;
   margin: 0 -15px;
 }
@@ -2444,7 +2444,7 @@ body {
 /* -- Reward -- */
 .reward {
   position: relative;
-  padding: 30px 0 53px;
+  padding: 30px 0 63px;
 }
 
 .reward-title {
@@ -2499,6 +2499,7 @@ body {
           border-radius: 8px;
   padding: 10px;
   margin: 0 0 12px;
+  z-index: 9;
 }
 
 .reward-filter-title {
@@ -2843,6 +2844,10 @@ body {
   fill: #601dc0;
 }
 
+.reward-best .swiper-button-next.swiper-button-disabled, .reward-best .swiper-button-prev.swiper-button-disabled {
+  pointer-events: all;
+}
+
 .reward-best .swiper-button-next svg, .reward-best .swiper-button-prev svg {
   width: 10px;
   height: 10px;
@@ -2944,6 +2949,10 @@ body {
 
 .reward-slider .swiper-button-next:hover svg, .reward-slider .swiper-button-prev:hover svg {
   fill: #601dc0;
+}
+
+.reward-slider .swiper-button-next.swiper-button-disabled, .reward-slider .swiper-button-prev.swiper-button-disabled {
+  pointer-events: all;
 }
 
 .reward-slider .swiper-button-next svg, .reward-slider .swiper-button-prev svg {
@@ -4435,8 +4444,8 @@ body {
     padding: 13px 0 12px 40px;
   }
   .nav-overflow {
-    height: -webkit-calc(100% - 119px);
-    height: calc(100% - 119px);
+    height: -webkit-calc(100% - 128px);
+    height: calc(100% - 128px);
   }
   .nav-menu-link {
     height: 37px;
@@ -4621,7 +4630,7 @@ body {
     padding: 30px 0 55px;
   }
   .reward {
-    padding: 30px 0 45px;
+    padding: 30px 0 55px;
   }
   .toolbar {
     bottom: -40px;
