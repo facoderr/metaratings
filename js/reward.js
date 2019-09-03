@@ -98,6 +98,16 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.reward-box').each(function() {
+		if ($(this).find('.reward-primary-bg').hasClass('reward-primary-bg') && $(this).find('.reward-danger-bg').hasClass('reward-danger-bg')) {
+			$(this).addClass('reward-primary').addClass('reward-danger');
+		} else if ($(this).find('.reward-primary-bg').hasClass('reward-primary-bg')) {
+			$(this).addClass('reward-primary');
+		} else if ($(this).find('.reward-danger-bg').hasClass('reward-danger-bg')) {
+			$(this).addClass('reward-danger');
+		}
+	});
+
 	$('.js-select').click(function () {
 		$(this).toggleClass('is-active');
 		$(this).find('.select-menu').slideToggle(300);
