@@ -57,6 +57,11 @@ $(document).ready(function() {
 		$('.nav').removeClass('is-desktop');
 		$('.nav-head').removeClass('is-active');
 		$('.nav-menu').addClass('is-active');
+		$('.nav-menu-more')
+			.children('.nav-submenu')
+			.children('.nav-menu-item')
+			.addClass('nav-menu-clone')
+			.appendTo('.nav-menu');
 		$(document).on('click', '.js-toggle', function() {
 			slinky.home();
 			$(this).toggleClass('is-active');
@@ -114,6 +119,9 @@ $(document).ready(function() {
 		}
 		$('.nav').addClass('is-desktop');
 		$('.nav-submenu').removeAttr('style');
+		$('.nav-menu-clone')
+			.removeClass('nav-menu-clone')
+			.appendTo('.nav-menu-more .nav-submenu');
 		$(document).on('mouseover', '.is-desktop .nav-menu-item', function() {
 			if ($(this).children('.nav-submenu').length) {
 				$('.is-desktop .nav-head').addClass('is-active');

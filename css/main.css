@@ -202,7 +202,7 @@ body {
           box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .head-row {
@@ -456,7 +456,7 @@ body {
   -webkit-transition: all .3s ease-in-out, height 0s;
   transition: all .3s ease-in-out, height 0s;
   padding: 0 15px 63px;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .nav:before {
@@ -593,6 +593,7 @@ body {
   text-transform: uppercase;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
+  cursor: pointer;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   padding: 15px 0 14px 30px;
@@ -641,6 +642,7 @@ body {
 .nav-logo {
   display: block;
   width: 104px;
+  margin: 0 auto;
 }
 
 .nav-logo img {
@@ -694,7 +696,8 @@ body {
 }
 
 .nav-menu-header {
-  display: none;
+  position: absolute;
+  top: -100%;
 }
 
 .nav-menu-item:not(:last-child) .nav-menu-link {
@@ -3391,7 +3394,7 @@ body {
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   padding: 0 15px;
-  z-index: 999;
+  z-index: 1001;
 }
 
 .toolbar.is-animate {
