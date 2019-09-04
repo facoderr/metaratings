@@ -146,25 +146,25 @@ $(document).ready(function() {
 
 	// Resize Event
 
-	if ($(window).width() <= 1099) {
+	if ($(window).outerWidth() <= 1099) {
 		inMobile();
 	} else {
 		inDesktop();
 	}
 
 	setTimeout(function() {
-		if ($(window).width() <= 1099) {
+		if ($(window).outerWidth() <= 1099) {
 			$('.toolbar').addClass('is-animate');
 		} else {
 			$('.toolbar').removeClass('is-animate');
 		}
 	}, 500);
 
-	let width = $(window).width();
+	let width = $(window).outerWidth();
 	$(window).resize(function() {
-		if ($(this).width() != width) {
-			width = $(this).width();
-			if ($(window).width() <= 1099) {
+		if ($(this).outerWidth() != width) {
+			width = $(this).outerWidth();
+			if ($(window).outerWidth() <= 1099) {
 				slinky = $('.nav-wrap').slinky({title: true});
 				inMobile();
 				$('.toolbar').addClass('is-animate');

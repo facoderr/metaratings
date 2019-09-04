@@ -5,6 +5,10 @@ $(document).ready(function() {
 	let scrollbarWidth = $(window).outerWidth() - $(window).innerWidth();
 	$('.feed-bar-list').css('margin-right', -scrollbarWidth);
 
+	$(window).resize(function() {
+		$('.feed-bar-list').css('margin-right', -scrollbarWidth);
+	});
+
 	$('.feed-bar-list').bind('scroll', function() {
 		if ($('.feed-bar-list').scrollTop() > 1) {
 			$('.feed-bar-head').addClass('is-active');
