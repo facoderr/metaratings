@@ -198,6 +198,8 @@ body {
   right: 0;
   left: 0;
   background: #fff;
+  -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
   z-index: 1000;
@@ -3488,8 +3490,8 @@ body {
   left: 0;
   height: 48px;
   background: #fff;
-  -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   padding: 0 15px;
