@@ -198,8 +198,6 @@ body {
   right: 0;
   left: 0;
   background: #fff;
-  -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
   z-index: 1000;
@@ -232,13 +230,15 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   top: 0;
-  right: 15px;
-  left: 15px;
+  right: 0;
+  left: 0;
+  -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
   opacity: 1;
   visibility: visible;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
-  padding: 10px 0;
+  padding: 10px 15px;
 }
 
 .head-mobile.is-active {
