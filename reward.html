@@ -34,7 +34,13 @@
 	<header class="head">
 		<div class="container">
 			<div class="head-row">
-				<div class="head-mobile"></div>
+				<div class="head-mobile">
+					<div class="head-mobile-promo">
+						<a href="/" class="head-mobile-promo-link">
+							<img src="img/promo/ufc242_mobile.svg" alt="UFC242">
+						</a>
+					</div>
+				</div>
 
 				<!-- Nav -->
 				<nav class="nav">
@@ -47,7 +53,9 @@
 						<a href="/" class="nav-logo">
 							<img src="img/logo.svg" alt="Metaratings">
 						</a>
-						<a href="/" class="nav-user" aria-label="User"></a>
+						<!--
+							<a href="/" class="nav-user" aria-label="User"></a>
+						-->
 						<div class="nav-head-back js-prev"></div>
 					</div>
 
@@ -463,22 +471,32 @@
 							</form>
 						</div>
 					</div>
-
+					
+					<a href="javascript:void(0);" class="head-search js-search" aria-label="Search">
+						<svg><use xlink:href="#search"></use></svg>
+					</a>
 				</nav>
 				<!-- End Nav -->
 
 				<div class="head-tools">
-					<a href="javascript:void(0);" class="head-search js-search" aria-label="Search">
-						<svg><use xlink:href="#search"></use></svg>
-					</a>
-					<a href="javascript:void(0);" class="head-notify js-alert" aria-label="Notify">
-						<svg><use xlink:href="#notify"></use></svg>
-						<span class="head-tools-circle"></span>
-					</a>
-					<a href="javascript:void(0);" class="head-mail js-alert" aria-label="Mail">
-						<svg><use xlink:href="#mail"></use></svg>
-						<span class="head-tools-circle"></span>
-					</a>
+					<div class="head-promo">
+						<a href="/" class="head-promo-link">
+							<img src="img/promo/freebet_desktop.svg" alt="Freebet">
+						</a>
+						<a href="/" class="head-promo-link">
+							<img src="img/promo/ufc242_desktop.svg" alt="UFC242">
+						</a>
+					</div>
+					<!--
+						<a href="javascript:void(0);" class="head-notify js-alert" aria-label="Notify">
+							<svg><use xlink:href="#notify"></use></svg>
+							<span class="head-tools-circle"></span>
+						</a>
+						<a href="javascript:void(0);" class="head-mail js-alert" aria-label="Mail">
+							<svg><use xlink:href="#mail"></use></svg>
+							<span class="head-tools-circle"></span>
+						</a>
+					-->
 				</div>
 			</div>
 		</div>
@@ -3116,7 +3134,7 @@
 					<span class="toolbar-list-text">Прогнозы</span>
 				</a>
 			</li>
-			<li class="toolbar-list-item">
+			<li class="toolbar-list-item is-select">
 				<a href="feed.html" class="toolbar-list-link">
 					<span class="toolbar-list-icon">
 						<svg><use xlink:href="#round"></use></svg>
@@ -3124,14 +3142,24 @@
 					<span class="toolbar-list-text">Лента</span>
 				</a>
 			</li>
-			<li class="toolbar-list-item">
-				<a href="reward.html" class="toolbar-list-link is-active">
+			<li class="toolbar-list-item toolbar-list-promo">
+				<a href="/" class="toolbar-list-link">
 					<span class="toolbar-list-icon">
-						<svg><use xlink:href="#gift"></use></svg>
+						<img src="img/promo/freebet_mobile.svg" alt="Freebet">
 					</span>
-					<span class="toolbar-list-text">Бонусы</span>
+					<span class="toolbar-list-text">Фрибет</span>
 				</a>
 			</li>
+			<!--
+				<li class="toolbar-list-item is-select">
+					<a href="reward.html" class="toolbar-list-link">
+						<span class="toolbar-list-icon">
+							<svg><use xlink:href="#gift"></use></svg>
+						</span>
+						<span class="toolbar-list-text">Бонусы</span>
+					</a>
+				</li>
+			-->
 			<li class="toolbar-list-item">
 				<a href="javascript:void(0);" class="toolbar-list-link js-toggle">
 					<span class="toolbar-list-icon">
@@ -3143,36 +3171,6 @@
 		</ul>
 	</div>
 	<!-- End Toolbar -->
-
-	<!-- Modal -->
-	<div class="modal-success js-modal-success" role="dialog">
-		<div class="modal-success-overlay">
-			<div class="modal-success-wrap">
-				<div class="modal-success-title">
-					Спасибо за ваш отзыв!
-				</div>
-				<div class="modal-success-icon">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-						<circle class="modal-success-circle" cx="50" cy="49.9999657" r="47.5"/>
-						<circle class="modal-success-circle-dash" cx="50" cy="49.9999657" r="47.5"/>
-						<polyline class="modal-success-check" points="28.6469955,52.0561066 42.2152748,65.6243896 71.3530045,36.4866562"/>
-						<polyline class="modal-success-check-dash" points="28.6469955,52.0561066 42.2152748,65.6243896 71.3530045,36.4866562"/>
-					</svg>
-				</div>
-				<div class="modal-success-subtitle">
-					После модерации вы сможете
-					увидеть его на нашем сайте!
-				</div>
-				<a href="javascript:void(0);" class="modal-success-close js-modal-close">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.73 12.73">
-						<path d="M0,1.41,1.41,0,12.73,11.31l-1.42,1.42Z"/>
-						<path d="M1.41,12.73,0,11.31,11.31,0l1.42,1.41Z"/>
-					</svg>
-				</a>
-			</div>
-		</div>
-	</div>
-	<!-- End Modal -->
 
 	<script src="js/core.min.js"></script>
 	<script src="js/feed.desktop.js" async></script>

@@ -2,9 +2,9 @@ $(document).ready(function() {
 
 	// Tools Event
 
-	$('.nav-close').clone().appendTo('.head-mobile');
-	$('.nav-logo').clone().appendTo('.head-mobile');
-	$('.nav-user').clone().appendTo('.head-mobile');
+	$('.nav-user').clone().prependTo('.head-mobile');
+	$('.nav-logo').clone().prependTo('.head-mobile');
+	$('.nav-close').clone().prependTo('.head-mobile');
 	$(document).on('click', '.js-search', function() {
 		$(this).toggleClass('is-active');
 		$('.nav-head').toggleClass('is-active');
