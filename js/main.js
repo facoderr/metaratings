@@ -2,6 +2,9 @@ $(document).ready(function() {
 
 	// Tools Event
 
+	$('.nav-close').clone().appendTo('.head-mobile');
+	$('.nav-logo').clone().appendTo('.head-mobile');
+	$('.nav-user').clone().appendTo('.head-mobile');
 	$(document).on('click', '.js-search', function() {
 		$(this).toggleClass('is-active');
 		$('.nav-head').toggleClass('is-active');
@@ -64,15 +67,9 @@ $(document).ready(function() {
 			.appendTo('.nav-menu');
 		$(document).on('click', '.js-toggle', function() {
 			slinky.home();
-			$(this).toggleClass('is-active');
+			$('.js-toggle').toggleClass('is-active');
+			$('.head-mobile').toggleClass('is-active');
 			$('.nav').toggleClass('is-open');
-			$('.nav-head').removeClass('is-active');
-			$('.nav-menu').addClass('is-active');
-		});
-		$(document).on('click', '.js-nav-close', function() {
-			slinky.home();
-			$('.js-toggle').removeClass('is-active');
-			$('.nav').removeClass('is-open');
 			$('.nav-head').removeClass('is-active');
 			$('.nav-menu').addClass('is-active');
 		});
