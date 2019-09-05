@@ -4601,6 +4601,45 @@ body {
   fill: #fff;
 }
 
+.modal-error {
+  position: absolute;
+  display: none;
+  color: #666;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 20px -10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 20px -10px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  padding: 13px 20px;
+  z-index: 9999;
+}
+
+.modal-error-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal-error-link {
+  display: block;
+  color: #000;
+  font-weight: 700;
+  text-decoration: underline;
+  margin: 0 10px 0 0;
+}
+
+.modal-error-link:hover, .modal-error-link:focus {
+  color: #601dc0;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #601dc0;
+          text-decoration-color: #601dc0;
+}
+
 @-webkit-keyframes circleIn {
   0% {
     opacity: 1;

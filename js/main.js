@@ -182,20 +182,6 @@ $(document).ready(function() {
 	$('.js-logo').fadeOut('slow');
 	$('.js-preloader').delay(400).fadeOut('slow');
 
-	var getSelectedText = function() {
-		var text = '';
-		if (window.getSelection) {
-			text = window.getSelection().toString();
-		} else if (document.selection) {
-			text = document.selection.createRange().text;
-		}
-		return text;
-	}
-
-	$('p').on('mouseup', function(){ 
-		alert($(this).select().width());
-	});
-
 	//
 	
 });
