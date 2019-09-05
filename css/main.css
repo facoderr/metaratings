@@ -1742,7 +1742,7 @@ body {
   font-weight: 700;
   line-height: 1;
   color: #fff;
-  background: #000;
+  background: #202020;
   -webkit-border-radius: 4px;
           border-radius: 4px;
   margin: 0 auto;
@@ -3541,7 +3541,7 @@ body {
 .forecast-title {
   border-bottom: 1px solid #d5d5d5;
   padding: 0 0 10px;
-  margin: 0 0 15px;
+  margin: 0 0 20px;
 }
 
 .forecast-title h2 {
@@ -3549,36 +3549,132 @@ body {
   font-weight: 700;
 }
 
-.forecast-back {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+.forecast-category {
+  margin: 0 -15px 10px;
+}
+
+.forecast-category .swiper-slide {
+  width: auto;
+  height: auto;
+}
+
+.forecast-category-link {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #000;
-  font-size: 14px;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: column wrap;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  color: rgba(0, 0, 0, 0.4);
   font-weight: 700;
-  margin: -5px 0 20px;
 }
 
-.forecast-back:hover {
-  color: #601dc0;
+.forecast-category-link:hover, .forecast-category-link.is-select {
+  color: #000;
 }
 
-.forecast-back:hover svg {
+.forecast-category-link:hover svg, .forecast-category-link.is-select svg {
   fill: #601dc0;
 }
 
-.forecast-back svg {
-  width: 10px;
-  height: 10px;
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
-  margin: 0 10px 0 0;
+.forecast-category-link svg {
+  width: 22px;
+  height: 22px;
+  fill: rgba(0, 0, 0, 0.4);
+  margin: 0 0 5px;
+}
+
+.forecast-bar {
+  position: relative;
+  background: #f0f0f0;
+  padding: 0 15px;
+  margin: 20px -15px 10px;
+  z-index: 9;
+}
+
+.forecast-bar-toggle {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 34px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.forecast-bar-toggle.is-active .forecast-bar-icon svg {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.forecast-bar-icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.forecast-bar-icon svg {
+  width: 12px;
+  height: 12px;
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.forecast-bar-title {
+  display: none;
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.forecast-menu {
+  display: none;
+  padding: 5px 0 15px;
+}
+
+.forecast-menu-link {
+  display: block;
+  color: #666;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.forecast-menu-link:hover {
+  color: #601dc0;
 }
 
 .forecast-tabList {
@@ -3612,8 +3708,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #666;
-  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
   font-weight: 700;
   cursor: pointer;
   -webkit-transition: all .3s ease-in-out;
@@ -3643,7 +3738,7 @@ body {
 }
 
 .forecast-tabWrap {
-  margin: 10px 0 0;
+  margin: 15px 0 0;
 }
 
 .forecast-tabBlock {
@@ -3787,17 +3882,34 @@ body {
 
 .forecast-slider {
   position: relative;
-  padding: 20px 0 10px;
+  padding: 20px 0;
 }
 
 .forecast-slider-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #181818;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 1;
+}
+
+.forecast-slider-title svg {
+  width: 20px;
+  height: 20px;
+  fill: #666;
+  margin: 0 10px 0 0;
 }
 
 .forecast-slider .swiper-container {
   padding: 20px 0;
-  margin: -10px -15px 0;
+  margin: -5px -15px 0;
 }
 
 .forecast-slider .swiper-slide {
@@ -3872,9 +3984,9 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  height: 30px;
+  height: 34px;
+  font-weight: 700;
   color: #000;
-  font-size: 14px;
   border: 2px solid #e9e9e9;
   -webkit-border-radius: 6px;
           border-radius: 6px;
@@ -3925,7 +4037,65 @@ body {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  margin: 0 0 15px;
+  width: 100%;
+  margin: 0 0 10px;
+}
+
+.forecast-box-other {
+  position: relative;
+  height: 103px;
+  margin: -15px -15px 10px;
+}
+
+.forecast-box-other + .forecast-box-title {
+  max-height: 42px;
+  overflow: hidden;
+}
+
+.forecast-box-other .forecast-box-detail {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  top: 15px;
+  right: 15px;
+  left: 15px;
+  z-index: 1;
+}
+
+.forecast-box-other .forecast-box-odds {
+  margin: 0;
+}
+
+.forecast-box-other .forecast-box-time {
+  min-height: 24px;
+  color: #7f7f7f;
+  background: #e9e9e9;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  margin: 0;
+}
+
+.forecast-box-img {
+  width: 100%;
+  height: 100%;
+}
+
+.forecast-box-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-border-radius: 8px 8px 0 0;
+          border-radius: 8px 8px 0 0;
 }
 
 .forecast-box-team {
@@ -3943,14 +4113,61 @@ body {
           justify-content: center;
   width: 45px;
   height: 45px;
-  background: #fff;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
 }
 
 .forecast-box-team img {
+  position: relative;
   max-width: 100%;
   max-height: 100%;
+  background: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  z-index: 1;
+}
+
+.forecast-box-plus {
+  position: relative;
+}
+
+.forecast-box-plus:not(:first-child) img:not(:first-child) {
+  right: -10px;
+  left: auto;
+}
+
+.forecast-box-plus:not(:first-child) .forecast-box-count {
+  right: auto;
+  left: -10px;
+}
+
+.forecast-box-plus img:not(:first-child) {
+  position: absolute;
+  left: -8px;
+  z-index: 0;
+}
+
+.forecast-box-count {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  top: 0;
+  right: -10px;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  background: #d8d8d8;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  z-index: 2;
 }
 
 .forecast-box-odds {
@@ -3966,13 +4183,13 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 65px;
+  width: 66px;
   height: 24px;
   font-size: 14px;
   font-weight: 700;
   line-height: 1;
   color: #fff;
-  background: #000;
+  background: #202020;
   -webkit-border-radius: 4px;
           border-radius: 4px;
   margin: 0 auto;
@@ -4022,6 +4239,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
   color: rgba(0, 0, 0, 0.4);
   font-size: 14px;
   font-weight: 700;
@@ -4072,6 +4290,7 @@ body {
   font-size: 14px;
   color: rgba(0, 0, 0, 0.4);
   border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid transparent;
   padding: 0 15px;
   margin: 0 -15px;
 }
@@ -4135,9 +4354,9 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  height: 30px;
+  height: 34px;
   color: #000;
-  font-size: 14px;
+  font-weight: 700;
   border: 2px solid #e9e9e9;
   -webkit-border-radius: 6px;
           border-radius: 6px;
@@ -4257,6 +4476,11 @@ body {
   background-size: 10px 10px;
 }
 
+.forecast-primary .forecast-box-img img {
+  -webkit-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+
 .forecast-primary .forecast-box-tools {
   border-top: 1px solid #601dc0;
 }
@@ -4273,6 +4497,11 @@ body {
 .forecast-success-bg {
   background: #20a94a url("../img/icons/starfull.svg") no-repeat center;
   background-size: 8px 8px;
+}
+
+.forecast-success .forecast-box-img img {
+  -webkit-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
 }
 
 .forecast-success .forecast-box-tools {
@@ -4733,6 +4962,12 @@ body {
   .reward {
     padding: 100px 0;
   }
+  .reward-title {
+    margin: 0 0 -40px 240px;
+  }
+  .reward-back {
+    display: none;
+  }
   .reward-row {
     display: -webkit-box;
     display: -webkit-flex;
@@ -4755,12 +4990,6 @@ body {
             flex-grow: 2;
     width: 50%;
     margin: 45px 0 0;
-  }
-  .reward-title {
-    margin: 0 0 -40px 240px;
-  }
-  .reward-back {
-    display: none;
   }
   .reward-tabItem {
     padding: 15px 0;
@@ -4871,6 +5100,27 @@ body {
   .forecast {
     padding: 100px 0;
   }
+  .forecast-title {
+    margin: 0 0 10px 240px;
+  }
+  .forecast-category {
+    margin: 0 0 -98px 240px;
+  }
+  .forecast-category .swiper-wrapper {
+    width: 100%;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .forecast-category-link {
+    font-size: 13px;
+  }
+  .forecast-category-link svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 0 10px;
+  }
   .forecast-row {
     display: -webkit-box;
     display: -webkit-flex;
@@ -4883,7 +5133,22 @@ body {
   }
   .forecast-bar {
     width: 200px;
+    background: #f9f9f9;
+    padding: 20px;
     margin: 0 40px 0 0;
+  }
+  .forecast-bar-toggle {
+    display: none;
+  }
+  .forecast-bar-title {
+    display: block;
+  }
+  .forecast-menu {
+    display: block;
+    padding: 0;
+  }
+  .forecast-menu-link {
+    line-height: 2.14;
   }
   .forecast-content {
     -webkit-box-flex: 2;
@@ -4891,16 +5156,24 @@ body {
         -ms-flex-positive: 2;
             flex-grow: 2;
     width: 50%;
-    margin: 45px 0 0;
+    margin: 103px 0 0;
   }
-  .forecast-title {
-    margin: 0 0 -40px 240px;
+  .forecast-tabList {
+    margin: 0;
   }
-  .forecast-back {
-    display: none;
+  .forecast-tabList:after {
+    right: 0;
+    left: 0;
   }
   .forecast-tabItem {
+    font-size: 14px;
     padding: 15px 0;
+  }
+  .forecast-tab .swiper-slide:not(:last-child) {
+    margin: 0 25px 0 0;
+  }
+  .forecast-tab .swiper-slide:nth-last-child(3) {
+    margin-left: auto;
   }
   .forecast-best {
     padding: 20px 15px;
@@ -4924,40 +5197,12 @@ body {
     display: -ms-flexbox;
     display: flex;
   }
-  .forecast-best .forecast-box-head {
-    padding: 0 15px;
-    margin: -30px 0 5px;
-  }
-  .forecast-best .forecast-box-label {
-    position: relative;
-    top: auto;
-    left: auto;
-  }
-  .forecast-best .forecast-box-tools {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 0 15px;
-  }
-  .forecast-best .forecast-box-title {
-    width: 100%;
-    padding: 0 15px;
-    margin: 0;
-  }
-  .forecast-best .forecast-box-limit {
-    display: block;
-    padding: 0 15px;
-  }
-  .forecast-best .forecast-box-btn {
-    width: 100%;
-    margin: 0;
-  }
-  .forecast-slider {
-    padding: 20px 0;
-  }
   .forecast-slider-title {
     font-size: 24px;
+  }
+  .forecast-slider-title svg {
+    width: 24px;
+    height: 24px;
   }
   .forecast-slider .swiper-container {
     padding: 30px 30px;
@@ -4976,13 +5221,59 @@ body {
     display: flex;
   }
   .forecast-slider-more {
-    font-weight: 700;
+    height: 30px;
+    font-size: 14px;
   }
   .forecast-box {
     max-width: 100%;
   }
-  .forecast-box-img {
-    height: 130px;
+  .forecast-box-other {
+    height: 82px;
+  }
+  .forecast-box-other + .forecast-box-title {
+    max-height: 30px;
+  }
+  .forecast-box-other .forecast-box-time {
+    font-size: 9px;
+    min-height: 20px;
+    margin: 0;
+  }
+  .forecast-box-team {
+    width: 40px;
+    height: 40px;
+  }
+  .forecast-box-plus:not(:first-child) img:not(:first-child) {
+    right: -6px;
+    left: auto;
+  }
+  .forecast-box-plus:not(:first-child) .forecast-box-count {
+    right: auto;
+    left: -6px;
+  }
+  .forecast-box-plus img:not(:first-child) {
+    left: -6px;
+  }
+  .forecast-box-count {
+    right: -6px;
+  }
+  .forecast-box-odds {
+    width: 56px;
+    height: 20px;
+  }
+  .forecast-box-time {
+    font-size: 10px;
+    margin: 5px 0 0;
+  }
+  .forecast-box-title {
+    font-size: 12px;
+  }
+  .forecast-box-user {
+    font-size: 11px;
+    font-weight: 400;
+  }
+  .forecast-box-tools {
+    min-height: 25px;
+    font-size: 10px;
   }
   .forecast-list-more {
     font-weight: 700;
@@ -5753,6 +6044,66 @@ body {
   }
   .forecast {
     padding: 30px 0 55px;
+  }
+  .forecast-category-link {
+    font-size: 14px;
+  }
+  .forecast-category-link svg {
+    width: 21px;
+    height: 21px;
+  }
+  .forecast-tabItem {
+    font-size: 14px;
+  }
+  .forecast-slider-title {
+    font-size: 16px;
+  }
+  .forecast-slider-more {
+    height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .forecast-box {
+    max-width: 246px;
+  }
+  .forecast-box-other {
+    height: 82px;
+  }
+  .forecast-box-other + .forecast-box-title {
+    max-height: 30px;
+  }
+  .forecast-box-other .forecast-box-time {
+    font-size: 9px;
+    min-height: 20px;
+    margin: 0;
+  }
+  .forecast-box-team {
+    width: 40px;
+    height: 40px;
+  }
+  .forecast-box-odds {
+    width: 56px;
+    height: 20px;
+  }
+  .forecast-box-time {
+    font-size: 10px;
+    margin: 5px 0 0;
+  }
+  .forecast-box-title {
+    font-size: 12px;
+  }
+  .forecast-box-user {
+    font-size: 11px;
+    font-weight: 400;
+  }
+  .forecast-box-tools {
+    min-height: 25px;
+    font-size: 10px;
+  }
+  .forecast-list-more {
+    height: 30px;
+    font-size: 14px;
+    font-weight: 400;
   }
   .toolbar {
     bottom: -40px;

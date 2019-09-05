@@ -10,8 +10,10 @@ $(document).ready(function() {
 	});
 
 	$('.feed-bar-list').bind('scroll', function() {
-		if ($('.feed-bar').height() + $('.feed-bar-list').scrollTop() >= $('.feed-bar-list').height()) {
+		if ($('.feed-bar-list').scrollTop() > 1) {
 			$('.feed-bar-head').addClass('is-active');
+		} else {
+			$('.feed-bar-head').removeClass('is-active');
 		}
 		if ('backdropFilter' in document.documentElement.style === false) {
 			if ($('.feed-bar-head').hasClass('is-active')) {
