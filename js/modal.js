@@ -55,8 +55,13 @@ $(document).ready(function() {
 			return false;
 		} else {
 			if (text != '' && text != ' ') {
-				$('.js-modal-error').css('top', (point.top + point.height) - 5).css('left', (point.left + point.width) - 15);
-				$('.js-modal-error').show();
+				if (point.height > 30) {
+					$('.js-modal-error').css('top', point.top - $('.js-modal-error').outerHeight()).css('left', point.left);
+					$('.js-modal-error').show();
+				} else {
+					$('.js-modal-error').css('top', (point.top + point.height) - 5).css('left', (point.left + point.width) - 15);
+					$('.js-modal-error').show();
+				}
 				console.log(point.top, point.left, point.width, point.height);
 			} else {
 				$('.js-modal-error').hide();
