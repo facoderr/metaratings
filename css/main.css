@@ -1856,12 +1856,16 @@ body {
   visibility: hidden;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
+  -webkit-transition-delay: .3s;
+          transition-delay: .3s;
   z-index: 9;
 }
 
 .feed-bar.is-active:after {
   opacity: 1;
   visibility: visible;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
 }
 
 .feed-bar-head {
@@ -5803,6 +5807,9 @@ body {
     right: -30px;
     width: 20px;
     height: 20px;
+  }
+  .toolbar.is-animate {
+    bottom: -48px;
   }
 }
 
