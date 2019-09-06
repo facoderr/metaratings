@@ -38,6 +38,7 @@ $(document).ready(function() {
 		$('.feed-bar').removeClass('is-active');
 		$('.feed-setting').removeClass('is-open');
 	});
+
 	$('.feed-box-link').each(function() {
 		if ($(this).find('.feed-primary-bg').hasClass('feed-primary-bg')) {
 			$(this).addClass('feed-primary');

@@ -4687,6 +4687,109 @@ body {
 }
 
 /* -- End Toolbar -- */
+/* -- ToBack -- */
+.toback {
+  position: fixed;
+  display: none;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #cfcfcf;
+  background: #f9f9f9;
+  padding: 30px 13px 0 4px;
+}
+
+.toback:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: -800%;
+}
+
+.toback:hover .toback-icon svg {
+  fill: #181818;
+}
+
+.toback:hover .toback-text {
+  color: #181818;
+}
+
+.toback.is-active {
+  padding: 30px 21px 0 4px;
+}
+
+.toback.is-active .toback-icon svg {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.toback.is-active .toback-text span {
+  opacity: 0;
+}
+
+.toback.is-active .toback-text span:not(:first-child) {
+  opacity: 1;
+}
+
+.toback-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.toback-icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0 2px 0 0;
+}
+
+.toback-icon svg {
+  width: 10px;
+  height: 10px;
+  fill: #cfcfcf;
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.toback-text {
+  position: relative;
+}
+
+.toback-text span {
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.toback-text span:not(:first-child) {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+/* -- End ToBack -- */
 /* -- Modal -- */
 .modal-success {
   position: fixed;
@@ -5810,6 +5913,9 @@ body {
   }
   .toolbar.is-animate {
     bottom: -48px;
+  }
+  .toback {
+    display: block;
   }
 }
 

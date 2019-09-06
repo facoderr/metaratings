@@ -1,5 +1,24 @@
 $(document).ready(function() {
 
+	// ToBack Event
+
+	$(window).bind('scroll', function() {
+		if ($(this).scrollTop() > 100) {
+			$('.toback').addClass('js-toback is-active');
+		} else {
+			$('.toback').removeClass('js-toback is-active');
+		}
+	});
+
+	$(document).on('click', '.js-toback', function(e) {
+		$('html, body').animate({
+			scrollTop: 0
+		}, 1000);
+		return false;
+	});
+
+	//
+
 	// Tab Event
 
 	let clickedTab = $('.js-tabItem.is-active');
