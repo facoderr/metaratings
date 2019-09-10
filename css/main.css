@@ -4698,7 +4698,7 @@ body {
   font-weight: 700;
   color: #cfcfcf;
   background: #f9f9f9;
-  padding: 30px 13px 0 4px;
+  padding: 30px 20px 30px 5px;
 }
 
 .toback:after {
@@ -4710,16 +4710,16 @@ body {
   right: -800%;
 }
 
+.toback:hover {
+  background: #f3f3f3;
+}
+
 .toback:hover .toback-icon svg {
   fill: #181818;
 }
 
 .toback:hover .toback-text {
   color: #181818;
-}
-
-.toback.is-active {
-  padding: 30px 21px 0 4px;
 }
 
 .toback.is-active .toback-icon svg {
@@ -4785,6 +4785,7 @@ body {
 
 .toback-text span:not(:first-child) {
   position: absolute;
+  top: 0;
   left: 0;
   opacity: 0;
 }
@@ -4946,6 +4947,8 @@ body {
           box-shadow: 0 2px 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-border-radius: 8px;
           border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
   padding: 13px 20px;
   z-index: 9999;
 }
@@ -5910,6 +5913,10 @@ body {
     right: -30px;
     width: 20px;
     height: 20px;
+  }
+  .modal-error {
+    opacity: 1;
+    visibility: visible;
   }
   .toolbar.is-animate {
     bottom: -48px;
