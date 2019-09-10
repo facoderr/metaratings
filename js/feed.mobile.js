@@ -35,6 +35,19 @@ $(document).ready(function() {
 
 	// Feed Mobile Event
 
+	$(document).bind('scroll', function() {
+		let feedHeight = $('.feed-box').height() * $('.feed-tabBlock.is-open .feed-box').length;
+		$('.js-feed-totop').toggleClass('is-active', $(this).scrollTop() >= 1000);
+		if ($(this).scrollTop() + $(window).height() >= $(this).height() - 25) {
+			$('.feed-tabBlock.is-open .feed-box').first().clone().appendTo($('.feed-tabBlock.is-open'));
+		}
+		if ($(this).scrollTop() > 100) {
+			$('.js-inner-back').addClass('is-active');
+		} else {
+			$('.js-inner-back').removeClass('is-active');
+		}
+	});
+
 	let widthContainer = $('.feed-event .swiper-container').outerWidth();
 			widthSlide = $('.feed-event .swiper-slide').outerWidth();
 			firstSlide = $('.feed-event .swiper-slide').first();
@@ -95,12 +108,18 @@ $(document).ready(function() {
 			tabWrapper.css('min-height', activeTabHeight);
 		}, 300);
 	});
-	$(document).bind('scroll', function() {
-		if ($(this).scrollTop() > 100) {
-			$('.js-inner-back').addClass('is-active');
-		} else {
-			$('.js-inner-back').removeClass('is-active');
-		}
+	$(document).on('click', '.js-feed-totop', function() {
+		let lastScroll = $(document).scrollTop();
+		$('html, body').animate({
+			scrollTop: 0
+		}, 1000);
+		$('.js-feed-toback').addClass('is-active').attr('data-scroll', lastScroll);
+	});
+	$(document).on('click', '.js-feed-toback', function() {
+		$('html, body').animate({
+			scrollTop: $(this).attr('data-scroll')
+		}, 1000);
+		$(this).removeClass('is-active');
 	});
 
 	//
