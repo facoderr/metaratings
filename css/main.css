@@ -6063,6 +6063,9 @@ body {
     position: absolute;
     height: 34px;
   }
+  .feed-anchor-top .feed-anchor-text {
+    padding: 0 0 2px;
+  }
   .feed-anchor-back {
     bottom: 0;
   }
