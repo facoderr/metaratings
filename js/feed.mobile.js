@@ -36,7 +36,6 @@ $(document).ready(function() {
 	// Feed Mobile Event
 
 	$(document).bind('scroll', function() {
-		let feedHeight = $('.feed-box').height() * $('.feed-tabBlock.is-open .feed-box').length;
 		$('.js-feed-totop').toggleClass('is-active', $(this).scrollTop() >= 1000);
 		if ($(this).scrollTop() + $(window).height() >= $(this).height() - 25) {
 			$('.feed-tabBlock.is-open .feed-box').first().clone().appendTo($('.feed-tabBlock.is-open'));
