@@ -14,11 +14,10 @@ $(document).ready(function() {
 	}
 
 	$('.feed-bar-list').bind('scroll', function() {
-		let feedHeight = $('.feed-box').height() * $('.feed-box').length;
 		$('.feed-bar-head').css({'transform': 'translateY(' + '-' + $(this).scrollTop() + 'px' + ')'});
 		$('.feed-bar-head').toggleClass('is-active', $(this).scrollTop() >= 1);
 		$('.js-feed-totop').toggleClass('is-active', $(this).scrollTop() >= 700);
-		if ($(this).scrollTop() + $(this).height() >= feedHeight - 25) {
+		if ($(this).scrollTop() + $(this).outerHeight() >= $(this).prop('scrollHeight') - 25) {
 			$('.feed-box').clone().appendTo($(this));
 		}
 	});
