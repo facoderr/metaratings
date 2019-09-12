@@ -47,39 +47,16 @@ $(document).ready(function() {
 		}
 	});
 
-	let widthContainer = $('.feed-event .swiper-container').outerWidth();
-			widthSlide = $('.feed-event .swiper-slide').outerWidth();
-			firstSlide = $('.feed-event .swiper-slide').first();
-			widthGutter = 30;
-			marginLeft = (widthContainer - widthSlide - widthGutter) / 2;
-
 	let feedEvent = new Swiper('.feed-event .swiper-container', {
 		slidesPerView: 'auto',
-		slidesOffsetBefore: 15,
-		slidesOffsetAfter: 15,
 		spaceBetween: 10,
+		freeMode: true,
 		pagination: {
 			el: '.swiper-pagination',
 			clickable: true
-		},
-		on: {
-			reachBeginning: function () {
-				firstSlide.animate({
-					'margin-left': 0
-				}, 300);
-			},
-			fromEdge: function () {
-				firstSlide.animate({
-					'margin-left': marginLeft
-				}, 300);
-			},
-			reachEnd: function () {
-				firstSlide.animate({
-					'margin-left': 0
-				}, 300);
-			}
 		}
 	});
+	
 	let feedTopic = new Swiper('.feed-topic .swiper-container', {
 		slidesPerView: 'auto',
 		spaceBetween: 15

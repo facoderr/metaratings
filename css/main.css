@@ -249,6 +249,10 @@ body {
           box-shadow: none;
 }
 
+.head-mobile .nav-logo + .head-mobile-promo {
+  margin: 0;
+}
+
 .head-mobile-promo {
   display: -webkit-box;
   display: -webkit-flex;
@@ -258,6 +262,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 0 0 auto;
 }
 
 .head-mobile-promo-link {
@@ -1190,7 +1195,7 @@ body {
 }
 
 .feed-event .swiper-container {
-  padding: 18px 0;
+  padding: 20px 15px;
   margin: -8px -15px 0;
 }
 
@@ -4697,6 +4702,15 @@ body {
           transition-delay: .6s;
 }
 
+.toolbar.is-animate .toolbar-list-item:nth-child(6) {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition-delay: .7s;
+          transition-delay: .7s;
+}
+
 .toolbar-list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4734,7 +4748,7 @@ body {
   fill: #601dc0;
 }
 
-.toolbar-list-item:nth-child(1) .toolbar-list-icon svg, .toolbar-list-item:nth-child(5) .toolbar-list-icon svg {
+.toolbar-list-item:nth-child(1) .toolbar-list-icon svg, .toolbar-list-item:nth-child(5) .toolbar-list-icon svg, .toolbar-list-item:nth-child(6) .toolbar-list-icon svg {
   width: 16.5px;
   height: 16.5px;
 }
@@ -6148,10 +6162,6 @@ body {
   }
   .feed-event-title {
     font-size: 14px;
-  }
-  .feed-event .swiper-container {
-    padding: 20px 0 18px;
-    margin: -8px -15px 0;
   }
   .feed-event .feed-box {
     max-width: 246px;
