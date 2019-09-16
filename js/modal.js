@@ -62,7 +62,6 @@ $(document).ready(function() {
 					$('.js-modal-error').css('top', (point.top + point.height) - 5).css('left', (point.left + point.width) - 15);
 					$('.js-modal-error').show();
 				}
-				console.log(point.top, point.left, point.width, point.height);
 			} else {
 				$('.js-modal-error').hide();
 			}

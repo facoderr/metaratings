@@ -2,6 +2,25 @@ $(document).ready(function() {
 
 	// ToBack Event
 
+	function toBack() {
+		let windowWidth = $(window).innerWidth();
+				containerWidth = $('.container').width();
+				emptyWidth = (windowWidth - containerWidth) / 2;
+
+		if ($(window).outerWidth() <= 1259) {
+			$('.toback').css('width', emptyWidth);
+		} else if ($(window).outerWidth() <= 1499) {
+			$('.toback').css('width', 140);
+		} else {
+			$('.toback').css('width', emptyWidth);
+		}
+	}
+
+	toBack();
+
+	$(window).resize(function() {
+		toBack();
+	});
 	$(window).bind('scroll', function() {
 		if ($(this).scrollTop() > 100) {
 			$('.toback').addClass('js-toback is-active');
