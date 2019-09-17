@@ -98,6 +98,10 @@ $(document).ready(function() {
 	$(document).on('click', '.js-widget-modal-close', function() {
 		$('.js-widget-modal').fadeOut().removeClass('is-open');
 	})
+	$(document).bind('mouseup', function(e) {
+		if ($(e.target).closest('.widget-modal-wrap').length) return;
+		$('.js-widget-modal').fadeOut().removeClass('is-open');
+	});
 	$(document).on('click', '.js-graph-btn', function() {
 		$(this).toggleClass('is-active');
 		if ($(this).hasClass('is-active')) {
@@ -170,21 +174,23 @@ $(document).ready(function() {
 				},
 				drilldown: function() {
 					setTimeout(function() {
+						sentimentChart.update({chart: {zoomType: ''}})
 						$('.widget-graph-yes .js-graph-list').html('');
 						$('.widget-graph-no .js-graph-list').html('');
 						$(sentimentChart.series[0].data).each(function(i, data) {
 							if (data.y > 0) {
 								$('.widget-graph-no').slideUp(300).find('.js-graph-list').html('');
-								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item is-disable" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
+								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
+								$('.widget-review-no').slideUp(300);
 							} else {
 								$('.widget-graph-yes').slideUp(300).find('.js-graph-list').html('');
-								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item is-disable" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
+								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
+								$('.widget-review-yes').slideUp(300);
 							}
 							$('.js-review-highlight').find('.js-review-gap').unwrap();
 							$('.js-review-gap').remove();
 							setTimeout(function() {
 								$('.widget-review-text').highlight(data.name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
-								$('.js-review-highlight').addClass('is-active');
 							}, 1);
 						});
 						$('.js-sentiment-title').addClass('is-active').html('<span class="widget-sentiment-title-arrow"><svg><use xlink:href="#arrow"></use></svg></span>' + sentimentChart.drilldownLevels[0].pointOptions.name);
@@ -192,8 +198,11 @@ $(document).ready(function() {
 				},
 				drillup: function() {
 					setTimeout(function() {
+						sentimentChart.update({chart: {zoomType: 'xy'}})
 						$('.widget-graph-yes').slideDown(300).find('.js-graph-list').html('');
 						$('.widget-graph-no').slideDown(300).find('.js-graph-list').html('');
+						$('.widget-review-no').slideDown(300);
+						$('.widget-review-yes').slideDown(300);
 						$(sentimentChart.series).each(function(i, serie) {
 							if (serie.yData[0] > 0) {
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
@@ -204,7 +213,6 @@ $(document).ready(function() {
 							$('.js-review-gap').remove();
 							setTimeout(function() {
 								$('.widget-review-text').highlight(serie.data[0].name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
-								$('.js-review-highlight').removeClass('is-active');
 							}, 1);
 						});
 						let chartTitle = $('.js-sentiment-title').data('title');
@@ -293,8 +301,10 @@ $(document).ready(function() {
 
 		plotOptions: {
 			bubble: {
+				minSize: 0,
+				maxSize: '10%',
 				zMin: 0,
-				zMax: 200,
+				zMax: null,
 				animation: {
 					duration: 500
 				}
@@ -326,7 +336,11 @@ $(document).ready(function() {
 					enabled: true,
 					useHTML: true,
 					formatter: function() {
-						return '<span style="position:relative;bottom:-' + ((this.point.z / 2) + 16) + 'px;">' + this.point.name + '</span>';
+						if ($(window).outerWidth() <= 1099) {
+							return '<span style="position:relative;bottom:-' + ((this.point.z / 2) + 9) + 'px;">' + this.point.name + '</span>';
+						} else {
+							return '<span style="position:relative;bottom:-' + ((this.point.z / 2) + 16) + 'px;">' + this.point.name + '</span>';
+						}
 					},
 					style: {
 						fontSize: '8px',
@@ -337,22 +351,30 @@ $(document).ready(function() {
 				events: {
 					mouseOver: function() {
 						setTimeout(function() {
-							$(sentimentChart.series).each(function(i, serie) {
-								if ($('.highcharts-series-' + i).hasClass('highcharts-series-hover')) {
-									$('.js-graph-item[data-series=' + i + ']').addClass('is-hover');
-									$('.js-review-highlight').addClass('is-disable');
-									$('.js-review-highlight[data-series=' + i + ']').removeClass('is-disable');
-								} else {
-									$('.js-graph-item[data-series=' + i + ']').removeClass('is-hover');
-									$('.js-review-highlight[data-series=' + i + ']').addClass('is-disable');
-								}
-							});
+							if (sentimentChart.drilldownLevels === undefined) {
+								$(sentimentChart.series).each(function(i, serie) {
+									if ($('.highcharts-series-' + i).hasClass('highcharts-series-hover')) {
+										$('.js-graph-item[data-series=' + i + ']').addClass('is-hover');
+										$('.js-review-highlight').addClass('is-disable');
+										$('.js-review-highlight[data-series=' + i + ']').removeClass('is-disable');
+									} else {
+										$('.js-graph-item[data-series=' + i + ']').removeClass('is-hover');
+										$('.js-review-highlight[data-series=' + i + ']').addClass('is-disable');
+									}
+								});
+							} else {
+								return false;
+							}
 						}, 1);
 					},
 					mouseOut: function() {
 						setTimeout(function() {
-							$('.js-graph-item').removeClass('is-hover');
-							$('.js-review-highlight').removeClass('is-disable');
+							if (sentimentChart.drilldownLevels === undefined) {
+								$('.js-graph-item').removeClass('is-hover');
+								$('.js-review-highlight').removeClass('is-disable');
+							} else {
+								return false;
+							}
 						}, 1);
 					}
 				}
@@ -678,7 +700,7 @@ $(document).ready(function() {
 			sentimentChart.series[seriesVal].data[0].doDrilldown();
 		}
 	});
-	$(document).on('mouseover touchstart', '.js-graph-item', function() {
+	$(document).on('mouseover', '.js-graph-item', function() {
 		let seriesVal = $(this).data('series');
 		$(sentimentChart.series).each(function(i, serie) {
 			if (i > 0) {
@@ -686,12 +708,52 @@ $(document).ready(function() {
 				$('.highcharts-series-' + seriesVal).removeClass('highcharts-series-inactive');
 			}
 		});
+		$(sentimentChart.series[0].data).each(function(i, data) {
+			if (i > 0) {
+				$('.highcharts-point').addClass('is-disable');
+				$('.highcharts-point').eq(seriesVal).removeClass('is-disable');
+			}
+		});
 		$('.js-review-highlight').addClass('is-disable');
 		$('.js-review-highlight[data-series=' + seriesVal + ']').removeClass('is-disable');
 	});
-	$(document).on('mouseout touchend', '.js-graph-item', function() {
+	$(document).on('mouseout', '.js-graph-item', function() {
 		$('.highcharts-series').removeClass('highcharts-series-inactive');
+		$('.highcharts-point').removeClass('highcharts-point-hover is-disable');
 		$('.js-review-highlight').removeClass('is-disable');
+	});
+	$(document).on('mouseover', '.highcharts-label', function() {
+		if (sentimentChart.drilldownLevels === undefined) {
+			return false;
+		} else {
+			$(this).addClass('highcharts-label-hover');
+			let activePoint = $('.highcharts-label-hover');
+					activePointIndex = activePoint.index();
+			console.log(activePointIndex)
+			$('.highcharts-point').eq(activePointIndex).addClass('highcharts-point-hover');
+			$(sentimentChart.series[0].data).each(function(i, data) {
+				if ($('.highcharts-point').eq(i).hasClass('highcharts-point-hover')) {
+					$('.js-graph-item[data-series=' + i + ']').addClass('is-hover');
+					$('.highcharts-point').addClass('is-disable');
+					$('.highcharts-point.highcharts-point-hover').removeClass('is-disable');
+					$('.js-review-highlight').addClass('is-disable');
+					$('.js-review-highlight[data-series=' + i + ']').removeClass('is-disable');
+				} else {
+					$('.js-graph-item[data-series=' + i + ']').removeClass('is-hover');
+					$('.js-review-highlight[data-series=' + i + ']').addClass('is-disable');
+				}
+			});
+		}
+	});
+	$(document).on('mouseout', '.highcharts-label', function() {
+		if (sentimentChart.drilldownLevels === undefined) {
+			return false;
+		} else {
+			$('.js-graph-item').removeClass('is-hover');
+			$('.highcharts-point').removeClass('highcharts-point-hover is-disable');
+			$('.highcharts-label').removeClass('highcharts-label-hover');
+			$('.js-review-highlight').removeClass('is-disable');
+		}
 	});
 	$(document).on('click', '.js-sentiment-title', function() {
 		$('.highcharts-drillup-button').trigger('click');
