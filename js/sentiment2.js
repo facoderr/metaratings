@@ -1,0 +1,764 @@
+$(document).ready(function() {
+
+	// Sentiment Event
+
+	let uAg = navigator.userAgent.toLowerCase();
+	let isAndroid = uAg.indexOf('android') > -1;
+	if (isAndroid) {
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
+	} else {
+		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
+	}
+
+	$('.widget-calendar').clone().appendTo('.widget-head');
+	$('.js-calendar').datepicker({
+		language: {
+			monthsShort: ['янв.','фев.','мар.','апр.','май','июн.','июл.','авг.','сен.','окт.','ноя.','дек.']
+		},
+		dateFormat: 'dd M',
+		maxDate: new Date(),
+		todayButton: new Date(),
+		toggleSelected: false,
+		autoClose: true,
+		onSelect: function(formattedDate, date, inst) {
+			let today = new Date();
+			if (today.getDate() === date.getDate() && today.getMonth() === date.getMonth() && today.getFullYear() === date.getFullYear()) {
+				$('.js-calendar').val('Сегодня ' + formattedDate);
+			} else {
+				$('.js-calendar').val(date.getDate() + ' ' + date.toLocaleString('ru', {month: 'long'}));
+			}
+		}
+	});
+	$('.js-calendar').data('datepicker').selectDate(new Date());
+
+	$('.js-widget-input').keyup(function() {
+		$this = $(this);
+		$value = $(this).val();
+		$this.parent().find('li').each(function() {
+			let reg = new RegExp($value, 'i');
+			if (!$(this).text().match(reg)) {
+				$(this).hide();
+				if ($this.parent().find('li:visible').length === 0) {
+					$this.parent().removeClass('is-active');
+					$this.parent().find('.js-widget-result').slideUp(300);
+				}
+			}  else if ($value === '') {
+				$(this).hide();
+				$this.parent().removeClass('is-active');
+				$this.parent().find('.js-widget-result').slideUp(300);
+			} else {
+				$(this).show();
+				setTimeout(function() {
+					$this.parent().addClass('is-active');
+					$this.parent().find('.js-widget-result').slideDown(300);
+				}, 100);
+			}
+		});
+	});
+	$(document).bind('mouseup touchend', function(e) {
+		if ($(e.target).closest('.js-widget-input').length || $(e.target).closest('.js-widget-result').length) return;
+		$('.js-widget-result').removeClass('is-active');
+		$('.js-widget-result').slideUp(300);
+	});
+
+	$(document).on('click', '.js-bk-search', function () {
+		$('.widget-bk-list').toggleClass('is-active');
+		$('.js-widget-input').toggleClass('is-active');
+	});
+	$(document).on('click', '.js-resource', function () {
+		if ($(this).is(':first-child')) {
+			$(this).parent().find('.js-resource').find('input').prop('checked', false);
+			$(this).parent().find('.js-resource').first().find('input').prop('checked', true);
+		} else {
+			$(this).parent().find('.js-resource').first().find('input').prop('checked', false);
+		}
+		$('.js-resource').each(function () {
+			if ($(this).find('input').is(':checked')) {
+				$(this).addClass('is-checked');
+			} else {
+				$(this).removeClass('is-checked');
+			}
+		});
+		if ($(this).parent().find('.js-resource:not(:first-child).is-checked').length === 0) {
+			$(this).parent().find('.js-resource').first().find('input').prop('checked', true);
+		} else {
+			$(this).parent().find('.js-resource').first().find('input').prop('checked', false);
+		}
+		$('.js-resource').each(function () {
+			if ($(this).find('input').is(':checked')) {
+				$(this).addClass('is-checked');
+			} else {
+				$(this).removeClass('is-checked');
+			}
+		});
+	});
+	$(document).on('click', '.js-resource-more', function() {
+		$('.js-widget-modal').fadeIn().addClass('is-open');
+	});
+	$(document).on('click', '.js-widget-modal-close', function() {
+		$('.js-widget-modal').fadeOut().removeClass('is-open');
+	})
+	$(document).bind('mouseup', function(e) {
+		if ($(e.target).closest('.widget-modal-wrap').length) return;
+		$('.js-widget-modal').fadeOut().removeClass('is-open');
+	});
+	$(document).on('click', '.js-graph-btn', function() {
+		$(this).toggleClass('is-active');
+		if ($(this).hasClass('is-active')) {
+			$(this).parent().parent().find('.js-graph-list').slideUp(300).css('opacity', 0);
+		} else {
+			$(this).parent().parent().find('.js-graph-list').slideDown(300).css('opacity', 1);
+		}
+	});
+	$(document).on('click', '.js-review-full', function() {
+		$(this).parent().find('.widget-review-text').css('max-height', '500px');
+	});
+
+	// Hightlight Text
+
+	jQuery.fn.highlight = function (str, index, className, classGap,) {
+		var regex = new RegExp(str, 'gi');
+		return this.each(function () {
+			$(this).contents().filter(function() {
+				return this.nodeType == 3 && regex.test(this.nodeValue);
+			}).replaceWith(function() {
+				return (this.nodeValue || "").replace(regex, function(match) {
+					return '<span class="' + className + '" data-series="' + index + '"><span class="' + classGap + '"></span>' + match + '</span>';
+				});
+			});
+		});
+	};
+
+	// Sentiment Chart
+
+	let sentimentChart = Highcharts.chart('js-sentiment', {
+
+		// Global Options
+
+		chart: {
+			type: 'bubble',
+			plotBorderWidth: 1,
+			plotBorderColor:'#e2e2e2',
+			style: {
+				'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif'
+			},
+			zoomType: 'xy',
+			marginTop: 1,
+			marginRight: 1,
+			marginLeft: 14,
+			events: {
+				load: function(e) {
+					let minVal = Math.abs(this.axes[1].min);
+							maxVal = Math.abs(this.axes[1].max);
+							if (this.axes[1].min > 0 && this.axes[1].max > 0) {
+								minVal = 0
+							} else if (this.axes[1].min < 0 && this.axes[1].max < 0) {
+								maxVal = 0
+							}
+							totalVal = minVal + maxVal;
+							minHalf = (minVal * 100) / totalVal;
+							maxHalf = (maxVal * 100) / totalVal;
+					if (minHalf < maxHalf) {
+						$('.js-sentiment-indicator').css({
+							background: 'linear-gradient(to top, #d0021b 0%, #39af61 ' + minHalf + '%)' 
+						});
+					} else if (minHalf > maxHalf) {
+						$('.js-sentiment-indicator').css({
+							background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #39af61 100%)' 
+						});
+					} else {
+						$('.js-sentiment-indicator').css({
+							background: 'linear-gradient(to top, #d0021b 0%, #39af61 100%)' 
+						});
+					}
+				},
+				drilldown: function() {
+					setTimeout(function() {
+						sentimentChart.update({chart: {zoomType: ''}})
+						$('.js-graph-list').html('');
+						$(sentimentChart.series[0].data).each(function(i, data) {
+							if (data.y > 0) {
+								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
+							} else {
+								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
+							}
+							setTimeout(function() {
+								if ($('.widget-graph-yes .js-graph-list').children().length === 0) {
+									$('.widget-graph-yes').slideUp(300);
+									$('.widget-review-yes').slideUp(300);
+								} else if ($('.widget-graph-no .js-graph-list').children().length === 0) {
+									$('.widget-graph-no').slideUp(300);
+									$('.widget-review-no').slideUp(300);
+								}
+							}, 1);
+							$('.js-review-highlight').find('.js-review-gap').unwrap();
+							$('.js-review-gap').remove();
+							setTimeout(function() {
+								$('.widget-review-text').highlight(data.name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
+							}, 1);
+						});
+						$('.widget-sentiment-title').hide();
+						$('.js-sentiment-back').css('display', 'flex');
+						$('.widget-sentiment-subtitle').html('Подсентименты тега ' + sentimentChart.drilldownLevels[0].pointOptions.name).show();
+					}, 1);
+				},
+				drillup: function() {
+					setTimeout(function() {
+						sentimentChart.update({chart: {zoomType: 'xy'}})
+						$('.widget-graph-yes').slideDown(300).find('.js-graph-list').html('');
+						$('.widget-graph-no').slideDown(300).find('.js-graph-list').html('');
+						$('.widget-review-yes').slideDown(300);
+						$('.widget-review-no').slideDown(300);
+						$(sentimentChart.series).each(function(i, serie) {
+							if (serie.yData[0] > 0) {
+								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
+							} else {
+								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
+							}
+							$('.js-review-highlight').find('.js-review-gap').unwrap();
+							$('.js-review-gap').remove();
+							setTimeout(function() {
+								$('.widget-review-text').highlight(serie.data[0].name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
+							}, 1);
+						});
+						$('.widget-sentiment-title').show();
+						$('.js-sentiment-back').hide();
+						$('.widget-sentiment-subtitle').hide();
+					}, 1);
+				}
+			}
+		},
+
+		// Disabled Chart title, legend
+
+		title: {text: null}, legend: {enabled: false},
+
+		// Tooltip
+
+		tooltip: {
+			headerFormat: '',
+			pointFormat: '<b>{point.name}</b>',
+			style: {
+				'color': '#000000',
+				'fontSize': '14px'
+			},
+			backgroundColor: '#fff',
+			borderWidth: 0,
+			borderRadius: 10,
+			hideDelay: 100
+		},
+
+		// Horizontal Coordinates
+
+		xAxis: {
+			title: {
+				enabled: false
+			},
+			min: 10,
+			startOnTick: true,
+			endOnTick: true,
+			gridLineWidth: 1,
+			gridLineColor: '#e2e2e2',
+			gridLineDashStyle: 'ShortDash',
+			tickColor: '#e2e2e2',
+			tickLength: 15,
+			tickPixelInterval: 100,
+			showLastLabel: false,
+			labels: {
+				y: 30,
+				style: {
+					color: '#777777',
+					fontSize: '10px'
+				}
+			}
+		},
+
+		// Vertical Coordinates
+
+		yAxis: {
+			title: {
+				enabled: false
+			},
+			gridLineWidth: 1,
+			gridLineColor:'#e2e2e2',
+			plotLines: [{
+				color: '#e2e2e2',
+				width: 2,
+				value: 0,
+				zIndex: 3
+			}],
+			labels: {
+				enabled: false
+			},
+			events: {
+				afterSetExtremes: function(e) {
+					let minVal = Math.abs(e.min);
+							maxVal = Math.abs(e.max);
+					if (e.min > 0 && e.max > 0) {
+						minVal = 0
+					} else if (e.min < 0 && e.max < 0) {
+						maxVal = 0
+					}
+							totalVal = minVal + maxVal;
+							minHalf = (minVal * 100) / totalVal;
+							maxHalf = (maxVal * 100) / totalVal;
+					if (minHalf < maxHalf) {
+						$('.js-sentiment-indicator').css({
+							background: 'linear-gradient(to top, #d0021b 0%, #39af61 ' + minHalf + '%)' 
+						});
+					} else if (minHalf > maxHalf) {
+						$('.js-sentiment-indicator').css({
+							background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #39af61 100%)' 
+						});
+					} else {
+						$('.js-sentiment-indicator').css({
+							background: 'linear-gradient(to top, #d0021b 0%, #39af61 100%)' 
+						});
+					}
+				}
+			}
+		},
+
+		// Sentiment Options
+
+		plotOptions: {
+			bubble: {
+				minSize: 0,
+				maxSize: '10%',
+				zMin: 0,
+				zMax: null,
+				animation: {
+					duration: 500
+				}
+			},
+			series: {
+				stickyTracking: false,
+				zoneAxis: 'y',
+				zones: [{
+					value: 0,
+					className: 'zone-no',
+				}, {
+					className: 'zone-yes'
+				}],
+				states: {
+					inactive: {
+						opacity: 1
+					}
+				},
+				marker: {
+					fillOpacity: 1,
+					lineWidth: 2,
+					states: {
+						hover: {
+							enabled: false
+						}
+					}
+				},
+				events: {
+					mouseOver: function() {
+						setTimeout(function() {
+							if (sentimentChart.drilldownLevels === undefined) {
+								$(sentimentChart.series).each(function(i, serie) {
+									if ($('.highcharts-series-' + i).hasClass('highcharts-series-hover')) {
+										$('.js-graph-item[data-series=' + i + ']').addClass('is-hover');
+										$('.js-review-highlight').addClass('is-disable');
+										$('.js-review-highlight[data-series=' + i + ']').removeClass('is-disable');
+									} else {
+										$('.js-graph-item[data-series=' + i + ']').removeClass('is-hover');
+										$('.js-review-highlight[data-series=' + i + ']').addClass('is-disable');
+									}
+								});
+							} else {
+								return false;
+							}
+						}, 1);
+					},
+					mouseOut: function() {
+						setTimeout(function() {
+							if (sentimentChart.drilldownLevels === undefined) {
+								$('.js-graph-item').removeClass('is-hover');
+								$('.js-review-highlight').removeClass('is-disable');
+							} else {
+								return false;
+							}
+						}, 1);
+					}
+				}
+			}
+		},
+
+		// Main Series Data
+
+		series: [
+			{
+				data: [
+					{name: 'Линия', x: 14, y: 12, z: 14, drilldown: 'Like-1'}
+				]
+			},
+			{
+				data: [
+					{name: 'Коэффициент', x: 17, y: 5, z: 17, drilldown: 'Like-2'}
+				]
+			},
+			{
+				data: [
+					{name: 'Веб-сайт', x: 19, y: 17, z: 19, drilldown: 'Like-3'}
+				]
+			},
+			{
+				data: [
+					{name: 'ППС', x: 27, y: 6, z: 27, drilldown: 'Like-4'}
+				]
+			},
+			{
+				data: [
+					{name: 'Ставки', x: 32, y: 14, z: 32, drilldown: 'Like-5'}
+				]
+			},
+			{
+				data: [
+					{name: 'Выплаты', x: 34, y: 6, z: 34, drilldown: 'Like-6'}
+				]
+			},
+			{
+				data: [
+					{name: 'Моб. приложение', x: 44, y: 11, z: 44, drilldown: 'Like-7'}
+				]
+			},
+			{
+				data: [
+					{name: 'Бонусы', x: 13, y: -10, z: 13, drilldown: 'Dislike-1'}
+				]
+			},
+			{
+				data: [
+					{name: 'Регистрация', x: 19, y: -6, z: 19, drilldown: 'Dislike-2'}
+				]
+			},
+			{
+				data: [
+					{name: 'Верификация', x: 23, y: -14, z: 23, drilldown: 'Dislike-3'}
+				]
+			},
+			{
+				data: [
+					{name: 'Поддержка', x: 29, y: -8, z: 29, drilldown: 'Dislike-4'}
+				]
+			},
+			{
+				data: [
+					{name: 'Баланс', x: 36, y: -6, z: 36, drilldown: 'Dislike-5'}
+				]
+			},
+			{
+				data: [
+					{name: 'нет РПЛ', x: 40, y: -12, z: 40, drilldown: 'Dislike-6'}
+				]
+			},
+			{
+				data: [
+					{name: 'cash out', x: 45, y: -5, z: 45, drilldown: 'Dislike-7'}
+				]
+			}
+		],
+
+		// Drilldown Series Data
+
+		drilldown: {
+			activeDataLabelStyle: {
+				'color': '#000000', 'textDecoration': 'none'
+			},
+			activeAxisLabelStyle: {
+				'color': '#777777', 'textDecoration': 'none'
+			},
+			drillUpButton: {
+				theme: {
+					display: 'none'
+				}
+			},
+			series: [
+				{
+					id: 'Like-1',
+					data: [
+						{name: 'Кешбек', x: 13, y: 17, z: 13},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
+						{name: 'Первый депозит', x: 23, y: 6, z: 23},
+						{name: 'Приведи друга', x: 26, y: 16, z: 26},
+						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
+						{name: 'Подарки', x: 37, y: 14, z: 37},
+						{name: 'Страховка', x: 42, y: 5, z: 42},
+						{name: 'Акции', x: 46, y: -10, z: 46}
+					]
+				},
+				{
+					id: 'Like-2',
+					data: [
+						{name: 'Кешбек', x: 13, y: 17, z: 13},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
+						{name: 'Первый депозит', x: 23, y: 6, z: 23},
+						{name: 'Приведи друга', x: 26, y: 16, z: 26},
+						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
+						{name: 'Подарки', x: 37, y: 14, z: 37},
+						{name: 'Страховка', x: 42, y: 5, z: 42},
+						{name: 'Акции', x: 46, y: -10, z: 46}
+					]
+				},
+				{
+					id: 'Like-3',
+					data: [
+						{name: 'Кешбек', x: 13, y: 17, z: 13},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
+						{name: 'Первый депозит', x: 23, y: 6, z: 23},
+						{name: 'Приведи друга', x: 26, y: 16, z: 26},
+						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
+						{name: 'Подарки', x: 37, y: 14, z: 37},
+						{name: 'Страховка', x: 42, y: 5, z: 42},
+						{name: 'Акции', x: 46, y: -10, z: 46}
+					]
+				},
+				{
+					id: 'Like-4',
+					data: [
+						{name: 'Кешбек', x: 13, y: 17, z: 13},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
+						{name: 'Первый депозит', x: 23, y: 6, z: 23},
+						{name: 'Приведи друга', x: 26, y: 16, z: 26},
+						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
+						{name: 'Подарки', x: 37, y: 14, z: 37},
+						{name: 'Страховка', x: 42, y: 5, z: 42},
+						{name: 'Акции', x: 46, y: -10, z: 46}
+					]
+				},
+				{
+					id: 'Like-5',
+					data: [
+						{name: 'Кешбек', x: 13, y: 17, z: 13},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
+						{name: 'Первый депозит', x: 23, y: 6, z: 23},
+						{name: 'Приведи друга', x: 26, y: 16, z: 26},
+						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
+						{name: 'Подарки', x: 37, y: 14, z: 37},
+						{name: 'Страховка', x: 42, y: 5, z: 42},
+						{name: 'Акции', x: 46, y: -10, z: 46}
+					]
+				},
+				{
+					id: 'Like-6',
+					data: [
+						{name: 'Кешбек', x: 13, y: 17, z: 13},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
+						{name: 'Первый депозит', x: 23, y: 6, z: 23},
+						{name: 'Приведи друга', x: 26, y: 16, z: 26},
+						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
+						{name: 'Подарки', x: 37, y: 14, z: 37},
+						{name: 'Страховка', x: 42, y: 5, z: 42},
+						{name: 'Акции', x: 46, y: -10, z: 46}
+					]
+				},
+				{
+					id: 'Like-7',
+					data: [
+						{name: 'Кешбек', x: 13, y: 17, z: 13},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
+						{name: 'Первый депозит', x: 23, y: 6, z: 23},
+						{name: 'Приведи друга', x: 26, y: 16, z: 26},
+						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
+						{name: 'Подарки', x: 37, y: 14, z: 37},
+						{name: 'Страховка', x: 42, y: 5, z: 42},
+						{name: 'Акции', x: 46, y: -10, z: 46}
+					]
+				},
+				{
+					id: 'Dislike-1',
+					data: [
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
+						{name: 'Фрибет', x: 17, y: -12, z: 17},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
+						{name: 'Подарки', x: 37, y: -14, z: 37},
+						{name: 'Страховка', x: 42, y: -5, z: 42},
+						{name: 'Акции', x: 46, y: 10, z: 46}
+					]
+				},
+				{
+					id: 'Dislike-2',
+					data: [
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
+						{name: 'Фрибет', x: 17, y: -12, z: 17},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
+						{name: 'Подарки', x: 37, y: -14, z: 37},
+						{name: 'Страховка', x: 42, y: -5, z: 42},
+						{name: 'Акции', x: 46, y: 10, z: 46}
+					]
+				},
+				{
+					id: 'Dislike-3',
+					data: [
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
+						{name: 'Фрибет', x: 17, y: -12, z: 17},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
+						{name: 'Подарки', x: 37, y: -14, z: 37},
+						{name: 'Страховка', x: 42, y: -5, z: 42},
+						{name: 'Акции', x: 46, y: 10, z: 46}
+					]
+				},
+				{
+					id: 'Dislike-4',
+					data: [
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
+						{name: 'Фрибет', x: 17, y: -12, z: 17},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
+						{name: 'Подарки', x: 37, y: -14, z: 37},
+						{name: 'Страховка', x: 42, y: -5, z: 42},
+						{name: 'Акции', x: 46, y: 10, z: 46}
+					]
+				},
+				{
+					id: 'Dislike-5',
+					data: [
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
+						{name: 'Фрибет', x: 17, y: -12, z: 17},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
+						{name: 'Подарки', x: 37, y: -14, z: 37},
+						{name: 'Страховка', x: 42, y: -5, z: 42},
+						{name: 'Акции', x: 46, y: 10, z: 46}
+					]
+				},
+				{
+					id: 'Dislike-6',
+					data: [
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
+						{name: 'Фрибет', x: 17, y: -12, z: 17},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
+						{name: 'Подарки', x: 37, y: -14, z: 37},
+						{name: 'Страховка', x: 42, y: -5, z: 42},
+						{name: 'Акции', x: 46, y: 10, z: 46}
+					]
+				},
+				{
+					id: 'Dislike-7',
+					data: [
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
+						{name: 'Фрибет', x: 17, y: -12, z: 17},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
+						{name: 'Подарки', x: 37, y: -14, z: 37},
+						{name: 'Страховка', x: 42, y: -5, z: 42},
+						{name: 'Акции', x: 46, y: 10, z: 46}
+					]
+				}
+			]
+		}
+
+	});
+
+	// Init Sentiment Tags, Sentiment Indicator, Sentiment Highlight
+
+	$(sentimentChart.series).each(function(i, serie) {
+		if (serie.yData[0] > 0) {
+			$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
+		} else {
+			$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
+		}
+		$('.widget-review-text').highlight(serie.data[0].name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
+	});
+
+	let chartHeight = $('.highcharts-plot-background').height();
+	$('.js-sentiment-indicator').height(chartHeight + 2);
+	$('.js-sentiment-indicator').appendTo('.widget-sentiment-graph');
+
+	// Interaction
+
+	$(document).on('click', '.js-graph-item', function() {
+		let seriesVal = $(this).data('series');
+		if (sentimentChart.series[seriesVal].data[0].drilldown === undefined) {
+			return false;
+		} else {
+			sentimentChart.series[seriesVal].data[0].doDrilldown();
+		}
+	});
+	$(document).on('mouseover', '.js-graph-item', function() {
+		let seriesVal = $(this).data('series');
+		if (sentimentChart.drilldownLevels === undefined) {
+			$('.highcharts-series').addClass('highcharts-series-inactive');
+			$('.highcharts-series-' + seriesVal).removeClass('highcharts-series-inactive');
+			sentimentChart.tooltip.refresh(sentimentChart.series[seriesVal].points[0]);
+		} else {
+			$(sentimentChart.series[0].data).each(function(i, data) {
+				if (i > 0) {
+					$('.highcharts-point').addClass('is-disable');
+					$('.highcharts-point').eq(seriesVal).removeClass('is-disable');
+				}
+			});
+			sentimentChart.tooltip.refresh(sentimentChart.series[0].points[seriesVal]);
+		}
+		$('.js-review-highlight').addClass('is-disable');
+		$('.js-review-highlight[data-series=' + seriesVal + ']').removeClass('is-disable');
+	});
+	$(document).on('mouseout', '.js-graph-item', function() {
+		$('.highcharts-series').removeClass('highcharts-series-inactive');
+		$('.highcharts-point').removeClass('highcharts-point-hover is-disable');
+		sentimentChart.tooltip.hide(100);
+		$('.js-review-highlight').removeClass('is-disable');
+	});
+	$(document).on('mouseover', '.highcharts-point', function() {
+		if (sentimentChart.drilldownLevels === undefined) {
+			return false;
+		} else {
+			$(this).addClass('highcharts-point-hover');
+			$(sentimentChart.series[0].data).each(function(i, data) {
+				if ($('.highcharts-point').eq(i).hasClass('highcharts-point-hover')) {
+					$('.js-graph-item[data-series=' + i + ']').addClass('is-hover');
+					$('.highcharts-point').addClass('is-disable');
+					$('.highcharts-point.highcharts-point-hover').removeClass('is-disable');
+					$('.js-review-highlight').addClass('is-disable');
+					$('.js-review-highlight[data-series=' + i + ']').removeClass('is-disable');
+				} else {
+					$('.js-graph-item[data-series=' + i + ']').removeClass('is-hover');
+					$('.js-review-highlight[data-series=' + i + ']').addClass('is-disable');
+				}
+			});
+		}
+	});
+	$(document).on('mouseout', '.highcharts-point', function() {
+		if (sentimentChart.drilldownLevels === undefined) {
+			return false;
+		} else {
+			$('.js-graph-item').removeClass('is-hover');
+			$('.highcharts-point').removeClass('highcharts-point-hover is-disable');
+			$('.js-review-highlight').removeClass('is-disable');
+		}
+	});
+	$(document).on('click', '.js-sentiment-back', function() {
+		$('.highcharts-drillup-button').trigger('click');
+	});
+
+	//
+	
+});
