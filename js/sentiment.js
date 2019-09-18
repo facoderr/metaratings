@@ -150,11 +150,11 @@ $(document).ready(function() {
 				load: function(e) {
 					let minVal = Math.abs(this.axes[1].min);
 							maxVal = Math.abs(this.axes[1].max);
-					if (this.axes[1].min > 0 && this.axes[1].max > 0) {
-						minVal = 0
-					} else if (this.axes[1].min < 0 && this.axes[1].max < 0) {
-						maxVal = 0
-					}
+							if (this.axes[1].min > 0 && this.axes[1].max > 0) {
+								minVal = 0
+							} else if (this.axes[1].min < 0 && this.axes[1].max < 0) {
+								maxVal = 0
+							}
 							totalVal = minVal + maxVal;
 							minHalf = (minVal * 100) / totalVal;
 							maxHalf = (maxVal * 100) / totalVal;
@@ -175,25 +175,31 @@ $(document).ready(function() {
 				drilldown: function() {
 					setTimeout(function() {
 						sentimentChart.update({chart: {zoomType: ''}})
-						$('.widget-graph-yes .js-graph-list').html('');
-						$('.widget-graph-no .js-graph-list').html('');
+						$('.js-graph-list').html('');
 						$(sentimentChart.series[0].data).each(function(i, data) {
 							if (data.y > 0) {
-								$('.widget-graph-no').slideUp(300).find('.js-graph-list').html('');
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
-								$('.widget-review-no').slideUp(300);
 							} else {
-								$('.widget-graph-yes').slideUp(300).find('.js-graph-list').html('');
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
-								$('.widget-review-yes').slideUp(300);
 							}
+							setTimeout(function() {
+								if ($('.widget-graph-yes .js-graph-list').children().length === 0) {
+									$('.widget-graph-yes').slideUp(300);
+									$('.widget-review-yes').slideUp(300);
+								} else if ($('.widget-graph-no .js-graph-list').children().length === 0) {
+									$('.widget-graph-no').slideUp(300);
+									$('.widget-review-no').slideUp(300);
+								}
+							}, 1);
 							$('.js-review-highlight').find('.js-review-gap').unwrap();
 							$('.js-review-gap').remove();
 							setTimeout(function() {
 								$('.widget-review-text').highlight(data.name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
 							}, 1);
 						});
-						$('.js-sentiment-title').addClass('is-active').html('<span class="widget-sentiment-title-arrow"><svg><use xlink:href="#arrow"></use></svg></span>' + sentimentChart.drilldownLevels[0].pointOptions.name);
+						$('.widget-sentiment-title').hide();
+						$('.js-sentiment-back').css('display', 'flex');
+						$('.widget-sentiment-subtitle').html('Подсентименты тега ' + sentimentChart.drilldownLevels[0].pointOptions.name).show();
 					}, 1);
 				},
 				drillup: function() {
@@ -201,8 +207,8 @@ $(document).ready(function() {
 						sentimentChart.update({chart: {zoomType: 'xy'}})
 						$('.widget-graph-yes').slideDown(300).find('.js-graph-list').html('');
 						$('.widget-graph-no').slideDown(300).find('.js-graph-list').html('');
-						$('.widget-review-no').slideDown(300);
 						$('.widget-review-yes').slideDown(300);
+						$('.widget-review-no').slideDown(300);
 						$(sentimentChart.series).each(function(i, serie) {
 							if (serie.yData[0] > 0) {
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
@@ -215,8 +221,9 @@ $(document).ready(function() {
 								$('.widget-review-text').highlight(serie.data[0].name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
 							}, 1);
 						});
-						let chartTitle = $('.js-sentiment-title').data('title');
-						$('.js-sentiment-title').removeClass('is-active').html(chartTitle);
+						$('.widget-sentiment-title').show();
+						$('.js-sentiment-back').hide();
+						$('.widget-sentiment-subtitle').hide();
 					}, 1);
 				}
 			}
@@ -475,196 +482,196 @@ $(document).ready(function() {
 					id: 'Like-1',
 					data: [
 						{name: 'Кешбек', x: 13, y: 17, z: 13},
-						{name: 'Обкат', x: 16, y: 3, z: 16},
-						{name: 'Фрибет', x: 17, y: 12, z: 17},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
 						{name: 'Первый депозит', x: 23, y: 6, z: 23},
 						{name: 'Приведи друга', x: 26, y: 16, z: 26},
 						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
 						{name: 'Подарки', x: 37, y: 14, z: 37},
 						{name: 'Страховка', x: 42, y: 5, z: 42},
-						{name: 'Акции', x: 46, y: 10, z: 46}
+						{name: 'Акции', x: 46, y: -10, z: 46}
 					]
 				},
 				{
 					id: 'Like-2',
 					data: [
 						{name: 'Кешбек', x: 13, y: 17, z: 13},
-						{name: 'Обкат', x: 16, y: 3, z: 16},
-						{name: 'Фрибет', x: 17, y: 12, z: 17},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
 						{name: 'Первый депозит', x: 23, y: 6, z: 23},
 						{name: 'Приведи друга', x: 26, y: 16, z: 26},
 						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
 						{name: 'Подарки', x: 37, y: 14, z: 37},
 						{name: 'Страховка', x: 42, y: 5, z: 42},
-						{name: 'Акции', x: 46, y: 10, z: 46}
+						{name: 'Акции', x: 46, y: -10, z: 46}
 					]
 				},
 				{
 					id: 'Like-3',
 					data: [
 						{name: 'Кешбек', x: 13, y: 17, z: 13},
-						{name: 'Обкат', x: 16, y: 3, z: 16},
-						{name: 'Фрибет', x: 17, y: 12, z: 17},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
 						{name: 'Первый депозит', x: 23, y: 6, z: 23},
 						{name: 'Приведи друга', x: 26, y: 16, z: 26},
 						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
 						{name: 'Подарки', x: 37, y: 14, z: 37},
 						{name: 'Страховка', x: 42, y: 5, z: 42},
-						{name: 'Акции', x: 46, y: 10, z: 46}
+						{name: 'Акции', x: 46, y: -10, z: 46}
 					]
 				},
 				{
 					id: 'Like-4',
 					data: [
 						{name: 'Кешбек', x: 13, y: 17, z: 13},
-						{name: 'Обкат', x: 16, y: 3, z: 16},
-						{name: 'Фрибет', x: 17, y: 12, z: 17},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
 						{name: 'Первый депозит', x: 23, y: 6, z: 23},
 						{name: 'Приведи друга', x: 26, y: 16, z: 26},
 						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
 						{name: 'Подарки', x: 37, y: 14, z: 37},
 						{name: 'Страховка', x: 42, y: 5, z: 42},
-						{name: 'Акции', x: 46, y: 10, z: 46}
+						{name: 'Акции', x: 46, y: -10, z: 46}
 					]
 				},
 				{
 					id: 'Like-5',
 					data: [
 						{name: 'Кешбек', x: 13, y: 17, z: 13},
-						{name: 'Обкат', x: 16, y: 3, z: 16},
-						{name: 'Фрибет', x: 17, y: 12, z: 17},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
 						{name: 'Первый депозит', x: 23, y: 6, z: 23},
 						{name: 'Приведи друга', x: 26, y: 16, z: 26},
 						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
 						{name: 'Подарки', x: 37, y: 14, z: 37},
 						{name: 'Страховка', x: 42, y: 5, z: 42},
-						{name: 'Акции', x: 46, y: 10, z: 46}
+						{name: 'Акции', x: 46, y: -10, z: 46}
 					]
 				},
 				{
 					id: 'Like-6',
 					data: [
 						{name: 'Кешбек', x: 13, y: 17, z: 13},
-						{name: 'Обкат', x: 16, y: 3, z: 16},
-						{name: 'Фрибет', x: 17, y: 12, z: 17},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
 						{name: 'Первый депозит', x: 23, y: 6, z: 23},
 						{name: 'Приведи друга', x: 26, y: 16, z: 26},
 						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
 						{name: 'Подарки', x: 37, y: 14, z: 37},
 						{name: 'Страховка', x: 42, y: 5, z: 42},
-						{name: 'Акции', x: 46, y: 10, z: 46}
+						{name: 'Акции', x: 46, y: -10, z: 46}
 					]
 				},
 				{
 					id: 'Like-7',
 					data: [
 						{name: 'Кешбек', x: 13, y: 17, z: 13},
-						{name: 'Обкат', x: 16, y: 3, z: 16},
-						{name: 'Фрибет', x: 17, y: 12, z: 17},
+						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Фрибет', x: 17, y: -15, z: 17},
 						{name: 'Первый депозит', x: 23, y: 6, z: 23},
 						{name: 'Приведи друга', x: 26, y: 16, z: 26},
 						{name: 'Экспресс дня', x: 33, y: 8, z: 33},
 						{name: 'Подарки', x: 37, y: 14, z: 37},
 						{name: 'Страховка', x: 42, y: 5, z: 42},
-						{name: 'Акции', x: 46, y: 10, z: 46}
+						{name: 'Акции', x: 46, y: -10, z: 46}
 					]
 				},
 				{
 					id: 'Dislike-1',
 					data: [
-						{name: 'Кешбек', x: 13, y: -17, z: 13},
-						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
 						{name: 'Фрибет', x: 17, y: -12, z: 17},
-						{name: 'Первый депозит', x: 23, y: -6, z: 23},
-						{name: 'Приведи друга', x: 26, y: -16, z: 26},
-						{name: 'Экспресс дня', x: 33, y: -8, z: 33},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
 						{name: 'Подарки', x: 37, y: -14, z: 37},
 						{name: 'Страховка', x: 42, y: -5, z: 42},
-						{name: 'Акции', x: 46, y: -10, z: 46}
+						{name: 'Акции', x: 46, y: 10, z: 46}
 					]
 				},
 				{
 					id: 'Dislike-2',
 					data: [
-						{name: 'Кешбек', x: 13, y: -17, z: 13},
-						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
 						{name: 'Фрибет', x: 17, y: -12, z: 17},
-						{name: 'Первый депозит', x: 23, y: -6, z: 23},
-						{name: 'Приведи друга', x: 26, y: -16, z: 26},
-						{name: 'Экспресс дня', x: 33, y: -8, z: 33},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
 						{name: 'Подарки', x: 37, y: -14, z: 37},
 						{name: 'Страховка', x: 42, y: -5, z: 42},
-						{name: 'Акции', x: 46, y: -10, z: 46}
+						{name: 'Акции', x: 46, y: 10, z: 46}
 					]
 				},
 				{
 					id: 'Dislike-3',
 					data: [
-						{name: 'Кешбек', x: 13, y: -17, z: 13},
-						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
 						{name: 'Фрибет', x: 17, y: -12, z: 17},
-						{name: 'Первый депозит', x: 23, y: -6, z: 23},
-						{name: 'Приведи друга', x: 26, y: -16, z: 26},
-						{name: 'Экспресс дня', x: 33, y: -8, z: 33},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
 						{name: 'Подарки', x: 37, y: -14, z: 37},
 						{name: 'Страховка', x: 42, y: -5, z: 42},
-						{name: 'Акции', x: 46, y: -10, z: 46}
+						{name: 'Акции', x: 46, y: 10, z: 46}
 					]
 				},
 				{
 					id: 'Dislike-4',
 					data: [
-						{name: 'Кешбек', x: 13, y: -17, z: 13},
-						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
 						{name: 'Фрибет', x: 17, y: -12, z: 17},
-						{name: 'Первый депозит', x: 23, y: -6, z: 23},
-						{name: 'Приведи друга', x: 26, y: -16, z: 26},
-						{name: 'Экспресс дня', x: 33, y: -8, z: 33},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
 						{name: 'Подарки', x: 37, y: -14, z: 37},
 						{name: 'Страховка', x: 42, y: -5, z: 42},
-						{name: 'Акции', x: 46, y: -10, z: 46}
+						{name: 'Акции', x: 46, y: 10, z: 46}
 					]
 				},
 				{
 					id: 'Dislike-5',
 					data: [
-						{name: 'Кешбек', x: 13, y: -17, z: 13},
-						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
 						{name: 'Фрибет', x: 17, y: -12, z: 17},
-						{name: 'Первый депозит', x: 23, y: -6, z: 23},
-						{name: 'Приведи друга', x: 26, y: -16, z: 26},
-						{name: 'Экспресс дня', x: 33, y: -8, z: 33},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
 						{name: 'Подарки', x: 37, y: -14, z: 37},
 						{name: 'Страховка', x: 42, y: -5, z: 42},
-						{name: 'Акции', x: 46, y: -10, z: 46}
+						{name: 'Акции', x: 46, y: 10, z: 46}
 					]
 				},
 				{
 					id: 'Dislike-6',
 					data: [
-						{name: 'Кешбек', x: 13, y: -17, z: 13},
-						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
 						{name: 'Фрибет', x: 17, y: -12, z: 17},
-						{name: 'Первый депозит', x: 23, y: -6, z: 23},
-						{name: 'Приведи друга', x: 26, y: -16, z: 26},
-						{name: 'Экспресс дня', x: 33, y: -8, z: 33},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
 						{name: 'Подарки', x: 37, y: -14, z: 37},
 						{name: 'Страховка', x: 42, y: -5, z: 42},
-						{name: 'Акции', x: 46, y: -10, z: 46}
+						{name: 'Акции', x: 46, y: 10, z: 46}
 					]
 				},
 				{
 					id: 'Dislike-7',
 					data: [
-						{name: 'Кешбек', x: 13, y: -17, z: 13},
-						{name: 'Обкат', x: 16, y: -3, z: 16},
+						{name: 'Кешбек', x: 13, y: -15, z: 13},
+						{name: 'Обкат', x: 16, y: 5, z: 16},
 						{name: 'Фрибет', x: 17, y: -12, z: 17},
-						{name: 'Первый депозит', x: 23, y: -6, z: 23},
-						{name: 'Приведи друга', x: 26, y: -16, z: 26},
-						{name: 'Экспресс дня', x: 33, y: -8, z: 33},
+						{name: 'Первый депозит', x: 23, y: -5, z: 23},
+						{name: 'Приведи друга', x: 26, y: 15, z: 26},
+						{name: 'Экспресс дня', x: 33, y: -6, z: 33},
 						{name: 'Подарки', x: 37, y: -14, z: 37},
 						{name: 'Страховка', x: 42, y: -5, z: 42},
-						{name: 'Акции', x: 46, y: -10, z: 46}
+						{name: 'Акции', x: 46, y: 10, z: 46}
 					]
 				}
 			]
@@ -672,7 +679,7 @@ $(document).ready(function() {
 
 	});
 
-	// Init Sentiment Tags, Sentiment Title, Sentiment Indicator, Sentiment Highlight
+	// Init Sentiment Tags, Sentiment Indicator, Sentiment Highlight
 
 	$(sentimentChart.series).each(function(i, serie) {
 		if (serie.yData[0] > 0) {
@@ -682,9 +689,6 @@ $(document).ready(function() {
 		}
 		$('.widget-review-text').highlight(serie.data[0].name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
 	});
-
-	let chartTitle = $('.js-sentiment-title').data('title');
-	$('.js-sentiment-title').html(chartTitle);
 
 	let chartHeight = $('.highcharts-plot-background').height();
 	$('.js-sentiment-indicator').height(chartHeight + 2);
@@ -729,7 +733,6 @@ $(document).ready(function() {
 			$(this).addClass('highcharts-label-hover');
 			let activePoint = $('.highcharts-label-hover');
 					activePointIndex = activePoint.index();
-			console.log(activePointIndex)
 			$('.highcharts-point').eq(activePointIndex).addClass('highcharts-point-hover');
 			$(sentimentChart.series[0].data).each(function(i, data) {
 				if ($('.highcharts-point').eq(i).hasClass('highcharts-point-hover')) {
@@ -755,7 +758,7 @@ $(document).ready(function() {
 			$('.js-review-highlight').removeClass('is-disable');
 		}
 	});
-	$(document).on('click', '.js-sentiment-title', function() {
+	$(document).on('click', '.js-sentiment-back', function() {
 		$('.highcharts-drillup-button').trigger('click');
 	});
 

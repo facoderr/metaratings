@@ -797,7 +797,16 @@
 					<div class="widget-graph-list js-graph-list"></div>
 				</div>
 				<div class="widget-sentiment">
-					<a href="javascript:void(0);" class="widget-sentiment-title js-sentiment-title" data-title="Сентименты Марафон"></a>
+					<div class="widget-sentiment-head">
+						<div class="widget-sentiment-title">Сентименты БК Марафон</div>
+						<a href="javascript:void(0);" class="widget-sentiment-back js-sentiment-back">
+							<span class="widget-sentiment-back-arrow">
+								<svg><use xlink:href="#arrow"></use></svg>
+							</span>
+							Обратно к сентиментам
+						</a>
+						<div class="widget-sentiment-subtitle"></div>
+					</div>
 					<div id="js-sentiment" class="widget-sentiment-graph"></div>
 					<div class="widget-sentiment-indicator js-sentiment-indicator"></div>
 				</div>
@@ -936,5 +945,5 @@
 	<script src="js/core.min.js"></script>
 	<script src="js/sentiment.min.js" async></script>
 	<script src="js/main.min.js" async></script>
-</body>
+	</body>
 </html>
