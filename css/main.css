@@ -5090,6 +5090,10 @@ body {
   padding: 0 100px 0 70px;
 }
 
+.widget-calendar input:active {
+  border: 2px solid #601dc0;
+}
+
 .widget-graph {
   margin: 0 0 20px;
 }
@@ -5245,24 +5249,8 @@ body {
   margin: 0 0 0 5px;
 }
 
-.widget-graph-yes .widget-graph-item:hover, .widget-graph-yes .widget-graph-item.is-hover {
-  border: 2px solid #39af61;
-}
-
-.widget-graph-yes .widget-graph-item.is-disable.is-hover {
-  border: 2px solid #e9e9e9;
-}
-
 .widget-graph-yes .widget-graph-item span {
   color: #39af61;
-}
-
-.widget-graph-no .widget-graph-item:hover, .widget-graph-no .widget-graph-item.is-hover {
-  border: 2px solid #d0021b;
-}
-
-.widget-graph-no .widget-graph-item.is-disable.is-hover {
-  border: 2px solid #e9e9e9;
 }
 
 .widget-graph-no .widget-graph-item span {
@@ -5462,6 +5450,10 @@ body {
 }
 
 .widget-review-full:hover {
+  text-decoration: underline;
+}
+
+.widget-review-full:active {
   color: #601dc0;
   text-decoration: underline;
   -webkit-text-decoration-color: #601dc0;
@@ -5513,7 +5505,7 @@ body {
           border-radius: 8px;
 }
 
-.widget-review-more:hover {
+.widget-review-more:active {
   color: #601dc0;
   border: 2px solid #601dc0;
 }
@@ -5842,16 +5834,6 @@ body {
           border-radius: 8px;
 }
 
-.highcharts-series-inactive .highcharts-point.zone-yes {
-  fill: #e9e9e9;
-  stroke: #999999;
-}
-
-.highcharts-series-inactive .highcharts-point.zone-no {
-  fill: #e9e9e9;
-  stroke: #999999;
-}
-
 .highcharts-point {
   cursor: pointer;
   -webkit-transition: fill .3s ease-in-out, stroke .3s ease-in-out;
@@ -5863,19 +5845,9 @@ body {
   stroke: #39af61;
 }
 
-.highcharts-point.zone-yes.is-disable {
-  fill: #e9e9e9;
-  stroke: #999999;
-}
-
 .highcharts-point.zone-no {
   fill: #ffc2c9;
   stroke: #d0021b;
-}
-
-.highcharts-point.zone-no.is-disable {
-  fill: #e9e9e9;
-  stroke: #999999;
 }
 
 .highcharts-axis-labels text {
@@ -7368,6 +7340,9 @@ body {
     text-align: left;
     padding: 0 29px 0 10px;
   }
+  .widget-calendar input:hover {
+    border: 2px solid #601dc0;
+  }
   .widget-graph {
     -webkit-box-shadow: 0 2px 20px -10px rgba(8, 11, 42, 0.5);
             box-shadow: 0 2px 20px -10px rgba(8, 11, 42, 0.5);
@@ -7395,6 +7370,12 @@ body {
   }
   .widget-graph-item:not(:last-child) {
     margin: 10px 10px 0 0;
+  }
+  .widget-graph-yes .widget-graph-item:hover, .widget-graph-yes .widget-graph-item.is-hover {
+    border: 2px solid #39af61;
+  }
+  .widget-graph-no .widget-graph-item:hover, .widget-graph-no .widget-graph-item.is-hover {
+    border: 2px solid #d0021b;
   }
   .widget-sentiment-title {
     font-size: 16px;
@@ -7434,6 +7415,10 @@ body {
     height: 30px;
     font-size: 12px;
     text-transform: lowercase;
+  }
+  .widget-review-more:hover {
+    color: #601dc0;
+    border: 2px solid #601dc0;
   }
   .widget-review-more span {
     display: block;
@@ -7475,6 +7460,22 @@ body {
   .widget-modal-close {
     top: -30px;
     right: -30px;
+  }
+  .highcharts-series-inactive .highcharts-point.zone-yes {
+    fill: #e9e9e9;
+    stroke: #999999;
+  }
+  .highcharts-series-inactive .highcharts-point.zone-no {
+    fill: #e9e9e9;
+    stroke: #999999;
+  }
+  .highcharts-point.zone-yes.is-disable {
+    fill: #e9e9e9;
+    stroke: #999999;
+  }
+  .highcharts-point.zone-no.is-disable {
+    fill: #e9e9e9;
+    stroke: #999999;
   }
   .highcharts-axis-labels text {
     font-size: 15px !important;

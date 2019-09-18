@@ -260,7 +260,7 @@ $(document).ready(function() {
 			gridLineWidth: 1,
 			gridLineColor:'#e2e2e2',
 			plotLines: [{
-				color: '#777777',
+				color: '#e2e2e2',
 				width: 2,
 				value: 0,
 				zIndex: 3
