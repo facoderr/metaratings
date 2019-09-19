@@ -5463,6 +5463,7 @@ body {
   color: rgba(0, 0, 0, 0.4);
   font-size: 13px;
   text-decoration: underline;
+  cursor: pointer;
   margin: 10px 0 0;
 }
 
