@@ -5054,7 +5054,7 @@ body {
   position: absolute;
   top: -webkit-calc(50% - (22px / 2));
   top: calc(50% - (22px / 2));
-  right: 75px;
+  right: 10px;
   width: 19px;
   height: 20px;
   z-index: -1;
@@ -5090,7 +5090,7 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  padding: 0 100px 0 70px;
+  padding: 0 10px;
 }
 
 .widget-calendar input:active {
@@ -5463,13 +5463,8 @@ body {
   margin: 10px 0 0;
 }
 
-.widget-review-full:hover {
-  text-decoration: underline;
-}
-
 .widget-review-full:active {
   color: #601dc0;
-  text-decoration: underline;
   -webkit-text-decoration-color: #601dc0;
           text-decoration-color: #601dc0;
 }
@@ -7347,12 +7342,8 @@ body {
     width: 160px;
     margin: 0;
   }
-  .widget-calendar-icon {
-    right: 10px;
-  }
   .widget-calendar input {
     text-align: left;
-    padding: 0 29px 0 10px;
   }
   .widget-calendar input:hover {
     border: 2px solid #601dc0;

@@ -357,7 +357,7 @@ $(document).ready(function() {
 				events: {
 					mouseOver: function() {
 						setTimeout(function() {
-							if (sentimentChart.drilldownLevels === undefined) {
+							if (sentimentChart.drillUpButton === undefined) {
 								$(sentimentChart.series).each(function(i, serie) {
 									if ($('.highcharts-series-' + i).hasClass('highcharts-series-hover')) {
 										$('.js-graph-item[data-series=' + i + ']').addClass('is-hover');
@@ -375,7 +375,7 @@ $(document).ready(function() {
 					},
 					mouseOut: function() {
 						setTimeout(function() {
-							if (sentimentChart.drilldownLevels === undefined) {
+							if (sentimentChart.drillUpButton === undefined) {
 								$('.js-graph-item').removeClass('is-hover');
 								$('.js-review-highlight').removeClass('is-disable');
 							} else {
@@ -705,17 +705,13 @@ $(document).ready(function() {
 	});
 	$(document).on('mouseover', '.js-graph-item', function() {
 		let seriesVal = $(this).data('series');
-		if (sentimentChart.drilldownLevels === undefined) {
+		if (sentimentChart.drillUpButton === undefined) {
 			$('.highcharts-series').addClass('highcharts-series-inactive');
 			$('.highcharts-series-' + seriesVal).removeClass('highcharts-series-inactive');
 			sentimentChart.tooltip.refresh(sentimentChart.series[seriesVal].points[0]);
 		} else {
-			$(sentimentChart.series[0].data).each(function(i, data) {
-				if (i > 0) {
-					$('.highcharts-point').addClass('is-disable');
-					$('.highcharts-point').eq(seriesVal).removeClass('is-disable');
-				}
-			});
+			$('.highcharts-point').addClass('is-disable');
+			$('.highcharts-point').eq(seriesVal).removeClass('is-disable');
 			sentimentChart.tooltip.refresh(sentimentChart.series[0].points[seriesVal]);
 		}
 		$('.js-review-highlight').addClass('is-disable');
@@ -728,7 +724,7 @@ $(document).ready(function() {
 		$('.js-review-highlight').removeClass('is-disable');
 	});
 	$(document).on('mouseover', '.highcharts-point', function() {
-		if (sentimentChart.drilldownLevels === undefined) {
+		if (sentimentChart.drillUpButton === undefined) {
 			return false;
 		} else {
 			$(this).addClass('highcharts-point-hover');
@@ -747,7 +743,7 @@ $(document).ready(function() {
 		}
 	});
 	$(document).on('mouseout', '.highcharts-point', function() {
-		if (sentimentChart.drilldownLevels === undefined) {
+		if (sentimentChart.drillUpButton === undefined) {
 			return false;
 		} else {
 			$('.js-graph-item').removeClass('is-hover');
