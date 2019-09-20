@@ -16,16 +16,22 @@ $(document).ready(function() {
 			monthsShort: ['янв.','фев.','мар.','апр.','май','июн.','июл.','авг.','сен.','окт.','ноя.','дек.']
 		},
 		dateFormat: 'dd M',
+		range: true,
 		maxDate: new Date(),
 		todayButton: new Date(),
-		toggleSelected: false,
 		autoClose: true,
 		onSelect: function(formattedDate, date, inst) {
 			let today = new Date();
-			if (today.getDate() === date.getDate() && today.getMonth() === date.getMonth() && today.getFullYear() === date.getFullYear()) {
+			if (today.getDate() === date[0].getDate() && today.getMonth() === date[0].getMonth() && today.getFullYear() === date[0].getFullYear()) {
 				$('.js-calendar').val('Сегодня ' + formattedDate);
+			} else if (date.length == 1) {
+				$('.js-calendar').val(date[0].getDate() + ' ' + date[0].toLocaleString('ru', {month: 'long'}));
 			} else {
-				$('.js-calendar').val(date.getDate() + ' ' + date.toLocaleString('ru', {month: 'long'}));
+				minMonth = $('.js-calendar').data('datepicker').minRange.getMonth();
+				maxMonth = $('.js-calendar').data('datepicker').maxRange.getMonth();
+				minMonthName = $('.js-calendar').data('datepicker').loc.monthsShort[minMonth];
+				maxMonthName = $('.js-calendar').data('datepicker').loc.monthsShort[maxMonth];
+				$('.js-calendar').val(date[0].getDate() + ' ' + minMonthName + ' - ' + date[1].getDate() + ' ' + maxMonthName);
 			}
 		}
 	});

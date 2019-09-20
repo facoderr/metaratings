@@ -5074,7 +5074,6 @@ body {
   height: 34px;
   font: 700 14px/1 Helvetica Neue, Helvetica, Arial, sans-serif;
   text-align: center;
-  text-transform: capitalize;
   color: #777;
   background: none;
   border: 2px solid #e9e9e9;
@@ -5838,6 +5837,36 @@ body {
 }
 
 .datepicker--cell.-selected-.-focus- {
+  background: #451788;
+}
+
+.datepicker--cell.-selected-.-focus-.datepicker--cell-day.-other-month-, .datepicker--cell.-selected-.-focus-.datepicker--cell-year.-other-decade- {
+  background: #451788;
+}
+
+.datepicker--cell.-in-range- {
+  background: rgba(96, 29, 192, 0.1);
+}
+
+.datepicker--cell.-in-range-.datepicker--cell-day.-other-month-, .datepicker--cell.-in-range-.datepicker--cell-year.-other-decade- {
+  background: rgba(96, 29, 192, 0.1);
+}
+
+.datepicker--cell.-in-range-.-focus- {
+  background: rgba(96, 29, 192, 0.2);
+}
+
+.datepicker--cell.-range-from-, .datepicker--cell.-range-to- {
+  background: rgba(96, 29, 192, 0.1);
+  border: 1px solid rgba(96, 29, 192, 0.5);
+}
+
+.datepicker--cell.-range-from-.-selected-, .datepicker--cell.-range-to-.-selected- {
+  background: #601dc0;
+  border: none;
+}
+
+.datepicker--cell.-range-from-.-selected-.-focus-, .datepicker--cell.-range-to-.-selected-.-focus- {
   background: #451788;
 }
 
