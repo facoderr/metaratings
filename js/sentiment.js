@@ -18,7 +18,6 @@ $(document).ready(function() {
 		dateFormat: 'dd M',
 		maxDate: new Date(),
 		todayButton: new Date(),
-		showEvent: 'click',
 		toggleSelected: false,
 		autoClose: true,
 		onSelect: function(formattedDate, date, inst) {
@@ -31,10 +30,6 @@ $(document).ready(function() {
 		}
 	});
 	$('.js-calendar').data('datepicker').selectDate(new Date());
-	$(document).bind('mouseup touchend', function(e) {
-		if ($(e.target).closest('.datepicker.active').length) return;
-		$('.js-calendar').data('datepicker').hide();
-	});
 
 	$('.js-widget-input').keyup(function() {
 		$this = $(this);
