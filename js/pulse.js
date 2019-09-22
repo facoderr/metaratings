@@ -171,9 +171,6 @@ $(document).ready(function() {
 	// Highcharts Localization
 
 	Highcharts.setOptions({
-		time: {
-			timezoneOffset: -180
-		},
 		lang: {
 			months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
 			shortMonths: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
@@ -194,11 +191,12 @@ $(document).ready(function() {
 			style: {
 				'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif'
 			},
-			marginRight: 45,
-			marginBottom: 50,
+			marginRight: 50,
+			marginBottom: 45,
 			marginLeft: 1,
 			events: {
 				load: function() {
+					this.pulseTooltip = new Highcharts.Tooltip(this, this.options.tooltip);
 					Highcharts.addEvent(Highcharts.Axis, 'afterDrawCrosshair', function ({ point }) {
 						if (this.cross && point) {
 							this.cross.attr({
@@ -217,6 +215,7 @@ $(document).ready(function() {
 		// Tooltip Options
 
 		tooltip: {
+			enabled: false,
 			borderWidth: 0,
 			borderRadius: 0,
 			shadow: false,
@@ -240,8 +239,7 @@ $(document).ready(function() {
 				width: 1
 			},
 			style: {
-				color: '#ffffff',
-				pointerEvents: 'all'
+				color: '#ffffff'
 			}
 		},
 
@@ -259,6 +257,8 @@ $(document).ready(function() {
 			gridLineDashStyle: 'ShortDash',
 			tickColor: '#e2e2e2',
 			tickLength: 15,
+			minPadding: 0,
+			maxPadding: 0,
 			labels: {
 				y: 30,
 				style: {
@@ -297,6 +297,29 @@ $(document).ready(function() {
 		plotOptions: {
 			column: {
 				stacking: 'normal',
+				point:{
+					events:{
+						click: function() {
+							let pointDate = new Date(this.x).toLocaleDateString()
+									pointTime = new Date(this.x).toLocaleTimeString()
+							if (this.y > 0) {
+								$('.widget-note-item').fadeOut(300);
+								setTimeout(function() {
+									$('.widget-note-yes .widget-note-clock').html(pointTime);
+									$('.widget-note-yes .widget-note-date').html(pointDate);
+									$('.widget-note-yes').fadeIn(300);
+								}, 300);
+							} else {
+								$('.widget-note-item').fadeOut(300);
+								setTimeout(function() {
+									$('.widget-note-no .widget-note-clock').html(pointTime);
+									$('.widget-note-no .widget-note-date').html(pointDate);
+									$('.widget-note-no').fadeIn(300);
+								}, 300);
+							}
+						}
+					}
+				},
 				pointStart: Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
 				pointInterval: 36e5,
 				pointWidth: 8,
@@ -345,9 +368,20 @@ $(document).ready(function() {
 				}
 			},
 			series: {
+				stickyTracking: false,
 				states: {
 					inactive: {
 						opacity: 1
+					}
+				},
+				events: {
+					click: function(e) {
+						this.chart.pulseTooltip.options.enabled = true;
+						this.chart.pulseTooltip.refresh(e.point, e);
+					},
+					mouseOut: function() {
+						this.chart.pulseTooltip.hide();
+						this.chart.pulseTooltip.options.enabled = false;
 					}
 				}
 			}
@@ -358,14 +392,30 @@ $(document).ready(function() {
 		series: [{
 			type: 'column',
 			name: 'Positive',
-			data: [500, 300, 275, 380, 800, 200],
+			data: (function () {
+				let data = [],
+				i;
+
+				for (i = -24; i <= 0; i += 1) {
+					data.push([Math.round(Math.random() * 1000)]);
+				}
+				return data;
+			}()),
 			borderRadiusTopLeft: 4,
 			borderRadiusTopRight: 4,
 			color: '#39af61'
 		}, {
 			type: 'column',
 			name: 'Negative',
-			data: [-350, -210, -600, -100, -400, -150],
+			data: (function () {
+				let data = [],
+				i;
+
+				for (i = -24; i <= 0; i += 1) {
+					data.push([Math.round(Math.random() * -1000)]);
+				}
+				return data;
+			}()),
 			borderRadiusBottomLeft: 4,
 			borderRadiusBottomRight: 4,
 			color: '#d0021b'
@@ -374,6 +424,18 @@ $(document).ready(function() {
 	});
 
 	// Interactive
+
+	$.each(pulseChart.series, function(i, serie) {
+		if (i == 0) {
+			$.each(pulseChart.series[i].points, function(i, point) {
+				console.log(i)
+			});
+		} else if (i == 1) {
+			$.each(pulseChart.series[i].points, function(i, point) {
+				console.log(i+25)
+			});
+		}
+	});
 
 	$(document).on('click', '.js-pulse-yes', function() {
 		$('.widget-pulse-item').toggleClass('is-disable');
@@ -388,6 +450,11 @@ $(document).ready(function() {
 		$('.highcharts-legend-item.highcharts-series-0').trigger('click');
 		$('.highcharts-legend-item.highcharts-series-2').trigger('click');
 		$('.highcharts-legend-item.highcharts-series-3').trigger('click');
+	});
+
+	$(document).bind('mouseup touchend', function(e) {
+		if ($(e.target).closest('.widget-pulse-graph').length || $(e.target).closest('.widget-note-item').length) return;
+		$('.widget-note-item').slideUp(300);
 	});
 
 });
