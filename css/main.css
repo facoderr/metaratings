@@ -5639,6 +5639,7 @@ body {
 
 .widget-note-item {
   position: relative;
+  display: none;
   background: #fff;
   -webkit-box-shadow: 0 2px 20px -10px rgba(8, 11, 42, 0.5);
           box-shadow: 0 2px 20px -10px rgba(8, 11, 42, 0.5);
@@ -5661,6 +5662,10 @@ body {
   background: #39af61;
 }
 
+.widget-note-no:after {
+  background: #d0021b;
+}
+
 .widget-note-time {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5675,8 +5680,8 @@ body {
   font-weight: 700;
 }
 
-.widget-note-clock {
-  margin: 0 20px 0 0;
+.widget-note-date {
+  margin: 0 0 0 20px;
 }
 
 .widget-note-title {
@@ -7968,6 +7973,25 @@ g.highcharts-tooltip {
     color: #601dc0;
     -webkit-text-decoration-color: #601dc0;
             text-decoration-color: #601dc0;
+  }
+  .widget-note-item {
+    padding: 10px 15px 15px;
+  }
+  .widget-note-item:after {
+    width: 3px;
+  }
+  .widget-note-time {
+    padding: 0 0 0 30px;
+  }
+  .widget-note-date {
+    -webkit-box-ordinal-group: 0;
+    -webkit-order: -1;
+        -ms-flex-order: -1;
+            order: -1;
+    margin: 0 20px 0 0;
+  }
+  .widget-note-title {
+    font-size: 20px;
   }
   .widget-review-title {
     display: none;
