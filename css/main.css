@@ -1717,6 +1717,45 @@ body {
   visibility: visible;
 }
 
+.feed-box-other {
+  position: relative;
+  height: 100px;
+  margin: 0 -15px 10px;
+}
+
+.feed-box-other .feed-forecast-detail {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  top: 15px;
+  right: 15px;
+  left: 15px;
+  z-index: 1;
+}
+
+.feed-box-other .feed-forecast-odds {
+  margin: 0;
+}
+
+.feed-box-other .feed-forecast-time {
+  min-height: 24px;
+  color: #7f7f7f;
+  background: #e9e9e9;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  margin: 0;
+}
+
 .feed-box-detail {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1826,6 +1865,17 @@ body {
       -ms-flex-pack: distribute;
           justify-content: space-around;
   margin: 0 0 15px;
+}
+
+.feed-forecast-img {
+  width: 100%;
+  height: 100%;
+}
+
+.feed-forecast-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .feed-forecast-team {
@@ -6955,10 +7005,12 @@ g.highcharts-tooltip {
         -ms-flex-align: start;
             align-items: flex-start;
   }
-  .reward-filter {
+  .reward-sidebar {
     width: 200px;
-    padding: 12px 6px;
     margin: 0 40px 0 0;
+  }
+  .reward-filter {
+    padding: 12px 6px;
   }
   .reward-content {
     -webkit-box-flex: 2;
@@ -7108,11 +7160,13 @@ g.highcharts-tooltip {
         -ms-flex-align: start;
             align-items: flex-start;
   }
-  .forecast-bar {
+  .forecast-sidebar {
     width: 200px;
+    margin: 0 40px 0 0;
+  }
+  .forecast-bar {
     background: #f9f9f9;
     padding: 20px;
-    margin: 0 40px 0 0;
   }
   .forecast-bar-toggle {
     display: none;
@@ -7750,9 +7804,21 @@ g.highcharts-tooltip {
     padding: 100px 0;
   }
   .widget-row {
-    width: -webkit-calc(100% - 240px);
-    width: calc(100% - 240px);
-    margin: 0 0 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .widget-sidebar {
+    width: 200px;
+    margin: 0 40px 0 0;
+  }
+  .widget-main {
+    -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
+        -ms-flex-positive: 2;
+            flex-grow: 2;
+    width: 50%;
   }
   .widget-head {
     margin: 0 0 10px;
