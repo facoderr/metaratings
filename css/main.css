@@ -1719,7 +1719,7 @@ body {
 
 .feed-box-other {
   position: relative;
-  height: 100px;
+  height: 125px;
   margin: 0 -15px 10px;
 }
 
@@ -2070,7 +2070,7 @@ body {
 }
 
 .feed-bar-head.is-active {
-  opacity: 1;
+  opacity: 0;
 }
 
 .feed-bar-title {
@@ -2234,6 +2234,10 @@ body {
 .feed-bar .feed-box-subtitle {
   max-height: 46px;
   margin: 10px 0 0;
+}
+
+.feed-bar .feed-box-other {
+  height: 100px;
 }
 
 .feed-bar .feed-box-detail {
