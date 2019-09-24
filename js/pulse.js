@@ -186,14 +186,15 @@ $(document).ready(function() {
 		// Global Options
 
 		chart: {
+			pinchType: 'x',
+			panning: true,
+			panKey: 'ctrl',
 			plotBorderWidth: 1,
 			plotBorderColor:'#e2e2e2',
 			style: {
 				'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif'
 			},
-			marginRight: 50,
-			marginBottom: 45,
-			marginLeft: 1,
+			margin: [-25, 1, 45, 1],
 			events: {
 				load: function() {
 					this.pulseTooltip = new Highcharts.Tooltip(this, this.options.tooltip);
@@ -212,32 +213,60 @@ $(document).ready(function() {
 
 		title: {text: null},
 
+		//
+		rangeSelector: {
+			enabled: true,
+			buttons: [{
+				type: 'day',
+				count: 1,
+				text: '1d'
+			}, {
+				type: 'week',
+				count: 1,
+				text: '1w'
+			}, {
+				type: 'month',
+				count: 1,
+				text: '1m'
+			}, {
+				type: 'year',
+				count: 1,
+				text: '1y'
+			}],
+			inputEnabled: false,
+			selected: 0
+		},
+		//
+
 		// Tooltip Options
 
 		tooltip: {
 			enabled: false,
 			borderWidth: 0,
-			borderRadius: 0,
+			borderRadius: 8,
 			shadow: false,
 			hideDelay: 200,
 			padding: 0,
 			useHTML: true,
 			formatter: function() {
-				let index = this.point.index
+				let serieIndex = this.series.index
+						pointIndex = this.point.index
 						time = Highcharts.dateFormat('%d %b %H:%M', this.x);
-						pulsePositive = pulseChart.series[0].processedYData;
-						pulseNegative = pulseChart.series[1].processedYData;
-						pulseTotal = []
+						pulsePositive = pulseChart.series[0].data[pointIndex].y;
+						pulseNegative = pulseChart.series[1].data[pointIndex].y;
+						pulseNeutral = pulseChart.series[2].data[pointIndex].y;
+						pulseSpam = pulseChart.series[3].data[pointIndex].y;
+						pulseTotal = pulsePositive - pulseNegative
 
-				$.each(pulseChart.series[0].data, function(i, data) {
-					pulseTotal.push(pulsePositive[i] + pulseNegative[i]);
-				});
-
-				return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-yes">+ ' + Math.abs(pulsePositive[index]) + ' Пол.</div><div class="highcharts-tooltip-no">- ' + Math.abs(pulseNegative[index]) + ' Отр.</div></div><div class="highcharts-tooltip-total">' + Math.abs(pulseTotal[index]) + '</div></di'
+				if (serieIndex == 0 || serieIndex == 1) {
+					return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-yes">+ ' + Math.abs(pulsePositive) + ' Пол.</div><div class="highcharts-tooltip-no">- ' + Math.abs(pulseNegative) + ' Отр.</div></div><div class="highcharts-tooltip-total">' + Math.abs(pulseTotal) + '</div></div>'
+				} else if (serieIndex == 2) {
+					return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-other">' + Math.abs(pulseNeutral) + ' Нейтральных</div></div></div>'
+				} else if (serieIndex == 3) {
+					return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-spam">' + Math.abs(pulseSpam) + ' Спама</div></div></div>'
+				}
 			},
-			crosshairs: {
-				width: 1
-			},
+			//crosshairs: {},
 			style: {
 				color: '#ffffff'
 			}
@@ -250,8 +279,6 @@ $(document).ready(function() {
 			title: {
 				enabled: false
 			},
-			startOnTick: true,
-			endOnTick: true,
 			gridLineWidth: 1,
 			gridLineColor: '#e2e2e2',
 			gridLineDashStyle: 'ShortDash',
@@ -296,70 +323,53 @@ $(document).ready(function() {
 
 		plotOptions: {
 			column: {
-				stacking: 'normal',
+				pointStart: Date.UTC(new Date(2019, 00, 01).getFullYear(), new Date(2019, 00, 01).getMonth(), new Date(2019, 00, 01).getDate()),
+				pointInterval: 36e5 * 4,
+				maxPointWidth: 8,
+				borderRadiusTopLeft: 4,
+				borderRadiusTopRight: 4,
+				borderRadiusBottomLeft: 4,
+				borderRadiusBottomRight: 4,
+				borderWidth: 0,
+				borderColor: '',
 				point:{
 					events:{
 						click: function() {
-							let pointDate = new Date(this.x).toLocaleDateString()
-									pointTime = new Date(this.x).toLocaleTimeString()
-							if (this.y > 0) {
+							let serieIndex = this.series.index
+							    pointDate = new Date(this.x).toLocaleDateString()
+									pointTime = new Date(this.x).toLocaleTimeString([], {timeZone: 'Africa/Accra', hour: '2-digit', minute:'2-digit'})
+							if (serieIndex == 0) {
 								$('.widget-note-item').fadeOut(300);
 								setTimeout(function() {
 									$('.widget-note-yes .widget-note-clock').html(pointTime);
 									$('.widget-note-yes .widget-note-date').html(pointDate);
 									$('.widget-note-yes').fadeIn(300);
 								}, 300);
-							} else {
+							} else if (serieIndex == 1) {
 								$('.widget-note-item').fadeOut(300);
 								setTimeout(function() {
 									$('.widget-note-no .widget-note-clock').html(pointTime);
 									$('.widget-note-no .widget-note-date').html(pointDate);
 									$('.widget-note-no').fadeIn(300);
 								}, 300);
+							} else {
+								$('.widget-note-item').fadeOut(300);
 							}
 						}
 					}
 				},
-				pointStart: Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
-				pointInterval: 36e5,
-				pointWidth: 8,
-				borderWidth: 0,
-				borderColor: '',
 				dataLabels: {
 					enabled: true,
 					useHTML: true,
 					formatter: function() {
-						if (this.y > 0) {
+						let serieIndex = this.series.index
+						if (serieIndex == 0 || serieIndex == 1) {
 							maxVal = Math.max.apply(null, this.series.processedYData);
 							if (this.y == maxVal) {
-								return '<div style="text-align:center;color:#000;transform:translateY('+ '-' + (this.point.dlBox.height / 2 - 9) + 'px)"><div class="highcharts-data-round"></div></div>';
-							}
-						} else {
-							minVal = Math.min.apply(null, this.series.processedYData);
-							if (this.y == minVal) {
-								return '<div style="text-align:center;color:#000;transform:translateY(' + (this.point.dlBox.height / 2) + 'px)"><div class="highcharts-data-round"></div></div>';
+								return '<div style="text-align:center;color:#000;transform:translateY(17px)"><div class="highcharts-data-round"></div></div>';
 							}
 						}
 					}
-				},
-				states: {
-					hover: {
-						enabled: false
-					}
-				}
-			},
-			spline: {
-				pointStart: Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
-				pointInterval: 36e5,
-				enableMouseTracking: false,
-				lineWidth: 0,
-				marker: {
-					symbol: 'circle',
-					radius: 3,
-					fillColor: '#ffffff'
-				},
-				marker: {
-					enabled: false
 				},
 				states: {
 					hover: {
@@ -394,47 +404,84 @@ $(document).ready(function() {
 			name: 'Positive',
 			data: (function () {
 				let data = [],
-				i;
-
-				for (i = -24; i <= 0; i += 1) {
+						i;
+				for (i = -999; i <= 0; i += 1) {
 					data.push([Math.round(Math.random() * 1000)]);
 				}
 				return data;
 			}()),
-			borderRadiusTopLeft: 4,
-			borderRadiusTopRight: 4,
 			color: '#39af61'
 		}, {
 			type: 'column',
 			name: 'Negative',
 			data: (function () {
 				let data = [],
-				i;
-
-				for (i = -24; i <= 0; i += 1) {
-					data.push([Math.round(Math.random() * -1000)]);
+						i;
+				for (i = -999; i <= 0; i += 1) {
+					data.push([Math.round(Math.random() * 1000)]);
 				}
 				return data;
 			}()),
-			borderRadiusBottomLeft: 4,
-			borderRadiusBottomRight: 4,
 			color: '#d0021b'
+		}, {
+			type: 'column',
+			name: 'Neutral',
+			data: (function () {
+				let data = [],
+						i;
+				for (i = -999; i <= 0; i += 1) {
+					data.push([Math.round(Math.random() * 200)]);
+				}
+				return data;
+			}()),
+			color: '#a5a5a5'
+		}, {
+			type: 'column',
+			name: 'Spam',
+			data: (function () {
+				let data = [],
+						i;
+				for (i = -999; i <= 0; i += 1) {
+					data.push([Math.round(Math.random() * 200)]);
+				}
+				return data;
+			}()),
+			color: '#f5a623'
 		}]
 
 	});
 
-	// Interactive
+	// Interaction
 
-	$.each(pulseChart.series, function(i, serie) {
-		if (i == 0) {
-			$.each(pulseChart.series[i].points, function(i, point) {
-				console.log(i)
-			});
-		} else if (i == 1) {
-			$.each(pulseChart.series[i].points, function(i, point) {
-				console.log(i+25)
-			});
+	//pulseChart.xAxis[0].setExtremes(0,9);
+
+	if ($(window).outerWidth() <= 1099) {
+		pulseChart.update({chart: {margin: [-25, 1, 45, 1]}});
+	} else {
+		pulseChart.update({chart: {margin: [-25, 50, 45, 1]}});
+	}
+
+	$(window).resize(function() {
+		if ($(window).outerWidth() <= 1099) {
+			pulseChart.update({chart: {margin: [-25, 1, 45, 1]}});
+		} else {
+			pulseChart.update({chart: {margin: [-25, 50, 45, 1]}});
 		}
+	});
+
+	$('.highcharts-button').each(function() {
+		let index = $(this).index() - 1;
+		if ($(this).hasClass('highcharts-button-pressed')) {
+			$('.widget-pulse-time').eq(index).addClass('is-select');
+		} else if ($(this).hasClass('highcharts-button-disabled')) {
+			$('.widget-pulse-time').eq(index).addClass('is-disable');
+		}
+	});
+	$(document).on('click', '.widget-pulse-time', function() {
+		let index = $(this).index();
+		$('.widget-pulse-time').removeClass('is-select');
+		$(this).addClass('is-select');
+		$('.highcharts-button').eq(index).trigger('click');
 	});
 
 	$(document).on('click', '.js-pulse-yes', function() {
@@ -450,6 +497,20 @@ $(document).ready(function() {
 		$('.highcharts-legend-item.highcharts-series-0').trigger('click');
 		$('.highcharts-legend-item.highcharts-series-2').trigger('click');
 		$('.highcharts-legend-item.highcharts-series-3').trigger('click');
+	});
+	$(document).on('click', '.js-pulse-other', function() {
+		$('.widget-pulse-item').toggleClass('is-disable');
+		$(this).removeClass('is-disable');
+		$('.highcharts-legend-item.highcharts-series-0').trigger('click');
+		$('.highcharts-legend-item.highcharts-series-1').trigger('click');
+		$('.highcharts-legend-item.highcharts-series-3').trigger('click');
+	});
+	$(document).on('click', '.js-pulse-spam', function() {
+		$('.widget-pulse-item').toggleClass('is-disable');
+		$(this).removeClass('is-disable');
+		$('.highcharts-legend-item.highcharts-series-0').trigger('click');
+		$('.highcharts-legend-item.highcharts-series-1').trigger('click');
+		$('.highcharts-legend-item.highcharts-series-2').trigger('click');
 	});
 
 	$(document).bind('mouseup touchend', function(e) {

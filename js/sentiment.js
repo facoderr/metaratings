@@ -150,9 +150,7 @@ $(document).ready(function() {
 				'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif'
 			},
 			zoomType: 'xy',
-			marginTop: 1,
-			marginRight: 1,
-			marginLeft: 14,
+			margin: [1, 1, null, 14],
 			events: {
 				load: function(e) {
 					let minVal = Math.abs(this.axes[1].min);
@@ -180,11 +178,19 @@ $(document).ready(function() {
 					}
 				},
 				drilldown: function() {
+					$('.widget-graph-item').each(function() {
+						if ($(this).hasClass('is-hover')) {
+							let seriesVal = $(this).data('series');
+									className = sentimentChart.series[seriesVal].data[0].drilldown;
+							$('.widget-review-item').hide();
+							$('.' + className).show();
+						}
+					});
 					setTimeout(function() {
 						sentimentChart.update({chart: {zoomType: ''}})
 						$('.js-graph-list').html('');
 						$(sentimentChart.series[0].data).each(function(i, data) {
-							if (data.y > 0) {
+							if (data.y >= 0) {
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
 							} else {
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
@@ -212,12 +218,21 @@ $(document).ready(function() {
 				drillup: function() {
 					setTimeout(function() {
 						sentimentChart.update({chart: {zoomType: 'xy'}})
-						$('.widget-graph-yes').slideDown(300).find('.js-graph-list').html('');
-						$('.widget-graph-no').slideDown(300).find('.js-graph-list').html('');
-						$('.widget-review-yes').slideDown(300);
-						$('.widget-review-no').slideDown(300);
+						$('.js-graph-list').html('');
+						setTimeout(function() {
+							if ($('.widget-graph-yes .js-graph-list').children().length === 0) {
+								$('.widget-graph-yes').slideUp(300);
+								$('.widget-review-yes').slideUp(300);
+							} else if ($('.widget-graph-no .js-graph-list').children().length === 0) {
+								$('.widget-graph-no').slideUp(300);
+								$('.widget-review-no').slideUp(300);
+							}  else {
+								$('.widget-graph-tag').slideDown(300);
+								$('.widget-review-item').slideDown(300);
+							}
+						}, 1);
 						$(sentimentChart.series).each(function(i, serie) {
-							if (serie.yData[0] > 0) {
+							if (serie.yData[0] >= 0) {
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
 							} else {
 								$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
@@ -246,7 +261,6 @@ $(document).ready(function() {
 			title: {
 				enabled: false
 			},
-			min: 10,
 			startOnTick: true,
 			endOnTick: true,
 			gridLineWidth: 1,
@@ -348,12 +362,13 @@ $(document).ready(function() {
 				},
 				dataLabels: {
 					enabled: true,
+					//allowOverlap: true,
 					useHTML: true,
 					formatter: function() {
 						if ($(window).outerWidth() <= 1099) {
-							return '<span style="position:relative;bottom:-' + ((this.point.z / 2) + 9) + 'px;">' + this.point.name + '</span>';
+							return '<span style="position:relative;bottom:-' + (this.point.marker.radius + 9) + 'px;">' + this.point.name + '</span>';
 						} else {
-							return '<span style="position:relative;bottom:-' + ((this.point.z / 2) + 16) + 'px;">' + this.point.name + '</span>';
+							return '<span style="position:relative;bottom:-' + (this.point.marker.radius + 16) + 'px;">' + this.point.name + '</span>';
 						}
 					},
 					style: {
@@ -474,10 +489,12 @@ $(document).ready(function() {
 
 		drilldown: {
 			activeDataLabelStyle: {
-				'color': '#000000', 'textDecoration': 'none'
+				color: '#000000',
+				textDecoration: 'none'
 			},
 			activeAxisLabelStyle: {
-				'color': '#777777', 'textDecoration': 'none'
+				color: '#777777',
+				textDecoration: 'none'
 			},
 			drillUpButton: {
 				theme: {
@@ -689,10 +706,20 @@ $(document).ready(function() {
 	// Init Sentiment Tags, Sentiment Indicator, Sentiment Highlight
 
 	$(sentimentChart.series).each(function(i, serie) {
-		if (serie.yData[0] > 0) {
+		if (serie.yData[0] >= 0) {
 			$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-yes .js-graph-list');
 		} else {
 			$($.parseHTML('<a href="javascript:void(0);" class="widget-graph-item js-graph-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>')).appendTo('.widget-graph-no .js-graph-list');
+		}
+		if ($('.widget-graph-yes .js-graph-list').children().length === 0) {
+			$('.widget-graph-yes').slideUp(300);
+			$('.widget-review-yes').slideUp(300);
+		} else if ($('.widget-graph-no .js-graph-list').children().length === 0) {
+			$('.widget-graph-no').slideUp(300);
+			$('.widget-review-no').slideUp(300);
+		} else {
+			$('.widget-graph-tag').slideDown(300);
+			$('.widget-review-item').slideDown(300);
 		}
 		$('.widget-review-text').highlight(serie.data[0].name, i, 'widget-review-highlight js-review-highlight', 'js-review-gap');
 	});
@@ -705,6 +732,9 @@ $(document).ready(function() {
 
 	$(document).on('click', '.js-graph-item', function() {
 		let seriesVal = $(this).data('series');
+				className = sentimentChart.series[seriesVal].data[0].drilldown;
+		$('.widget-review-item').hide();
+		$('.' + className).show();
 		if (sentimentChart.series[seriesVal].data[0].drilldown === undefined) {
 			return false;
 		} else {
