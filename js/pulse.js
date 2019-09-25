@@ -209,11 +209,12 @@ $(document).ready(function() {
 			}
 		},
 
-		// Disabled Chart title, tooltip, legend
+		// Disabled Chart title
 
 		title: {text: null},
 
-		//
+		// Range Options
+
 		rangeSelector: {
 			enabled: true,
 			buttons: [{
@@ -236,7 +237,6 @@ $(document).ready(function() {
 			inputEnabled: false,
 			selected: 0
 		},
-		//
 
 		// Tooltip Options
 
@@ -407,55 +407,57 @@ $(document).ready(function() {
 
 		// Main Series Data
 
-		series: [{
-			type: 'column',
-			name: 'Positive',
-			data: (function () {
-				let data = [],
-						i;
-				for (i = -999; i <= 0; i += 1) {
-					data.push([Math.round(Math.random() * 1000)]);
-				}
-				return data;
-			}()),
-			color: '#39af61'
-		}, {
-			type: 'column',
-			name: 'Negative',
-			data: (function () {
-				let data = [],
-						i;
-				for (i = -999; i <= 0; i += 1) {
-					data.push([Math.round(Math.random() * 1000)]);
-				}
-				return data;
-			}()),
-			color: '#d0021b'
-		}, {
-			type: 'column',
-			name: 'Neutral',
-			data: (function () {
-				let data = [],
-						i;
-				for (i = -999; i <= 0; i += 1) {
-					data.push([Math.round(Math.random() * 200)]);
-				}
-				return data;
-			}()),
-			color: '#a5a5a5'
-		}, {
-			type: 'column',
-			name: 'Spam',
-			data: (function () {
-				let data = [],
-						i;
-				for (i = -999; i <= 0; i += 1) {
-					data.push([Math.round(Math.random() * 200)]);
-				}
-				return data;
-			}()),
-			color: '#f5a623'
-		}]
+		series: [
+			{
+				type: 'column',
+				name: 'Positive',
+				data: (function () {
+					let data = [],
+					i;
+					for (i = -999; i <= 0; i += 1) {
+						data.push([Math.round(Math.random() * 1000)]);
+					}
+					return data;
+				}()),
+				color: '#39af61'
+			}, {
+				type: 'column',
+				name: 'Negative',
+				data: (function () {
+					let data = [],
+					i;
+					for (i = -999; i <= 0; i += 1) {
+						data.push([Math.round(Math.random() * 1000)]);
+					}
+					return data;
+				}()),
+				color: '#d0021b'
+			}, {
+				type: 'column',
+				name: 'Neutral',
+				data: (function () {
+					let data = [],
+					i;
+					for (i = -999; i <= 0; i += 1) {
+						data.push([Math.round(Math.random() * 200)]);
+					}
+					return data;
+				}()),
+				color: '#a5a5a5'
+			}, {
+				type: 'column',
+				name: 'Spam',
+				data: (function () {
+					let data = [],
+					i;
+					for (i = -999; i <= 0; i += 1) {
+						data.push([Math.round(Math.random() * 200)]);
+					}
+					return data;
+				}()),
+				color: '#f5a623'
+			}
+		]
 
 	});
 
