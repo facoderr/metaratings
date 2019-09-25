@@ -108,66 +108,6 @@ $(document).ready(function() {
 		$('.js-widget-modal').fadeOut().removeClass('is-open');
 	});
 
-	// Highcharts Custom Setting
-
-	(function(factory) {
-		if(typeof module === 'object' && module.exports) {
-			module.exports = factory;
-		} else {
-			factory(Highcharts);
-		}
-	}(function(Highcharts) {
-		(function(H) {
-			H.wrap(H.seriesTypes.column.prototype, 'translate', function(proceed) {
-				const options = this.options;
-				const topMargin = options.topMargin || 0;
-				const bottomMargin = options.bottomMargin || 0;
-
-				proceed.call(this);
-
-				H.each(this.points, function(point) {
-					if(options.borderRadiusTopLeft || options.borderRadiusTopRight || options.borderRadiusBottomRight || options.borderRadiusBottomLeft) {
-						const w = point.shapeArgs.width;
-						const h = point.shapeArgs.height;
-						const x = point.shapeArgs.x;
-						const y = point.shapeArgs.y;
-
-						let radiusTopLeft = H.relativeLength(options.borderRadiusTopLeft || 0, w);
-						let radiusTopRight = H.relativeLength(options.borderRadiusTopRight || 0, w);
-						let radiusBottomRight = H.relativeLength(options.borderRadiusBottomRight || 0, w);
-						let radiusBottomLeft = H.relativeLength(options.borderRadiusBottomLeft || 0, w);
-
-						const maxR = Math.min(w, h) / 2
-
-						radiusTopLeft = radiusTopLeft > maxR ? maxR : radiusTopLeft;
-						radiusTopRight = radiusTopRight > maxR ? maxR : radiusTopRight;
-						radiusBottomRight = radiusBottomRight > maxR ? maxR : radiusBottomRight;
-						radiusBottomLeft = radiusBottomLeft > maxR ? maxR : radiusBottomLeft;
-
-						point.dlBox = point.shapeArgs;
-
-						point.shapeType = 'path';
-						point.shapeArgs = {
-							d: [
-							'M', x + radiusTopLeft, y + topMargin,
-							'L', x + w - radiusTopRight, y + topMargin,
-							'C', x + w - radiusTopRight / 2, y, x + w, y + radiusTopRight / 2, x + w, y + radiusTopRight,
-							'L', x + w, y + h - radiusBottomRight,
-							'C', x + w, y + h - radiusBottomRight / 2, x + w - radiusBottomRight / 2, y + h, x + w - radiusBottomRight, y + h + bottomMargin,
-							'L', x + radiusBottomLeft, y + h + bottomMargin,
-							'C', x + radiusBottomLeft / 2, y + h, x, y + h - radiusBottomLeft / 2, x, y + h - radiusBottomLeft,
-							'L', x, y + radiusTopLeft,
-							'C', x, y + radiusTopLeft / 2, x + radiusTopLeft / 2, y, x + radiusTopLeft, y,
-							'Z'
-							]
-						};
-					}
-
-				});
-			});
-		}(Highcharts));
-	}));
-
 	// Highcharts Localization
 
 	Highcharts.setOptions({
@@ -188,23 +128,15 @@ $(document).ready(function() {
 		chart: {
 			pinchType: 'x',
 			panning: true,
-			panKey: 'ctrl',
 			plotBorderWidth: 1,
 			plotBorderColor:'#e2e2e2',
 			style: {
 				'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif'
 			},
-			margin: [-25, 1, 45, 1],
+			margin: [-25, 1, 50, 1],
 			events: {
 				load: function() {
 					this.pulseTooltip = new Highcharts.Tooltip(this, this.options.tooltip);
-					Highcharts.addEvent(Highcharts.Axis, 'afterDrawCrosshair', function ({ point }) {
-						if (this.cross && point) {
-							this.cross.attr({
-								stroke: point.series.color
-							})
-						}
-					});
 				}
 			}
 		},
@@ -218,21 +150,38 @@ $(document).ready(function() {
 		rangeSelector: {
 			enabled: true,
 			buttons: [{
-				type: 'day',
-				count: 1,
-				text: '1d'
-			}, {
 				type: 'week',
 				count: 1,
-				text: '1w'
+				preserveDataGrouping: true,
+				dataGrouping: {
+					approximation: 'sum',
+					enabled: true,
+					forced: true,
+					groupAll: true,
+					units: [['day', [1]]],
+				}
 			}, {
 				type: 'month',
 				count: 1,
-				text: '1m'
+				preserveDataGrouping: true,
+				dataGrouping: {
+					approximation: 'sum',
+					enabled: true,
+					forced: true,
+					groupAll: true,
+					units: [['week', [1]]],
+				}
 			}, {
 				type: 'year',
 				count: 1,
-				text: '1y'
+				preserveDataGrouping: true,
+				dataGrouping: {
+					approximation: 'sum',
+					enabled: true,
+					forced: true,
+					groupAll: true,
+					units: [['month', [1]]],
+				}
 			}],
 			inputEnabled: false,
 			selected: 0
@@ -242,6 +191,7 @@ $(document).ready(function() {
 
 		tooltip: {
 			enabled: false,
+			followTouchMove: false,
 			borderWidth: 0,
 			borderRadius: 20,
 			shadow: false,
@@ -251,18 +201,39 @@ $(document).ready(function() {
 			formatter: function() {
 				let serieIndex = this.series.index
 						pointIndex = this.point.index
+						pointVal = this.y
 						time = Highcharts.dateFormat('%d %b %H:%M', this.x);
-						pulsePositive = pulseChart.series[0].data[pointIndex].y;
-						pulseNegative = pulseChart.series[1].data[pointIndex].y;
-						pulseNeutral = pulseChart.series[2].data[pointIndex].y;
-						pulseSpam = pulseChart.series[3].data[pointIndex].y;
-						pulseTotal = pulsePositive - pulseNegative
-
-				if (serieIndex == 0 || serieIndex == 1) {
+				if (serieIndex == 0) {
+					$(pulseChart.series[0].processedYData).each(function (i, data) {
+						if (data == pointVal || pulseChart.series[1].processedYData[i] == pointVal) {
+							pulsePositive = data
+							pulseNegative = pulseChart.series[1].processedYData[i]
+							pulseTotal = pulsePositive - pulseNegative
+						}
+					});
+					return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-yes">+ ' + Math.abs(pulsePositive) + ' Пол.</div><div class="highcharts-tooltip-no">- ' + Math.abs(pulseNegative) + ' Отр.</div></div><div class="highcharts-tooltip-total">' + Math.abs(pulseTotal) + '</div></div>'
+				} else if (serieIndex == 1) {
+					$(pulseChart.series[1].processedYData).each(function (i, data) {
+						if (data == pointVal || pulseChart.series[0].processedYData[i] == pointVal) {
+							pulsePositive = pulseChart.series[0].processedYData[i]
+							pulseNegative = data
+							pulseTotal = pulsePositive - pulseNegative
+						}
+					});
 					return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-yes">+ ' + Math.abs(pulsePositive) + ' Пол.</div><div class="highcharts-tooltip-no">- ' + Math.abs(pulseNegative) + ' Отр.</div></div><div class="highcharts-tooltip-total">' + Math.abs(pulseTotal) + '</div></div>'
 				} else if (serieIndex == 2) {
+					$(pulseChart.series[2].processedYData).each(function (i, data) {
+						if (data == pointVal) {
+							pulseNeutral = data
+						}
+					});
 					return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-other">' + Math.abs(pulseNeutral) + ' Нейтральных</div></div></div>'
 				} else if (serieIndex == 3) {
+					$(pulseChart.series[3].processedYData).each(function (i, data) {
+						if (data == pointVal) {
+							pulseSpam = data
+						}
+					});
 					return '<div class="highcharts-tooltip-wrap" style="background-color: ' + this.color + ';"><div class="highcharts-tooltip-date">' + time + '</div><div class="highcharts-tooltip-val"><div class="highcharts-tooltip-spam">' + Math.abs(pulseSpam) + ' Спама</div></div></div>'
 				}
 			},
@@ -296,8 +267,8 @@ $(document).ready(function() {
 			events: {
 				afterSetExtremes: function(e) {
 					$('.highcharts-data-round').css({
-						width: this.series[0].points[0].pointWidth - 2,
-						height: this.series[0].points[0].pointWidth - 2
+						width: this.series[0].points[0].shapeArgs.width - 2,
+						height: this.series[0].points[0].shapeArgs.width - 2
 					})
 				}
 			}
@@ -331,13 +302,10 @@ $(document).ready(function() {
 
 		plotOptions: {
 			column: {
-				pointStart: Date.UTC(new Date(2019, 00, 01).getFullYear(), new Date(2019, 00, 01).getMonth(), new Date(2019, 00, 01).getDate()),
-				pointInterval: 36e5 * 4,
+				pointStart: Date.UTC(2017, 00, 01),
+				pointInterval: 36e5 * 24,
 				maxPointWidth: 8,
-				borderRadiusTopLeft: 4,
-				borderRadiusTopRight: 4,
-				borderRadiusBottomLeft: 4,
-				borderRadiusBottomRight: 4,
+				borderRadius: 4,
 				borderWidth: 0,
 				borderColor: '',
 				point:{
@@ -374,7 +342,7 @@ $(document).ready(function() {
 						if (serieIndex == 0 || serieIndex == 1) {
 							maxVal = Math.max.apply(null, this.series.processedYData);
 							if (this.y == maxVal) {
-								return '<div style="text-align:center;color:#000;transform:translateY(17px)"><div class="highcharts-data-round" style="width: ' + (this.point.pointWidth - 2) + 'px; height: ' + (this.point.pointWidth - 2) + 'px"></div></div>';
+								return '<div style="text-align:center;color:#000;transform:translateY(17px)"><div class="highcharts-data-round" style="width: ' + (this.point.shapeArgs.width - 2) + 'px; height: ' + (this.point.shapeArgs.width - 2) + 'px"></div></div>';
 							}
 						}
 					}
@@ -415,7 +383,7 @@ $(document).ready(function() {
 					let data = [],
 					i;
 					for (i = -999; i <= 0; i += 1) {
-						data.push([Math.round(Math.random() * 1000)]);
+						data.push([Math.round(Math.random() * 100)]);
 					}
 					return data;
 				}()),
@@ -427,7 +395,7 @@ $(document).ready(function() {
 					let data = [],
 					i;
 					for (i = -999; i <= 0; i += 1) {
-						data.push([Math.round(Math.random() * 1000)]);
+						data.push([Math.round(Math.random() * 100)]);
 					}
 					return data;
 				}()),
@@ -439,7 +407,7 @@ $(document).ready(function() {
 					let data = [],
 					i;
 					for (i = -999; i <= 0; i += 1) {
-						data.push([Math.round(Math.random() * 200)]);
+						data.push([Math.round(Math.random() * 20)]);
 					}
 					return data;
 				}()),
@@ -451,7 +419,7 @@ $(document).ready(function() {
 					let data = [],
 					i;
 					for (i = -999; i <= 0; i += 1) {
-						data.push([Math.round(Math.random() * 200)]);
+						data.push([Math.round(Math.random() * 20)]);
 					}
 					return data;
 				}()),
@@ -463,12 +431,12 @@ $(document).ready(function() {
 
 	// Interaction
 
-	//pulseChart.xAxis[0].setExtremes(0,9);
+	//pulseChart.xAxis[0].setExtremes(0, 9);
 
 	if ($(window).outerWidth() <= 1099) {
-		pulseChart.update({chart: {margin: [-25, 1, 45, 1]}});
+		pulseChart.update({chart: {margin: [-25, 1, 50, 1]}});
 	} else {
-		pulseChart.update({chart: {margin: [-25, 50, 45, 1]}});
+		pulseChart.update({chart: {margin: [-25, 50, 50, 1]}});
 	}
 
 	$(window).resize(function() {
@@ -481,12 +449,15 @@ $(document).ready(function() {
 
 	$('.highcharts-button').each(function() {
 		let index = $(this).index() - 1;
+		$('.widget-pulse-time').removeClass('is-disable');
 		if ($(this).hasClass('highcharts-button-pressed')) {
+			$('.widget-pulse-time').removeClass('is-select');
 			$('.widget-pulse-time').eq(index).addClass('is-select');
 		} else if ($(this).hasClass('highcharts-button-disabled')) {
 			$('.widget-pulse-time').eq(index).addClass('is-disable');
 		}
 	});
+	
 	$(document).on('click', '.widget-pulse-time', function() {
 		let index = $(this).index();
 		$('.widget-pulse-time').removeClass('is-select');

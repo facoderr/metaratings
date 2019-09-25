@@ -4949,6 +4949,10 @@ body {
   height: 100%;
 }
 
+.widget-resource {
+  min-width: 420px;
+}
+
 .widget-resource-more {
   display: block;
   color: #666;
@@ -5391,8 +5395,8 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: -webkit-calc(100% / 4);
-  width: calc(100% / 4);
+  width: -webkit-calc(100% / 3);
+  width: calc(100% / 3);
   height: 34px;
   line-height: 1;
   font-weight: 700;
@@ -6323,6 +6327,10 @@ body {
 .highcharts-point.zone-no {
   fill: #ffc2c9;
   stroke: #d0021b;
+}
+
+.highcharts-tooltip {
+  z-index: 1;
 }
 
 .highcharts-tooltip-wrap {
