@@ -243,7 +243,7 @@ $(document).ready(function() {
 		tooltip: {
 			enabled: false,
 			borderWidth: 0,
-			borderRadius: 8,
+			borderRadius: 20,
 			shadow: false,
 			hideDelay: 200,
 			padding: 0,
@@ -291,6 +291,14 @@ $(document).ready(function() {
 				style: {
 					color: '#777777',
 					fontSize: '10px'
+				}
+			},
+			events: {
+				afterSetExtremes: function(e) {
+					$('.highcharts-data-round').css({
+						width: this.series[0].points[0].pointWidth - 2,
+						height: this.series[0].points[0].pointWidth - 2
+					})
 				}
 			}
 		},
@@ -366,7 +374,7 @@ $(document).ready(function() {
 						if (serieIndex == 0 || serieIndex == 1) {
 							maxVal = Math.max.apply(null, this.series.processedYData);
 							if (this.y == maxVal) {
-								return '<div style="text-align:center;color:#000;transform:translateY(17px)"><div class="highcharts-data-round"></div></div>';
+								return '<div style="text-align:center;color:#000;transform:translateY(17px)"><div class="highcharts-data-round" style="width: ' + (this.point.pointWidth - 2) + 'px; height: ' + (this.point.pointWidth - 2) + 'px"></div></div>';
 							}
 						}
 					}
