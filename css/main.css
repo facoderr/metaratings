@@ -6322,19 +6322,9 @@ body {
 }
 
 .highcharts-point {
-  position: relative;
   cursor: pointer;
   -webkit-transition: fill .3s ease-in-out, stroke .3s ease-in-out;
   transition: fill .3s ease-in-out, stroke .3s ease-in-out;
-}
-
-.highcharts-point:after {
-  content: '';
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #000;
-  top: 0;
 }
 
 .highcharts-point.zone-yes {
