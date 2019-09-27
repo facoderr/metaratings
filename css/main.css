@@ -5285,6 +5285,10 @@ body {
   margin: 0 10px 0 0;
 }
 
+.widget-graph-item:hover {
+  color: #000;
+}
+
 .widget-graph-item span {
   margin: 0 0 0 5px;
 }
@@ -5527,6 +5531,7 @@ body {
 }
 
 .widget-pulse-graph {
+  min-height: 400px;
   margin: 0;
 }
 

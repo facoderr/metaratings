@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	// Pulse Event
+	///// Pulse Event /////
 
 	let uAg = navigator.userAgent.toLowerCase();
 	let isAndroid = uAg.indexOf('android') > -1;
@@ -119,7 +119,7 @@ $(document).ready(function() {
 		}
 	});
 
-	// Pulse Chart
+	///// Pulse Chart /////
 
 	let pulseChart = Highcharts.chart('js-pulse', {
 
@@ -429,16 +429,13 @@ $(document).ready(function() {
 
 	});
 
-	// Interaction
-
-	//pulseChart.xAxis[0].setExtremes(0, 9);
+	// Responsive Chart Margin
 
 	if ($(window).outerWidth() <= 1099) {
 		pulseChart.update({chart: {margin: [-25, 1, 50, 1]}});
 	} else {
 		pulseChart.update({chart: {margin: [-25, 50, 50, 1]}});
 	}
-
 	$(window).resize(function() {
 		if ($(window).outerWidth() <= 1099) {
 			pulseChart.update({chart: {margin: [-25, 1, 45, 1]}});
@@ -446,6 +443,8 @@ $(document).ready(function() {
 			pulseChart.update({chart: {margin: [-25, 50, 45, 1]}});
 		}
 	});
+
+	// Switch Zoom Chart (Day, Month, Year)
 
 	$('.highcharts-button').each(function() {
 		let index = $(this).index() - 1;
@@ -456,14 +455,15 @@ $(document).ready(function() {
 		} else if ($(this).hasClass('highcharts-button-disabled')) {
 			$('.widget-pulse-time').eq(index).addClass('is-disable');
 		}
-	});
-	
+	});	
 	$(document).on('click', '.widget-pulse-time', function() {
 		let index = $(this).index();
 		$('.widget-pulse-time').removeClass('is-select');
 		$(this).addClass('is-select');
 		$('.highcharts-button').eq(index).trigger('click');
 	});
+
+	// Switch Show/Hide Types
 
 	$(document).on('click', '.js-pulse-yes', function() {
 		$('.widget-pulse-item').toggleClass('is-disable');
@@ -493,6 +493,8 @@ $(document).ready(function() {
 		$('.highcharts-legend-item.highcharts-series-1').trigger('click');
 		$('.highcharts-legend-item.highcharts-series-2').trigger('click');
 	});
+
+	// Hide Pulse Note
 
 	$(document).bind('mouseup touchend', function(e) {
 		if ($(e.target).closest('.widget-pulse-graph').length || $(e.target).closest('.widget-note-item').length) return;
