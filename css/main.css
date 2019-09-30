@@ -2160,6 +2160,7 @@ body {
 }
 
 .feed-bar-list {
+  overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
   padding: 50px 0 0 30px;
@@ -4759,8 +4760,8 @@ body {
   width: -webkit-calc(100% / 6);
   width: calc(100% / 6);
   height: 40px;
-  -webkit-filter: grayscale(1) brightness(2);
-          filter: grayscale(1) brightness(2);
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 .widget-bk-link:first-child {
@@ -4769,14 +4770,14 @@ body {
 }
 
 .widget-bk-link:hover {
-  -webkit-filter: grayscale(0) brightness(1);
-          filter: grayscale(0) brightness(1);
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
 }
 
 .widget-bk-link.is-select {
   background: #ededed;
-  -webkit-filter: grayscale(0) brightness(1);
-          filter: grayscale(0) brightness(1);
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
 }
 
 .widget-bk-link img {
