@@ -46,7 +46,7 @@
 				<nav class="nav">
 
 					<div class="nav-head">
-						<a href="javascript:void(0);" class="nav-close js-toggle">
+						<a href="javascript:void(0);" class="nav-close js-toggle-menu">
 							<svg><use xlink:href="#close"></use></svg>
 							<svg><use xlink:href="#toggle"></use></svg>
 						</a>
@@ -336,7 +336,7 @@
 										</li>
 									</ul>
 								</li>
-								<li class="nav-menu-item is-select">
+								<li class="nav-menu-item">
 									<a href="/prognozy/" class="nav-menu-link">
 										<span class="nav-menu-text">
 											Прогнозы
@@ -4050,21 +4050,60 @@
 	</div>
 	<!-- End Toolbar -->
 
-	<!-- ToBack -->
-	<a href="/" class="toback">
-		<div class="toback-wrap">
-			<div class="toback-row">
-				<div class="toback-icon">
-					<svg><use xlink:href="#arrow"></use></svg>
-				</div>
-				<div class="toback-text">
-					<span>Назад</span>
-					<span>Наверх</span>
-				</div>
-			</div>
-		</div>
-	</a>
-	<!-- End ToBack -->
+	<!-- Toolbar -->
+	<div class="toolbar">
+		<ul class="toolbar-list">
+			<li class="toolbar-list-item">
+				<a href="javascript:void(0);" class="toolbar-list-link">
+					<span class="toolbar-list-icon">
+						<svg><use xlink:href="#rating"></use></svg>
+					</span>
+					<span class="toolbar-list-text">Рейтинг</span>
+				</a>
+			</li>
+			<li class="toolbar-list-item">
+				<a href="forecast.html" class="toolbar-list-link">
+					<span class="toolbar-list-icon">
+						<svg><use xlink:href="#star-o"></use></svg>
+					</span>
+					<span class="toolbar-list-text">Прогнозы</span>
+				</a>
+			</li>
+			<li class="toolbar-list-item">
+				<a href="feed.html" class="toolbar-list-link">
+					<span class="toolbar-list-icon">
+						<svg><use xlink:href="#round"></use></svg>
+					</span>
+					<span class="toolbar-list-text">Лента</span>
+				</a>
+			</li>
+			<li class="toolbar-list-item">
+				<a href="reward.html" class="toolbar-list-link">
+					<span class="toolbar-list-icon">
+						<svg><use xlink:href="#gift"></use></svg>
+					</span>
+					<span class="toolbar-list-text">Бонусы</span>
+				</a>
+			</li>
+			<li class="toolbar-list-item toolbar-list-promo">
+				<a href="/" class="toolbar-list-link">
+					<span class="toolbar-list-icon">
+						<img src="img/promo/freebet_mobile.svg" alt="Freebet">
+					</span>
+					<span class="toolbar-list-text">Фрибет</span>
+				</a>
+			</li>
+			<li class="toolbar-list-item">
+				<a href="javascript:void(0);" class="toolbar-list-link js-toggle-menu">
+					<span class="toolbar-list-icon">
+						<svg><use xlink:href="#toggle"></use></svg>
+					</span>
+					<span class="toolbar-list-text">Меню</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- End Toolbar -->
 
 	<script src="js/core.min.js"></script>
 	<script src="js/feed.desktop.js" async></script>

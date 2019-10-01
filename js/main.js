@@ -29,7 +29,7 @@ $(document).ready(function() {
 			}, 500);
 		});
 	} else {
-		$(document).on('click', '.js-toggle', function() {
+		$(document).on('click', '.js-toggle-menu', function() {
 			if ($(this).hasClass('is-active')) {
 				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
 			} else {
@@ -37,7 +37,7 @@ $(document).ready(function() {
 			}
 		});
 		$(document).on('click', '.js-nav-close', function() {
-			if ($('.js-toggle').hasClass('is-active')) {
+			if ($('.js-toggle-menu').hasClass('is-active')) {
 				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1');
 			} else {
 				$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
@@ -65,9 +65,9 @@ $(document).ready(function() {
 			.children('.nav-menu-item')
 			.addClass('nav-menu-clone')
 			.appendTo('.nav-menu');
-		$(document).on('click', '.js-toggle', function() {
+		$(document).on('click', '.js-toggle-menu', function() {
 			slinky.home();
-			$('.js-toggle').toggleClass('is-active');
+			$('.js-toggle-menu').toggleClass('is-active');
 			$('.head-mobile').toggleClass('is-active');
 			$('.nav').toggleClass('is-open');
 			$('.nav-head').removeClass('is-active');
