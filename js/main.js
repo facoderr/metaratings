@@ -125,20 +125,30 @@ $(document).ready(function() {
 			} else {
 				$('.is-desktop .nav-head').removeClass('is-active');
 			}
-			$('.is-desktop .nav-search').removeClass('is-active');
-			$('.js-search').removeClass('is-active');
+			$('.is-desktop .nav-search').css({
+				opacity: 0,
+				visibility: 'hidden'
+			});
 			$(this).siblings('.nav-menu-item').removeClass('is-hover');
 			$(this).addClass('is-hover');
 		});
 		$(document).on('mouseout', '.is-desktop .nav-menu-item', function() {
-			$('.is-desktop .nav-head').removeClass('is-active');
+			if ($('.is-desktop .nav-search').hasClass('is-active')) {
+				$('.is-desktop .nav-head').addClass('is-active');
+			} else {
+				$('.is-desktop .nav-head').removeClass('is-active');
+			}
+			$('.is-desktop .nav-search').css({
+				opacity: 1,
+				visibility: 'visible'
+			});
 			$(this).removeClass('is-hover');
 		});
 		$(document).bind('mouseup touchend', function(e) {
 			if ($(e.target).closest('.js-search').length || $(e.target).closest('.nav-menu').length || $(e.target).closest('.nav-search').length) return;
+			$('.js-search').removeClass('is-active');
 			$('.is-desktop .nav-head').removeClass('is-active');
 			$('.is-desktop .nav-search').removeClass('is-active');
-			$('.js-search').removeClass('is-active');
 		});
 	}
 
