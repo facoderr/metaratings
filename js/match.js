@@ -104,7 +104,9 @@ $(document).ready(function() {
 
 	//
 
-	// Match Event
+	/// Match Event ///
+
+	// -- Match Slider
 
 	let matchBest = new Swiper('.match-best .swiper-container', {
 		slidesPerView: 'auto',
@@ -177,6 +179,8 @@ $(document).ready(function() {
 		}
 	});
 
+	// -- Match Search
+
 	$('.js-match-search').keyup(function() {
 		if ($(this).val().length > 3) {
 			$('.match-search').addClass('is-active');
@@ -184,6 +188,17 @@ $(document).ready(function() {
 			$('.match-search').removeClass('is-active');
 		}
 	});
+
+	$(document).bind('mouseup', function(e) {
+		if ($(e.target).closest('.match-search-block').length) return;
+		$('.match-search').removeClass('is-active');
+	});
+
+	$(document).bind('scroll', function(e) {
+		$('.js-match-search').blur();
+	});
+
+	// -- Match Interaction
 
 	$('.js-match-item').swipe({
 		swipeStatus: function(event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
@@ -198,6 +213,19 @@ $(document).ready(function() {
 		},
 		triggerOnTouchEnd: false,
 		threshold: 20
+	});
+
+	$('.js-match-item').hover(function() {
+		$(this).toggleClass('is-hover');
+		if ($(this).hasClass('is-hover')) {
+			$(this).css({
+				animationName: 'shadowIn'
+			});
+		} else {
+			$(this).css({
+				animationName: 'shadowOut'
+			});
+		}
 	});
 
 	$(document).on('click', '.js-match-toggle', function() {
@@ -237,6 +265,6 @@ $(document).ready(function() {
 		$(this).parent().find('.match-comment-text').css('max-height', '300px');
 	});
 
-	//
+	///
 	
 });
