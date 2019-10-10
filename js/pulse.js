@@ -47,7 +47,7 @@ $(document).ready(function() {
 					$this.parent().removeClass('is-active');
 					$this.parent().find('.js-widget-result').slideUp(300);
 				}
-			}  else if ($value === '') {
+			} else if ($value === '') {
 				$(this).hide();
 				$this.parent().removeClass('is-active');
 				$this.parent().find('.js-widget-result').slideUp(300);
