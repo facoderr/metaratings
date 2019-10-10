@@ -8558,12 +8558,12 @@ body {
 }
 
 @-webkit-keyframes shadowIn {
-  from {
+  0% {
     -webkit-box-shadow: none;
             box-shadow: none;
     z-index: 0;
   }
-  to {
+  100% {
     -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
     z-index: 1;
@@ -8571,12 +8571,12 @@ body {
 }
 
 @keyframes shadowIn {
-  from {
+  0% {
     -webkit-box-shadow: none;
             box-shadow: none;
     z-index: 0;
   }
-  to {
+  100% {
     -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
     z-index: 1;
@@ -8584,12 +8584,12 @@ body {
 }
 
 @-webkit-keyframes shadowOut {
-  from {
+  0% {
     -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
-  to {
+  100% {
     -webkit-box-shadow: none;
             box-shadow: none;
     z-index: 0;
@@ -8597,12 +8597,12 @@ body {
 }
 
 @keyframes shadowOut {
-  from {
+  0% {
     -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
-  to {
+  100% {
     -webkit-box-shadow: none;
             box-shadow: none;
     z-index: 0;
