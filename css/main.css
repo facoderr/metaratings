@@ -2660,7 +2660,7 @@ body {
 }
 
 .voice-result-no span {
-  color: #ea0101;
+  color: #d0021b;
 }
 
 .voice-progress {
@@ -2690,7 +2690,7 @@ body {
 }
 
 .voice-progress-no {
-  background: #ea0101;
+  background: #d0021b;
   -webkit-border-radius: 0 3px 3px 0;
           border-radius: 0 3px 3px 0;
 }
@@ -2758,13 +2758,13 @@ body {
 }
 
 .voice-btn-no {
-  color: #ea0101;
-  border: 2px solid #ea0101;
+  color: #d0021b;
+  border: 2px solid #d0021b;
 }
 
 .voice-btn-no:hover {
   color: #fff;
-  background: #ea0101;
+  background: #d0021b;
 }
 
 .voice-btn-else {
@@ -5080,7 +5080,7 @@ body {
 .match-box-watch {
   position: relative;
   display: block;
-  color: #00ad3b;
+  color: #20a94a;
   margin: 0 15px 0 10px;
 }
 
@@ -5093,7 +5093,7 @@ body {
   height: 2px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  background: #00ad3b;
+  background: #20a94a;
   -webkit-animation: blinkIn 1s linear infinite;
           animation: blinkIn 1s linear infinite;
 }
@@ -5432,7 +5432,7 @@ body {
 }
 
 .match-acc-count {
-  color: #00ad3b;
+  color: #20a94a;
 }
 
 .match-acc-toggle {
@@ -5597,7 +5597,7 @@ body {
 .match-item-watch {
   position: relative;
   display: block;
-  color: #00ad3b;
+  color: #20a94a;
   margin: 0 15px 0 10px;
 }
 
@@ -5610,7 +5610,7 @@ body {
   height: 2px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  background: #00ad3b;
+  background: #20a94a;
   -webkit-animation: blinkIn 1s linear infinite;
           animation: blinkIn 1s linear infinite;
 }
@@ -6022,7 +6022,7 @@ body {
 }
 
 .match-trend-game.is-win {
-  background: #00ad3b;
+  background: #20a94a;
 }
 
 .match-trend-game.is-lose {
@@ -6151,7 +6151,7 @@ body {
 .match-live-watch {
   position: relative;
   display: block;
-  color: #00ad3b;
+  color: #20a94a;
   font-weight: 18;
   font-weight: 700;
   margin: 0 3px 0 0;
@@ -6166,7 +6166,7 @@ body {
   height: 4px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  background: #00ad3b;
+  background: #20a94a;
   -webkit-animation: blinkIn 1s linear infinite;
           animation: blinkIn 1s linear infinite;
 }
@@ -6508,7 +6508,7 @@ body {
 }
 
 .match-games-item.is-win:after {
-  background: #00ad3b;
+  background: #20a94a;
 }
 
 .match-games-item.is-lose:after {
@@ -6568,7 +6568,7 @@ body {
 }
 
 .match-games-item-team.is-win {
-  color: #00ad3b;
+  color: #20a94a;
 }
 
 .match-games-item-team.is-lose {
@@ -6704,7 +6704,7 @@ body {
 }
 
 .match-games-box-team.is-win {
-  color: #00ad3b;
+  color: #20a94a;
 }
 
 .match-games-box-team.is-win .match-games-box-count {
@@ -7286,7 +7286,7 @@ body {
 }
 
 .match-comment-count {
-  color: #00ad3b;
+  color: #20a94a;
 }
 
 .match-comment-form {
@@ -7685,7 +7685,7 @@ body {
 }
 
 .match-table-row:nth-child(-n+2) .match-table-col.--numb {
-  color: #00ad3b;
+  color: #20a94a;
 }
 
 .match-table-row:nth-last-child(-n+2) .match-table-col.--numb {
@@ -7743,7 +7743,7 @@ body {
 }
 
 .match-table-col.--yes {
-  color: #00ad3b;
+  color: #20a94a;
 }
 
 .match-table-col.--gray {
@@ -7782,7 +7782,7 @@ body {
 }
 
 .match-table-round.is-win, .match-table-quad.is-win {
-  background: #00ad3b;
+  background: #20a94a;
 }
 
 .match-table-round.is-lose, .match-table-quad.is-lose {
@@ -7811,7 +7811,7 @@ body {
 }
 
 .match-table-quad.is-win {
-  background: #00ad3b url("../img/icons/plus.svg") no-repeat center;
+  background: #20a94a url("../img/icons/plus.svg") no-repeat center;
   background-size: 6px 6px;
 }
 
@@ -9551,11 +9551,19 @@ body {
 }
 
 .widget-note-yes:after {
-  background: #39af61;
+  background: #20a94a;
+}
+
+.widget-note-yes .widget-note-title-icon svg {
+  fill: #20a94a;
 }
 
 .widget-note-no:after {
   background: #d0021b;
+}
+
+.widget-note-no .widget-note-title-icon svg {
+  fill: #d0021b;
 }
 
 .widget-note-time {
@@ -9594,6 +9602,11 @@ body {
   width: 20px;
   height: 20px;
   margin: 0 10px 0 0;
+}
+
+.widget-note-title-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .widget-note-title-text {
@@ -10174,7 +10187,7 @@ body {
 
 .highcharts-point.zone-yes {
   fill: #bfffd5;
-  stroke: #39af61;
+  stroke: #20a94a;
 }
 
 .highcharts-point.zone-no {
@@ -12594,7 +12607,7 @@ body {
     border: 2px solid #20a94a;
   }
   .voice-btn-no:hover {
-    border: 2px solid #ea0101;
+    border: 2px solid #d0021b;
   }
   .widget {
     padding: 100px 0;
