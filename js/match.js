@@ -219,11 +219,11 @@ $(document).ready(function() {
 		$(this).toggleClass('is-hover');
 		if ($(this).hasClass('is-hover')) {
 			$(this).css({
-				animationName: 'shadowIn'
+				animation: 'shadowIn .3s ease-in-out forwards'
 			});
 		} else {
 			$(this).css({
-				animationName: 'shadowOut'
+				animation: 'shadowOut .3s ease-in-out forwards'
 			});
 		}
 	});
