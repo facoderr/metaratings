@@ -12510,9 +12510,10 @@ body {
   }
   .nav-menu-more > .nav-submenu .nav-submenu .nav-menu-item:hover > .nav-submenu {
     top: -20px;
-    -webkit-transform: translateX(100%);
-        -ms-transform: translateX(100%);
-            transform: translateX(100%);
+    left: -10px;
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
   .nav-menu-more > .nav-submenu .nav-submenu .nav-menu-item:not(:last-child) .nav-menu-link {
     padding: 0 70px 0 30px;
@@ -12535,8 +12536,8 @@ body {
   }
   .nav-menu-more > .nav-submenu .nav-submenu .nav-submenu {
     top: -20px;
-    right: -10px;
-    left: auto;
+    right: auto;
+    left: 0;
   }
   .nav-menu-more > .nav-submenu .nav-submenu .nav-submenu .nav-menu-item:not(:last-child) .nav-menu-link {
     padding: 0 40px 0 30px;
