@@ -182,6 +182,15 @@ $(document).ready(function() {
 	// -- Match Search
 
 	$('.js-match-search').keyup(function() {
+		if ($(window).outerWidth() <= 1099) {
+			$('html, body').animate({
+				scrollTop: $(this).offset().top - 15
+			}, 300);
+		} else {
+			$('html, body').animate({
+				scrollTop: $(this).offset().top - 80
+			}, 300);
+		}
 		if ($(this).val().length > 3) {
 			$('.match-search').addClass('is-active');
 		} else {
@@ -194,7 +203,7 @@ $(document).ready(function() {
 		$('.match-search').removeClass('is-active');
 	});
 
-	$(document).bind('scroll', function(e) {
+	$(document).bind('touchmove', function() {
 		$('.js-match-search').blur();
 	});
 
@@ -223,11 +232,10 @@ $(document).ready(function() {
 		threshold: 20
 	});
 
-	$(document).bind('scroll',  function() {
-		if ($(window).scrollTop() >= $('.js-match-search').offset().top) {
-			$('.match-block').first().find('.match-acc').first().find('.js-match-item:eq(0), .js-match-item:eq(1)').addClass('is-swipe');
-		} else {
-			$('.match-block').first().find('.match-acc').first().find('.js-match-item:eq(0), .js-match-item:eq(1)').removeClass('is-swipe');
+	$(window).bind('scroll',  function() {
+		if ($(this).scrollTop() >= $('.js-match-search').offset().top) {
+			$('.match-block').first().find('.match-acc').first().find('.js-match-item').first().addClass('is-swipe');
+			$(this).off('scroll');
 		}
 	});
 
