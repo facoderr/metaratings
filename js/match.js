@@ -202,12 +202,20 @@ $(document).ready(function() {
 
 	$('.js-match-item').swipe({
 		swipeStatus: function(event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-			if (phase == 'end') { 
+			let $this = $(this);
+			if (phase == 'end') {
 				if (direction == 'left') {
-					$(this).addClass('is-swipe');
+					$this.addClass('is-swipe is-swiping');
+					setTimeout(function() {
+						$this.removeClass('is-swiping');
+					}, 300);
 				}
 				if (direction == 'right') {
-					$(this).removeClass('is-swipe');
+					$this.addClass('is-swiping');
+					$this.removeClass('is-swipe');
+					setTimeout(function() {
+						$this.removeClass('is-swiping');
+					}, 300);
 				}
 			}
 		},
@@ -215,16 +223,11 @@ $(document).ready(function() {
 		threshold: 20
 	});
 
-	$('.js-match-item').hover(function() {
-		$(this).toggleClass('is-hover');
-		if ($(this).hasClass('is-hover')) {
-			$(this).css({
-				animation: 'shadowIn .3s ease-in-out forwards'
-			});
+	$(document).bind('scroll',  function() {
+		if ($(window).scrollTop() >= $('.js-match-search').offset().top) {
+			$('.match-block').first().find('.match-acc').first().find('.js-match-item:eq(0), .js-match-item:eq(1)').addClass('is-swipe');
 		} else {
-			$(this).css({
-				animation: 'shadowOut .3s ease-in-out forwards'
-			});
+			$('.match-block').first().find('.match-acc').first().find('.js-match-item:eq(0), .js-match-item:eq(1)').removeClass('is-swipe');
 		}
 	});
 

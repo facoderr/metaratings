@@ -5501,10 +5501,10 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   min-width: -webkit-calc(100% + 278px);
   min-width: calc(100% + 278px);
   background: #fff;
@@ -5518,14 +5518,14 @@ body {
   margin: 0 0 8px;
 }
 
+.match-item.is-swiping .match-item-event:after {
+  background: #601dc0;
+}
+
 .match-item.is-swipe {
   -webkit-transform: translateX(-278px);
       -ms-transform: translateX(-278px);
           transform: translateX(-278px);
-}
-
-.match-item.is-swipe .match-item-event:after {
-  background: #601dc0;
 }
 
 .match-item.is-live:after {
@@ -5778,18 +5778,17 @@ body {
   padding: 0 15px;
 }
 
-.match-item-odds:before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: 0;
-  left: 0;
-  bottom: -50%;
-  background: #e0e0e0;
-  z-index: -1;
+.match-item-promo-logo {
+  width: 110px;
+  margin: 0 auto 10px;
 }
 
-.match-item-old, .match-item-new {
+.match-item-promo-logo img {
+  width: 100%;
+  max-height: 20px;
+}
+
+.match-item-old, .match-item-list {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5833,11 +5832,11 @@ body {
   color: rgba(0, 0, 0, 0.4);
 }
 
-.match-item-new {
+.match-item-old + .match-item-list {
   margin: 5px 0 0;
 }
 
-.match-item-new .match-item-bet {
+.match-item-old + .match-item-list .match-item-bet {
   border: 1px solid #d0021b;
 }
 
@@ -5863,32 +5862,73 @@ body {
   color: rgba(0, 0, 0, 0.4);
   background: #fff;
   border: 1px solid #f2f3f7;
+  -webkit-box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.5);
   -webkit-border-radius: 4px;
           border-radius: 4px;
 }
 
-.match-item-bet span {
+.match-item-bet:last-child .match-item-bet-bk {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.match-item-bet-count {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 0;
+}
+
+.match-item-bet-count span {
   color: #000;
   font-size: 16px;
   margin: 0 0 0 7px;
 }
 
-.match-item-bet img {
-  width: 75px;
-  max-height: 15px;
-  margin: 0 0 0 10px;
+.match-item-bet-bk {
+  position: absolute;
+  display: none;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  width: -webkit-calc(100% + 4px);
+  width: calc(100% + 4px);
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
-.match-item-promo {
-  width: -webkit-calc(((100% / 3) - 6.66px) * 2 + 10px);
-  width: calc(((100% / 3) - 6.66px) * 2 + 10px);
-  color: #999;
-  background: #d0021b;
-  border: 1px solid #d0021b;
-}
-
-.match-item-promo span {
-  color: #fff;
+.match-item-bet-bk img {
+  width: 65px;
+  max-height: 16px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .match-item-empty {
@@ -8557,54 +8597,20 @@ body {
   }
 }
 
-@-webkit-keyframes shadowIn {
+@-webkit-keyframes indexOut {
   0% {
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    z-index: 0;
-  }
-  100% {
-    -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  }
-}
-
-@keyframes shadowIn {
-  0% {
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    z-index: 0;
-  }
-  100% {
-    -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  }
-}
-
-@-webkit-keyframes shadowOut {
-  0% {
-    -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
   100% {
-    -webkit-box-shadow: none;
-            box-shadow: none;
     z-index: 0;
   }
 }
 
-@keyframes shadowOut {
+@keyframes indexOut {
   0% {
-    -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
   100% {
-    -webkit-box-shadow: none;
-            box-shadow: none;
     z-index: 0;
   }
 }
@@ -11454,6 +11460,8 @@ body {
     border: none;
     -webkit-border-radius: 8px;
             border-radius: 8px;
+    -webkit-animation: indexOut .3s ease-in-out forwards;
+            animation: indexOut .3s ease-in-out forwards;
     padding: 10px;
   }
   .match-item:not(:last-child) {
@@ -11461,6 +11469,13 @@ body {
   }
   .match-item:nth-child(even) {
     background: #f8f8f8;
+  }
+  .match-item:hover {
+    -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.5);
+    -webkit-animation: none;
+            animation: none;
+    z-index: 1;
   }
   .match-item.is-swipe {
     -webkit-transform: none;
@@ -11552,11 +11567,21 @@ body {
     background: none;
     padding: 0;
   }
-  .match-item-odds:before {
+  .match-item-promo {
+    background: none !important;
+  }
+  .match-item-promo-logo {
     display: none;
   }
-  .match-item-new .match-item-bet {
+  .match-item-promo .match-item-bet:hover {
+    background: #fff;
+    border: 2px solid #f2f3f7;
+  }
+  .match-item-old + .match-item-list .match-item-bet {
     border: 2px solid #d0021b;
+  }
+  .match-item-old + .match-item-list .match-item-bet:hover {
+    border: 2px solid #601dc0;
   }
   .match-item-bet {
     width: -webkit-calc((100% / 3) - 5.999px);
@@ -11564,29 +11589,50 @@ body {
     height: 30px;
     font-size: 12px;
     border: 2px solid #f2f3f7;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
   .match-item-bet:hover {
     color: #fff;
     background: #601dc0;
     border: 2px solid #601dc0;
   }
-  .match-item-bet:hover span {
+  .match-item-bet:hover .match-item-bet-count {
+    z-index: 2;
+  }
+  .match-item-bet:hover .match-item-bet-count span {
     color: #fff;
   }
-  .match-item-bet span {
+  .match-item-bet:hover .match-item-bet-bk {
+    opacity: 1;
+    visibility: visible;
+    width: -webkit-calc(100% * 2 + 16px);
+    width: calc(100% * 2 + 16px);
+    -webkit-animation: none;
+            animation: none;
+    padding: 0 10px;
+    z-index: 1;
+  }
+  .match-item-bet:hover .match-item-bet-bk img {
+    opacity: 1;
+    visibility: visible;
+  }
+  .match-item-bet:last-child .match-item-bet-bk {
+    right: -2px;
+    left: auto;
+  }
+  .match-item-bet-count span {
     font-size: 14px;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
   }
-  .match-item-bet img {
-    width: 65px;
-    max-height: 13px;
-    margin: 0 0 0 7px;
-  }
-  .match-item-promo {
-    width: -webkit-calc(((100% / 3) - 5.999px) * 2 + 8px);
-    width: calc(((100% / 3) - 5.999px) * 2 + 8px);
-    border: 2px solid #d0021b;
+  .match-item-bet-bk {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-animation: indexOut .4s ease-in-out forwards;
+            animation: indexOut .4s ease-in-out forwards;
   }
   .match-item-empty {
     border: none;
@@ -12826,7 +12872,7 @@ body {
     margin: 10px 10px 0 0;
   }
   .widget-graph-yes .widget-graph-item:hover, .widget-graph-yes .widget-graph-item.is-hover {
-    border: 2px solid #39af61;
+    border: 2px solid #20a94a;
   }
   .widget-graph-no .widget-graph-item:hover, .widget-graph-no .widget-graph-item.is-hover {
     border: 2px solid #d0021b;
@@ -12889,7 +12935,7 @@ body {
   }
   .widget-pulse-yes:hover {
     color: #fff;
-    background: #39af61;
+    background: #20a94a;
   }
   .widget-pulse-no:hover {
     color: #fff;
