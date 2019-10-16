@@ -3555,7 +3555,7 @@ body {
   -webkit-flex-flow: wrap;
       -ms-flex-flow: wrap;
           flex-flow: wrap;
-  padding: 20px 0;
+  padding: 20px 0 0;
 }
 
 .reward-list-more {
@@ -3592,6 +3592,10 @@ body {
 }
 
 .reward-list .reward-box {
+  -webkit-box-ordinal-group: 0;
+  -webkit-order: -1;
+      -ms-flex-order: -1;
+          order: -1;
   height: auto;
   margin: 0 0 10px;
 }
@@ -11102,7 +11106,7 @@ body {
   }
   .reward-list-more {
     font-weight: 700;
-    margin: 4px 0 0;
+    margin: 5px 0 20px;
   }
   .reward-list .reward-box, .reward-list .reward-gap {
     width: -webkit-calc((100% / 3) - 10.66px);
