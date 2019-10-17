@@ -1,0 +1,723 @@
+@import 'vars'
+
+/* -- Forecast -- */
+
+.forecast
+	position: relative
+	padding: 30px 0 63px
+	&-title
+		border-bottom: 1px solid #d5d5d5
+		padding: 0 0 10px
+		margin: 0 0 20px
+		h2
+			font-size: 24px
+			font-weight: 700
+	&-category
+		margin: 0 -15px 10px
+		.swiper
+			&-slide
+				width: auto
+				height: auto
+		&-link
+			display: flex
+			align-items: center
+			align-content: center
+			justify-content: center
+			flex-flow: column wrap
+			color: rgba(#000, .4)
+			font-weight: 700
+			&:hover, &.is-select
+				color: #000
+				svg
+					fill: $color
+			svg
+				width: 22px
+				height: 22px
+				fill: rgba(#000, .4)
+				margin: 0 0 5px
+	&-bar
+		position: relative
+		background: #f0f0f0
+		padding: 0 15px
+		margin: 20px -15px 10px
+		z-index: 9
+		&-toggle
+			display: flex
+			align-items: center
+			justify-content: space-between
+			min-height: 34px
+			font-size: 15px
+			font-weight: 700
+			&.is-active
+				.forecast-bar-icon
+					svg
+						transform: rotate(-90deg)
+		&-icon
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 24px
+			height: 24px
+			svg
+				width: 12px
+				height: 12px
+				transform: rotate(90deg)
+		&-title
+			display: none
+			font-size: 18px
+			margin: 0 0 10px
+	&-menu
+		display: none
+		padding: 5px 0 15px
+		&-link
+			display: block
+			color: #666
+			font-size: 14px
+			line-height: 2
+			&:hover
+				color: $color
+	&-tab
+		&List
+			position: relative
+			margin: 0 -15px
+			&:after
+				content: ''
+				position: absolute
+				right: 15px
+				bottom: 0
+				left: 15px
+				height: 1px
+				background: #d5d5d5
+				z-index: 0
+			.swiper
+				&-slide
+					width: auto
+					height: auto
+		&Item
+			position: relative
+			display: flex
+			align-items: center
+			color: rgba(#000, .4)
+			font-weight: 700
+			cursor: pointer
+			transition: all .3s ease-in-out
+			padding: 10px 0
+			&:after
+				content: ''
+				position: absolute
+				right: 100%
+				bottom: 0
+				left: 0
+				height: 1px
+				background: $color
+				transition: all .3s ease-in-out
+				z-index: 1
+			&:hover, &.is-active
+				color: #000
+				&:after
+					right: 0
+		&Wrap
+			margin: 15px 0 0
+		&Block
+			height: 0
+			overflow: hidden
+			&.is-open
+				height: auto
+				overflow: visible
+	&-best
+		position: relative
+		background: #f0f0f0
+		padding: 12px 15px
+		margin: 0 -15px
+		&:before, &:after
+			content: ''
+			position: absolute
+			top: 0
+			bottom: 0
+			background: #f0f0f0
+			z-index: -1
+		&:before
+			right: 100%
+			left: -200%
+		&:after
+			right: -200%
+			left: 100%
+		&-title
+			color: #181818
+			font-weight: 700
+		.swiper
+			&-container
+				padding: 20px 0
+				margin: -10px -15px 0
+				&> .swiper-pagination-bullets
+					.swiper-pagination-bullet
+						margin: 0 5px
+			&-slide
+				width: auto
+				height: auto
+			&-pagination
+				&-bullets
+					display: flex
+					align-items: center
+					justify-content: center
+					bottom: 0
+					height: 8px
+				&-bullet
+					background: #d8d8d8
+					outline: none
+					opacity: 1
+					transition: all .3s ease-in-out
+					&-active
+						background: #fff
+						box-shadow: 0 0 5px -2px rgba(#000, .5)
+			&-button
+				&-next, &-prev
+					display: none
+					align-items: center
+					justify-content: center
+					top: calc(50% - (26px / 2))
+					width: 26px
+					height: 26px
+					background: none
+					background: #fff
+					border-radius: 50%
+					box-shadow: 0 0 10px -5px rgba(#000, .5)
+					transition: all .3s ease-in-out
+					margin: 0
+					&:hover
+						svg
+							fill: $color
+					&.swiper-button-disabled
+						pointer-events: all
+						opacity: 0
+					svg
+						width: 10px
+						height: 10px
+				&-next
+					right: 17px
+				&-prev
+					left: 17px
+					svg
+						transform: rotate(180deg)
+	&-slider
+		position: relative
+		padding: 20px 0
+		&-title
+			display: flex
+			align-items: center
+			color: #181818
+			font-size: 20px
+			font-weight: 700
+			line-height: 1
+			svg
+				width: 20px
+				height: 20px
+				fill: #666
+				margin: 0 10px 0 0
+		.swiper
+			&-container
+				padding: 20px 0
+				margin: -5px -15px 0
+			&-slide
+				width: auto
+				height: auto
+			&-button
+				&-next, &-prev
+					display: none
+					align-items: center
+					justify-content: center
+					top: calc(50% - (26px / 2))
+					width: 26px
+					height: 26px
+					background: none
+					background: #fff
+					border-radius: 50%
+					box-shadow: 0 0 10px -5px rgba(#000, .5)
+					transition: all .3s ease-in-out
+					margin: 0
+					&:hover
+						svg
+							fill: $color
+					&.swiper-button-disabled
+						pointer-events: all
+						opacity: 0
+					svg
+						width: 10px
+						height: 10px
+				&-next
+					right: 17px
+				&-prev
+					left: 17px
+					svg
+						transform: rotate(180deg)
+		&-more
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 100%
+			height: 34px
+			font-weight: 700
+			color: #000
+			border: 2px solid #e9e9e9
+			border-radius: 6px
+			padding: 0 0 2px
+			margin: -10px 0 0
+			&:hover
+				color: $color
+				border: 2px solid $color
+	&-box
+		position: relative
+		display: flex
+		flex-flow: column wrap
+		max-width: 292px
+		height: 100%
+		background: #fff
+		box-shadow: 0 0 20px -10px rgba(#000, .5)
+		border-radius: 8px
+		padding: 15px 15px 0
+		&:hover
+			box-shadow: 0 0 30px -10px rgba(#000, .5)
+		&-versus
+			display: flex
+			align-items: center
+			justify-content: space-around
+			width: 100%
+			margin: 0 0 10px
+		&-other
+			position: relative
+			height: 103px
+			margin: -15px -15px 10px
+			&+ .forecast-box-title
+				max-height: 42px
+				overflow: hidden
+			.forecast
+				&-box
+					&-detail
+						position: absolute
+						display: flex
+						align-items: center
+						justify-content: space-between
+						top: 15px
+						right: 15px
+						left: 15px
+						z-index: 1
+					&-odds
+						margin: 0
+					&-time
+						min-height: 24px
+						color: #7f7f7f
+						background: #e9e9e9
+						border-radius: 4px
+						margin: 0
+		&-img
+			width: 100%
+			height: 100%
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+				border-radius: 8px 8px 0 0
+		&-team
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 45px
+			height: 45px
+			img
+				position: relative
+				width: 100%
+				height: 100%
+				z-index: 1
+		&-plus
+			position: relative
+			&:not(:first-child)
+				img
+					&:nth-child(2)
+						right: -10px
+						left: auto
+					&:first-child
+						right: auto
+						left: -10px
+			img
+				&:nth-child(2)
+					position: absolute
+					top: 0
+					left: -10px
+					z-index: 0
+				&:first-child
+					position: absolute
+					top: 0
+					right: -10px
+					z-index: 2
+		&-odds
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 66px
+			height: 24px
+			font-size: 14px
+			font-weight: 700
+			line-height: 1
+			color: #fff
+			background: #202020
+			border-radius: 4px
+			margin: 0 auto
+		&-time
+			display: flex
+			align-items: center
+			justify-content: center
+			color: rgba(#000, .4)
+			font-size: 13px
+			font-weight: 700
+			margin: 10px 0 0
+		&-date, &-clock
+			margin: 0 5px
+		&-title
+			width: 100%
+			flex-grow: 2
+			color: #000
+			font-size: 15px
+			font-weight: 700
+			line-height: 1.33
+		&-user
+			display: flex
+			align-items: center
+			width: 100%
+			color: rgba(#000, .4)
+			font-size: 14px
+			font-weight: 700
+			margin: 10px 0
+		&-avatar
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 18px
+			height: 18px
+			background: url('../img/icons/user.svg') no-repeat center
+			border-radius: 50%
+			overflow: hidden
+			margin: 0 10px 0 0
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+		&-tools
+			display: flex
+			align-items: center
+			justify-content: space-between
+			min-height: 30px
+			font-size: 14px
+			color: rgba(#000, .4)
+			border-top: 1px solid #e9e9e9
+			border-bottom: 1px solid transparent
+			padding: 0 15px
+			margin: 0 -15px
+		&-tag
+			display: flex
+			align-items: center
+			font-weight: 700
+		&-last
+			display: flex
+			align-items: center
+			svg
+				width: 10px
+				height: 10px
+				fill: rgba(#000, .4)
+				margin: 0 5px 0 0
+	&-list
+		display: flex
+		justify-content: space-between
+		flex-flow: wrap
+		padding: 20px 0
+		&-more
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 100%
+			height: 34px
+			color: #000
+			font-weight: 700
+			border: 2px solid #e9e9e9
+			border-radius: 6px
+			margin: 10px 0 0
+			&:hover
+				color: $color
+				border: 2px solid $color
+		.forecast
+			&-box, &-gap
+				max-width: 100%
+				width: 100%
+			&-box
+				height: auto
+				margin: 0 0 10px
+	&-pagination
+		display: none
+		align-items: center
+		justify-content: center
+		&-item
+			&:first-child, &:last-child
+				margin: 0 0 0 15px
+				.forecast
+					&-pagination
+						&-link
+							border: none
+							&:hover
+								background: none
+			&:first-child
+				margin: 0 15px 0 0
+				.forecast
+					&-pagination
+						&-link
+							svg
+								transform: rotate(180deg)
+			&:nth-child(2)
+				.forecast
+					&-pagination
+						&-link
+							border-left-width: 2px
+							border-radius: 8px 0 0 8px
+			&:nth-last-child(2)
+				.forecast
+					&-pagination
+						&-link
+							border-right-width: 2px
+							border-radius: 0 8px 8px 0
+		&-link
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 32px
+			height: 34px
+			color: #000
+			font-size: 15px
+			font-weight: 700
+			line-height: 1
+			border: 2px solid #e9e9e9
+			border-left-width: 1px
+			border-right-width: 1px
+			&:hover
+				color: #fff
+				background: #e9e9e9
+				svg
+					fill: $color
+			svg
+				width: 12px
+				height: 12px
+	&-primary
+		border: 2px solid $color
+		&:hover
+			box-shadow: 0 0 30px -10px #370a78
+		&-bg
+			background: $color url('../img/icons/meta.svg') no-repeat center
+			background-size: 10px 10px
+		.forecast
+			&-box
+				&-img
+					img
+						border-radius: 4px 4px 0 0
+				&-tools
+					border-top: 1px solid $color
+	&-success
+		border: 2px solid $yes
+		&:hover
+			box-shadow: 0 0 30px -10px #066523
+		&-bg
+			background: $yes url('../img/icons/starfull.svg') no-repeat center
+			background-size: 8px 8px
+		.forecast
+			&-box
+				&-img
+					img
+						border-radius: 4px 4px 0 0
+				&-tools
+					border-top: 1px solid $yes
+
+@media only screen and (min-width: 992px)
+	.forecast
+		padding: 100px 0
+		&-title
+			margin: 0 0 10px 240px
+		&-category
+			margin: 0 0 -98px 240px
+			.swiper
+				&-wrapper
+					width: 100%
+					justify-content: space-between
+			&-link
+				font-size: 13px
+				svg
+					width: 24px
+					height: 24px
+					margin: 0 0 10px
+		&-row
+			display: flex
+			align-items: flex-start
+		&-sidebar
+			width: 200px
+			margin: 0 40px 0 0
+		&-bar
+			background: #f9f9f9
+			padding: 20px
+			&-toggle
+				display: none
+			&-title
+				display: block
+		&-menu
+			display: block
+			padding: 0
+			&-link
+				line-height: 2.14
+		&-content
+			flex-grow: 2
+			width: 50%
+			margin: 103px 0 0
+		&-tab
+			&List
+				margin: 0
+				&:after
+					right: 0
+					left: 0
+			&Item
+				font-size: 14px
+				padding: 15px 0
+			.swiper
+				&-slide
+					&:not(:last-child)
+						margin: 0 25px 0 0
+					&:nth-last-child(3)
+						margin-left: auto
+		&-best
+			padding: 20px 15px
+			&-title
+				font-size: 24px
+			.swiper
+				&-container
+					padding: 30px 30px
+					margin: -10px -30px 0
+				&-slide
+					&-prev
+						margin: 0 50px 0 -34px !important
+					&-next
+						&+ .swiper-slide
+							margin: 0 50px 0 0 !important
+				&-button
+					&-prev, &-next
+						display: flex
+		&-slider
+			&-title
+				font-size: 24px
+				svg
+					width: 24px
+					height: 24px
+			.swiper
+				&-container
+					padding: 30px 30px
+					margin: -10px -30px 0
+				&-slide
+					&-prev
+						margin: 0 50px 0 -34px !important
+					&-next
+						&+ .swiper-slide
+							margin: 0 50px 0 0 !important
+				&-button
+					&-prev, &-next
+						display: flex
+			&-more
+				height: 30px
+				font-size: 14px
+		&-box
+			max-width: 100%
+			&-other
+				height: 82px
+				&+ .forecast-box-title
+					max-height: 30px
+				.forecast
+					&-box
+						&-time
+							font-size: 9px
+							min-height: 20px
+							margin: 0
+			&-team
+				width: 40px
+				height: 40px
+			&-odds
+				width: 56px
+				height: 20px
+			&-time
+				font-size: 10px
+				margin: 5px 0 0
+			&-title
+				font-size: 12px
+			&-user
+				font-size: 11px
+				font-weight: 400
+			&-tools
+				min-height: 25px
+				font-size: 10px
+		&-list
+			&-more
+				font-weight: 700
+				margin: 4px 0 0
+			.forecast
+				&-box, &-gap
+					width: calc((100% / 3) - 10.66px)
+				&-box
+					margin: 0 0 16px
+		&-pagination
+			display: flex
+
+@media only screen and (max-width: 374px)
+	.forecast
+		padding: 30px 0 55px
+		&-category
+			&-link
+				font-size: 14px
+				svg
+					width: 21px
+					height: 21px
+		&-tab
+			&Item
+				font-size: 14px
+		&-slider
+			&-title
+				font-size: 16px
+			&-more
+				height: 30px
+				font-size: 14px
+				font-weight: 400
+		&-box
+			max-width: 246px
+			&-other
+				height: 82px
+				&+ .forecast-box-title
+					max-height: 30px
+				.forecast
+					&-box
+						&-time
+							font-size: 9px
+							min-height: 20px
+							margin: 0
+			&-team
+				width: 40px
+				height: 40px
+			&-odds
+				width: 56px
+				height: 20px
+			&-time
+				font-size: 10px
+				margin: 5px 0 0
+			&-title
+				font-size: 12px
+			&-user
+				font-size: 11px
+				font-weight: 400
+			&-tools
+				min-height: 25px
+				font-size: 10px
+		&-list
+			&-more
+				height: 30px
+				font-size: 14px
+				font-weight: 400
+
+/* -- End Forecast -- */
