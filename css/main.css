@@ -168,7 +168,7 @@ body {
 .workarea {
   position: relative;
   display: block;
-  padding: 30px 0 50px;
+  padding: 100px 0 50px;
 }
 
 .workarea-breadcrumb {
@@ -237,15 +237,34 @@ body {
   font-weight: 700;
 }
 
-.workarea-content > p, .workarea-description > p {
-  line-height: 1.5;
+.workarea-content h2, .workarea-content h3, .workarea-description h2, .workarea-description h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px;
 }
 
-.workarea-content > p:not(:last-child), .workarea-description > p:not(:last-child) {
+.workarea-content p, .workarea-description p {
+  line-height: 1.5625;
+}
+
+.workarea-content p:not(:last-child), .workarea-description p:not(:last-child) {
   margin: 0 0 25px;
 }
 
-.workarea-content > p a, .workarea-description > p a {
+.workarea-content ul:not(:last-child), .workarea-description ul:not(:last-child) {
+  margin: 0 0 25px;
+}
+
+.workarea-content ul.is-mark, .workarea-description ul.is-mark {
+  list-style: disc;
+  padding: 0 0 0 50px;
+}
+
+.workarea-content ul li, .workarea-description ul li {
+  line-height: 1.5625;
+}
+
+.workarea-content p a, .workarea-content ul a, .workarea-description p a, .workarea-description ul a {
   color: #20a94a;
   font-weight: 700;
   text-decoration: underline;
@@ -253,10 +272,14 @@ body {
           text-decoration-color: transparent;
 }
 
-.workarea-content > p a:hover, .workarea-content > p a:focus, .workarea-description > p a:hover, .workarea-description > p a:focus {
+.workarea-content p a:hover, .workarea-content p a:focus, .workarea-content ul a:hover, .workarea-content ul a:focus, .workarea-description p a:hover, .workarea-description p a:focus, .workarea-description ul a:hover, .workarea-description ul a:focus {
   text-decoration: underline;
   -webkit-text-decoration-color: #20a94a;
           text-decoration-color: #20a94a;
+}
+
+.workarea-content b, .workarea-content strong, .workarea-description b, .workarea-description strong {
+  font-weight: 700;
 }
 
 .workarea-content {
