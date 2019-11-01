@@ -1,38 +1,5 @@
 $(document).ready(function() {
 
-	// Tab Event
-
-	let clickedTab = $('.js-tabItem.is-active');
-			tabWrapper = $('.js-tabWrap');
-			activeTab = tabWrapper.find('.is-open');
-			activeTabHeight = activeTab.outerHeight();
-
-	tabWrapper.css('min-height', activeTabHeight);
-
-	function tabInit() {
-		clickedTab = $('.js-tabItem.is-active');
-		activeTab.fadeOut(100, function() {
-			$('.js-tabBlock').removeClass('is-open');
-			let clickedTabIndex = clickedTab.index('.js-tabItem');
-			$('.js-tabBlock').eq(clickedTabIndex).addClass('is-open');
-			activeTab = tabWrapper.find('.is-open');
-			activeTabHeight = activeTab.outerHeight();
-			tabWrapper.stop().delay(25).animate({
-				'min-height': activeTabHeight
-			}, 50, function() {
-				activeTab.delay(25).fadeIn(100);
-			});
-		});
-	}
-
-	$('.js-tabList').on('click', '.js-tabItem', function() {
-		$('.js-tabItem').removeClass('is-active');
-		$(this).addClass('is-active');
-		tabInit();
-	});
-
-	//
-
 	// Reward Event
 
 	let uAg = navigator.userAgent.toLowerCase();
@@ -42,19 +9,6 @@ $(document).ready(function() {
 	} else {
 		$('meta[name="viewport"]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1');
 	}
-
-	let rewardTab = new Swiper('.reward-tabList .swiper-container', {
-		slidesPerView: 'auto',
-		slidesOffsetBefore: 15,
-		slidesOffsetAfter: 15,
-		spaceBetween: 25,
-		breakpointsInverse: true,
-		breakpoints: {
-			992: {
-				touchRatio: 0
-			},
-		}
-	});
 
 	let rewardBest = new Swiper('.reward-best .swiper-container', {
 		slidesPerView: 2,
@@ -80,7 +34,6 @@ $(document).ready(function() {
 		slidesPerView: 'auto',
 		slidesOffsetBefore: 15,
 		slidesOffsetAfter: 15,
-		spaceBetween: 10,
 		freeMode: true,
 		navigation: {
 			nextEl: '.swiper-button-next',
@@ -95,16 +48,6 @@ $(document).ready(function() {
 				spaceBetween: 16,
 				freeMode: false
 			},
-		}
-	});
-
-	$('.reward-box').each(function() {
-		if ($(this).find('.reward-primary-bg').hasClass('reward-primary-bg') && $(this).find('.reward-danger-bg').hasClass('reward-danger-bg')) {
-			$(this).addClass('reward-primary').addClass('reward-danger');
-		} else if ($(this).find('.reward-primary-bg').hasClass('reward-primary-bg')) {
-			$(this).addClass('reward-primary');
-		} else if ($(this).find('.reward-danger-bg').hasClass('reward-danger-bg')) {
-			$(this).addClass('reward-danger');
 		}
 	});
 

@@ -19,7 +19,10 @@
 	<meta name="theme-color" content="#601dc0">
 
 	<link rel="stylesheet" href="css/core.min.css">
-	<link rel="stylesheet" href="css/main.min.css"></head>
+
+	<link rel="stylesheet" href="css/main.min.css">
+
+</head>
 <body>
 	<!-- Preloader -->
 	<div class="preloader js-preloader">
@@ -824,17 +827,23 @@
 	<!-- End Header -->
 
 	<!-- Reward -->
-	<section class="reward" role="main">
+	<main class="workarea">
 		<div class="container">
-			<div class="reward-title">
-				<h2>Фрибет</h2>
+			<div class="workarea-breadcrumb" aria-label="breadcrumb">
+				<ol class="workarea-breadcrumb-list">
+					<li class="workarea-breadcrumb-item">
+						<a href="/" class="workarea-breadcrumb-link">Главная</a>
+					</li>
+					<li class="workarea-breadcrumb-item">
+						<a href="/" class="workarea-breadcrumb-link">Страница</a>
+					</li>
+					<li class="workarea-breadcrumb-item">
+						<a href="/" class="workarea-breadcrumb-link">Внутренняя страница</a>
+					</li>
+				</ol>
 			</div>
-			<a href="reward.html" class="reward-back">
-				<svg><use xlink:href="#arrow"></use></svg>
-				Назад
-			</a>
-			<div class="reward-row">
-				<div class="reward-sidebar">
+			<div class="workarea-row">
+				<div class="workarea-sidebar">
 					<div class="reward-filter">
 						<div class="reward-filter-title">
 							<svg><use xlink:href="#filter"></use></svg>
@@ -875,43 +884,79 @@
 							</ul>
 						</div>
 					</div>
+					<div class="runet"></div>
 				</div>
-				<div class="reward-content">
-					<div class="reward-tab">
-						<div class="reward-tabList js-tabList">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<div class="reward-tabItem js-tabItem is-active">
-											Все
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="reward-tabItem js-tabItem">
-											Актуальные
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="reward-tabItem js-tabItem">
-											Прошедшие
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="reward-tabItem js-tabItem">
-											Эксклюзивные
-										</div>
+				<div class="workarea-content">
+					<div class="workarea-title">
+						<h1>Фрибет</h1>
+					</div>
+					<div class="reward">
+						<a href="reward.html" class="reward-back">
+							<svg><use xlink:href="#arrow"></use></svg>
+							Назад
+						</a>
+						<div class="reward-filter">
+							<div class="reward-filter-title">
+								<svg><use xlink:href="#filter"></use></svg>
+								Фильтр бонусов
+							</div>
+							<div class="select js-select">
+								<div class="select-field">
+									<div class="select-field-text">Выберите тип бонуса</div>
+									<div class="select-field-icon">
+										<svg><use xlink:href="#arrow"></use></svg>
 									</div>
 								</div>
+								<input class="select-input" type="hidden" name="type">
+								<ul class="select-menu">
+									<li data-value="value-1">Акции</li>
+									<li data-value="value-2">Бонусы за регистрацию</li>
+									<li data-value="value-3">Фрибеты</li>
+									<li data-value="value-4">Бездепозитные</li>
+									<li data-value="value-5">Программы лояльности</li>
+									<li data-value="value-6">Повышенные коэффы</li>
+								</ul>
+							</div>
+							<div class="select js-select-search">
+								<div class="select-field">
+									<input class="select-field-input js-select-input" placeholder="Введите букмекера">
+									<div class="select-field-icon">
+										<svg><use xlink:href="#arrow"></use></svg>
+									</div>
+								</div>
+								<input class="select-input" type="hidden" name="bookmaker">
+								<ul class="select-menu">
+									<li data-value="value-1">Винлайн</li>
+									<li data-value="value-2">Вулкан</li>
+									<li data-value="value-3">Вильям Хилл</li>
+									<li data-value="value-4">Лига Ставок</li>
+									<li data-value="value-5">Леон</li>
+									<li data-value="value-6">Марафон</li>
+								</ul>
 							</div>
 						</div>
-						<div class="reward-tabWrap js-tabWrap">
-							<div class="reward-tabBlock js-tabBlock is-open">
+						<div class="reward-tab">
+							<div class="reward-tabList">
+								<a href="/" class="reward-tabItem is-select">
+									Все
+								</a>
+								<a href="/" class="reward-tabItem">
+									Актуальные
+								</a>
+								<a href="/" class="reward-tabItem">
+									Прошедшие
+								</a>
+								<a href="/" class="reward-tabItem">
+									Эксклюзивные
+								</a>
+							</div>
+							<div class="reward-tabWrap">
 								<div class="reward-best">
 									<div class="reward-best-title">Топ бонус</div>
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
 											<div class="swiper-slide">
-												<a href="/" class="reward-box">
+												<a href="/" class="reward-box reward-primary">
 													<div class="reward-box-img">
 														<img src="img/reward/reward_1.webp" alt="Лига Ставок">
 													</div>
@@ -962,7 +1007,7 @@
 												</a>
 											</div>
 											<div class="swiper-slide">
-												<a href="/" class="reward-box">
+												<a href="/" class="reward-box reward-danger">
 													<div class="reward-box-img">
 														<img src="img/reward/reward_3.webp" alt="1xСтавка">
 													</div>
@@ -1023,7 +1068,7 @@
 									</div>
 								</div>
 								<div class="reward-list">
-									<a href="/" class="reward-box">
+									<a href="/" class="reward-box reward-primary">
 										<div class="reward-box-head">
 											<div class="reward-box-logo">
 												<img src="img/bookmaker/bookmaker_5.webp" alt="Tennisi Bet">
@@ -1064,7 +1109,7 @@
 										</div>
 										<div class="reward-box-btn">Получить квартиру</div>
 									</a>
-									<a href="/" class="reward-box">
+									<a href="/" class="reward-box reward-danger">
 										<div class="reward-box-head">
 											<div class="reward-box-logo">
 												<img src="img/bookmaker/bookmaker_1.svg" alt="1xСтавка">
@@ -1143,7 +1188,7 @@
 										</div>
 										<div class="reward-box-btn">Получить квартиру</div>
 									</a>
-									<a href="/" class="reward-box">
+									<a href="/" class="reward-box reward-danger">
 										<div class="reward-box-head">
 											<div class="reward-box-logo">
 												<img src="img/bookmaker/bookmaker_1.svg" alt="1xСтавка">
@@ -1165,7 +1210,7 @@
 										</div>
 										<div class="reward-box-btn">Получить машину</div>
 									</a>
-									<a href="/" class="reward-box">
+									<a href="/" class="reward-box reward-primary">
 										<div class="reward-box-head">
 											<div class="reward-box-logo">
 												<img src="img/bookmaker/bookmaker_2.webp" alt="Pari Match">
@@ -1246,254 +1291,12 @@
 									</li>
 								</ul>
 							</div>
-							<div class="reward-tabBlock js-tabBlock">
-								<div class="reward-list">
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_5.webp" alt="Tennisi Bet">
-											</div>
-											<div class="reward-box-label reward-primary-bg">
-												Эксклюзив
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											«Марафон» дарит путешествие в Париж или фрибет 5000 рублей
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить 1000 ₽</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_6.svg" alt="Марафон Bet">
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить квартиру</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_1.svg" alt="1xСтавка">
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-											<div class="reward-box-label reward-danger-bg">
-												1 день!
-											</div>
-										</div>
-										<div class="reward-box-title">
-											Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить машину</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_2.webp" alt="Pari Match">
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить 5000 ₽</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_5.webp" alt="Tennisi Bet">
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											«Марафон» дарит путешествие в Париж или фрибет 5000 рублей
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить 1000 ₽</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_6.svg" alt="Марафон Bet">
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить квартиру</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_1.svg" alt="1xСтавка">
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-											<div class="reward-box-label reward-danger-bg">
-												1 день!
-											</div>
-										</div>
-										<div class="reward-box-title">
-											Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить машину</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_2.webp" alt="Pari Match">
-											</div>
-											<div class="reward-box-label reward-primary-bg">
-												Эксклюзив
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить 5000 ₽</div>
-									</a>
-									<div class="reward-gap"></div>
-								</div>
-							</div>
-							<div class="reward-tabBlock js-tabBlock">
-								<div class="reward-list">
-									<a href="/" class="reward-box reward-disable">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_5.webp" alt="Tennisi Bet">
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											«Марафон» дарит путешествие в Париж или фрибет 5000 рублей
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Истекший</div>
-									</a>
-									<div class="reward-gap"></div>
-								</div>
-							</div>
-							<div class="reward-tabBlock js-tabBlock">
-								<div class="reward-list">
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_5.webp" alt="Tennisi Bet">
-											</div>
-											<div class="reward-box-label reward-primary-bg">
-												Эксклюзив
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											«Марафон» дарит путешествие в Париж или фрибет 5000 рублей
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить 1000 ₽</div>
-									</a>
-									<a href="/" class="reward-box">
-										<div class="reward-box-head">
-											<div class="reward-box-logo">
-												<img src="img/bookmaker/bookmaker_2.webp" alt="Pari Match">
-											</div>
-											<div class="reward-box-label reward-primary-bg">
-												Эксклюзив
-											</div>
-										</div>
-										<div class="reward-box-tools">
-											<div class="reward-box-tag">
-												Акция
-											</div>
-										</div>
-										<div class="reward-box-title">
-											Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus
-										</div>
-										<div class="reward-box-limit">
-											24/06/18 — 24/06/18
-										</div>
-										<div class="reward-box-btn">Получить 5000 ₽</div>
-									</a>
-									<div class="reward-gap"></div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</main>
 	<!-- End Reward -->
 
 	<!-- Feed -->
@@ -2051,6 +1854,7 @@
 	<!-- End Toolbar -->
 
 	<script src="js/core.min.js"></script>
+
 	<script src="js/feed.desktop.js" async></script>
 	<script src="js/reward.js" async></script>
 	<script src="js/main.js" async></script>

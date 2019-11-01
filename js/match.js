@@ -112,7 +112,6 @@ $(document).ready(function() {
 		slidesPerView: 'auto',
 		slidesOffsetBefore: 15,
 		slidesOffsetAfter: 15,
-		spaceBetween: 10,
 		freeMode: true,
 		navigation: {
 			nextEl: '.swiper-button-next',
@@ -137,7 +136,6 @@ $(document).ready(function() {
 		slidesPerView: 'auto',
 		slidesOffsetBefore: 15,
 		slidesOffsetAfter: 15,
-		spaceBetween: 10,
 		freeMode: true,
 		navigation: {
 			nextEl: '.swiper-button-next',

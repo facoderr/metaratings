@@ -19,7 +19,10 @@
 	<meta name="theme-color" content="#601dc0">
 
 	<link rel="stylesheet" href="css/core.min.css">
-	<link rel="stylesheet" href="css/main.min.css"></head>
+
+	<link rel="stylesheet" href="css/main.min.css">
+
+</head>
 <body>
 	<!-- Preloader -->
 	<div class="preloader js-preloader">
@@ -824,124 +827,99 @@
 	<!-- End Header -->
 
 	<!-- Forecast -->
-	<section class="forecast" role="main">
+	<main class="workarea">
 		<div class="container">
-			<div class="forecast-title">
-				<h2>Ставки и прогнозы</h2>
+			<div class="workarea-breadcrumb" aria-label="breadcrumb">
+				<ol class="workarea-breadcrumb-list">
+					<li class="workarea-breadcrumb-item">
+						<a href="/" class="workarea-breadcrumb-link">Главная</a>
+					</li>
+					<li class="workarea-breadcrumb-item">
+						<a href="/" class="workarea-breadcrumb-link">Страница</a>
+					</li>
+					<li class="workarea-breadcrumb-item">
+						<a href="/" class="workarea-breadcrumb-link">Внутренняя страница</a>
+					</li>
+				</ol>
 			</div>
-			<div class="forecast-category">
-				<div class="swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
+			<div class="workarea-row">
+				<div class="workarea-sidebar">
+					<div class="runet"></div>
+				</div>
+				<div class="workarea-content">
+					<div class="workarea-title">
+						<h1>Ставки и прогнозы</h1>
+					</div>
+					<div class="forecast">
+						<div class="forecast-category">
 							<a href="/" class="forecast-category-link is-select">
 								<svg><use xlink:href="#forecast"></use></svg>
 								Все
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#combat"></use></svg>
 								Единоборства
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#football"></use></svg>
 								Футбол
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#tennis"></use></svg>
 								Теннис
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#basketball"></use></svg>
 								Баскетбол
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#hockey"></use></svg>
 								Хоккей
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#volleyball"></use></svg>
 								Волейбол
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#whistle"></use></svg>
 								Другие
 							</a>
-						</div>
-						<div class="swiper-slide">
 							<a href="/" class="forecast-category-link">
 								<svg><use xlink:href="#crown"></use></svg>
 								Экспрессы
 							</a>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="forecast-row">
-				<div class="forecast-sidebar"></div>
-				<div class="forecast-content">
-					<div class="forecast-tab">
-						<div class="forecast-tabList js-tabList">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<div class="forecast-tabItem js-tabItem is-active">
-											Все дни
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="forecast-tabItem js-tabItem">
-											Сегодня
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="forecast-tabItem js-tabItem">
-											Завтра
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="forecast-tabItem js-tabItem">
-											Позже
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="forecast-tabItem js-tabItem">
-											От Редакции
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="forecast-tabItem js-tabItem">
-											От Экспертов
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="forecast-tabItem js-tabItem">
-											От капперов
-										</div>
-									</div>
-								</div>
+						<div class="forecast-tab">
+							<div class="forecast-tabList">
+								<a href="/" class="forecast-tabItem is-select">
+									Все дни
+								</a>
+								<a href="/" class="forecast-tabItem">
+									Сегодня
+								</a>
+								<a href="/" class="forecast-tabItem">
+									Завтра
+								</a>
+								<a href="/" class="forecast-tabItem">
+									Позже
+								</a>
+								<a href="/" class="forecast-tabItem">
+									От Редакции
+								</a>
+								<a href="/" class="forecast-tabItem">
+									От Экспертов
+								</a>
+								<a href="/" class="forecast-tabItem">
+									От капперов
+								</a>
 							</div>
-						</div>
-						<div class="forecast-tabWrap js-tabWrap">
-							<div class="forecast-tabBlock js-tabBlock is-open">
+							<div class="forecast-tabWrap">
 								<div class="forecast-best">
 									<div class="forecast-best-title">Топ прогнозов</div>
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
 											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
+												<a href="/" class="forecast-box forecast-primary">
 													<div class="forecast-box-versus">
 														<div class="forecast-box-team">
 															<img src="img/team/team_3.png" alt="Team 3">
@@ -978,7 +956,7 @@
 												</a>
 											</div>
 											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
+												<a href="/" class="forecast-box forecast-primary">
 													<div class="forecast-box-versus">
 														<div class="forecast-box-team">
 															<img src="img/team/team_3.png" alt="Team 3">
@@ -1015,7 +993,7 @@
 												</a>
 											</div>
 											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
+												<a href="/" class="forecast-box forecast-success">
 													<div class="forecast-box-versus">
 														<div class="forecast-box-team">
 															<img src="img/team/team_3.png" alt="Team 3">
@@ -1052,7 +1030,7 @@
 												</a>
 											</div>
 											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
+												<a href="/" class="forecast-box forecast-success">
 													<div class="forecast-box-versus">
 														<div class="forecast-box-team">
 															<img src="img/team/team_3.png" alt="Team 3">
@@ -1106,7 +1084,7 @@
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
 											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
+												<a href="/" class="forecast-box forecast-disable">
 													<div class="forecast-box-versus">
 														<div class="forecast-box-team">
 															<img src="img/team/team_3.png" alt="Team 3">
@@ -1136,14 +1114,13 @@
 															Футбол
 														</div>
 														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
+															Окончен
 														</div>
 													</div>
 												</a>
 											</div>
 											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
+												<a href="/" class="forecast-box forecast-live">
 													<div class="forecast-box-versus">
 														<div class="forecast-box-team">
 															<img src="img/team/team_3.png" alt="Team 3">
@@ -1174,7 +1151,7 @@
 														</div>
 														<div class="forecast-box-last">
 															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
+															Live
 														</div>
 													</div>
 												</a>
@@ -1261,7 +1238,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 								<div class="forecast-slider">
 									<div class="forecast-slider-title">
@@ -1426,7 +1403,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 								<div class="forecast-slider">
 									<div class="forecast-slider-title">
@@ -1591,7 +1568,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 								<div class="forecast-slider">
 									<div class="forecast-slider-title">
@@ -1756,7 +1733,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 								<div class="forecast-slider">
 									<div class="forecast-slider-title">
@@ -1921,7 +1898,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 								<div class="forecast-slider">
 									<div class="forecast-slider-title">
@@ -2086,7 +2063,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 								<div class="forecast-slider">
 									<div class="forecast-slider-title">
@@ -2239,7 +2216,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 								<div class="forecast-slider">
 									<div class="forecast-slider-title">
@@ -2420,1999 +2397,7 @@
 											<svg><use xlink:href="#arrow"></use></svg>
 										</div>
 									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-							</div>
-							<div class="forecast-tabBlock js-tabBlock">
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#football"></use></svg>
-										Прогнозы на футбол
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#tennis"></use></svg>
-										Прогнозы на теннис
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-							</div>
-							<div class="forecast-tabBlock js-tabBlock">
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#football"></use></svg>
-										Прогнозы на футбол
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#tennis"></use></svg>
-										Прогнозы на теннис
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-							</div>
-							<div class="forecast-tabBlock js-tabBlock">
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#football"></use></svg>
-										Прогнозы на футбол
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#tennis"></use></svg>
-										Прогнозы на теннис
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-							</div>
-							<div class="forecast-tabBlock js-tabBlock">
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#football"></use></svg>
-										Прогнозы на футбол
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#tennis"></use></svg>
-										Прогнозы на теннис
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-							</div>
-							<div class="forecast-tabBlock js-tabBlock">
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#football"></use></svg>
-										Прогнозы на футбол
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#tennis"></use></svg>
-										Прогнозы на теннис
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-							</div>
-							<div class="forecast-tabBlock js-tabBlock">
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#football"></use></svg>
-										Прогнозы на футбол
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Футбол
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
-								</div>
-								<div class="forecast-slider">
-									<div class="forecast-slider-title">
-										<svg><use xlink:href="#tennis"></use></svg>
-										Прогнозы на теннис
-									</div>
-									<div class="swiper-container">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-											<div class="swiper-slide">
-												<a href="/" class="forecast-box">
-													<div class="forecast-box-versus">
-														<div class="forecast-box-team">
-															<img src="img/team/team_3.png" alt="Team 3">
-														</div>
-														<div class="forecast-box-detail">
-															<div class="forecast-box-odds">
-																К: 4.36
-															</div>
-															<div class="forecast-box-time">
-																<div class="forecast-box-date">24.06.18</div>
-																<div class="forecast-box-clock">13:30</div>
-															</div>
-														</div>
-														<div class="forecast-box-team">
-															<img src="img/team/team_4.png" alt="Team 4">
-														</div>
-													</div>
-													<div class="forecast-box-title">
-														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
-													</div>
-													<div class="forecast-box-user">
-														<div class="forecast-box-avatar"></div>
-														Сергей Мясников
-													</div>
-													<div class="forecast-box-tools">
-														<div class="forecast-box-tag">
-															Теннис
-														</div>
-														<div class="forecast-box-last">
-															<svg><use xlink:href="#clock"></use></svg>
-															1:38:24
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="swiper-button-next">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-										<div class="swiper-button-prev">
-											<svg><use xlink:href="#arrow"></use></svg>
-										</div>
-									</div>
-									<a href="forecast-inner.html" class="forecast-slider-more">Больше бонусов</a>
+									<a href="forecast-inner.html" class="forecast-slider-more">Больше прогнозов</a>
 								</div>
 							</div>
 						</div>
@@ -4420,7 +2405,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</main>
 	<!-- End Forecast -->
 
 	<!-- Feed -->
@@ -4994,6 +2979,7 @@
 	<!-- End ToBack -->
 
 	<script src="js/core.min.js"></script>
+
 	<script src="js/feed.desktop.js" async></script>
 	<script src="js/forecast.js" async></script>
 	<script src="js/main.js" async></script>
