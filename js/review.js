@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	// Reward Event
+	// Review Event
 
 	$('.js-select').click(function () {
 		$(this).toggleClass('is-active');
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 	range.bind('input', (e) => {
 		let rangeValue = e.target.value;
-		
+
 		if (rangeValue > 33 && rangeValue < 66) {
 			range.parent().removeClass('is-success is-danger');
 		} else if (rangeValue <= 33) {

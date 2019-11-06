@@ -9901,19 +9901,9 @@ body {
   z-index: 1;
 }
 
-.review-publish-row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  margin: 0 0 10px;
-}
-
 .review-publish-input {
-  width: 49%;
   height: 46px;
+  margin: 0 0 10px;
 }
 
 .review-publish-input input {
@@ -9993,6 +9983,22 @@ body {
 .review-publish-btn:hover {
   color: #601dc0;
   border: 2px solid #601dc0;
+}
+
+@media only screen and (min-width: 1100px) {
+  .review-publish-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    margin: 0 0 10px;
+  }
+  .review-publish-input {
+    width: 49%;
+    margin: 0;
+  }
 }
 
 /* -- End Pulse -- */
