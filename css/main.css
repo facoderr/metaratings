@@ -2547,18 +2547,20 @@ body {
   -ms-flex-positive: 2;
       flex-grow: 2;
   width: 50%;
-  height: 100%;
+  height: 32px;
   font: 14px/1 Helvetica Neue, Helvetica, Arial, sans-serif;
   background: none;
   border: none;
+  padding: 0 10px;
+  margin: 0 -28px 0 -10px;
 }
 
 .reward-filter .select-field-input:-ms-input-placeholder {
-  color: #e9e9e9;
+  color: #666666;
 }
 
 .reward-filter .select-field-input::placeholder {
-  color: #e9e9e9;
+  color: #666666;
 }
 
 .reward-filter .select-field-input:focus:-ms-input-placeholder {
@@ -2610,6 +2612,17 @@ body {
 
 .reward-tab {
   position: relative;
+}
+
+.reward-tab:after {
+  content: '';
+  position: absolute;
+  top: 35px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: #d5d5d5;
+  z-index: 0;
 }
 
 .reward-tabList {
@@ -3288,6 +3301,9 @@ body {
   }
   .reward-tab {
     margin: -15px 0 0;
+  }
+  .reward-tab:after {
+    top: 45px;
   }
   .reward-tabList {
     padding: 0;
