@@ -30,6 +30,13 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.reward-best').each(function() {
+		if ($(this).find('.swiper-slide').length < 4) {
+			$(this).find('.swiper-container').addClass('is-disable');
+			$(this).find('.swiper-pagination').addClass('is-disable');
+		}
+	});
+
 	let rewardSlider = new Swiper('.reward-slider .swiper-container', {
 		slidesPerView: 'auto',
 		slidesOffsetBefore: 15,

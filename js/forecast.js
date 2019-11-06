@@ -65,6 +65,13 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.forecast-best').each(function() {
+		if ($(this).find('.swiper-slide').length < 4) {
+			$(this).find('.swiper-container').addClass('is-disable');
+			$(this).find('.swiper-pagination').addClass('is-disable');
+		}
+	});
+
 	let forecastSlider = new Swiper('.forecast-slider .swiper-container', {
 		slidesPerView: 'auto',
 		slidesOffsetBefore: 15,
