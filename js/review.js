@@ -2,19 +2,30 @@ $(document).ready(function() {
 
 	// Review Event
 
-	$('.js-select').click(function () {
-		$(this).toggleClass('is-active');
-		$(this).find('.select-menu').slideToggle(300);
+	$('.js-select .select-field').click(function () {
+		$(this).parent().toggleClass('is-active');
+		$(this).parent().find('.select-dropdown').slideToggle(300);
 	});
-	$('.js-select li').click(function () {
+	$('.js-select-input').keyup(function() {
+		$this = $(this);
+		$value = $(this).val();
+		$this.parents('.js-select').find('li').each(function() {
+			let reg = new RegExp($value, 'i');
+			if (!$(this).text().match(reg)) {
+				$(this).hide();
+			} else {
+				$(this).show();
+			}
+		});
+	});
+	$('.js-select-search li').click(function () {
 		let selectValue = $(this).data('value');
 		$(this).parents('.js-select').find('.select-field-text').text($(this).text());
 		$(this).parents('.js-select').find('.select-input').val(selectValue);
-	});
-	$(document).bind('mouseup touchend', function(e) {
-		if ($(e.target).closest('.js-select').length) return;
-		$('.js-select').removeClass('is-active');
-		$('.js-select').find('.select-menu').slideUp(300);
+		$('.js-select-search li').show();
+		$this.val('');
+		$this.parents('.js-select').removeClass('is-active');
+		$this.parents('.js-select').find('.select-dropdown').slideUp(300);
 	});
 
 	const range = $('.review-publish-range input');
