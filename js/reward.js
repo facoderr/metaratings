@@ -23,10 +23,13 @@ $(document).ready(function() {
 		},
 		breakpointsInverse: true,
 		breakpoints: {
+			375: {
+				spaceBetween: 15
+			},
 			992: {
 				slidesPerView: 3,
 				spaceBetween: 16
-			},
+			}
 		}
 	});
 

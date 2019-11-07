@@ -2598,15 +2598,18 @@ body {
 }
 
 .reward-filter .select-menu li {
-  font-size: 14px;
-  line-height: 1.2;
-  cursor: pointer;
-  transition: all .3s ease-in-out;
-  padding: 6px 10px;
   margin: 2.5px 0;
 }
 
-.reward-filter .select-menu li:hover {
+.reward-filter .select-menu a {
+  display: block;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 6px 10px;
+}
+
+.reward-filter .select-menu a:hover {
   background: #f0f0f0;
 }
 
@@ -2729,14 +2732,14 @@ body {
 }
 
 .reward-best .swiper-container.is-disable {
-  padding: 20px 30px 10px;
+  margin: -10px -30px;
 }
 
 .reward-best .swiper-slide {
-  width: auto;
+  width: calc((100% / 2) - 7.5px);
   height: auto;
   transition: all .3s ease-in-out;
-  margin: 0 10px 0 0;
+  margin: 0 15px 0 0;
 }
 
 .reward-best .swiper-slide-prev {
@@ -2859,8 +2862,14 @@ body {
 }
 
 .reward-slider-title {
+  position: relative;
   color: #181818;
   font-weight: 700;
+  z-index: 2;
+}
+
+.reward-slider-title a {
+  color: inherit;
 }
 
 .reward-slider .swiper-container {
@@ -2874,7 +2883,7 @@ body {
 }
 
 .reward-slider .swiper-slide:not(:last-child) .reward-box {
-  margin: 0 10px 0 0;
+  margin: 0 15px 0 0;
 }
 
 .reward-slider .swiper-button-next, .reward-slider .swiper-button-prev {
@@ -2955,6 +2964,7 @@ body {
       flex-flow: column wrap;
   width: 246px;
   height: 100%;
+  min-height: 175px;
   background: #fff;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
@@ -3296,7 +3306,7 @@ body {
   .reward-filter .select-field-input {
     font-size: 12px;
   }
-  .reward-filter .select-menu li {
+  .reward-filter .select-menu a {
     font-size: 12px;
   }
   .reward-tab {
@@ -3323,10 +3333,10 @@ body {
   }
   .reward-best .swiper-container {
     padding: 30px 30px;
-    margin: -10px -30px 0 !important;
+    margin: -10px -30px 0;
   }
   .reward-best .swiper-container.is-disable {
-    padding: 30px 30px 10px;
+    margin: -10px -30px -20px;
   }
   .reward-best .swiper-slide {
     width: calc((100% / 3) - 10.66px);
@@ -3382,9 +3392,6 @@ body {
   }
   .reward-slider .swiper-slide {
     width: calc((100% / 3) - 10.66px);
-    margin-right: 10px;
-  }
-  .reward-slider .swiper-slide:not(:last-child) .reward-box {
     margin: 0 16px 0 0;
   }
   .reward-slider .swiper-slide-prev {
@@ -3438,6 +3445,13 @@ body {
 @media only screen and (max-width: 374px) {
   .reward-best .reward-box-title {
     font-size: 12px;
+  }
+  .reward-best .swiper-slide {
+    width: calc((100% / 2) - 5px);
+    margin: 0 10px 0 0;
+  }
+  .reward-slider .swiper-slide:not(:last-child) .reward-box {
+    margin: 0 10px 0 0;
   }
   .reward-box-title {
     font-size: 12px;
@@ -3688,7 +3702,7 @@ body {
 }
 
 .forecast-best .swiper-container.is-disable {
-  padding: 20px 0 10px;
+  margin: -10px -15px;
 }
 
 .forecast-best .swiper-slide {
@@ -3697,7 +3711,7 @@ body {
 }
 
 .forecast-best .swiper-slide:not(:last-child) .forecast-box {
-  margin: 0 10px 0 0;
+  margin: 0 15px 0 0;
 }
 
 .forecast-best .swiper-pagination-bullets {
@@ -3804,7 +3818,7 @@ body {
 }
 
 .forecast-slider .swiper-slide:not(:last-child) .forecast-box {
-  margin: 0 10px 0 0;
+  margin: 0 15px 0 0;
 }
 
 .forecast-slider .swiper-button-next, .forecast-slider .swiper-button-prev {
@@ -4349,13 +4363,10 @@ body {
     margin: -10px -30px 0;
   }
   .forecast-best .swiper.is-disable {
-    padding: 30px 30px 10px;
+    margin: -10px -30px -20px;
   }
   .forecast-best .swiper-slide {
     width: calc((100% / 3) - 10.66px);
-    margin-right: 16px;
-  }
-  .forecast-best .swiper-slide:not(:last-child) .forecast-box {
     margin: 0 16px 0 0;
   }
   .forecast-best .swiper-slide-prev {
@@ -4381,9 +4392,6 @@ body {
   }
   .forecast-slider .swiper-slide {
     width: calc((100% / 3) - 10.66px);
-    margin-right: 16px;
-  }
-  .forecast-slider .swiper-slide:not(:last-child) .forecast-box {
     margin: 0 16px 0 0;
   }
   .forecast-slider .swiper-slide-prev {
@@ -4471,13 +4479,11 @@ body {
   .forecast-tabItem {
     font-size: 14px;
   }
-  .forecast-slider-title {
-    font-size: 16px;
+  .forecast-best .swiper-slide:not(:last-child) .forecast-box {
+    margin: 0 10px 0 0;
   }
-  .forecast-slider-more {
-    height: 30px;
-    font-size: 14px;
-    font-weight: 400;
+  .forecast-slider .swiper-slide:not(:last-child) .forecast-box {
+    margin: 0 10px 0 0;
   }
   .forecast-box {
     width: 246px;
