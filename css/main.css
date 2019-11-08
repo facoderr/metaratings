@@ -9877,8 +9877,7 @@ body {
   content: '';
   position: absolute;
   bottom: 0;
-  width: 0;
-  height: 0;
+  left: 0;
   border-style: solid;
   border-width: 0 12.5px 5px 12.5px;
   border-color: transparent transparent #fff transparent;
@@ -10052,9 +10051,11 @@ body {
   width: 40px;
   height: 40px;
   font-weight: 700;
-  text-indent: -999px;
   border-radius: 50%;
-  overflow: hidden;
+}
+
+.rating-bk-item-link span {
+  display: none;
 }
 
 .rating-bk-item-overview {
@@ -10255,9 +10256,10 @@ body {
   }
   .rating-bk-item-link {
     width: 90px;
-    text-indent: initial;
     border-radius: 20px;
-    overflow: initial;
+  }
+  .rating-bk-item-link span {
+    display: block;
   }
   .rating-bk-item-link svg {
     display: none;
