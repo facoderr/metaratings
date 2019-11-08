@@ -10181,6 +10181,9 @@ body {
   .rating-bk-item:not(:last-child) {
     margin: 0 0 20px;
   }
+  .rating-bk-item.is-swipe {
+    transform: none;
+  }
   .rating-bk-item.is-highlight {
     padding: 5px 0 24px;
   }
