@@ -1,38 +1,5 @@
 $(document).ready(function() {
 
-	// Tab Event
-
-	let clickedTab = $('.js-tabItem.is-active');
-			tabWrapper = $('.js-tabWrap');
-			activeTab = tabWrapper.find('.is-open');
-			activeTabHeight = activeTab.outerHeight();
-
-	tabWrapper.css('min-height', activeTabHeight);
-
-	function tabInit() {
-		clickedTab = $('.js-tabItem.is-active');
-		activeTab.fadeOut(100, function() {
-			$('.js-tabBlock').removeClass('is-open');
-			let clickedTabIndex = clickedTab.index('.js-tabItem');
-			$('.js-tabBlock').eq(clickedTabIndex).addClass('is-open');
-			activeTab = tabWrapper.find('.is-open');
-			activeTabHeight = activeTab.outerHeight();
-			tabWrapper.stop().delay(25).animate({
-				'min-height': activeTabHeight
-			}, 50, function() {
-				activeTab.delay(25).fadeIn(100);
-			});
-		});
-	}
-
-	$('.js-tabList').on('click', '.js-tabItem', function() {
-		$('.js-tabItem').removeClass('is-active');
-		$(this).addClass('is-active');
-		tabInit();
-	});
-
-	//
-
 	// Feed Mobile Event
 
 	$(document).bind('scroll', function() {
@@ -41,9 +8,9 @@ $(document).ready(function() {
 			$('.feed-tabBlock.is-open .feed-box').first().clone().appendTo($('.feed-tabBlock.is-open'));
 		}
 		if ($(this).scrollTop() > 100) {
-			$('.js-inner-back').addClass('is-active');
+			$('.feed-toback').addClass('is-active');
 		} else {
-			$('.js-inner-back').removeClass('is-active');
+			$('.feed-toback').removeClass('is-active');
 		}
 	});
 

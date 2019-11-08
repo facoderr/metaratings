@@ -112,16 +112,11 @@ input::placeholder, textarea::placeholder {
 
 /* -- Preloader -- */
 /* -- General -- */
-html {
-  overflow-x: hidden;
-}
-
 body {
   position: relative;
   font: 16px Helvetica Neue, Helvetica, Arial, sans-serif;
   color: #000;
   background: #fff;
-  overflow: hidden;
 }
 
 .container {
@@ -355,6 +350,7 @@ body {
   top: 0;
   right: -15px;
   left: -15px;
+  background: #fff;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
   opacity: 1;
   visibility: visible;
@@ -1965,7 +1961,8 @@ body {
 .feed {
   position: relative;
   background: #f0f0f0;
-  padding: 0 0 53px;
+  padding: 0 15px;
+  margin: 0 -15px;
 }
 
 .feed-event {
@@ -2097,6 +2094,7 @@ body {
   -ms-flex-align: center;
       align-items: center;
   color: rgba(0, 0, 0, 0.4);
+  background: none;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
@@ -2127,14 +2125,6 @@ body {
 
 .feed-tabWrap {
   margin: 10px 0 0;
-}
-
-.feed-tabBlock {
-  display: none;
-}
-
-.feed-tabBlock.is-open {
-  display: block;
 }
 
 .feed-daily {
@@ -2305,11 +2295,7 @@ body {
   line-height: 1.25;
 }
 
-.feed-inner {
-  padding: 30px 0 63px;
-}
-
-.feed-inner-back {
+.feed-toback {
   position: fixed;
   display: -ms-flexbox;
   display: flex;
@@ -2329,43 +2315,27 @@ body {
   transform: translateY(-100%);
 }
 
-.feed-inner-back.is-active {
+.feed-toback.is-active {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.feed-inner-back svg {
+.feed-toback svg {
   width: 10px;
   height: 10px;
   transform: rotate(180deg);
   margin: 0 10px 0 15px;
-}
-
-.feed-inner p {
-  line-height: 1.38;
-}
-
-.feed-inner p:not(:last-child) {
-  margin: 0 0 20px;
+  margin-margin: 0 0 20px;
 }
 
 @media only screen and (min-width: 1100px) {
   .feed {
     display: none;
   }
-  .feed-inner {
-    padding: 100px 0;
-  }
-  .feed-inner-back {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 374px) {
-  .feed {
-    padding: 0 0 45px;
-  }
   .feed-event-title {
     font-size: 14px;
   }
@@ -2455,9 +2425,6 @@ body {
   .feed-topic-info {
     font-size: 14px;
     line-height: 1.29;
-  }
-  .feed-inner {
-    padding: 30px 0 55px;
   }
 }
 
