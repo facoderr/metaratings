@@ -18,19 +18,17 @@
 	
 	<meta name="theme-color" content="#601dc0">
 
-	<link rel="stylesheet" href="css/core.min.css">
-
-	<link rel="stylesheet" href="css/main.min.css">
-
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/pages/forecast.css">
 </head>
 <body>
 	<!-- Preloader -->
-	<div class="preloader js-preloader">
+	<!--<div class="preloader js-preloader">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19" class="preloader-logo js-logo">
 			<path d="M.46,19C.2,19,0,18.63,0,18.17V.83C0,.37.2,0,.46,0h16.3a4.6,4.6,0,0,1,1.46,1.38A4.7,4.7,0,0,1,19,4.08V18.17c0,.46-.2.83-.46.83Z"/>
 			<polygon points="5.64 2.75 13.36 2.75 13.36 4.75 8.97 4.75 11.49 9.44 8.96 14.23 13.36 14.25 13.35 16.25 5.65 16.21 9.23 9.45 5.64 2.75"/>
 		</svg>
-	</div>
+	</div>-->
 	<!-- End Preloader -->
 
 	<!-- Header -->
@@ -339,7 +337,7 @@
 										</li>
 									</ul>
 								</li>
-								<li class="nav-menu-item">
+								<li class="nav-menu-item is-select">
 									<a href="/prognozy/" class="nav-menu-link">
 										<span class="nav-menu-text">
 											Прогнозы
@@ -1023,7 +1021,9 @@
 														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
 													</div>
 													<div class="forecast-box-user">
-														<div class="forecast-box-avatar forecast-primary-bg"></div>
+														<div class="forecast-box-avatar forecast-primary-bg">
+															<img src="img/icons/meta.svg">
+														</div>
 														Сергей Мясников
 													</div>
 													<div class="forecast-box-tools">
@@ -1060,7 +1060,9 @@
 														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
 													</div>
 													<div class="forecast-box-user">
-														<div class="forecast-box-avatar forecast-primary-bg"></div>
+														<div class="forecast-box-avatar forecast-primary-bg">
+															<img src="img/icons/meta.svg">
+														</div>
 														Сергей Мясников
 													</div>
 													<div class="forecast-box-tools">
@@ -1097,7 +1099,9 @@
 														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
 													</div>
 													<div class="forecast-box-user">
-														<div class="forecast-box-avatar forecast-success-bg"></div>
+														<div class="forecast-box-avatar forecast-success-bg">
+															<svg><use xlink:href="#star"></use></svg>
+														</div>
 														Сергей Мясников
 													</div>
 													<div class="forecast-box-tools">
@@ -1134,7 +1138,9 @@
 														«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?
 													</div>
 													<div class="forecast-box-user">
-														<div class="forecast-box-avatar forecast-success-bg"></div>
+														<div class="forecast-box-avatar forecast-success-bg">
+															<svg><use xlink:href="#star"></use></svg>
+														</div>
 														Сергей Мясников
 													</div>
 													<div class="forecast-box-tools">
@@ -2020,61 +2026,6 @@
 		</a>
 	</aside>
 	<!-- End Feed -->
-	
-	<!-- Toolbar -->
-	<div class="toolbar">
-		<ul class="toolbar-list">
-			<li class="toolbar-list-item">
-				<a href="javascript:void(0);" class="toolbar-list-link">
-					<span class="toolbar-list-icon">
-						<svg><use xlink:href="#rating"></use></svg>
-					</span>
-					<span class="toolbar-list-text">Рейтинг</span>
-				</a>
-			</li>
-			<li class="toolbar-list-item is-select">
-				<a href="forecast.html" class="toolbar-list-link">
-					<span class="toolbar-list-icon">
-						<svg><use xlink:href="#star-o"></use></svg>
-					</span>
-					<span class="toolbar-list-text">Прогнозы</span>
-				</a>
-			</li>
-			<li class="toolbar-list-item">
-				<a href="feed.html" class="toolbar-list-link">
-					<span class="toolbar-list-icon">
-						<svg><use xlink:href="#round"></use></svg>
-					</span>
-					<span class="toolbar-list-text">Лента</span>
-				</a>
-			</li>
-			<li class="toolbar-list-item">
-				<a href="reward.html" class="toolbar-list-link">
-					<span class="toolbar-list-icon">
-						<svg><use xlink:href="#gift"></use></svg>
-					</span>
-					<span class="toolbar-list-text">Бонусы</span>
-				</a>
-			</li>
-			<li class="toolbar-list-item toolbar-list-promo">
-				<a href="/" class="toolbar-list-link">
-					<span class="toolbar-list-icon">
-						<img src="img/promo/freebet_mobile.svg" alt="Freebet">
-					</span>
-					<span class="toolbar-list-text">Фрибет</span>
-				</a>
-			</li>
-			<li class="toolbar-list-item">
-				<a href="javascript:void(0);" class="toolbar-list-link js-toggle">
-					<span class="toolbar-list-icon">
-						<svg><use xlink:href="#toggle"></use></svg>
-					</span>
-					<span class="toolbar-list-text">Меню</span>
-				</a>
-			</li>
-		</ul>
-	</div>
-	<!-- End Toolbar -->
 
 	<!-- Toolbar -->
 	<div class="toolbar">
@@ -2087,7 +2038,7 @@
 					<span class="toolbar-list-text">Рейтинг</span>
 				</a>
 			</li>
-			<li class="toolbar-list-item">
+			<li class="toolbar-list-item is-select">
 				<a href="forecast.html" class="toolbar-list-link">
 					<span class="toolbar-list-icon">
 						<svg><use xlink:href="#star-o"></use></svg>

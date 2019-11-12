@@ -42,8 +42,6 @@ $(document).ready(function() {
 
 	let forecastBest = new Swiper('.forecast-best .swiper-container', {
 		slidesPerView: 'auto',
-		slidesOffsetBefore: 15,
-		slidesOffsetAfter: 15,
 		freeMode: true,
 		navigation: {
 			nextEl: '.swiper-button-next',
@@ -57,8 +55,6 @@ $(document).ready(function() {
 		breakpoints: {
 			992: {
 				slidesPerView: 3,
-				slidesOffsetBefore: 0,
-				slidesOffsetAfter: 0,
 				spaceBetween: 16,
 				freeMode: false
 			},
@@ -74,8 +70,6 @@ $(document).ready(function() {
 
 	let forecastSlider = new Swiper('.forecast-slider .swiper-container', {
 		slidesPerView: 'auto',
-		slidesOffsetBefore: 15,
-		slidesOffsetAfter: 15,
 		freeMode: true,
 		navigation: {
 			nextEl: '.swiper-button-next',
@@ -85,8 +79,6 @@ $(document).ready(function() {
 		breakpoints: {
 			992: {
 				slidesPerView: 3,
-				slidesOffsetBefore: 0,
-				slidesOffsetAfter: 0,
 				spaceBetween: 16,
 				freeMode: false
 			},
