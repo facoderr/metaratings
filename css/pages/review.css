@@ -173,7 +173,7 @@
   width: 40px;
   height: 40px;
   -webkit-appearance: none;
-  background: #f8d014 url("../img/icons/smile.svg") no-repeat center;
+  background: #f8d014 url("../../img/icons/smile.svg") no-repeat center;
   background-size: 30px;
   border: 2px solid #fff;
   border-radius: 50%;
@@ -183,13 +183,13 @@
 }
 
 .review-publish-range.is-success input[type=range]::-webkit-slider-thumb {
-  background: #20a94a url("../img/icons/smile_success.svg") no-repeat center;
+  background: #20a94a url("../../img/icons/smile_success.svg") no-repeat center;
   background-size: 30px;
   margin: -15px 0 0;
 }
 
 .review-publish-range.is-danger input[type=range]::-webkit-slider-thumb {
-  background: #d0021b url("../img/icons/smile_danger.svg") no-repeat center;
+  background: #d0021b url("../../img/icons/smile_danger.svg") no-repeat center;
   background-size: 30px;
 }
 

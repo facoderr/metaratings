@@ -240,8 +240,8 @@
 }
 
 .reward-best .swiper-container {
-  padding: 20px 30px;
-  margin: -10px -30px 0;
+  padding: 20px 15px;
+  margin: -10px -15px 0;
 }
 
 .reward-best .swiper-container > .swiper-pagination-bullets .swiper-pagination-bullet {
@@ -249,7 +249,7 @@
 }
 
 .reward-best .swiper-container.is-disable {
-  margin: -10px -30px;
+  margin: -10px -15px;
 }
 
 .reward-best .swiper-slide {
@@ -651,27 +651,6 @@
   padding: 20px 0 0;
 }
 
-.reward-list-more {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  width: 100%;
-  height: 30px;
-  color: #000;
-  font-size: 14px;
-  border: 2px solid #e9e9e9;
-  border-radius: 6px;
-  margin: 10px 0 0;
-}
-
-.reward-list-more:hover {
-  color: #601dc0;
-  border: 2px solid #601dc0;
-}
-
 .reward-list .reward-box, .reward-list .reward-gap {
   width: 100%;
 }
@@ -680,82 +659,7 @@
   -ms-flex-order: -1;
       order: -1;
   height: auto;
-  margin: 0 0 10px;
-}
-
-.reward-pagination {
-  display: none;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-}
-
-.reward-pagination-item:first-child, .reward-pagination-item:last-child {
-  margin: 0 0 0 15px;
-}
-
-.reward-pagination-item:first-child .reward-pagination-link, .reward-pagination-item:last-child .reward-pagination-link {
-  border: none;
-}
-
-.reward-pagination-item:first-child .reward-pagination-link:hover, .reward-pagination-item:last-child .reward-pagination-link:hover {
-  background: none;
-}
-
-.reward-pagination-item:first-child {
-  margin: 0 15px 0 0;
-}
-
-.reward-pagination-item:first-child .reward-pagination-link svg {
-  transform: rotate(180deg);
-}
-
-.reward-pagination-item:nth-child(2) .reward-pagination-link {
-  border-left-width: 2px;
-  border-radius: 8px 0 0 8px;
-}
-
-.reward-pagination-item:nth-last-child(2) .reward-pagination-link {
-  border-right-width: 2px;
-  border-radius: 0 8px 8px 0;
-}
-
-.reward-pagination-item.is-select .reward-pagination-link {
-  color: #fff;
-  background: #e9e9e9;
-}
-
-.reward-pagination-link {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  width: 32px;
-  height: 34px;
-  color: #000;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1;
-  border: 2px solid #e9e9e9;
-  border-left-width: 1px;
-  border-right-width: 1px;
-}
-
-.reward-pagination-link:hover {
-  color: #fff;
-  background: #e9e9e9;
-}
-
-.reward-pagination-link:hover svg {
-  fill: #601dc0;
-}
-
-.reward-pagination-link svg {
-  width: 12px;
-  height: 12px;
+  margin: 0 0 15px;
 }
 
 .reward-primary {
@@ -953,19 +857,11 @@
   .reward-box-limit {
     font-size: 12px;
   }
-  .reward-list-more {
-    font-weight: 700;
-    margin: 5px 0 20px;
-  }
   .reward-list .reward-box, .reward-list .reward-gap {
     width: calc((100% / 3) - 10.66px);
   }
   .reward-list .reward-box {
     margin: 0 0 16px;
-  }
-  .reward-pagination {
-    display: -ms-flexbox;
-    display: flex;
   }
   .workarea-sidebar .reward-filter {
     display: block;
@@ -991,6 +887,9 @@
   }
   .reward-box-limit {
     font-size: 10px;
+  }
+  .reward-list .reward-box {
+    margin: 0 0 10px;
   }
 }
 
