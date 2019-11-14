@@ -815,6 +815,9 @@
     width: calc((100% / 3) - 10.66px);
     margin: 0 16px 0 0;
   }
+  .forecast-best .swiper-slide:nth-child(3) {
+    margin: 0 50px 0 0;
+  }
   .forecast-best .swiper-slide-prev {
     margin: 0 50px 0 -34px !important;
   }
@@ -839,6 +842,9 @@
   .forecast-slider .swiper-slide {
     width: calc((100% / 3) - 10.66px);
     margin: 0 16px 0 0;
+  }
+  .forecast-slider .swiper-slide:nth-child(3) {
+    margin: 0 50px 0 0;
   }
   .forecast-slider .swiper-slide-prev {
     margin: 0 50px 0 -34px !important;

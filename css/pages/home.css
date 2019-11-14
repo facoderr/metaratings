@@ -634,34 +634,6 @@
   width: 49%;
 }
 
-.screen-container {
-  position: relative;
-  display: inline-block;
-  border: 5px solid transparent;
-  border-radius: 10px;
-  box-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.5);
-  margin: 15px 0;
-}
-
-.screen-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 0 !important;
-}
-
-.screen-container:after {
-  position: absolute;
-  top: -5px;
-  bottom: -5px;
-  left: -5px;
-  right: -5px;
-  background: linear-gradient(to bottom, #dfdfdf, #ffffff);
-  border-radius: inherit;
-  content: "";
-  z-index: -1;
-}
-
 .bonuses-wrap .main-bonus-items {
   width: 104.3%;
   padding: 23px 2.1%;
