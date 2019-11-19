@@ -244,10 +244,6 @@
   margin: 0 15px 0 0;
 }
 
-.reward-best .swiper-slide:nth-child(3) {
-  margin: 0 0 0 50px;
-}
-
 .reward-best .swiper-slide-prev {
   margin: 0 50px 0 -40px !important;
 }
@@ -263,7 +259,7 @@
       align-items: center;
   -ms-flex-pack: center;
       justify-content: center;
-  bottom: 0 !important;
+  bottom: 0;
   height: 8px;
 }
 

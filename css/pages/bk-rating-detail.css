@@ -1361,10 +1361,6 @@ div.app-block .app-footer .link .item-btn {
   color: #601dc0;
 }
 
-.complaint-block .special-pagination {
-  margin-top: 13px;
-}
-
 .bookmaker-pop-panel {
   width: 100%;
   height: 60px;
@@ -1932,74 +1928,6 @@ div.app-block .app-footer .link .item-btn {
   color: #ed0000;
   border: none;
   text-decoration: none;
-}
-
-.comments-list .dislike-btn .show-answers.arrow:after,
-.comments-list .dislike-btn .hide-answers.arrow:after {
-  content: ' ';
-  top: calc(50% - 3.5px);
-  right: 0;
-  position: absolute;
-  display: block;
-  width: 10px;
-  height: 7px;
-  font-size: 4rem;
-  background: url("../../img/icons/bottom-arrow.svg") no-repeat;
-  background-size: contain;
-  transition: 0.3s;
-}
-
-.comments-list .show-answers, .comments-list .hide-answers {
-  float: left;
-  clear: both;
-  position: relative;
-  margin-top: 10px;
-  padding: 8px 20px 8px 0;
-  border: none;
-  font-weight: 600;
-  color: #000;
-}
-
-.comments-list .show-answers.arrow:after, .comments-list .hide-answers.arrow:after {
-  transform: rotate(0);
-}
-
-.comments-list .show-answers.arrow-folded:after, .comments-list .hide-answers.arrow-folded:after {
-  transform: rotate(-180deg);
-}
-
-.comments-list .show-answers {
-  padding: 0 20px 0 0;
-}
-
-.comments-list .answers {
-  display: none;
-}
-
-.comments-list .answers .items-wrap {
-  padding-left: 50px;
-  border-bottom: solid 1px #e9e9e9;
-}
-
-.comments-list .answers .item:not(:last-of-type) {
-  border-bottom: solid 1px #e9e9e9;
-}
-
-.comments-list .answers .item:not(:last-of-type) {
-  border-bottom: solid 1px #e9e9e9;
-}
-
-.comments-list .answers .head-line {
-  margin-bottom: 15px;
-}
-
-.comments-list .answers .author-photo {
-  width: 32px;
-  height: 32px;
-}
-
-.comments-list .answers .author-status-name {
-  font-size: 12px;
 }
 
 .comments-list .show-more {

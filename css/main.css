@@ -3490,6 +3490,26 @@ button.swiper-pagination-bullet {
   border: 2px solid #601dc0;
 }
 
+.pagination-more svg {
+  display: none;
+  width: 25px;
+  height: 25px;
+  fill: #fff;
+}
+
+.pagination-more.is-loading {
+  background: #601dc0;
+  border: 2px solid #601dc0;
+}
+
+.pagination-more.is-loading span {
+  display: none;
+}
+
+.pagination-more.is-loading svg {
+  display: block;
+}
+
 .pagination-list {
   display: none;
   -ms-flex-align: center;
@@ -4107,57 +4127,6 @@ a {
   width: 800px;
   max-width: 100%;
   min-height: auto;
-}
-
-.special-pagination .nav-prev, .special-pagination .nav-next {
-  display: inline-block;
-  padding: 5px 6px;
-  vertical-align: middle;
-  color: #000;
-}
-
-.special-pagination .disabled.nav-prev, .special-pagination .disabled.nav-next {
-  color: #e9e9e9;
-}
-
-.special-pagination .nav-prev:hover:not(.disabled), .special-pagination .nav-next:hover:not(.disabled) {
-  color: #000;
-}
-
-.special-pagination .nav-plagination {
-  display: inline-block;
-  padding: 0 5px;
-  vertical-align: middle;
-  font-size: 18px;
-  text-decoration: none;
-  color: #666;
-}
-
-.special-pagination .nav-plagination:hover {
-  color: #666;
-}
-
-.special-pagination .nav-plagination.disabled {
-  font-weight: 600;
-  color: #000;
-}
-
-.special-pagination .nav-prev {
-  margin-right: 19px;
-}
-
-.special-pagination .nav-next {
-  margin-left: 19px;
-}
-
-.special-pagination .s-icon {
-  display: block;
-  width: 7px;
-  height: 10px;
-}
-
-.prefabricated .special-pagination .modern-page-all {
-  display: none;
 }
 
 @media (min-width: 992px) {
@@ -10857,27 +10826,6 @@ body:not(.is-touch) .tag-item:hover {
 @media (max-width: 770px) {
   .sources-reviews-items .w-shape-btn {
     max-width: 100%;
-  }
-}
-
-@media (max-width: 770px) {
-  .owl-item {
-    float: left;
-  }
-  .meta-reviews-dots {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    bottom: unset;
-  }
-  .meta-reviews-dots .owl-dot {
-    width: 50%;
-    height: 35px;
-    background: #fff0;
-    border: 2px solid #ffffff00;
-  }
-  .meta-reviews.owl-carousel {
-    overflow: hidden;
   }
 }
 
