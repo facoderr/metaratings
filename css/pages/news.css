@@ -758,6 +758,32 @@
   z-index: -1;
 }
 
+@media screen and (min-width: 768px) {
+  .news-item-body .mobile-info {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .news-item-body .mobile-info {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  .news-item-body .mobile-info .author p {
+    font-size: 12px;
+  }
+  .news-item-body .mobile-info .datetime {
+    font-size: 12px;
+  }
+}
+
 .bet-container .bet-desc {
   margin: 0 0 12px 0;
 }

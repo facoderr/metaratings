@@ -322,6 +322,10 @@
   transform: rotate(180deg);
 }
 
+.reward-best .swiper-pagination.is-disable {
+  display: none;
+}
+
 .reward-best .reward-box {
   width: 100%;
   padding: 0;

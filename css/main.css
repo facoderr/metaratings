@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, button, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, hr, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, button, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, hr, var, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   border: 0;
@@ -2729,8 +2729,8 @@ button.swiper-pagination-bullet {
 }
 
 .feed-bar .feed-box-info {
-  font-size: 12px;
-  line-height: 1.33;
+  font-size: 14px;
+  line-height: 1.50;
 }
 
 .feed-bar .feed-box-subtitle {
@@ -3498,6 +3498,7 @@ button.swiper-pagination-bullet {
 }
 
 .pagination-more.is-loading {
+  cursor: wait;
   background: #601dc0;
   border: 2px solid #601dc0;
 }
@@ -3788,6 +3789,7 @@ a {
 .border-style {
   margin: 0 0 17px;
   border-bottom: solid 1px #e9e9e9;
+  padding-bottom: 10px;
 }
 
 .font-style-2 {
@@ -3869,6 +3871,11 @@ a {
   width: 18px;
   height: 18px;
   color: #601dc0;
+}
+
+.social-icons .s-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .bg-slightGrey {
@@ -4158,7 +4165,7 @@ a {
   }
   .main-news .news-list-items .item-title {
     margin-bottom: 0;
-    max-height: 54px;
+    max-height: 64px;
     font-size: 14px;
   }
   .main-news .news-list-items .item-text {
@@ -4196,11 +4203,13 @@ body.fix {
 .social-icons > a {
   filter: grayscale(100%);
   opacity: .6;
+  color: #6652c0;
 }
 
 .social-icons > a:hover {
   filter: none;
   opacity: 1;
+  color: #6652c0;
 }
 
 .social-icons > a:not(:last-child) {
@@ -4313,6 +4322,15 @@ footer .social-icons {
       justify-content: flex-end;
 }
 
+@media (max-width: 768px) {
+  .footer .right-col .social-icons {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+  }
+}
+
 .footer .footer-info {
   display: -ms-flexbox;
   display: flex;
@@ -4324,6 +4342,20 @@ footer .social-icons {
   .footer .footer-info {
     -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
+  }
+}
+
+.footer .age {
+  width: 100%;
+  height: 40px;
+  background: url("../img/age.svg") no-repeat right;
+  margin-top: 32px;
+}
+
+@media (max-width: 960px) {
+  .footer {
+    margin-top: 0;
+    transform: translateY(-50px);
   }
 }
 
@@ -5584,7 +5616,7 @@ body:not(.is-touch) .btn--default:hover {
 
 .footer .block-list__item:hover {
   color: #1fa94a;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .tag-tabs {
@@ -6224,7 +6256,7 @@ body:not(.is-touch) .tag-item:hover {
     transition: 0.3s;
   }
   .bottom-menu a:hover {
-    color: #601dc0;
+    color: #1d1e1f;
     border-bottom: solid 1px #601dc0;
   }
   .bottom-menu:after {
@@ -6246,7 +6278,8 @@ body:not(.is-touch) .tag-item:hover {
     text-decoration: none;
   }
   .bottom-menu-2 a:hover {
-    color: #601dc0;
+    color: #20a94a;
+    text-decoration: underline;
   }
 }
 
@@ -6287,14 +6320,12 @@ body:not(.is-touch) .tag-item:hover {
   }
   .forecast-items .item-wrap {
     width: auto;
-    height: 270px;
     height: 290px;
   }
   .forecast-items .item-padding {
     padding: 9px 10px 46px;
   }
   .forecast-items .item-top.image {
-    height: 80px;
     height: 100px;
   }
   .forecast-items .item-title, .forecast-items .item-author {
@@ -6351,7 +6382,7 @@ body:not(.is-touch) .tag-item:hover {
     margin: 0 auto;
   }
   .news-column-grid .right-side {
-    width: calc(100% - 230px);
+    width: calc(100% - 240px);
     float: right;
   }
   .news-column-grid .left-side {
@@ -6384,7 +6415,7 @@ body:not(.is-touch) .tag-item:hover {
     width: calc(100% - 235px);
   }
   .news-column-grid .right-side {
-    width: calc(100% - 230px);
+    width: calc(100% - 240px);
     float: right;
   }
 }
@@ -7072,11 +7103,13 @@ body:not(.is-touch) .tag-item:hover {
 }
 
 .auth-in-comment .modal-success-wrap .agree_text {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .auth-in-comment .modal-success-wrap .agree_text a {
   color: #1fa94a;
+  line-height: 30px;
+  vertical-align: middle;
 }
 
 .auth-in-comment .modal-success-wrap .agree_personal {
@@ -9456,7 +9489,7 @@ body:not(.is-touch) .tag-item:hover {
   }
   .runet-block.scroll {
     position: fixed;
-    z-index: 100;
+    z-index: 102;
     top: 0;
   }
   .runet-block .items {
@@ -10000,6 +10033,10 @@ body:not(.is-touch) .tag-item:hover {
   text-decoration: none;
   color: #666;
   border-top: 2px solid #fff;
+}
+
+.block-sports__toggle:hover {
+  color: #20a94a;
 }
 
 .block-sports__toggle .icon {
@@ -11196,7 +11233,6 @@ body:not(.is-touch) .tag-item:hover {
 }
 
 .forecasts-page .left-sidebar {
-  margin-top: 10px;
   margin-top: 5px;
 }
 
@@ -11266,6 +11302,12 @@ body:not(.is-touch) .tag-item:hover {
     background-image: url("../img/banners/pari-match-mobile.gif");
     background-size: cover;
     cursor: pointer;
+  }
+  .forecast-items .forecat-banner-inner.betcity_forecast {
+    background-image: url(/local/templates/main/img/banners/betcity_item.gif);
+  }
+  .forecast-items .forecat-banner-inner.ggbet_forecast {
+    background-image: url(/local/templates/main/img/banners/ggbet_forecast.jpg);
   }
   .forecast-items .forecat-banner-inner img {
     display: none;
@@ -11876,6 +11918,10 @@ body:not(.is-touch) .tag-item:hover {
   }
 }
 
+.forecast-sections .item:last-child {
+  margin-right: 0px !important;
+}
+
 @media (max-width: 768px) {
   .forecast-sections .item:first-child {
     margin-left: 20px;
@@ -11987,7 +12033,7 @@ body:not(.is-touch) .tag-item:hover {
 
 @media (max-width: 900px) {
   .forecast-items .item.banner-forecast .forecat-banner-inner {
-    background-size: cover;
+    background-size: contain;
   }
 }
 
@@ -12227,6 +12273,7 @@ body:not(.is-touch) .tag-item:hover {
 @media (max-width: 550px) {
   .forecast-items .row .item {
     width: 100%;
+    margin: 0 auto 20px;
   }
 }
 
@@ -12242,7 +12289,7 @@ body:not(.is-touch) .tag-item:hover {
 
 .promo-baner a {
   width: 100%;
-  background: url(/local/templates/main/img/banners/ggbet-d.gif);
+  background: url("../img/banners/ggbet-d.gif");
   height: 150px;
   display: block;
   margin-bottom: 0;
@@ -12253,8 +12300,7 @@ body:not(.is-touch) .tag-item:hover {
 
 @media (max-width: 710px) {
   .promo-baner a {
-    background: url(/local/templates/main/img/banners/ggbet-m.gif);
-    background-repeat: no-repeat;
+    background: url("../img/banners/ggbet-m.gif") no-repeat;
     width: 320px;
     margin: 0 auto;
     height: 100px;
@@ -12558,6 +12604,30 @@ body:not(.is-touch) .tag-item:hover {
 
 .prefabricated_detail_text {
   margin-top: 60px;
+}
+
+.best_bonus {
+  position: relative;
+}
+
+.best_bonus:hover::after {
+  content: "Промокод METABONUS";
+  width: auto;
+  height: 20px;
+  position: absolute;
+  right: 19px;
+  top: -18px;
+  font-size: 13px;
+  background: #ffffffcc;
+  color: #601dc0;
+  font-weight: 900;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  padding: 12px;
+  transition: .5s;
+  z-index: 5;
 }
 
 .sentiments-block {
