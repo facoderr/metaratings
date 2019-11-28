@@ -21074,7 +21074,7 @@ $(function () {
   function initResizeJS() {
     var hasRunetBlock = runetBlock.length > 0;
 
-    if ($(window).width() < 768 && hasRunetBlock) {
+    if ($(window).width() < 990 && hasRunetBlock) {
       initRuNetMobileSlider();
     } else if (hasRunetBlock) {
       removeRuNetMobileSlider();
@@ -21425,15 +21425,35 @@ var scriptFunctions = {
     });
   },
   paymentMethod: function paymentMethod() {
-    $(".nav-tabs").length && $(".nav-tabs a").on("click", function () {
-      if (!$(this).parent().hasClass('active')) {
-        $('.nav-tabs li').removeClass('active');
-        $(this).parent().addClass('active');
-        $('.payment-tab-content > .tab-pane').removeClass('in').removeClass('active');
-        $($(this).attr('href')).addClass('in').addClass('active');
-        return false;
+    if ($(".payment-tab").length) {
+      var clickedTab = $('.js-tabItem.is-select');
+      var tabWrapper = $('.js-tabWrap');
+      var activeTab = tabWrapper.find('.js-tabBlock.is-open');
+      var activeTabHeight = activeTab.outerHeight();
+      tabWrapper.css('min-height', activeTabHeight);
+
+      function tabInit() {
+        clickedTab = $('.js-tabItem.is-active');
+        activeTab.fadeOut(100, function () {
+          $('.js-tabBlock').removeClass('is-open');
+          var clickedTabIndex = clickedTab.index('.js-tabItem');
+          $('.js-tabBlock').eq(clickedTabIndex).addClass('is-open');
+          activeTab = tabWrapper.find('.is-open');
+          activeTabHeight = activeTab.outerHeight();
+          tabWrapper.stop().delay(25).animate({
+            'min-height': activeTabHeight
+          }, 50, function () {
+            activeTab.delay(25).fadeIn(100);
+          });
+        });
       }
-    });
+
+      $('.js-tabList').on('click', '.js-tabItem', function () {
+        $('.js-tabItem').removeClass('is-active');
+        $(this).addClass('is-active');
+        tabInit();
+      });
+    }
   },
   initSwipers: function initSwipers() {
     // Init all swipers on site
