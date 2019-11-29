@@ -20181,41 +20181,8 @@ $(function () {
       $(this).find('.swiper-pagination').addClass('is-disable');
     }
   });
-  new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.forecast-category .swiper-container', {
-    slidesPerView: 'auto',
-    slidesOffsetBefore: 15,
-    slidesOffsetAfter: 15,
-    spaceBetween: 20,
-    breakpointsInverse: true,
-    breakpoints: {
-      992: {
-        slidesOffsetBefore: 0,
-        slidesOffsetAfter: 0,
-        spaceBetween: 0,
-        touchRatio: 0
-      }
-    }
-  });
-  new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.forecast-tabList .swiper-container', {
-    slidesPerView: 'auto',
-    slidesOffsetBefore: 15,
-    slidesOffsetAfter: 15,
-    spaceBetween: 25,
-    breakpointsInverse: true,
-    breakpoints: {
-      992: {
-        slidesOffsetBefore: 0,
-        slidesOffsetAfter: 0,
-        spaceBetween: 0,
-        touchRatio: 0
-      }
-    }
-  });
   new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.forecast-best .swiper-container', {
     slidesPerView: 'auto',
-    slidesOffsetBefore: 15,
-    slidesOffsetAfter: 15,
-    spaceBetween: 10,
     freeMode: true,
     navigation: {
       nextEl: '.swiper-button-next',
@@ -20229,33 +20196,44 @@ $(function () {
     breakpoints: {
       992: {
         slidesPerView: 3,
-        slidesOffsetBefore: 0,
-        slidesOffsetAfter: 0,
         spaceBetween: 16,
         freeMode: false
       }
     }
   });
-  new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.forecast-slider .swiper-container', {
-    slidesPerView: 'auto',
-    slidesOffsetBefore: 15,
-    slidesOffsetAfter: 15,
-    spaceBetween: 10,
-    freeMode: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    breakpointsInverse: true,
-    breakpoints: {
-      992: {
-        slidesPerView: 3,
-        slidesOffsetBefore: 0,
-        slidesOffsetAfter: 0,
-        spaceBetween: 16,
-        freeMode: false
-      }
+  var forecastSliders = $('.forecast-slider');
+  forecastSliders.each(function () {
+    var forecastSlider = $(this);
+
+    if (forecastSlider.find('.swiper-slide').length > 1) {
+      new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.forecast-slider .swiper-container', {
+        slidesPerView: 'auto',
+        freeMode: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        breakpointsInverse: true,
+        breakpoints: {
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 16,
+            freeMode: false
+          }
+        }
+      });
+    } else {
+      forecastSlider.addClass('swiper-not-init');
+      forecastSlider.find('.swiper-button-next').hide();
+      forecastSlider.find('.swiper-button-prev').hide();
     }
+  });
+  var toggle = $('.js-forecast-toggle');
+  /** Открываем список элементов */
+
+  toggle.on('click', function () {
+    $(this).toggleClass('is-active');
+    $(this).parent().find('.forecast-menu').slideToggle(300);
   });
 
   function leftPad(str, length, pad) {
@@ -20630,7 +20608,7 @@ $(function () {
       slinky.destroy();
     }
 
-    var slinky = $('.nav-wrap').slinky({
+    slinky = $('.nav-wrap').slinky({
       title: true
     });
     slinky.home();
@@ -20739,10 +20717,9 @@ $(function () {
       width = $(this).outerWidth();
 
       if ($(window).outerWidth() <= 1099) {
-        var _slinky = $('.nav-wrap').slinky({
+        slinky = $('.nav-wrap').slinky({
           title: true
         });
-
         inMobile();
         $('.toolbar').addClass('is-animate');
       } else {
@@ -20776,14 +20753,14 @@ $(function () {
       e.preventDefault();
       if (loading) return false;
       loading = true;
-      pagination.addClass('loading');
+      pagination.addClass('is-loading');
       var el = $(this),
           url = el.attr('href');
 
       if (url && url !== '#') {
         $.get(url, {}, function (html) {
           loading = false;
-          pagination.removeClass('loading');
+          pagination.removeClass('is-loading');
           html = $(html);
           var newPagination = html.is('.js-pagination') ? html.filter('.js-pagination') : html.find('.js-pagination'),
               items = html.find('.js-load-more-item'),
