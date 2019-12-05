@@ -20820,6 +20820,7 @@ $(function () {
       }
     },
     allowPageScroll: 'auto',
+    preventDefaultEvents: false,
     triggerOnTouchEnd: false,
     threshold: 20
   });
