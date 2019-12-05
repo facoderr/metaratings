@@ -20184,9 +20184,6 @@ $(function () {
   new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.forecast-best .swiper-container', {
     slidesPerView: 'auto',
     freeMode: true,
-    freeModeMomentumRatio: 0.3,
-    freeModeMomentumBounce: false,
-    freeModeSticky: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
@@ -20212,9 +20209,6 @@ $(function () {
       new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.forecast-slider .swiper-container', {
         slidesPerView: 'auto',
         freeMode: true,
-        freeModeMomentumRatio: 0.3,
-        freeModeMomentumBounce: false,
-        freeModeSticky: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -20677,24 +20671,18 @@ $(function () {
         $('.is-desktop .nav-head').removeClass('is-active');
       }
 
-      $('.is-desktop .nav-search').css({
-        opacity: 0,
-        visibility: 'hidden'
-      });
+      $('.is-desktop .nav-search').addClass('is-hidden');
       $(this).siblings('.nav-menu-item').removeClass('is-hover');
       $(this).addClass('is-hover');
     });
     $(document).on('mouseout', '.is-desktop .nav-menu-item', function () {
-      if ($('.is-desktop .nav-search').hasClass('is-active')) {
+      if ($('.is-desktop .js-search').hasClass('is-active')) {
         $('.is-desktop .nav-head').addClass('is-active');
       } else {
         $('.is-desktop .nav-head').removeClass('is-active');
       }
 
-      $('.is-desktop .nav-search').css({
-        opacity: 1,
-        visibility: 'visible'
-      });
+      $('.is-desktop .nav-search').removeClass('is-hidden');
       $(this).removeClass('is-hover');
     });
     $(document).bind('mouseup touchend', function (e) {
@@ -20831,6 +20819,7 @@ $(function () {
         }
       }
     },
+    allowPageScroll: 'auto',
     triggerOnTouchEnd: false,
     threshold: 20
   });
