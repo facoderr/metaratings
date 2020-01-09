@@ -285,9 +285,16 @@
         </div>
         <div class="workarea-description">
           <div class="overview-bk-detail" id="bk">
-            <div class="overview-bk-item is-success"><a class="overview-bk-item-meta" href="/"><span>75</span></a><a class="overview-bk-item-about" href="/">
+            <div class="overview-bk-item is-success is-highlight"><a class="overview-bk-item-meta" href="/"><span>75</span></a><a class="overview-bk-item-about" href="/">
                 <div class="overview-bk-item-logo"><img src="images/overview-bk-demo-1.svg" alt="Букмекер"/></div>
-                <div class="overview-bk-item-label">Первый букмекер России</div></a><a class="overview-bk-item-link overview-bk-item-review" href="/">
+                <div class="overview-bk-item-label">Выбор редакции
+                  <svg>
+                    <use xlink:href="#star"></use>
+                  </svg>
+                  <svg>
+                    <use xlink:href="#line"></use>
+                  </svg>
+                </div></a><a class="overview-bk-item-link overview-bk-item-review" href="/">
                 <div class="overview-bk-item-icon">
                   <svg>
                     <use xlink:href="#comment-b"></use>
@@ -422,7 +429,7 @@
                       <input class="overview-bk-review-input" type="email" name="mail" placeholder="Ваш e-mail"/>
                     </div>
                     <div class="overview-bk-review-range">
-                      <input type="range" name="range" min="0" max="100"/>
+                      <input type="range" name="range" min="0" max="10"/>
                       <ul class="overview-bk-review-range-numb">
                         <li>0</li>
                         <li>1</li>
@@ -518,60 +525,72 @@
                     </div></a>
                   <div class="overview-bk-acc-body js-overview-bk-body">
                     <div class="overview-bk-assessment-tab js-tab">
-                      <div class="overview-bk-assessment-tabHead js-overview-bk-scroll">
-                        <div class="overview-bk-assessment-tabList">
-                          <div class="overview-bk-assessment-tabItem js-tabItem is-select">
-                            <div class="overview-bk-assessment-wrap">
-                              <div class="overview-bk-assessment-progress">
-                                <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="100">
-                                  <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
-                                  <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
-                                </svg>
-                                <div class="overview-bk-assessment-numb">100
+                      <div class="overview-bk-assessment-tabHead">
+                        <div class="swiper-container">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide js-tabItem is-select">
+                              <div class="overview-bk-assessment-wrap">
+                                <div class="overview-bk-assessment-progress">
+                                  <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="100">
+                                    <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
+                                    <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
+                                  </svg>
+                                  <div class="overview-bk-assessment-numb">100
+                                  </div>
                                 </div>
+                                <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-2.svg" alt="Букмекер"/></div>
                               </div>
-                              <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-2.svg" alt="Букмекер"/></div>
+                            </div>
+                            <div class="swiper-slide js-tabItem">
+                              <div class="overview-bk-assessment-wrap">
+                                <div class="overview-bk-assessment-progress">
+                                  <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="93">
+                                    <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
+                                    <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
+                                  </svg>
+                                  <div class="overview-bk-assessment-numb">93
+                                  </div>
+                                </div>
+                                <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-3.svg" alt="Букмекер"/></div>
+                              </div>
+                            </div>
+                            <div class="swiper-slide js-tabItem">
+                              <div class="overview-bk-assessment-wrap">
+                                <div class="overview-bk-assessment-progress">
+                                  <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="74">
+                                    <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
+                                    <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
+                                  </svg>
+                                  <div class="overview-bk-assessment-numb">74
+                                  </div>
+                                </div>
+                                <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-4.svg" alt="Букмекер"/></div>
+                              </div>
+                            </div>
+                            <div class="swiper-slide js-tabItem">
+                              <div class="overview-bk-assessment-wrap">
+                                <div class="overview-bk-assessment-progress">
+                                  <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="48">
+                                    <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
+                                    <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
+                                  </svg>
+                                  <div class="overview-bk-assessment-numb">48
+                                  </div>
+                                </div>
+                                <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-5.svg" alt="Букмекер"/></div>
+                              </div>
                             </div>
                           </div>
-                          <div class="overview-bk-assessment-tabItem js-tabItem">
-                            <div class="overview-bk-assessment-wrap">
-                              <div class="overview-bk-assessment-progress">
-                                <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="93">
-                                  <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
-                                  <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
-                                </svg>
-                                <div class="overview-bk-assessment-numb">93
-                                </div>
-                              </div>
-                              <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-3.svg" alt="Букмекер"/></div>
-                            </div>
-                          </div>
-                          <div class="overview-bk-assessment-tabItem js-tabItem">
-                            <div class="overview-bk-assessment-wrap">
-                              <div class="overview-bk-assessment-progress">
-                                <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="74">
-                                  <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
-                                  <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
-                                </svg>
-                                <div class="overview-bk-assessment-numb">74
-                                </div>
-                              </div>
-                              <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-4.svg" alt="Букмекер"/></div>
-                            </div>
-                          </div>
-                          <div class="overview-bk-assessment-tabItem js-tabItem">
-                            <div class="overview-bk-assessment-wrap">
-                              <div class="overview-bk-assessment-progress">
-                                <svg class="js-overview-bk-progress" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" data-progress="48">
-                                  <path d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none"></path>
-                                  <path class="js-overview-bk-path" d="M10.52,71.67a38.5,38.5,0,1,1,59,0" fill="none" stroke="#000" stroke-dasharray="175" stroke-dashoffset="175"></path>
-                                </svg>
-                                <div class="overview-bk-assessment-numb">48
-                                </div>
-                              </div>
-                              <div class="overview-bk-assessment-logo"><img src="images/overview-bk-demo-5.svg" alt="Букмекер"/></div>
-                            </div>
-                          </div>
+                        </div>
+                        <div class="swiper-button-next">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
+                        </div>
+                        <div class="swiper-button-prev">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
                         </div>
                       </div>
                       <div class="overview-bk-assessment-tabBody">
@@ -1040,17 +1059,29 @@
                     </div></a>
                   <div class="overview-bk-acc-body js-overview-bk-body">
                     <div class="overview-bk-payment-tab js-tab">
-                      <div class="overview-bk-payment-tabHead js-overview-bk-scroll">
-                        <div class="overview-bk-payment-tabList">
-                          <div class="overview-bk-payment-tabItem js-tabItem is-select">
-                            <div class="overview-bk-payment-img"><img src="images/overview-bk-demo-9.svg" alt="Mastercard"/></div>
+                      <div class="overview-bk-payment-tabHead">
+                        <div class="swiper-container">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide js-tabItem is-select">
+                              <div class="overview-bk-payment-img"><img src="images/overview-bk-demo-9.svg" alt="Mastercard"/></div>
+                            </div>
+                            <div class="swiper-slide js-tabItem">
+                              <div class="overview-bk-payment-img"><img src="images/overview-bk-demo-10.svg" alt="Visa"/></div>
+                            </div>
+                            <div class="swiper-slide js-tabItem">
+                              <div class="overview-bk-payment-img"><img src="images/overview-bk-demo-11.svg" alt="Qiwi"/></div>
+                            </div>
                           </div>
-                          <div class="overview-bk-payment-tabItem js-tabItem">
-                            <div class="overview-bk-payment-img"><img src="images/overview-bk-demo-10.svg" alt="Visa"/></div>
-                          </div>
-                          <div class="overview-bk-payment-tabItem js-tabItem">
-                            <div class="overview-bk-payment-img"><img src="images/overview-bk-demo-11.svg" alt="Qiwi"/></div>
-                          </div>
+                        </div>
+                        <div class="swiper-button-next">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
+                        </div>
+                        <div class="swiper-button-prev">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
                         </div>
                       </div>
                       <div class="overview-bk-payment-tabBody">
@@ -1313,9 +1344,16 @@
             </div>
             <div class="overview-bk-panel js-overview-bk-panel">
               <div class="container">
-                <div class="overview-bk-item is-success"><a class="overview-bk-item-meta" href="/"><span>75</span></a><a class="overview-bk-item-about" href="/">
+                <div class="overview-bk-item is-success is-highlight"><a class="overview-bk-item-meta" href="/"><span>75</span></a><a class="overview-bk-item-about" href="/">
                     <div class="overview-bk-item-logo"><img src="images/overview-bk-demo-1.svg" alt="Букмекер"/></div>
-                    <div class="overview-bk-item-label">Первый букмекер России</div></a><a class="overview-bk-item-link overview-bk-item-review" href="/">
+                    <div class="overview-bk-item-label">Выбор редакции
+                      <svg>
+                        <use xlink:href="#star"></use>
+                      </svg>
+                      <svg>
+                        <use xlink:href="#line"></use>
+                      </svg>
+                    </div></a><a class="overview-bk-item-link overview-bk-item-review" href="/">
                     <div class="overview-bk-item-icon">
                       <svg>
                         <use xlink:href="#comment-b"></use>
