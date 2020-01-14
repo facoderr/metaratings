@@ -7,9 +7,11 @@ $(document).ready(function () {
         swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
 			if (phase === 'start' || phase === 'move') {
+				if (direction === 'up' || direction === 'down') {
+					event.preventDefault();
+                }
                 if (direction === 'left' || direction === 'right') {
 					overflow.css('overflow', 'hidden');
-					$(window).on('scroll', false);
                 }
             }
 
