@@ -1,6 +1,6 @@
 /* -- Rating-BK -- */
 html {
-  overflow-y: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: auto;
 }
 
