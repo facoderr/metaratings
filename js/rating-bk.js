@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 	(function ($, window, undefined) {
 		var $document = $(document),
-			supportTouch = $.mobile.support.touch,
+			supportTouch = true,
 			scrollEvent = "touchmove scroll",
 			touchStartEvent = supportTouch ? "touchstart" : "mousedown",
 			touchStopEvent = supportTouch ? "touchend" : "mouseup",
