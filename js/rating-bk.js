@@ -6,7 +6,7 @@ $(document).ready(function () {
 	swipeItem.swipe({
 		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
-			
+
 			if (phase == 'end') {
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
@@ -23,10 +23,8 @@ $(document).ready(function () {
 				}
 			}
 		},
-		allowPageScroll: 'vertical',
-		preventDefaultEvents: true,
-		triggerOnTouchEnd: false,
-		threshold: 20
+		allowPageScroll: 'none',
+		preventDefaultEvents: true
 	});
 
 	//
