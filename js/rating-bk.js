@@ -3,8 +3,20 @@ $(document).ready(function () {
 	// Rating Event
 	let swipeItem = $('.js-rating-item');
 
-	if (swipeItem.length != 0)
-        $('html').css('-webkit-overflow-scrolling', 'auto');
+	let html = document.html;
+
+	let hideScroll = function (e) {
+		e.preventDefault();
+	};
+
+	function toggleScroll(bool) {
+
+		if (bool === true) {
+			html.addEventListener('touchmove', hideScroll);
+		} else {
+			html.removeEventListener('touchmove', hideScroll);
+		}
+	}
 
 	swipeItem.swipe({
 		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
