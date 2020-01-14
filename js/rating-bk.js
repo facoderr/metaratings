@@ -21,6 +21,7 @@ $(document).ready(function() {
 				}
 			}
 		},
+		allowPageScroll: 'none',
 		triggerOnTouchEnd: false,
 		threshold: 20
 	});
