@@ -1,7 +1,6 @@
 /* -- Rating-BK -- */
 .rating-bk {
   background: #f0f0f0;
-  -webkit-overflow-scrolling: auto;
   padding: 20px 15px 10px;
   margin: 0 -15px 30px;
 }

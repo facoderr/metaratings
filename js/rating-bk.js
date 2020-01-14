@@ -3,6 +3,9 @@ $(document).ready(function () {
 	// Rating Event
 	let swipeItem = $('.js-rating-item');
 
+	if (swipeItem.length != 0)
+        $('html, body').css('-webkit-overflow-scrolling', 'auto');
+
 	swipeItem.swipe({
 		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
