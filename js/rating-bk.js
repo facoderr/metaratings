@@ -5,12 +5,15 @@ $(document).ready(function () {
 
     swipeItem.swipe({
         swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-            let $this = $(this);
+			let $this = $(this);
+			if (phase === 'start' || phase === 'move') {
+                if (direction === 'left' || direction === 'right') {
+                    overflow.css('overflow', 'hidden');
+                }
+            }
 
             if (phase === 'end') {
                 if (direction === 'left') {
-                    overflow.css('overflow', 'hidden');
-
                     $this.addClass('is-swipe is-swiping');
 
                     setTimeout(function () {
@@ -20,7 +23,6 @@ $(document).ready(function () {
                 }
 
                 if (direction === 'right') {
-                    overflow.css('overflow', 'hidden');
                     $this.addClass('is-swiping');
                     $this.removeClass('is-swipe');
 
@@ -33,8 +35,7 @@ $(document).ready(function () {
         },
         allowPageScroll: 'none',
         preventDefaultEvents: false,
-        triggerOnTouchEnd: false,
-        threshold: 10
+        threshold: 20
     });
 
     let swipeItemFirst = document.querySelectorAll('.js-rating-item:first-child');
