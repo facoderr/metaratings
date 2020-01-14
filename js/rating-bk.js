@@ -1,33 +1,11 @@
 $(document).ready(function () {
 
 	// Rating Event
-	let overflow = $('html, body'),
-		swipeItem = $('.js-rating-item');
-
-	function preventDefault(e) {
-		e.preventDefault();
-	}
-
-	function disableScroll() {
-		document.body.addEventListener('touchmove', preventDefault, { passive: false });
-	}
-	function enableScroll() {
-		document.body.removeEventListener('touchmove', preventDefault);
-	}
+	let swipeItem = $('.js-rating-item');
 
 	swipeItem.swipe({
 		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
-			if (phase == 'start') {
-				if (direction == 'left' || direction == 'right') {
-					disableScroll();
-				}
-			}
-			if (phase == 'move') {
-				if (direction == 'left' || direction == 'right') {
-					disableScroll();
-				}
-			}
 			if (phase == 'end') {
 				enableScroll();
 				if (direction == 'left') {
