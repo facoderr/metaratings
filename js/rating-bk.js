@@ -23,8 +23,8 @@ $(document).ready(function () {
 				}
 			}
 		},
-		allowPageScroll: 'none',
-		preventDefaultEvents: false
+		allowPageScroll: 'auto',
+		preventDefaultEvents: true
 	});
 
 	//
