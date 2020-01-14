@@ -1,23 +1,35 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 	// Rating Event
 	let overflow = $('html, body'),
 		swipeItem = $('.js-rating-item');
 
+	function preventDefault(e) {
+		e.preventDefault();
+	}
+
+	function disableScroll() {
+		document.body.addEventListener('touchmove', preventDefault, { passive: false });
+	}
+	function enableScroll() {
+		document.body.removeEventListener('touchmove', preventDefault);
+	}
+
 	swipeItem.swipe({
-		swipeStatus: function(event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
 			if (phase == 'start') {
-				document.ontouchmove = function(event){
-					event.preventDefault();
+				if (direction == 'left' || direction == 'right') {
+					disableScroll();
 				}
 			}
 			if (phase == 'move') {
-				document.ontouchmove = function(event){
-					event.preventDefault();
+				if (direction == 'left' || direction == 'right') {
+					disableScroll();
 				}
 			}
 			if (phase == 'end') {
+				enableScroll();
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
 					setTimeout(function () {
@@ -40,5 +52,5 @@ $(document).ready(function() {
 	});
 
 	//
-	
+
 });
