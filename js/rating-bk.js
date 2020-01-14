@@ -8,26 +8,19 @@ $(document).ready(function() {
 		swipeStatus: function(event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
 			if (phase == 'start') {
-				if (direction == 'left') {
-					overflow.css('overflow', 'hidden');
-				}
-				if (direction == 'right') {
-					overflow.css('overflow', 'hidden');
+				document.ontouchmove = function(event){
+					event.preventDefault();
 				}
 			}
 			if (phase == 'move') {
-				if (direction == 'left') {
-					overflow.css('overflow', 'hidden');
-				}
-				if (direction == 'right') {
-					overflow.css('overflow', 'hidden');
+				document.ontouchmove = function(event){
+					event.preventDefault();
 				}
 			}
 			if (phase == 'end') {
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
 					setTimeout(function () {
-						overflow.css('overflow', 'hidden scroll');
 						$this.removeClass('is-swiping');
 					}, 300);
 				}
@@ -35,7 +28,6 @@ $(document).ready(function() {
 					$this.addClass('is-swiping');
 					$this.removeClass('is-swipe');
 					setTimeout(function () {
-						overflow.css('overflow', 'hidden scroll');
 						$this.removeClass('is-swiping');
 					}, 300);
 				}
