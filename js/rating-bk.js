@@ -1,7 +1,6 @@
-import 'jquery-touchswipe';
+$(document).ready(function () {
 
-$(function () {
-    let overflow = $(document.body).add(document.documentElement),
+	let overflow = $(document.body).add(document.documentElement),
         swipeItem = $('.js-rating-item');
 
     swipeItem.swipe({
@@ -62,4 +61,5 @@ $(function () {
     swipeItemFirst.forEach(function (swipeThis) {
         swipeObserver.observe(swipeThis);
     });
+
 });
