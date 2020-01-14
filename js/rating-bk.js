@@ -8,7 +8,8 @@ $(document).ready(function () {
 			let $this = $(this);
 			if (phase === 'start' || phase === 'move') {
                 if (direction === 'left' || direction === 'right') {
-                    overflow.css('overflow', 'hidden');
+					overflow.css('overflow', 'hidden');
+					$(window).on('scroll', false);
                 }
             }
 
