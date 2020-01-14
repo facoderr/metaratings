@@ -8,10 +8,11 @@ $(document).ready(function () {
 			let $this = $(this);
 			if (phase === 'start' || phase === 'move') {
 				if (direction === 'up' || direction === 'down') {
-					event.preventDefault();
+					
                 }
                 if (direction === 'left' || direction === 'right') {
 					overflow.css('overflow', 'hidden');
+					event.preventDefault();
                 }
             }
 
