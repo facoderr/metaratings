@@ -8,17 +8,15 @@ $(document).ready(function () {
 			let $this = $(this);
 			if (phase == 'start') {
 				if (direction == 'left' || direction == 'right') {
-					$('html').on('touchmove', function(e) { e.preventDefault() });
+					event.preventDefault();
 				}
 			}
 			if (phase == 'move') {
 				if (direction == 'left' || direction == 'right') {
-					$('html').on('touchmove', function(e) { e.preventDefault() });
+					event.preventDefault();
 				}
 			}
 			if (phase == 'end') {
-				$('html').off('touchmove');
-				
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
 					setTimeout(function () {
