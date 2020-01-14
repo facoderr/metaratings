@@ -6,7 +6,7 @@ $(document).ready(function () {
 	if (swipeItem.length != 0)
         $('html, body').css({
 			'-webkit-overflow-scrolling': 'auto',
-			'display': 'block'
+			'user-select': 'none'
 		});
 
 	swipeItem.swipe({
