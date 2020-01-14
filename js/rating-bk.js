@@ -7,7 +7,6 @@ $(document).ready(function () {
 		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
 			if (phase == 'end') {
-				enableScroll();
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
 					setTimeout(function () {
