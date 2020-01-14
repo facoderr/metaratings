@@ -3,36 +3,21 @@ $(document).ready(function () {
 	// Rating Event
 	let swipeItem = $('.js-rating-item');
 
-	let html = document.html;
-
-	let hideScroll = function (e) {
-		e.preventDefault();
-	};
-
-	function toggleScroll(bool) {
-
-		if (bool === true) {
-			html.on('touchmove', hideScroll);
-		} else {
-			html.off('touchmove', hideScroll);
-		}
-	}
-
 	swipeItem.swipe({
 		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
 			if (phase == 'start') {
 				if (direction == 'left' || direction == 'right') {
-					toggleScroll(true);
+					$('html').on('touchmove', function(e) { e.preventDefault() });
 				}
 			}
 			if (phase == 'move') {
 				if (direction == 'left' || direction == 'right') {
-					toggleScroll(true);
+					$('html').on('touchmove', function(e) { e.preventDefault() });
 				}
 			}
 			if (phase == 'end') {
-				toggleScroll(false);
+				$('html').off('touchmove');
 				
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
