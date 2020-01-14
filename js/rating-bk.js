@@ -27,7 +27,7 @@ $(document).ready(function() {
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
 					setTimeout(function () {
-						overflow.css('overflow', 'hidden auto');
+						overflow.css('overflow', 'hidden scroll');
 						$this.removeClass('is-swiping');
 					}, 300);
 				}
@@ -35,7 +35,7 @@ $(document).ready(function() {
 					$this.addClass('is-swiping');
 					$this.removeClass('is-swipe');
 					setTimeout(function () {
-						overflow.css('overflow', 'hidden auto');
+						overflow.css('overflow', 'hidden scroll');
 						$this.removeClass('is-swiping');
 					}, 300);
 				}
