@@ -21,7 +21,19 @@ $(document).ready(function () {
 	swipeItem.swipe({
 		swipeStatus: function (event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
 			let $this = $(this);
+			if (phase == 'start') {
+				if (direction == 'left' || direction == 'right') {
+					toggleScroll(true);
+				}
+			}
+			if (phase == 'move') {
+				if (direction == 'left' || direction == 'right') {
+					toggleScroll(true);
+				}
+			}
 			if (phase == 'end') {
+				toggleScroll(false);
+				
 				if (direction == 'left') {
 					$this.addClass('is-swipe is-swiping');
 					setTimeout(function () {
