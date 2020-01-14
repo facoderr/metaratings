@@ -12,9 +12,9 @@ $(document).ready(function () {
 	function toggleScroll(bool) {
 
 		if (bool === true) {
-			html.addEventListener('touchmove', hideScroll);
+			html.on('touchmove', hideScroll);
 		} else {
-			html.removeEventListener('touchmove', hideScroll);
+			html.off('touchmove', hideScroll);
 		}
 	}
 
