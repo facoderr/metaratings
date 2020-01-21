@@ -35296,6 +35296,47 @@ $(function () {
       anchorHead = $('.overview-bk-tabHead'),
       anchorTab = $('.js-overview-bk-anchor'),
       panelShow = $('.js-overview-bk-panel');
+  $('.js-bk-faq').keyup(function () {
+    var find = $(this).val();
+    $.post(window.location, {
+      'TEXT': find
+    }, function (html) {
+      var faq = $(html).find('.js-bk-faq-list');
+      $('.js-bk-faq-list').html(faq.children());
+    });
+  });
+
+  function getFormData($form) {
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+    $.map(unindexed_array, function (n, i) {
+      indexed_array[n['name']] = n['value'];
+    });
+    return indexed_array;
+  }
+
+  $(".reviews-add").on("submit", function (t) {
+    t.preventDefault();
+    var count = !0,
+        valueRequired = $(this).find(".required");
+
+    if ($(valueRequired).each(function () {
+      $(this).val() ? $(this).removeClass("empty-field") : ($(this).addClass("empty-field"), count = !1);
+    }), 1 == count) {
+      $(".reviews-add .text-danger").empty();
+      var form = getFormData($(this));
+      $.post('/include/ajax/add-review.handler.php', {
+        form: form
+      }, function (result) {
+        result = JSON.parse(result);
+
+        if (result['success']) {
+          $(".reviews-add")[0].reset();
+          $('#success').fadeIn().addClass('is-open');
+        }
+      });
+    }
+  });
 
   function scrollMeta() {
     var limitMeta = win.scrollTop() >= metaFix.offset().top - 75;
@@ -35957,13 +35998,13 @@ $(function () {
 
           if (minHalf < maxHalf || minHalf > maxHalf) {
             sentimentIndicator.css({
-              background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #39af61 ' + minHalf + '%)'
+              background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #20a94a ' + minHalf + '%)'
             });
             sentimentBgSuccess.css('height', maxHalf + '%');
             sentimentBgDanger.css('height', minHalf + '%');
           } else {
             sentimentIndicator.css({
-              background: 'linear-gradient(to top, #d0021b 50%, #39af61 50%)'
+              background: 'linear-gradient(to top, #d0021b 50%, #20a94a 50%)'
             });
           }
         },
@@ -36111,13 +36152,13 @@ $(function () {
 
           if (minHalf < maxHalf || minHalf > maxHalf) {
             sentimentIndicator.css({
-              background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #39af61 ' + minHalf + '%)'
+              background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #20a94a ' + minHalf + '%)'
             });
             sentimentBgSuccess.css('height', maxHalf + '%');
             sentimentBgDanger.css('height', minHalf + '%');
           } else {
             sentimentIndicator.css({
-              background: 'linear-gradient(to top, #d0021b 50%, #39af61 50%)'
+              background: 'linear-gradient(to top, #d0021b 50%, #20a94a 50%)'
             });
           }
         }
@@ -37296,13 +37337,18 @@ $(function () {
   });
   var sliderFor = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sentimentSliderFor, {
     spaceBetween: 15,
-    autoHeight: true,
     navigation: {
       nextEl: $(sentimentSliderFor).siblings('.swiper-button-next'),
       prevEl: $(sentimentSliderFor).siblings('.swiper-button-prev')
     },
     thumbs: {
       swiper: sliderNav
+    },
+    breakpointsInverse: true,
+    breakpoints: {
+      1100: {
+        autoHeight: true
+      }
     }
   });
 });
@@ -37420,34 +37466,6 @@ var scriptFunctions = {
   },
   closeSuccessMess: function closeSuccessMess() {
     $('.js-modal-success').fadeOut().removeClass('is-open');
-  },
-  addReview: function addReview() {
-    // Add review
-    $(".reviews-add").on("submit", function (t) {
-      t.preventDefault();
-      var e = !0,
-          i = $(this).find(".required");
-
-      if ($(i).each(function () {
-        $(this).val() ? $(this).removeClass("empty-field") : ($(this).addClass("empty-field"), e = !1);
-      }), 1 == e) {
-        $(".reviews-add .text-danger").empty();
-        var s = $(this).serialize();
-        $.ajax({
-          type: "POST",
-          data: s,
-          url: "/include/ajax/add-review.handler.php",
-          success: function success(t) {
-            $(".reviews-add")[0].reset();
-          },
-          error: function error(t) {
-            alert("Произошла ошибка. Обратитесь к администратору");
-          }
-        }).done(function () {
-          scriptFunctions.showSuccessMess("/include/ajax/review-success.php");
-        });
-      } else $(".reviews-add .text-danger").text("Заполните обязательные поля");
-    });
   },
   addCommit: function addCommit() {
     // Если вводиле комментарий, получаем его
@@ -37949,7 +37967,7 @@ var scriptFunctions = {
     }
   },
   init: function init() {
-    this.hideEmptyClass(), this.addReview(), this.addCommit(), this.startTimer(), this.filterCommentsBy(), this.downloadBettings(), this.paymentMethod(), this.initSwipers(), this.faqHandler(), this.appLinkHandler(), this.bookmakerPopHandler(), this.screenContainerHandler(), this.formCommentHandler(), this.commentListHandler(), this.editComment(), this.advancedMoreHendler();
+    this.hideEmptyClass(), this.addCommit(), this.startTimer(), this.filterCommentsBy(), this.downloadBettings(), this.paymentMethod(), this.initSwipers(), this.faqHandler(), this.appLinkHandler(), this.bookmakerPopHandler(), this.screenContainerHandler(), this.formCommentHandler(), this.commentListHandler(), this.editComment(), this.advancedMoreHendler();
   }
 };
 
