@@ -20553,7 +20553,7 @@ $(function () {
 
       matchSearch.parents('.match-search').toggleClass('is-active', $(this).val().length > 3);
     });
-    doc.on('mouseup', function (e) {
+    doc.on('mouseup touchend', function (e) {
       if ($(e.target).closest('.match-search-block').length) return;
       matchSearch.parents('.match-search').removeClass('is-active');
     });
@@ -20620,7 +20620,7 @@ $(function () {
     tabInit('.js-tabInner', '.js-tabInner-list', '.js-tabInner-item', '.js-tabInner-block'); // -- Match Interaction
 
     doc.on('click', matchListAcc, function () {
-      if ($(window).outerWidth() <= 991) {
+      if (win.outerWidth() <= 991) {
         $(this).toggleClass('is-close');
         $(this).parent().find(matchListBody).slideToggle(300);
       } else {
