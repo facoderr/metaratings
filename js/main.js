@@ -34849,6 +34849,20 @@ $(function () {
     }
 
     html.css('overflow', 'hidden');
+    var xStart,
+        yStart = 0;
+    document.addEventListener('touchstart', function (e) {
+      xStart = e.touches[0].screenX;
+      yStart = e.touches[0].screenY;
+    });
+    document.addEventListener('touchmove', function (e) {
+      var xMovement = Math.abs(e.touches[0].screenX - xStart);
+      var yMovement = Math.abs(e.touches[0].screenY - yStart);
+
+      if (yMovement * 3 > xMovement) {
+        e.preventDefault();
+      }
+    });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     return false;
@@ -35981,6 +35995,8 @@ $(function () {
   var win = $(window),
       doc = $(document),
       sentiment = 'js-sentiment',
+      sentimentEl = document.querySelectorAll('#js-sentiment'),
+      sentimentLoad = $('.js-sentiment-load'),
       sentimentTool = $('.js-sentiment-tool'),
       sentimentTitle = $('.js-sentiment-title'),
       sentimentBack = '.js-sentiment-back',
@@ -35996,9 +36012,9 @@ $(function () {
       sentimentFull = '.js-sentiment-full',
       sentimentSliderNav = '.js-review-slideNav',
       sentimentSliderFor = '.js-review-slideFor',
-      sentimentPagination = $('.js-pagination'),
-      sentimentPaginationBtn = $('.js-load-more-btn'),
-      reviewList = $('.sentiment-review-list'),
+      sentimentPagination = $('.js-pagination-sentiment'),
+      sentimentPaginationBtn = '.js-more-sentiment',
+      reviewList = $('.js-review-list'),
       reviewBody = $('.js-review-body'),
       reviewText = $('.js-review-text'),
       reviewFull = '.js-review-full',
@@ -36006,474 +36022,947 @@ $(function () {
       reviewGap = '.js-review-gap'; // Sentiment Chart
 
   if ($('#' + sentiment).length === 0) return;
-  var params = $('.sentiment-graph').data('settings');
-  params = $.extend({}, {
-    drilldown: [],
-    series: [],
-    ajaxPath: '',
-    bookmakerId: 0,
-    tagId: 0,
-    slider: false,
-    count: 10,
-    paginationTemplate: ''
-  }, params);
-  var sentimentChart = highcharts__WEBPACK_IMPORTED_MODULE_1___default.a.chart(sentiment, {
-    // Global Options
-    chart: {
-      type: 'bubble',
-      plotBorderWidth: 1,
-      plotBorderColor: '#e2e2e2',
-      style: {
-        'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif',
-        'z-index': '1'
-      },
-      zoomType: 'xy',
-      margin: [1, 1, null, 1],
-      events: {
-        render: function render() {
-          var chartHeight = $('.highcharts-plot-background').height();
-          sentimentIndicator.height(chartHeight + 2);
-          sentimentBg.height(chartHeight + 2);
-          var minVal = Math.abs(this.yAxis[0].min),
-              maxVal = Math.abs(this.yAxis[0].max);
+  var sentimentObs = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var sentimentThis = entry.target,
+            bound = sentimentThis.getBoundingClientRect();
 
-          if (this.yAxis[0].min > 0 && this.yAxis[0].max > 0) {
-            minVal = 0;
-          } else if (this.yAxis[0].min < 0 && this.yAxis[0].max < 0) {
-            maxVal = 0;
-          }
+        if (bound.top <= window.innerHeight && bound.bottom >= 0) {
+          var params = {
+            "ajaxPath": "\/local\/components\/metaratings\/bk.sentiments\/ajax.php",
+            "bookmakerId": 292,
+            "count": 10,
+            "paginationTemplate": "",
+            "drilldown": {
+              "series": [{
+                "id": "Like-1",
+                "data": [{
+                  "class": "Like-10",
+                  "name": "\u0421\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u044C",
+                  "x": 363,
+                  "y": 9,
+                  "z": 363
+                }, {
+                  "class": "Like-3",
+                  "name": "\u0417\u0430\u0434\u0435\u0440\u0436\u043A\u0430",
+                  "x": 164,
+                  "y": 11,
+                  "z": 164
+                }, {
+                  "class": "Like-50",
+                  "name": "\u041A\u043E\u043C\u0438\u0441\u0441\u0438\u044F",
+                  "x": 46,
+                  "y": -6,
+                  "z": 46
+                }, {
+                  "class": "Like-46",
+                  "name": "\u041F\u043B\u0430\u0442\u0435\u0436\u043D\u044B\u0435 \u0441\u0438\u0441\u0442\u0435\u043C\u044B",
+                  "x": 40,
+                  "y": 4,
+                  "z": 40
+                }, {
+                  "class": "Like-45",
+                  "name": "\u0417\u0430\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u0435",
+                  "x": 279,
+                  "y": 18,
+                  "z": 279
+                }, {
+                  "class": "Like-30",
+                  "name": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F/\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u0443\u043C\u043C\u0430",
+                  "x": 15,
+                  "y": 7,
+                  "z": 15
+                }]
+              }, {
+                "id": "Like-13",
+                "data": [{
+                  "class": "Like-69",
+                  "name": "\u041E\u0431\u0449\u0435\u043D\u0438\u0435/\u043E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u0435",
+                  "x": 71,
+                  "y": -1,
+                  "z": 71
+                }, {
+                  "class": "Like-41",
+                  "name": "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u043E\u0442\u0432\u0435\u0442\u0430",
+                  "x": 41,
+                  "y": 11,
+                  "z": 41
+                }, {
+                  "class": "Like-18",
+                  "name": "\u041A\u043E\u043C\u043F\u0435\u0442\u0435\u043D\u0442\u043D\u043E\u0441\u0442\u044C",
+                  "x": 99,
+                  "y": 2,
+                  "z": 99
+                }, {
+                  "class": "Like-70",
+                  "name": "\u0413\u043E\u0440\u044F\u0447\u0430\u044F \u043B\u0438\u043D\u0438\u044F",
+                  "x": 1,
+                  "y": -20,
+                  "z": 1
+                }, {
+                  "class": "Like-54",
+                  "name": "\u041B\u0430\u0439\u0432 \u0447\u0430\u0442",
+                  "x": 11,
+                  "y": 5,
+                  "z": 11
+                }, {
+                  "class": "Like-52",
+                  "name": "\u0411\u043E\u0442\u044B",
+                  "x": 2,
+                  "y": -20,
+                  "z": 2
+                }]
+              }, {
+                "id": "Like-23",
+                "data": [{
+                  "class": "Like-37",
+                  "name": "\u0412\u044B\u0431\u043E\u0440 \u0441\u0442\u0430\u0432\u043E\u043A",
+                  "x": 435,
+                  "y": 8,
+                  "z": 435
+                }, {
+                  "class": "Like-68",
+                  "name": "\u0420\u043E\u0441\u043F\u0438\u0441\u044C",
+                  "x": 143,
+                  "y": 10,
+                  "z": 143
+                }, {
+                  "class": "Like-32",
+                  "name": "\u041B\u0430\u0439\u0432",
+                  "x": 244,
+                  "y": 12,
+                  "z": 244
+                }, {
+                  "class": "Like-27",
+                  "name": "\u041A\u043E\u044D\u0444\u0444\u0438\u0446\u0438\u0435\u043D\u0442\u044B",
+                  "x": 462,
+                  "y": -6,
+                  "z": 462
+                }, {
+                  "class": "Like-47",
+                  "name": "\u041D\u0430\u0434\u0451\u0436\u043D\u043E\u0441\u0442\u044C",
+                  "x": 23,
+                  "y": 10,
+                  "z": 23
+                }, {
+                  "class": "Like-53",
+                  "name": "\u041F\u0440\u0435\u043C\u0430\u0442\u0447",
+                  "x": 10,
+                  "y": -6,
+                  "z": 10
+                }]
+              }, {
+                "id": "Like-25",
+                "data": [{
+                  "class": "Like-64",
+                  "name": "\u0412\u043E\u0437\u0432\u0440\u0430\u0442 \u0441\u0443\u043C\u043C\u044B \u043F\u0430\u0440\u0438",
+                  "x": 35,
+                  "y": -19,
+                  "z": 35
+                }, {
+                  "class": "Like-42",
+                  "name": "\u041E\u0448\u0438\u0431\u043A\u0438",
+                  "x": 38,
+                  "y": -8,
+                  "z": 38
+                }, {
+                  "class": "Like-59",
+                  "name": "\u0418\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0438 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438",
+                  "x": 8,
+                  "y": -8,
+                  "z": 8
+                }, {
+                  "class": "Like-60",
+                  "name": "\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0435 \u043A\u0444",
+                  "x": 10,
+                  "y": -8,
+                  "z": 10
+                }, {
+                  "class": "Like-65",
+                  "name": "\u041E\u043F\u0435\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u044C",
+                  "x": 95,
+                  "y": 11,
+                  "z": 95
+                }, {
+                  "class": "Like-66",
+                  "name": "\u0412\u044B\u043A\u0443\u043F \u0441\u0442\u0430\u0432\u043A\u0438",
+                  "x": 7,
+                  "y": 14,
+                  "z": 7
+                }]
+              }, {
+                "id": "Like-21",
+                "data": [{
+                  "class": "Like-39",
+                  "name": "\u0424\u0440\u0438\u0431\u0435\u0442",
+                  "x": 78,
+                  "y": 6,
+                  "z": 78
+                }, {
+                  "class": "Like-33",
+                  "name": "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u043B\u043E\u044F\u043B\u044C\u043D\u043E\u0441\u0442\u0438",
+                  "x": 79,
+                  "y": 1,
+                  "z": 79
+                }, {
+                  "class": "Like-55",
+                  "name": "\u041F\u0435\u0440\u0432\u044B\u0439 \u0434\u0435\u043F\u043E\u0437\u0438\u0442",
+                  "x": 7,
+                  "y": 14,
+                  "z": 7
+                }]
+              }, {
+                "id": "Dislike-16",
+                "data": [{
+                  "class": "Dislike-40",
+                  "name": "\u041C\u0430\u043A\u0441\u0438\u043C\u0443\u043C\u044B",
+                  "x": 55,
+                  "y": -12,
+                  "z": 55
+                }, {
+                  "class": "Dislike-29",
+                  "name": "\u041F\u043E\u0440\u0435\u0437\u043A\u0430",
+                  "x": 106,
+                  "y": -10,
+                  "z": 106
+                }, {
+                  "class": "Dislike-58",
+                  "name": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u044F",
+                  "x": 13,
+                  "y": -11,
+                  "z": 13
+                }]
+              }, {
+                "id": "Like-11",
+                "data": [{
+                  "class": "Like-31",
+                  "name": "\u0418\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441",
+                  "x": 234,
+                  "y": 15,
+                  "z": 234
+                }, {
+                  "class": "Like-44",
+                  "name": "\u0422\u0440\u0430\u043D\u0441\u043B\u044F\u0446\u0438\u0438",
+                  "x": 74,
+                  "y": 11,
+                  "z": 74
+                }, {
+                  "class": "Like-36",
+                  "name": "\u0422\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u044B",
+                  "x": 41,
+                  "y": -3,
+                  "z": 41
+                }]
+              }, {
+                "id": "Like-34",
+                "data": [{
+                  "class": "Like-57",
+                  "name": "\u0423\u0434\u043E\u0431\u0441\u0442\u0432\u043E",
+                  "x": 165,
+                  "y": 16,
+                  "z": 165
+                }, {
+                  "class": "Like-43",
+                  "name": "\u0420\u0430\u0431\u043E\u0442\u043E\u0441\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u044C",
+                  "x": 43,
+                  "y": 7,
+                  "z": 43
+                }, {
+                  "class": "Like-67",
+                  "name": "\u0410\u043D\u0434\u0440\u043E\u0438\u0434",
+                  "x": 26,
+                  "y": -3,
+                  "z": 26
+                }, {
+                  "class": "Like-61",
+                  "name": "\u041C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0432\u0435\u0440\u0441\u0438\u044F",
+                  "x": 24,
+                  "y": 13,
+                  "z": 24
+                }, {
+                  "class": "Like-56",
+                  "name": "Ios",
+                  "x": 8,
+                  "y": 10,
+                  "z": 8
+                }]
+              }, {
+                "id": "Like-7",
+                "data": [{
+                  "class": "Like-15",
+                  "name": "\u0412\u0435\u0440\u0438\u0444\u0438\u043A\u0430\u0446\u0438\u044F",
+                  "x": 76,
+                  "y": -8,
+                  "z": 76
+                }, {
+                  "class": "Like-38",
+                  "name": "\u041F\u043F\u0441",
+                  "x": 41,
+                  "y": 14,
+                  "z": 41
+                }, {
+                  "class": "Like-62",
+                  "name": "\u041C\u0443\u043B\u044C\u0442\u0438\u0430\u043A\u043A\u0430\u0443\u043D\u0442\u0438\u043D\u0433",
+                  "x": 2,
+                  "y": -20,
+                  "z": 2
+                }, {
+                  "class": "Like-73",
+                  "name": "\u0444\u0438\u043B\u0438\u0430\u043B\u044B",
+                  "x": 4,
+                  "y": 20,
+                  "z": 4
+                }, {
+                  "class": "Like-9",
+                  "name": "\u041F\u0430\u0441\u043F\u043E\u0440\u0442",
+                  "x": 9,
+                  "y": -11,
+                  "z": 9
+                }, {
+                  "class": "Like-20",
+                  "name": "\u0426\u0443\u043F\u0438\u0441",
+                  "x": 4,
+                  "y": 5,
+                  "z": 4
+                }]
+              }, {
+                "id": "Dislike-4",
+                "data": [{
+                  "class": "Dislike-28",
+                  "name": "\u0410\u043A\u043A\u0430\u0443\u043D\u0442",
+                  "x": 25,
+                  "y": -13,
+                  "z": 25
+                }, {
+                  "class": "Dislike-19",
+                  "name": "\u0418\u0433\u0440\u043E\u0432\u043E\u0439 \u0441\u0447\u0451\u0442",
+                  "x": 32,
+                  "y": -18,
+                  "z": 32
+                }, {
+                  "class": "Dislike-6",
+                  "name": "\u0412\u044B\u0432\u043E\u0434 \u0441\u0440\u0435\u0434\u0441\u0442\u0432",
+                  "x": 22,
+                  "y": -16,
+                  "z": 22
+                }, {
+                  "class": "Dislike-63",
+                  "name": "\u041F\u0440\u043E\u043F\u0430\u0436\u0430 \u0431\u0430\u043B\u0430\u043D\u0441\u0430",
+                  "x": 20,
+                  "y": -20,
+                  "z": 20
+                }]
+              }, {
+                "id": "Dislike-48",
+                "data": [{
+                  "class": "Dislike-51",
+                  "name": "\u041C\u043E\u0448\u0435\u043D\u043D\u0438\u043A\u0438/\u0440\u0435\u043A\u043B\u0430\u043C\u0430",
+                  "x": 23,
+                  "y": -10,
+                  "z": 23
+                }]
+              }]
+            },
+            "series": {
+              "series": [{
+                "data": [{
+                  "name": "\u0412\u044B\u0432\u043E\u0434 \u0441\u0440\u0435\u0434\u0441\u0442\u0432",
+                  "id": 1,
+                  "x": 907,
+                  "y": 11,
+                  "z": 907,
+                  "drilldown": "Like-1"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u041F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430",
+                  "id": 13,
+                  "x": 225,
+                  "y": 2,
+                  "z": 225,
+                  "drilldown": "Like-13"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u041B\u0438\u043D\u0438\u044F",
+                  "id": 23,
+                  "x": 1317,
+                  "y": 4,
+                  "z": 1317,
+                  "drilldown": "Like-23"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u0420\u0430\u0441\u0447\u0451\u0442",
+                  "id": 25,
+                  "x": 193,
+                  "y": 0,
+                  "z": 193,
+                  "drilldown": "Like-25"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u0411\u043E\u043D\u0443\u0441\u044B",
+                  "id": 21,
+                  "x": 164,
+                  "y": 3,
+                  "z": 164,
+                  "drilldown": "Like-21"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u041B\u0438\u043C\u0438\u0442\u044B",
+                  "id": 16,
+                  "x": 174,
+                  "y": -10,
+                  "z": 174,
+                  "drilldown": "Dislike-16"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u0423\u0434\u043E\u0431\u043D\u044B\u0439 \u0441\u0430\u0439\u0442",
+                  "id": 11,
+                  "x": 349,
+                  "y": 12,
+                  "z": 349,
+                  "drilldown": "Like-11"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u041C\u043E\u0431\u0438\u043B\u044C\u043D\u044B\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F",
+                  "id": 34,
+                  "x": 266,
+                  "y": 12,
+                  "z": 266,
+                  "drilldown": "Like-34"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F",
+                  "id": 7,
+                  "x": 136,
+                  "y": 0,
+                  "z": 136,
+                  "drilldown": "Like-7"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u0411\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438",
+                  "id": 4,
+                  "x": 99,
+                  "y": -16,
+                  "z": 99,
+                  "drilldown": "Dislike-4"
+                }]
+              }, {
+                "data": [{
+                  "name": "\u0421\u043F\u0430\u043C",
+                  "id": 48,
+                  "x": 23,
+                  "y": -9,
+                  "z": 23,
+                  "drilldown": "Dislike-48"
+                }]
+              }]
+            },
+            "slider": true
+          };
+          params = $.extend({}, {
+            drilldown: [],
+            series: [],
+            ajaxPath: '',
+            bookmakerId: 0,
+            tagId: 0,
+            slider: false,
+            count: 10,
+            paginationTemplate: ''
+          }, params);
+          var sentimentChart = highcharts__WEBPACK_IMPORTED_MODULE_1___default.a.chart(sentiment, {
+            // Global Options
+            chart: {
+              type: 'bubble',
+              plotBorderWidth: 1,
+              plotBorderColor: '#e2e2e2',
+              style: {
+                'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif',
+                'z-index': '1'
+              },
+              zoomType: 'xy',
+              margin: [1, 1, null, 1],
+              events: {
+                render: function render() {
+                  setTimeout(function () {
+                    var chartHeight = $('.highcharts-plot-background').height();
+                    sentimentIndicator.height(chartHeight + 2);
+                    sentimentBg.height(chartHeight + 2);
+                  }, 500);
+                  var minVal = Math.abs(this.yAxis[0].min),
+                      maxVal = Math.abs(this.yAxis[0].max);
 
-          var totalVal = minVal + maxVal,
-              minHalf = minVal * 100 / totalVal,
-              maxHalf = maxVal * 100 / totalVal;
-
-          if (minHalf < maxHalf || minHalf > maxHalf) {
-            sentimentIndicator.css({
-              background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #20a94a ' + minHalf + '%)'
-            });
-            sentimentBgSuccess.css('height', maxHalf + '%');
-            sentimentBgDanger.css('height', minHalf + '%');
-          } else {
-            sentimentIndicator.css({
-              background: 'linear-gradient(to top, #d0021b 50%, #20a94a 50%)'
-            });
-          }
-        },
-        drilldown: function drilldown() {
-          setTimeout(function () {
-            var sentimentVal = sentimentChart.series[0].chart.drilldownLevels[0].pointOptions.y,
-                sentimentName = sentimentChart.drilldownLevels[0].pointOptions.name;
-            sentimentChart.update({
-              chart: {
-                zoomType: ''
-              }
-            });
-            $(sentimentTool).css('display', 'flex');
-
-            if (sentimentVal >= 0) {
-              sentimentTitle.addClass('is-success');
-            } else {
-              sentimentTitle.addClass('is-danger');
-            }
-
-            sentimentTitle.html('Упоминания под тегом ' + sentimentName);
-            sentimentScroll.html('');
-            params.tagId = sentimentChart.drilldownLevels[0].pointOptions.id;
-            loadReviews();
-            $(sentimentChart.series[0].data).each(function (i, data) {
-              var parseDrillDown = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>');
-              $(reviewGap).unwrap().remove();
-              setTimeout(function () {
-                reviewText.highlight(data.name, i, 'sentiment-review-highlight js-review-highlight ' + data.class + '', 'js-review-gap');
-
-                if (data.y >= 0) {
-                  $(parseDrillDown).appendTo(sentimentScrollSuccess);
-                  $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-success');
-                } else {
-                  $(parseDrillDown).appendTo(sentimentScrollDanger);
-                  $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-danger');
-                }
-
-                sentimentList.each(function () {
-                  $(this).find(sentimentScrollSuccess).parent().toggle(sentimentScrollSuccess.children().length != 0);
-                  $(this).find(sentimentScrollDanger).parent().toggle(sentimentScrollDanger.children().length != 0);
-                });
-              }, 1);
-            });
-            setTimeout(function () {
-              autoHeight();
-            }, 1);
-          }, 1);
-        },
-        drillup: function drillup() {
-          setTimeout(function () {
-            sentimentChart.update({
-              chart: {
-                zoomType: 'xy'
-              }
-            });
-            $(sentimentTool).hide();
-            sentimentTitle.removeClass('is-success is-danger').html('Все сущности');
-            sentimentScroll.html('');
-            params.tagId = 0;
-            loadReviews();
-            $(sentimentChart.series).each(function (i, serie) {
-              var parseMain = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>');
-              $(reviewGap).unwrap().remove();
-              setTimeout(function () {
-                reviewText.highlight(serie.data[0].name, i, 'sentiment-review-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
-
-                if (serie.yData[0] >= 0) {
-                  $(parseMain).appendTo(sentimentScrollSuccess);
-                  $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-success');
-                } else {
-                  $(parseMain).appendTo(sentimentScrollDanger);
-                  $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-danger');
-                }
-
-                sentimentList.each(function () {
-                  $(this).find(sentimentScrollSuccess).parent().toggle(sentimentScrollSuccess.children().length != 0);
-                  $(this).find(sentimentScrollDanger).parent().toggle(sentimentScrollDanger.children().length != 0);
-                });
-              }, 1);
-            });
-            setTimeout(function () {
-              autoHeight();
-            }, 1);
-          }, 1);
-        }
-      }
-    },
-    // Disabled Chart title, tooltip, legend
-    title: {
-      text: null
-    },
-    tooltip: {
-      enabled: false
-    },
-    legend: {
-      enabled: false
-    },
-    // Horizontal Coordinates
-    xAxis: {
-      title: {
-        enabled: false
-      },
-      startOnTick: true,
-      endOnTick: true,
-      gridLineWidth: 1,
-      gridLineColor: '#e2e2e2',
-      gridLineDashStyle: 'ShortDash',
-      tickColor: '#e2e2e2',
-      tickLength: 15,
-      tickPixelInterval: 100,
-      showLastLabel: false,
-      labels: {
-        y: 30,
-        style: {
-          color: '#777777',
-          fontSize: '10px'
-        }
-      }
-    },
-    // Vertical Coordinates
-    yAxis: {
-      title: {
-        enabled: false
-      },
-      gridLineWidth: 1,
-      gridLineColor: '#e2e2e2',
-      plotLines: [{
-        color: '#9c9c9c',
-        width: 1,
-        value: 0,
-        zIndex: 2
-      }],
-      labels: {
-        enabled: false
-      }
-    },
-    // Sentiment Options
-    plotOptions: {
-      bubble: {
-        minSize: 0,
-        maxSize: '10%',
-        zMin: 0,
-        zMax: null,
-        animation: {
-          duration: 500
-        }
-      },
-      series: {
-        stickyTracking: false,
-        zoneAxis: 'y',
-        zones: [{
-          value: 0,
-          className: 'zone-no'
-        }, {
-          className: 'zone-yes'
-        }],
-        states: {
-          inactive: {
-            opacity: 1
-          }
-        },
-        marker: {
-          fillOpacity: 1,
-          lineWidth: 2,
-          states: {
-            hover: {
-              enabled: false
-            }
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          //allowOverlap: true,
-          useHTML: true,
-          formatter: function formatter() {
-            if (win.outerWidth() <= 1099) {
-              return '<span style="position:relative;bottom:-' + (this.point.marker.radius + 10) + 'px;">' + this.point.name + '</span>';
-            } else {
-              return '<span style="position:relative;bottom:-' + (this.point.marker.radius + 15) + 'px;">' + this.point.name + '</span>';
-            }
-          },
-          style: {
-            fontSize: '8px',
-            color: '#000000',
-            textOutline: 'none'
-          }
-        },
-        events: {
-          mouseOver: function mouseOver() {
-            setTimeout(function () {
-              if (sentimentChart.drillUpButton === undefined) {
-                $(sentimentChart.series).each(function (i, serie) {
-                  $('' + sentimentItem + '[data-series=' + i + ']').toggleClass('is-hover', $('.highcharts-series-' + i + '.highcharts-series-hover').length != 0);
-
-                  if ($('.highcharts-series-' + i + '.highcharts-series-hover').length != 0) {
-                    $('.widget-review-highlight').addClass('is-disable');
-                    $('' + reviewHighlight + '[data-series=' + i + ']').removeClass('is-disable');
-                  } else {
-                    $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-disable');
+                  if (this.yAxis[0].min > 0 && this.yAxis[0].max > 0) {
+                    minVal = 0;
+                  } else if (this.yAxis[0].min < 0 && this.yAxis[0].max < 0) {
+                    maxVal = 0;
                   }
-                });
-              } else {
-                return false;
+
+                  var totalVal = minVal + maxVal,
+                      minHalf = minVal * 100 / totalVal,
+                      maxHalf = maxVal * 100 / totalVal;
+
+                  if (minHalf < maxHalf || minHalf > maxHalf) {
+                    sentimentIndicator.css({
+                      background: 'linear-gradient(to top, #d0021b ' + minHalf + '%, #20a94a ' + minHalf + '%)'
+                    });
+                    sentimentBgSuccess.css('height', maxHalf + '%');
+                    sentimentBgDanger.css('height', minHalf + '%');
+                  } else {
+                    sentimentIndicator.css({
+                      background: 'linear-gradient(to top, #d0021b 50%, #20a94a 50%)'
+                    });
+                  }
+                },
+                drilldown: function drilldown() {
+                  setTimeout(function () {
+                    var sentimentVal = sentimentChart.series[0].chart.drilldownLevels[0].pointOptions.y,
+                        sentimentName = sentimentChart.drilldownLevels[0].pointOptions.name;
+                    sentimentChart.update({
+                      chart: {
+                        zoomType: ''
+                      }
+                    });
+                    $(sentimentTool).css('display', 'flex');
+
+                    if (sentimentVal >= 0) {
+                      sentimentTitle.addClass('is-success');
+                    } else {
+                      sentimentTitle.addClass('is-danger');
+                    }
+
+                    sentimentTitle.html('Упоминания под тегом ' + sentimentName);
+                    sentimentScroll.html('');
+                    params.tagId = sentimentChart.drilldownLevels[0].pointOptions.id;
+                    loadReviews();
+                    $(sentimentChart.series[0].data).each(function (i, data) {
+                      var parseDrillDown = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>');
+                      $(reviewGap).unwrap().remove();
+                      setTimeout(function () {
+                        reviewText.highlight(data.name, i, 'sentiment-review-highlight js-review-highlight ' + data.class + '', 'js-review-gap');
+
+                        if (data.y >= 0) {
+                          $(parseDrillDown).appendTo(sentimentScrollSuccess);
+                          $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-success');
+                        } else {
+                          $(parseDrillDown).appendTo(sentimentScrollDanger);
+                          $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-danger');
+                        }
+
+                        sentimentList.each(function () {
+                          $(this).find(sentimentScrollSuccess).parent().toggle(sentimentScrollSuccess.children().length != 0);
+                          $(this).find(sentimentScrollDanger).parent().toggle(sentimentScrollDanger.children().length != 0);
+                        });
+                      }, 1);
+                    });
+                    setTimeout(function () {
+                      autoHeight();
+                    }, 1);
+                  }, 1);
+                },
+                drillup: function drillup() {
+                  setTimeout(function () {
+                    sentimentChart.update({
+                      chart: {
+                        zoomType: 'xy'
+                      }
+                    });
+                    $(sentimentTool).hide();
+                    sentimentTitle.removeClass('is-success is-danger').html('Все сущности');
+                    sentimentScroll.html('');
+                    params.tagId = 0;
+                    loadReviews();
+                    $(sentimentChart.series).each(function (i, serie) {
+                      var parseMain = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>');
+                      $(reviewGap).unwrap().remove();
+                      setTimeout(function () {
+                        reviewText.highlight(serie.data[0].name, i, 'sentiment-review-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
+
+                        if (serie.yData[0] >= 0) {
+                          $(parseMain).appendTo(sentimentScrollSuccess);
+                          $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-success');
+                        } else {
+                          $(parseMain).appendTo(sentimentScrollDanger);
+                          $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-danger');
+                        }
+
+                        sentimentList.each(function () {
+                          $(this).find(sentimentScrollSuccess).parent().toggle(sentimentScrollSuccess.children().length != 0);
+                          $(this).find(sentimentScrollDanger).parent().toggle(sentimentScrollDanger.children().length != 0);
+                        });
+                      }, 1);
+                    });
+                    setTimeout(function () {
+                      autoHeight();
+                    }, 1);
+                  }, 1);
+                }
               }
-            }, 1);
-          },
-          mouseOut: function mouseOut() {
-            setTimeout(function () {
-              if (sentimentChart.drillUpButton === undefined) {
-                $(sentimentItem).removeClass('is-hover');
-                $(reviewHighlight).removeClass('is-disable');
-              } else {
-                return false;
+            },
+            // Disabled Chart title, tooltip, legend
+            title: {
+              text: null
+            },
+            tooltip: {
+              enabled: false
+            },
+            legend: {
+              enabled: false
+            },
+            // Horizontal Coordinates
+            xAxis: {
+              title: {
+                enabled: false
+              },
+              startOnTick: true,
+              endOnTick: true,
+              gridLineWidth: 1,
+              gridLineColor: '#e2e2e2',
+              gridLineDashStyle: 'ShortDash',
+              tickColor: '#e2e2e2',
+              tickLength: 15,
+              tickPixelInterval: 100,
+              showLastLabel: false,
+              labels: {
+                y: 30,
+                style: {
+                  color: '#777777',
+                  fontSize: '10px'
+                }
               }
-            }, 1);
+            },
+            // Vertical Coordinates
+            yAxis: {
+              title: {
+                enabled: false
+              },
+              gridLineWidth: 1,
+              gridLineColor: '#e2e2e2',
+              plotLines: [{
+                color: '#9c9c9c',
+                width: 1,
+                value: 0,
+                zIndex: 2
+              }],
+              labels: {
+                enabled: false
+              }
+            },
+            // Sentiment Options
+            plotOptions: {
+              bubble: {
+                minSize: 0,
+                maxSize: '10%',
+                zMin: 0,
+                zMax: null,
+                animation: {
+                  duration: 500
+                }
+              },
+              series: {
+                stickyTracking: false,
+                zoneAxis: 'y',
+                zones: [{
+                  value: 0,
+                  className: 'zone-no'
+                }, {
+                  className: 'zone-yes'
+                }],
+                states: {
+                  inactive: {
+                    opacity: 1
+                  }
+                },
+                marker: {
+                  fillOpacity: 1,
+                  lineWidth: 2,
+                  states: {
+                    hover: {
+                      enabled: false
+                    }
+                  }
+                },
+                dataLabels: {
+                  enabled: true,
+                  //allowOverlap: true,
+                  useHTML: true,
+                  formatter: function formatter() {
+                    if (win.outerWidth() <= 1099) {
+                      return '<span style="position:relative;bottom:-' + (this.point.marker.radius + 10) + 'px;">' + this.point.name + '</span>';
+                    } else {
+                      return '<span style="position:relative;bottom:-' + (this.point.marker.radius + 15) + 'px;">' + this.point.name + '</span>';
+                    }
+                  },
+                  style: {
+                    fontSize: '8px',
+                    color: '#000000',
+                    textOutline: 'none'
+                  }
+                },
+                events: {
+                  mouseOver: function mouseOver() {
+                    setTimeout(function () {
+                      if (sentimentChart.drillUpButton === undefined) {
+                        $(sentimentChart.series).each(function (i, serie) {
+                          $('' + sentimentItem + '[data-series=' + i + ']').toggleClass('is-hover', $('.highcharts-series-' + i + '.highcharts-series-hover').length != 0);
+
+                          if ($('.highcharts-series-' + i + '.highcharts-series-hover').length != 0) {
+                            $('.widget-review-highlight').addClass('is-disable');
+                            $('' + reviewHighlight + '[data-series=' + i + ']').removeClass('is-disable');
+                          } else {
+                            $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-disable');
+                          }
+                        });
+                      } else {
+                        return false;
+                      }
+                    }, 1);
+                  },
+                  mouseOut: function mouseOut() {
+                    setTimeout(function () {
+                      if (sentimentChart.drillUpButton === undefined) {
+                        $(sentimentItem).removeClass('is-hover');
+                        $(reviewHighlight).removeClass('is-disable');
+                      } else {
+                        return false;
+                      }
+                    }, 1);
+                  }
+                }
+              }
+            },
+            // Main Series Data
+            series: [],
+            // Drilldown Series Data
+            drilldown: {
+              activeDataLabelStyle: {
+                color: '#000000',
+                textDecoration: 'none'
+              },
+              activeAxisLabelStyle: {
+                color: '#777777',
+                textDecoration: 'none'
+              },
+              drillUpButton: {
+                theme: {
+                  display: 'none'
+                }
+              },
+              series: []
+            }
+          });
+          sentimentChart.update(params.series, true, true);
+          sentimentChart.options.drilldown = highcharts__WEBPACK_IMPORTED_MODULE_1___default.a.merge(sentimentChart.options.drilldown, {
+            series: params.drilldown.series
+          }); // Init Sentiment Tags, Sentiment Reviews, Sentiment Highlight, Sentiment Block Height, Sentiment Pagination
+
+          function autoHeight() {
+            if (win.outerWidth() >= 1100) {
+              sentimentList.each(function () {
+                var maxH = 54,
+                    sentimentScrollHeight = $(this).find(sentimentScroll).outerHeight();
+
+                if (sentimentScrollHeight > maxH) {
+                  $(this).css('max-height', maxH);
+                  $(this).find(sentimentFull).css('display', 'flex');
+                } else {
+                  $(this).css('max-height', '');
+                  $(this).find(sentimentFull).css('display', 'none');
+                }
+              });
+            }
+
+            reviewBody.each(function () {
+              var maxH = 102,
+                  reviewTextHeight = $(this).find(reviewText).outerHeight();
+
+              if (reviewTextHeight > maxH) {
+                $(this).css('max-height', maxH);
+                $(this).find(reviewFull).css('display', 'flex');
+              } else {
+                $(this).css('max-height', '');
+                $(this).find(reviewFull).css('display', 'none');
+              }
+            });
           }
+
+          function addCommentsSlider(comments) {
+            var listNav = $('.js-review-slideNav .swiper-wrapper'),
+                listFor = $('.js-review-slideFor .swiper-wrapper');
+            listNav.html('');
+            listFor.html('');
+            $(comments).each(function (i, comment) {
+              var parseSlide = $.parseHTML('<div class="swiper-slide">\n' + '<a class="sentiment-review-block-link js-modal-show" href="#review"></a>\n' + '<div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>\n' + '</div>');
+              $(parseSlide).clone().appendTo(listNav);
+              $(parseSlide).clone().appendTo(listFor);
+            });
+            sliderNav.update();
+            sliderFor.update();
+            reviewBody = $('.js-review-body'), reviewText = $('.js-review-text');
+          }
+
+          function addComments(comments) {
+            reviewList.html('');
+            $(comments).each(function (i, comment) {
+              $($.parseHTML(' <div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>')).appendTo(reviewList);
+            });
+            reviewBody = $('.js-review-body'), reviewText = $('.js-review-text');
+          }
+
+          function addPagination(pagination) {
+            var htmlPag = $(pagination);
+
+            if (sentimentPagination.length > 0) {
+              var newPagination = htmlPag.is('.js-pagination-sentiment') ? htmlPag.filter('.js-pagination-sentiment') : htmlPag.find('.js-pagination-sentiment');
+              sentimentPagination.empty().append(newPagination.children()); // sentimentPagination.replaceWith(pagination);
+            } else {
+              reviewList.after(pagination);
+            }
+          }
+
+          function loadReviews(page) {
+            var data = {
+              action: 'load-comments',
+              bookmaker: params.bookmakerId,
+              tag: params.tagId,
+              count: params.count,
+              slider: params.slider,
+              paginationTemplate: params.paginationTemplate
+            };
+            if (page && page > 1) data['page'] = 'page-' + page;
+            $.get(params.ajaxPath, data, function (response) {
+              if (params.slider) {
+                addCommentsSlider(response.comments);
+              } else {
+                addComments(response.comments);
+              }
+
+              if (params.paginationTemplate) addPagination(response.pagination);
+            }, 'json');
+          }
+
+          function _pagination() {
+            sentimentPagination.on('click', 'a', function (e) {
+              e.preventDefault();
+              var html = $(document.body).add(document.documentElement),
+                  page = parseInt($(this).text());
+
+              if (!isNaN(page) && page > 0 && !$(this).parent().hasClass('.is-active')) {
+                html.animate({
+                  scrollTop: reviewList.offset().top - 15
+                }, 200);
+                loadReviews(page);
+              }
+            });
+            doc.on('click', sentimentPaginationBtn, function (e) {
+              e.preventDefault();
+              var html = $(document.body).add(document.documentElement),
+                  page = $(this).attr('href');
+
+              if (!isNaN(page) && page > 0) {
+                html.animate({
+                  scrollTop: reviewList.offset().top - 15
+                }, 200);
+                loadReviews(page);
+              }
+            });
+          }
+
+          $(sentimentChart.series).each(function (i, serie) {
+            var parseMain = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>');
+            reviewText.highlight(serie.data[0].name, i, 'sentiment-review-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
+
+            if (serie.yData[0] >= 0) {
+              $(parseMain).appendTo(sentimentScrollSuccess);
+              $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-success');
+            } else {
+              $(parseMain).appendTo(sentimentScrollDanger);
+              $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-danger');
+            }
+
+            sentimentList.each(function () {
+              $(this).find(sentimentScrollSuccess).parent().toggle(sentimentScrollSuccess.children().length != 0);
+              $(this).find(sentimentScrollDanger).parent().toggle(sentimentScrollDanger.children().length != 0);
+            });
+          });
+          autoHeight();
+          sentimentLoad.addClass('is-load'); // Interaction
+
+          var chartSeries = $('.highcharts-series'),
+              chartPoint = '.highcharts-point',
+              chartLabel = '.highcharts-label';
+          doc.on('click', sentimentItem, function () {
+            var seriesVal = $(this).data('series');
+
+            if (sentimentChart.drillUpButton === undefined) {
+              sentimentChart.series[seriesVal].data[0].doDrilldown();
+            } else {
+              return false;
+            }
+          });
+          doc.on('mouseover mouseout', sentimentItem, function () {
+            var seriesVal = $(this).data('series');
+
+            if (sentimentChart.drillUpButton === undefined) {
+              chartSeries.toggleClass('highcharts-series-inactive');
+              $('.highcharts-series-' + seriesVal).removeClass('highcharts-series-inactive');
+              $(reviewHighlight).toggleClass('is-disable');
+              $('' + reviewHighlight + '[data-series=' + seriesVal + ']').removeClass('is-disable');
+            } else {
+              $(chartPoint).toggleClass('is-disable');
+              $(chartPoint).eq(seriesVal).removeClass('highcharts-point-hover is-disable');
+              $(reviewHighlight).toggleClass('is-disable');
+              $('' + reviewHighlight + '[data-series=' + seriesVal + ']').removeClass('is-disable');
+            }
+          });
+          doc.on('mouseover', chartLabel, function () {
+            if (sentimentChart.drillUpButton === undefined) {
+              return false;
+            } else {
+              $(this).addClass('highcharts-label-hover');
+              var activePoint = $('.highcharts-label-hover'),
+                  activePointIndex = activePoint.index();
+              $(chartPoint).eq(activePointIndex).addClass('highcharts-point-hover');
+              $(sentimentChart.series[0].data).each(function (i, data) {
+                var condition = $(chartPoint).eq(i).hasClass('highcharts-point-hover');
+                $('' + sentimentItem + '[data-series=' + i + ']').toggleClass('is-hover', condition);
+
+                if (condition) {
+                  $(chartPoint).addClass('is-disable');
+                  $('.highcharts-point.highcharts-point-hover').removeClass('is-disable');
+                  $(reviewHighlight).addClass('is-disable');
+                  $('' + reviewHighlight + '[data-series=' + i + ']').removeClass('is-disable');
+                }
+              });
+            }
+          });
+          doc.on('mouseout', chartLabel, function () {
+            if (sentimentChart.drillUpButton === undefined) {
+              return false;
+            } else {
+              $(sentimentItem).removeClass('is-hover');
+              $(chartPoint).removeClass('highcharts-point-hover is-disable');
+              $(chartLabel).removeClass('highcharts-label-hover');
+              $(reviewHighlight).removeClass('is-disable');
+            }
+          });
+          sentimentObs.unobserve(sentimentThis);
         }
       }
-    },
-    // Main Series Data
-    series: [],
-    // Drilldown Series Data
-    drilldown: {
-      activeDataLabelStyle: {
-        color: '#000000',
-        textDecoration: 'none'
-      },
-      activeAxisLabelStyle: {
-        color: '#777777',
-        textDecoration: 'none'
-      },
-      drillUpButton: {
-        theme: {
-          display: 'none'
-        }
-      },
-      series: []
-    }
-  });
-  sentimentChart.update(params.series, true, true);
-  sentimentChart.options.drilldown = highcharts__WEBPACK_IMPORTED_MODULE_1___default.a.merge(sentimentChart.options.drilldown, {
-    series: params.drilldown.series
-  }); // Init Sentiment Tags, Sentiment Reviews, Sentiment Highlight, Sentiment Block Height, Sentiment Pagination
-
-  function autoHeight() {
-    if (win.outerWidth() >= 1100) {
-      sentimentList.each(function () {
-        var maxH = 54,
-            sentimentScrollHeight = $(this).find(sentimentScroll).outerHeight();
-
-        if (sentimentScrollHeight > maxH) {
-          $(this).css('max-height', maxH);
-          $(this).find(sentimentFull).css('display', 'flex');
-        } else {
-          $(this).css('max-height', '');
-          $(this).find(sentimentFull).css('display', 'none');
-        }
-      });
-    }
-
-    reviewBody.each(function () {
-      var maxH = 102,
-          reviewTextHeight = $(this).find(reviewText).outerHeight();
-
-      if (reviewTextHeight > maxH) {
-        $(this).css('max-height', maxH);
-        $(this).find(reviewFull).css('display', 'flex');
-      } else {
-        $(this).css('max-height', '');
-        $(this).find(reviewFull).css('display', 'none');
-      }
-    });
-  }
-
-  function addCommentsSlider(comments) {
-    var listNav = $('.js-review-slideNav .swiper-wrapper'),
-        listFor = $('.js-review-slideFor .swiper-wrapper');
-    listNav.html('');
-    listFor.html('');
-    $(comments).each(function (i, comment) {
-      var parseSlide = $.parseHTML('<div class="swiper-slide">\n' + '<a class="sentiment-review-block-link js-modal-show" href="#review"></a>\n' + '<div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>\n' + '</div>');
-      $(parseSlide).clone().appendTo(listNav);
-      $(parseSlide).clone().appendTo(listFor);
-    });
-    sliderNav.update();
-    sliderFor.update();
-  }
-
-  function addComments(comments) {
-    reviewList.html('');
-    $(comments).each(function (i, comment) {
-      $($.parseHTML(' <div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>')).appendTo(reviewList);
-    });
-  }
-
-  function addPagination(pagination) {
-    if (sentimentPagination.length > 0) {
-      sentimentPagination.replaceWith(pagination);
-    } else {
-      reviewList.after(pagination);
-    }
-  }
-
-  function loadReviews(page) {
-    var data = {
-      action: 'load-comments',
-      bookmaker: params.bookmakerId,
-      tag: params.tagId,
-      count: params.count,
-      slider: params.slider,
-      paginationTemplate: params.paginationTemplate
-    };
-    if (page && page > 1) data['page'] = 'page-' + page;
-    $.get(params.ajaxPath, data, function (response) {
-      if (params.slider) {
-        addCommentsSlider(response.comments);
-      } else {
-        addComments(response.comments);
-      }
-
-      if (params.paginationTemplate) addPagination(response.pagination);
-    }, 'json');
-    autoHeight();
-  }
-
-  function pagination() {
-    sentimentPagination.on('click', 'a', function (e) {
-      e.preventDefault();
-      var html = $(document.body).add(document.documentElement),
-          page = parseInt($(this).text());
-
-      if (!isNaN(page) && page > 0 && !$(this).parent().hasClass('.is-active')) {
-        html.animate({
-          scrollTop: reviewList.offset().top - 15
-        }, 200);
-        loadReviews(page);
-      }
-    });
-  }
-
-  $(sentimentChart.series).each(function (i, serie) {
-    var parseMain = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>');
-    reviewText.highlight(serie.data[0].name, i, 'sentiment-review-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
-
-    if (serie.yData[0] >= 0) {
-      $(parseMain).appendTo(sentimentScrollSuccess);
-      $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-success');
-    } else {
-      $(parseMain).appendTo(sentimentScrollDanger);
-      $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-danger');
-    }
-
-    sentimentList.each(function () {
-      $(this).find(sentimentScrollSuccess).parent().toggle(sentimentScrollSuccess.children().length != 0);
-      $(this).find(sentimentScrollDanger).parent().toggle(sentimentScrollDanger.children().length != 0);
     });
   });
-  autoHeight(); // Interaction
+  sentimentEl.forEach(function (sentimentThis) {
+    sentimentObs.observe(sentimentThis);
+  }); // Interaction
 
-  var chartSeries = $('.highcharts-series'),
-      chartPoint = '.highcharts-point',
-      chartLabel = '.highcharts-label';
-  doc.on('click', sentimentItem, function () {
-    var seriesVal = $(this).data('series');
-
-    if (sentimentChart.drillUpButton === undefined) {
-      sentimentChart.series[seriesVal].data[0].doDrilldown();
-    } else {
-      return false;
-    }
-  });
-  doc.on('mouseover mouseout', sentimentItem, function () {
-    var seriesVal = $(this).data('series');
-
-    if (sentimentChart.drillUpButton === undefined) {
-      chartSeries.toggleClass('highcharts-series-inactive');
-      $('.highcharts-series-' + seriesVal).removeClass('highcharts-series-inactive');
-      $(reviewHighlight).toggleClass('is-disable');
-      $('' + reviewHighlight + '[data-series=' + seriesVal + ']').removeClass('is-disable');
-    } else {
-      $(chartPoint).toggleClass('is-disable');
-      $(chartPoint).eq(seriesVal).removeClass('highcharts-point-hover is-disable');
-      $(reviewHighlight).toggleClass('is-disable');
-      $('' + reviewHighlight + '[data-series=' + seriesVal + ']').removeClass('is-disable');
-    }
-  });
-  doc.on('mouseover', chartLabel, function () {
-    if (sentimentChart.drillUpButton === undefined) {
-      return false;
-    } else {
-      $(this).addClass('highcharts-label-hover');
-      var activePoint = $('.highcharts-label-hover'),
-          activePointIndex = activePoint.index();
-      $(chartPoint).eq(activePointIndex).addClass('highcharts-point-hover');
-      $(sentimentChart.series[0].data).each(function (i, data) {
-        var condition = $(chartPoint).eq(i).hasClass('highcharts-point-hover');
-        $('' + sentimentItem + '[data-series=' + i + ']').toggleClass('is-hover', condition);
-
-        if (condition) {
-          $(chartPoint).addClass('is-disable');
-          $('.highcharts-point.highcharts-point-hover').removeClass('is-disable');
-          $(reviewHighlight).addClass('is-disable');
-          $('' + reviewHighlight + '[data-series=' + i + ']').removeClass('is-disable');
-        }
-      });
-    }
-  });
-  doc.on('mouseout', chartLabel, function () {
-    if (sentimentChart.drillUpButton === undefined) {
-      return false;
-    } else {
-      $(sentimentItem).removeClass('is-hover');
-      $(chartPoint).removeClass('highcharts-point-hover is-disable');
-      $(chartLabel).removeClass('highcharts-label-hover');
-      $(reviewHighlight).removeClass('is-disable');
-    }
-  });
   doc.on('click', sentimentBack, function () {
     $('.highcharts-drillup-button').trigger('click');
   });
