@@ -14,7 +14,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/overview-bk.css">
-    <link rel="stylesheet" href="css/pages/sentiment.css">
   </head>
   <body>
     <header class="head">
@@ -272,19 +271,19 @@
         </div>
       </div>
     </header>
-    <main class="workarea overview-bk">
-      <div class="container">
-        <div class="workarea-breadcrumb" aria-label="breadcrumb">
-          <ol class="workarea-breadcrumb-list">
-            <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Главная</a></li>
-            <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Страница</a></li>
-            <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
-          </ol>
-        </div>
-        <div class="workarea-title">
-          <h1>Обзор букмекерской конторы Марафон</h1>
-        </div>
-        <div class="workarea-description">
+    <main class="workarea">
+      <div class="workarea-head">
+        <div class="container">
+          <div class="workarea-breadcrumb" aria-label="breadcrumb">
+            <ol class="workarea-breadcrumb-list">
+              <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Главная</a></li>
+              <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Страница</a></li>
+              <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
+            </ol>
+          </div>
+          <div class="workarea-title">
+            <h1>Обзор букмекерской конторы Марафон</h1>
+          </div>
           <div class="overview-bk-detail" id="bk">
             <div class="overview-bk-item is-success is-highlight"><a class="overview-bk-item-meta" href="/"><span>75</span></a><a class="overview-bk-item-about" href="/">
                 <div class="overview-bk-item-logo"><img src="images/overview-bk-demo-1.svg" alt="Букмекер"/></div>
@@ -354,6 +353,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="container">
+        <div class="workarea-description">
+        </div>
         <div class="workarea-row">
           <div class="workarea-sidebar">
             <div class="overview-bk-meta js-overview-bk-fix is-success">
@@ -363,10 +366,10 @@
               </div>
               <div class="overview-bk-meta-body">
                 <div class="overview-bk-meta-body-title">Формирование метаоценки:</div>
-                <div class="overview-bk-meta-item">
+                <div class="overview-bk-meta-item is-success">
                   <div class="overview-bk-meta-item-label"><span>Рейтинг экспертов:</span><span>60</span></div>
                   <div class="overview-bk-meta-item-progress">
-                    <div class="overview-bk-meta-item-line" role="progressbar" style="width: 60%; background: #7ed321"></div>
+                    <div class="overview-bk-meta-item-line" role="progressbar" style="width: 60%;"></div>
                   </div>
                 </div>
                 <div class="overview-bk-meta-item">
@@ -413,7 +416,7 @@
               <div class="overview-bk-tab js-overview-bk-fix">
                 <div class="overview-bk-tabAbsolute">
                   <div class="overview-bk-tabHead">
-                    <div class="overview-bk-tabList"><a class="overview-bk-tabItem js-overview-bk-anchor" href="#bk"><img src="images/overview-bk-demo-1.svg" alt="Букмекер"/></a><a class="overview-bk-tabItem js-overview-bk-anchor is-select" href="#overview">Обзор БК</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#sentiment">Отзывы</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#assessment">Источники</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#faq">FAQ</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#payment">Платежи</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#info">Инфо о БК</a>
+                    <div class="overview-bk-tabList"><a class="overview-bk-tabItem js-overview-bk-anchor" href="#bk"><img src="images/overview-bk-demo-1.svg" alt="Букмекер"/></a><a class="overview-bk-tabItem js-overview-bk-anchor is-select" href="#overview">Обзор БК</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#sentiment">Отзывы</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#reward">Бонусы</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#assessment">Источники</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#faq">FAQ</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#payment">Платежи</a><a class="overview-bk-tabItem js-overview-bk-anchor" href="#info">Инфо о БК</a>
                     </div>
                   </div>
                 </div>
@@ -682,6 +685,108 @@
                         </svg>
                       </div>
                     </div><a class="overview-bk-more" href="sentiment.html"><span>Больше отзывов</span><span>Скрыть</span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="overview-bk-reward" id="reward">
+                <div class="overview-bk-acc"><a class="overview-bk-acc-head js-overview-bk-acc" href="javascript:void(0);">
+                    <h2 class="overview-bk-acc-title">Акции и бонусы
+                    </h2>
+                    <div class="overview-bk-acc-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div></a>
+                  <div class="overview-bk-acc-body js-overview-bk-body">
+                    <div class="reward-slider">
+                      <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="reward-box js-load-more-item reward-primary">
+                              <div class="reward-box-head">
+                                <div class="reward-box-logo"><img src="img/bookmaker/bookmaker_1.svg" alt="bookmaker"/>
+                                </div>
+                                <div class="reward-box-label reward-primary-bg">Эксклюзив</div>
+                              </div>
+                              <div class="reward-box-tools">
+                                <div class="reward-box-tag">Акция</div>
+                              </div><a class="reward-box-title" href="/">«Марафон» дарит путешествие в Париж или фрибет 5000 рублей</a>
+                              <div class="reward-box-limit">24/06/18 — 24/06/18</div><a class="reward-box-btn" href="/">Получить 5000 ₽</a>
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="reward-box js-load-more-item">
+                              <div class="reward-box-promocode">Промокод METARATINGS</div>
+                              <div class="reward-box-head">
+                                <div class="reward-box-logo"><img src="img/bookmaker/bookmaker_2.webp" alt="bookmaker"/>
+                                </div>
+                              </div>
+                              <div class="reward-box-tools">
+                                <div class="reward-box-tag">Акция</div>
+                              </div><a class="reward-box-title" href="/">Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus</a>
+                              <div class="reward-box-limit">24/06/18 — 24/06/18</div><a class="reward-box-btn" href="/">Получить 5000 ₽</a>
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="reward-box js-load-more-item reward-danger">
+                              <div class="reward-box-promocode">Промокод BEST2019</div>
+                              <div class="reward-box-head">
+                                <div class="reward-box-logo"><img src="img/bookmaker/bookmaker_3.svg" alt="bookmaker"/>
+                                </div>
+                              </div>
+                              <div class="reward-box-tools">
+                                <div class="reward-box-tag">Акция</div>
+                                <div class="reward-box-label reward-danger-bg">1 день!</div>
+                              </div><a class="reward-box-title" href="/">Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus</a>
+                              <div class="reward-box-limit">24/06/18 — 24/06/18</div><a class="reward-box-btn" href="/">Получить 5000 ₽</a>
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="reward-box js-load-more-item">
+                              <div class="reward-box-head">
+                                <div class="reward-box-logo"><img src="img/bookmaker/bookmaker_4.svg" alt="bookmaker"/>
+                                </div>
+                              </div>
+                              <div class="reward-box-tools">
+                                <div class="reward-box-tag">Акция</div>
+                              </div><a class="reward-box-title" href="/">«Марафон» дарит путешествие в Париж или фрибет 5000 рублей</a>
+                              <div class="reward-box-limit">24/06/18 — 24/06/18</div><a class="reward-box-btn" href="/">Получить 5000 ₽</a>
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="reward-box js-load-more-item">
+                              <div class="reward-box-head">
+                                <div class="reward-box-logo"><img src="img/bookmaker/bookmaker_5.webp" alt="bookmaker"/>
+                                </div>
+                              </div>
+                              <div class="reward-box-tools">
+                                <div class="reward-box-tag">Акция</div>
+                              </div><a class="reward-box-title" href="/">Леон предлагает поучаствовать в борьбе за эксклюзивную футболку с Versus</a>
+                              <div class="reward-box-limit">24/06/18 — 24/06/18</div><a class="reward-box-btn" href="/">Получить 5000 ₽</a>
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="reward-box"><a class="reward-box-more" href="reward-inner.html">
+                                <div class="reward-box-more-icon">
+                                  <svg>
+                                    <use xlink:href="#more"></use>
+                                  </svg>
+                                </div>
+                                <div class="reward-box-more-text">Больше бонусов за регистрацию</div></a></div>
+                          </div>
+                        </div>
+                        <div class="swiper-button-next">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
+                        </div>
+                        <div class="swiper-button-prev">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1180,38 +1285,43 @@
                   <div class="overview-bk-acc-body js-overview-bk-body">
                     <div class="overview-bk-faq-search">
                       <div class="overview-bk-faq-field">
-                        <input class="overview-bk-faq-input" type="text" placeholder="Введите ваш вопрос" aria-label="Поиск"/>
-                        <button class="overview-bk-faq-btn" type="submit" aria-label="Поиск">
+                        <input class="overview-bk-faq-input js-faq-input" type="text" placeholder="Введите ваш вопрос" aria-label="Поиск"/>
+                        <button class="overview-bk-faq-btn" type="button" aria-label="Поиск">
                           <svg>
                             <use xlink:href="#search-o"></use>
                           </svg>
                         </button>
                       </div>
                     </div>
-                    <div class="overview-bk-faq-list">
-                      <div class="overview-bk-faq-item">
+                    <div class="overview-bk-faq-nothing js-faq-nothing">
+                      <div class="overview-bk-faq-nothing-note">По вашему запросу ничего не найдено :(</div>
+                      <div class="overview-bk-faq-nothing-title">Также спрашивают</div>
+                      <div class="overview-bk-faq-nothing-list"><a class="overview-bk-faq-nothing-item" href="/">Как вывести деньги с «Леон»?</a><a class="overview-bk-faq-nothing-item" href="/">Где находится БК «Леон»?</a><a class="overview-bk-faq-nothing-item" href="/">Как удалить аккаунт?</a></div>
+                    </div>
+                    <div class="overview-bk-faq-list js-faq-list">
+                      <div class="overview-bk-faq-item js-faq-item">
                         <div class="overview-bk-faq-item-link"><a class="overview-bk-faq-item-question" href="/">Как вывести деньги с «Леон»?</a><a class="overview-bk-faq-item-more" href="/">Подробнее</a></div>
                         <div class="overview-bk-faq-item-answer">Для вывода средств перейдите в раздел «Выплаты», который отображается вверху страницы в личном кабинете. Вы попадете на страницу с выбором 6 способов выплаты. Выбираете удобный – банковская карта (MasterCard, Visa/Visa Electron, Maestro, МИР, Cirrus).</div>
                       </div>
-                      <div class="overview-bk-faq-item">
+                      <div class="overview-bk-faq-item js-faq-item">
                         <div class="overview-bk-faq-item-link"><a class="overview-bk-faq-item-question" href="/">Где находится БК «Леон»?</a><a class="overview-bk-faq-item-more" href="/">Подробнее</a></div>
                         <div class="overview-bk-faq-item-answer">Юридический адрес – 123557, г. Москва, пер. Электрический, д. 3/10, стр. 3, комната 3. Наземных пунктов приема ставок нет, букмекер работает в онлайне.</div>
                       </div>
-                      <div class="overview-bk-faq-item">
+                      <div class="overview-bk-faq-item js-faq-item">
                         <div class="overview-bk-faq-item-link"><a class="overview-bk-faq-item-question" href="/">Как удалить аккаунт?</a><a class="overview-bk-faq-item-more" href="/">Подробнее</a></div>
                         <div class="overview-bk-faq-item-answer">Необходимо обратиться в службу поддержки с соответствующим запросом. Перед удалением аккаунта все доступные на счету средства будут выплачены в соответствии и с Условиями, и Положением БК Leon. После удаления восстановить аккаунт будет невозможно.</div>
                       </div>
                     </div>
                     <div class="overview-bk-faq-hidden js-overview-bk-full">
-                      <div class="overview-bk-faq-item">
+                      <div class="overview-bk-faq-item js-faq-item">
                         <div class="overview-bk-faq-item-link"><a class="overview-bk-faq-item-question" href="/">Как вывести деньги с «Леон»?</a><a class="overview-bk-faq-item-more" href="/">Подробнее</a></div>
                         <div class="overview-bk-faq-item-answer">Для вывода средств перейдите в раздел «Выплаты», который отображается вверху страницы в личном кабинете. Вы попадете на страницу с выбором 6 способов выплаты. Выбираете удобный – банковская карта (MasterCard, Visa/Visa Electron, Maestro, МИР, Cirrus).</div>
                       </div>
-                      <div class="overview-bk-faq-item">
+                      <div class="overview-bk-faq-item js-faq-item">
                         <div class="overview-bk-faq-item-link"><a class="overview-bk-faq-item-question" href="/">Где находится БК «Леон»?</a><a class="overview-bk-faq-item-more" href="/">Подробнее</a></div>
                         <div class="overview-bk-faq-item-answer">Юридический адрес – 123557, г. Москва, пер. Электрический, д. 3/10, стр. 3, комната 3. Наземных пунктов приема ставок нет, букмекер работает в онлайне.</div>
                       </div>
-                      <div class="overview-bk-faq-item">
+                      <div class="overview-bk-faq-item js-faq-item">
                         <div class="overview-bk-faq-item-link"><a class="overview-bk-faq-item-question" href="/">Как удалить аккаунт?</a><a class="overview-bk-faq-item-more" href="/">Подробнее</a></div>
                         <div class="overview-bk-faq-item-answer">Необходимо обратиться в службу поддержки с соответствующим запросом. Перед удалением аккаунта все доступные на счету средства будут выплачены в соответствии и с Условиями, и Положением БК Leon. После удаления восстановить аккаунт будет невозможно.</div>
                       </div>
