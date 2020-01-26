@@ -34838,9 +34838,11 @@ $(function () {
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
       modalShow = '.js-modal-show',
-      modalHide = '.js-modal-hide';
+      modalHide = '.js-modal-hide',
+      modalTag,
+      scrollY;
   doc.on('click', modalShow, function () {
-    var modalTag;
+    scrollY = window.scrollY;
 
     if ($(this).data('modal') != undefined) {
       modalTag = $(this).data('modal');
@@ -34848,35 +34850,26 @@ $(function () {
       modalTag = $(this).attr('href');
     }
 
-    html.css('overflow', 'hidden');
-    var xStart,
-        yStart = 0;
-    document.addEventListener('touchstart', function (e) {
-      xStart = e.touches[0].screenX;
-      yStart = e.touches[0].screenY;
-    });
-    document.addEventListener('touchmove', function (e) {
-      var xMovement = Math.abs(e.touches[0].screenX - xStart);
-      var yMovement = Math.abs(e.touches[0].screenY - yStart);
-
-      if (yMovement * 3 > xMovement) {
-        e.preventDefault();
-      }
-    });
+    html.addClass('is-overflow');
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     return false;
   });
   doc.on('click', modalHide, function () {
-    html.css('overflow', '');
+    html.removeClass('is-overflow').animate({
+      scrollTop: scrollY
+    }, 0);
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
   doc.on('mouseup touchend', function (e) {
     if ($(e.target).closest(modalWrap).length) return;
-    html.css('overflow', '');
+    html.removeClass('is-overflow').animate({
+      scrollTop: scrollY
+    }, 0);
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
+    scrollY = undefined;
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
