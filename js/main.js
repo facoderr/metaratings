@@ -34833,43 +34833,35 @@ $(function () {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
   var doc = $(document),
-      html = $(document.body).add(document.documentElement),
+      html = $(document.documentElement),
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
-      modalTag,
-      scrollY;
+      modalTag;
   doc.on('click', modalShow, function () {
-    scrollY = window.scrollY;
-
     if ($(this).data('modal') != undefined) {
       modalTag = $(this).data('modal');
     } else {
       modalTag = $(this).attr('href');
     }
 
-    html.addClass('is-overflow');
+    html.css('overflow', 'hidden');
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     return false;
   });
   doc.on('click', modalHide, function () {
-    html.removeClass('is-overflow').animate({
-      scrollTop: scrollY
-    }, 0);
+    html.css('overflow', '');
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
   doc.on('mouseup touchend', function (e) {
     if ($(e.target).closest(modalWrap).length) return;
-    html.removeClass('is-overflow').animate({
-      scrollTop: scrollY
-    }, 0);
+    html.css('overflow', '');
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
-    scrollY = undefined;
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
@@ -36535,7 +36527,13 @@ $(function () {
                     sentimentTitle.html('Упоминания под тегом ' + sentimentName);
                     sentimentScroll.html('');
                     params.tagId = sentimentChart.drilldownLevels[0].pointOptions.id;
-                    loadReviews();
+
+                    if ($('.sentiment-head').length === 0) {
+                      addCommentsSlider();
+                    } else {
+                      addComments();
+                    }
+
                     $(sentimentChart.series[0].data).each(function (i, data) {
                       var parseDrillDown = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + data.name + ' <span>(' + data.z + ')</span></a>');
                       $(reviewGap).unwrap().remove();
@@ -36556,9 +36554,6 @@ $(function () {
                         });
                       }, 1);
                     });
-                    setTimeout(function () {
-                      autoHeight();
-                    }, 1);
                   }, 1);
                 },
                 drillup: function drillup() {
@@ -36572,7 +36567,13 @@ $(function () {
                     sentimentTitle.removeClass('is-success is-danger').html('Все сущности');
                     sentimentScroll.html('');
                     params.tagId = 0;
-                    loadReviews();
+
+                    if ($('.sentiment-head').length === 0) {
+                      addCommentsSlider();
+                    } else {
+                      addComments();
+                    }
+
                     $(sentimentChart.series).each(function (i, serie) {
                       var parseMain = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>');
                       $(reviewGap).unwrap().remove();
@@ -36593,9 +36594,6 @@ $(function () {
                         });
                       }, 1);
                     });
-                    setTimeout(function () {
-                      autoHeight();
-                    }, 1);
                   }, 1);
                 }
               }
@@ -36787,27 +36785,29 @@ $(function () {
             });
           }
 
-          function addCommentsSlider(comments) {
+          function addCommentsSlider() {
             var listNav = $('.js-review-slideNav .swiper-wrapper'),
                 listFor = $('.js-review-slideFor .swiper-wrapper');
             listNav.html('');
             listFor.html('');
-            $(comments).each(function (i, comment) {
-              var parseSlide = $.parseHTML('<div class="swiper-slide">\n' + '<a class="sentiment-review-block-link js-modal-show" href="#review"></a>\n' + '<div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>\n' + '</div>');
+            $(sentimentChart.series).each(function (i, serie) {
+              var parseSlide = $.parseHTML('<div class="swiper-slide"><a class="sentiment-review-block-link js-modal-show" href="#review"></a><div class="sentiment-review-item"><div class="sentiment-review-item-head"><div class="sentiment-review-item-user">  <div class="sentiment-review-item-img"><img src="img/icons/user.svg" alt="User"/></div>  <div class="sentiment-review-item-info">    <div class="sentiment-review-item-name">Василий Пупкин    </div><a class="sentiment-review-item-link" href="/">Рейтинг Букмекеров</a>  </div></div><div class="sentiment-review-item-date">13 сен.</div></div><div class="sentiment-review-item-body js-review-body">  <div class="sentiment-review-item-text js-review-text">Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно.  </div>  <div class="sentiment-review-item-full js-review-full">еще</div></div></div> </div>');
               $(parseSlide).clone().appendTo(listNav);
               $(parseSlide).clone().appendTo(listFor);
             });
             sliderNav.update();
             sliderFor.update();
             reviewBody = $('.js-review-body'), reviewText = $('.js-review-text');
+            autoHeight();
           }
 
-          function addComments(comments) {
+          function addComments() {
             reviewList.html('');
-            $(comments).each(function (i, comment) {
-              $($.parseHTML(' <div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>')).appendTo(reviewList);
+            $(sentimentChart.series).each(function (i, serie) {
+              $($.parseHTML('<div class="sentiment-review-item"><div class="sentiment-review-item-head"><div class="sentiment-review-item-user">  <div class="sentiment-review-item-img"><img src="img/icons/user.svg" alt="User"/></div>  <div class="sentiment-review-item-info">    <div class="sentiment-review-item-name">Василий Пупкин    </div><a class="sentiment-review-item-link" href="/">Рейтинг Букмекеров</a>  </div></div><div class="sentiment-review-item-date">13 сен.</div></div><div class="sentiment-review-item-body js-review-body">  <div class="sentiment-review-item-text js-review-text">Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно.  </div>  <div class="sentiment-review-item-full js-review-full">еще</div></div></div>')).appendTo(reviewList);
             });
             reviewBody = $('.js-review-body'), reviewText = $('.js-review-text');
+            autoHeight();
           }
 
           function addPagination(pagination) {
@@ -36842,7 +36842,7 @@ $(function () {
             }, 'json');
           }
 
-          function _pagination() {
+          function pagination() {
             sentimentPagination.on('click', 'a', function (e) {
               e.preventDefault();
               var html = $(document.body).add(document.documentElement),
@@ -36947,6 +36947,7 @@ $(function () {
               $(reviewHighlight).removeClass('is-disable');
             }
           });
+          if (sentimentPagination.length != 0) pagination();
           sentimentObs.unobserve(sentimentThis);
         }
       }
@@ -36969,7 +36970,6 @@ $(function () {
     $(this).fadeOut(300);
     $(this).parent().css('max-height', reviewTextHeight);
   });
-  if (sentimentPagination.length != 0) pagination();
   if ($(sentimentSliderNav).length === 0 || $(sentimentSliderFor).length === 0) return;
   var sliderNav = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sentimentSliderNav, {
     slidesPerView: 'auto',
