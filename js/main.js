@@ -20617,7 +20617,7 @@ $(function () {
   doc.on('mouseup touchend', function (e) {
     if ($(e.target).closest(modalWrap).length) return;
     html.css('overflow', '');
-    enableBodyScroll(madalTarget);
+    enableBodyScroll(modalTarget);
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
