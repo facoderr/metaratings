@@ -20590,7 +20590,7 @@ $(function () {
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
-      madalTarget = document.querySelector('.js-modal-wrap'),
+      modalTarget = document.querySelector('.js-review-body'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
@@ -20603,14 +20603,14 @@ $(function () {
     }
 
     html.css('overflow', 'initial');
-    disableBodyScroll(madalTarget);
+    disableBodyScroll(modalTarget);
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     return false;
   });
   doc.on('click', modalHide, function () {
     html.css('overflow', '');
-    enableBodyScroll(madalTarget);
+    enableBodyScroll(modalTarget);
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
