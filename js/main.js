@@ -20910,7 +20910,7 @@ $(function () {
       $('.js-toggle-menu').toggleClass('is-active');
 
       if ($('.js-toggle-menu.is-active').length != 0) {
-        html.css('overflow', 'initial');
+        html.css('overflow', 'hidden');
         disableBodyScroll(navTarget);
       } else {
         html.css('overflow', '');
@@ -20923,7 +20923,8 @@ $(function () {
       $('.nav-menu').addClass('is-active');
     });
     $(document).on('click', '.js-next', function () {
-      html.css('overflow', 'initial');
+      html.css('overflow', 'hidden');
+      disableBodyScroll(navTarget);
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $(this).next('ul').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
@@ -20937,7 +20938,8 @@ $(function () {
       }
     });
     $(document).on('click', '.js-prev', function () {
-      html.css('overflow', 'initial');
+      html.css('overflow', 'hidden');
+      disableBodyScroll(navTarget);
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $('.nav-submenu.active').parents('.nav-submenu').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
@@ -21793,6 +21795,8 @@ $(function () {
     spaceBetween: 15,
     passiveListeners: false,
     touchReleaseOnEdges: true,
+    touchStartPreventDefault: false,
+    iOSEdgeSwipeDetection: true,
     navigation: {
       nextEl: sentimentSliderFor.siblings('.swiper-button-next'),
       prevEl: sentimentSliderFor.siblings('.swiper-button-prev')
