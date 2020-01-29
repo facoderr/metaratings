@@ -20590,7 +20590,7 @@ $(function () {
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelector('.js-review-slideFor'),
+      modalTarget = document.querySelector('.js-review-body'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
@@ -21785,16 +21785,6 @@ $(function () {
           sentimentSliderNav.parent().addClass('is-move');
         }
       }
-    }
-  });
-  new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sentimentSliderFor.get(0), {
-    spaceBetween: 15,
-    navigation: {
-      nextEl: sentimentSliderFor.siblings('.swiper-button-next'),
-      prevEl: sentimentSliderFor.siblings('.swiper-button-prev')
-    },
-    thumbs: {
-      swiper: sliderNav
     }
   });
 });
