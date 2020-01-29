@@ -20590,7 +20590,7 @@ $(function () {
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelector('.js-review-body'),
+      modalTarget = document.querySelectorAll('.js-review-body'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
