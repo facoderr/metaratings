@@ -20590,7 +20590,7 @@ $(function () {
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelector('.js-modal-wrap'),
+      modalTarget = document.querySelector('.sentiment-review-modal'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
@@ -20883,7 +20883,7 @@ $(function () {
       bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
       disableBodyScroll = bodyScrollLock.disableBodyScroll,
       enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      navTarget = document.querySelector('.nav'); // Tools Event
+      navTarget = document.querySelector('.nav-overflow'); // Tools Event
 
 
   $('.nav-user').clone().prependTo('.head-mobile');
@@ -20921,17 +20921,7 @@ $(function () {
 
       if ($('.js-toggle-menu.is-active').length != 0) {
         html.css('overflow', 'initial');
-        disableBodyScroll(navTarget, {
-          allowTouchMove: function allowTouchMove(el) {
-            while (el && el !== document.body) {
-              if (el.getElementsByClassName('nav-overflow') !== null) {
-                return true;
-              }
-
-              el = el.parentNode;
-            }
-          }
-        });
+        disableBodyScroll(navTarget);
       } else {
         html.css('overflow', '');
         enableBodyScroll(navTarget);
