@@ -20590,7 +20590,7 @@ $(function () {
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelector('.js-review-body'),
+      modalTarget = document.querySelector('.sentiment-review-modal'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
@@ -20603,7 +20603,17 @@ $(function () {
     }
 
     html.css('overflow', 'initial');
-    disableBodyScroll(modalTarget);
+    disableBodyScroll(modalTarget, {
+      allowTouchMove: function allowTouchMove(el) {
+        while (el && el !== document.body) {
+          if (el.getElementsByClassName('js-review-body') !== null) {
+            return true;
+          }
+
+          el = el.parentNode;
+        }
+      }
+    });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     return false;
@@ -20911,10 +20921,8 @@ $(function () {
 
       if ($('.js-toggle-menu.is-active').length != 0) {
         html.css('overflow', 'hidden');
-        disableBodyScroll(navTarget);
       } else {
         html.css('overflow', '');
-        enableBodyScroll(navTarget);
       }
 
       $('.head-mobile').toggleClass('is-active');
@@ -20924,7 +20932,6 @@ $(function () {
     });
     $(document).on('click', '.js-next', function () {
       html.css('overflow', 'hidden');
-      disableBodyScroll(navTarget);
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $(this).next('ul').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
@@ -20939,7 +20946,6 @@ $(function () {
     });
     $(document).on('click', '.js-prev', function () {
       html.css('overflow', 'hidden');
-      disableBodyScroll(navTarget);
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $('.nav-submenu.active').parents('.nav-submenu').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
@@ -21794,9 +21800,7 @@ $(function () {
   new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sentimentSliderFor.get(0), {
     spaceBetween: 15,
     passiveListeners: false,
-    touchReleaseOnEdges: true,
     touchStartPreventDefault: false,
-    iOSEdgeSwipeDetection: true,
     navigation: {
       nextEl: sentimentSliderFor.siblings('.swiper-button-next'),
       prevEl: sentimentSliderFor.siblings('.swiper-button-prev')
