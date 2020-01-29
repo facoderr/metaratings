@@ -20616,13 +20616,6 @@ $(function () {
     });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
-    doc.on('mouseup touchend', function (e) {
-      if ($(e.target).closest(modalWrap).length) return;
-      html.css('overflow', '');
-      enableBodyScroll(modalTarget);
-      modalVisible.removeClass('is-open');
-      modal.fadeOut().removeClass('is-open');
-    });
     return false;
   });
   doc.on('click', modalHide, function () {
