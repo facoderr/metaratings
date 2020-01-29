@@ -20923,6 +20923,7 @@ $(function () {
       $('.nav-menu').addClass('is-active');
     });
     $(document).on('click', '.js-next', function () {
+      html.css('overflow', 'initial');
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $(this).next('ul').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
@@ -20936,6 +20937,7 @@ $(function () {
       }
     });
     $(document).on('click', '.js-prev', function () {
+      html.css('overflow', 'initial');
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $('.nav-submenu.active').parents('.nav-submenu').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
