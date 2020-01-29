@@ -21772,6 +21772,18 @@ $(function () {
       }
     }
   });
+  new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sentimentSliderFor.get(0), {
+    spaceBetween: 15,
+    passiveListeners: false,
+    touchReleaseOnEdges: true,
+    navigation: {
+      nextEl: sentimentSliderFor.siblings('.swiper-button-next'),
+      prevEl: sentimentSliderFor.siblings('.swiper-button-prev')
+    },
+    thumbs: {
+      swiper: sliderNav
+    }
+  });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
