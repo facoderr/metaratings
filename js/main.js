@@ -20023,7 +20023,7 @@ $(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
-  $('.close_catFish').on('click', function () {
+  $(document).on('click', '.catfish-close', function () {
     $('.catfish').fadeOut(300);
     $('.footer').addClass("padding-footer");
   });
@@ -20590,7 +20590,7 @@ $(function () {
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelector('.sentiment-review-modal'),
+      modalTarget = document.querySelector('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
@@ -20616,16 +20616,16 @@ $(function () {
     });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
+    doc.on('mouseup touchend', function (e) {
+      if ($(e.target).closest(modalWrap).length) return;
+      html.css('overflow', '');
+      enableBodyScroll(modalTarget);
+      modalVisible.removeClass('is-open');
+      modal.fadeOut().removeClass('is-open');
+    });
     return false;
   });
   doc.on('click', modalHide, function () {
-    html.css('overflow', '');
-    enableBodyScroll(modalTarget);
-    modalVisible.removeClass('is-open');
-    modal.fadeOut().removeClass('is-open');
-  });
-  doc.on('mouseup touchend', function (e) {
-    if ($(e.target).closest(modalWrap).length) return;
     html.css('overflow', '');
     enableBodyScroll(modalTarget);
     modalVisible.removeClass('is-open');
@@ -20883,7 +20883,7 @@ $(function () {
       bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
       disableBodyScroll = bodyScrollLock.disableBodyScroll,
       enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      navTarget = document.querySelector('.nav-overflow'); // Tools Event
+      navTarget = document.querySelector('.nav'); // Tools Event
 
 
   $('.nav-user').clone().prependTo('.head-mobile');
@@ -20920,9 +20920,21 @@ $(function () {
       $('.js-toggle-menu').toggleClass('is-active');
 
       if ($('.js-toggle-menu.is-active').length != 0) {
-        html.css('overflow', 'hidden');
+        html.css('overflow', 'initial');
+        disableBodyScroll(navTarget, {
+          allowTouchMove: function allowTouchMove(el) {
+            while (el && el !== document.body) {
+              if (el.getElementsByClassName('nav-overflow') !== null) {
+                return true;
+              }
+
+              el = el.parentNode;
+            }
+          }
+        });
       } else {
         html.css('overflow', '');
+        enableBodyScroll(navTarget);
       }
 
       $('.head-mobile').toggleClass('is-active');
@@ -20931,7 +20943,6 @@ $(function () {
       $('.nav-menu').addClass('is-active');
     });
     $(document).on('click', '.js-next', function () {
-      html.css('overflow', 'hidden');
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $(this).next('ul').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
@@ -20945,7 +20956,6 @@ $(function () {
       }
     });
     $(document).on('click', '.js-prev', function () {
-      html.css('overflow', 'hidden');
       $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
       $('.nav-submenu').removeClass('is-active');
       $('.nav-submenu.active').parents('.nav-submenu').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
