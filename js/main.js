@@ -20869,7 +20869,13 @@ $(function () {
   };
 }, function (e, t, n) {}]);
 $(function () {
-  // Tools Event
+  var html = $(document.documentElement),
+      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
+      disableBodyScroll = bodyScrollLock.disableBodyScroll,
+      enableBodyScroll = bodyScrollLock.enableBodyScroll,
+      navTarget = document.querySelector('.nav-overflow'); // Tools Event
+
+
   $('.nav-user').clone().prependTo('.head-mobile');
   $('.nav-logo').clone().prependTo('.head-mobile');
   $('.nav-close').clone().prependTo('.head-mobile');
@@ -20902,6 +20908,15 @@ $(function () {
     $(document).on('click', '.js-toggle-menu', function () {
       slinky.home();
       $('.js-toggle-menu').toggleClass('is-active');
+
+      if ($('.js-toggle-menu.is-active').length != 0) {
+        html.css('overflow', 'initial');
+        disableBodyScroll(navTarget);
+      } else {
+        html.css('overflow', '');
+        enableBodyScroll(navTarget);
+      }
+
       $('.head-mobile').toggleClass('is-active');
       $('.nav').toggleClass('is-open');
       $('.nav-head').removeClass('is-active');
