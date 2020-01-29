@@ -20603,13 +20603,17 @@ $(function () {
     }
 
     html.css('overflow', 'initial');
-    disableBodyScroll(modalTarget);
+    modalTarget.forEach(function (modalTarget) {
+      disableBodyScroll(modalTarget);
+    });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     doc.on('mouseup touchend', function (e) {
       if ($(e.target).closest(modalWrap).length) return;
       html.css('overflow', '');
-      enableBodyScroll(modalTarget);
+      modalTarget.forEach(function (modalTarget) {
+        enableBodyScroll(modalTarget);
+      });
       modalVisible.removeClass('is-open');
       modal.fadeOut().removeClass('is-open');
     });
@@ -20617,7 +20621,9 @@ $(function () {
   });
   doc.on('click', modalHide, function () {
     html.css('overflow', '');
-    enableBodyScroll(modalTarget);
+    modalTarget.forEach(function (modalTarget) {
+      enableBodyScroll(modalTarget);
+    });
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
