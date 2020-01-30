@@ -34535,11 +34535,16 @@ $(function () {
     inDesktop();
   }
 
+  var winWidth = win.outerWidth();
   win.resize(function () {
-    if (win.outerWidth() <= 1099) {
-      inMobile();
-    } else {
-      inDesktop();
+    if ($(this).outerWidth() != winWidth) {
+      winWidth = $(this).outerWidth();
+
+      if (winWidth <= 1099) {
+        inMobile();
+      } else {
+        inDesktop();
+      }
     }
   }); //
 });
