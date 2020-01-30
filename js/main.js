@@ -1,6 +1,50 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"main": 0
+/******/ 	};
+/******/
+/******/
+/******/
+/******/ 	// script path function
+/******/ 	function jsonpScriptSrc(chunkId) {
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
+/******/ 	}
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +70,67 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var script = document.createElement('script');
+/******/ 				var onScriptComplete;
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = jsonpScriptSrc(chunkId);
+/******/
+/******/ 				// create error before stack unwound to get useful stacktrace later
+/******/ 				var error = new Error();
+/******/ 				onScriptComplete = function (event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 							error.name = 'ChunkLoadError';
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				document.head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -78,6 +183,16 @@
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/js/";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -2102,584 +2217,6 @@ function scroll() {
 }
 
 
-
-/***/ }),
-
-/***/ "../../node_modules/jquery-touchswipe/jquery.touchSwipe.min.js":
-/*!*************************************************************************************************************************!*\
-  !*** c:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/jquery-touchswipe/jquery.touchSwipe.min.js ***!
-  \*************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/*!
- * @fileOverview TouchSwipe - jQuery Plugin
- * @version 1.6.18
- *
- * @author Matt Bryson http://www.github.com/mattbryson
- * @see https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
- * @see http://labs.rampinteractive.co.uk/touchSwipe/
- * @see http://plugins.jquery.com/project/touchSwipe
- * @license
- * Copyright (c) 2010-2015 Matt Bryson
- * Dual licensed under the MIT or GPL Version 2 licenses.
- *
- */
-!function (factory) {
-   true && __webpack_require__(/*! !webpack amd options */ "../../node_modules/webpack/buildin/amd-options.js").jQuery ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory( true && module.exports ? __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js") : jQuery);
-}(function ($) {
-  "use strict";
-
-  function init(options) {
-    return !options || void 0 !== options.allowPageScroll || void 0 === options.swipe && void 0 === options.swipeStatus || (options.allowPageScroll = NONE), void 0 !== options.click && void 0 === options.tap && (options.tap = options.click), options || (options = {}), options = $.extend({}, $.fn.swipe.defaults, options), this.each(function () {
-      var $this = $(this),
-          plugin = $this.data(PLUGIN_NS);
-      plugin || (plugin = new TouchSwipe(this, options), $this.data(PLUGIN_NS, plugin));
-    });
-  }
-
-  function TouchSwipe(element, options) {
-    function touchStart(jqEvent) {
-      if (!(getTouchInProgress() || $(jqEvent.target).closest(options.excludedElements, $element).length > 0)) {
-        var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent;
-
-        if (!event.pointerType || "mouse" != event.pointerType || 0 != options.fallbackToMouseEvents) {
-          var ret,
-              touches = event.touches,
-              evt = touches ? touches[0] : event;
-          return phase = PHASE_START, touches ? fingerCount = touches.length : options.preventDefaultEvents !== !1 && jqEvent.preventDefault(), distance = 0, direction = null, currentDirection = null, pinchDirection = null, duration = 0, startTouchesDistance = 0, endTouchesDistance = 0, pinchZoom = 1, pinchDistance = 0, maximumsMap = createMaximumsData(), cancelMultiFingerRelease(), createFingerData(0, evt), !touches || fingerCount === options.fingers || options.fingers === ALL_FINGERS || hasPinches() ? (startTime = getTimeStamp(), 2 == fingerCount && (createFingerData(1, touches[1]), startTouchesDistance = endTouchesDistance = calculateTouchesDistance(fingerData[0].start, fingerData[1].start)), (options.swipeStatus || options.pinchStatus) && (ret = triggerHandler(event, phase))) : ret = !1, ret === !1 ? (phase = PHASE_CANCEL, triggerHandler(event, phase), ret) : (options.hold && (holdTimeout = setTimeout($.proxy(function () {
-            $element.trigger("hold", [event.target]), options.hold && (ret = options.hold.call($element, event, event.target));
-          }, this), options.longTapThreshold)), setTouchInProgress(!0), null);
-        }
-      }
-    }
-
-    function touchMove(jqEvent) {
-      var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent;
-
-      if (phase !== PHASE_END && phase !== PHASE_CANCEL && !inMultiFingerRelease()) {
-        var ret,
-            touches = event.touches,
-            evt = touches ? touches[0] : event,
-            currentFinger = updateFingerData(evt);
-
-        if (endTime = getTimeStamp(), touches && (fingerCount = touches.length), options.hold && clearTimeout(holdTimeout), phase = PHASE_MOVE, 2 == fingerCount && (0 == startTouchesDistance ? (createFingerData(1, touches[1]), startTouchesDistance = endTouchesDistance = calculateTouchesDistance(fingerData[0].start, fingerData[1].start)) : (updateFingerData(touches[1]), endTouchesDistance = calculateTouchesDistance(fingerData[0].end, fingerData[1].end), pinchDirection = calculatePinchDirection(fingerData[0].end, fingerData[1].end)), pinchZoom = calculatePinchZoom(startTouchesDistance, endTouchesDistance), pinchDistance = Math.abs(startTouchesDistance - endTouchesDistance)), fingerCount === options.fingers || options.fingers === ALL_FINGERS || !touches || hasPinches()) {
-          if (direction = calculateDirection(currentFinger.start, currentFinger.end), currentDirection = calculateDirection(currentFinger.last, currentFinger.end), validateDefaultEvent(jqEvent, currentDirection), distance = calculateDistance(currentFinger.start, currentFinger.end), duration = calculateDuration(), setMaxDistance(direction, distance), ret = triggerHandler(event, phase), !options.triggerOnTouchEnd || options.triggerOnTouchLeave) {
-            var inBounds = !0;
-
-            if (options.triggerOnTouchLeave) {
-              var bounds = getbounds(this);
-              inBounds = isInBounds(currentFinger.end, bounds);
-            }
-
-            !options.triggerOnTouchEnd && inBounds ? phase = getNextPhase(PHASE_MOVE) : options.triggerOnTouchLeave && !inBounds && (phase = getNextPhase(PHASE_END)), phase != PHASE_CANCEL && phase != PHASE_END || triggerHandler(event, phase);
-          }
-        } else phase = PHASE_CANCEL, triggerHandler(event, phase);
-
-        ret === !1 && (phase = PHASE_CANCEL, triggerHandler(event, phase));
-      }
-    }
-
-    function touchEnd(jqEvent) {
-      var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent,
-          touches = event.touches;
-
-      if (touches) {
-        if (touches.length && !inMultiFingerRelease()) return startMultiFingerRelease(event), !0;
-        if (touches.length && inMultiFingerRelease()) return !0;
-      }
-
-      return inMultiFingerRelease() && (fingerCount = fingerCountAtRelease), endTime = getTimeStamp(), duration = calculateDuration(), didSwipeBackToCancel() || !validateSwipeDistance() ? (phase = PHASE_CANCEL, triggerHandler(event, phase)) : options.triggerOnTouchEnd || options.triggerOnTouchEnd === !1 && phase === PHASE_MOVE ? (options.preventDefaultEvents !== !1 && jqEvent.cancelable !== !1 && jqEvent.preventDefault(), phase = PHASE_END, triggerHandler(event, phase)) : !options.triggerOnTouchEnd && hasTap() ? (phase = PHASE_END, triggerHandlerForGesture(event, phase, TAP)) : phase === PHASE_MOVE && (phase = PHASE_CANCEL, triggerHandler(event, phase)), setTouchInProgress(!1), null;
-    }
-
-    function touchCancel() {
-      fingerCount = 0, endTime = 0, startTime = 0, startTouchesDistance = 0, endTouchesDistance = 0, pinchZoom = 1, cancelMultiFingerRelease(), setTouchInProgress(!1);
-    }
-
-    function touchLeave(jqEvent) {
-      var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent;
-      options.triggerOnTouchLeave && (phase = getNextPhase(PHASE_END), triggerHandler(event, phase));
-    }
-
-    function removeListeners() {
-      $element.off(START_EV, touchStart), $element.off(CANCEL_EV, touchCancel), $element.off(MOVE_EV, touchMove), $element.off(END_EV, touchEnd), LEAVE_EV && $element.off(LEAVE_EV, touchLeave), setTouchInProgress(!1);
-    }
-
-    function getNextPhase(currentPhase) {
-      var nextPhase = currentPhase,
-          validTime = validateSwipeTime(),
-          validDistance = validateSwipeDistance(),
-          didCancel = didSwipeBackToCancel();
-      return !validTime || didCancel ? nextPhase = PHASE_CANCEL : !validDistance || currentPhase != PHASE_MOVE || options.triggerOnTouchEnd && !options.triggerOnTouchLeave ? !validDistance && currentPhase == PHASE_END && options.triggerOnTouchLeave && (nextPhase = PHASE_CANCEL) : nextPhase = PHASE_END, nextPhase;
-    }
-
-    function triggerHandler(event, phase) {
-      var ret,
-          touches = event.touches;
-      return (didSwipe() || hasSwipes()) && (ret = triggerHandlerForGesture(event, phase, SWIPE)), (didPinch() || hasPinches()) && ret !== !1 && (ret = triggerHandlerForGesture(event, phase, PINCH)), didDoubleTap() && ret !== !1 ? ret = triggerHandlerForGesture(event, phase, DOUBLE_TAP) : didLongTap() && ret !== !1 ? ret = triggerHandlerForGesture(event, phase, LONG_TAP) : didTap() && ret !== !1 && (ret = triggerHandlerForGesture(event, phase, TAP)), phase === PHASE_CANCEL && touchCancel(event), phase === PHASE_END && (touches ? touches.length || touchCancel(event) : touchCancel(event)), ret;
-    }
-
-    function triggerHandlerForGesture(event, phase, gesture) {
-      var ret;
-
-      if (gesture == SWIPE) {
-        if ($element.trigger("swipeStatus", [phase, direction || null, distance || 0, duration || 0, fingerCount, fingerData, currentDirection]), options.swipeStatus && (ret = options.swipeStatus.call($element, event, phase, direction || null, distance || 0, duration || 0, fingerCount, fingerData, currentDirection), ret === !1)) return !1;
-
-        if (phase == PHASE_END && validateSwipe()) {
-          if (clearTimeout(singleTapTimeout), clearTimeout(holdTimeout), $element.trigger("swipe", [direction, distance, duration, fingerCount, fingerData, currentDirection]), options.swipe && (ret = options.swipe.call($element, event, direction, distance, duration, fingerCount, fingerData, currentDirection), ret === !1)) return !1;
-
-          switch (direction) {
-            case LEFT:
-              $element.trigger("swipeLeft", [direction, distance, duration, fingerCount, fingerData, currentDirection]), options.swipeLeft && (ret = options.swipeLeft.call($element, event, direction, distance, duration, fingerCount, fingerData, currentDirection));
-              break;
-
-            case RIGHT:
-              $element.trigger("swipeRight", [direction, distance, duration, fingerCount, fingerData, currentDirection]), options.swipeRight && (ret = options.swipeRight.call($element, event, direction, distance, duration, fingerCount, fingerData, currentDirection));
-              break;
-
-            case UP:
-              $element.trigger("swipeUp", [direction, distance, duration, fingerCount, fingerData, currentDirection]), options.swipeUp && (ret = options.swipeUp.call($element, event, direction, distance, duration, fingerCount, fingerData, currentDirection));
-              break;
-
-            case DOWN:
-              $element.trigger("swipeDown", [direction, distance, duration, fingerCount, fingerData, currentDirection]), options.swipeDown && (ret = options.swipeDown.call($element, event, direction, distance, duration, fingerCount, fingerData, currentDirection));
-          }
-        }
-      }
-
-      if (gesture == PINCH) {
-        if ($element.trigger("pinchStatus", [phase, pinchDirection || null, pinchDistance || 0, duration || 0, fingerCount, pinchZoom, fingerData]), options.pinchStatus && (ret = options.pinchStatus.call($element, event, phase, pinchDirection || null, pinchDistance || 0, duration || 0, fingerCount, pinchZoom, fingerData), ret === !1)) return !1;
-        if (phase == PHASE_END && validatePinch()) switch (pinchDirection) {
-          case IN:
-            $element.trigger("pinchIn", [pinchDirection || null, pinchDistance || 0, duration || 0, fingerCount, pinchZoom, fingerData]), options.pinchIn && (ret = options.pinchIn.call($element, event, pinchDirection || null, pinchDistance || 0, duration || 0, fingerCount, pinchZoom, fingerData));
-            break;
-
-          case OUT:
-            $element.trigger("pinchOut", [pinchDirection || null, pinchDistance || 0, duration || 0, fingerCount, pinchZoom, fingerData]), options.pinchOut && (ret = options.pinchOut.call($element, event, pinchDirection || null, pinchDistance || 0, duration || 0, fingerCount, pinchZoom, fingerData));
-        }
-      }
-
-      return gesture == TAP ? phase !== PHASE_CANCEL && phase !== PHASE_END || (clearTimeout(singleTapTimeout), clearTimeout(holdTimeout), hasDoubleTap() && !inDoubleTap() ? (doubleTapStartTime = getTimeStamp(), singleTapTimeout = setTimeout($.proxy(function () {
-        doubleTapStartTime = null, $element.trigger("tap", [event.target]), options.tap && (ret = options.tap.call($element, event, event.target));
-      }, this), options.doubleTapThreshold)) : (doubleTapStartTime = null, $element.trigger("tap", [event.target]), options.tap && (ret = options.tap.call($element, event, event.target)))) : gesture == DOUBLE_TAP ? phase !== PHASE_CANCEL && phase !== PHASE_END || (clearTimeout(singleTapTimeout), clearTimeout(holdTimeout), doubleTapStartTime = null, $element.trigger("doubletap", [event.target]), options.doubleTap && (ret = options.doubleTap.call($element, event, event.target))) : gesture == LONG_TAP && (phase !== PHASE_CANCEL && phase !== PHASE_END || (clearTimeout(singleTapTimeout), doubleTapStartTime = null, $element.trigger("longtap", [event.target]), options.longTap && (ret = options.longTap.call($element, event, event.target)))), ret;
-    }
-
-    function validateSwipeDistance() {
-      var valid = !0;
-      return null !== options.threshold && (valid = distance >= options.threshold), valid;
-    }
-
-    function didSwipeBackToCancel() {
-      var cancelled = !1;
-      return null !== options.cancelThreshold && null !== direction && (cancelled = getMaxDistance(direction) - distance >= options.cancelThreshold), cancelled;
-    }
-
-    function validatePinchDistance() {
-      return null !== options.pinchThreshold ? pinchDistance >= options.pinchThreshold : !0;
-    }
-
-    function validateSwipeTime() {
-      var result;
-      return result = options.maxTimeThreshold ? !(duration >= options.maxTimeThreshold) : !0;
-    }
-
-    function validateDefaultEvent(jqEvent, direction) {
-      if (options.preventDefaultEvents !== !1) if (options.allowPageScroll === NONE) jqEvent.preventDefault();else {
-        var auto = options.allowPageScroll === AUTO;
-
-        switch (direction) {
-          case LEFT:
-            (options.swipeLeft && auto || !auto && options.allowPageScroll != HORIZONTAL) && jqEvent.preventDefault();
-            break;
-
-          case RIGHT:
-            (options.swipeRight && auto || !auto && options.allowPageScroll != HORIZONTAL) && jqEvent.preventDefault();
-            break;
-
-          case UP:
-            (options.swipeUp && auto || !auto && options.allowPageScroll != VERTICAL) && jqEvent.preventDefault();
-            break;
-
-          case DOWN:
-            (options.swipeDown && auto || !auto && options.allowPageScroll != VERTICAL) && jqEvent.preventDefault();
-            break;
-
-          case NONE:
-        }
-      }
-    }
-
-    function validatePinch() {
-      var hasCorrectFingerCount = validateFingers(),
-          hasEndPoint = validateEndPoint(),
-          hasCorrectDistance = validatePinchDistance();
-      return hasCorrectFingerCount && hasEndPoint && hasCorrectDistance;
-    }
-
-    function hasPinches() {
-      return !!(options.pinchStatus || options.pinchIn || options.pinchOut);
-    }
-
-    function didPinch() {
-      return !(!validatePinch() || !hasPinches());
-    }
-
-    function validateSwipe() {
-      var hasValidTime = validateSwipeTime(),
-          hasValidDistance = validateSwipeDistance(),
-          hasCorrectFingerCount = validateFingers(),
-          hasEndPoint = validateEndPoint(),
-          didCancel = didSwipeBackToCancel(),
-          valid = !didCancel && hasEndPoint && hasCorrectFingerCount && hasValidDistance && hasValidTime;
-      return valid;
-    }
-
-    function hasSwipes() {
-      return !!(options.swipe || options.swipeStatus || options.swipeLeft || options.swipeRight || options.swipeUp || options.swipeDown);
-    }
-
-    function didSwipe() {
-      return !(!validateSwipe() || !hasSwipes());
-    }
-
-    function validateFingers() {
-      return fingerCount === options.fingers || options.fingers === ALL_FINGERS || !SUPPORTS_TOUCH;
-    }
-
-    function validateEndPoint() {
-      return 0 !== fingerData[0].end.x;
-    }
-
-    function hasTap() {
-      return !!options.tap;
-    }
-
-    function hasDoubleTap() {
-      return !!options.doubleTap;
-    }
-
-    function hasLongTap() {
-      return !!options.longTap;
-    }
-
-    function validateDoubleTap() {
-      if (null == doubleTapStartTime) return !1;
-      var now = getTimeStamp();
-      return hasDoubleTap() && now - doubleTapStartTime <= options.doubleTapThreshold;
-    }
-
-    function inDoubleTap() {
-      return validateDoubleTap();
-    }
-
-    function validateTap() {
-      return (1 === fingerCount || !SUPPORTS_TOUCH) && (isNaN(distance) || distance < options.threshold);
-    }
-
-    function validateLongTap() {
-      return duration > options.longTapThreshold && DOUBLE_TAP_THRESHOLD > distance;
-    }
-
-    function didTap() {
-      return !(!validateTap() || !hasTap());
-    }
-
-    function didDoubleTap() {
-      return !(!validateDoubleTap() || !hasDoubleTap());
-    }
-
-    function didLongTap() {
-      return !(!validateLongTap() || !hasLongTap());
-    }
-
-    function startMultiFingerRelease(event) {
-      previousTouchEndTime = getTimeStamp(), fingerCountAtRelease = event.touches.length + 1;
-    }
-
-    function cancelMultiFingerRelease() {
-      previousTouchEndTime = 0, fingerCountAtRelease = 0;
-    }
-
-    function inMultiFingerRelease() {
-      var withinThreshold = !1;
-
-      if (previousTouchEndTime) {
-        var diff = getTimeStamp() - previousTouchEndTime;
-        diff <= options.fingerReleaseThreshold && (withinThreshold = !0);
-      }
-
-      return withinThreshold;
-    }
-
-    function getTouchInProgress() {
-      return !($element.data(PLUGIN_NS + "_intouch") !== !0);
-    }
-
-    function setTouchInProgress(val) {
-      $element && (val === !0 ? ($element.on(MOVE_EV, touchMove), $element.on(END_EV, touchEnd), LEAVE_EV && $element.on(LEAVE_EV, touchLeave)) : ($element.off(MOVE_EV, touchMove, !1), $element.off(END_EV, touchEnd, !1), LEAVE_EV && $element.off(LEAVE_EV, touchLeave, !1)), $element.data(PLUGIN_NS + "_intouch", val === !0));
-    }
-
-    function createFingerData(id, evt) {
-      var f = {
-        start: {
-          x: 0,
-          y: 0
-        },
-        last: {
-          x: 0,
-          y: 0
-        },
-        end: {
-          x: 0,
-          y: 0
-        }
-      };
-      return f.start.x = f.last.x = f.end.x = evt.pageX || evt.clientX, f.start.y = f.last.y = f.end.y = evt.pageY || evt.clientY, fingerData[id] = f, f;
-    }
-
-    function updateFingerData(evt) {
-      var id = void 0 !== evt.identifier ? evt.identifier : 0,
-          f = getFingerData(id);
-      return null === f && (f = createFingerData(id, evt)), f.last.x = f.end.x, f.last.y = f.end.y, f.end.x = evt.pageX || evt.clientX, f.end.y = evt.pageY || evt.clientY, f;
-    }
-
-    function getFingerData(id) {
-      return fingerData[id] || null;
-    }
-
-    function setMaxDistance(direction, distance) {
-      direction != NONE && (distance = Math.max(distance, getMaxDistance(direction)), maximumsMap[direction].distance = distance);
-    }
-
-    function getMaxDistance(direction) {
-      return maximumsMap[direction] ? maximumsMap[direction].distance : void 0;
-    }
-
-    function createMaximumsData() {
-      var maxData = {};
-      return maxData[LEFT] = createMaximumVO(LEFT), maxData[RIGHT] = createMaximumVO(RIGHT), maxData[UP] = createMaximumVO(UP), maxData[DOWN] = createMaximumVO(DOWN), maxData;
-    }
-
-    function createMaximumVO(dir) {
-      return {
-        direction: dir,
-        distance: 0
-      };
-    }
-
-    function calculateDuration() {
-      return endTime - startTime;
-    }
-
-    function calculateTouchesDistance(startPoint, endPoint) {
-      var diffX = Math.abs(startPoint.x - endPoint.x),
-          diffY = Math.abs(startPoint.y - endPoint.y);
-      return Math.round(Math.sqrt(diffX * diffX + diffY * diffY));
-    }
-
-    function calculatePinchZoom(startDistance, endDistance) {
-      var percent = endDistance / startDistance * 1;
-      return percent.toFixed(2);
-    }
-
-    function calculatePinchDirection() {
-      return 1 > pinchZoom ? OUT : IN;
-    }
-
-    function calculateDistance(startPoint, endPoint) {
-      return Math.round(Math.sqrt(Math.pow(endPoint.x - startPoint.x, 2) + Math.pow(endPoint.y - startPoint.y, 2)));
-    }
-
-    function calculateAngle(startPoint, endPoint) {
-      var x = startPoint.x - endPoint.x,
-          y = endPoint.y - startPoint.y,
-          r = Math.atan2(y, x),
-          angle = Math.round(180 * r / Math.PI);
-      return 0 > angle && (angle = 360 - Math.abs(angle)), angle;
-    }
-
-    function calculateDirection(startPoint, endPoint) {
-      if (comparePoints(startPoint, endPoint)) return NONE;
-      var angle = calculateAngle(startPoint, endPoint);
-      return 45 >= angle && angle >= 0 ? LEFT : 360 >= angle && angle >= 315 ? LEFT : angle >= 135 && 225 >= angle ? RIGHT : angle > 45 && 135 > angle ? DOWN : UP;
-    }
-
-    function getTimeStamp() {
-      var now = new Date();
-      return now.getTime();
-    }
-
-    function getbounds(el) {
-      el = $(el);
-      var offset = el.offset(),
-          bounds = {
-        left: offset.left,
-        right: offset.left + el.outerWidth(),
-        top: offset.top,
-        bottom: offset.top + el.outerHeight()
-      };
-      return bounds;
-    }
-
-    function isInBounds(point, bounds) {
-      return point.x > bounds.left && point.x < bounds.right && point.y > bounds.top && point.y < bounds.bottom;
-    }
-
-    function comparePoints(pointA, pointB) {
-      return pointA.x == pointB.x && pointA.y == pointB.y;
-    }
-
-    var options = $.extend({}, options),
-        useTouchEvents = SUPPORTS_TOUCH || SUPPORTS_POINTER || !options.fallbackToMouseEvents,
-        START_EV = useTouchEvents ? SUPPORTS_POINTER ? SUPPORTS_POINTER_IE10 ? "MSPointerDown" : "pointerdown" : "touchstart" : "mousedown",
-        MOVE_EV = useTouchEvents ? SUPPORTS_POINTER ? SUPPORTS_POINTER_IE10 ? "MSPointerMove" : "pointermove" : "touchmove" : "mousemove",
-        END_EV = useTouchEvents ? SUPPORTS_POINTER ? SUPPORTS_POINTER_IE10 ? "MSPointerUp" : "pointerup" : "touchend" : "mouseup",
-        LEAVE_EV = useTouchEvents ? SUPPORTS_POINTER ? "mouseleave" : null : "mouseleave",
-        CANCEL_EV = SUPPORTS_POINTER ? SUPPORTS_POINTER_IE10 ? "MSPointerCancel" : "pointercancel" : "touchcancel",
-        distance = 0,
-        direction = null,
-        currentDirection = null,
-        duration = 0,
-        startTouchesDistance = 0,
-        endTouchesDistance = 0,
-        pinchZoom = 1,
-        pinchDistance = 0,
-        pinchDirection = 0,
-        maximumsMap = null,
-        $element = $(element),
-        phase = "start",
-        fingerCount = 0,
-        fingerData = {},
-        startTime = 0,
-        endTime = 0,
-        previousTouchEndTime = 0,
-        fingerCountAtRelease = 0,
-        doubleTapStartTime = 0,
-        singleTapTimeout = null,
-        holdTimeout = null;
-
-    try {
-      $element.on(START_EV, touchStart), $element.on(CANCEL_EV, touchCancel);
-    } catch (e) {
-      $.error("events not supported " + START_EV + "," + CANCEL_EV + " on jQuery.swipe");
-    }
-
-    this.enable = function () {
-      return this.disable(), $element.on(START_EV, touchStart), $element.on(CANCEL_EV, touchCancel), $element;
-    }, this.disable = function () {
-      return removeListeners(), $element;
-    }, this.destroy = function () {
-      removeListeners(), $element.data(PLUGIN_NS, null), $element = null;
-    }, this.option = function (property, value) {
-      if ("object" == _typeof(property)) options = $.extend(options, property);else if (void 0 !== options[property]) {
-        if (void 0 === value) return options[property];
-        options[property] = value;
-      } else {
-        if (!property) return options;
-        $.error("Option " + property + " does not exist on jQuery.swipe.options");
-      }
-      return null;
-    };
-  }
-
-  var VERSION = "1.6.18",
-      LEFT = "left",
-      RIGHT = "right",
-      UP = "up",
-      DOWN = "down",
-      IN = "in",
-      OUT = "out",
-      NONE = "none",
-      AUTO = "auto",
-      SWIPE = "swipe",
-      PINCH = "pinch",
-      TAP = "tap",
-      DOUBLE_TAP = "doubletap",
-      LONG_TAP = "longtap",
-      HORIZONTAL = "horizontal",
-      VERTICAL = "vertical",
-      ALL_FINGERS = "all",
-      DOUBLE_TAP_THRESHOLD = 10,
-      PHASE_START = "start",
-      PHASE_MOVE = "move",
-      PHASE_END = "end",
-      PHASE_CANCEL = "cancel",
-      SUPPORTS_TOUCH = "ontouchstart" in window,
-      SUPPORTS_POINTER_IE10 = window.navigator.msPointerEnabled && !window.PointerEvent && !SUPPORTS_TOUCH,
-      SUPPORTS_POINTER = (window.PointerEvent || window.navigator.msPointerEnabled) && !SUPPORTS_TOUCH,
-      PLUGIN_NS = "TouchSwipe",
-      defaults = {
-    fingers: 1,
-    threshold: 75,
-    cancelThreshold: null,
-    pinchThreshold: 20,
-    maxTimeThreshold: null,
-    fingerReleaseThreshold: 250,
-    longTapThreshold: 500,
-    doubleTapThreshold: 200,
-    swipe: null,
-    swipeLeft: null,
-    swipeRight: null,
-    swipeUp: null,
-    swipeDown: null,
-    swipeStatus: null,
-    pinchIn: null,
-    pinchOut: null,
-    pinchStatus: null,
-    click: null,
-    tap: null,
-    doubleTap: null,
-    longTap: null,
-    hold: null,
-    triggerOnTouchEnd: !0,
-    triggerOnTouchLeave: !1,
-    allowPageScroll: "auto",
-    fallbackToMouseEvents: !0,
-    excludedElements: ".noSwipe",
-    preventDefaultEvents: !0
-  };
-  $.fn.swipe = function (method) {
-    var $this = $(this),
-        plugin = $this.data(PLUGIN_NS);
-
-    if (plugin && "string" == typeof method) {
-      if (plugin[method]) return plugin[method].apply(plugin, Array.prototype.slice.call(arguments, 1));
-      $.error("Method " + method + " does not exist on jQuery.swipe");
-    } else if (plugin && "object" == _typeof(method)) plugin.option.apply(plugin, arguments);else if (!(plugin || "object" != _typeof(method) && method)) return init.apply(this, arguments);
-
-    return $this;
-  }, $.fn.swipe.version = VERSION, $.fn.swipe.defaults = defaults, $.fn.swipe.phases = {
-    PHASE_START: PHASE_START,
-    PHASE_MOVE: PHASE_MOVE,
-    PHASE_END: PHASE_END,
-    PHASE_CANCEL: PHASE_CANCEL
-  }, $.fn.swipe.directions = {
-    LEFT: LEFT,
-    RIGHT: RIGHT,
-    UP: UP,
-    DOWN: DOWN,
-    IN: IN,
-    OUT: OUT
-  }, $.fn.swipe.pageScroll = {
-    NONE: NONE,
-    HORIZONTAL: HORIZONTAL,
-    VERTICAL: VERTICAL,
-    AUTO: AUTO
-  }, $.fn.swipe.fingers = {
-    ONE: 1,
-    TWO: 2,
-    THREE: 3,
-    FOUR: 4,
-    FIVE: 5,
-    ALL: ALL_FINGERS
-  };
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -19886,20 +19423,6 @@ Swiper.use(components);
 
 /***/ }),
 
-/***/ "../../node_modules/webpack/buildin/amd-options.js":
-/*!****************************************!*\
-  !*** (webpack)/buildin/amd-options.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(this, {}))
-
-/***/ }),
-
 /***/ "../../node_modules/webpack/buildin/module.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
@@ -20621,395 +20144,149 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(jQuery, $) {function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-!function (e) {
-  var t = {};
-
-  function n(i) {
-    if (t[i]) return t[i].exports;
-    var r = t[i] = {
-      i: i,
-      l: !1,
-      exports: {}
-    };
-    return e[i].call(r.exports, r, r.exports, n), r.l = !0, r.exports;
-  }
-
-  n.m = e, n.c = t, n.d = function (e, t, i) {
-    n.o(e, t) || Object.defineProperty(e, t, {
-      enumerable: !0,
-      get: i
-    });
-  }, n.r = function (e) {
-    "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
-      value: "Module"
-    }), Object.defineProperty(e, "__esModule", {
-      value: !0
-    });
-  }, n.t = function (e, t) {
-    if (1 & t && (e = n(e)), 8 & t) return e;
-    if (4 & t && "object" == _typeof(e) && e && e.__esModule) return e;
-    var i = Object.create(null);
-    if (n.r(i), Object.defineProperty(i, "default", {
-      enumerable: !0,
-      value: e
-    }), 2 & t && "string" != typeof e) for (var r in e) {
-      n.d(i, r, function (t) {
-        return e[t];
-      }.bind(null, r));
-    }
-    return i;
-  }, n.n = function (e) {
-    var t = e && e.__esModule ? function () {
-      return e.default;
-    } : function () {
-      return e;
-    };
-    return n.d(t, "a", t), t;
-  }, n.o = function (e, t) {
-    return Object.prototype.hasOwnProperty.call(e, t);
-  }, n.p = "", n(n.s = 0);
-}([function (e, t, n) {
-  n(1), e.exports = n(2);
-}, function (e, t) {
-  function n(e, t) {
-    var n = Object.keys(e);
-    return Object.getOwnPropertySymbols && n.push.apply(n, Object.getOwnPropertySymbols(e)), t && (n = n.filter(function (t) {
-      return Object.getOwnPropertyDescriptor(e, t).enumerable;
-    })), n;
-  }
-
-  function i(e, t, n) {
-    return t in e ? Object.defineProperty(e, t, {
-      value: n,
-      enumerable: !0,
-      configurable: !0,
-      writable: !0
-    }) : e[t] = n, e;
-  }
-
-  function r(e, t) {
-    for (var n = 0; n < t.length; n++) {
-      var i = t[n];
-      i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(e, i.key, i);
-    }
-  }
-
-  function s(e, t, n) {
-    return t && r(e.prototype, t), n && r(e, n), e;
-  }
-
-  var a = function () {
-    function e(t) {
-      var r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
-      !function (e, t) {
-        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-      }(this, e), this.settings = function (e) {
-        for (var t = 1; t < arguments.length; t++) {
-          var r = null != arguments[t] ? arguments[t] : {};
-          t % 2 ? n(r, !0).forEach(function (t) {
-            i(e, t, r[t]);
-          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(r)) : n(r).forEach(function (t) {
-            Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(r, t));
-          });
-        }
-
-        return e;
-      }({}, this.options, {}, r), this._init(t);
-    }
-
-    return s(e, [{
-      key: "options",
-      get: function get() {
-        return {
-          resize: !0,
-          speed: 300,
-          theme: "slinky-theme-default",
-          title: !1
-        };
-      }
-    }]), s(e, [{
-      key: "_init",
-      value: function value(e) {
-        this.menu = jQuery(e), this.base = this.menu.children().first();
-        var t = this.menu,
-            n = this.settings;
-        t.addClass("slinky-menu").addClass(n.theme), this._transition(n.speed), jQuery("a + ul", t).prev().addClass("js-next");
-        jQuery(".nav-menu-header").remove();
-        var i = jQuery("<li>").addClass("nav-menu-header");
-        jQuery("li > ul", t).prepend(i);
-        var r = jQuery("<a>").prop("href", "#").addClass("js-back");
-        jQuery(".nav-menu-header", t).prepend(r), n.title && jQuery("li > ul", t).each(function (e, t) {
-          var n = jQuery(t).parent().find("a").first().text();
-
-          if (n) {
-            var i = jQuery("<span>").addClass("js-title").text(n);
-            jQuery("> .nav-menu-header", t).append(i);
-          }
-        }), this._addListeners(), this._jumpToInitial();
-      }
-    }, {
-      key: "_addListeners",
-      value: function value() {
-        var e = this,
-            t = this.menu,
-            n = this.settings;
-        jQuery("a", t).on("click", function (i) {
-          if (e._clicked + n.speed > Date.now()) return !1;
-          e._clicked = Date.now();
-          var r = jQuery(i.currentTarget);
-          (0 === r.attr("href").indexOf("#") || r.hasClass("js-next") || r.hasClass("js-back")) && i.preventDefault(), r.hasClass("js-next") ? (t.find(".active").removeClass("active"), r.next().show().addClass("active"), e._move(1), n.resize && e._resize(r.next())) : r.hasClass("js-back") && (e._move(-1, function () {
-            t.find(".active").removeClass("active"), r.parent().parent().hide().parentsUntil(t, "ul").first().addClass("active");
-          }), n.resize && e._resize(r.parent().parent().parentsUntil(t, "ul")));
-        });
-      }
-    }, {
-      key: "_jumpToInitial",
-      value: function value() {
-        var e = this.menu,
-            t = this.settings,
-            n = e.find(".active");
-        n.length > 0 && (n.removeClass("active"), this.jump(n, !1)), setTimeout(function () {
-          return e.height(e.outerHeight());
-        }, t.speed);
-      }
-    }, {
-      key: "_move",
-      value: function value() {
-        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
-            t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};
-
-        if (0 !== e) {
-          var n = this.settings,
-              i = this.base,
-              r = Math.round(parseInt(i.get(0).style.left)) || 0;
-          i.css("left", "".concat(r - 100 * e, "%")), "function" == typeof t && setTimeout(t, n.speed);
-        }
-      }
-    }, {
-      key: "_resize",
-      value: function value(e) {
-        this.menu.height(e.outerHeight());
-      }
-    }, {
-      key: "_transition",
-      value: function value() {
-        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 300,
-            t = this.menu,
-            n = this.base;
-        t.css("transition-duration", "".concat(e, "ms")), n.css("transition-duration", "".concat(e, "ms"));
-      }
-    }, {
-      key: "jump",
-      value: function value(e) {
-        var t = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1];
-
-        if (e) {
-          var n = this.menu,
-              i = this.settings,
-              r = jQuery(e),
-              s = n.find(".active"),
-              a = 0;
-          s.length > 0 && (a = s.parentsUntil(n, "ul").length), n.find("ul").removeClass("active").hide();
-          var o = r.parentsUntil(n, "ul");
-          o.show(), r.show().addClass("active"), t || this._transition(0), this._move(o.length - a), i.resize && this._resize(r), t || this._transition(i.speed);
-        }
-      }
-    }, {
-      key: "home",
-      value: function value() {
-        var e = !(arguments.length > 0 && void 0 !== arguments[0]) || arguments[0],
-            t = this.base,
-            n = this.menu,
-            i = this.settings;
-        e || this._transition(0);
-        var r = n.find(".active"),
-            s = r.parentsUntil(n, "ul");
-        this._move(-s.length, function () {
-          r.removeClass("active").hide(), s.not(t).hide();
-        }), i.resize && this._resize(t), !1 === e && this._transition(i.speed);
-      }
-    }, {
-      key: "destroy",
-      value: function value() {
-        var e = this,
-            t = this.base,
-            n = this.menu;
-        jQuery(".nav-menu-header", n).remove(), jQuery("a", n).removeClass("js-next").off("click"), n && n.css({
-          height: "",
-          "transition-duration": ""
-        }), t && t.css({
-          left: "",
-          "transition-duration": ""
-        }), n && n.find(".active").removeClass("active"), n && n.attr("class").split(" ").forEach(function (e) {
-          0 === e.indexOf("slinky") && n.removeClass(e);
-        });
-        ["settings", "menu", "base"].forEach(function (t) {
-          return delete e[t];
-        });
-      }
-    }]), e;
-  }();
-
-  jQuery.fn.slinky = function (e) {
-    return new a(this, e);
-  };
-}, function (e, t, n) {}]);
-$(function () {
-  var html = $(document.documentElement),
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  // Nav Varibles
+  var win = $(window),
+      doc = $(document),
+      html = $(document.documentElement),
+      headMobile = $('.head-mobile'),
+      nav = $('.nav'),
+      navHead = $('.nav-head'),
+      navUser = $('.nav-user'),
+      navLogo = $('.nav-logo'),
+      navClose = $('.nav-close'),
+      navArrow = '<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>',
+      navWrap = $('.nav-wrap'),
+      navMenu = $('.nav-menu'),
+      navSub = $('.nav-submenu'),
+      navSubActive = '.nav-submenu.is-active',
+      navItem = '.nav-menu-item',
+      navMore = $('.nav-menu-more'),
+      navSearch = $('.nav-search'),
+      slinky = navWrap.slinky({
+    title: true
+  }),
+      toggleMenu = '.js-toggle-menu',
+      toggleActive = $('.js-toggle-menu.is-active'),
+      toggleNext = '.js-next',
+      togglePrev = '.js-prev',
+      toggleBack = '.js-back',
+      toggleSearch = '.js-search',
+      toggleAlert = '.js-alert',
       bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
       disableBodyScroll = bodyScrollLock.disableBodyScroll,
       enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      navTarget = document.querySelector('.nav-overflow'); // Tools Event
+      navTarget = document.querySelector('.nav-overflow'),
+      toolbar = $('.toolbar'); // Clone Event
 
 
-  $('.nav-user').clone().prependTo('.head-mobile');
-  $('.nav-logo').clone().prependTo('.head-mobile');
-  $('.nav-close').clone().prependTo('.head-mobile');
-  $(document).on('click', '.js-search', function () {
+  navUser.clone().prependTo(headMobile);
+  navLogo.clone().prependTo(headMobile);
+  navClose.clone().prependTo(headMobile); //
+  // Toggle Event
+
+  doc.on('click', toggleMenu, function () {
+    slinky.home();
     $(this).toggleClass('is-active');
-    $('.nav-head').toggleClass('is-active');
-    $('.nav-search').toggleClass('is-active');
-  });
-  $(document).on('click', '.js-alert', function () {
-    $(this).toggleClass('is-active');
-  }); // Responsive Function
 
-  var slinky = $('.nav-wrap').slinky({
-    title: true
-  });
-
-  function inMobile() {
-    if (typeof slinky !== 'undefined') {
-      slinky.destroy();
+    if (toggleActive.length != 0) {
+      html.css('overflow', 'initial');
+      disableBodyScroll(navTarget);
+    } else {
+      html.css('overflow', '');
+      enableBodyScroll(navTarget);
     }
 
-    slinky = $('.nav-wrap').slinky({
+    headMobile.toggleClass('is-active');
+    nav.toggleClass('is-open');
+    navHead.removeClass('is-active');
+    navMenu.addClass('is-active');
+  }); //
+  // Mobile Event
+
+  function inMobile() {
+    slinky.destroy();
+    slinky = navWrap.slinky({
       title: true
     });
     slinky.home();
-    $('.nav').removeClass('is-desktop');
-    $('.nav-head').removeClass('is-active');
-    $('.nav-menu').addClass('is-active');
-    $('.nav-menu-more').children('.nav-submenu').children('.nav-menu-item').addClass('nav-menu-clone').appendTo('.nav-menu');
-    $(document).on('click', '.js-toggle-menu', function () {
-      slinky.home();
-      $('.js-toggle-menu').toggleClass('is-active');
-
-      if ($('.js-toggle-menu.is-active').length != 0) {
-        html.css('overflow', 'initial');
-        disableBodyScroll(navTarget);
-      } else {
-        html.css('overflow', '');
-        enableBodyScroll(navTarget);
-      }
-
-      $('.head-mobile').toggleClass('is-active');
-      $('.nav').toggleClass('is-open');
-      $('.nav-head').removeClass('is-active');
-      $('.nav-menu').addClass('is-active');
+    navHead.removeClass('is-active');
+    navMenu.addClass('is-active');
+    $(navItem).removeClass('is-hover');
+    navMore.children('.nav-submenu').children('.nav-menu-item').addClass('nav-menu-clone').appendTo(navMenu);
+    doc.on('click', toggleNext, function () {
+      $(togglePrev).html(navArrow);
+      navSub.removeClass('is-active');
+      $(this).next('ul').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo(togglePrev);
+      navHead.toggleClass('is-active', $(navSubActive).length != 0);
+      navMenu.toggleClass('is-active', $(navSubActive).length === 0);
     });
-    $(document).on('click', '.js-next', function () {
-      $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
-      $('.nav-submenu').removeClass('is-active');
-      $(this).next('ul').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
-
-      if ($('.nav-submenu').hasClass('is-active')) {
-        $('.nav-head').addClass('is-active');
-        $('.nav-menu').removeClass('is-active');
-      } else {
-        $('.nav-head').removeClass('is-active');
-        $('.nav-menu').addClass('is-active');
-      }
+    doc.on('click', togglePrev, function () {
+      $(togglePrev).html(navArrow);
+      navSub.removeClass('is-active');
+      $('.nav-submenu.active').parents('.nav-submenu').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo(togglePrev);
+      $('.nav-submenu.active').find(toggleBack).trigger('click');
+      navHead.toggleClass('is-active', $(navSubActive).length != 0);
+      navMenu.toggleClass('is-active', $(navSubActive).length === 0);
     });
-    $(document).on('click', '.js-prev', function () {
-      $('.nav-head-back').html('<span class="nav-menu-arrow"><svg><use xlink:href="#arrow"></use></svg></span>');
-      $('.nav-submenu').removeClass('is-active');
-      $('.nav-submenu.active').parents('.nav-submenu').addClass('is-active').children('.nav-menu-header').find('.js-title').clone().removeClass('js-title').appendTo('.nav-head-back');
-      $('.nav-submenu.active').find('.js-back').trigger('click');
+    toolbar.addClass('is-animate');
+  } //
+  // Desktop Event
 
-      if ($('.nav-submenu').hasClass('is-active')) {
-        $('.nav-head').addClass('is-active');
-        $('.nav-menu').removeClass('is-active');
-      } else {
-        $('.nav-head').removeClass('is-active');
-        $('.nav-menu').addClass('is-active');
-      }
-    });
-  }
 
   function inDesktop() {
-    if (typeof slinky !== 'undefined') {
-      slinky.destroy();
-    }
-
-    $('.nav').addClass('is-desktop');
-    $('.nav-submenu').removeAttr('style');
-    $('.nav-menu-clone').removeClass('nav-menu-clone').appendTo('.nav-menu-more .nav-submenu');
-    $(document).on('mouseover', '.is-desktop .nav-menu-item', function () {
-      if ($(this).children('.nav-submenu').length) {
-        $('.is-desktop .nav-head').addClass('is-active');
-      } else {
-        $('.is-desktop .nav-head').removeClass('is-active');
-      }
-
-      $('.is-desktop .nav-search').addClass('is-hidden');
-      $(this).siblings('.nav-menu-item').removeClass('is-hover');
-      $(this).addClass('is-hover');
+    slinky.destroy();
+    navHead.removeClass('is-active');
+    navMenu.addClass('is-active');
+    navSub.removeAttr('style');
+    $('.nav-menu-clone').removeClass('nav-menu-clone').appendTo(navMore.children('.nav-submenu'));
+    doc.on('mouseover mouseout', navItem, function () {
+      if (win.outerWidth() <= 1099) return;
+      navHead.toggleClass('is-active', $(this).children('.nav-submenu').length != 0);
+      navSearch.addClass('is-hidden');
+      $(this).siblings(navItem).removeClass('is-hover');
+      $(this).toggleClass('is-hover');
     });
-    $(document).on('mouseout', '.is-desktop .nav-menu-item', function () {
-      if ($('.is-desktop .js-search').hasClass('is-active')) {
-        $('.is-desktop .nav-head').addClass('is-active');
-      } else {
-        $('.is-desktop .nav-head').removeClass('is-active');
-      }
-
-      $('.is-desktop .nav-search').removeClass('is-hidden');
-      $(this).removeClass('is-hover');
+    doc.on('mouseout', navItem, function () {
+      if (win.outerWidth() <= 1099) return;
+      navHead.toggleClass('is-active', $('.js-search.is-active').length != 0);
+      navSearch.removeClass('is-hidden');
     });
-    $(document).bind('mouseup touchend', function (e) {
-      if ($(e.target).closest('.js-search').length || $(e.target).closest('.nav-menu').length || $(e.target).closest('.nav-search').length) return;
-      $('.js-search').removeClass('is-active');
-      $('.is-desktop .nav-head').removeClass('is-active');
-      $('.is-desktop .nav-search').removeClass('is-active');
+    doc.on('mouseup touchend', function (e) {
+      if (win.outerWidth() <= 1099) return;
+      if ($(e.target).closest(toggleSearch).length || $(e.target).closest(navMenu).length || $(e.target).closest(navSearch).length) return;
+      $(toggleSearch).removeClass('is-active');
+      navHead.removeClass('is-active');
+      navSearch.removeClass('is-active');
     });
+    doc.on('click', toggleSearch, function () {
+      $(this).toggleClass('is-active');
+      navHead.toggleClass('is-active');
+      navSearch.toggleClass('is-active');
+    });
+    doc.on('click', toggleAlert, function () {
+      $(this).toggleClass('is-active');
+    });
+    toolbar.removeClass('is-animate');
   } //
   // Resize Event
 
 
-  if ($(window).outerWidth() <= 1099) {
+  if (win.outerWidth() <= 1099) {
     inMobile();
   } else {
     inDesktop();
   }
 
-  setTimeout(function () {
-    if ($(window).outerWidth() <= 1099) {
-      $('.toolbar').addClass('is-animate');
+  win.resize(function () {
+    if (win.outerWidth() <= 1099) {
+      inMobile();
     } else {
-      $('.toolbar').removeClass('is-animate');
+      inDesktop();
     }
-  }, 500);
-  var width = $(window).outerWidth();
-  $(window).resize(function () {
-    if ($(this).outerWidth() != width) {
-      width = $(this).outerWidth();
-
-      if ($(window).outerWidth() <= 1099) {
-        slinky = $('.nav-wrap').slinky({
-          title: true
-        });
-        inMobile();
-        $('.toolbar').addClass('is-animate');
-      } else {
-        inDesktop();
-        $('.toolbar').removeClass('is-animate');
-      }
-    }
-  });
+  }); //
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -21406,42 +20683,27 @@ $(function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var jquery_touchswipe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery-touchswipe */ "../../node_modules/jquery-touchswipe/jquery.touchSwipe.min.js");
-/* harmony import */ var jquery_touchswipe__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_touchswipe__WEBPACK_IMPORTED_MODULE_0__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
 
 $(function () {
-  var overflow = $(document.body).add(document.documentElement),
-      swipeItem = $('.js-rating-item');
-  swipeItem.swipe({
-    swipeStatus: function swipeStatus(event, phase, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-      var $this = $(this);
-
-      if (phase === 'end') {
-        if (direction === 'left') {
-          overflow.css('overflow', 'hidden');
-          $this.addClass('is-swipe is-swiping');
+  var ratingSwipe = '.js-rating-swipe',
+      swipeItemFirst = document.querySelectorAll('.js-rating-item:first-child .js-rating-swipe');
+  $(ratingSwipe).each(function () {
+    var ratingSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]($(this), {
+      slidesPerView: 'auto',
+      simulateTouch: false,
+      followFinger: false,
+      threshold: -20,
+      on: {
+        sliderMove: function sliderMove() {
+          $(ratingSwiper.el).parent().addClass('is-swiping');
           setTimeout(function () {
-            overflow.css('overflow', '');
-            $this.removeClass('is-swiping');
-          }, 300);
-        }
-
-        if (direction === 'right') {
-          overflow.css('overflow', 'hidden');
-          $this.addClass('is-swiping');
-          $this.removeClass('is-swipe');
-          setTimeout(function () {
-            overflow.css('overflow', '');
-            $this.removeClass('is-swiping');
+            $(ratingSwiper.el).parent().removeClass('is-swiping');
           }, 300);
         }
       }
-    },
-    allowPageScroll: 'none',
-    preventDefaultEvents: false,
-    threshold: 20
+    });
   });
-  var swipeItemFirst = document.querySelectorAll('.js-rating-item:first-child');
   var swipeObserver = new IntersectionObserver(function (entries, observer) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -21450,10 +20712,10 @@ $(function () {
               bound = swipeThis.getBoundingClientRect();
 
           if (bound.top <= window.innerHeight && bound.bottom >= 0) {
-            swipeThis.classList.add('is-swipe');
+            swipeThis.firstElementChild.style.cssText = 'transform: translate3d(-285px, 0px, 0px); transition: all 0.3s ease-in-out';
             swipeObserver.unobserve(swipeThis);
             setTimeout(function () {
-              swipeThis.classList.remove('is-swipe');
+              swipeThis.firstElementChild.style.cssText = 'transform: translate3d(0px, 0px, 0px); transition: all 0.3s ease-in-out';
             }, 1000);
           }
         }, 300);
@@ -21735,116 +20997,25 @@ __webpack_require__.r(__webpack_exports__);
 
 $(function () {
   var sentiment = document.getElementById('js-sentiment');
-
-  var win = $(window),
-      doc = $(document),
-      html = $(document.documentElement),
-      sentimentLoad = $('.js-sentiment-load'),
-      sentimentTool = $('.js-sentiment-tool'),
-      sentimentTitle = $('.js-sentiment-title'),
-      sentimentBack = '.js-sentiment-back',
-      sentimentIndicator = $('.js-sentiment-indicator'),
-      sentimentBg = $('.js-sentiment-bg'),
-      sentimentBgSuccess = $('.js-sentiment-bg-success'),
-      sentimentBgDanger = $('.js-sentiment-bg-danger'),
-      sentimentList = $('.js-sentiment-list'),
-      sentimentScroll = $('.js-sentiment-scroll'),
-      sentimentScrollSuccess = $('.is-success.js-sentiment-scroll'),
-      sentimentScrollDanger = $('.is-danger.js-sentiment-scroll'),
-      sentimentItem = '.js-sentiment-item',
-      sentimentFull = '.js-sentiment-full',
-      sentimentPagination = $('.js-pagination-sentiment'),
-      sentimentPaginationBtn = '.js-more-sentiment',
-      reviewList = $('.js-review-list'),
-      reviewBody = $('.js-review-body'),
-      reviewText = $('.js-review-text'),
-      reviewFull = '.js-review-full',
-      reviewHighlight = '.js-review-highlight',
-      reviewGap = '.js-review-gap',
-      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
-      disableBodyScroll = bodyScrollLock.disableBodyScroll,
-      enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelectorAll('.js-review-body'),
-      modalShow = '.js-modal-show',
-      modalHide = '.js-modal-hide';
-
   if (!sentiment) return;
-
-  function autoHeight() {
-    if (win.outerWidth() >= 1100) {
-      sentimentList.each(function () {
-        var maxH = 54,
-            sentimentScrollHeight = $(this).find(sentimentScroll).outerHeight();
-
-        if (sentimentScrollHeight > maxH) {
-          $(this).css('max-height', maxH);
-          $(this).find(sentimentFull).css('display', 'flex');
-        } else {
-          $(this).css('max-height', '');
-          $(this).find(sentimentFull).css('display', 'none');
-        }
-      });
-    }
-
-    reviewBody.each(function () {
-      var maxH = 102,
-          reviewTextHeight = $(this).find(reviewText).outerHeight();
-
-      if (reviewTextHeight > maxH) {
-        $(this).css('max-height', maxH);
-        $(this).find(reviewFull).css('display', 'flex');
-      } else {
-        $(this).css('max-height', '');
-        $(this).find(reviewFull).css('display', 'none');
-      }
-    });
-  }
-
-  function addCommentsSlider() {
-    var listNav = $('.js-review-slideNav .swiper-wrapper'),
-        listFor = $('.js-review-slideFor .swiper-wrapper');
-    listNav.html('');
-    listFor.html('');
-    $('.reward-slider .swiper-slide').each(function (i) {
-      var parseSlide = $.parseHTML('<div class="swiper-slide"><a class="sentiment-review-block-link js-modal-show" href="#review"></a><div class="sentiment-review-item">  <div class="sentiment-review-item-head">    <div class="sentiment-review-item-user">      <div class="sentiment-review-item-img"><img src="img/icons/user.svg" alt="User"></div>      <div class="sentiment-review-item-info">        <div class="sentiment-review-item-name">Василий Пупкин        </div>        <div class="sentiment-review-item-link">Рейтинг Букмекеров        </div>      </div>    </div>    <div class="sentiment-review-item-date">' + i + ' сен.    </div>  </div>  <div class="sentiment-review-item-body js-review-body">    <div class="sentiment-review-item-text js-review-text">Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно.    </div>    <div class="sentiment-review-item-full js-review-full">еще</div>  </div></div></div>');
-      $(parseSlide).clone().appendTo(listNav);
-      $(parseSlide).clone().appendTo(listFor);
-    });
-    sentimentSliderNav.get(0).swiper.update();
-    sentimentSliderFor.get(0).swiper.update();
-    reviewBody = $('.js-review-body');
-    reviewText = $('.js-review-text');
-    reviewFull = '.js-review-full';
-    modalTarget = document.querySelectorAll('.js-review-body');
-    autoHeight();
-  }
-
-  $('.js-test').on('click', function () {
-    addCommentsSlider();
-  });
-  doc.on('click', modalShow, function () {
-    html.css('overflow', 'initial');
-    modalTarget.forEach(function (modalTarget) {
-      disableBodyScroll(modalTarget);
-    });
-    doc.on('mouseup touchend', function (e) {
-      if ($(e.target).closest(modalWrap).length) return;
-      html.css('overflow', '');
-      modalTarget.forEach(function (modalTarget) {
-        enableBodyScroll(modalTarget);
-      });
-    });
-    return false;
-  });
-  doc.on('click', modalHide, function () {
-    html.css('overflow', '');
-    modalTarget.forEach(function (modalTarget) {
-      enableBodyScroll(modalTarget);
-    });
-  });
   var sentimentSliderNav = $('.js-review-slideNav'),
       sentimentSliderFor = $('.js-review-slideFor');
+  var sentimentObs = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var sentimentThis = entry.target,
+            bound = sentimentThis.getBoundingClientRect();
+
+        if (bound.top <= window.innerHeight && bound.bottom >= 0) {
+          Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./sentiment.js */ "../blocks/sentiment/sentiment.js")).then(function (module) {
+            module.init();
+          });
+          sentimentObs.unobserve(sentimentThis);
+        }
+      }
+    });
+  });
+  sentimentObs.observe(sentiment);
   if (sentimentSliderNav.length <= 0 || sentimentSliderFor.length <= 0) return;
   var sliderNav = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sentimentSliderNav.get(0), {
     slidesPerView: 'auto',
@@ -21897,6 +21068,258 @@ $(function () {
 
 /***/ }),
 
+/***/ "./libs/slinky.min.js":
+/*!****************************!*\
+  !*** ./libs/slinky.min.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(jQuery) {function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/*
+    * Slinky
+    * Rather sweet menus
+    * @author Ali Zahid <ali.zahid@live.com>
+    * @license MIT
+*/
+!function (e) {
+  var t = {};
+
+  function n(i) {
+    if (t[i]) return t[i].exports;
+    var r = t[i] = {
+      i: i,
+      l: !1,
+      exports: {}
+    };
+    return e[i].call(r.exports, r, r.exports, n), r.l = !0, r.exports;
+  }
+
+  n.m = e, n.c = t, n.d = function (e, t, i) {
+    n.o(e, t) || Object.defineProperty(e, t, {
+      enumerable: !0,
+      get: i
+    });
+  }, n.r = function (e) {
+    "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+      value: "Module"
+    }), Object.defineProperty(e, "__esModule", {
+      value: !0
+    });
+  }, n.t = function (e, t) {
+    if (1 & t && (e = n(e)), 8 & t) return e;
+    if (4 & t && "object" == _typeof(e) && e && e.__esModule) return e;
+    var i = Object.create(null);
+    if (n.r(i), Object.defineProperty(i, "default", {
+      enumerable: !0,
+      value: e
+    }), 2 & t && "string" != typeof e) for (var r in e) {
+      n.d(i, r, function (t) {
+        return e[t];
+      }.bind(null, r));
+    }
+    return i;
+  }, n.n = function (e) {
+    var t = e && e.__esModule ? function () {
+      return e.default;
+    } : function () {
+      return e;
+    };
+    return n.d(t, "a", t), t;
+  }, n.o = function (e, t) {
+    return Object.prototype.hasOwnProperty.call(e, t);
+  }, n.p = "", n(n.s = 0);
+}([function (e, t, n) {
+  n(1), e.exports = n(2);
+}, function (e, t) {
+  function n(e, t) {
+    var n = Object.keys(e);
+    return Object.getOwnPropertySymbols && n.push.apply(n, Object.getOwnPropertySymbols(e)), t && (n = n.filter(function (t) {
+      return Object.getOwnPropertyDescriptor(e, t).enumerable;
+    })), n;
+  }
+
+  function i(e, t, n) {
+    return t in e ? Object.defineProperty(e, t, {
+      value: n,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[t] = n, e;
+  }
+
+  function r(e, t) {
+    for (var n = 0; n < t.length; n++) {
+      var i = t[n];
+      i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(e, i.key, i);
+    }
+  }
+
+  function s(e, t, n) {
+    return t && r(e.prototype, t), n && r(e, n), e;
+  }
+
+  var a = function () {
+    function e(t) {
+      var r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+      !function (e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+      }(this, e), this.settings = function (e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var r = null != arguments[t] ? arguments[t] : {};
+          t % 2 ? n(r, !0).forEach(function (t) {
+            i(e, t, r[t]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(r)) : n(r).forEach(function (t) {
+            Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(r, t));
+          });
+        }
+
+        return e;
+      }({}, this.options, {}, r), this._init(t);
+    }
+
+    return s(e, [{
+      key: "options",
+      get: function get() {
+        return {
+          resize: !0,
+          speed: 300,
+          theme: "slinky-theme-default",
+          title: !1
+        };
+      }
+    }]), s(e, [{
+      key: "_init",
+      value: function value(e) {
+        this.menu = jQuery(e), this.base = this.menu.children().first();
+        var t = this.menu,
+            n = this.settings;
+        t.addClass("slinky-menu").addClass(n.theme), this._transition(n.speed), jQuery("a + ul", t).prev().addClass("js-next");
+        jQuery(".nav-menu-header").remove();
+        var i = jQuery("<li>").addClass("nav-menu-header");
+        jQuery("li > ul", t).prepend(i);
+        var r = jQuery("<a>").prop("href", "#").addClass("js-back");
+        jQuery(".nav-menu-header", t).prepend(r), n.title && jQuery("li > ul", t).each(function (e, t) {
+          var n = jQuery(t).parent().find("a").first().text();
+
+          if (n) {
+            var i = jQuery("<span>").addClass("js-title").text(n);
+            jQuery("> .nav-menu-header", t).append(i);
+          }
+        }), this._addListeners(), this._jumpToInitial();
+      }
+    }, {
+      key: "_addListeners",
+      value: function value() {
+        var e = this,
+            t = this.menu,
+            n = this.settings;
+        jQuery("a", t).on("click", function (i) {
+          if (e._clicked + n.speed > Date.now()) return !1;
+          e._clicked = Date.now();
+          var r = jQuery(i.currentTarget);
+          (0 === r.attr("href").indexOf("#") || r.hasClass("js-next") || r.hasClass("js-back")) && i.preventDefault(), r.hasClass("js-next") ? (t.find(".active").removeClass("active"), r.next().show().addClass("active"), e._move(1), n.resize && e._resize(r.next())) : r.hasClass("js-back") && (e._move(-1, function () {
+            t.find(".active").removeClass("active"), r.parent().parent().hide().parentsUntil(t, "ul").first().addClass("active");
+          }), n.resize && e._resize(r.parent().parent().parentsUntil(t, "ul")));
+        });
+      }
+    }, {
+      key: "_jumpToInitial",
+      value: function value() {
+        var e = this.menu,
+            t = this.settings,
+            n = e.find(".active");
+        n.length > 0 && (n.removeClass("active"), this.jump(n, !1)), setTimeout(function () {
+          return e.height(e.outerHeight());
+        }, t.speed);
+      }
+    }, {
+      key: "_move",
+      value: function value() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0,
+            t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};
+
+        if (0 !== e) {
+          var n = this.settings,
+              i = this.base,
+              r = Math.round(parseInt(i.get(0).style.left)) || 0;
+          i.css("left", "".concat(r - 100 * e, "%")), "function" == typeof t && setTimeout(t, n.speed);
+        }
+      }
+    }, {
+      key: "_resize",
+      value: function value(e) {
+        this.menu.height(e.outerHeight());
+      }
+    }, {
+      key: "_transition",
+      value: function value() {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 300,
+            t = this.menu,
+            n = this.base;
+        t.css("transition-duration", "".concat(e, "ms")), n.css("transition-duration", "".concat(e, "ms"));
+      }
+    }, {
+      key: "jump",
+      value: function value(e) {
+        var t = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1];
+
+        if (e) {
+          var n = this.menu,
+              i = this.settings,
+              r = jQuery(e),
+              s = n.find(".active"),
+              a = 0;
+          s.length > 0 && (a = s.parentsUntil(n, "ul").length), n.find("ul").removeClass("active").hide();
+          var o = r.parentsUntil(n, "ul");
+          o.show(), r.show().addClass("active"), t || this._transition(0), this._move(o.length - a), i.resize && this._resize(r), t || this._transition(i.speed);
+        }
+      }
+    }, {
+      key: "home",
+      value: function value() {
+        var e = !(arguments.length > 0 && void 0 !== arguments[0]) || arguments[0],
+            t = this.base,
+            n = this.menu,
+            i = this.settings;
+        e || this._transition(0);
+        var r = n.find(".active"),
+            s = r.parentsUntil(n, "ul");
+        this._move(-s.length, function () {
+          r.removeClass("active").hide(), s.not(t).hide();
+        }), i.resize && this._resize(t), !1 === e && this._transition(i.speed);
+      }
+    }, {
+      key: "destroy",
+      value: function value() {
+        var e = this,
+            t = this.base,
+            n = this.menu;
+        jQuery(".nav-menu-header", n).remove(), jQuery("a", n).removeClass("js-next").off("click"), n && n.css({
+          height: "",
+          "transition-duration": ""
+        }), t && t.css({
+          left: "",
+          "transition-duration": ""
+        }), n && n.find(".active").removeClass("active"), n && n.attr("class").split(" ").forEach(function (e) {
+          0 === e.indexOf("slinky") && n.removeClass(e);
+        });
+        ["settings", "menu", "base"].forEach(function (t) {
+          return delete e[t];
+        });
+      }
+    }]), e;
+  }();
+
+  jQuery.fn.slinky = function (e) {
+    return new a(this, e);
+  };
+}, function (e, t, n) {}]);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./main.js":
 /*!*****************!*\
   !*** ./main.js ***!
@@ -21910,37 +21333,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-cookie */ "../../node_modules/js-cookie/src/js.cookie.js");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _old__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./old */ "./old.js");
-/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../blocks/header/script */ "../blocks/header/script.js");
-/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_blocks_header_script__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../blocks/nav/script */ "../blocks/nav/script.js");
-/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_blocks_nav_script__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _blocks_runet_script__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../blocks/runet/script */ "../blocks/runet/script.js");
-/* harmony import */ var _blocks_feed_bar_script__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/feed-bar/script */ "../blocks/feed-bar/script.js");
-/* harmony import */ var _blocks_footer_script__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/footer/script */ "../blocks/footer/script.js");
-/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/block-sports/script */ "../blocks/block-sports/script.js");
-/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/pagination/script */ "../blocks/pagination/script.js");
-/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_blocks_pagination_script__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/catfish/script */ "../blocks/catfish/script.js");
-/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_blocks_catfish_script__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _blocks_rating_bk_script__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/rating-bk/script */ "../blocks/rating-bk/script.js");
-/* harmony import */ var _blocks_banner_script__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/banner/script */ "../blocks/banner/script.js");
-/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/modal/script */ "../blocks/modal/script.js");
-/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_blocks_modal_script__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
-/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
-/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
-/* harmony import */ var _blocks_overview_bk_script__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../blocks/overview-bk/script */ "../blocks/overview-bk/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
+/* harmony import */ var _libs_slinky_min__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./libs/slinky.min */ "./libs/slinky.min.js");
+/* harmony import */ var _libs_slinky_min__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_libs_slinky_min__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _old__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./old */ "./old.js");
+/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../blocks/header/script */ "../blocks/header/script.js");
+/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_blocks_header_script__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../blocks/nav/script */ "../blocks/nav/script.js");
+/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_blocks_nav_script__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _blocks_runet_script__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/runet/script */ "../blocks/runet/script.js");
+/* harmony import */ var _blocks_feed_bar_script__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/feed-bar/script */ "../blocks/feed-bar/script.js");
+/* harmony import */ var _blocks_footer_script__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/footer/script */ "../blocks/footer/script.js");
+/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/block-sports/script */ "../blocks/block-sports/script.js");
+/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/pagination/script */ "../blocks/pagination/script.js");
+/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_blocks_pagination_script__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/catfish/script */ "../blocks/catfish/script.js");
+/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_blocks_catfish_script__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _blocks_rating_bk_script__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/rating-bk/script */ "../blocks/rating-bk/script.js");
+/* harmony import */ var _blocks_banner_script__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/banner/script */ "../blocks/banner/script.js");
+/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../blocks/modal/script */ "../blocks/modal/script.js");
+/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_blocks_modal_script__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
+/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
+/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
+/* harmony import */ var _blocks_overview_bk_script__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../blocks/overview-bk/script */ "../blocks/overview-bk/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
 
 
 
 window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 /** LIBS */
+
 
 
 /** OLD */

@@ -34,9 +34,12 @@ function init() {
   }; // Sentiment Varibles
 
 
-  var sentiment = 'js-sentiment',
-      win = $(window),
+  var win = $(window),
       doc = $(document),
+      html = $(document.documentElement),
+      sentimentGraph = $('.sentiment-graph'),
+      sentimentGraphBody = $('.sentiment-graph-body'),
+      sentiment = 'js-sentiment',
       sentimentLoad = $('.js-sentiment-load'),
       sentimentTool = $('.js-sentiment-tool'),
       sentimentTitle = $('.js-sentiment-title'),
@@ -60,11 +63,20 @@ function init() {
       reviewHighlight = '.js-review-highlight',
       reviewGap = '.js-review-gap',
       sentimentSliderNav = $('.js-review-slideNav'),
-      sentimentSliderFor = $('.js-review-slideFor');
-  sentimentTool.clone().appendTo('.sentiment-graph-body');
+      sentimentSliderFor = $('.js-review-slideFor'),
+      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
+      disableBodyScroll = bodyScrollLock.disableBodyScroll,
+      enableBodyScroll = bodyScrollLock.enableBodyScroll,
+      BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
+      modalWrap = $('.js-modal-wrap'),
+      modalTarget = document.querySelectorAll('.js-review-body'),
+      modalShow = '.js-modal-show',
+      modalHide = '.js-modal-hide';
+
+  sentimentTool.clone().appendTo(sentimentGraphBody);
   sentimentTool = $('.js-sentiment-tool'); // Sentiment Chart
 
-  var params = $('.sentiment-graph').data('settings');
+  var params = sentimentGraph.data('settings');
   params = $.extend({}, {
     drilldown: [],
     series: [],
@@ -419,7 +431,7 @@ function init() {
     listNav.html('');
     listFor.html('');
     $(comments).each(function (i, comment) {
-      var parseSlide = $.parseHTML('<div class="swiper-slide">\n' + '<a class="sentiment-review-block-link js-modal-show" href="#review"></a>\n' + '<div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>\n' + '</div>');
+      var parseSlide = $.parseHTML('<div class="swiper-slide">\n' + '<a class="sentiment-review-block-link js-modal-show" href="#review"></a>\n' + '<div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.name ? '<span class="sentiment-review-item-link">' + comment.source.name + '</span>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>\n' + '</div>');
       $(parseSlide).clone().appendTo(listNav);
       $(parseSlide).clone().appendTo(listFor);
     });
@@ -428,15 +440,18 @@ function init() {
     reviewBody = $('.js-review-body');
     reviewText = $('.js-review-text');
     reviewFull = '.js-review-full';
+    modalTarget = document.querySelectorAll('.js-review-body');
     autoHeight();
   }
 
   function addComments(comments) {
     reviewList.html('');
     $(comments).each(function (i, comment) {
-      $($.parseHTML(' <div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.link && comment.source.name ? '<a class="sentiment-review-item-link" href="' + comment.source.link + '"> ' + comment.source.name + '</a>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>')).appendTo(reviewList);
+      $($.parseHTML(' <div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.name ? '<span class="sentiment-review-item-link">' + comment.source.name + '</span>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>')).appendTo(reviewList);
     });
-    reviewBody = $('.js-review-body'), reviewText = $('.js-review-text'), reviewFull = '.js-review-full';
+    reviewBody = $('.js-review-body');
+    reviewText = $('.js-review-text');
+    reviewFull = '.js-review-full';
     autoHeight();
   }
 
@@ -609,6 +624,28 @@ function init() {
     var reviewTextHeight = $(this).siblings().outerHeight();
     $(this).fadeOut(300);
     $(this).parent().css('max-height', reviewTextHeight);
+  });
+  doc.on('click', modalShow, function () {
+    html.css('overflow', 'initial');
+    modalTarget.forEach(function (modalTarget) {
+      disableBodyScroll(modalTarget, BodyScrollOptions = {
+        reserveScrollBarGap: true
+      });
+    });
+    doc.on('mouseup touchend', function (e) {
+      if ($(e.target).closest(modalWrap).length) return;
+      html.css('overflow', '');
+      modalTarget.forEach(function (modalTarget) {
+        enableBodyScroll(modalTarget);
+      });
+    });
+    return false;
+  });
+  doc.on('click', modalHide, function () {
+    html.css('overflow', '');
+    modalTarget.forEach(function (modalTarget) {
+      enableBodyScroll(modalTarget);
+    });
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
