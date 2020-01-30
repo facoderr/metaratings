@@ -21884,6 +21884,8 @@ $(function () {
   });
   new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](sentimentSliderFor.get(0), {
     spaceBetween: 15,
+    touchStartPreventDefault: false,
+    passiveListeners: false,
     navigation: {
       nextEl: sentimentSliderFor.siblings('.swiper-button-next'),
       prevEl: sentimentSliderFor.siblings('.swiper-button-prev')
