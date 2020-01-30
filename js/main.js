@@ -34425,7 +34425,6 @@ $(function () {
     title: true
   }),
       toggleMenu = '.js-toggle-menu',
-      toggleActive = $('.js-toggle-menu.is-active'),
       toggleNext = '.js-next',
       togglePrev = '.js-prev',
       toggleBack = '.js-back',
@@ -34445,9 +34444,9 @@ $(function () {
 
   doc.on('click', toggleMenu, function () {
     slinky.home();
-    $(this).toggleClass('is-active');
+    $(toggleMenu).toggleClass('is-active');
 
-    if (toggleActive.length != 0) {
+    if ($(toggleMenu + '.is-active').length != 0) {
       html.css('overflow', 'initial');
       disableBodyScroll(navTarget);
     } else {
