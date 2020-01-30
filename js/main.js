@@ -20583,18 +20583,12 @@ $(function () {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
   var doc = $(document),
-      html = $(document.documentElement),
-      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
-      disableBodyScroll = bodyScrollLock.disableBodyScroll,
-      enableBodyScroll = bodyScrollLock.enableBodyScroll,
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelectorAll('.js-review-body'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
-
   doc.on('click', modalShow, function () {
     if ($(this).data('modal') != undefined) {
       modalTag = $(this).data('modal');
@@ -20602,28 +20596,16 @@ $(function () {
       modalTag = $(this).attr('href');
     }
 
-    html.css('overflow', 'initial');
-    modalTarget.forEach(function (modalTarget) {
-      disableBodyScroll(modalTarget);
-    });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     doc.on('mouseup touchend', function (e) {
       if ($(e.target).closest(modalWrap).length) return;
-      html.css('overflow', '');
-      modalTarget.forEach(function (modalTarget) {
-        enableBodyScroll(modalTarget);
-      });
       modalVisible.removeClass('is-open');
       modal.fadeOut().removeClass('is-open');
     });
     return false;
   });
   doc.on('click', modalHide, function () {
-    html.css('overflow', '');
-    modalTarget.forEach(function (modalTarget) {
-      enableBodyScroll(modalTarget);
-    });
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
@@ -21753,7 +21735,114 @@ __webpack_require__.r(__webpack_exports__);
 
 $(function () {
   var sentiment = document.getElementById('js-sentiment');
+
+  var win = $(window),
+      doc = $(document),
+      html = $(document.documentElement),
+      sentimentLoad = $('.js-sentiment-load'),
+      sentimentTool = $('.js-sentiment-tool'),
+      sentimentTitle = $('.js-sentiment-title'),
+      sentimentBack = '.js-sentiment-back',
+      sentimentIndicator = $('.js-sentiment-indicator'),
+      sentimentBg = $('.js-sentiment-bg'),
+      sentimentBgSuccess = $('.js-sentiment-bg-success'),
+      sentimentBgDanger = $('.js-sentiment-bg-danger'),
+      sentimentList = $('.js-sentiment-list'),
+      sentimentScroll = $('.js-sentiment-scroll'),
+      sentimentScrollSuccess = $('.is-success.js-sentiment-scroll'),
+      sentimentScrollDanger = $('.is-danger.js-sentiment-scroll'),
+      sentimentItem = '.js-sentiment-item',
+      sentimentFull = '.js-sentiment-full',
+      sentimentPagination = $('.js-pagination-sentiment'),
+      sentimentPaginationBtn = '.js-more-sentiment',
+      reviewList = $('.js-review-list'),
+      reviewBody = $('.js-review-body'),
+      reviewText = $('.js-review-text'),
+      reviewFull = '.js-review-full',
+      reviewHighlight = '.js-review-highlight',
+      reviewGap = '.js-review-gap',
+      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
+      disableBodyScroll = bodyScrollLock.disableBodyScroll,
+      enableBodyScroll = bodyScrollLock.enableBodyScroll,
+      modalWrap = $('.js-modal-wrap'),
+      modalTarget = document.querySelectorAll('.js-review-body'),
+      modalShow = '.js-modal-show',
+      modalHide = '.js-modal-hide';
+
   if (!sentiment) return;
+
+  function autoHeight() {
+    if (win.outerWidth() >= 1100) {
+      sentimentList.each(function () {
+        var maxH = 54,
+            sentimentScrollHeight = $(this).find(sentimentScroll).outerHeight();
+
+        if (sentimentScrollHeight > maxH) {
+          $(this).css('max-height', maxH);
+          $(this).find(sentimentFull).css('display', 'flex');
+        } else {
+          $(this).css('max-height', '');
+          $(this).find(sentimentFull).css('display', 'none');
+        }
+      });
+    }
+
+    reviewBody.each(function () {
+      var maxH = 102,
+          reviewTextHeight = $(this).find(reviewText).outerHeight();
+
+      if (reviewTextHeight > maxH) {
+        $(this).css('max-height', maxH);
+        $(this).find(reviewFull).css('display', 'flex');
+      } else {
+        $(this).css('max-height', '');
+        $(this).find(reviewFull).css('display', 'none');
+      }
+    });
+  }
+
+  function addCommentsSlider() {
+    var listNav = $('.js-review-slideNav .swiper-wrapper'),
+        listFor = $('.js-review-slideFor .swiper-wrapper');
+    listNav.html('');
+    listFor.html('');
+    $('.reward-slider .swiper-slide').each(function (i) {
+      var parseSlide = $.parseHTML('<div class="swiper-slide"><a class="sentiment-review-block-link js-modal-show" href="#review"></a><div class="sentiment-review-item">  <div class="sentiment-review-item-head">    <div class="sentiment-review-item-user">      <div class="sentiment-review-item-img"><img src="img/icons/user.svg" alt="User"></div>      <div class="sentiment-review-item-info">        <div class="sentiment-review-item-name">Василий Пупкин        </div>        <div class="sentiment-review-item-link">Рейтинг Букмекеров        </div>      </div>    </div>    <div class="sentiment-review-item-date">' + i + ' сен.    </div>  </div>  <div class="sentiment-review-item-body js-review-body">    <div class="sentiment-review-item-text js-review-text">Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно. Отличная БК. Играю более 10 лет, никогда не было никаких серьезных вопросов, хорошие коэфициенты, отличные выплаты. Единственное что немного напрягает, это закрепленный способ вывода денег, было бы гораздо удобнее если бы выводить можно было куда угодно.    </div>    <div class="sentiment-review-item-full js-review-full">еще</div>  </div></div></div>');
+      $(parseSlide).clone().appendTo(listNav);
+      $(parseSlide).clone().appendTo(listFor);
+    });
+    sentimentSliderNav.get(0).swiper.update();
+    sentimentSliderFor.get(0).swiper.update();
+    reviewBody = $('.js-review-body');
+    reviewText = $('.js-review-text');
+    reviewFull = '.js-review-full';
+    modalTarget = document.querySelectorAll('.js-review-body');
+    autoHeight();
+  }
+
+  $('.js-test').on('click', function () {
+    addCommentsSlider();
+  });
+  doc.on('click', modalShow, function () {
+    html.css('overflow', 'initial');
+    modalTarget.forEach(function (modalTarget) {
+      disableBodyScroll(modalTarget);
+    });
+    doc.on('mouseup touchend', function (e) {
+      if ($(e.target).closest(modalWrap).length) return;
+      html.css('overflow', '');
+      modalTarget.forEach(function (modalTarget) {
+        enableBodyScroll(modalTarget);
+      });
+    });
+    return false;
+  });
+  doc.on('click', modalHide, function () {
+    html.css('overflow', '');
+    modalTarget.forEach(function (modalTarget) {
+      enableBodyScroll(modalTarget);
+    });
+  });
   var sentimentSliderNav = $('.js-review-slideNav'),
       sentimentSliderFor = $('.js-review-slideFor');
   if (sentimentSliderNav.length <= 0 || sentimentSliderFor.length <= 0) return;
