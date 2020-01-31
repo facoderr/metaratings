@@ -37,8 +37,6 @@ function init() {
   var win = $(window),
       doc = $(document),
       html = $(document.documentElement),
-      sentimentGraph = $('.sentiment-graph'),
-      sentimentGraphBody = $('.sentiment-graph-body'),
       sentiment = 'js-sentiment',
       sentimentLoad = $('.js-sentiment-load'),
       sentimentTool = $('.js-sentiment-tool'),
@@ -73,10 +71,10 @@ function init() {
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide';
 
-  sentimentTool.clone().appendTo(sentimentGraphBody);
+  sentimentTool.clone().appendTo('.sentiment-graph-body');
   sentimentTool = $('.js-sentiment-tool'); // Sentiment Chart
 
-  var params = sentimentGraph.data('settings');
+  var params = $('.sentiment-graph').data('settings');
   params = $.extend({}, {
     drilldown: [],
     series: [],
