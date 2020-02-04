@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>События</title>
+    <title>Матч-центр</title>
     <meta charset="utf-8">
     <meta name="theme-color" content="#601dc0">
     <meta name="description" content="">
@@ -441,10 +441,10 @@
             </div>
           </div>
           <div class="workarea-content">
+            <div class="workarea-title">
+              <h1>Матч-центр</h1>
+            </div>
             <div class="match">
-              <div class="match-title">
-                <h1>Матч-центр</h1>
-              </div>
               <div class="match-filter"><a class="match-filter-item is-select" href="/"><span class="match-filter-icon">
                     <svg>
                       <use xlink:href="#forecast"></use>
@@ -460,8 +460,9 @@
                     </svg></span><span class="match-filter-text">Хоккей</span></a><a class="match-filter-item" href="/"><span class="match-filter-icon">
                     <svg>
                       <use xlink:href="#combat"></use>
-                    </svg></span><span class="match-filter-text">Единоборства</span></a></div>
-              <div class="match-tab">
+                    </svg></span><span class="match-filter-text">Единоборства</span></a>
+              </div>
+              <div class="match-tab js-tab">
                 <div class="match-tabHead">
                   <div class="match-tabDay">12</div>
                   <div class="match-tabList js-tabList">
@@ -470,75 +471,104 @@
                     <div class="match-tabItem js-tabItem">Завтра</div>
                   </div>
                 </div>
-                <div class="match-tabWrap js-tabWrap">
+                <div class="match-tabWrap">
                   <div class="match-tabBlock js-tabBlock"></div>
                   <div class="match-tabBlock js-tabBlock is-open">
                     <div class="match-best">
-                      <div class="match-best-title">Топ событий</div>
-                      <div class="swiper-container">
+                      <h2 class="match-best-title">Топ событий
+                      </h2>
+                      <div class="swiper-container js-match-best">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide"><a class="match-box is-live" href="/">
                               <div class="match-box-detail">
                                 <div class="match-box-live">Live<span class="match-box-watch">47</span></div>
-                                <div class="match-box-tag">Футбол</div>
+                                <div class="match-box-tag">Футбол
+                                </div>
                               </div>
-                              <div class="match-box-title">Лига чемпионов УЕФА</div>
+                              <div class="match-box-title">Лига чемпионов УЕФА
+                              </div>
                               <div class="match-box-versus">
-                                <div class="match-box-team"><img src="img/team/team_1.png" alt="Team 1"/></div>
+                                <div class="match-box-team"><img src="img/team/team_1.png" alt="Атлетико Мадрид"/>
+                                </div>
                                 <div class="match-box-score">4:1
                                   <div class="match-box-track">
                                     <div class="match-item-line"></div>
                                   </div>
                                 </div>
-                                <div class="match-box-team"><img src="img/team/team_2.png" alt="Team 2"/></div>
+                                <div class="match-box-team"><img src="img/team/team_2.png" alt="Крылья Советов"/>
+                                </div>
                               </div>
-                              <div class="match-box-name">Атлетико Мадрид — Крылья Советов</div></a></div>
+                              <div class="match-box-name">Атлетико Мадрид — Крылья Советов
+                              </div></a>
+                          </div>
                           <div class="swiper-slide"><a class="match-box" href="/">
                               <div class="match-box-detail">
                                 <div class="match-box-time">
-                                  <div class="match-box-clock">12:00</div>
-                                  <div class="match-box-date"><span>•</span>24/06/18</div>
+                                  <div class="match-box-clock">12:00
+                                  </div>
+                                  <div class="match-box-date"><span>•</span>24/06/18
+                                  </div>
                                 </div>
-                                <div class="match-box-tag">Футбол</div>
+                                <div class="match-box-tag">Футбол
+                                </div>
                               </div>
-                              <div class="match-box-title">Лига чемпионов УЕФА</div>
+                              <div class="match-box-title">Лига чемпионов УЕФА
+                              </div>
                               <div class="match-box-versus">
-                                <div class="match-box-team"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                <div class="match-box-team"><img src="img/team/team_3.png" alt="Барселона"/>
+                                </div>
                                 <div class="match-box-score">-:-</div>
-                                <div class="match-box-team"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                <div class="match-box-team"><img src="img/team/team_4.png" alt="Челси"/>
+                                </div>
                               </div>
-                              <div class="match-box-name">Барселона — Челси</div></a></div>
+                              <div class="match-box-name">Барселона — Челси
+                              </div></a>
+                          </div>
                           <div class="swiper-slide"><a class="match-box is-live" href="/">
                               <div class="match-box-detail">
                                 <div class="match-box-live">Live<span class="match-box-watch">Перерыв</span></div>
-                                <div class="match-box-tag">Футбол</div>
+                                <div class="match-box-tag">Футбол
+                                </div>
                               </div>
-                              <div class="match-box-title">Лига чемпионов УЕФА</div>
+                              <div class="match-box-title">Лига чемпионов УЕФА
+                              </div>
                               <div class="match-box-versus">
-                                <div class="match-box-team"><img src="img/team/team_1.png" alt="Team 1"/></div>
+                                <div class="match-box-team"><img src="img/team/team_1.png" alt="Атлетико Мадрид"/>
+                                </div>
                                 <div class="match-box-score">4:1
                                   <div class="match-box-track">
                                     <div class="match-item-line"></div>
                                   </div>
                                 </div>
-                                <div class="match-box-team"><img src="img/team/team_2.png" alt="Team 2"/></div>
+                                <div class="match-box-team"><img src="img/team/team_2.png" alt="Крылья Советов"/>
+                                </div>
                               </div>
-                              <div class="match-box-name">Атлетико Мадрид — Крылья Советов</div></a></div>
+                              <div class="match-box-name">Атлетико Мадрид — Крылья Советов
+                              </div></a>
+                          </div>
                           <div class="swiper-slide"><a class="match-box" href="/">
                               <div class="match-box-detail">
                                 <div class="match-box-time">
-                                  <div class="match-box-clock">12:00</div>
-                                  <div class="match-box-date"><span>•</span>24/06/18</div>
+                                  <div class="match-box-clock">12:00
+                                  </div>
+                                  <div class="match-box-date"><span>•</span>24/06/18
+                                  </div>
                                 </div>
-                                <div class="match-box-tag">Единоборства</div>
+                                <div class="match-box-tag">Единоборства
+                                </div>
                               </div>
-                              <div class="match-box-title">UFC 242</div>
+                              <div class="match-box-title">UFC 242
+                              </div>
                               <div class="match-box-versus">
-                                <div class="match-box-team"><img src="img/icons/user.svg" alt="Team"/></div>
+                                <div class="match-box-team"><img src="img/icons/user.svg" alt=""/>
+                                </div>
                                 <div class="match-box-score match-box-score-vs">VS</div>
-                                <div class="match-box-team"><img src="img/icons/user.svg" alt="Team"/></div>
+                                <div class="match-box-team"><img src="img/icons/user.svg" alt=""/>
+                                </div>
                               </div>
-                              <div class="match-box-name">Хабиб — Порье</div></a></div>
+                              <div class="match-box-name">Хабиб — Порье
+                              </div></a>
+                          </div>
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-next">
@@ -564,575 +594,768 @@
                           </div>
                         </div>
                         <div class="match-search-result">
-                          <div class="match-item js-match-item is-live"><a class="match-item-event" href="/">
-                              <div class="match-item-detail">
-                                <div class="match-item-live">Live<span class="match-item-watch">47</span></div>
-                                <div class="match-item-tv">
-                                  <svg>
-                                    <use xlink:href="#tv"></use>
-                                  </svg>
-                                </div>
-                              </div>
-                              <div class="match-item-versus">
-                                <div class="match-item-team">
-                                  <div class="match-item-name">Атлетико Мадрид</div>
-                                  <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
-                                </div>
-                                <div class="match-item-score">4:1
-                                  <div class="match-item-track">
-                                    <div class="match-item-line"></div>
-                                  </div>
-                                </div>
-                                <div class="match-item-team">
-                                  <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                  <div class="match-item-name">Крылья Советов</div>
-                                </div>
-                              </div></a>
-                            <div class="match-item-odds">
-                              <div class="match-item-list"><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                            </div>
+                          <div class="match-search-nothing">
+                            <div class="match-search-nothing-block">По вашему запросу ничего не найдено</div>
                           </div>
-                          <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                              <div class="match-item-detail">
-                                <div class="match-item-time">12:00</div>
-                                <div class="match-item-tv">
-                                  <svg>
-                                    <use xlink:href="#tv"></use>
-                                  </svg>
-                                </div>
-                              </div>
-                              <div class="match-item-versus">
-                                <div class="match-item-team">
-                                  <div class="match-item-name">Барселона</div>
-                                  <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                </div>
-                                <div class="match-item-score">-:-</div>
-                                <div class="match-item-team">
-                                  <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                  <div class="match-item-name">Челси</div>
-                                </div>
-                              </div></a>
-                            <div class="match-item-odds">
-                              <div class="match-item-list"><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                            </div>
-                          </div>
-                          <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                              <div class="match-item-detail">
-                                <div class="match-item-time">13:00</div>
-                              </div>
-                              <div class="match-item-versus">
-                                <div class="match-item-team">
-                                  <div class="match-item-name">Барселона</div>
-                                  <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                </div>
-                                <div class="match-item-score">-:-</div>
-                                <div class="match-item-team">
-                                  <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                  <div class="match-item-name">Челси</div>
-                                </div>
-                              </div></a>
-                            <div class="match-item-odds">
-                              <div class="match-item-list"><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                            </div>
-                          </div>
-                          <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                              <div class="match-item-detail">
-                                <div class="match-item-time">13:30</div>
-                              </div>
-                              <div class="match-item-versus">
-                                <div class="match-item-team">
-                                  <div class="match-item-name">Барселона</div>
-                                  <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                </div>
-                                <div class="match-item-score">-:-</div>
-                                <div class="match-item-team">
-                                  <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                  <div class="match-item-name">Челси</div>
-                                </div>
-                              </div></a>
-                            <div class="match-item-odds">
-                              <div class="match-item-list"><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                  <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="match-block">
-                      <div class="match-block-head">
-                        <div class="match-block-title">
-                          <svg>
-                            <use xlink:href="#football"></use>
-                          </svg>                                               Футбол
-                        </div>
-                        <div class="match-block-date">25 Сентября</div>
-                      </div>
-                      <div class="match-block-list">
-                        <div class="match-acc">
-                          <div class="match-acc-head js-match-toggle">
-                            <div class="match-acc-title">Европа. Лига чемпионов УЕФА (<span class="match-acc-count">4</span>)</div>
-                            <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg></span></div>
-                          </div>
-                          <div class="match-acc-body js-match-body">
-                            <div class="match-item js-match-item is-live"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-live">Live<span class="match-item-watch">47</span></div>
-                                  <div class="match-item-tv">
-                                    <svg>
-                                      <use xlink:href="#tv"></use>
-                                    </svg>
-                                  </div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Атлетико Мадрид</div>
-                                    <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
-                                  </div>
-                                  <div class="match-item-score">4:1
-                                    <div class="match-item-track">
-                                      <div class="match-item-line"></div>
+                          <div class="match-item is-live js-match-item">
+                            <div class="swiper-container js-match-swipe">
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a class="match-item-event" href="/">
+                                    <div class="match-item-detail">
+                                      <div class="match-item-live">Live<span class="match-item-watch">47</span></div>
+                                      <div class="match-item-tv">
+                                        <svg>
+                                          <use xlink:href="#tv"></use>
+                                        </svg>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                    <div class="match-item-name">Крылья Советов</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                              </div>
-                            </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:00</div>
-                                  <div class="match-item-tv">
-                                    <svg>
-                                      <use xlink:href="#tv"></use>
-                                    </svg>
+                                    <div class="match-item-versus">
+                                      <div class="match-item-team">
+                                        <div class="match-item-name">Атлетико Мадрид</div>
+                                        <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
+                                      </div>
+                                      <div class="match-item-score">4:1
+                                        <div class="match-item-track">
+                                          <div class="match-item-line"></div>
+                                        </div>
+                                      </div>
+                                      <div class="match-item-team">
+                                        <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
+                                        <div class="match-item-name">Крылья Советов</div>
+                                      </div>
+                                    </div></a></div>
+                                <div class="swiper-slide">
+                                  <div class="match-item-odds">
+                                    <div class="match-item-list"><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
                                   </div>
                                 </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                              </div>
-                            </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">13:00</div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                              </div>
-                            </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">13:30</div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="match-acc">
-                          <div class="match-acc-head js-match-toggle">
-                            <div class="match-acc-title">Европа. Лига чемпионов УЕФА (<span class="match-acc-count">4</span>)</div>
-                            <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg></span></div>
-                          </div>
-                          <div class="match-acc-body js-match-body">
-                            <div class="match-item js-match-item is-live"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-live">Live<span class="match-item-watch">Перерыв</span></div>
-                                  <div class="match-item-tv">
-                                    <svg>
-                                      <use xlink:href="#tv"></use>
-                                    </svg>
-                                  </div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Атлетико Мадрид</div>
-                                    <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
-                                  </div>
-                                  <div class="match-item-score">4:1
-                                    <div class="match-item-track">
-                                      <div class="match-item-line"></div>
+                          <div class="match-item js-match-item">
+                            <div class="swiper-container js-match-swipe">
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a class="match-item-event" href="/">
+                                    <div class="match-item-detail">
+                                      <div class="match-item-time">12:00</div>
+                                      <div class="match-item-tv">
+                                        <svg>
+                                          <use xlink:href="#tv"></use>
+                                        </svg>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                    <div class="match-item-name">Крылья Советов</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                              </div>
-                            </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:00</div>
-                                  <div class="match-item-tv">
-                                    <svg>
-                                      <use xlink:href="#tv"></use>
-                                    </svg>
+                                    <div class="match-item-versus">
+                                      <div class="match-item-team">
+                                        <div class="match-item-name">Барселона</div>
+                                        <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                      </div>
+                                      <div class="match-item-score">-:-</div>
+                                      <div class="match-item-team">
+                                        <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                        <div class="match-item-name">Челси</div>
+                                      </div>
+                                    </div></a></div>
+                                <div class="swiper-slide">
+                                  <div class="match-item-odds">
+                                    <div class="match-item-list"><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
                                   </div>
                                 </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
                               </div>
                             </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:00</div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                              </div>
-                            </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:20</div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Атлетико Мадрид</div>
-                                    <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
-                                  </div>
-                                  <div class="match-item-score">4:1
-                                    <div class="match-item-track">
-                                      <div class="match-item-line js-match-line" data-time="47"></div>
+                          </div>
+                          <div class="match-item js-match-item">
+                            <div class="swiper-container js-match-swipe">
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a class="match-item-event" href="/">
+                                    <div class="match-item-detail">
+                                      <div class="match-item-time">13:00</div>
+                                      <div class="match-item-tv">
+                                        <svg>
+                                          <use xlink:href="#tv"></use>
+                                        </svg>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                    <div class="match-item-name">Крылья Советов</div>
+                                    <div class="match-item-versus">
+                                      <div class="match-item-team">
+                                        <div class="match-item-name">Барселона</div>
+                                        <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                      </div>
+                                      <div class="match-item-score">-:-</div>
+                                      <div class="match-item-team">
+                                        <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                        <div class="match-item-name">Челси</div>
+                                      </div>
+                                    </div></a></div>
+                                <div class="swiper-slide">
+                                  <div class="match-item-odds">
+                                    <div class="match-item-list"><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
                                   </div>
                                 </div>
-                                <div class="match-item-high">
-                                  <svg>
-                                    <use xlink:href="#fire"></use>
-                                  </svg>                                                               Повышенные коэффициенты от Фонбет
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-old"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,25</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,1</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>1,75</span></div></a></div>
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="match-acc">
-                          <div class="match-acc-head js-match-toggle">
-                            <div class="match-acc-title">Европа. Лига чемпионов УЕФА (<span class="match-acc-count">2</span>)</div>
-                            <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg></span></div>
-                          </div>
-                          <div class="match-acc-body js-match-body">
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:00</div>
+                          <div class="match-item js-match-item">
+                            <div class="swiper-container js-match-swipe">
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a class="match-item-event" href="/">
+                                    <div class="match-item-detail">
+                                      <div class="match-item-time">13:30</div>
+                                      <div class="match-item-tv">
+                                        <svg>
+                                          <use xlink:href="#tv"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="match-item-versus">
+                                      <div class="match-item-team">
+                                        <div class="match-item-name">Барселона</div>
+                                        <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                      </div>
+                                      <div class="match-item-score">-:-</div>
+                                      <div class="match-item-team">
+                                        <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                        <div class="match-item-name">Челси</div>
+                                      </div>
+                                    </div></a></div>
+                                <div class="swiper-slide">
+                                  <div class="match-item-odds">
+                                    <div class="match-item-list"><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                        <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                  </div>
                                 </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
-                              </div>
-                            </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:00</div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="match-block">
-                      <div class="match-block-head">
-                        <div class="match-block-title">
-                          <svg>
-                            <use xlink:href="#hockey"></use>
-                          </svg>                                               Хоккей
-                        </div>
-                        <div class="match-block-date">25 Сентября</div>
-                      </div>
-                      <div class="match-block-list">
-                        <div class="match-acc">
-                          <div class="match-acc-head js-match-toggle">
-                            <div class="match-acc-title">Европа. Лига чемпионов УЕФА (<span class="match-acc-count">4</span>)</div>
-                            <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg></span></div>
+                    <div class="match-list">
+                      <div class="match-block">
+                        <div class="match-block-head">
+                          <div class="match-block-title">
+                            <svg>
+                              <use xlink:href="#forecast"></use>
+                            </svg>Футбол
                           </div>
-                          <div class="match-acc-body js-match-body">
-                            <div class="match-item js-match-item is-live"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-live">Live<span class="match-item-watch">47</span></div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Атлетико Мадрид</div>
-                                    <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
-                                  </div>
-                                  <div class="match-item-score">4:1
-                                    <div class="match-item-track">
-                                      <div class="match-item-line"></div>
+                          <div class="match-block-date">25 сентября</div>
+                        </div>
+                        <div class="match-block-list">
+                          <div class="match-acc">
+                            <div class="match-acc-head js-match-toggle">
+                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)
+                              </div>
+                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                                  <svg>
+                                    <use xlink:href="#arrow"></use>
+                                  </svg></span></div>
+                            </div>
+                            <div class="match-acc-body js-match-body">
+                              <div class="match-item is-live js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-live">Live<span class="match-item-watch">47</span></div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Атлетико Мадрид</div>
+                                            <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
+                                          </div>
+                                          <div class="match-item-score">4:1
+                                            <div class="match-item-track">
+                                              <div class="match-item-line"></div>
+                                            </div>
+                                          </div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
+                                            <div class="match-item-name">Крылья Советов</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
                                     </div>
                                   </div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                    <div class="match-item-name">Крылья Советов</div>
+                                </div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div></a>
-                              <div class="match-item-odds match-item-promo" style="background: #d0021b;">
-                                <div class="match-item-promo-logo"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div>
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div>
-                                    <div class="match-item-bet-bk" style="background: #d0021b;"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div>
-                                    <div class="match-item-bet-bk" style="background: #d0021b;"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div>
-                                    <div class="match-item-bet-bk" style="background: #d0021b;"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div></a></div>
+                                </div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">13:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">13:30</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:00</div>
+                          </div>
+                          <div class="match-acc">
+                            <div class="match-acc-head js-match-toggle">
+                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)
+                              </div>
+                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                                  <svg>
+                                    <use xlink:href="#arrow"></use>
+                                  </svg></span></div>
+                            </div>
+                            <div class="match-acc-body js-match-body">
+                              <div class="match-item is-live js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-live">Live<span class="match-item-watch">Перерыв</span></div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Атлетико Мадрид</div>
+                                            <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
+                                          </div>
+                                          <div class="match-item-score">4:1
+                                            <div class="match-item-track">
+                                              <div class="match-item-line"></div>
+                                            </div>
+                                          </div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
+                                            <div class="match-item-name">Крылья Советов</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
+                                </div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                </div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:20</div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Атлетико Мадрид</div>
+                                            <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
+                                          </div>
+                                          <div class="match-item-score">4:1
+                                            <div class="match-item-track">
+                                              <div class="match-item-line js-match-line" data-time="47"></div>
+                                            </div>
+                                          </div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
+                                            <div class="match-item-name">Крылья Советов</div>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-high">
+                                          <svg>
+                                            <use xlink:href="#fire"></use>
+                                          </svg>Повышенные коэффициенты от Фонбет
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-old"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,25</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,1</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>1,75</span></div></a></div>
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">13:00</div>
-                                </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
-                                  </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                          </div>
+                          <div class="match-acc">
+                            <div class="match-acc-head js-match-toggle">
+                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">2</span>)
                               </div>
+                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                                  <svg>
+                                    <use xlink:href="#arrow"></use>
+                                  </svg></span></div>
                             </div>
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">13:30</div>
+                            <div class="match-acc-body js-match-body">
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Барселона</div>
-                                    <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="match-item-score">-:-</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
-                                    <div class="match-item-name">Челси</div>
-                                  </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="match-block">
-                      <div class="match-block-head">
-                        <div class="match-block-title">
-                          <svg>
-                            <use xlink:href="#combat"></use>
-                          </svg>                                               Единоборства
-                        </div>
-                        <div class="match-block-date">12 августа</div>
-                      </div>
-                      <div class="match-block-list">
-                        <div class="match-acc">
-                          <div class="match-acc-head js-match-toggle">
-                            <div class="match-acc-title">Европа. Лига чемпионов УЕФА (<span class="match-acc-count">1</span>)</div>
-                            <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg></span></div>
+                      <div class="match-block">
+                        <div class="match-block-head">
+                          <div class="match-block-title">
+                            <svg>
+                              <use xlink:href="#hockey"></use>
+                            </svg>Хоккей
                           </div>
-                          <div class="match-acc-body js-match-body">
-                            <div class="match-item js-match-item"><a class="match-item-event" href="/">
-                                <div class="match-item-detail">
-                                  <div class="match-item-time">12:00</div>
+                          <div class="match-block-date">25 сентября</div>
+                        </div>
+                        <div class="match-block-list">
+                          <div class="match-acc">
+                            <div class="match-acc-head js-match-toggle">
+                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)
+                              </div>
+                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                                  <svg>
+                                    <use xlink:href="#arrow"></use>
+                                  </svg></span></div>
+                            </div>
+                            <div class="match-acc-body js-match-body">
+                              <div class="match-item is-live js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-live">Live<span class="match-item-watch">47</span></div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Атлетико Мадрид</div>
+                                            <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
+                                          </div>
+                                          <div class="match-item-score">4:1
+                                            <div class="match-item-track">
+                                              <div class="match-item-line"></div>
+                                            </div>
+                                          </div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
+                                            <div class="match-item-name">Крылья Советов</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds match-item-promo" style="background: #d0021b;">
+                                        <div class="match-item-promo-logo"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div>
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div>
+                                            <div class="match-item-bet-bk" style="background: #d0021b;"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div>
+                                            <div class="match-item-bet-bk" style="background: #d0021b;"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div>
+                                            <div class="match-item-bet-bk" style="background: #d0021b;"><img src="img/bookmaker/bookmaker_7.svg" alt="Фонбет"/></div></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="match-item-versus">
-                                  <div class="match-item-team">
-                                    <div class="match-item-name">Хабиб</div>
-                                    <div class="match-item-img"><img src="img/icons/user.svg" alt="Team"/></div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="match-item-score match-item-score-vs">VS</div>
-                                  <div class="match-item-team">
-                                    <div class="match-item-img"><img src="img/icons/user.svg" alt="Team"/></div>
-                                    <div class="match-item-name">Порье</div>
+                                </div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">13:00</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div></a>
-                              <div class="match-item-odds">
-                                <div class="match-item-list"><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п1<span>1,65</span></div></a>
-                                  <div class="match-item-bet match-item-empty">—</div><a class="match-item-bet" href="/">
-                                    <div class="match-item-bet-count">п2<span>2,75</span></div></a>
+                                </div>
+                              </div>
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">13:30</div>
+                                          <div class="match-item-tv">
+                                            <svg>
+                                              <use xlink:href="#tv"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Барселона</div>
+                                            <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
+                                          </div>
+                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
+                                            <div class="match-item-name">Челси</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">х<span>1,2</span></div></a><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="match-block">
+                        <div class="match-block-head">
+                          <div class="match-block-title">
+                            <svg>
+                              <use xlink:href="#combat"></use>
+                            </svg>Единоборства
+                          </div>
+                          <div class="match-block-date">12 августа</div>
+                        </div>
+                        <div class="match-block-list">
+                          <div class="match-acc">
+                            <div class="match-acc-head js-match-toggle">
+                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">1</span>)
+                              </div>
+                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                                  <svg>
+                                    <use xlink:href="#arrow"></use>
+                                  </svg></span></div>
+                            </div>
+                            <div class="match-acc-body js-match-body">
+                              <div class="match-item js-match-item">
+                                <div class="swiper-container js-match-swipe">
+                                  <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><a class="match-item-event" href="/">
+                                        <div class="match-item-detail">
+                                          <div class="match-item-time">12:00</div>
+                                        </div>
+                                        <div class="match-item-versus">
+                                          <div class="match-item-team">
+                                            <div class="match-item-name">Хабиб</div>
+                                            <div class="match-item-img"><img src="img/icons/user.svg" alt="Team"/></div>
+                                          </div>
+                                          <div class="match-item-score match-item-score-vs">VS</div>
+                                          <div class="match-item-team">
+                                            <div class="match-item-img"><img src="img/icons/user.svg" alt="Team"/></div>
+                                            <div class="match-item-name">Порье</div>
+                                          </div>
+                                        </div></a></div>
+                                    <div class="swiper-slide">
+                                      <div class="match-item-odds">
+                                        <div class="match-item-list"><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п1<span>1,65</span></div></a>
+                                          <div class="match-item-bet match-item-empty">—</div><a class="match-item-bet" href="/">
+                                            <div class="match-item-bet-count">п2<span>2,75</span></div></a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -1416,9 +1639,8 @@
                 </g>
               </svg></a>
             <div class="copyright">
-              <p>Все права защищены<br/>Metaratings © 2008 — 2019</p>
-              <p>Перепечатка материалов без<br/>согласования допустима при наличии<br/>dofollow-ссылки на страницу-источник.</p>
-              <p>Свидетельство о регистрации СМИ ЭЛ № ФС 77 - 74641, выдано Роскомнадзором 24.12.2018.</p>
+              <p>Сетевое издание «Metarating»<br/>(адрес в сети Интернет - <a href="//www.metaratings.ru">www.metaratings.ru</a>)<br/>Свидетельство о регистрации СМИ серия ЭЛ № ФС77-74641 от 24 декабря 2018 года выдано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций.</p>
+              <p>Издание может содержать информационную продукцию, предназначенную для лиц старше 18 лет.</p>
             </div>
           </div>
           <div class="right-col">
@@ -1435,17 +1657,32 @@
                 <svg class="s-icon">
                   <use xlink:href="#twitter"></use>
                 </svg></a></div>
-            <nav>
-              <ul class="bottom-menu-2">
-                <li><a href="/about/">О нас</a></li>
-                <li><a href="/sayt-stavok/">О проекте</a></li>
-                <li><a href="/rss/news/">RSS</a></li>
-                <li><a href="/politika-konfidentsialnosti/">Политика конфиденциальности</a></li>
-              </ul>
-            </nav>
-            <div class="age"></div>
+            <div class="contacts">
+              <p><span>Учредитель:</span> Тхалиджоков А.С.</p>
+              <p><span>Главный редактор:</span> Бреговский С.С. bregovskiy.mr@brl.ru</p>
+              <div class="title-3">Контакты редакции:</div>
+              <dl>
+                <dt>E-mail:</dt>
+                <dd>info@metaratings.ru</dd>
+                <dt>Тел:</dt>
+                <dd>+7 999 999 43 34</dd>
+                <dt>Адрес:</dt>
+                <dd>
+                  Россия, 117342, г. Москва, ул. Бутлерова, д. 17,
+                  пом. № 278 (Бизнес центр «Neo Geo»)
+                </dd>
+              </dl>
+            </div>
           </div>
+          <div class="left-text">Перепечатка материалов без согласования допустима при наличии dofollow-ссылки на страницу-источник</div>
+          <div class="age">Все права защищены Metaratings © 2008 — 2018</div>
         </div>
+        <ul class="bottom-menu-2">
+          <li><a href="/about/">О нас</a></li>
+          <li><a href="/sayt-stavok/">О проекте</a></li>
+          <li><a href="/rss/news/">RSS</a></li>
+          <li><a href="/politika-konfidentsialnosti/">Политика конфиденциальности</a></li>
+        </ul>
       </div>
     </footer>
     <div class="toolbar">
