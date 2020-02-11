@@ -20378,6 +20378,7 @@ $(function () {
       BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
+      modalTarget = document.querySelectorAll('.js-modal-wrap'),
       modalWrap = $('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
@@ -20391,15 +20392,19 @@ $(function () {
     }
 
     html.css('overflow', 'initial');
-    disableBodyScroll('', BodyScrollOptions = {
-      reserveScrollBarGap: true
+    modalTarget.forEach(function (modalTarget) {
+      disableBodyScroll(modalTarget, BodyScrollOptions = {
+        reserveScrollBarGap: true
+      });
     });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     doc.on('mouseup touchend', function (e) {
       if ($(e.target).closest(modalWrap).length) return;
       html.css('overflow', '');
-      enableBodyScroll();
+      modalTarget.forEach(function (modalTarget) {
+        enableBodyScroll(modalTarget);
+      });
       clearAllBodyScrollLocks();
       modalVisible.removeClass('is-open');
       modal.fadeOut().removeClass('is-open');
@@ -20408,7 +20413,9 @@ $(function () {
   });
   doc.on('click', modalHide, function () {
     html.css('overflow', '');
-    enableBodyScroll();
+    modalTarget.forEach(function (modalTarget) {
+      enableBodyScroll(modalTarget);
+    });
     clearAllBodyScrollLocks();
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
