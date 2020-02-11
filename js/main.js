@@ -21347,9 +21347,8 @@ $(function () {
       bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
       disableBodyScroll = bodyScrollLock.disableBodyScroll,
       enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      clearAllBodyScrollLocks = bodyScrollLock.clearAllBodyScrollLocks,
       BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
-      modalTarget = document.querySelectorAll('.stories-modal'),
+      modalTarget = document.querySelector('.stories-modal'),
       modalWrap = $('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
@@ -21516,7 +21515,6 @@ $(function () {
       sliderFor.autoplay.stop();
       html.css('overflow', '');
       enableBodyScroll(modalTarget);
-      clearAllBodyScrollLocks();
     });
     storiesFor.on('mouseenter', function () {
       stopProgress();
@@ -21542,7 +21540,6 @@ $(function () {
     sliderFor.autoplay.stop();
     html.css('overflow', '');
     enableBodyScroll(modalTarget);
-    clearAllBodyScrollLocks();
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
