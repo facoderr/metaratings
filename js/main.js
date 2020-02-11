@@ -21485,10 +21485,14 @@ $(function () {
     });
     var swipeLink, swipeStart, swipeEnd;
     document.addEventListener('touchstart', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       swipeLink = $('.swiper-slide-active').find('.js-stories-bet');
       swipeStart = e.changedTouches[0];
     });
     document.addEventListener('touchend', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       swipeEnd = e.changedTouches[0];
       var xAbs = Math.abs(swipeStart.pageX - swipeEnd.pageX),
           yAbs = Math.abs(swipeStart.pageY - swipeEnd.pageY);
