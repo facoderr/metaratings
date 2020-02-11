@@ -20370,12 +20370,19 @@ $(function () {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
   var doc = $(document),
+      html = $(document.documentElement),
+      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
+      disableBodyScroll = bodyScrollLock.disableBodyScroll,
+      enableBodyScroll = bodyScrollLock.enableBodyScroll,
+      clearAllBodyScrollLocks = bodyScrollLock.clearAllBodyScrollLocks,
+      BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
       modalWrap = $('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
+
   doc.on('click', modalShow, function () {
     if ($(this).data('modal') != undefined) {
       modalTag = $(this).data('modal');
@@ -20383,16 +20390,26 @@ $(function () {
       modalTag = $(this).attr('href');
     }
 
+    html.css('overflow', 'initial');
+    disableBodyScroll('', BodyScrollOptions = {
+      reserveScrollBarGap: true
+    });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     doc.on('mouseup touchend', function (e) {
       if ($(e.target).closest(modalWrap).length) return;
+      html.css('overflow', '');
+      enableBodyScroll();
+      clearAllBodyScrollLocks();
       modalVisible.removeClass('is-open');
       modal.fadeOut().removeClass('is-open');
     });
     return false;
   });
   doc.on('click', modalHide, function () {
+    html.css('overflow', '');
+    enableBodyScroll();
+    clearAllBodyScrollLocks();
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
@@ -21339,16 +21356,9 @@ __webpack_require__.r(__webpack_exports__);
 $(function () {
   var stories = $('.stories');
   if (stories.length === 0) return;
-
   var doc = $(document),
-      html = $(document.documentElement),
       storiesNav = $('.js-stories'),
       storiesFor = $('.js-stories-modal'),
-      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
-      disableBodyScroll = bodyScrollLock.disableBodyScroll,
-      enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
-      modalTarget = document.querySelector('.stories-modal'),
       modalWrap = $('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
@@ -21479,20 +21489,12 @@ $(function () {
     startProgress(storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
     sliderFor.params.autoplay.delay = storiesSlideTime;
     sliderFor.autoplay.start();
-    html.css('overflow', 'initial');
-    disableBodyScroll(modalTarget, BodyScrollOptions = {
-      reserveScrollBarGap: true
-    });
     var swipeLink, swipeStart, swipeEnd;
     document.addEventListener('touchstart', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
       swipeLink = $('.swiper-slide-active').find('.js-stories-bet');
       swipeStart = e.changedTouches[0];
     });
     document.addEventListener('touchend', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
       swipeEnd = e.changedTouches[0];
       var xAbs = Math.abs(swipeStart.pageX - swipeEnd.pageX),
           yAbs = Math.abs(swipeStart.pageY - swipeEnd.pageY);
@@ -21517,8 +21519,6 @@ $(function () {
         transition: 'none'
       });
       sliderFor.autoplay.stop();
-      html.css('overflow', '');
-      enableBodyScroll(modalTarget);
     });
     storiesFor.on('mouseenter', function () {
       stopProgress();
@@ -21542,8 +21542,6 @@ $(function () {
       transition: 'none'
     });
     sliderFor.autoplay.stop();
-    html.css('overflow', '');
-    enableBodyScroll(modalTarget);
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
