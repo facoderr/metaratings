@@ -21402,15 +21402,25 @@ $(function () {
 
   ;
 
-  function startProgress(timeleft, timetotal, $element) {
+  function lastProgress(timelast) {
+    if (storiesFor.find('.swiper-slide:last-child').index() === sliderFor.activeIndex) {
+      storiesLast = setTimeout(function () {
+        $(modalHide).trigger('click');
+      }, timelast * 1000);
+    }
+  }
+
+  function startProgress(timeleft, timelast, timetotal, $element) {
     if (!storiesOn) {
       storiesOn = true;
       progress(timeleft, timetotal, $element);
+      lastProgress(timelast);
     }
   }
 
   function stopProgress() {
     clearTimeout(storiesTick);
+    clearTimeout(storiesLast);
     storiesOn = false;
   }
 
@@ -21480,7 +21490,7 @@ $(function () {
         storiesCountVal = storiesBar.eq(sliderFor.activeIndex).find(storiesCount).html();
         storiesSlideTime = storiesCountVal * 1000;
         storiesBarTime = storiesCountVal - 1;
-        startProgress(storiesBarTime, storiesTime / 1000, storiesBar.eq(sliderFor.activeIndex));
+        startProgress(storiesBarTime, storiesCountVal, storiesTime / 1000, storiesBar.eq(sliderFor.activeIndex));
         sliderFor.params.autoplay.delay = storiesSlideTime;
         sliderFor.autoplay.start();
       },
@@ -21499,22 +21509,14 @@ $(function () {
           transition: 'none'
         });
         stopProgress();
-        startProgress(storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
+        startProgress(storiesBarTime, storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
         sliderFor.params.autoplay.delay = storiesSlideTime;
-      },
-      reachEnd: function reachEnd() {
-        storiesLast = setInterval(function () {
-          if (storiesBar.width() - 3 <= storiesBar.eq(sliderFor.activeIndex).find(storiesLine).width()) {
-            $(modalHide).trigger('click');
-            clearTimeout(storiesLast);
-          }
-        }, 100);
       }
     }
   });
   sliderFor.autoplay.stop();
   doc.on('click', modalShow, function () {
-    startProgress(storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
+    startProgress(storiesBarTime, storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
     sliderFor.params.autoplay.delay = storiesSlideTime;
     sliderFor.autoplay.start();
     var swipeLink, swipeStart, swipeEnd;
@@ -21549,7 +21551,7 @@ $(function () {
       storiesCountVal = storiesBar.eq(sliderFor.activeIndex).find(storiesCount).html();
       storiesSlideTime = storiesCountVal * 1000;
       storiesBarTime = storiesCountVal - 1;
-      startProgress(storiesBarTime, storiesTime / 1000, storiesBar.eq(sliderFor.activeIndex));
+      startProgress(storiesBarTime, storiesCountVal, storiesTime / 1000, storiesBar.eq(sliderFor.activeIndex));
       sliderFor.params.autoplay.delay = storiesSlideTime;
       sliderFor.autoplay.start();
     });
