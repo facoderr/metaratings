@@ -21378,7 +21378,8 @@ $(function () {
       storiesLine,
       storiesCount,
       storiesCountVal,
-      storiesTick;
+      storiesTick,
+      storiesLast;
 
   function progress(timeleft, timetotal, $element) {
     var storiesBarWidth = (timetotal - timeleft) * ($element.width() / timetotal);
@@ -21413,6 +21414,18 @@ $(function () {
     storiesOn = false;
   }
 
+  function stopStories() {
+    sliderNav.slideTo(0);
+    sliderFor.slideTo(0);
+    stopProgress();
+    storiesBar.find(storiesLine).css({
+      width: '',
+      transition: 'none'
+    });
+    sliderFor.autoplay.stop();
+  }
+
+  ;
   var sliderNav = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](storiesNav.get(0), {
     slidesPerView: 'auto',
     freeMode: true,
@@ -21488,6 +21501,14 @@ $(function () {
         stopProgress();
         startProgress(storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
         sliderFor.params.autoplay.delay = storiesSlideTime;
+      },
+      reachEnd: function reachEnd() {
+        storiesLast = setInterval(function () {
+          if (storiesBar.width() - 3 <= storiesBar.eq(sliderFor.activeIndex).find(storiesLine).width()) {
+            $(modalHide).trigger('click');
+            clearTimeout(storiesLast);
+          }
+        }, 100);
       }
     }
   });
@@ -21518,14 +21539,7 @@ $(function () {
     doc.on('mouseup touchend', function (e) {
       if ($('.modal.is-open').length === 0) return;
       if ($(e.target).closest(modalWrap).length) return;
-      sliderNav.slideTo(0);
-      sliderFor.slideTo(0);
-      stopProgress();
-      storiesBar.find(storiesLine).css({
-        width: '',
-        transition: 'none'
-      });
-      sliderFor.autoplay.stop();
+      stopStories();
     });
     storiesFor.on('mouseenter', function () {
       stopProgress();
@@ -21541,14 +21555,7 @@ $(function () {
     });
   });
   doc.on('click', modalHide, function () {
-    sliderNav.slideTo(0);
-    sliderFor.slideTo(0);
-    stopProgress();
-    storiesBar.find(storiesLine).css({
-      width: '',
-      transition: 'none'
-    });
-    sliderFor.autoplay.stop();
+    stopStories();
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
