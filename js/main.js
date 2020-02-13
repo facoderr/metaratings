@@ -21371,8 +21371,8 @@ $(function () {
       modalHide = '.js-modal-hide',
       storiesOn = false,
       storiesTime = 5000,
-      storiesSlideTime = storiesTime,
-      storiesBarTime = storiesTime / 1000,
+      storiesSlideTime,
+      storiesBarTime,
       storiesProgress = $('.js-stories-progress'),
       storiesBar,
       storiesLine,
@@ -21516,6 +21516,7 @@ $(function () {
   });
   sliderFor.autoplay.stop();
   doc.on('click', modalShow, function () {
+    storiesSlideTime = storiesTime, storiesBarTime = storiesTime / 1000;
     startProgress(storiesBarTime, storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
     sliderFor.params.autoplay.delay = storiesSlideTime;
     sliderFor.autoplay.start();
@@ -21543,11 +21544,11 @@ $(function () {
       if ($(e.target).closest(modalWrap).length) return;
       stopStories();
     });
-    storiesFor.on('mouseenter', function () {
+    storiesFor.on('mousedown', function () {
       stopProgress();
       sliderFor.autoplay.stop();
     });
-    storiesFor.on('mouseleave', function () {
+    storiesFor.on('mouseup', function () {
       storiesCountVal = storiesBar.eq(sliderFor.activeIndex).find(storiesCount).html();
       storiesSlideTime = storiesCountVal * 1000;
       storiesBarTime = storiesCountVal - 1;
