@@ -434,7 +434,9 @@ function init() {
       $(parseSlide).clone().appendTo(listFor);
     });
     sentimentSliderNav.get(0).swiper.update();
+    sentimentSliderNav.get(0).swiper.slideTo(0);
     sentimentSliderFor.get(0).swiper.update();
+    sentimentSliderFor.get(0).swiper.slideTo(0);
     reviewBody = $('.js-review-body');
     reviewText = $('.js-review-text');
     reviewFull = '.js-review-full';
@@ -498,6 +500,8 @@ function init() {
         }, 200);
         loadReviews(page);
       }
+
+      updateUrlTitleByPage(page);
     });
     doc.on('click', sentimentPaginationBtn, function (e) {
       e.preventDefault();
@@ -510,7 +514,23 @@ function init() {
         }, 200);
         loadReviews(page);
       }
+
+      updateUrlTitleByPage(page);
     });
+  }
+
+  function updateUrlTitleByPage(page) {
+    var $sentimentMain = $('.sentiment-main');
+    var title = $sentimentMain.attr('data-title');
+    var url = document.location.pathname;
+
+    if (page > 1) {
+      title = $sentimentMain.attr('data-nav-title-template') + page;
+      url += '?page=page-' + page;
+    }
+
+    history.pushState('', '', url);
+    document.title = title;
   }
 
   $(sentimentChart.series).each(function (i, serie) {

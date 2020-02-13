@@ -21366,20 +21366,25 @@ $(function () {
   var doc = $(document),
       storiesNav = $('.js-stories'),
       storiesFor = $('.js-stories-modal'),
-      modalWrap = $('.js-modal-wrap'),
-      modalShow = '.js-modal-show',
-      modalHide = '.js-modal-hide',
+      storiesProgress = $('.js-stories-progress'),
       storiesOn = false,
+      storiesTouch = false,
       storiesTime = 5000,
+      storiesTouchTime,
       storiesSlideTime,
       storiesBarTime,
-      storiesProgress = $('.js-stories-progress'),
       storiesBar,
       storiesLine,
       storiesCount,
       storiesCountVal,
       storiesTick,
-      storiesLast;
+      storiesLast,
+      swipeLink,
+      swipeStart,
+      swipeEnd,
+      modalWrap = $('.js-modal-wrap'),
+      modalShow = '.js-modal-show',
+      modalHide = '.js-modal-hide';
 
   function progress(timeleft, timetotal, $element) {
     var storiesBarWidth = (timetotal - timeleft) * ($element.width() / timetotal);
@@ -21412,9 +21417,9 @@ $(function () {
 
   function startProgress(timeleft, timelast, timetotal, $element) {
     if (!storiesOn) {
-      storiesOn = true;
       progress(timeleft, timetotal, $element);
       lastProgress(timelast);
+      storiesOn = true;
     }
   }
 
@@ -21422,6 +21427,59 @@ $(function () {
     clearTimeout(storiesTick);
     clearTimeout(storiesLast);
     storiesOn = false;
+  }
+
+  function detectTouch() {
+    return 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  }
+
+  function startTouch(e) {
+    if (detectTouch()) {
+      swipeLink = $('.swiper-slide-active').find('.js-stories-bet');
+      swipeStart = e.changedTouches[0];
+    }
+
+    storiesTouchTime = setTimeout(function () {
+      stopProgress();
+      sliderFor.autoplay.stop();
+      storiesTouch = true;
+    }, 500);
+  }
+
+  function stopTouch(e) {
+    if (storiesTouch) {
+      storiesCountVal = storiesBar.eq(sliderFor.activeIndex).find(storiesCount).html();
+      storiesSlideTime = storiesCountVal * 1000;
+      storiesBarTime = storiesCountVal - 1;
+      startProgress(storiesBarTime, storiesCountVal, storiesTime / 1000, storiesBar.eq(sliderFor.activeIndex));
+      sliderFor.params.autoplay.delay = storiesSlideTime;
+      sliderFor.autoplay.start();
+      storiesTouch = false;
+    } else {
+      if (detectTouch()) {
+        swipeEnd = e.changedTouches[0];
+        var xAbs = Math.abs(swipeStart.pageX - swipeEnd.pageX),
+            yAbs = Math.abs(swipeStart.pageY - swipeEnd.pageY);
+
+        if (xAbs > 150 || yAbs > 150) {
+          if (xAbs < yAbs) {
+            if (swipeEnd.pageY < swipeStart.pageY) {
+              if (swipeLink.length === 0) return;
+              location.href = swipeLink.attr('href');
+            }
+          }
+        } else {
+          if (swipeEnd.pageX > doc.outerWidth() / 2) {
+            sliderFor.slideNext();
+          } else {
+            sliderFor.slidePrev();
+          }
+        }
+      }
+
+      clearTimeout(storiesTouchTime);
+      storiesTouch = false;
+    }
   }
 
   function stopStories() {
@@ -21482,17 +21540,19 @@ $(function () {
         storiesLine = $('.js-stories-line');
         storiesCount = $('.js-stories-count');
       },
-      touchStart: function touchStart() {
-        stopProgress();
-        sliderFor.autoplay.stop();
+      touchStart: function touchStart(e) {
+        if (!detectTouch()) {
+          startTouch(e);
+        } else {
+          startTouch(e);
+        }
       },
-      touchEnd: function touchEnd() {
-        storiesCountVal = storiesBar.eq(sliderFor.activeIndex).find(storiesCount).html();
-        storiesSlideTime = storiesCountVal * 1000;
-        storiesBarTime = storiesCountVal - 1;
-        startProgress(storiesBarTime, storiesCountVal, storiesTime / 1000, storiesBar.eq(sliderFor.activeIndex));
-        sliderFor.params.autoplay.delay = storiesSlideTime;
-        sliderFor.autoplay.start();
+      touchEnd: function touchEnd(e) {
+        if (!detectTouch()) {
+          stopTouch(e);
+        } else {
+          stopTouch(e);
+        }
       },
       slideChange: function slideChange() {
         storiesSlideTime = storiesTime, storiesBarTime = storiesTime / 1000;
@@ -21520,41 +21580,10 @@ $(function () {
     startProgress(storiesBarTime, storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
     sliderFor.params.autoplay.delay = storiesSlideTime;
     sliderFor.autoplay.start();
-    var swipeLink, swipeStart, swipeEnd;
-    document.addEventListener('touchstart', function (e) {
-      swipeLink = $('.swiper-slide-active').find('.js-stories-bet');
-      swipeStart = e.changedTouches[0];
-    });
-    document.addEventListener('touchend', function (e) {
-      swipeEnd = e.changedTouches[0];
-      var xAbs = Math.abs(swipeStart.pageX - swipeEnd.pageX),
-          yAbs = Math.abs(swipeStart.pageY - swipeEnd.pageY);
-
-      if (xAbs > 150 || yAbs > 150) {
-        if (xAbs < yAbs) {
-          if (swipeEnd.pageY < swipeStart.pageY) {
-            if (swipeLink.length === 0) return;
-            location.href = swipeLink.attr('href');
-          }
-        }
-      }
-    });
     doc.on('mouseup touchend', function (e) {
       if ($('.modal.is-open').length === 0) return;
       if ($(e.target).closest(modalWrap).length) return;
       stopStories();
-    });
-    storiesFor.on('mousedown', function () {
-      stopProgress();
-      sliderFor.autoplay.stop();
-    });
-    storiesFor.on('mouseup', function () {
-      storiesCountVal = storiesBar.eq(sliderFor.activeIndex).find(storiesCount).html();
-      storiesSlideTime = storiesCountVal * 1000;
-      storiesBarTime = storiesCountVal - 1;
-      startProgress(storiesBarTime, storiesCountVal, storiesTime / 1000, storiesBar.eq(sliderFor.activeIndex));
-      sliderFor.params.autoplay.delay = storiesSlideTime;
-      sliderFor.autoplay.start();
     });
   });
   doc.on('click', modalHide, function () {
