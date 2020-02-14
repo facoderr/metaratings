@@ -492,7 +492,7 @@ function init() {
     sentimentPagination.on('click', 'a', function (e) {
       e.preventDefault();
       var html = $(document.body).add(document.documentElement),
-          page = parseInt($(this).text());
+          page = parseInt($(this).attr('data-page'));
 
       if (!isNaN(page) && page > 0 && !$(this).parent().hasClass('.is-active')) {
         html.animate({
@@ -501,12 +501,12 @@ function init() {
         loadReviews(page);
       }
 
-      updateUrlTitleByPage(page);
+      updateUrlMetaByPage(page);
     });
     doc.on('click', sentimentPaginationBtn, function (e) {
       e.preventDefault();
       var html = $(document.body).add(document.documentElement),
-          page = $(this).attr('href');
+          page = parseInt($(this).attr('data-page'));
 
       if (!isNaN(page) && page > 0) {
         html.animate({
@@ -515,22 +515,25 @@ function init() {
         loadReviews(page);
       }
 
-      updateUrlTitleByPage(page);
+      updateUrlMetaByPage(page);
     });
   }
 
-  function updateUrlTitleByPage(page) {
+  function updateUrlMetaByPage(page) {
     var $sentimentMain = $('.sentiment-main');
     var title = $sentimentMain.attr('data-title');
+    var desc = $sentimentMain.attr('data-desc');
     var url = document.location.pathname;
 
     if (page > 1) {
       title = $sentimentMain.attr('data-nav-title-template') + page;
+      desc = $sentimentMain.attr('data-nav-desc-template') + page;
       url += '?page=page-' + page;
     }
 
     history.pushState('', '', url);
     document.title = title;
+    $(document).find('meta[name=description]').attr('content', desc);
   }
 
   $(sentimentChart.series).each(function (i, serie) {
