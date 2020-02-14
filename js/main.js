@@ -21513,6 +21513,7 @@ $(function () {
     }
   });
   var sliderFor = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](storiesFor.get(0), {
+    allowTouchMove: false,
     autoplay: {
       delay: 0,
       disableOnInteraction: false
@@ -21527,6 +21528,7 @@ $(function () {
     breakpointsInverse: true,
     breakpoints: {
       1100: {
+        allowTouchMove: true,
         spaceBetween: 15
       }
     },
@@ -22788,6 +22790,64 @@ $(function () {
     });
   }
 });
+var reviewForm = $(".add-reivew-form");
+
+if (reviewForm.length > 0) {
+  function getFormData($form) {
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+    $.map(unindexed_array, function (n, i) {
+      indexed_array[n['name']] = n['value'];
+    });
+    return indexed_array;
+  }
+
+  var $dropdown = reviewForm.find(".dropdown");
+
+  if ($dropdown.length > 0) {
+    $dropdown.on("click", function (event) {
+      $(this).toggleClass("open");
+    });
+    $dropdown.find("ul li").on("click", function (event) {
+      var $container = $(this).closest(".dropdown");
+      $container.children(".dropdown-selected").text($(this).text()).addClass("val1");
+      $container.children("[type=hidden]").val($(this).attr("value")).trigger("change");
+    });
+  }
+
+  reviewForm.find("[type=range]").on("input", function (event) {
+    var val = parseInt($(this).val());
+    $(this).removeClass("val1 val2");
+    if (val > 7) $(this).addClass("val1");else if (val < 4) $(this).addClass("val2");
+  });
+  reviewForm.children("form").on('submit', function (t) {
+    t.preventDefault();
+    var count = !0,
+        valueRequired = $(this).find('.required'),
+        settings = reviewForm.children("form").data('settings');
+    settings = $.extend({}, {
+      ajaxPath: '' // путь по которому будет происходить ajax запрос
+
+    }, settings);
+
+    if ($(valueRequired).each(function () {
+      $(this).val() ? $(this).removeClass('empty-field') : ($(this).addClass('empty-field'), count = !1);
+    }), 1 == count) {
+      var form = getFormData($(this));
+      reviewForm.children("form").find('.text-danger').empty();
+      $.post(settings.ajaxPath, {
+        form: form
+      }, function (result) {
+        result = JSON.parse(result);
+
+        if (result['success']) {
+          reviewForm.children("form")[0].reset();
+          $('#success').fadeIn().addClass('is-open');
+        }
+      });
+    }
+  });
+}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
