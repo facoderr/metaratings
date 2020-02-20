@@ -2,7 +2,7 @@
 
 /***/ "../../node_modules/highcharts/highcharts-more.js":
 /*!************************************************************************************************************!*\
-  !*** c:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/highcharts/highcharts-more.js ***!
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/highcharts/highcharts-more.js ***!
   \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -3207,7 +3207,7 @@
 
 /***/ "../../node_modules/highcharts/highcharts.js":
 /*!*******************************************************************************************************!*\
-  !*** c:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/highcharts/highcharts.js ***!
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/highcharts/highcharts.js ***!
   \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -13937,7 +13937,7 @@
 
 /***/ "../../node_modules/highcharts/modules/drilldown.js":
 /*!**************************************************************************************************************!*\
-  !*** c:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/highcharts/modules/drilldown.js ***!
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/highcharts/modules/drilldown.js ***!
   \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
