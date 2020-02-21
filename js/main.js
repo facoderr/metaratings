@@ -20778,15 +20778,14 @@ $(function () {
       videoActive,
       cliked;
 
-  function videoPlayer() {
+  function videoPlayer(e) {
+    videoActive = $(e.target);
+
     if (!cliked) {
-      videoActive = videoSlider.find('.swiper-slide.swiper-slide-active');
       videoActive.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
-      console.log('1st');
       cliked = 2;
     } else if (cliked === 2) {
       videoActive.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-      console.log('2nd');
       cliked = false;
     } else {
       videoActive.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
@@ -20802,11 +20801,8 @@ $(function () {
         prevEl: videoSlider.siblings('.swiper-button-prev')
       },
       on: {
-        slideChange: function slideChange() {
-          videoActive = videoSlider.find('.swiper-slide.swiper-slide-active');
-        },
-        click: function click() {
-          videoPlayer();
+        click: function click(e) {
+          videoPlayer(e);
         }
       }
     });
@@ -20827,11 +20823,8 @@ $(function () {
         }
       },
       on: {
-        slideChange: function slideChange() {
-          videoActive = videoSlider.find('.swiper-slide.swiper-slide-active');
-        },
-        click: function click() {
-          videoPlayer();
+        click: function click(e) {
+          videoPlayer(e);
         }
       }
     });
@@ -20852,11 +20845,8 @@ $(function () {
         }
       },
       on: {
-        slideChange: function slideChange() {
-          videoActive = videoSlider.find('.swiper-slide.swiper-slide-active');
-        },
-        click: function click() {
-          videoPlayer();
+        click: function click(e) {
+          videoPlayer(e);
         }
       }
     });
