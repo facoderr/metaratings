@@ -95,7 +95,7 @@ function init() {
         'fontFamily': 'Helvetica Neue, Helvetica, Arial, sans-serif',
         'z-index': '1'
       },
-      zoomType: 'xy',
+      zoomType: '',
       margin: [1, 1, null, 1],
       events: {
         render: function render() {
@@ -181,7 +181,7 @@ function init() {
           setTimeout(function () {
             sentimentChart.update({
               chart: {
-                zoomType: 'xy'
+                zoomType: ''
               }
             });
             sentimentTool.hide();
