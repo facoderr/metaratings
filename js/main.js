@@ -20775,20 +20775,17 @@ $(function () {
   });
   var videoSlider = $('.js-overview-bk-video'),
       videoLength = videoSlider.find('.swiper-slide').length,
-      videoActive,
-      cliked;
+      videoClick;
 
   function videoPlayer(e) {
-    videoActive = $(e.target);
+    videoClick = $(e.target);
 
-    if (!cliked) {
-      videoActive.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
-      cliked = 2;
-    } else if (cliked === 2) {
-      videoActive.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-      cliked = false;
+    if (videoClick.find('.is-play').length === 0) {
+      videoClick.find('iframe').addClass('is-play');
+      videoClick.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
     } else {
-      videoActive.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+      videoClick.find('iframe').removeClass('is-play');
+      videoClick.find('iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
     }
   }
 
