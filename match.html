@@ -462,17 +462,18 @@
                       <use xlink:href="#combat"></use>
                     </svg></span><span class="match-filter-text">Единоборства</span></a>
               </div>
-              <div class="match-tab js-tab">
+              <div class="match-tab">
                 <div class="match-tabHead">
-                  <div class="match-tabDay">12</div>
-                  <div class="match-tabList js-tabList">
-                    <div class="match-tabItem js-tabItem">Live</div>
-                    <div class="match-tabItem js-tabItem is-select">Сегодня</div>
-                    <div class="match-tabItem js-tabItem">Завтра</div>
+                  <div class="match-tabList">
+                    <div class="match-tabItem">
+                      <input class="datepicker-here js-calendar" type="text" readonly="readonly"/>
+                      <svg>
+                        <use xlink:href="#calendar"></use>
+                      </svg>
+                    </div><a class="match-tabItem" href="/">Live</a><a class="match-tabItem is-select" href="/">Сегодня</a><a class="match-tabItem" href="/">Завтра</a>
                   </div>
                 </div>
                 <div class="match-tabWrap">
-                  <div class="match-tabBlock js-tabBlock"></div>
                   <div class="match-tabBlock js-tabBlock is-open">
                     <div class="match-best">
                       <h2 class="match-best-title">Топ событий
@@ -490,9 +491,9 @@
                               <div class="match-box-versus">
                                 <div class="match-box-team"><img src="img/team/team_1.png" alt="Атлетико Мадрид"/>
                                 </div>
-                                <div class="match-box-score">4:1
+                                <div class="match-box-score">4<span>:</span>1
                                   <div class="match-box-track">
-                                    <div class="match-item-line"></div>
+                                    <div class="match-box-line"></div>
                                   </div>
                                 </div>
                                 <div class="match-box-team"><img src="img/team/team_2.png" alt="Крылья Советов"/>
@@ -517,7 +518,7 @@
                               <div class="match-box-versus">
                                 <div class="match-box-team"><img src="img/team/team_3.png" alt="Барселона"/>
                                 </div>
-                                <div class="match-box-score">-:-</div>
+                                <div class="match-box-score">-<span>:</span>-</div>
                                 <div class="match-box-team"><img src="img/team/team_4.png" alt="Челси"/>
                                 </div>
                               </div>
@@ -535,9 +536,9 @@
                               <div class="match-box-versus">
                                 <div class="match-box-team"><img src="img/team/team_1.png" alt="Атлетико Мадрид"/>
                                 </div>
-                                <div class="match-box-score">4:1
+                                <div class="match-box-score">4<span>:</span>1
                                   <div class="match-box-track">
-                                    <div class="match-item-line"></div>
+                                    <div class="match-box-line"></div>
                                   </div>
                                 </div>
                                 <div class="match-box-team"><img src="img/team/team_2.png" alt="Крылья Советов"/>
@@ -560,10 +561,10 @@
                               <div class="match-box-title">UFC 242
                               </div>
                               <div class="match-box-versus">
-                                <div class="match-box-team"><img src="img/icons/user.svg" alt=""/>
+                                <div class="match-box-team"><img src="img/team/no-logo.svg" alt=""/>
                                 </div>
                                 <div class="match-box-score match-box-score-vs">VS</div>
-                                <div class="match-box-team"><img src="img/icons/user.svg" alt=""/>
+                                <div class="match-box-team"><img src="img/team/no-logo.svg" alt=""/>
                                 </div>
                               </div>
                               <div class="match-box-name">Хабиб — Порье
@@ -583,6 +584,7 @@
                         </div>
                       </div>
                     </div>
+                    <div class="match-calendar js-calendar-date">28.02.2020</div>
                     <div class="match-search">
                       <div class="match-search-block">
                         <div class="match-search-form">
@@ -614,14 +616,14 @@
                                         <div class="match-item-name">Атлетико Мадрид</div>
                                         <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
                                       </div>
-                                      <div class="match-item-score">4:1
+                                      <div class="match-item-score">149<span>:</span>137
                                         <div class="match-item-track">
                                           <div class="match-item-line"></div>
                                         </div>
                                       </div>
                                       <div class="match-item-team">
                                         <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                        <div class="match-item-name">Крылья Советов</div>
+                                        <div class="match-item-name">Крылья</div>
                                       </div>
                                     </div></a></div>
                                 <div class="swiper-slide">
@@ -652,7 +654,7 @@
                                         <div class="match-item-name">Барселона</div>
                                         <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                       </div>
-                                      <div class="match-item-score">-:-</div>
+                                      <div class="match-item-score">-<span>:</span>-</div>
                                       <div class="match-item-team">
                                         <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                         <div class="match-item-name">Челси</div>
@@ -686,7 +688,7 @@
                                         <div class="match-item-name">Барселона</div>
                                         <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                       </div>
-                                      <div class="match-item-score">-:-</div>
+                                      <div class="match-item-score">-<span>:</span>-</div>
                                       <div class="match-item-team">
                                         <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                         <div class="match-item-name">Челси</div>
@@ -720,7 +722,7 @@
                                         <div class="match-item-name">Барселона</div>
                                         <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                       </div>
-                                      <div class="match-item-score">-:-</div>
+                                      <div class="match-item-score">-<span>:</span>-</div>
                                       <div class="match-item-team">
                                         <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                         <div class="match-item-name">Челси</div>
@@ -752,10 +754,8 @@
                         </div>
                         <div class="match-block-list">
                           <div class="match-acc">
-                            <div class="match-acc-head js-match-toggle">
-                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)
-                              </div>
-                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                            <div class="match-acc-head"><a class="match-acc-title" href="">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)</a>
+                              <div class="match-acc-toggle js-match-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
                                   <svg>
                                     <use xlink:href="#arrow"></use>
                                   </svg></span></div>
@@ -778,14 +778,14 @@
                                             <div class="match-item-name">Атлетико Мадрид</div>
                                             <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
                                           </div>
-                                          <div class="match-item-score">4:1
+                                          <div class="match-item-score">149<span>:</span>137
                                             <div class="match-item-track">
                                               <div class="match-item-line"></div>
                                             </div>
                                           </div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                            <div class="match-item-name">Крылья Советов</div>
+                                            <div class="match-item-name">Крылья</div>
                                           </div>
                                         </div></a></div>
                                     <div class="swiper-slide">
@@ -816,7 +816,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -850,7 +850,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -884,7 +884,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -904,10 +904,8 @@
                             </div>
                           </div>
                           <div class="match-acc">
-                            <div class="match-acc-head js-match-toggle">
-                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)
-                              </div>
-                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                            <div class="match-acc-head"><a class="match-acc-title" href="">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)</a>
+                              <div class="match-acc-toggle js-match-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
                                   <svg>
                                     <use xlink:href="#arrow"></use>
                                   </svg></span></div>
@@ -930,14 +928,14 @@
                                             <div class="match-item-name">Атлетико Мадрид</div>
                                             <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
                                           </div>
-                                          <div class="match-item-score">4:1
+                                          <div class="match-item-score">149<span>:</span>137
                                             <div class="match-item-track">
                                               <div class="match-item-line"></div>
                                             </div>
                                           </div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                            <div class="match-item-name">Крылья Советов</div>
+                                            <div class="match-item-name">Крылья</div>
                                           </div>
                                         </div></a></div>
                                     <div class="swiper-slide">
@@ -968,7 +966,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -1002,7 +1000,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -1031,14 +1029,14 @@
                                             <div class="match-item-name">Атлетико Мадрид</div>
                                             <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
                                           </div>
-                                          <div class="match-item-score">4:1
+                                          <div class="match-item-score">85<span>:</span>121
                                             <div class="match-item-track">
                                               <div class="match-item-line js-match-line" data-time="47"></div>
                                             </div>
                                           </div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                            <div class="match-item-name">Крылья Советов</div>
+                                            <div class="match-item-name">Крылья</div>
                                           </div>
                                         </div>
                                         <div class="match-item-high">
@@ -1064,10 +1062,8 @@
                             </div>
                           </div>
                           <div class="match-acc">
-                            <div class="match-acc-head js-match-toggle">
-                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">2</span>)
-                              </div>
-                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                            <div class="match-acc-head"><a class="match-acc-title" href="">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">2</span>)</a>
+                              <div class="match-acc-toggle js-match-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
                                   <svg>
                                     <use xlink:href="#arrow"></use>
                                   </svg></span></div>
@@ -1090,7 +1086,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -1124,7 +1120,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -1156,10 +1152,8 @@
                         </div>
                         <div class="match-block-list">
                           <div class="match-acc">
-                            <div class="match-acc-head js-match-toggle">
-                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)
-                              </div>
-                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                            <div class="match-acc-head"><a class="match-acc-title" href="">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">4</span>)</a>
+                              <div class="match-acc-toggle js-match-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
                                   <svg>
                                     <use xlink:href="#arrow"></use>
                                   </svg></span></div>
@@ -1177,14 +1171,14 @@
                                             <div class="match-item-name">Атлетико Мадрид</div>
                                             <div class="match-item-img"><img src="img/team/team_1.png" alt="Team 1"/></div>
                                           </div>
-                                          <div class="match-item-score">4:1
+                                          <div class="match-item-score">4<span>:</span>1
                                             <div class="match-item-track">
                                               <div class="match-item-line"></div>
                                             </div>
                                           </div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_2.png" alt="Team 2"/></div>
-                                            <div class="match-item-name">Крылья Советов</div>
+                                            <div class="match-item-name">Крылья</div>
                                           </div>
                                         </div></a></div>
                                     <div class="swiper-slide">
@@ -1219,7 +1213,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -1253,7 +1247,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -1287,7 +1281,7 @@
                                             <div class="match-item-name">Барселона</div>
                                             <div class="match-item-img"><img src="img/team/team_3.png" alt="Team 3"/></div>
                                           </div>
-                                          <div class="match-item-score">-:-</div>
+                                          <div class="match-item-score">-<span>:</span>-</div>
                                           <div class="match-item-team">
                                             <div class="match-item-img"><img src="img/team/team_4.png" alt="Team 4"/></div>
                                             <div class="match-item-name">Челси</div>
@@ -1319,10 +1313,8 @@
                         </div>
                         <div class="match-block-list">
                           <div class="match-acc">
-                            <div class="match-acc-head js-match-toggle">
-                              <div class="match-acc-title">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">1</span>)
-                              </div>
-                              <div class="match-acc-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
+                            <div class="match-acc-head"><a class="match-acc-title" href="">Европа. Лига чемпионов УЕФА(<span class="match-acc-count">1</span>)</a>
+                              <div class="match-acc-toggle js-match-toggle"><span class="match-acc-text"><span>Скрыть</span><span>Развернуть</span></span><span class="match-acc-arrow">
                                   <svg>
                                     <use xlink:href="#arrow"></use>
                                   </svg></span></div>
@@ -1338,11 +1330,11 @@
                                         <div class="match-item-versus">
                                           <div class="match-item-team">
                                             <div class="match-item-name">Хабиб</div>
-                                            <div class="match-item-img"><img src="img/icons/user.svg" alt="Team"/></div>
+                                            <div class="match-item-img"><img src="img/team/no-logo.svg" alt="Team"/></div>
                                           </div>
                                           <div class="match-item-score match-item-score-vs">VS</div>
                                           <div class="match-item-team">
-                                            <div class="match-item-img"><img src="img/icons/user.svg" alt="Team"/></div>
+                                            <div class="match-item-img"><img src="img/team/no-logo.svg" alt="Team"/></div>
                                             <div class="match-item-name">Порье</div>
                                           </div>
                                         </div></a></div>
@@ -1364,7 +1356,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="match-tabBlock js-tabBlock"></div>
                 </div>
               </div>
             </div>

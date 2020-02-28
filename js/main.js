@@ -201,6 +201,2235 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../../node_modules/air-datepicker/src/js/air-datepicker.js":
+/*!**********************************************************************************************************************!*\
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/air-datepicker/src/js/air-datepicker.js ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./datepicker */ "../../node_modules/air-datepicker/src/js/datepicker.js");
+
+__webpack_require__(/*! ./body */ "../../node_modules/air-datepicker/src/js/body.js");
+
+__webpack_require__(/*! ./navigation */ "../../node_modules/air-datepicker/src/js/navigation.js");
+
+__webpack_require__(/*! ./timepicker */ "../../node_modules/air-datepicker/src/js/timepicker.js");
+
+/***/ }),
+
+/***/ "../../node_modules/air-datepicker/src/js/body.js":
+/*!************************************************************************************************************!*\
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/air-datepicker/src/js/body.js ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {;
+
+(function () {
+  var templates = {
+    days: '' + '<div class="datepicker--days datepicker--body">' + '<div class="datepicker--days-names"></div>' + '<div class="datepicker--cells datepicker--cells-days"></div>' + '</div>',
+    months: '' + '<div class="datepicker--months datepicker--body">' + '<div class="datepicker--cells datepicker--cells-months"></div>' + '</div>',
+    years: '' + '<div class="datepicker--years datepicker--body">' + '<div class="datepicker--cells datepicker--cells-years"></div>' + '</div>'
+  },
+      datepicker = $.fn.datepicker,
+      dp = datepicker.Constructor;
+
+  datepicker.Body = function (d, type, opts) {
+    this.d = d;
+    this.type = type;
+    this.opts = opts;
+    this.$el = $('');
+    if (this.opts.onlyTimepicker) return;
+    this.init();
+  };
+
+  datepicker.Body.prototype = {
+    init: function init() {
+      this._buildBaseHtml();
+
+      this._render();
+
+      this._bindEvents();
+    },
+    _bindEvents: function _bindEvents() {
+      this.$el.on('click', '.datepicker--cell', $.proxy(this._onClickCell, this));
+    },
+    _buildBaseHtml: function _buildBaseHtml() {
+      this.$el = $(templates[this.type]).appendTo(this.d.$content);
+      this.$names = $('.datepicker--days-names', this.$el);
+      this.$cells = $('.datepicker--cells', this.$el);
+    },
+    _getDayNamesHtml: function _getDayNamesHtml(firstDay, curDay, html, i) {
+      curDay = curDay != undefined ? curDay : firstDay;
+      html = html ? html : '';
+      i = i != undefined ? i : 0;
+      if (i > 7) return html;
+      if (curDay == 7) return this._getDayNamesHtml(firstDay, 0, html, ++i);
+      html += '<div class="datepicker--day-name' + (this.d.isWeekend(curDay) ? " -weekend-" : "") + '">' + this.d.loc.daysMin[curDay] + '</div>';
+      return this._getDayNamesHtml(firstDay, ++curDay, html, ++i);
+    },
+    _getCellContents: function _getCellContents(date, type) {
+      var classes = "datepicker--cell datepicker--cell-" + type,
+          currentDate = new Date(),
+          parent = this.d,
+          minRange = dp.resetTime(parent.minRange),
+          maxRange = dp.resetTime(parent.maxRange),
+          opts = parent.opts,
+          d = dp.getParsedDate(date),
+          render = {},
+          html = d.date;
+
+      switch (type) {
+        case 'day':
+          if (parent.isWeekend(d.day)) classes += " -weekend-";
+
+          if (d.month != this.d.parsedDate.month) {
+            classes += " -other-month-";
+
+            if (!opts.selectOtherMonths) {
+              classes += " -disabled-";
+            }
+
+            if (!opts.showOtherMonths) html = '';
+          }
+
+          break;
+
+        case 'month':
+          html = parent.loc[parent.opts.monthsField][d.month];
+          break;
+
+        case 'year':
+          var decade = parent.curDecade;
+          html = d.year;
+
+          if (d.year < decade[0] || d.year > decade[1]) {
+            classes += ' -other-decade-';
+
+            if (!opts.selectOtherYears) {
+              classes += " -disabled-";
+            }
+
+            if (!opts.showOtherYears) html = '';
+          }
+
+          break;
+      }
+
+      if (opts.onRenderCell) {
+        render = opts.onRenderCell(date, type) || {};
+        html = render.html ? render.html : html;
+        classes += render.classes ? ' ' + render.classes : '';
+      }
+
+      if (opts.range) {
+        if (dp.isSame(minRange, date, type)) classes += ' -range-from-';
+        if (dp.isSame(maxRange, date, type)) classes += ' -range-to-';
+
+        if (parent.selectedDates.length == 1 && parent.focused) {
+          if (dp.bigger(minRange, date) && dp.less(parent.focused, date) || dp.less(maxRange, date) && dp.bigger(parent.focused, date)) {
+            classes += ' -in-range-';
+          }
+
+          if (dp.less(maxRange, date) && dp.isSame(parent.focused, date)) {
+            classes += ' -range-from-';
+          }
+
+          if (dp.bigger(minRange, date) && dp.isSame(parent.focused, date)) {
+            classes += ' -range-to-';
+          }
+        } else if (parent.selectedDates.length == 2) {
+          if (dp.bigger(minRange, date) && dp.less(maxRange, date)) {
+            classes += ' -in-range-';
+          }
+        }
+      }
+
+      if (dp.isSame(currentDate, date, type)) classes += ' -current-';
+      if (parent.focused && dp.isSame(date, parent.focused, type)) classes += ' -focus-';
+      if (parent._isSelected(date, type)) classes += ' -selected-';
+      if (!parent._isInRange(date, type) || render.disabled) classes += ' -disabled-';
+      return {
+        html: html,
+        classes: classes
+      };
+    },
+
+    /**
+     * Calculates days number to render. Generates days html and returns it.
+     * @param {object} date - Date object
+     * @returns {string}
+     * @private
+     */
+    _getDaysHtml: function _getDaysHtml(date) {
+      var totalMonthDays = dp.getDaysCount(date),
+          firstMonthDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay(),
+          lastMonthDay = new Date(date.getFullYear(), date.getMonth(), totalMonthDays).getDay(),
+          daysFromPevMonth = firstMonthDay - this.d.loc.firstDay,
+          daysFromNextMonth = 6 - lastMonthDay + this.d.loc.firstDay;
+      daysFromPevMonth = daysFromPevMonth < 0 ? daysFromPevMonth + 7 : daysFromPevMonth;
+      daysFromNextMonth = daysFromNextMonth > 6 ? daysFromNextMonth - 7 : daysFromNextMonth;
+      var startDayIndex = -daysFromPevMonth + 1,
+          m,
+          y,
+          html = '';
+
+      for (var i = startDayIndex, max = totalMonthDays + daysFromNextMonth; i <= max; i++) {
+        y = date.getFullYear();
+        m = date.getMonth();
+        html += this._getDayHtml(new Date(y, m, i));
+      }
+
+      return html;
+    },
+    _getDayHtml: function _getDayHtml(date) {
+      var content = this._getCellContents(date, 'day');
+
+      return '<div class="' + content.classes + '" ' + 'data-date="' + date.getDate() + '" ' + 'data-month="' + date.getMonth() + '" ' + 'data-year="' + date.getFullYear() + '">' + content.html + '</div>';
+    },
+
+    /**
+     * Generates months html
+     * @param {object} date - date instance
+     * @returns {string}
+     * @private
+     */
+    _getMonthsHtml: function _getMonthsHtml(date) {
+      var html = '',
+          d = dp.getParsedDate(date),
+          i = 0;
+
+      while (i < 12) {
+        html += this._getMonthHtml(new Date(d.year, i));
+        i++;
+      }
+
+      return html;
+    },
+    _getMonthHtml: function _getMonthHtml(date) {
+      var content = this._getCellContents(date, 'month');
+
+      return '<div class="' + content.classes + '" data-month="' + date.getMonth() + '">' + content.html + '</div>';
+    },
+    _getYearsHtml: function _getYearsHtml(date) {
+      var d = dp.getParsedDate(date),
+          decade = dp.getDecade(date),
+          firstYear = decade[0] - 1,
+          html = '',
+          i = firstYear;
+
+      for (i; i <= decade[1] + 1; i++) {
+        html += this._getYearHtml(new Date(i, 0));
+      }
+
+      return html;
+    },
+    _getYearHtml: function _getYearHtml(date) {
+      var content = this._getCellContents(date, 'year');
+
+      return '<div class="' + content.classes + '" data-year="' + date.getFullYear() + '">' + content.html + '</div>';
+    },
+    _renderTypes: {
+      days: function days() {
+        var dayNames = this._getDayNamesHtml(this.d.loc.firstDay),
+            days = this._getDaysHtml(this.d.currentDate);
+
+        this.$cells.html(days);
+        this.$names.html(dayNames);
+      },
+      months: function months() {
+        var html = this._getMonthsHtml(this.d.currentDate);
+
+        this.$cells.html(html);
+      },
+      years: function years() {
+        var html = this._getYearsHtml(this.d.currentDate);
+
+        this.$cells.html(html);
+      }
+    },
+    _render: function _render() {
+      if (this.opts.onlyTimepicker) return;
+
+      this._renderTypes[this.type].bind(this)();
+    },
+    _update: function _update() {
+      var $cells = $('.datepicker--cell', this.$cells),
+          _this = this,
+          classes,
+          $cell,
+          date;
+
+      $cells.each(function (cell, i) {
+        $cell = $(this);
+        date = _this.d._getDateFromCell($(this));
+        classes = _this._getCellContents(date, _this.d.cellType);
+        $cell.attr('class', classes.classes);
+      });
+    },
+    show: function show() {
+      if (this.opts.onlyTimepicker) return;
+      this.$el.addClass('active');
+      this.acitve = true;
+    },
+    hide: function hide() {
+      this.$el.removeClass('active');
+      this.active = false;
+    },
+    //  Events
+    // -------------------------------------------------
+    _handleClick: function _handleClick(el) {
+      var date = el.data('date') || 1,
+          month = el.data('month') || 0,
+          year = el.data('year') || this.d.parsedDate.year,
+          dp = this.d; // Change view if min view does not reach yet
+
+      if (dp.view != this.opts.minView) {
+        dp.down(new Date(year, month, date));
+        return;
+      } // Select date if min view is reached
+
+
+      var selectedDate = new Date(year, month, date),
+          alreadySelected = this.d._isSelected(selectedDate, this.d.cellType);
+
+      if (!alreadySelected) {
+        dp._trigger('clickCell', selectedDate);
+
+        return;
+      }
+
+      dp._handleAlreadySelectedDates.bind(dp, alreadySelected, selectedDate)();
+    },
+    _onClickCell: function _onClickCell(e) {
+      var $el = $(e.target).closest('.datepicker--cell');
+      if ($el.hasClass('-disabled-')) return;
+
+      this._handleClick.bind(this)($el);
+    }
+  };
+})();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "../../node_modules/air-datepicker/src/js/datepicker.js":
+/*!******************************************************************************************************************!*\
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/air-datepicker/src/js/datepicker.js ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+;
+
+(function () {
+  var VERSION = '2.2.3',
+      pluginName = 'datepicker',
+      autoInitSelector = '.datepicker-here',
+      $body,
+      $datepickersContainer,
+      containerBuilt = false,
+      baseTemplate = '' + '<div class="datepicker">' + '<i class="datepicker--pointer"></i>' + '<nav class="datepicker--nav"></nav>' + '<div class="datepicker--content"></div>' + '</div>',
+      defaults = {
+    classes: '',
+    inline: false,
+    language: 'ru',
+    startDate: new Date(),
+    firstDay: '',
+    weekends: [6, 0],
+    dateFormat: '',
+    altField: '',
+    altFieldDateFormat: '@',
+    toggleSelected: true,
+    keyboardNav: true,
+    position: 'bottom left',
+    offset: 12,
+    view: 'days',
+    minView: 'days',
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    moveToOtherMonthsOnSelect: true,
+    showOtherYears: true,
+    selectOtherYears: true,
+    moveToOtherYearsOnSelect: true,
+    minDate: '',
+    maxDate: '',
+    disableNavWhenOutOfRange: true,
+    multipleDates: false,
+    // Boolean or Number
+    multipleDatesSeparator: ',',
+    range: false,
+    todayButton: false,
+    clearButton: false,
+    showEvent: 'focus',
+    autoClose: false,
+    // navigation
+    monthsField: 'monthsShort',
+    prevHtml: '<svg><path d="M 17,12 l -5,5 l 5,5"></path></svg>',
+    nextHtml: '<svg><path d="M 14,12 l 5,5 l -5,5"></path></svg>',
+    navTitles: {
+      days: 'MM, <i>yyyy</i>',
+      months: 'yyyy',
+      years: 'yyyy1 - yyyy2'
+    },
+    // timepicker
+    timepicker: false,
+    onlyTimepicker: false,
+    dateTimeSeparator: ' ',
+    timeFormat: '',
+    minHours: 0,
+    maxHours: 24,
+    minMinutes: 0,
+    maxMinutes: 59,
+    hoursStep: 1,
+    minutesStep: 1,
+    // events
+    onSelect: '',
+    onShow: '',
+    onHide: '',
+    onChangeMonth: '',
+    onChangeYear: '',
+    onChangeDecade: '',
+    onChangeView: '',
+    onRenderCell: ''
+  },
+      hotKeys = {
+    'ctrlRight': [17, 39],
+    'ctrlUp': [17, 38],
+    'ctrlLeft': [17, 37],
+    'ctrlDown': [17, 40],
+    'shiftRight': [16, 39],
+    'shiftUp': [16, 38],
+    'shiftLeft': [16, 37],
+    'shiftDown': [16, 40],
+    'altUp': [18, 38],
+    'altRight': [18, 39],
+    'altLeft': [18, 37],
+    'altDown': [18, 40],
+    'ctrlShiftUp': [16, 17, 38]
+  },
+      datepicker;
+
+  var Datepicker = function Datepicker(el, options) {
+    this.el = el;
+    this.$el = $(el);
+    this.opts = $.extend(true, {}, defaults, options, this.$el.data());
+
+    if ($body == undefined) {
+      $body = $('body');
+    }
+
+    if (!this.opts.startDate) {
+      this.opts.startDate = new Date();
+    }
+
+    if (this.el.nodeName == 'INPUT') {
+      this.elIsInput = true;
+    }
+
+    if (this.opts.altField) {
+      this.$altField = typeof this.opts.altField == 'string' ? $(this.opts.altField) : this.opts.altField;
+    }
+
+    this.inited = false;
+    this.visible = false;
+    this.silent = false; // Need to prevent unnecessary rendering
+
+    this.currentDate = this.opts.startDate;
+    this.currentView = this.opts.view;
+
+    this._createShortCuts();
+
+    this.selectedDates = [];
+    this.views = {};
+    this.keys = [];
+    this.minRange = '';
+    this.maxRange = '';
+    this._prevOnSelectValue = '';
+    this.init();
+  };
+
+  datepicker = Datepicker;
+  datepicker.prototype = {
+    VERSION: VERSION,
+    viewIndexes: ['days', 'months', 'years'],
+    init: function init() {
+      if (!containerBuilt && !this.opts.inline && this.elIsInput) {
+        this._buildDatepickersContainer();
+      }
+
+      this._buildBaseHtml();
+
+      this._defineLocale(this.opts.language);
+
+      this._syncWithMinMaxDates();
+
+      if (this.elIsInput) {
+        if (!this.opts.inline) {
+          // Set extra classes for proper transitions
+          this._setPositionClasses(this.opts.position);
+
+          this._bindEvents();
+        }
+
+        if (this.opts.keyboardNav && !this.opts.onlyTimepicker) {
+          this._bindKeyboardEvents();
+        }
+
+        this.$datepicker.on('mousedown', this._onMouseDownDatepicker.bind(this));
+        this.$datepicker.on('mouseup', this._onMouseUpDatepicker.bind(this));
+      }
+
+      if (this.opts.classes) {
+        this.$datepicker.addClass(this.opts.classes);
+      }
+
+      if (this.opts.timepicker) {
+        this.timepicker = new $.fn.datepicker.Timepicker(this, this.opts);
+
+        this._bindTimepickerEvents();
+      }
+
+      if (this.opts.onlyTimepicker) {
+        this.$datepicker.addClass('-only-timepicker-');
+      }
+
+      this.views[this.currentView] = new $.fn.datepicker.Body(this, this.currentView, this.opts);
+      this.views[this.currentView].show();
+      this.nav = new $.fn.datepicker.Navigation(this, this.opts);
+      this.view = this.currentView;
+      this.$el.on('clickCell.adp', this._onClickCell.bind(this));
+      this.$datepicker.on('mouseenter', '.datepicker--cell', this._onMouseEnterCell.bind(this));
+      this.$datepicker.on('mouseleave', '.datepicker--cell', this._onMouseLeaveCell.bind(this));
+      this.inited = true;
+    },
+    _createShortCuts: function _createShortCuts() {
+      this.minDate = this.opts.minDate ? this.opts.minDate : new Date(-8639999913600000);
+      this.maxDate = this.opts.maxDate ? this.opts.maxDate : new Date(8639999913600000);
+    },
+    _bindEvents: function _bindEvents() {
+      this.$el.on(this.opts.showEvent + '.adp', this._onShowEvent.bind(this));
+      this.$el.on('mouseup.adp', this._onMouseUpEl.bind(this));
+      this.$el.on('blur.adp', this._onBlur.bind(this));
+      this.$el.on('keyup.adp', this._onKeyUpGeneral.bind(this));
+      $(window).on('resize.adp', this._onResize.bind(this));
+      $('body').on('mouseup.adp', this._onMouseUpBody.bind(this));
+    },
+    _bindKeyboardEvents: function _bindKeyboardEvents() {
+      this.$el.on('keydown.adp', this._onKeyDown.bind(this));
+      this.$el.on('keyup.adp', this._onKeyUp.bind(this));
+      this.$el.on('hotKey.adp', this._onHotKey.bind(this));
+    },
+    _bindTimepickerEvents: function _bindTimepickerEvents() {
+      this.$el.on('timeChange.adp', this._onTimeChange.bind(this));
+    },
+    isWeekend: function isWeekend(day) {
+      return this.opts.weekends.indexOf(day) !== -1;
+    },
+    _defineLocale: function _defineLocale(lang) {
+      if (typeof lang == 'string') {
+        this.loc = $.fn.datepicker.language[lang];
+
+        if (!this.loc) {
+          console.warn('Can\'t find language "' + lang + '" in Datepicker.language, will use "ru" instead');
+          this.loc = $.extend(true, {}, $.fn.datepicker.language.ru);
+        }
+
+        this.loc = $.extend(true, {}, $.fn.datepicker.language.ru, $.fn.datepicker.language[lang]);
+      } else {
+        this.loc = $.extend(true, {}, $.fn.datepicker.language.ru, lang);
+      }
+
+      if (this.opts.dateFormat) {
+        this.loc.dateFormat = this.opts.dateFormat;
+      }
+
+      if (this.opts.timeFormat) {
+        this.loc.timeFormat = this.opts.timeFormat;
+      }
+
+      if (this.opts.firstDay !== '') {
+        this.loc.firstDay = this.opts.firstDay;
+      }
+
+      if (this.opts.timepicker) {
+        this.loc.dateFormat = [this.loc.dateFormat, this.loc.timeFormat].join(this.opts.dateTimeSeparator);
+      }
+
+      if (this.opts.onlyTimepicker) {
+        this.loc.dateFormat = this.loc.timeFormat;
+      }
+
+      var boundary = this._getWordBoundaryRegExp;
+
+      if (this.loc.timeFormat.match(boundary('aa')) || this.loc.timeFormat.match(boundary('AA'))) {
+        this.ampm = true;
+      }
+    },
+    _buildDatepickersContainer: function _buildDatepickersContainer() {
+      containerBuilt = true;
+      $body.append('<div class="datepickers-container" id="datepickers-container"></div>');
+      $datepickersContainer = $('#datepickers-container');
+    },
+    _buildBaseHtml: function _buildBaseHtml() {
+      var $appendTarget,
+          $inline = $('<div class="datepicker-inline">');
+
+      if (this.el.nodeName == 'INPUT') {
+        if (!this.opts.inline) {
+          $appendTarget = $datepickersContainer;
+        } else {
+          $appendTarget = $inline.insertAfter(this.$el);
+        }
+      } else {
+        $appendTarget = $inline.appendTo(this.$el);
+      }
+
+      this.$datepicker = $(baseTemplate).appendTo($appendTarget);
+      this.$content = $('.datepicker--content', this.$datepicker);
+      this.$nav = $('.datepicker--nav', this.$datepicker);
+    },
+    _triggerOnChange: function _triggerOnChange() {
+      if (!this.selectedDates.length) {
+        // Prevent from triggering multiple onSelect callback with same argument (empty string) in IE10-11
+        if (this._prevOnSelectValue === '') return;
+        this._prevOnSelectValue = '';
+        return this.opts.onSelect('', '', this);
+      }
+
+      var selectedDates = this.selectedDates,
+          parsedSelected = datepicker.getParsedDate(selectedDates[0]),
+          formattedDates,
+          _this = this,
+          dates = new Date(parsedSelected.year, parsedSelected.month, parsedSelected.date, parsedSelected.hours, parsedSelected.minutes);
+
+      formattedDates = selectedDates.map(function (date) {
+        return _this.formatDate(_this.loc.dateFormat, date);
+      }).join(this.opts.multipleDatesSeparator); // Create new dates array, to separate it from original selectedDates
+
+      if (this.opts.multipleDates || this.opts.range) {
+        dates = selectedDates.map(function (date) {
+          var parsedDate = datepicker.getParsedDate(date);
+          return new Date(parsedDate.year, parsedDate.month, parsedDate.date, parsedDate.hours, parsedDate.minutes);
+        });
+      }
+
+      this._prevOnSelectValue = formattedDates;
+      this.opts.onSelect(formattedDates, dates, this);
+    },
+    next: function next() {
+      var d = this.parsedDate,
+          o = this.opts;
+
+      switch (this.view) {
+        case 'days':
+          this.date = new Date(d.year, d.month + 1, 1);
+          if (o.onChangeMonth) o.onChangeMonth(this.parsedDate.month, this.parsedDate.year);
+          break;
+
+        case 'months':
+          this.date = new Date(d.year + 1, d.month, 1);
+          if (o.onChangeYear) o.onChangeYear(this.parsedDate.year);
+          break;
+
+        case 'years':
+          this.date = new Date(d.year + 10, 0, 1);
+          if (o.onChangeDecade) o.onChangeDecade(this.curDecade);
+          break;
+      }
+    },
+    prev: function prev() {
+      var d = this.parsedDate,
+          o = this.opts;
+
+      switch (this.view) {
+        case 'days':
+          this.date = new Date(d.year, d.month - 1, 1);
+          if (o.onChangeMonth) o.onChangeMonth(this.parsedDate.month, this.parsedDate.year);
+          break;
+
+        case 'months':
+          this.date = new Date(d.year - 1, d.month, 1);
+          if (o.onChangeYear) o.onChangeYear(this.parsedDate.year);
+          break;
+
+        case 'years':
+          this.date = new Date(d.year - 10, 0, 1);
+          if (o.onChangeDecade) o.onChangeDecade(this.curDecade);
+          break;
+      }
+    },
+    formatDate: function formatDate(string, date) {
+      date = date || this.date;
+      var result = string,
+          boundary = this._getWordBoundaryRegExp,
+          locale = this.loc,
+          leadingZero = datepicker.getLeadingZeroNum,
+          decade = datepicker.getDecade(date),
+          d = datepicker.getParsedDate(date),
+          fullHours = d.fullHours,
+          hours = d.hours,
+          ampm = string.match(boundary('aa')) || string.match(boundary('AA')),
+          dayPeriod = 'am',
+          replacer = this._replacer,
+          validHours;
+
+      if (this.opts.timepicker && this.timepicker && ampm) {
+        validHours = this.timepicker._getValidHoursFromDate(date, ampm);
+        fullHours = leadingZero(validHours.hours);
+        hours = validHours.hours;
+        dayPeriod = validHours.dayPeriod;
+      }
+
+      switch (true) {
+        case /@/.test(result):
+          result = result.replace(/@/, date.getTime());
+
+        case /aa/.test(result):
+          result = replacer(result, boundary('aa'), dayPeriod);
+
+        case /AA/.test(result):
+          result = replacer(result, boundary('AA'), dayPeriod.toUpperCase());
+
+        case /dd/.test(result):
+          result = replacer(result, boundary('dd'), d.fullDate);
+
+        case /d/.test(result):
+          result = replacer(result, boundary('d'), d.date);
+
+        case /DD/.test(result):
+          result = replacer(result, boundary('DD'), locale.days[d.day]);
+
+        case /D/.test(result):
+          result = replacer(result, boundary('D'), locale.daysShort[d.day]);
+
+        case /mm/.test(result):
+          result = replacer(result, boundary('mm'), d.fullMonth);
+
+        case /m/.test(result):
+          result = replacer(result, boundary('m'), d.month + 1);
+
+        case /MM/.test(result):
+          result = replacer(result, boundary('MM'), this.loc.months[d.month]);
+
+        case /M/.test(result):
+          result = replacer(result, boundary('M'), locale.monthsShort[d.month]);
+
+        case /ii/.test(result):
+          result = replacer(result, boundary('ii'), d.fullMinutes);
+
+        case /i/.test(result):
+          result = replacer(result, boundary('i'), d.minutes);
+
+        case /hh/.test(result):
+          result = replacer(result, boundary('hh'), fullHours);
+
+        case /h/.test(result):
+          result = replacer(result, boundary('h'), hours);
+
+        case /yyyy/.test(result):
+          result = replacer(result, boundary('yyyy'), d.year);
+
+        case /yyyy1/.test(result):
+          result = replacer(result, boundary('yyyy1'), decade[0]);
+
+        case /yyyy2/.test(result):
+          result = replacer(result, boundary('yyyy2'), decade[1]);
+
+        case /yy/.test(result):
+          result = replacer(result, boundary('yy'), d.year.toString().slice(-2));
+      }
+
+      return result;
+    },
+    _replacer: function _replacer(str, reg, data) {
+      return str.replace(reg, function (match, p1, p2, p3) {
+        return p1 + data + p3;
+      });
+    },
+    _getWordBoundaryRegExp: function _getWordBoundaryRegExp(sign) {
+      var symbols = '\\s|\\.|-|/|\\\\|,|\\$|\\!|\\?|:|;';
+      return new RegExp('(^|>|' + symbols + ')(' + sign + ')($|<|' + symbols + ')', 'g');
+    },
+    selectDate: function selectDate(date) {
+      var _this = this,
+          opts = _this.opts,
+          d = _this.parsedDate,
+          selectedDates = _this.selectedDates,
+          len = selectedDates.length,
+          newDate = '';
+
+      if (Array.isArray(date)) {
+        date.forEach(function (d) {
+          _this.selectDate(d);
+        });
+        return;
+      }
+
+      if (!(date instanceof Date)) return;
+      this.lastSelectedDate = date; // Set new time values from Date
+
+      if (this.timepicker) {
+        this.timepicker._setTime(date);
+      } // On this step timepicker will set valid values in it's instance
+
+
+      _this._trigger('selectDate', date); // Set correct time values after timepicker's validation
+      // Prevent from setting hours or minutes which values are lesser then `min` value or
+      // greater then `max` value
+
+
+      if (this.timepicker) {
+        date.setHours(this.timepicker.hours);
+        date.setMinutes(this.timepicker.minutes);
+      }
+
+      if (_this.view == 'days') {
+        if (date.getMonth() != d.month && opts.moveToOtherMonthsOnSelect) {
+          newDate = new Date(date.getFullYear(), date.getMonth(), 1);
+        }
+      }
+
+      if (_this.view == 'years') {
+        if (date.getFullYear() != d.year && opts.moveToOtherYearsOnSelect) {
+          newDate = new Date(date.getFullYear(), 0, 1);
+        }
+      }
+
+      if (newDate) {
+        _this.silent = true;
+        _this.date = newDate;
+        _this.silent = false;
+
+        _this.nav._render();
+      }
+
+      if (opts.multipleDates && !opts.range) {
+        // Set priority to range functionality
+        if (len === opts.multipleDates) return;
+
+        if (!_this._isSelected(date)) {
+          _this.selectedDates.push(date);
+        }
+      } else if (opts.range) {
+        if (len == 2) {
+          _this.selectedDates = [date];
+          _this.minRange = date;
+          _this.maxRange = '';
+        } else if (len == 1) {
+          _this.selectedDates.push(date);
+
+          if (!_this.maxRange) {
+            _this.maxRange = date;
+          } else {
+            _this.minRange = date;
+          } // Swap dates if they were selected via dp.selectDate() and second date was smaller then first
+
+
+          if (datepicker.bigger(_this.maxRange, _this.minRange)) {
+            _this.maxRange = _this.minRange;
+            _this.minRange = date;
+          }
+
+          _this.selectedDates = [_this.minRange, _this.maxRange];
+        } else {
+          _this.selectedDates = [date];
+          _this.minRange = date;
+        }
+      } else {
+        _this.selectedDates = [date];
+      }
+
+      _this._setInputValue();
+
+      if (opts.onSelect) {
+        _this._triggerOnChange();
+      }
+
+      if (opts.autoClose && !this.timepickerIsActive) {
+        if (!opts.multipleDates && !opts.range) {
+          _this.hide();
+        } else if (opts.range && _this.selectedDates.length == 2) {
+          _this.hide();
+        }
+      }
+
+      _this.views[this.currentView]._render();
+    },
+    removeDate: function removeDate(date) {
+      var selected = this.selectedDates,
+          _this = this;
+
+      if (!(date instanceof Date)) return;
+      return selected.some(function (curDate, i) {
+        if (datepicker.isSame(curDate, date)) {
+          selected.splice(i, 1);
+
+          if (!_this.selectedDates.length) {
+            _this.minRange = '';
+            _this.maxRange = '';
+            _this.lastSelectedDate = '';
+          } else {
+            _this.lastSelectedDate = _this.selectedDates[_this.selectedDates.length - 1];
+          }
+
+          _this.views[_this.currentView]._render();
+
+          _this._setInputValue();
+
+          if (_this.opts.onSelect) {
+            _this._triggerOnChange();
+          }
+
+          return true;
+        }
+      });
+    },
+    today: function today() {
+      this.silent = true;
+      this.view = this.opts.minView;
+      this.silent = false;
+      this.date = new Date();
+
+      if (this.opts.todayButton instanceof Date) {
+        this.selectDate(this.opts.todayButton);
+      }
+    },
+    clear: function clear() {
+      this.selectedDates = [];
+      this.minRange = '';
+      this.maxRange = '';
+
+      this.views[this.currentView]._render();
+
+      this._setInputValue();
+
+      if (this.opts.onSelect) {
+        this._triggerOnChange();
+      }
+    },
+
+    /**
+     * Updates datepicker options
+     * @param {String|Object} param - parameter's name to update. If object then it will extend current options
+     * @param {String|Number|Object} [value] - new param value
+     */
+    update: function update(param, value) {
+      var len = arguments.length,
+          lastSelectedDate = this.lastSelectedDate;
+
+      if (len == 2) {
+        this.opts[param] = value;
+      } else if (len == 1 && _typeof(param) == 'object') {
+        this.opts = $.extend(true, this.opts, param);
+      }
+
+      this._createShortCuts();
+
+      this._syncWithMinMaxDates();
+
+      this._defineLocale(this.opts.language);
+
+      this.nav._addButtonsIfNeed();
+
+      if (!this.opts.onlyTimepicker) this.nav._render();
+
+      this.views[this.currentView]._render();
+
+      if (this.elIsInput && !this.opts.inline) {
+        this._setPositionClasses(this.opts.position);
+
+        if (this.visible) {
+          this.setPosition(this.opts.position);
+        }
+      }
+
+      if (this.opts.classes) {
+        this.$datepicker.addClass(this.opts.classes);
+      }
+
+      if (this.opts.onlyTimepicker) {
+        this.$datepicker.addClass('-only-timepicker-');
+      }
+
+      if (this.opts.timepicker) {
+        if (lastSelectedDate) this.timepicker._handleDate(lastSelectedDate);
+
+        this.timepicker._updateRanges();
+
+        this.timepicker._updateCurrentTime(); // Change hours and minutes if it's values have been changed through min/max hours/minutes
+
+
+        if (lastSelectedDate) {
+          lastSelectedDate.setHours(this.timepicker.hours);
+          lastSelectedDate.setMinutes(this.timepicker.minutes);
+        }
+      }
+
+      this._setInputValue();
+
+      return this;
+    },
+    _syncWithMinMaxDates: function _syncWithMinMaxDates() {
+      var curTime = this.date.getTime();
+      this.silent = true;
+
+      if (this.minTime > curTime) {
+        this.date = this.minDate;
+      }
+
+      if (this.maxTime < curTime) {
+        this.date = this.maxDate;
+      }
+
+      this.silent = false;
+    },
+    _isSelected: function _isSelected(checkDate, cellType) {
+      var res = false;
+      this.selectedDates.some(function (date) {
+        if (datepicker.isSame(date, checkDate, cellType)) {
+          res = date;
+          return true;
+        }
+      });
+      return res;
+    },
+    _setInputValue: function _setInputValue() {
+      var _this = this,
+          opts = _this.opts,
+          format = _this.loc.dateFormat,
+          altFormat = opts.altFieldDateFormat,
+          value = _this.selectedDates.map(function (date) {
+        return _this.formatDate(format, date);
+      }),
+          altValues;
+
+      if (opts.altField && _this.$altField.length) {
+        altValues = this.selectedDates.map(function (date) {
+          return _this.formatDate(altFormat, date);
+        });
+        altValues = altValues.join(this.opts.multipleDatesSeparator);
+        this.$altField.val(altValues);
+      }
+
+      value = value.join(this.opts.multipleDatesSeparator);
+      this.$el.val(value);
+    },
+
+    /**
+     * Check if date is between minDate and maxDate
+     * @param date {object} - date object
+     * @param type {string} - cell type
+     * @returns {boolean}
+     * @private
+     */
+    _isInRange: function _isInRange(date, type) {
+      var time = date.getTime(),
+          d = datepicker.getParsedDate(date),
+          min = datepicker.getParsedDate(this.minDate),
+          max = datepicker.getParsedDate(this.maxDate),
+          dMinTime = new Date(d.year, d.month, min.date).getTime(),
+          dMaxTime = new Date(d.year, d.month, max.date).getTime(),
+          types = {
+        day: time >= this.minTime && time <= this.maxTime,
+        month: dMinTime >= this.minTime && dMaxTime <= this.maxTime,
+        year: d.year >= min.year && d.year <= max.year
+      };
+      return type ? types[type] : types.day;
+    },
+    _getDimensions: function _getDimensions($el) {
+      var offset = $el.offset();
+      return {
+        width: $el.outerWidth(),
+        height: $el.outerHeight(),
+        left: offset.left,
+        top: offset.top
+      };
+    },
+    _getDateFromCell: function _getDateFromCell(cell) {
+      var curDate = this.parsedDate,
+          year = cell.data('year') || curDate.year,
+          month = cell.data('month') == undefined ? curDate.month : cell.data('month'),
+          date = cell.data('date') || 1;
+      return new Date(year, month, date);
+    },
+    _setPositionClasses: function _setPositionClasses(pos) {
+      pos = pos.split(' ');
+      var main = pos[0],
+          sec = pos[1],
+          classes = 'datepicker -' + main + '-' + sec + '- -from-' + main + '-';
+      if (this.visible) classes += ' active';
+      this.$datepicker.removeAttr('class').addClass(classes);
+    },
+    setPosition: function setPosition(position) {
+      position = position || this.opts.position;
+
+      var dims = this._getDimensions(this.$el),
+          selfDims = this._getDimensions(this.$datepicker),
+          pos = position.split(' '),
+          top,
+          left,
+          offset = this.opts.offset,
+          main = pos[0],
+          secondary = pos[1];
+
+      switch (main) {
+        case 'top':
+          top = dims.top - selfDims.height - offset;
+          break;
+
+        case 'right':
+          left = dims.left + dims.width + offset;
+          break;
+
+        case 'bottom':
+          top = dims.top + dims.height + offset;
+          break;
+
+        case 'left':
+          left = dims.left - selfDims.width - offset;
+          break;
+      }
+
+      switch (secondary) {
+        case 'top':
+          top = dims.top;
+          break;
+
+        case 'right':
+          left = dims.left + dims.width - selfDims.width;
+          break;
+
+        case 'bottom':
+          top = dims.top + dims.height - selfDims.height;
+          break;
+
+        case 'left':
+          left = dims.left;
+          break;
+
+        case 'center':
+          if (/left|right/.test(main)) {
+            top = dims.top + dims.height / 2 - selfDims.height / 2;
+          } else {
+            left = dims.left + dims.width / 2 - selfDims.width / 2;
+          }
+
+      }
+
+      this.$datepicker.css({
+        left: left,
+        top: top
+      });
+    },
+    show: function show() {
+      var onShow = this.opts.onShow;
+      this.setPosition(this.opts.position);
+      this.$datepicker.addClass('active');
+      this.visible = true;
+
+      if (onShow) {
+        this._bindVisionEvents(onShow);
+      }
+    },
+    hide: function hide() {
+      var onHide = this.opts.onHide;
+      this.$datepicker.removeClass('active').css({
+        left: '-100000px'
+      });
+      this.focused = '';
+      this.keys = [];
+      this.inFocus = false;
+      this.visible = false;
+      this.$el.blur();
+
+      if (onHide) {
+        this._bindVisionEvents(onHide);
+      }
+    },
+    down: function down(date) {
+      this._changeView(date, 'down');
+    },
+    up: function up(date) {
+      this._changeView(date, 'up');
+    },
+    _bindVisionEvents: function _bindVisionEvents(event) {
+      this.$datepicker.off('transitionend.dp');
+      event(this, false);
+      this.$datepicker.one('transitionend.dp', event.bind(this, this, true));
+    },
+    _changeView: function _changeView(date, dir) {
+      date = date || this.focused || this.date;
+      var nextView = dir == 'up' ? this.viewIndex + 1 : this.viewIndex - 1;
+      if (nextView > 2) nextView = 2;
+      if (nextView < 0) nextView = 0;
+      this.silent = true;
+      this.date = new Date(date.getFullYear(), date.getMonth(), 1);
+      this.silent = false;
+      this.view = this.viewIndexes[nextView];
+    },
+    _handleHotKey: function _handleHotKey(key) {
+      var date = datepicker.getParsedDate(this._getFocusedDate()),
+          focusedParsed,
+          o = this.opts,
+          newDate,
+          totalDaysInNextMonth,
+          monthChanged = false,
+          yearChanged = false,
+          decadeChanged = false,
+          y = date.year,
+          m = date.month,
+          d = date.date;
+
+      switch (key) {
+        case 'ctrlRight':
+        case 'ctrlUp':
+          m += 1;
+          monthChanged = true;
+          break;
+
+        case 'ctrlLeft':
+        case 'ctrlDown':
+          m -= 1;
+          monthChanged = true;
+          break;
+
+        case 'shiftRight':
+        case 'shiftUp':
+          yearChanged = true;
+          y += 1;
+          break;
+
+        case 'shiftLeft':
+        case 'shiftDown':
+          yearChanged = true;
+          y -= 1;
+          break;
+
+        case 'altRight':
+        case 'altUp':
+          decadeChanged = true;
+          y += 10;
+          break;
+
+        case 'altLeft':
+        case 'altDown':
+          decadeChanged = true;
+          y -= 10;
+          break;
+
+        case 'ctrlShiftUp':
+          this.up();
+          break;
+      }
+
+      totalDaysInNextMonth = datepicker.getDaysCount(new Date(y, m));
+      newDate = new Date(y, m, d); // If next month has less days than current, set date to total days in that month
+
+      if (totalDaysInNextMonth < d) d = totalDaysInNextMonth; // Check if newDate is in valid range
+
+      if (newDate.getTime() < this.minTime) {
+        newDate = this.minDate;
+      } else if (newDate.getTime() > this.maxTime) {
+        newDate = this.maxDate;
+      }
+
+      this.focused = newDate;
+      focusedParsed = datepicker.getParsedDate(newDate);
+
+      if (monthChanged && o.onChangeMonth) {
+        o.onChangeMonth(focusedParsed.month, focusedParsed.year);
+      }
+
+      if (yearChanged && o.onChangeYear) {
+        o.onChangeYear(focusedParsed.year);
+      }
+
+      if (decadeChanged && o.onChangeDecade) {
+        o.onChangeDecade(this.curDecade);
+      }
+    },
+    _registerKey: function _registerKey(key) {
+      var exists = this.keys.some(function (curKey) {
+        return curKey == key;
+      });
+
+      if (!exists) {
+        this.keys.push(key);
+      }
+    },
+    _unRegisterKey: function _unRegisterKey(key) {
+      var index = this.keys.indexOf(key);
+      this.keys.splice(index, 1);
+    },
+    _isHotKeyPressed: function _isHotKeyPressed() {
+      var currentHotKey,
+          found = false,
+          _this = this,
+          pressedKeys = this.keys.sort();
+
+      for (var hotKey in hotKeys) {
+        currentHotKey = hotKeys[hotKey];
+        if (pressedKeys.length != currentHotKey.length) continue;
+
+        if (currentHotKey.every(function (key, i) {
+          return key == pressedKeys[i];
+        })) {
+          _this._trigger('hotKey', hotKey);
+
+          found = true;
+        }
+      }
+
+      return found;
+    },
+    _trigger: function _trigger(event, args) {
+      this.$el.trigger(event, args);
+    },
+    _focusNextCell: function _focusNextCell(keyCode, type) {
+      type = type || this.cellType;
+      var date = datepicker.getParsedDate(this._getFocusedDate()),
+          y = date.year,
+          m = date.month,
+          d = date.date;
+
+      if (this._isHotKeyPressed()) {
+        return;
+      }
+
+      switch (keyCode) {
+        case 37:
+          // left
+          type == 'day' ? d -= 1 : '';
+          type == 'month' ? m -= 1 : '';
+          type == 'year' ? y -= 1 : '';
+          break;
+
+        case 38:
+          // up
+          type == 'day' ? d -= 7 : '';
+          type == 'month' ? m -= 3 : '';
+          type == 'year' ? y -= 4 : '';
+          break;
+
+        case 39:
+          // right
+          type == 'day' ? d += 1 : '';
+          type == 'month' ? m += 1 : '';
+          type == 'year' ? y += 1 : '';
+          break;
+
+        case 40:
+          // down
+          type == 'day' ? d += 7 : '';
+          type == 'month' ? m += 3 : '';
+          type == 'year' ? y += 4 : '';
+          break;
+      }
+
+      var nd = new Date(y, m, d);
+
+      if (nd.getTime() < this.minTime) {
+        nd = this.minDate;
+      } else if (nd.getTime() > this.maxTime) {
+        nd = this.maxDate;
+      }
+
+      this.focused = nd;
+    },
+    _getFocusedDate: function _getFocusedDate() {
+      var focused = this.focused || this.selectedDates[this.selectedDates.length - 1],
+          d = this.parsedDate;
+
+      if (!focused) {
+        switch (this.view) {
+          case 'days':
+            focused = new Date(d.year, d.month, new Date().getDate());
+            break;
+
+          case 'months':
+            focused = new Date(d.year, d.month, 1);
+            break;
+
+          case 'years':
+            focused = new Date(d.year, 0, 1);
+            break;
+        }
+      }
+
+      return focused;
+    },
+    _getCell: function _getCell(date, type) {
+      type = type || this.cellType;
+      var d = datepicker.getParsedDate(date),
+          selector = '.datepicker--cell[data-year="' + d.year + '"]',
+          $cell;
+
+      switch (type) {
+        case 'month':
+          selector = '[data-month="' + d.month + '"]';
+          break;
+
+        case 'day':
+          selector += '[data-month="' + d.month + '"][data-date="' + d.date + '"]';
+          break;
+      }
+
+      $cell = this.views[this.currentView].$el.find(selector);
+      return $cell.length ? $cell : $('');
+    },
+    destroy: function destroy() {
+      var _this = this;
+
+      _this.$el.off('.adp').data('datepicker', '');
+
+      _this.selectedDates = [];
+      _this.focused = '';
+      _this.views = {};
+      _this.keys = [];
+      _this.minRange = '';
+      _this.maxRange = '';
+
+      if (_this.opts.inline || !_this.elIsInput) {
+        _this.$datepicker.closest('.datepicker-inline').remove();
+      } else {
+        _this.$datepicker.remove();
+      }
+    },
+    _handleAlreadySelectedDates: function _handleAlreadySelectedDates(alreadySelected, selectedDate) {
+      if (this.opts.range) {
+        if (!this.opts.toggleSelected) {
+          // Add possibility to select same date when range is true
+          if (this.selectedDates.length != 2) {
+            this._trigger('clickCell', selectedDate);
+          }
+        } else {
+          this.removeDate(selectedDate);
+        }
+      } else if (this.opts.toggleSelected) {
+        this.removeDate(selectedDate);
+      } // Change last selected date to be able to change time when clicking on this cell
+
+
+      if (!this.opts.toggleSelected) {
+        this.lastSelectedDate = alreadySelected;
+
+        if (this.opts.timepicker) {
+          this.timepicker._setTime(alreadySelected);
+
+          this.timepicker.update();
+        }
+      }
+    },
+    _onShowEvent: function _onShowEvent(e) {
+      if (!this.visible) {
+        this.show();
+      }
+    },
+    _onBlur: function _onBlur() {
+      if (!this.inFocus && this.visible) {
+        this.hide();
+      }
+    },
+    _onMouseDownDatepicker: function _onMouseDownDatepicker(e) {
+      this.inFocus = true;
+    },
+    _onMouseUpDatepicker: function _onMouseUpDatepicker(e) {
+      this.inFocus = false;
+      e.originalEvent.inFocus = true;
+      if (!e.originalEvent.timepickerFocus) this.$el.focus();
+    },
+    _onKeyUpGeneral: function _onKeyUpGeneral(e) {
+      var val = this.$el.val();
+
+      if (!val) {
+        this.clear();
+      }
+    },
+    _onResize: function _onResize() {
+      if (this.visible) {
+        this.setPosition();
+      }
+    },
+    _onMouseUpBody: function _onMouseUpBody(e) {
+      if (e.originalEvent.inFocus) return;
+
+      if (this.visible && !this.inFocus) {
+        this.hide();
+      }
+    },
+    _onMouseUpEl: function _onMouseUpEl(e) {
+      e.originalEvent.inFocus = true;
+      setTimeout(this._onKeyUpGeneral.bind(this), 4);
+    },
+    _onKeyDown: function _onKeyDown(e) {
+      var code = e.which;
+
+      this._registerKey(code); // Arrows
+
+
+      if (code >= 37 && code <= 40) {
+        e.preventDefault();
+
+        this._focusNextCell(code);
+      } // Enter
+
+
+      if (code == 13) {
+        if (this.focused) {
+          if (this._getCell(this.focused).hasClass('-disabled-')) return;
+
+          if (this.view != this.opts.minView) {
+            this.down();
+          } else {
+            var alreadySelected = this._isSelected(this.focused, this.cellType);
+
+            if (!alreadySelected) {
+              if (this.timepicker) {
+                this.focused.setHours(this.timepicker.hours);
+                this.focused.setMinutes(this.timepicker.minutes);
+              }
+
+              this.selectDate(this.focused);
+              return;
+            }
+
+            this._handleAlreadySelectedDates(alreadySelected, this.focused);
+          }
+        }
+      } // Esc
+
+
+      if (code == 27) {
+        this.hide();
+      }
+    },
+    _onKeyUp: function _onKeyUp(e) {
+      var code = e.which;
+
+      this._unRegisterKey(code);
+    },
+    _onHotKey: function _onHotKey(e, hotKey) {
+      this._handleHotKey(hotKey);
+    },
+    _onMouseEnterCell: function _onMouseEnterCell(e) {
+      var $cell = $(e.target).closest('.datepicker--cell'),
+          date = this._getDateFromCell($cell); // Prevent from unnecessary rendering and setting new currentDate
+
+
+      this.silent = true;
+
+      if (this.focused) {
+        this.focused = '';
+      }
+
+      $cell.addClass('-focus-');
+      this.focused = date;
+      this.silent = false;
+
+      if (this.opts.range && this.selectedDates.length == 1) {
+        this.minRange = this.selectedDates[0];
+        this.maxRange = '';
+
+        if (datepicker.less(this.minRange, this.focused)) {
+          this.maxRange = this.minRange;
+          this.minRange = '';
+        }
+
+        this.views[this.currentView]._update();
+      }
+    },
+    _onMouseLeaveCell: function _onMouseLeaveCell(e) {
+      var $cell = $(e.target).closest('.datepicker--cell');
+      $cell.removeClass('-focus-');
+      this.silent = true;
+      this.focused = '';
+      this.silent = false;
+    },
+    _onTimeChange: function _onTimeChange(e, h, m) {
+      var date = new Date(),
+          selectedDates = this.selectedDates,
+          selected = false;
+
+      if (selectedDates.length) {
+        selected = true;
+        date = this.lastSelectedDate;
+      }
+
+      date.setHours(h);
+      date.setMinutes(m);
+
+      if (!selected && !this._getCell(date).hasClass('-disabled-')) {
+        this.selectDate(date);
+      } else {
+        this._setInputValue();
+
+        if (this.opts.onSelect) {
+          this._triggerOnChange();
+        }
+      }
+    },
+    _onClickCell: function _onClickCell(e, date) {
+      if (this.timepicker) {
+        date.setHours(this.timepicker.hours);
+        date.setMinutes(this.timepicker.minutes);
+      }
+
+      this.selectDate(date);
+    },
+
+    set focused(val) {
+      if (!val && this.focused) {
+        var $cell = this._getCell(this.focused);
+
+        if ($cell.length) {
+          $cell.removeClass('-focus-');
+        }
+      }
+
+      this._focused = val;
+
+      if (this.opts.range && this.selectedDates.length == 1) {
+        this.minRange = this.selectedDates[0];
+        this.maxRange = '';
+
+        if (datepicker.less(this.minRange, this._focused)) {
+          this.maxRange = this.minRange;
+          this.minRange = '';
+        }
+      }
+
+      if (this.silent) return;
+      this.date = val;
+    },
+
+    get focused() {
+      return this._focused;
+    },
+
+    get parsedDate() {
+      return datepicker.getParsedDate(this.date);
+    },
+
+    set date(val) {
+      if (!(val instanceof Date)) return;
+      this.currentDate = val;
+
+      if (this.inited && !this.silent) {
+        this.views[this.view]._render();
+
+        this.nav._render();
+
+        if (this.visible && this.elIsInput) {
+          this.setPosition();
+        }
+      }
+
+      return val;
+    },
+
+    get date() {
+      return this.currentDate;
+    },
+
+    set view(val) {
+      this.viewIndex = this.viewIndexes.indexOf(val);
+
+      if (this.viewIndex < 0) {
+        return;
+      }
+
+      this.prevView = this.currentView;
+      this.currentView = val;
+
+      if (this.inited) {
+        if (!this.views[val]) {
+          this.views[val] = new $.fn.datepicker.Body(this, val, this.opts);
+        } else {
+          this.views[val]._render();
+        }
+
+        this.views[this.prevView].hide();
+        this.views[val].show();
+
+        this.nav._render();
+
+        if (this.opts.onChangeView) {
+          this.opts.onChangeView(val);
+        }
+
+        if (this.elIsInput && this.visible) this.setPosition();
+      }
+
+      return val;
+    },
+
+    get view() {
+      return this.currentView;
+    },
+
+    get cellType() {
+      return this.view.substring(0, this.view.length - 1);
+    },
+
+    get minTime() {
+      var min = datepicker.getParsedDate(this.minDate);
+      return new Date(min.year, min.month, min.date).getTime();
+    },
+
+    get maxTime() {
+      var max = datepicker.getParsedDate(this.maxDate);
+      return new Date(max.year, max.month, max.date).getTime();
+    },
+
+    get curDecade() {
+      return datepicker.getDecade(this.date);
+    }
+
+  }; //  Utils
+  // -------------------------------------------------
+
+  datepicker.getDaysCount = function (date) {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  };
+
+  datepicker.getParsedDate = function (date) {
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      fullMonth: date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1,
+      // One based
+      date: date.getDate(),
+      fullDate: date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+      day: date.getDay(),
+      hours: date.getHours(),
+      fullHours: date.getHours() < 10 ? '0' + date.getHours() : date.getHours(),
+      minutes: date.getMinutes(),
+      fullMinutes: date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+    };
+  };
+
+  datepicker.getDecade = function (date) {
+    var firstYear = Math.floor(date.getFullYear() / 10) * 10;
+    return [firstYear, firstYear + 9];
+  };
+
+  datepicker.template = function (str, data) {
+    return str.replace(/#\{([\w]+)\}/g, function (source, match) {
+      if (data[match] || data[match] === 0) {
+        return data[match];
+      }
+    });
+  };
+
+  datepicker.isSame = function (date1, date2, type) {
+    if (!date1 || !date2) return false;
+
+    var d1 = datepicker.getParsedDate(date1),
+        d2 = datepicker.getParsedDate(date2),
+        _type = type ? type : 'day',
+        conditions = {
+      day: d1.date == d2.date && d1.month == d2.month && d1.year == d2.year,
+      month: d1.month == d2.month && d1.year == d2.year,
+      year: d1.year == d2.year
+    };
+
+    return conditions[_type];
+  };
+
+  datepicker.less = function (dateCompareTo, date, type) {
+    if (!dateCompareTo || !date) return false;
+    return date.getTime() < dateCompareTo.getTime();
+  };
+
+  datepicker.bigger = function (dateCompareTo, date, type) {
+    if (!dateCompareTo || !date) return false;
+    return date.getTime() > dateCompareTo.getTime();
+  };
+
+  datepicker.getLeadingZeroNum = function (num) {
+    return parseInt(num) < 10 ? '0' + num : num;
+  };
+  /**
+   * Returns copy of date with hours and minutes equals to 0
+   * @param date {Date}
+   */
+
+
+  datepicker.resetTime = function (date) {
+    if (_typeof(date) != 'object') return;
+    date = datepicker.getParsedDate(date);
+    return new Date(date.year, date.month, date.date);
+  };
+
+  $.fn.datepicker = function (options) {
+    return this.each(function () {
+      if (!$.data(this, pluginName)) {
+        $.data(this, pluginName, new Datepicker(this, options));
+      } else {
+        var _this = $.data(this, pluginName);
+
+        _this.opts = $.extend(true, _this.opts, options);
+
+        _this.update();
+      }
+    });
+  };
+
+  $.fn.datepicker.Constructor = Datepicker;
+  $.fn.datepicker.language = {
+    ru: {
+      days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+      daysShort: ['Вос', 'Пон', 'Вто', 'Сре', 'Чет', 'Пят', 'Суб'],
+      daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+      months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+      monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+      today: 'Сегодня',
+      clear: 'Очистить',
+      dateFormat: 'dd.mm.yyyy',
+      timeFormat: 'hh:ii',
+      firstDay: 1
+    }
+  };
+  $(function () {
+    $(autoInitSelector).datepicker();
+  });
+})();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "../../node_modules/air-datepicker/src/js/navigation.js":
+/*!******************************************************************************************************************!*\
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/air-datepicker/src/js/navigation.js ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {;
+
+(function () {
+  var template = '' + '<div class="datepicker--nav-action" data-action="prev">#{prevHtml}</div>' + '<div class="datepicker--nav-title">#{title}</div>' + '<div class="datepicker--nav-action" data-action="next">#{nextHtml}</div>',
+      buttonsContainerTemplate = '<div class="datepicker--buttons"></div>',
+      button = '<span class="datepicker--button" data-action="#{action}">#{label}</span>',
+      datepicker = $.fn.datepicker,
+      dp = datepicker.Constructor;
+
+  datepicker.Navigation = function (d, opts) {
+    this.d = d;
+    this.opts = opts;
+    this.$buttonsContainer = '';
+    this.init();
+  };
+
+  datepicker.Navigation.prototype = {
+    init: function init() {
+      this._buildBaseHtml();
+
+      this._bindEvents();
+    },
+    _bindEvents: function _bindEvents() {
+      this.d.$nav.on('click', '.datepicker--nav-action', $.proxy(this._onClickNavButton, this));
+      this.d.$nav.on('click', '.datepicker--nav-title', $.proxy(this._onClickNavTitle, this));
+      this.d.$datepicker.on('click', '.datepicker--button', $.proxy(this._onClickNavButton, this));
+    },
+    _buildBaseHtml: function _buildBaseHtml() {
+      if (!this.opts.onlyTimepicker) {
+        this._render();
+      }
+
+      this._addButtonsIfNeed();
+    },
+    _addButtonsIfNeed: function _addButtonsIfNeed() {
+      if (this.opts.todayButton) {
+        this._addButton('today');
+      }
+
+      if (this.opts.clearButton) {
+        this._addButton('clear');
+      }
+    },
+    _render: function _render() {
+      var title = this._getTitle(this.d.currentDate),
+          html = dp.template(template, $.extend({
+        title: title
+      }, this.opts));
+
+      this.d.$nav.html(html);
+
+      if (this.d.view == 'years') {
+        $('.datepicker--nav-title', this.d.$nav).addClass('-disabled-');
+      }
+
+      this.setNavStatus();
+    },
+    _getTitle: function _getTitle(date) {
+      return this.d.formatDate(this.opts.navTitles[this.d.view], date);
+    },
+    _addButton: function _addButton(type) {
+      if (!this.$buttonsContainer.length) {
+        this._addButtonsContainer();
+      }
+
+      var data = {
+        action: type,
+        label: this.d.loc[type]
+      },
+          html = dp.template(button, data);
+      if ($('[data-action=' + type + ']', this.$buttonsContainer).length) return;
+      this.$buttonsContainer.append(html);
+    },
+    _addButtonsContainer: function _addButtonsContainer() {
+      this.d.$datepicker.append(buttonsContainerTemplate);
+      this.$buttonsContainer = $('.datepicker--buttons', this.d.$datepicker);
+    },
+    setNavStatus: function setNavStatus() {
+      if (!(this.opts.minDate || this.opts.maxDate) || !this.opts.disableNavWhenOutOfRange) return;
+      var date = this.d.parsedDate,
+          m = date.month,
+          y = date.year,
+          d = date.date;
+
+      switch (this.d.view) {
+        case 'days':
+          if (!this.d._isInRange(new Date(y, m - 1, 1), 'month')) {
+            this._disableNav('prev');
+          }
+
+          if (!this.d._isInRange(new Date(y, m + 1, 1), 'month')) {
+            this._disableNav('next');
+          }
+
+          break;
+
+        case 'months':
+          if (!this.d._isInRange(new Date(y - 1, m, d), 'year')) {
+            this._disableNav('prev');
+          }
+
+          if (!this.d._isInRange(new Date(y + 1, m, d), 'year')) {
+            this._disableNav('next');
+          }
+
+          break;
+
+        case 'years':
+          var decade = dp.getDecade(this.d.date);
+
+          if (!this.d._isInRange(new Date(decade[0] - 1, 0, 1), 'year')) {
+            this._disableNav('prev');
+          }
+
+          if (!this.d._isInRange(new Date(decade[1] + 1, 0, 1), 'year')) {
+            this._disableNav('next');
+          }
+
+          break;
+      }
+    },
+    _disableNav: function _disableNav(nav) {
+      $('[data-action="' + nav + '"]', this.d.$nav).addClass('-disabled-');
+    },
+    _activateNav: function _activateNav(nav) {
+      $('[data-action="' + nav + '"]', this.d.$nav).removeClass('-disabled-');
+    },
+    _onClickNavButton: function _onClickNavButton(e) {
+      var $el = $(e.target).closest('[data-action]'),
+          action = $el.data('action');
+      this.d[action]();
+    },
+    _onClickNavTitle: function _onClickNavTitle(e) {
+      if ($(e.target).hasClass('-disabled-')) return;
+
+      if (this.d.view == 'days') {
+        return this.d.view = 'months';
+      }
+
+      this.d.view = 'years';
+    }
+  };
+})();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "../../node_modules/air-datepicker/src/js/timepicker.js":
+/*!******************************************************************************************************************!*\
+  !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/air-datepicker/src/js/timepicker.js ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {;
+
+(function () {
+  var template = '<div class="datepicker--time">' + '<div class="datepicker--time-current">' + '   <span class="datepicker--time-current-hours">#{hourVisible}</span>' + '   <span class="datepicker--time-current-colon">:</span>' + '   <span class="datepicker--time-current-minutes">#{minValue}</span>' + '</div>' + '<div class="datepicker--time-sliders">' + '   <div class="datepicker--time-row">' + '      <input type="range" name="hours" value="#{hourValue}" min="#{hourMin}" max="#{hourMax}" step="#{hourStep}"/>' + '   </div>' + '   <div class="datepicker--time-row">' + '      <input type="range" name="minutes" value="#{minValue}" min="#{minMin}" max="#{minMax}" step="#{minStep}"/>' + '   </div>' + '</div>' + '</div>',
+      datepicker = $.fn.datepicker,
+      dp = datepicker.Constructor;
+
+  datepicker.Timepicker = function (inst, opts) {
+    this.d = inst;
+    this.opts = opts;
+    this.init();
+  };
+
+  datepicker.Timepicker.prototype = {
+    init: function init() {
+      var input = 'input';
+
+      this._setTime(this.d.date);
+
+      this._buildHTML();
+
+      if (navigator.userAgent.match(/trident/gi)) {
+        input = 'change';
+      }
+
+      this.d.$el.on('selectDate', this._onSelectDate.bind(this));
+      this.$ranges.on(input, this._onChangeRange.bind(this));
+      this.$ranges.on('mouseup', this._onMouseUpRange.bind(this));
+      this.$ranges.on('mousemove focus ', this._onMouseEnterRange.bind(this));
+      this.$ranges.on('mouseout blur', this._onMouseOutRange.bind(this));
+    },
+    _setTime: function _setTime(date) {
+      var _date = dp.getParsedDate(date);
+
+      this._handleDate(date);
+
+      this.hours = _date.hours < this.minHours ? this.minHours : _date.hours;
+      this.minutes = _date.minutes < this.minMinutes ? this.minMinutes : _date.minutes;
+    },
+
+    /**
+     * Sets minHours and minMinutes from date (usually it's a minDate)
+     * Also changes minMinutes if current hours are bigger then @date hours
+     * @param date {Date}
+     * @private
+     */
+    _setMinTimeFromDate: function _setMinTimeFromDate(date) {
+      this.minHours = date.getHours();
+      this.minMinutes = date.getMinutes(); // If, for example, min hours are 10, and current hours are 12,
+      // update minMinutes to default value, to be able to choose whole range of values
+
+      if (this.d.lastSelectedDate) {
+        if (this.d.lastSelectedDate.getHours() > date.getHours()) {
+          this.minMinutes = this.opts.minMinutes;
+        }
+      }
+    },
+    _setMaxTimeFromDate: function _setMaxTimeFromDate(date) {
+      this.maxHours = date.getHours();
+      this.maxMinutes = date.getMinutes();
+
+      if (this.d.lastSelectedDate) {
+        if (this.d.lastSelectedDate.getHours() < date.getHours()) {
+          this.maxMinutes = this.opts.maxMinutes;
+        }
+      }
+    },
+    _setDefaultMinMaxTime: function _setDefaultMinMaxTime() {
+      var maxHours = 23,
+          maxMinutes = 59,
+          opts = this.opts;
+      this.minHours = opts.minHours < 0 || opts.minHours > maxHours ? 0 : opts.minHours;
+      this.minMinutes = opts.minMinutes < 0 || opts.minMinutes > maxMinutes ? 0 : opts.minMinutes;
+      this.maxHours = opts.maxHours < 0 || opts.maxHours > maxHours ? maxHours : opts.maxHours;
+      this.maxMinutes = opts.maxMinutes < 0 || opts.maxMinutes > maxMinutes ? maxMinutes : opts.maxMinutes;
+    },
+
+    /**
+     * Looks for min/max hours/minutes and if current values
+     * are out of range sets valid values.
+     * @private
+     */
+    _validateHoursMinutes: function _validateHoursMinutes(date) {
+      if (this.hours < this.minHours) {
+        this.hours = this.minHours;
+      } else if (this.hours > this.maxHours) {
+        this.hours = this.maxHours;
+      }
+
+      if (this.minutes < this.minMinutes) {
+        this.minutes = this.minMinutes;
+      } else if (this.minutes > this.maxMinutes) {
+        this.minutes = this.maxMinutes;
+      }
+    },
+    _buildHTML: function _buildHTML() {
+      var lz = dp.getLeadingZeroNum,
+          data = {
+        hourMin: this.minHours,
+        hourMax: lz(this.maxHours),
+        hourStep: this.opts.hoursStep,
+        hourValue: this.hours,
+        hourVisible: lz(this.displayHours),
+        minMin: this.minMinutes,
+        minMax: lz(this.maxMinutes),
+        minStep: this.opts.minutesStep,
+        minValue: lz(this.minutes)
+      },
+          _template = dp.template(template, data);
+
+      this.$timepicker = $(_template).appendTo(this.d.$datepicker);
+      this.$ranges = $('[type="range"]', this.$timepicker);
+      this.$hours = $('[name="hours"]', this.$timepicker);
+      this.$minutes = $('[name="minutes"]', this.$timepicker);
+      this.$hoursText = $('.datepicker--time-current-hours', this.$timepicker);
+      this.$minutesText = $('.datepicker--time-current-minutes', this.$timepicker);
+
+      if (this.d.ampm) {
+        this.$ampm = $('<span class="datepicker--time-current-ampm">').appendTo($('.datepicker--time-current', this.$timepicker)).html(this.dayPeriod);
+        this.$timepicker.addClass('-am-pm-');
+      }
+    },
+    _updateCurrentTime: function _updateCurrentTime() {
+      var h = dp.getLeadingZeroNum(this.displayHours),
+          m = dp.getLeadingZeroNum(this.minutes);
+      this.$hoursText.html(h);
+      this.$minutesText.html(m);
+
+      if (this.d.ampm) {
+        this.$ampm.html(this.dayPeriod);
+      }
+    },
+    _updateRanges: function _updateRanges() {
+      this.$hours.attr({
+        min: this.minHours,
+        max: this.maxHours
+      }).val(this.hours);
+      this.$minutes.attr({
+        min: this.minMinutes,
+        max: this.maxMinutes
+      }).val(this.minutes);
+    },
+
+    /**
+     * Sets minHours, minMinutes etc. from date. If date is not passed, than sets
+     * values from options
+     * @param [date] {object} - Date object, to get values from
+     * @private
+     */
+    _handleDate: function _handleDate(date) {
+      this._setDefaultMinMaxTime();
+
+      if (date) {
+        if (dp.isSame(date, this.d.opts.minDate)) {
+          this._setMinTimeFromDate(this.d.opts.minDate);
+        } else if (dp.isSame(date, this.d.opts.maxDate)) {
+          this._setMaxTimeFromDate(this.d.opts.maxDate);
+        }
+      }
+
+      this._validateHoursMinutes(date);
+    },
+    update: function update() {
+      this._updateRanges();
+
+      this._updateCurrentTime();
+    },
+
+    /**
+     * Calculates valid hour value to display in text input and datepicker's body.
+     * @param date {Date|Number} - date or hours
+     * @param [ampm] {Boolean} - 12 hours mode
+     * @returns {{hours: *, dayPeriod: string}}
+     * @private
+     */
+    _getValidHoursFromDate: function _getValidHoursFromDate(date, ampm) {
+      var d = date,
+          hours = date;
+
+      if (date instanceof Date) {
+        d = dp.getParsedDate(date);
+        hours = d.hours;
+      }
+
+      var _ampm = ampm || this.d.ampm,
+          dayPeriod = 'am';
+
+      if (_ampm) {
+        switch (true) {
+          case hours == 0:
+            hours = 12;
+            break;
+
+          case hours == 12:
+            dayPeriod = 'pm';
+            break;
+
+          case hours > 11:
+            hours = hours - 12;
+            dayPeriod = 'pm';
+            break;
+
+          default:
+            break;
+        }
+      }
+
+      return {
+        hours: hours,
+        dayPeriod: dayPeriod
+      };
+    },
+
+    set hours(val) {
+      this._hours = val;
+
+      var displayHours = this._getValidHoursFromDate(val);
+
+      this.displayHours = displayHours.hours;
+      this.dayPeriod = displayHours.dayPeriod;
+    },
+
+    get hours() {
+      return this._hours;
+    },
+
+    //  Events
+    // -------------------------------------------------
+    _onChangeRange: function _onChangeRange(e) {
+      var $target = $(e.target),
+          name = $target.attr('name');
+      this.d.timepickerIsActive = true;
+      this[name] = $target.val();
+
+      this._updateCurrentTime();
+
+      this.d._trigger('timeChange', [this.hours, this.minutes]);
+
+      this._handleDate(this.d.lastSelectedDate);
+
+      this.update();
+    },
+    _onSelectDate: function _onSelectDate(e, data) {
+      this._handleDate(data);
+
+      this.update();
+    },
+    _onMouseEnterRange: function _onMouseEnterRange(e) {
+      var name = $(e.target).attr('name');
+      $('.datepicker--time-current-' + name, this.$timepicker).addClass('-focus-');
+    },
+    _onMouseOutRange: function _onMouseOutRange(e) {
+      var name = $(e.target).attr('name');
+      if (this.d.inFocus) return; // Prevent removing focus when mouse out of range slider
+
+      $('.datepicker--time-current-' + name, this.$timepicker).removeClass('-focus-');
+    },
+    _onMouseUpRange: function _onMouseUpRange(e) {
+      this.d.timepickerIsActive = false;
+    }
+  };
+})();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js":
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/Farkhad/Desktop/GitHub/metaratings-v2/markup-new/node_modules/body-scroll-lock/lib/bodyScrollLock.min.js ***!
@@ -20310,6 +22539,9 @@ $(function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
+/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! air-datepicker */ "../../node_modules/air-datepicker/src/js/air-datepicker.js");
+/* harmony import */ var air_datepicker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(air_datepicker__WEBPACK_IMPORTED_MODULE_1__);
+
 
 $(function () {
   var match = $('.match');
@@ -20317,6 +22549,8 @@ $(function () {
   var win = $(window),
       doc = $(document),
       html = $(document.body).add(document.documentElement),
+      matchCalendar = $('.js-calendar'),
+      matchCalendarDate = $('.js-calendar-date'),
       matchBest = $('.js-match-best'),
       matchSearch = $('.js-match-search'),
       matchSwipe = '.js-match-swipe',
@@ -20337,8 +22571,31 @@ $(function () {
         $tabMain.find(block).eq(clickedTabIndex).show().addClass('is-open');
       });
     });
-  } // -- Match Tab
+  } // -- Match Calendar
 
+
+  matchCalendar.datepicker({
+    dateFormat: 'dd',
+    todayButton: new Date(),
+    autoClose: true,
+    onSelect: function onSelect(formattedDate, date, inst) {
+      var dateD = date.getDate(),
+          dateM = date.getMonth(),
+          dateY = date.getFullYear();
+
+      if (dateD < 10) {
+        dateD = '0' + dateD;
+      }
+
+      if (dateM < 10) {
+        dateM = dateM + 1;
+        matchCalendarDate.html(dateD + '.' + '0' + dateM + '.' + dateY);
+      } else {
+        matchCalendarDate.html(dateD + '.' + dateM + '.' + dateY);
+      }
+    }
+  });
+  matchCalendar.data('datepicker').selectDate(new Date()); // -- Match Tab
 
   tabInit('.js-tab', '.js-tabList', '.js-tabItem', '.js-tabBlock'); // -- Match Slider Best
 
@@ -20453,8 +22710,8 @@ $(function () {
     swipeObserver.observe(swipeThis);
   });
   doc.on('click', matchAcc, function () {
-    $(this).toggleClass('is-close');
-    $(this).parent().find(matchAccBody).slideToggle(300);
+    $(this).parents('.match-acc').find('.match-acc-head').toggleClass('is-close');
+    $(this).parents('.match-acc').find(matchAccBody).slideToggle(300);
   });
   doc.on('click', '.js-load-events', function () {
     var btn = $(this);
@@ -20485,20 +22742,12 @@ $(function () {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
   var doc = $(document),
-      html = $(document.documentElement),
-      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
-      disableBodyScroll = bodyScrollLock.disableBodyScroll,
-      enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      clearAllBodyScrollLocks = bodyScrollLock.clearAllBodyScrollLocks,
-      BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
       modal = $('.js-modal'),
       modalVisible = $('.js-modal-visible'),
-      modalTarget = document.querySelectorAll('.js-modal-wrap'),
       modalWrap = $('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide',
       modalTag;
-
   doc.on('click', modalShow, function () {
     if ($(this).data('modal') != undefined) {
       modalTag = $(this).data('modal');
@@ -20506,32 +22755,16 @@ $(function () {
       modalTag = $(this).attr('href');
     }
 
-    html.css('overflow', 'initial');
-    modalTarget.forEach(function (modalTarget) {
-      disableBodyScroll(modalTarget, BodyScrollOptions = {
-        reserveScrollBarGap: true
-      });
-    });
     $('.js-modal-visible' + modalTag).addClass('is-open');
     $('.js-modal' + modalTag).fadeIn().addClass('is-open');
     doc.on('mouseup touchend', function (e) {
       if ($(e.target).closest(modalWrap).length) return;
-      html.css('overflow', '');
-      modalTarget.forEach(function (modalTarget) {
-        enableBodyScroll(modalTarget);
-      });
-      clearAllBodyScrollLocks();
       modalVisible.removeClass('is-open');
       modal.fadeOut().removeClass('is-open');
     });
     return false;
   });
   doc.on('click', modalHide, function () {
-    html.css('overflow', '');
-    modalTarget.forEach(function (modalTarget) {
-      enableBodyScroll(modalTarget);
-    });
-    clearAllBodyScrollLocks();
     modalVisible.removeClass('is-open');
     modal.fadeOut().removeClass('is-open');
   });
@@ -23057,7 +25290,7 @@ if (reviewForm.length > 0) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
-  var symbols = ['<symbol id="arrow" viewBox="0 0 12 12"><path d="M2.29,1.41,6.88,6,2.29,10.59,3.71,12l6-6-6-6Z"/></symbol>', '<symbol id="right-arrow" viewBox="0 0 8 12"><path d="M.59 1.41L5.17 6 .59 10.59 2 12l6-6-6-6z"/></symbol>', '<symbol id="left-arrow" viewBox="0 0 8 12"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6z"/></symbol>', '<symbol id="bottom-arrow" viewBox="0 0 12 8"><path d="M10.59.59L6 5.17 1.41.59 0 2l6 6 6-6z"/></symbol>', '<symbol id="right" viewBox="0 0 45.38 12.6"><path d="M41.6,7.35H0V5.25H41.6L38.07,1.48,39.46,0l5.92,6.3-5.92,6.3-1.39-1.48Z"/></symbol>', '<symbol id="close" viewBox="0 0 12.73 12.73"><path d="M0,1.41,1.41,0,12.73,11.31l-1.42,1.42Z"/><path d="M1.41,12.73,0,11.31,11.31,0l1.42,1.41Z"/></symbol>', '<symbol id="search" viewBox="0 0 17.49 17.49"><path d="M12.5,10.91h-.79l-.28-.26A6,6,0,0,0,13,6.59,6.37,6.37,0,0,0,6.5.36,6.37,6.37,0,0,0,0,6.59a6.37,6.37,0,0,0,6.5,6.23,6.63,6.63,0,0,0,4.23-1.5l.27.27v.75l5,4.79,1.49-1.43Zm-6,0A4.41,4.41,0,0,1,2,6.59,4.41,4.41,0,0,1,6.5,2.28,4.41,4.41,0,0,1,11,6.59,4.41,4.41,0,0,1,6.5,10.91Z"/></symbol>', '<symbol id="search-o" viewBox="0 0 16.41 16.41"><path d="M13,11.09l3.4,3.41L15,15.91l-3.26-3.26A7,7,0,1,1,13,11.09ZM7,12.5a5,5,0,1,0-5-5A5,5,0,0,0,7,12.5Z"/></symbol>', '<symbol id="user" viewBox="0 0 18 18"><path d="M9,0a4.15,4.15,0,0,1,4.24,4.05A4.15,4.15,0,0,1,9,8.1a4.15,4.15,0,0,1-4.24-4A4.15,4.15,0,0,1,9,0ZM9,18a9.46,9.46,0,0,1-8-4.6C1,10.56,6.33,9,9,9s8,1.56,8,4.4A9.46,9.46,0,0,1,9,18Z"/></symbol>', '<symbol id="rating" viewBox="0 0 16.5 16.5"><path d="M14.67,0H1.83A1.83,1.83,0,0,0,0,1.83V14.67A1.84,1.84,0,0,0,1.83,16.5H14.67a1.83,1.83,0,0,0,1.83-1.83V1.83A1.83,1.83,0,0,0,14.67,0Zm0,14.67H1.83V1.83H14.67Zm-11-8.25H5.5v6.41H3.67ZM7.33,3.67H9.17v9.16H7.33ZM11,9.17h1.83v3.66H11Z"/></symbol>', '<symbol id="star" viewBox="0 0 18.33 18.33"><path d="M18.33,7.09l-6.59-.56L9.17.46,6.59,6.53,0,7.09l5,4.34L3.5,17.87l5.67-3.42,5.66,3.42-1.49-6.44Z"/></symbol>', '<symbol id="star-o" viewBox="0 0 18.33 18.33"><path d="M18.33,7.09l-6.59-.56L9.17.46,6.59,6.53,0,7.09l5,4.34L3.5,17.87l5.67-3.42,5.66,3.42-1.49-6.44ZM9.17,12.74,5.72,14.82l.92-3.92-3-2.64,4-.35L9.17,4.22l1.56,3.7,4,.35L11.7,10.91l.92,3.92Z"/></symbol>', '<symbol id="round" viewBox="0 0 18.33 18.33"><path d="M9.17,0a9.17,9.17,0,1,0,9.16,9.17A9.18,9.18,0,0,0,9.17,0Zm0,16.5A7.34,7.34,0,0,1,1.83,9.17h0A7.34,7.34,0,0,1,9.16,1.83h0A7.33,7.33,0,0,1,16.5,9.16h0A7.33,7.33,0,0,1,9.17,16.5Z"/><circle cx="9.17" cy="9.17" r="4.58" fill="#d0021b"/></symbol>', '<symbol id="gift" viewBox="0 0 17 17"><path fill-rule="evenodd" d="M2.712 3.4a2.444 2.444 0 0 1-.162-.877C2.55 1.13 3.718 0 5.16 0 6.091 0 7.57 1.113 8.5 2.276 9.429 1.113 10.909 0 11.84 0c1.442 0 2.61 1.13 2.61 2.523 0 .309-.057.604-.162.877H15.3A1.7 1.7 0 0 1 17 5.1v2.55a1.7 1.7 0 0 1-.864 1.48 1.7 1.7 0 0 1 .014.22v5.95a1.7 1.7 0 0 1-1.7 1.7H2.55a1.7 1.7 0 0 1-1.7-1.7V9.35a1.867 1.867 0 0 1 .014-.22A1.7 1.7 0 0 1 0 7.65V5.1a1.7 1.7 0 0 1 1.7-1.7h1.012zm7.068-.001c.225.003.473-.001.74-.01l.374-.015c.32-.013.665-.027.947-.027.556 0 .909-.422.909-.824 0-.394-.34-.808-.88-.823-.002.004-.141.032-.43.202-.323.19-.696.479-1.053.824a6.411 6.411 0 0 0-.607.673zM7.04 5.1H1.7v2.55h5.95V5.1h-.61zm2.31 0h5.95v2.55H9.35V5.1zm-1.7 4.25h-5.1v5.95h5.1V9.35zm1.7 5.95V9.35h5.1v5.95h-5.1zM6.48 3.389c.267.009.515.013.74.01a6.411 6.411 0 0 0-.607-.673 5.872 5.872 0 0 0-1.054-.824c-.24-.14-.376-.184-.416-.197L5.129 1.7c-.538.015-.879.429-.879.823 0 .402.353.824.91.824.281 0 .626.014.946.027l.374.015z"/></symbol>', '<symbol id="toggle" viewBox="0 0 16.5 16.5"><path d="M0,13.75H11V11.92H0Zm0-11V4.58H16.5V2.75ZM0,9.17H16.5V7.33H0Z"/></symbol>', '<symbol id="notify" viewBox="0 0 19.5 19.5"><path d="M15.75,13.5v-5c0-3.07-1.64-5.64-4.5-6.32V1.5a1.5,1.5,0,0,0-3,0v.68c-2.87.68-4.5,3.24-4.5,6.32v5l-2,2v1h16v-1Zm-6,6a2,2,0,0,0,2-2h-4A2,2,0,0,0,9.75,19.5Z"/></symbol>', '<symbol id="mail" viewBox="0 0 18 18"><path d="M16.2,2H1.8A1.77,1.77,0,0,0,0,3.75v10.5A1.78,1.78,0,0,0,1.8,16H16.2A1.78,1.78,0,0,0,18,14.25V3.75A1.78,1.78,0,0,0,16.2,2Zm0,4.5L9,10.88,1.8,6.5V4.75L9,9.13l7.2-4.38Z"/></symbol>', '<symbol id="setting" viewBox="0 0 12.8 12.8"><path d="M11.16,7a6.06,6.06,0,0,0,0-.62,4.1,4.1,0,0,0,0-.62L12.5,4.72a.32.32,0,0,0,.08-.41L11.3,2.1A.31.31,0,0,0,10.91,2l-1.59.64A5,5,0,0,0,8.24,2L8,.27A.31.31,0,0,0,7.68,0H5.12a.3.3,0,0,0-.31.27L4.57,2a4.81,4.81,0,0,0-1.08.62L1.9,2a.33.33,0,0,0-.4.15L.22,4.31a.32.32,0,0,0,.08.41L1.66,5.78a3.18,3.18,0,0,0-.06.62,4.21,4.21,0,0,0,0,.62L.3,8.08a.32.32,0,0,0-.08.41L1.5,10.7a.31.31,0,0,0,.39.15l1.59-.64a5,5,0,0,0,1.08.62l.24,1.7a.32.32,0,0,0,.32.27H7.68A.3.3,0,0,0,8,12.53l.24-1.7a4.81,4.81,0,0,0,1.08-.62l1.59.64a.33.33,0,0,0,.4-.15l1.28-2.21a.32.32,0,0,0-.08-.41ZM6.4,8.8A2.4,2.4,0,1,1,8.8,6.4,2.41,2.41,0,0,1,6.4,8.8Z"/></symbol>', '<symbol id="calendar-o" viewBox="0 0 25.67 25.67"><path d="M2.59,6.47h20.5a1,1,0,0,1,1,1V23.29a1,1,0,0,1-1,1H2.59a1,1,0,0,1-1-1V7.47A1,1,0,0,1,2.59,6.47ZM22.84,2.33H21.59V0h-2.5V2.33H6.59V0H4.09V2.33H2.84A2.43,2.43,0,0,0,.34,4.67V23.33a2.43,2.43,0,0,0,2.5,2.34h20a2.43,2.43,0,0,0,2.5-2.34V4.67A2.43,2.43,0,0,0,22.84,2.33Z"/></symbol>', '<symbol id="chat" viewBox="0 0 15 15"><path d="M13.5,0H1.5A1.5,1.5,0,0,0,0,1.5V15l3-3H13.5A1.51,1.51,0,0,0,15,10.5v-9A1.5,1.5,0,0,0,13.5,0Zm0,10.5H3L1.5,12V1.5h12Z"/></symbol>', '<symbol id="filter" viewBox="0 0 13.86 13.86"><path d="M5.52,9.44h7.84a.5.5,0,0,0,0-1H5.52A1.79,1.79,0,0,0,3.8,7.16,1.76,1.76,0,0,0,2.1,8.44H.5a.5.5,0,0,0,0,1H2.1a1.78,1.78,0,0,0,3.42,0ZM3,8.94a.78.78,0,0,1,1.56,0,.79.79,0,0,1-.78.78A.78.78,0,0,1,3,8.94Zm8.5-3.5h1.84a.5.5,0,0,0,0-1H11.52A1.79,1.79,0,0,0,9.8,3.16,1.76,1.76,0,0,0,8.1,4.44H.5a.5.5,0,0,0,0,1H8.1a1.78,1.78,0,0,0,3.42,0ZM9,4.94a.78.78,0,0,1,1.56,0,.79.79,0,0,1-.78.78A.78.78,0,0,1,9,4.94Z"/></symbol>', '<symbol id="clock" viewBox="0 0 64 64"><path d="M32,0C14.355,0,0,14.355,0,32s14.355,32,32,32s32-14.355,32-32S49.645,0,32,0z M32,60   C16.561,60,4,47.439,4,32S16.561,4,32,4s28,12.561,28,28S47.439,60,32,60z"/><path d="m43.639,24.572l-11.201,5.037-13.29-13.291c-0.781-0.781-2.047-0.781-2.828,0s-0.781,2.047 0,2.828l14.266,14.268c0.029,0.029 0.068,0.039 0.098,0.066 0.143,0.125 0.297,0.227 0.465,0.307 0.061,0.029 0.117,0.061 0.182,0.082 0.212,0.078 0.435,0.131 0.665,0.131 0.002,0 0.004,0 0.004,0l0,0c0.004,0 0.008-0.002 0.012-0.002 0.264-0.002 0.525-0.061 0.773-0.166 0.012-0.006 0.023-0.002 0.035-0.008l12.459-5.604c1.008-0.453 1.457-1.637 1.004-2.645-0.455-1.005-1.635-1.454-2.644-1.003z"/></symbol>', '<symbol id="tv" viewBox="0 0 18.33 18.33"><path d="M16.67,1.66h-15A1.67,1.67,0,0,0,0,3.33v10A1.67,1.67,0,0,0,1.67,15H5.83v1.66H12.5V15h4.17a1.66,1.66,0,0,0,1.65-1.67v-10A1.67,1.67,0,0,0,16.67,1.66Zm0,11.67h-15v-10h15Z"/><polygon points="13.17 8.16 7.17 11.16 7.17 5.17 13.17 8.16"/></symbol>', '<symbol id="fire" viewBox="0 0 14 14"><path d="M8.33,0C6.66.65,3.67,3.17,5.05,8c.07.73-.39.64-.62.5-1-.89-.91-3.11-.73-4.1-1.32,1.74-3.14,5.86.19,8.39a5,5,0,0,0,7.24-1c.83-1.28,1.8-4.35-.91-6.38S7.83,1,8.33,0ZM7.91,8.58l.36.47a2.7,2.7,0,0,1,.31,2.4A1.88,1.88,0,0,1,5.33,12c.67-.36,1.9-1.38,1.47-2.6A3.09,3.09,0,0,1,6.8,7,14.09,14.09,0,0,0,7.91,8.58Z"/></symbol>', '<symbol id="paper" viewBox="0 0 18 22"><path d="M4.667 15.333h8.666V17.5H4.667v-2.167zm0-4.333h8.666v2.167H4.667V11zm6.5-10.833l6.5 6.5v13a2.173 2.173 0 0 1-2.167 2.166H2.49a2.164 2.164 0 0 1-2.157-2.166V2.333C.333 1.142 1.308.167 2.5.167h8.667zm4.333 19.5V7.75h-5.417V2.333H2.5v17.334h13z"/></symbol>', '<symbol id="web" viewBox="0 0 26 26"><path d="M13 2c6.072 0 11 4.928 11 11s-4.928 11-11 11S2 19.072 2 13 6.928 2 13 2zm6.49 16.929A8.753 8.753 0 0 0 21.8 13c0-3.685-2.277-6.842-5.5-8.151V5.3c0 1.21-.99 2.2-2.2 2.2h-2.2v2.2c0 .605-.495 1.1-1.1 1.1H8.6V13h6.6c.605 0 1.1.495 1.1 1.1v3.3h1.1c.99 0 1.804.638 2.09 1.529zm-7.59 2.794V19.6c-1.21 0-2.2-.99-2.2-2.2v-1.1l-5.269-5.269A8.93 8.93 0 0 0 4.2 13a8.787 8.787 0 0 0 7.7 8.723z"/></symbol>', '<symbol id="comment" viewBox="0 0 50 40"><polygon points="8.7 39.68 9.93 26.7 -2.34 22.27 13.02 14.87 18.69 1.41 26.94 9.82 42.71 5.92 32.46 18.52 36.54 29.57 21.95 28.95 8.7 39.68" fill="#fff"/><rect x="2" y="2" width="46" height="26.32" fill="#fff"/><path d="M10,37.12l12.78-8.69H45a3,3,0,0,0,3-3V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V25.43a3,3,0,0,0,3,3h5Zm13.4-6.69L9.56,39.83a1,1,0,0,1-1.39-.26A1.06,1.06,0,0,1,8,39V30.44H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0H45a5,5,0,0,1,5,5V25.43a5,5,0,0,1-5,5Z"/></symbol>', '<symbol id="comment-b" viewBox="0 0 18 14.36"><path d="M2.93,14.36V10.67H2a2,2,0,0,1-2-2V2A2,2,0,0,1,2,0H16a2,2,0,0,1,2,2V8.67a2,2,0,0,1-2,2H8.58ZM2,1.5a.5.5,0,0,0-.5.5V8.67a.5.5,0,0,0,.5.5H4.43v2.42l3.7-2.42H16a.5.5,0,0,0,.5-.5V2a.5.5,0,0,0-.5-.5Z"/></symbol>', '<symbol id="comment-bold" viewBox="0 0 44 30"><path d="M20.28,20.8H39a3,3,0,0,0,3-3V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V17.8a3,3,0,0,0,3,3H9v6.47Zm.54,2L8.5,29.87a1,1,0,0,1-1.37-.37A1.06,1.06,0,0,1,7,29V22.8H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0H39a5,5,0,0,1,5,5V17.8a5,5,0,0,1-5,5Z"/></symbol>', '<symbol id="line" viewBox="0 0 231 28"><path d="M13 0h218l-.307.098A18.921 18.921 0 0 0 218 14v-1c0 8.284-6.716 15-15 15H28c-8.284 0-15-6.716-15-15v1l-.46-1.668A17.572 17.572 0 0 0 0 0h13z"/></symbol>', '<symbol id="line-short" viewBox="0 0 189 32"><path d="M15 0h174c-3.578.95-6.617 2.798-9.117 5.545-2.5 2.748-4.461 6.394-5.883 10.94V16c0 8.837-7.163 16-16 16H30c-8.284 0-15-6.716-15-15v.515c-.864-4.178-2.546-7.727-5.046-10.646C7.454 3.949 4.136 1.66 0 0h15z"></path></symbol>', '<symbol id="tax" viewBox="0 0 22.53 22.53"><path d="M14.68,20.59l0,0L18,17.32l-.13,0H14.79c-.11,0-.12.05-.12.14v3s0,.08,0,.12M4.31,11.26v9.68c0,.16,0,.16.17.16h8.6c.17,0,.18,0,.18-.17V16.05c0-.17,0-.18.17-.18H18c.18,0,.18,0,.18-.19v-14c0-.21,0-.21-.2-.21H4.48c-.17,0-.17,0-.17.17v9.67m-1.41,0V.29c0-.33,0-.29.28-.29H19.43c.2,0,.2,0,.2.21V17.53a.42.42,0,0,1-.13.33l-4.6,4.56a.35.35,0,0,1-.27.11H3.11c-.21,0-.21,0-.21-.21v-11"/><path d="M14.05,11.79l.23,0a.6.6,0,0,0,.49-.32,1.14,1.14,0,0,0,0-.85.58.58,0,0,0-.38-.37,1.13,1.13,0,0,0-.79,0,.48.48,0,0,0-.29.3,1.19,1.19,0,0,0,0,.7.6.6,0,0,0,.47.49l.26,0m2.23-.8a2.34,2.34,0,0,1-2.22,2.22A2.34,2.34,0,0,1,11.87,11,2.35,2.35,0,0,1,14.1,8.76,2.36,2.36,0,0,1,16.27,11M8.6,6.3v0h.16a.63.63,0,0,0,.61-.46,1.27,1.27,0,0,0,0-.67.57.57,0,0,0-.46-.43,1.55,1.55,0,0,0-.48,0,.58.58,0,0,0-.56.45,1.17,1.17,0,0,0,0,.67.58.58,0,0,0,.38.41,2.17,2.17,0,0,0,.35.07m0,1.41a2.35,2.35,0,0,1-2.2-2.22,2.37,2.37,0,0,1,2.2-2.23,2.35,2.35,0,0,1,2.21,2.22A2.33,2.33,0,0,1,8.62,7.71m5.17-2.63a.71.71,0,0,1,.54,1.15,2.83,2.83,0,0,1-.24.25L9.46,11.15a.68.68,0,0,1-.69.23.71.71,0,0,1-.53-.85.94.94,0,0,1,.1-.23,1.71,1.71,0,0,1,.18-.2l4.71-4.76a.73.73,0,0,1,.56-.26"/></symbol>', '<symbol id="surprise" viewBox="0 0 36 36"><path d="M35.73,20.13l-6-2.22a1.37,1.37,0,0,1-.77-.83l-1.75-6.15c-.1-.34-.35-.39-.57-.12l-3.95,5a1.37,1.37,0,0,1-1,.47l-1.81-.06a.38.38,0,0,0-.4.57l.23.61a1,1,0,0,0,.86.61l1.9.07a1.44,1.44,0,0,0,1-.47l2.42-3c.22-.27.47-.22.57.12l1,3.62a1.37,1.37,0,0,0,.76.84l3.61,1.37c.33.12.36.38.07.57l-3.13,2.11a1.43,1.43,0,0,0-.56,1l-.18,3.86c0,.35-.25.46-.53.24l-3-2.33a1.41,1.41,0,0,0-1.11-.22l-3.72,1c-.34.09-.52-.1-.4-.43l.34-.93a.56.56,0,0,0-.33-.74l-.07,0-.48-.13A.71.71,0,0,0,18,25L16.5,29c-.12.33.06.52.39.42L23,27.73a1.41,1.41,0,0,1,1.11.21l5,3.95c.27.22.51.1.52-.24l.25-6.4a1.41,1.41,0,0,1,.55-1l5.3-3.57c.29-.18.26-.43-.07-.56ZM19.59,22.3l-2.25-6a1.41,1.41,0,0,1,.12-1.12L21,9.84c.19-.3.06-.52-.29-.51l-6.37.3a1.48,1.48,0,0,1-1-.47l-4-5c-.22-.27-.48-.22-.57.12L7,10.46a1.4,1.4,0,0,1-.76.84l-6,2.27c-.33.13-.36.38-.06.57l5.34,3.52a1.41,1.41,0,0,1,.56,1l.3,6.4c0,.35.25.45.52.24l5-4A1.42,1.42,0,0,1,13,21.05l6.16,1.68C19.53,22.82,19.71,22.63,19.59,22.3Z"/></symbol>', '<symbol id="photo" viewBox="0 0 20 20"><path d="M17.25,18H2.75A2.75,2.75,0,0,1,0,15.25V4.75A2.75,2.75,0,0,1,2.75,2h14.5A2.75,2.75,0,0,1,20,4.75v10.5A2.75,2.75,0,0,1,17.25,18ZM2.75,3.5A1.25,1.25,0,0,0,1.5,4.75v10.5A1.25,1.25,0,0,0,2.75,16.5h14.5a1.25,1.25,0,0,0,1.25-1.25V4.75A1.25,1.25,0,0,0,17.25,3.5Z"/><polygon points="15.17 17.62 8.25 11.94 1.42 16.62 0.58 15.38 8.33 10.06 11.91 13 15.84 10.57 20.01 13.38 19.18 14.62 15.8 12.36 13.14 14.01 16.12 16.46 15.17 17.62"/><path d="M12,9.75A2.75,2.75,0,1,1,14.75,7,2.75,2.75,0,0,1,12,9.75Zm0-4A1.25,1.25,0,1,0,13.25,7,1.25,1.25,0,0,0,12,5.75Z"/></symbol>', '<symbol id="video" viewBox="0 0 21 21"><path d="M11.25,17.48H2.75A2.75,2.75,0,0,1,0,14.73V6.23A2.75,2.75,0,0,1,2.75,3.48h8.5A2.75,2.75,0,0,1,14,6.23v8.5A2.75,2.75,0,0,1,11.25,17.48ZM2.75,5A1.25,1.25,0,0,0,1.5,6.23v8.5A1.25,1.25,0,0,0,2.75,16h8.5a1.25,1.25,0,0,0,1.25-1.25V6.23A1.25,1.25,0,0,0,11.25,5Z"/><path d="M19,16.1a2.1,2.1,0,0,1-.65-.1l-4-1.37A2,2,0,0,1,13,12.74V8.09a2,2,0,0,1,1.41-1.91l4-1.24A2,2,0,0,1,19,4.85a2,2,0,0,1,2,2V14.1a2,2,0,0,1-1.12,1.8A2,2,0,0,1,19,16.1Zm0-9.75a.4.4,0,0,0-.15,0l-4,1.24a.48.48,0,0,0-.35.47v4.65a.51.51,0,0,0,.34.47l4,1.37a.5.5,0,0,0,.38,0,.48.48,0,0,0,.25-.29.41.41,0,0,0,0-.16V6.85A.5.5,0,0,0,19,6.35Z"/></symbol>', '<symbol id="rub" viewBox="0 0 23 23"><path d="M20.22,15a10.53,10.53,0,1,0-4.5,5.14L15.65,20a1.4,1.4,0,0,1-.12-.18.94.94,0,0,1-.12-.18h0a1.19,1.19,0,0,1-.11-.26l-.07-.12A9.37,9.37,0,0,1,10.5,20.5a9.5,9.5,0,1,1,8.79-5.9"/><path d="M19.29,14.6a2.17,2.17,0,0,1,.59.2,1.5,1.5,0,0,1,.34.16"/><path d="M18.5,22.5A4.5,4.5,0,1,1,23,18,4.51,4.51,0,0,1,18.5,22.5Zm0-8A3.5,3.5,0,1,0,22,18,3.5,3.5,0,0,0,18.5,14.5Z"/><path d="M8.77,13.94V16H7.93V13.94H6.74v-.7H7.93V11.69H6.74V11H7.93V6.23h3.83a2.51,2.51,0,0,1,2,.73,2.85,2.85,0,0,1,.67,2,2.82,2.82,0,0,1-.67,2,2.52,2.52,0,0,1-2,.74h-3v1.55h3.69v.7Zm0-2.95h3a1.57,1.57,0,0,0,1.73-1.65v-.7a1.65,1.65,0,0,0-.44-1.19A1.68,1.68,0,0,0,11.76,7h-3Z"/><path d="M17.08,16.09,19,18l-1.91,1.91.59.59,2.5-2.5-2.5-2.5Z"/></symbol>', '<symbol id="protect" viewBox="0 0 23.14 23.14"><path d="M11.57,23.14l-1.12-.8a42,42,0,0,1-5-3.9c-2-1.93-2.92-3.73-2.92-5.65V3.35l9-3.35,9,3.35v9.44c0,1.92-.93,3.72-2.92,5.65a42.16,42.16,0,0,1-5,3.9ZM3.57,4v8.75c0,1.63.83,3.2,2.61,4.93A40.41,40.41,0,0,0,11,21.52l.54.39.54-.38A41.19,41.19,0,0,0,17,17.72c1.78-1.73,2.61-3.29,2.61-4.93V4l-8-3Z"/><polygon points="9.94 15.32 6.47 11.1 7.24 10.47 10 13.82 15.93 7.8 16.64 8.5 9.94 15.32"/></symbol>', '<symbol id="unprotect" viewBox="0 0 23.14 23.14"><path d="M11.57,23.14l-1.12-.8a42,42,0,0,1-5-3.9c-2-1.93-2.92-3.73-2.92-5.65V3.35l9-3.35,9,3.35v9.44c0,1.92-.93,3.72-2.92,5.65a42.16,42.16,0,0,1-5,3.9ZM3.57,4v8.75c0,1.63.83,3.2,2.61,4.93A40.41,40.41,0,0,0,11,21.52l.54.39.54-.38A41.19,41.19,0,0,0,17,17.72c1.78-1.73,2.61-3.29,2.61-4.93V4l-8-3Z"/><path d="M11.57,10.29l3.5-3.5.71.71L12.28,11l3.5,3.5-.71.71-3.5-3.5-3.5,3.5-.71-.71,3.5-3.5L7.36,7.5l.71-.71Z"/></symbol>', '<symbol id="like" viewBox="0 0 18.62 18.62"><path d="M10.1,1.6,5.48,6.22A1.65,1.65,0,0,0,5,7.39v8.33a1.67,1.67,0,0,0,1.67,1.67h7.5a1.68,1.68,0,0,0,1.53-1L18.42,10a2.51,2.51,0,0,0-2.3-3.49H11.41l.79-3.81a1.25,1.25,0,0,0-.34-1.15,1.23,1.23,0,0,0-1.75,0ZM1.67,17.39a1.67,1.67,0,0,0,1.66-1.67V9.05A1.67,1.67,0,0,0,0,9.05v6.67A1.67,1.67,0,0,0,1.67,17.39Z"/></symbol>', '<symbol id="dislike" viewBox="0 0 18.61 18.61"><path d="M8.51,17l4.61-4.61a1.68,1.68,0,0,0,.49-1.18V2.9a1.67,1.67,0,0,0-1.67-1.67H4.45a1.66,1.66,0,0,0-1.53,1L.21,8.58A2.49,2.49,0,0,0,2.5,12.06H7.21l-.8,3.82A1.26,1.26,0,0,0,6.76,17a1.24,1.24,0,0,0,1.75,0ZM17,1.23A1.67,1.67,0,0,0,15.28,2.9V9.56a1.67,1.67,0,1,0,3.33,0V2.9A1.67,1.67,0,0,0,17,1.23Z"/></symbol>', '<symbol id="instagram" viewBox="0 0 18 18"><path d="M5,0A5,5,0,0,0,0,5v8a5,5,0,0,0,5,5h8a5,5,0,0,0,5-5V5a5,5,0,0,0-5-5ZM15,2a1,1,0,1,1-1,1A1,1,0,0,1,15,2ZM9,4A5,5,0,1,1,4,9,5,5,0,0,1,9,4ZM9,6a3,3,0,1,0,3,3A3,3,0,0,0,9,6Z"/></symbol>', '<symbol id="vk" viewBox="0 0 18 18"><path d="M15.86,0H2.14A2.14,2.14,0,0,0,0,2.14V15.86A2.14,2.14,0,0,0,2.14,18H15.86A2.14,2.14,0,0,0,18,15.86V2.14A2.14,2.14,0,0,0,15.86,0ZM14.45,12.43H12.76a1.29,1.29,0,0,1-.7-.25c-.57-.39-1.1-1.36-1.53-1.36h-.08c-.37.12-.48.49-.48.94,0,.16-.11.23-.41.23H8.73a3.24,3.24,0,0,1-2.82-1.12A22.91,22.91,0,0,1,3,6.36.29.29,0,0,1,3,6.1.48.48,0,0,1,3.36,6H5.1a.77.77,0,0,1,.28.12.49.49,0,0,1,.15.2s.29.57.65,1.21c.62,1,1,1.4,1.18,1.4l.12,0c.35-.19.25-1.75.25-1.75a1.83,1.83,0,0,0-.18-.82A.84.84,0,0,0,7,6.06c-.1,0,.06-.23.26-.33a3.18,3.18,0,0,1,1.24-.16h.26a1.85,1.85,0,0,1,.71.11c.59.14.39.69.39,2,0,.42-.08,1,.23,1.22l.09,0c.19,0,.62-.25,1.29-1.4.38-.65.67-1.3.67-1.3a.6.6,0,0,1,.17-.17A.25.25,0,0,1,12.54,6h1.85c.29,0,.55,0,.6.18s-.21.74-1,1.73c-1.2,1.61-1.34,1.49-.34,2.43a5.11,5.11,0,0,1,1.19,1.38C15.29,12.38,14.45,12.43,14.45,12.43Z"/></symbol>', '<symbol id="youtube" viewBox="0 0 18 18"><path d="M17.5,4.64a2.38,2.38,0,0,0-1.88-1.79,37.6,37.6,0,0,0-6.68-.49,38.16,38.16,0,0,0-6.73.49A2.32,2.32,0,0,0,.33,4.64,27.65,27.65,0,0,0,0,9a23.28,23.28,0,0,0,.37,4.36,2.37,2.37,0,0,0,1.88,1.78,38.75,38.75,0,0,0,6.73.5,38.53,38.53,0,0,0,6.72-.5,2.29,2.29,0,0,0,1.88-1.78A30.67,30.67,0,0,0,18,9,29.49,29.49,0,0,0,17.5,4.64ZM6.68,11.91V6.09L11.78,9l-5.1,2.91Z"/></symbol>', '<symbol id="twitter" viewBox="0 0 510 510"><path d="M459,0H51A51.15,51.15,0,0,0,0,51V459a51.15,51.15,0,0,0,51,51H459a51.15,51.15,0,0,0,51-51V51A51.15,51.15,0,0,0,459,0ZM400.35,186.15c-2.55,117.3-76.5,198.9-188.7,204-45.9,2.55-79.05-12.75-109.65-30.6,33.15,5.1,76.5-7.65,99.45-28.05C168.3,329,147.9,311.1,137.7,283.05c10.2,2.55,20.4,0,28.05,0-30.6-10.2-51-28.05-53.55-68.85,7.65,5.1,17.85,7.65,28.05,7.65-23-12.75-38.25-61.2-20.4-91.8,33.15,35.7,74,66.3,140.25,71.4-17.85-71.4,79-109.65,117.3-61.2,17.85-2.55,30.6-10.2,43.35-15.3-5.1,17.85-15.3,28.05-28.05,38.25,12.75-2.55,25.5-5.1,35.7-10.2C425.85,165.75,413.1,176,400.35,186.15Z"/></symbol>', '<symbol id="age" viewBox="0 0 39.8 39.8"><path d="M12.09,11H9.51c-1,0-1.51.18-1.51,1v1c0,.87.51,1.05,1.51,1.05h.59c.37,0,.54.21.54.81V27.78c0,1,.17,1.59,1,1.59h1c.83,0,1-.54,1-1.59V12c0-.87-.51-1-1.51-1"/><path d="M37.18,17.67c0,.45-.21.69-.63.69h-2V17c0-1-.15-1.6-1.05-1.6h-.91c-.9,0-1.05.55-1.05,1.6v1.41H30.11c-1.06,0-1.6.15-1.6,1.06v1c0,.91.54,1.06,1.6,1.06h1.41v1.41c0,1,.15,1.6,1.05,1.6h.91c.9,0,1.05-.55,1.05-1.6V21.44h2a.57.57,0,0,1,.63.6v4.57a3.48,3.48,0,0,1-1.11,2.71L29.35,36a3.66,3.66,0,0,1-2.74,1.14H13.19A3.66,3.66,0,0,1,10.45,36L3.73,29.32a3.42,3.42,0,0,1-1.11-2.71V13.34A3.87,3.87,0,0,1,3.8,10.45l6.83-6.93a3.4,3.4,0,0,1,2.56-.9H26.62a3.39,3.39,0,0,1,2.55.9L36,10.45a4,4,0,0,1,1.17,2.89v4.33ZM31,1.78A6.1,6.1,0,0,0,26.58,0H13.22A6,6,0,0,0,8.79,1.78l-7.07,7A5.84,5.84,0,0,0,0,13V26.61a6,6,0,0,0,1.9,4.55l6.71,6.71a6.07,6.07,0,0,0,4.7,1.9H26.49a6.22,6.22,0,0,0,4.7-1.9l6.71-6.71a6.15,6.15,0,0,0,1.9-4.55V13a5.86,5.86,0,0,0-1.72-4.22Z"/><path d="M21.6,26.49c-1.89,0-2.56-.75-2.56-2.66S19.71,21,21.6,21s2.56.88,2.56,2.79-.67,2.66-2.56,2.66M21.6,13c1.62,0,2.27.6,2.27,2.63s-.65,2.64-2.27,2.64-2.27-.67-2.27-2.64S20,13,21.6,13m3.48,6.51a3.84,3.84,0,0,0,1.68-3.55v-1c-.18-3.42-1.3-4.72-5.16-4.72s-5,1.3-5.16,4.73v1a3.84,3.84,0,0,0,1.68,3.54C16.15,20.25,16,22,16,24.25c0,3.36,1.15,5,5.6,5.12,4.45-.09,5.6-1.76,5.6-5.12,0-2.27-.15-4-2.12-4.78"/></symbol>', '<symbol id="basketball" viewBox="0 0 32 32"><path d="M30.87,16a15.92,15.92,0,0,0-9.47,4l-4-4,9.89-9.9a1,1,0,1,0-1.41-1.41h0L16,14.59l-4-4a15.92,15.92,0,0,0,4-9.47A1,1,0,0,0,15,0,1,1,0,0,0,13.94,1a13.92,13.92,0,0,1-3.4,8.19L6.08,4.69a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.38l4.47,4.47A14,14,0,0,1,.94,14,1,1,0,1,0,1,16h0a15.87,15.87,0,0,0,9.46-4l4,4-9.9,9.9a1,1,0,0,0,0,1.41,1,1,0,0,0,1.42,0h0L16,17.41l4,4a15.87,15.87,0,0,0-4,9.47,1,1,0,1,0,2,.17v0a13.91,13.91,0,0,1,3.39-8.19l4.47,4.47a1,1,0,0,0,1.41-1.42l-4.46-4.46A13.93,13.93,0,0,1,31,18a1,1,0,0,0-.1-2h0"/><path d="M25.88,25.9A13.7,13.7,0,0,1,16,30a13.77,13.77,0,0,1-9.91-4.1,14,14,0,1,1,19.79,0ZM16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0Z"/></symbol>', '<symbol id="combat" viewBox="0 0 32 32"><path d="M7,14.43A4.77,4.77,0,0,1,9,14h5a2,2,0,1,1,0,4H9a1,1,0,1,0,0,2h5a4,4,0,0,0,4-4h5a7,7,0,0,0,7-7,1,1,0,0,0-1-1,1,1,0,0,0-1,1V9a5,5,0,0,1-5,5H17.42A4,4,0,0,0,14,12H9a6.9,6.9,0,0,0-2.72.56,1,1,0,0,0-.53,1.31A1,1,0,0,0,7,14.43M28,25a1,1,0,0,0-1-1H9a1,1,0,0,0-.71.3A1,1,0,0,0,8,25a1,1,0,0,0,.29.71A1,1,0,0,0,9,26H27a1,1,0,0,0,1-1"/><path d="M7.32,14.34a.94.94,0,0,0,.56-.51,1,1,0,0,0,0-.76V13H8V7a5,5,0,0,1,5-5H23V2a4.85,4.85,0,0,1,5,5V23a1,1,0,0,1-1,1,1,1,0,0,0-1,1h0v4a1,1,0,0,1-1,1H11a1,1,0,0,1-1-.92V25a1,1,0,0,0-.31-.7A1,1,0,0,0,9,24a5,5,0,0,1-1.66-9.69ZM8,26V29a3,3,0,0,0,2.93,3H25a3,3,0,0,0,3-3V25.89A2.78,2.78,0,0,0,30,23V7a6.93,6.93,0,0,0-7-7V0H13A7,7,0,0,0,6,7v5.71A7,7,0,0,0,8,26Z"/></symbol>', '<symbol id="football" viewBox="0 0 32 32"><path d="M24,27.47l-4.45-1.21L18.4,22l3.36-3.36,4.34,1.17,1.21,4.44A14.06,14.06,0,0,1,24,27.47Zm-19.16-3,2,.55.58,2.09A13.94,13.94,0,0,1,4.86,24.45ZM3.07,10.64l.57,2.06L2.13,14.21A13.71,13.71,0,0,1,3.07,10.64ZM7.7,4.74,12,5.92l1.17,4.29L9.89,13.52,5.62,12.37,4.44,8.1A14.45,14.45,0,0,1,7.7,4.74ZM27.33,7.8l-2.54-.69L24.1,4.6A14,14,0,0,1,27.33,7.8ZM24.27,9l4.49,1.22a13.9,13.9,0,0,1,1.17,4.43l-3.2,3.2-4.56-1.23L21,12.32ZM12.54,4l-2.45-.67a14.14,14.14,0,0,1,4.35-1.23Zm7,6.92L15.13,9.69,14,5.4,17.3,2.07A13.82,13.82,0,0,1,21.65,3.2l1.21,4.42Zm-2.5,9.57-4.42-1.19-1.23-4.47,3.19-3.19,4.45,1.21,1.21,4.44ZM7.35,23.05,3.35,22a13.9,13.9,0,0,1-1.29-4.86l2.86-2.86L9.53,15.5l1.16,4.21Zm11.8,5.17,2.38.64a13.63,13.63,0,0,1-4.08,1.06Zm-4.53,1.71A13.75,13.75,0,0,1,10,28.62l-1.15-4.2L12,21.19l4.4,1.19,1.22,4.5ZM28.06,19.39l1.85-1.85a13.58,13.58,0,0,1-1.19,4.28ZM16,0A16,16,0,0,0,0,16c0,.11,0,.22,0,.32l-.08.08.08.09a15.92,15.92,0,0,0,1.91,7.13v0H2A16,16,0,1,0,16,0Z"/></symbol>', '<symbol id="crown" viewBox="0 0 23 23"><path d="M2,5.45V15.53H21V5.44L18.6,7.52a3,3,0,0,1-4.23-.32A1.84,1.84,0,0,1,14.2,7L11.5,3.19,8.78,7a3,3,0,0,1-4.19.69l-.21-.17ZM1.65,2.51,5.69,6A1,1,0,0,0,7.1,5.9a.35.35,0,0,0,.05-.08L10.69.89A1,1,0,0,1,12.08.65a1,1,0,0,1,.23.24l3.52,4.93a1,1,0,0,0,1.39.24L17.29,6l4.06-3.5a1,1,0,0,1,1.41.11,1,1,0,0,1,.24.65V16.53a1,1,0,0,1-1,1H1a1,1,0,0,1-1-1V3.27a1,1,0,0,1,1-1,1,1,0,0,1,.65.25ZM1,20.53H22a1,1,0,0,1,0,2H1a1,1,0,0,1,0-2"/></symbol>', '<symbol id="forecast" viewBox="0 0 30 30"><path d="M9.72,28V26.14H20.31a2,2,0,0,0,2-2V5.86H28L28,28Zm-2-3.89h0L2,24.17,2,2l18.3,0V4.86h0l0,19.28ZM28,3.86H22.28V2a2,2,0,0,0-2-2H2A2,2,0,0,0,0,2v22.2a2,2,0,0,0,2,2H7.72V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V5.83a2,2,0,0,0-2-2Z"/><path d="M11.38,15.12l1.9,1L12.92,14l1.54-1.5-2.13-.31-.95-1.93-1,1.93L8.3,12.5,9.84,14l-.36,2.12,1.9-1ZM6.82,19.78l.87-5.08L4,11.1l5.1-.74,2.28-4.62,2.28,4.62,5.1.74-3.69,3.6.87,5.08-4.56-2.4Z"/></symbol>', '<symbol id="hockey" viewBox="0 0 31 31"><path d="M15.5,24C7.26,24,2,21.83,2,20.33V14.1C4.81,16,10.18,17,15.5,17S26.19,16,29,14.1v6.23C29,21.83,23.74,24,15.5,24m0-17C23.74,7,29,9.37,29,11s-5.26,4-13.5,4S2,12.63,2,11,7.26,7,15.5,7m0-2C7.8,5,0,7.06,0,11v9.33C0,24.05,7.8,26,15.5,26S31,24.05,31,20.33V11c0-3.94-7.8-6-15.5-6"/></symbol>', '<symbol id="tennis" viewBox="0 0 32 32"><path d="M18,2c0-.35,0-.69,0-1a1,1,0,0,0-2,.06v.06a13.94,13.94,0,0,1-4.07,10.8A14,14,0,0,1,1.07,16a1,1,0,0,0-.13,2c.34,0,.69,0,1,0A16,16,0,0,0,18,2M31,14c-.34,0-.68,0-1,0A16,16,0,0,0,14,30c0,.35,0,.69,0,1a1,1,0,1,0,2-.13h0A14,14,0,0,1,30.88,16,1,1,0,0,0,31,14h0"/><path d="M6.08,6.1a14,14,0,0,1,19.8,19.79A13.67,13.67,0,0,1,16,30a13.74,13.74,0,0,1-9.91-4.11,14,14,0,0,1,0-19.79ZM16,32A16,16,0,1,0,0,16,15.92,15.92,0,0,0,16,32Z"/></symbol>', '<symbol id="volleyball" viewBox="0 0 32 32"><path d="M16.34,30a13,13,0,0,0,8-13.72,7.91,7.91,0,0,1,4.41,5.59A11.26,11.26,0,0,1,28.12,23a14,14,0,0,1-11.78,7m-9.62-3.5.32,0A10.08,10.08,0,0,0,14,23.7c.13-.12.25-.26.38-.4s0,0,.05-.05A9.74,9.74,0,0,0,17,16.57,7.85,7.85,0,0,1,20.9,15.5a8.25,8.25,0,0,1,1.22.1A11.12,11.12,0,0,1,22.4,18a11,11,0,0,1-11,11q-.37,0-.75,0a13.9,13.9,0,0,1-3.92-2.45m-3-17.2A15,15,0,0,0,3.59,11a13,13,0,0,0,8,12A8.05,8.05,0,0,1,7.05,24.5a8,8,0,0,1-2.47-.42A14,14,0,0,1,2,16,13.85,13.85,0,0,1,3.72,9.28M23,3.87a13.88,13.88,0,0,1,4.94,4.84,13,13,0,0,0-15.85,0c0-.19,0-.39,0-.59a8,8,0,0,1,2.66-6C15.14,2,15.58,2,16,2a14,14,0,0,1,7,1.87m-10.42,7a11,11,0,0,1,17.28,3.25A13.1,13.1,0,0,1,30,16a13.56,13.56,0,0,1-.28,2.77,10,10,0,0,0-6.58-5l-.06,0a9.89,9.89,0,0,0-2.17-.25A9.75,9.75,0,0,0,16,14.83a7.76,7.76,0,0,1-3.41-3.94m-5.12-6a14.16,14.16,0,0,1,4.1-2.17A10.25,10.25,0,0,0,10.05,8.1a9.76,9.76,0,0,0,5,8.47,7.74,7.74,0,0,1-1.74,4.94A11,11,0,0,1,5.59,11,11.11,11.11,0,0,1,7.46,4.9m24.38,8.94s0-.06,0-.09A16,16,0,0,0,6.19,3.36l0,0A16,16,0,0,0,8,29.85,15.72,15.72,0,0,0,16,32,15.9,15.9,0,0,0,31.84,13.84"/></symbol>', '<symbol id="other" viewBox="0 0 31.8 31.8"><path d="M11,22.81a2,2,0,1,1,2.74.74A2,2,0,0,1,11,22.81Zm5.2-3a4,4,0,1,0-1.46,5.47A4,4,0,0,0,16.18,19.81Z"/><path d="M28,8.31,18,14.1a1,1,0,0,0-.48.79,1,1,0,0,0,.35.86,7.73,7.73,0,0,1,1.76,2.06A8,8,0,1,1,8.7,14.86L26,4.84ZM25.93,2.64l0,0L7.7,13.12a10,10,0,1,0,13.67,3.69A6.71,6.71,0,0,0,20,15.24l9.85-5.69a1,1,0,0,0,.48-.6.94.94,0,0,0-.08-.75L27.29,3a1,1,0,0,0-.6-.47A1.81,1.81,0,0,0,25.93,2.64ZM6.57,1.11A1,1,0,0,0,6.2,2.48l2,3.46a1,1,0,0,0,1.74-1l-2-3.46a1,1,0,0,0-1.37-.37h0m7.1-.37-1,3.86a1,1,0,0,0,1.94.52l1-3.87A1,1,0,0,0,13.67.74M1.42,7.81A1,1,0,0,0,2.13,9h0l3.86,1a1,1,0,0,0,1.22-.72,1,1,0,0,0-.7-1.21l-3.86-1a1,1,0,0,0-1.23.71h0"/></symbol>', '<symbol id="snooker" viewBox="0 0 28.15 28.15"><path d="M14,10.07a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2m-5,10a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,0,0,0-4H9a2,2,0,1,0,0,4m-5,10a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2m15-6a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2m-5,10a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2h0m10,2a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2"/></symbol>', '<symbol id="baseball" viewBox="0 0 32.04 32.04"><path d="M5.12,24.09A1,1,0,0,0,3.71,25.5h0l2.83,2.83a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.39L5.12,24.09m6.6-7.54a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l3.78,3.78a1,1,0,0,0,1.41-1.42l-3.77-3.77"/><path d="M29.17,7.11l-.26.24L6.58,26.87a1,1,0,0,0-.34.72,1,1,0,0,0,.3.74,1,1,0,0,1,0,1.42,1,1,0,0,1-.71.29,1,1,0,0,1-.71-.29L2.29,26.92A1,1,0,0,1,2,26.21a1,1,0,0,1,.29-.71,1,1,0,0,1,1.42,0,1,1,0,0,0,1.41,0,.12.12,0,0,1,0-.05L24.69,3.14l.24-.27a3,3,0,0,1,4.24,4.24Zm1.41-5.65a5,5,0,0,0-7.07,0l0,0-.27.3h0l-19,21.68A2.88,2.88,0,0,0,3,23.21,3,3,0,0,0,.88,28.33l2.83,2.83a3,3,0,0,0,4.23,0H8A3,3,0,0,0,8.83,29a3,3,0,0,0-.28-1.23l21.68-19h0l.3-.27,0,0A5,5,0,0,0,32,5,5,5,0,0,0,30.58,1.46ZM6.16,4.31a2.06,2.06,0,0,1-2,2,2.08,2.08,0,0,1-2-2,2,2,0,1,1,4,0Zm-6,0a4.15,4.15,0,0,0,4,4,4.14,4.14,0,0,0,4-4,4,4,0,1,0-8,0Z"/></symbol>', '<symbol id="handball" viewBox="0 0 30.66 30.66"><path d="M26.26,24.36a5.78,5.78,0,0,1-2.13,3.28,5,5,0,0,1-3.43,1,5.39,5.39,0,0,1-2.2-.56L18.31,28a4.74,4.74,0,0,1-1-.69c-1-1-2.08-2.06-3.11-3.09L8.56,18.55a.76.76,0,0,1-.11-.14.28.28,0,0,1,.21-.12l1.42,1.41,1.36,1.36,2,2.05a1.61,1.61,0,0,0,2.21,0,1.56,1.56,0,0,0,0-2.22L13.81,19,9,14.16A.44.44,0,0,1,8.87,14h0c.06-.09.12-.14.21-.12.41.39.81.8,1.21,1.2l4.82,4.82a1.52,1.52,0,0,0,1.09.46h0a1.56,1.56,0,0,0,1.11-.48,1.52,1.52,0,0,0,0-2.2L9.81,10.17,9.68,10a.26.26,0,0,1,.21-.14l7.23,7.22a1.57,1.57,0,0,0,2.21-2.22L18,13.57l-5-5a.76.76,0,0,1-.11-.14h0c.09-.13.16-.16.14-.18a.27.27,0,0,0,.08.07l1.28,1.27L21.85,17a1.57,1.57,0,0,0,2.68-1.37,19.15,19.15,0,0,1-.24-3,4.83,4.83,0,0,1,.19-1.51A.48.48,0,0,1,24.6,11V11c0,.33,0,.65,0,1a30.49,30.49,0,0,0,.77,6.52,4.39,4.39,0,0,0,.21.61l.08.16c.05.13.11.26.15.39h0a7.71,7.71,0,0,1,.4,4.66M2.83,14.5a12.5,12.5,0,1,1,25,0,12.35,12.35,0,0,1-.49,3.42A28.07,28.07,0,0,1,26.65,12c0-.36,0-.72,0-1.08v-.17a2,2,0,0,0-3-1.53,2.49,2.49,0,0,0-1,1.26,6.86,6.86,0,0,0-.3,2.15,17.57,17.57,0,0,0,.11,2.11L15.81,8.15l-1.3-1.29a2,2,0,0,0-2.18-.49,2.37,2.37,0,0,0-1.08.89,2,2,0,0,0-.36.88A1.94,1.94,0,0,0,9,8.06,2.4,2.4,0,0,0,7.89,9.14a1.86,1.86,0,0,0,0,1.8,3.05,3.05,0,0,0,.5.65l.29.28a2.4,2.4,0,0,0-1.46,1A1.88,1.88,0,0,0,7,14.8a2.87,2.87,0,0,0,.55.77l.7.7a2.06,2.06,0,0,0-.74.31,2.35,2.35,0,0,0-1,1.19,1.84,1.84,0,0,0,.16,1.63,2.87,2.87,0,0,0,.44.57l3.75,3.75,1.83,1.84,1.39,1.38A12.52,12.52,0,0,1,2.83,14.5m27,0A14.5,14.5,0,1,0,15.33,29c.29,0,.57,0,.86,0a6.72,6.72,0,0,0,1.14.79l.27.13a7.45,7.45,0,0,0,3,.77H21a7,7,0,0,0,4.36-1.44,7.77,7.77,0,0,0,2.84-4.38A9,9,0,0,0,28.29,21a14.52,14.52,0,0,0,1.54-6.5"/></symbol>', '<symbol id="gamer" viewBox="0 0 33 33"><path d="M31.11,18.5a6.82,6.82,0,0,1-6.6,7h-16a6.82,6.82,0,0,1-6.6-7v-4a6.82,6.82,0,0,1,6.6-7h16a6.82,6.82,0,0,1,6.6,7Zm-6.6-13h-16A8.77,8.77,0,0,0,0,14.5v4a8.77,8.77,0,0,0,8.49,9h16a8.77,8.77,0,0,0,8.49-9v-4A8.77,8.77,0,0,0,24.51,5.5Z"/><path d="M11,15.5H9v-2a1,1,0,0,0-2,0v2H5a1,1,0,0,0,0,2H7v2a1,1,0,0,0,2,0v-2h2a1,1,0,0,0,0-2m13.5-3A1.5,1.5,0,1,0,26,14a1.5,1.5,0,0,0-1.5-1.5m2,5A1.5,1.5,0,1,0,28,19a1.5,1.5,0,0,0-1.5-1.5"/></symbol>', '<symbol id="more" viewBox="0 0 35 35"><path d="M22.83,12.17H35V22.83H22.83V35H12.17V22.83H0V12.17H12.17V0H22.83Z"/></symbol>', '<symbol id="vk-share" viewBox="0 0 34 34"><defs><rect id="path-1" x="0" y="0" width="34" height="34" rx="4"></rect></defs><g id="блоки-в-новостях" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group-12"><mask id="mask-2" fill="white"><use xlink:href="#path-1"></use></mask><use id="Mask" fill="#2A82BB" xlink:href="#path-1"></use><path d="M27.4704597,10.872391 C27.6322841,10.3592708 27.4704597,10 26.7153958,10 L24.1987733,10 C23.5515456,10 23.2640058,10.325045 23.1021813,10.6842492 C23.1021813,10.6842492 21.8258857,13.6605595 20.0102687,15.576337 C19.4170293,16.1408292 19.1653881,16.3118248 18.8418093,16.3118248 C18.6799849,16.3118248 18.446293,16.1408292 18.446293,15.6276424 L18.446293,10.872391 C18.446293,10.2566601 18.2665192,10 17.727268,10 L13.7724553,10 C13.376939,10 13.1252277,10.2908192 13.1252277,10.5474127 C13.1252277,11.1289844 14.0240966,11.2657542 14.1320029,12.8736997 L14.1320029,16.3974227 C14.1320029,17.1671363 13.9881278,17.3039727 13.6646191,17.3039727 C12.8196684,17.3039727 10.7344609,14.3276624 9.51201322,10.9066168 C9.26030189,10.273673 9.02661001,10 8.37952258,10 L5.86275986,10 C5.14373488,10 5,10.325045 5,10.6842492 C5,11.3171262 5.84481053,14.4644989 8.97276201,18.621099 C11.0579695,21.4605728 13.9881278,23 16.6486254,23 C18.2485699,23 18.446293,22.6579421 18.446293,22.0763704 L18.446293,19.921079 C18.446293,19.2368965 18.590098,19.0999933 19.1113999,19.0999933 C19.4888967,19.0999933 20.118105,19.2711223 21.6101431,20.6394872 C23.3178538,22.2645122 23.6055339,23 24.5583208,23 L27.0749433,23 C27.7940384,23 28.1535159,22.6579421 27.9378434,21.9908392 C27.7041515,21.3237364 26.8952397,20.3487347 25.816597,19.1855912 C25.2234277,18.5184216 24.3425783,17.8171596 24.0909371,17.4579555 C23.7133701,16.996074 23.8212063,16.7908526 24.0909371,16.3974227 C24.0909371,16.3803431 27.1649003,12.2749817 27.4704597,10.872391" id="Fill-6" fill="#FFFFFF" mask="url(#mask-2)"></path></g></g></symbol>', '<symbol id="fb-share" viewBox="0 0 30 30"><defs><rect id="a" width="30" height="30" rx="4"/><path id="c" d="M0 .032h29.957V30H0z"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#D8D8D8" xlink:href="#a"/><g mask="url(#b)"><path fill="#FFF" d="M10.588 30h15.883V2.647H10.588z"/><path fill="#000" d="M10.588 30h15.883V1.765H10.588V30zm.06-.061H26.41V1.826H10.65V29.94z"/><mask id="d" fill="#fff"><use xlink:href="#c"/></mask><path fill="#007EC6" d="M16.012 29.98c-1.252.003-2.504.007-3.757.007-3.474.001-6.948-.019-10.422.013-1.007.01-1.835-.723-1.833-1.83.021-8.767.021-17.534 0-26.3C-.003.76.832.03 1.827.032c8.767.02 17.534.012 26.3.012 1.172 0 1.83.664 1.83 1.844v26.27c0 1.159-.665 1.83-1.814 1.83-2.373 0-4.747-.004-7.12.005-.26.001-.355-.044-.354-.336.011-3.646.01-7.293 0-10.938-.001-.28.083-.329.338-.325 1.1.014 2.202.002 3.302.01.185.001.265-.044.289-.24.164-1.341.334-2.682.517-4.022.034-.25-.058-.279-.273-.277-1.282.008-2.565-.006-3.847.012-.28.003-.33-.083-.325-.338.016-.818.006-1.636.007-2.454 0-.172 0-.344.01-.515.055-1.062.619-1.645 1.679-1.742.877-.081 1.756-.03 2.634-.035.226-.001.312-.043.309-.294a172.097 172.097 0 0 1-.002-3.484c.001-.21-.039-.293-.274-.313-1.239-.101-2.478-.171-3.721-.116-2.922.129-4.952 2.047-5.239 4.952-.131 1.33-.041 2.664-.05 3.996-.003.288-.088.344-.354.34-1.1-.014-2.202 0-3.302-.01-.212-.002-.273.058-.271.27.009 1.333.009 2.666 0 4-.001.214.066.272.275.27 1.121-.01 2.243.002 3.364-.01.228-.002.284.06.284.286-.008 3.767-.007 7.534-.007 11.301v-.001z" mask="url(#d)"/></g></g></symbol>', '<symbol id="wp-share" viewBox="0 0 30 30"><defs><rect id="a" width="30" height="30" rx="4"/><path id="c" d="M.124 11.806c0 2.075.544 4.102 1.58 5.888L.025 23.797l6.272-1.638a11.866 11.866 0 0 0 5.653 1.434h.006c6.52 0 11.828-5.284 11.83-11.778a11.679 11.679 0 0 0-3.462-8.332A11.781 11.781 0 0 0 11.955.029C5.435.029.127 5.312.124 11.806"/><linearGradient id="d" x1="50%" x2="50%" y1="100%" y2="0%"><stop offset="0%" stop-color="#00B025"/><stop offset="100%" stop-color="#00D761"/></linearGradient><path id="f" d="M0 .002h24.694v24.704H0z"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#00CB4E" xlink:href="#a"/><g mask="url(#b)"><g transform="translate(2.647 3.53)"><mask id="e" fill="#fff"><use xlink:href="#c"/></mask><path fill="url(#d)" d="M.124 11.806c0 2.075.544 4.102 1.58 5.888L.025 23.797l6.272-1.638a11.866 11.866 0 0 0 5.653 1.434h.006c6.52 0 11.828-5.284 11.83-11.778a11.679 11.679 0 0 0-3.462-8.332A11.781 11.781 0 0 0 11.955.029C5.435.029.127 5.312.124 11.806" mask="url(#e)"/></g><path fill="#FFF" d="M11.973 9.772c-.23-.51-.473-.52-.692-.528-.179-.008-.384-.007-.588-.007a1.13 1.13 0 0 0-.82.382c-.281.307-1.075 1.047-1.075 2.552 0 1.505 1.101 2.96 1.255 3.164.153.204 2.125 3.392 5.247 4.619 2.596 1.019 3.124.816 3.687.765.563-.05 1.818-.74 2.074-1.454.256-.715.256-1.327.179-1.455-.077-.127-.282-.204-.589-.357s-1.818-.893-2.1-.995c-.28-.102-.486-.153-.69.153-.205.306-.794.995-.973 1.2-.18.204-.359.23-.666.076-.307-.153-1.296-.476-2.47-1.518-.914-.811-1.53-1.813-1.71-2.12-.179-.305-.019-.471.136-.624.137-.137.307-.357.46-.535.154-.18.205-.307.307-.51.103-.205.052-.384-.025-.537-.077-.153-.674-1.666-.947-2.27"/><g transform="translate(2.647 2.647)"><mask id="g" fill="#fff"><use xlink:href="#f"/></mask><path fill="#FFF" d="M12.399 22.426h-.004a10.239 10.239 0 0 1-5.202-1.418l-.373-.22-3.868 1.01 1.033-3.755-.244-.385a10.118 10.118 0 0 1-1.562-5.415C2.181 6.633 6.766 2.07 12.403 2.07c2.73.002 5.295 1.061 7.224 2.984a10.092 10.092 0 0 1 2.99 7.199c-.002 5.61-4.586 10.174-10.218 10.174m8.697-18.834a12.244 12.244 0 0 0-8.697-3.59C5.62.002.106 5.493.103 12.242c0 2.158.565 4.264 1.641 6.12L0 24.707l6.518-1.702a12.327 12.327 0 0 0 5.875 1.49h.006c6.776 0 12.292-5.492 12.295-12.242a12.142 12.142 0 0 0-3.598-8.66" mask="url(#g)"/></g></g></g></symbol>'];
+  var symbols = ['<symbol id="arrow" viewBox="0 0 12 12"><path d="M2.29,1.41,6.88,6,2.29,10.59,3.71,12l6-6-6-6Z"/></symbol>', '<symbol id="right-arrow" viewBox="0 0 8 12"><path d="M.59 1.41L5.17 6 .59 10.59 2 12l6-6-6-6z"/></symbol>', '<symbol id="left-arrow" viewBox="0 0 8 12"><path d="M7.41 10.59L2.83 6l4.58-4.59L6 0 0 6l6 6z"/></symbol>', '<symbol id="bottom-arrow" viewBox="0 0 12 8"><path d="M10.59.59L6 5.17 1.41.59 0 2l6 6 6-6z"/></symbol>', '<symbol id="right" viewBox="0 0 45.38 12.6"><path d="M41.6,7.35H0V5.25H41.6L38.07,1.48,39.46,0l5.92,6.3-5.92,6.3-1.39-1.48Z"/></symbol>', '<symbol id="close" viewBox="0 0 12.73 12.73"><path d="M0,1.41,1.41,0,12.73,11.31l-1.42,1.42Z"/><path d="M1.41,12.73,0,11.31,11.31,0l1.42,1.41Z"/></symbol>', '<symbol id="search" viewBox="0 0 17.49 17.49"><path d="M12.5,10.91h-.79l-.28-.26A6,6,0,0,0,13,6.59,6.37,6.37,0,0,0,6.5.36,6.37,6.37,0,0,0,0,6.59a6.37,6.37,0,0,0,6.5,6.23,6.63,6.63,0,0,0,4.23-1.5l.27.27v.75l5,4.79,1.49-1.43Zm-6,0A4.41,4.41,0,0,1,2,6.59,4.41,4.41,0,0,1,6.5,2.28,4.41,4.41,0,0,1,11,6.59,4.41,4.41,0,0,1,6.5,10.91Z"/></symbol>', '<symbol id="search-o" viewBox="0 0 16.41 16.41"><path d="M13,11.09l3.4,3.41L15,15.91l-3.26-3.26A7,7,0,1,1,13,11.09ZM7,12.5a5,5,0,1,0-5-5A5,5,0,0,0,7,12.5Z"/></symbol>', '<symbol id="user" viewBox="0 0 18 18"><path d="M9,0a4.15,4.15,0,0,1,4.24,4.05A4.15,4.15,0,0,1,9,8.1a4.15,4.15,0,0,1-4.24-4A4.15,4.15,0,0,1,9,0ZM9,18a9.46,9.46,0,0,1-8-4.6C1,10.56,6.33,9,9,9s8,1.56,8,4.4A9.46,9.46,0,0,1,9,18Z"/></symbol>', '<symbol id="rating" viewBox="0 0 16.5 16.5"><path d="M14.67,0H1.83A1.83,1.83,0,0,0,0,1.83V14.67A1.84,1.84,0,0,0,1.83,16.5H14.67a1.83,1.83,0,0,0,1.83-1.83V1.83A1.83,1.83,0,0,0,14.67,0Zm0,14.67H1.83V1.83H14.67Zm-11-8.25H5.5v6.41H3.67ZM7.33,3.67H9.17v9.16H7.33ZM11,9.17h1.83v3.66H11Z"/></symbol>', '<symbol id="star" viewBox="0 0 18.33 18.33"><path d="M18.33,7.09l-6.59-.56L9.17.46,6.59,6.53,0,7.09l5,4.34L3.5,17.87l5.67-3.42,5.66,3.42-1.49-6.44Z"/></symbol>', '<symbol id="star-o" viewBox="0 0 18.33 18.33"><path d="M18.33,7.09l-6.59-.56L9.17.46,6.59,6.53,0,7.09l5,4.34L3.5,17.87l5.67-3.42,5.66,3.42-1.49-6.44ZM9.17,12.74,5.72,14.82l.92-3.92-3-2.64,4-.35L9.17,4.22l1.56,3.7,4,.35L11.7,10.91l.92,3.92Z"/></symbol>', '<symbol id="round" viewBox="0 0 18.33 18.33"><path d="M9.17,0a9.17,9.17,0,1,0,9.16,9.17A9.18,9.18,0,0,0,9.17,0Zm0,16.5A7.34,7.34,0,0,1,1.83,9.17h0A7.34,7.34,0,0,1,9.16,1.83h0A7.33,7.33,0,0,1,16.5,9.16h0A7.33,7.33,0,0,1,9.17,16.5Z"/><circle cx="9.17" cy="9.17" r="4.58" fill="#d0021b"/></symbol>', '<symbol id="gift" viewBox="0 0 17 17"><path fill-rule="evenodd" d="M2.712 3.4a2.444 2.444 0 0 1-.162-.877C2.55 1.13 3.718 0 5.16 0 6.091 0 7.57 1.113 8.5 2.276 9.429 1.113 10.909 0 11.84 0c1.442 0 2.61 1.13 2.61 2.523 0 .309-.057.604-.162.877H15.3A1.7 1.7 0 0 1 17 5.1v2.55a1.7 1.7 0 0 1-.864 1.48 1.7 1.7 0 0 1 .014.22v5.95a1.7 1.7 0 0 1-1.7 1.7H2.55a1.7 1.7 0 0 1-1.7-1.7V9.35a1.867 1.867 0 0 1 .014-.22A1.7 1.7 0 0 1 0 7.65V5.1a1.7 1.7 0 0 1 1.7-1.7h1.012zm7.068-.001c.225.003.473-.001.74-.01l.374-.015c.32-.013.665-.027.947-.027.556 0 .909-.422.909-.824 0-.394-.34-.808-.88-.823-.002.004-.141.032-.43.202-.323.19-.696.479-1.053.824a6.411 6.411 0 0 0-.607.673zM7.04 5.1H1.7v2.55h5.95V5.1h-.61zm2.31 0h5.95v2.55H9.35V5.1zm-1.7 4.25h-5.1v5.95h5.1V9.35zm1.7 5.95V9.35h5.1v5.95h-5.1zM6.48 3.389c.267.009.515.013.74.01a6.411 6.411 0 0 0-.607-.673 5.872 5.872 0 0 0-1.054-.824c-.24-.14-.376-.184-.416-.197L5.129 1.7c-.538.015-.879.429-.879.823 0 .402.353.824.91.824.281 0 .626.014.946.027l.374.015z"/></symbol>', '<symbol id="toggle" viewBox="0 0 16.5 16.5"><path d="M0,13.75H11V11.92H0Zm0-11V4.58H16.5V2.75ZM0,9.17H16.5V7.33H0Z"/></symbol>', '<symbol id="notify" viewBox="0 0 19.5 19.5"><path d="M15.75,13.5v-5c0-3.07-1.64-5.64-4.5-6.32V1.5a1.5,1.5,0,0,0-3,0v.68c-2.87.68-4.5,3.24-4.5,6.32v5l-2,2v1h16v-1Zm-6,6a2,2,0,0,0,2-2h-4A2,2,0,0,0,9.75,19.5Z"/></symbol>', '<symbol id="mail" viewBox="0 0 18 18"><path d="M16.2,2H1.8A1.77,1.77,0,0,0,0,3.75v10.5A1.78,1.78,0,0,0,1.8,16H16.2A1.78,1.78,0,0,0,18,14.25V3.75A1.78,1.78,0,0,0,16.2,2Zm0,4.5L9,10.88,1.8,6.5V4.75L9,9.13l7.2-4.38Z"/></symbol>', '<symbol id="setting" viewBox="0 0 12.8 12.8"><path d="M11.16,7a6.06,6.06,0,0,0,0-.62,4.1,4.1,0,0,0,0-.62L12.5,4.72a.32.32,0,0,0,.08-.41L11.3,2.1A.31.31,0,0,0,10.91,2l-1.59.64A5,5,0,0,0,8.24,2L8,.27A.31.31,0,0,0,7.68,0H5.12a.3.3,0,0,0-.31.27L4.57,2a4.81,4.81,0,0,0-1.08.62L1.9,2a.33.33,0,0,0-.4.15L.22,4.31a.32.32,0,0,0,.08.41L1.66,5.78a3.18,3.18,0,0,0-.06.62,4.21,4.21,0,0,0,0,.62L.3,8.08a.32.32,0,0,0-.08.41L1.5,10.7a.31.31,0,0,0,.39.15l1.59-.64a5,5,0,0,0,1.08.62l.24,1.7a.32.32,0,0,0,.32.27H7.68A.3.3,0,0,0,8,12.53l.24-1.7a4.81,4.81,0,0,0,1.08-.62l1.59.64a.33.33,0,0,0,.4-.15l1.28-2.21a.32.32,0,0,0-.08-.41ZM6.4,8.8A2.4,2.4,0,1,1,8.8,6.4,2.41,2.41,0,0,1,6.4,8.8Z"/></symbol>', '<symbol id="calendar" viewBox="0 0 25.67 25.67"><path d="M2.59,6.47h20.5a1,1,0,0,1,1,1V23.29a1,1,0,0,1-1,1H2.59a1,1,0,0,1-1-1V7.47A1,1,0,0,1,2.59,6.47ZM22.84,2.33H21.59V0h-2.5V2.33H6.59V0H4.09V2.33H2.84A2.43,2.43,0,0,0,.34,4.67V23.33a2.43,2.43,0,0,0,2.5,2.34h20a2.43,2.43,0,0,0,2.5-2.34V4.67A2.43,2.43,0,0,0,22.84,2.33Z"/></symbol>', '<symbol id="chat" viewBox="0 0 15 15"><path d="M13.5,0H1.5A1.5,1.5,0,0,0,0,1.5V15l3-3H13.5A1.51,1.51,0,0,0,15,10.5v-9A1.5,1.5,0,0,0,13.5,0Zm0,10.5H3L1.5,12V1.5h12Z"/></symbol>', '<symbol id="filter" viewBox="0 0 13.86 13.86"><path d="M5.52,9.44h7.84a.5.5,0,0,0,0-1H5.52A1.79,1.79,0,0,0,3.8,7.16,1.76,1.76,0,0,0,2.1,8.44H.5a.5.5,0,0,0,0,1H2.1a1.78,1.78,0,0,0,3.42,0ZM3,8.94a.78.78,0,0,1,1.56,0,.79.79,0,0,1-.78.78A.78.78,0,0,1,3,8.94Zm8.5-3.5h1.84a.5.5,0,0,0,0-1H11.52A1.79,1.79,0,0,0,9.8,3.16,1.76,1.76,0,0,0,8.1,4.44H.5a.5.5,0,0,0,0,1H8.1a1.78,1.78,0,0,0,3.42,0ZM9,4.94a.78.78,0,0,1,1.56,0,.79.79,0,0,1-.78.78A.78.78,0,0,1,9,4.94Z"/></symbol>', '<symbol id="clock" viewBox="0 0 64 64"><path d="M32,0C14.355,0,0,14.355,0,32s14.355,32,32,32s32-14.355,32-32S49.645,0,32,0z M32,60   C16.561,60,4,47.439,4,32S16.561,4,32,4s28,12.561,28,28S47.439,60,32,60z"/><path d="m43.639,24.572l-11.201,5.037-13.29-13.291c-0.781-0.781-2.047-0.781-2.828,0s-0.781,2.047 0,2.828l14.266,14.268c0.029,0.029 0.068,0.039 0.098,0.066 0.143,0.125 0.297,0.227 0.465,0.307 0.061,0.029 0.117,0.061 0.182,0.082 0.212,0.078 0.435,0.131 0.665,0.131 0.002,0 0.004,0 0.004,0l0,0c0.004,0 0.008-0.002 0.012-0.002 0.264-0.002 0.525-0.061 0.773-0.166 0.012-0.006 0.023-0.002 0.035-0.008l12.459-5.604c1.008-0.453 1.457-1.637 1.004-2.645-0.455-1.005-1.635-1.454-2.644-1.003z"/></symbol>', '<symbol id="tv" viewBox="0 0 18.33 18.33"><path d="M16.67,1.66h-15A1.67,1.67,0,0,0,0,3.33v10A1.67,1.67,0,0,0,1.67,15H5.83v1.66H12.5V15h4.17a1.66,1.66,0,0,0,1.65-1.67v-10A1.67,1.67,0,0,0,16.67,1.66Zm0,11.67h-15v-10h15Z"/><polygon points="13.17 8.16 7.17 11.16 7.17 5.17 13.17 8.16"/></symbol>', '<symbol id="fire" viewBox="0 0 14 14"><path d="M8.33,0C6.66.65,3.67,3.17,5.05,8c.07.73-.39.64-.62.5-1-.89-.91-3.11-.73-4.1-1.32,1.74-3.14,5.86.19,8.39a5,5,0,0,0,7.24-1c.83-1.28,1.8-4.35-.91-6.38S7.83,1,8.33,0ZM7.91,8.58l.36.47a2.7,2.7,0,0,1,.31,2.4A1.88,1.88,0,0,1,5.33,12c.67-.36,1.9-1.38,1.47-2.6A3.09,3.09,0,0,1,6.8,7,14.09,14.09,0,0,0,7.91,8.58Z"/></symbol>', '<symbol id="paper" viewBox="0 0 18 22"><path d="M4.667 15.333h8.666V17.5H4.667v-2.167zm0-4.333h8.666v2.167H4.667V11zm6.5-10.833l6.5 6.5v13a2.173 2.173 0 0 1-2.167 2.166H2.49a2.164 2.164 0 0 1-2.157-2.166V2.333C.333 1.142 1.308.167 2.5.167h8.667zm4.333 19.5V7.75h-5.417V2.333H2.5v17.334h13z"/></symbol>', '<symbol id="web" viewBox="0 0 26 26"><path d="M13 2c6.072 0 11 4.928 11 11s-4.928 11-11 11S2 19.072 2 13 6.928 2 13 2zm6.49 16.929A8.753 8.753 0 0 0 21.8 13c0-3.685-2.277-6.842-5.5-8.151V5.3c0 1.21-.99 2.2-2.2 2.2h-2.2v2.2c0 .605-.495 1.1-1.1 1.1H8.6V13h6.6c.605 0 1.1.495 1.1 1.1v3.3h1.1c.99 0 1.804.638 2.09 1.529zm-7.59 2.794V19.6c-1.21 0-2.2-.99-2.2-2.2v-1.1l-5.269-5.269A8.93 8.93 0 0 0 4.2 13a8.787 8.787 0 0 0 7.7 8.723z"/></symbol>', '<symbol id="comment" viewBox="0 0 50 40"><polygon points="8.7 39.68 9.93 26.7 -2.34 22.27 13.02 14.87 18.69 1.41 26.94 9.82 42.71 5.92 32.46 18.52 36.54 29.57 21.95 28.95 8.7 39.68" fill="#fff"/><rect x="2" y="2" width="46" height="26.32" fill="#fff"/><path d="M10,37.12l12.78-8.69H45a3,3,0,0,0,3-3V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V25.43a3,3,0,0,0,3,3h5Zm13.4-6.69L9.56,39.83a1,1,0,0,1-1.39-.26A1.06,1.06,0,0,1,8,39V30.44H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0H45a5,5,0,0,1,5,5V25.43a5,5,0,0,1-5,5Z"/></symbol>', '<symbol id="comment-b" viewBox="0 0 18 14.36"><path d="M2.93,14.36V10.67H2a2,2,0,0,1-2-2V2A2,2,0,0,1,2,0H16a2,2,0,0,1,2,2V8.67a2,2,0,0,1-2,2H8.58ZM2,1.5a.5.5,0,0,0-.5.5V8.67a.5.5,0,0,0,.5.5H4.43v2.42l3.7-2.42H16a.5.5,0,0,0,.5-.5V2a.5.5,0,0,0-.5-.5Z"/></symbol>', '<symbol id="comment-bold" viewBox="0 0 44 30"><path d="M20.28,20.8H39a3,3,0,0,0,3-3V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V17.8a3,3,0,0,0,3,3H9v6.47Zm.54,2L8.5,29.87a1,1,0,0,1-1.37-.37A1.06,1.06,0,0,1,7,29V22.8H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0H39a5,5,0,0,1,5,5V17.8a5,5,0,0,1-5,5Z"/></symbol>', '<symbol id="line" viewBox="0 0 231 28"><path d="M13 0h218l-.307.098A18.921 18.921 0 0 0 218 14v-1c0 8.284-6.716 15-15 15H28c-8.284 0-15-6.716-15-15v1l-.46-1.668A17.572 17.572 0 0 0 0 0h13z"/></symbol>', '<symbol id="line-short" viewBox="0 0 189 32"><path d="M15 0h174c-3.578.95-6.617 2.798-9.117 5.545-2.5 2.748-4.461 6.394-5.883 10.94V16c0 8.837-7.163 16-16 16H30c-8.284 0-15-6.716-15-15v.515c-.864-4.178-2.546-7.727-5.046-10.646C7.454 3.949 4.136 1.66 0 0h15z"></path></symbol>', '<symbol id="tax" viewBox="0 0 22.53 22.53"><path d="M14.68,20.59l0,0L18,17.32l-.13,0H14.79c-.11,0-.12.05-.12.14v3s0,.08,0,.12M4.31,11.26v9.68c0,.16,0,.16.17.16h8.6c.17,0,.18,0,.18-.17V16.05c0-.17,0-.18.17-.18H18c.18,0,.18,0,.18-.19v-14c0-.21,0-.21-.2-.21H4.48c-.17,0-.17,0-.17.17v9.67m-1.41,0V.29c0-.33,0-.29.28-.29H19.43c.2,0,.2,0,.2.21V17.53a.42.42,0,0,1-.13.33l-4.6,4.56a.35.35,0,0,1-.27.11H3.11c-.21,0-.21,0-.21-.21v-11"/><path d="M14.05,11.79l.23,0a.6.6,0,0,0,.49-.32,1.14,1.14,0,0,0,0-.85.58.58,0,0,0-.38-.37,1.13,1.13,0,0,0-.79,0,.48.48,0,0,0-.29.3,1.19,1.19,0,0,0,0,.7.6.6,0,0,0,.47.49l.26,0m2.23-.8a2.34,2.34,0,0,1-2.22,2.22A2.34,2.34,0,0,1,11.87,11,2.35,2.35,0,0,1,14.1,8.76,2.36,2.36,0,0,1,16.27,11M8.6,6.3v0h.16a.63.63,0,0,0,.61-.46,1.27,1.27,0,0,0,0-.67.57.57,0,0,0-.46-.43,1.55,1.55,0,0,0-.48,0,.58.58,0,0,0-.56.45,1.17,1.17,0,0,0,0,.67.58.58,0,0,0,.38.41,2.17,2.17,0,0,0,.35.07m0,1.41a2.35,2.35,0,0,1-2.2-2.22,2.37,2.37,0,0,1,2.2-2.23,2.35,2.35,0,0,1,2.21,2.22A2.33,2.33,0,0,1,8.62,7.71m5.17-2.63a.71.71,0,0,1,.54,1.15,2.83,2.83,0,0,1-.24.25L9.46,11.15a.68.68,0,0,1-.69.23.71.71,0,0,1-.53-.85.94.94,0,0,1,.1-.23,1.71,1.71,0,0,1,.18-.2l4.71-4.76a.73.73,0,0,1,.56-.26"/></symbol>', '<symbol id="surprise" viewBox="0 0 36 36"><path d="M35.73,20.13l-6-2.22a1.37,1.37,0,0,1-.77-.83l-1.75-6.15c-.1-.34-.35-.39-.57-.12l-3.95,5a1.37,1.37,0,0,1-1,.47l-1.81-.06a.38.38,0,0,0-.4.57l.23.61a1,1,0,0,0,.86.61l1.9.07a1.44,1.44,0,0,0,1-.47l2.42-3c.22-.27.47-.22.57.12l1,3.62a1.37,1.37,0,0,0,.76.84l3.61,1.37c.33.12.36.38.07.57l-3.13,2.11a1.43,1.43,0,0,0-.56,1l-.18,3.86c0,.35-.25.46-.53.24l-3-2.33a1.41,1.41,0,0,0-1.11-.22l-3.72,1c-.34.09-.52-.1-.4-.43l.34-.93a.56.56,0,0,0-.33-.74l-.07,0-.48-.13A.71.71,0,0,0,18,25L16.5,29c-.12.33.06.52.39.42L23,27.73a1.41,1.41,0,0,1,1.11.21l5,3.95c.27.22.51.1.52-.24l.25-6.4a1.41,1.41,0,0,1,.55-1l5.3-3.57c.29-.18.26-.43-.07-.56ZM19.59,22.3l-2.25-6a1.41,1.41,0,0,1,.12-1.12L21,9.84c.19-.3.06-.52-.29-.51l-6.37.3a1.48,1.48,0,0,1-1-.47l-4-5c-.22-.27-.48-.22-.57.12L7,10.46a1.4,1.4,0,0,1-.76.84l-6,2.27c-.33.13-.36.38-.06.57l5.34,3.52a1.41,1.41,0,0,1,.56,1l.3,6.4c0,.35.25.45.52.24l5-4A1.42,1.42,0,0,1,13,21.05l6.16,1.68C19.53,22.82,19.71,22.63,19.59,22.3Z"/></symbol>', '<symbol id="photo" viewBox="0 0 20 20"><path d="M17.25,18H2.75A2.75,2.75,0,0,1,0,15.25V4.75A2.75,2.75,0,0,1,2.75,2h14.5A2.75,2.75,0,0,1,20,4.75v10.5A2.75,2.75,0,0,1,17.25,18ZM2.75,3.5A1.25,1.25,0,0,0,1.5,4.75v10.5A1.25,1.25,0,0,0,2.75,16.5h14.5a1.25,1.25,0,0,0,1.25-1.25V4.75A1.25,1.25,0,0,0,17.25,3.5Z"/><polygon points="15.17 17.62 8.25 11.94 1.42 16.62 0.58 15.38 8.33 10.06 11.91 13 15.84 10.57 20.01 13.38 19.18 14.62 15.8 12.36 13.14 14.01 16.12 16.46 15.17 17.62"/><path d="M12,9.75A2.75,2.75,0,1,1,14.75,7,2.75,2.75,0,0,1,12,9.75Zm0-4A1.25,1.25,0,1,0,13.25,7,1.25,1.25,0,0,0,12,5.75Z"/></symbol>', '<symbol id="video" viewBox="0 0 21 21"><path d="M11.25,17.48H2.75A2.75,2.75,0,0,1,0,14.73V6.23A2.75,2.75,0,0,1,2.75,3.48h8.5A2.75,2.75,0,0,1,14,6.23v8.5A2.75,2.75,0,0,1,11.25,17.48ZM2.75,5A1.25,1.25,0,0,0,1.5,6.23v8.5A1.25,1.25,0,0,0,2.75,16h8.5a1.25,1.25,0,0,0,1.25-1.25V6.23A1.25,1.25,0,0,0,11.25,5Z"/><path d="M19,16.1a2.1,2.1,0,0,1-.65-.1l-4-1.37A2,2,0,0,1,13,12.74V8.09a2,2,0,0,1,1.41-1.91l4-1.24A2,2,0,0,1,19,4.85a2,2,0,0,1,2,2V14.1a2,2,0,0,1-1.12,1.8A2,2,0,0,1,19,16.1Zm0-9.75a.4.4,0,0,0-.15,0l-4,1.24a.48.48,0,0,0-.35.47v4.65a.51.51,0,0,0,.34.47l4,1.37a.5.5,0,0,0,.38,0,.48.48,0,0,0,.25-.29.41.41,0,0,0,0-.16V6.85A.5.5,0,0,0,19,6.35Z"/></symbol>', '<symbol id="rub" viewBox="0 0 23 23"><path d="M20.22,15a10.53,10.53,0,1,0-4.5,5.14L15.65,20a1.4,1.4,0,0,1-.12-.18.94.94,0,0,1-.12-.18h0a1.19,1.19,0,0,1-.11-.26l-.07-.12A9.37,9.37,0,0,1,10.5,20.5a9.5,9.5,0,1,1,8.79-5.9"/><path d="M19.29,14.6a2.17,2.17,0,0,1,.59.2,1.5,1.5,0,0,1,.34.16"/><path d="M18.5,22.5A4.5,4.5,0,1,1,23,18,4.51,4.51,0,0,1,18.5,22.5Zm0-8A3.5,3.5,0,1,0,22,18,3.5,3.5,0,0,0,18.5,14.5Z"/><path d="M8.77,13.94V16H7.93V13.94H6.74v-.7H7.93V11.69H6.74V11H7.93V6.23h3.83a2.51,2.51,0,0,1,2,.73,2.85,2.85,0,0,1,.67,2,2.82,2.82,0,0,1-.67,2,2.52,2.52,0,0,1-2,.74h-3v1.55h3.69v.7Zm0-2.95h3a1.57,1.57,0,0,0,1.73-1.65v-.7a1.65,1.65,0,0,0-.44-1.19A1.68,1.68,0,0,0,11.76,7h-3Z"/><path d="M17.08,16.09,19,18l-1.91,1.91.59.59,2.5-2.5-2.5-2.5Z"/></symbol>', '<symbol id="protect" viewBox="0 0 23.14 23.14"><path d="M11.57,23.14l-1.12-.8a42,42,0,0,1-5-3.9c-2-1.93-2.92-3.73-2.92-5.65V3.35l9-3.35,9,3.35v9.44c0,1.92-.93,3.72-2.92,5.65a42.16,42.16,0,0,1-5,3.9ZM3.57,4v8.75c0,1.63.83,3.2,2.61,4.93A40.41,40.41,0,0,0,11,21.52l.54.39.54-.38A41.19,41.19,0,0,0,17,17.72c1.78-1.73,2.61-3.29,2.61-4.93V4l-8-3Z"/><polygon points="9.94 15.32 6.47 11.1 7.24 10.47 10 13.82 15.93 7.8 16.64 8.5 9.94 15.32"/></symbol>', '<symbol id="unprotect" viewBox="0 0 23.14 23.14"><path d="M11.57,23.14l-1.12-.8a42,42,0,0,1-5-3.9c-2-1.93-2.92-3.73-2.92-5.65V3.35l9-3.35,9,3.35v9.44c0,1.92-.93,3.72-2.92,5.65a42.16,42.16,0,0,1-5,3.9ZM3.57,4v8.75c0,1.63.83,3.2,2.61,4.93A40.41,40.41,0,0,0,11,21.52l.54.39.54-.38A41.19,41.19,0,0,0,17,17.72c1.78-1.73,2.61-3.29,2.61-4.93V4l-8-3Z"/><path d="M11.57,10.29l3.5-3.5.71.71L12.28,11l3.5,3.5-.71.71-3.5-3.5-3.5,3.5-.71-.71,3.5-3.5L7.36,7.5l.71-.71Z"/></symbol>', '<symbol id="like" viewBox="0 0 18.62 18.62"><path d="M10.1,1.6,5.48,6.22A1.65,1.65,0,0,0,5,7.39v8.33a1.67,1.67,0,0,0,1.67,1.67h7.5a1.68,1.68,0,0,0,1.53-1L18.42,10a2.51,2.51,0,0,0-2.3-3.49H11.41l.79-3.81a1.25,1.25,0,0,0-.34-1.15,1.23,1.23,0,0,0-1.75,0ZM1.67,17.39a1.67,1.67,0,0,0,1.66-1.67V9.05A1.67,1.67,0,0,0,0,9.05v6.67A1.67,1.67,0,0,0,1.67,17.39Z"/></symbol>', '<symbol id="dislike" viewBox="0 0 18.61 18.61"><path d="M8.51,17l4.61-4.61a1.68,1.68,0,0,0,.49-1.18V2.9a1.67,1.67,0,0,0-1.67-1.67H4.45a1.66,1.66,0,0,0-1.53,1L.21,8.58A2.49,2.49,0,0,0,2.5,12.06H7.21l-.8,3.82A1.26,1.26,0,0,0,6.76,17a1.24,1.24,0,0,0,1.75,0ZM17,1.23A1.67,1.67,0,0,0,15.28,2.9V9.56a1.67,1.67,0,1,0,3.33,0V2.9A1.67,1.67,0,0,0,17,1.23Z"/></symbol>', '<symbol id="instagram" viewBox="0 0 18 18"><path d="M5,0A5,5,0,0,0,0,5v8a5,5,0,0,0,5,5h8a5,5,0,0,0,5-5V5a5,5,0,0,0-5-5ZM15,2a1,1,0,1,1-1,1A1,1,0,0,1,15,2ZM9,4A5,5,0,1,1,4,9,5,5,0,0,1,9,4ZM9,6a3,3,0,1,0,3,3A3,3,0,0,0,9,6Z"/></symbol>', '<symbol id="vk" viewBox="0 0 18 18"><path d="M15.86,0H2.14A2.14,2.14,0,0,0,0,2.14V15.86A2.14,2.14,0,0,0,2.14,18H15.86A2.14,2.14,0,0,0,18,15.86V2.14A2.14,2.14,0,0,0,15.86,0ZM14.45,12.43H12.76a1.29,1.29,0,0,1-.7-.25c-.57-.39-1.1-1.36-1.53-1.36h-.08c-.37.12-.48.49-.48.94,0,.16-.11.23-.41.23H8.73a3.24,3.24,0,0,1-2.82-1.12A22.91,22.91,0,0,1,3,6.36.29.29,0,0,1,3,6.1.48.48,0,0,1,3.36,6H5.1a.77.77,0,0,1,.28.12.49.49,0,0,1,.15.2s.29.57.65,1.21c.62,1,1,1.4,1.18,1.4l.12,0c.35-.19.25-1.75.25-1.75a1.83,1.83,0,0,0-.18-.82A.84.84,0,0,0,7,6.06c-.1,0,.06-.23.26-.33a3.18,3.18,0,0,1,1.24-.16h.26a1.85,1.85,0,0,1,.71.11c.59.14.39.69.39,2,0,.42-.08,1,.23,1.22l.09,0c.19,0,.62-.25,1.29-1.4.38-.65.67-1.3.67-1.3a.6.6,0,0,1,.17-.17A.25.25,0,0,1,12.54,6h1.85c.29,0,.55,0,.6.18s-.21.74-1,1.73c-1.2,1.61-1.34,1.49-.34,2.43a5.11,5.11,0,0,1,1.19,1.38C15.29,12.38,14.45,12.43,14.45,12.43Z"/></symbol>', '<symbol id="youtube" viewBox="0 0 18 18"><path d="M17.5,4.64a2.38,2.38,0,0,0-1.88-1.79,37.6,37.6,0,0,0-6.68-.49,38.16,38.16,0,0,0-6.73.49A2.32,2.32,0,0,0,.33,4.64,27.65,27.65,0,0,0,0,9a23.28,23.28,0,0,0,.37,4.36,2.37,2.37,0,0,0,1.88,1.78,38.75,38.75,0,0,0,6.73.5,38.53,38.53,0,0,0,6.72-.5,2.29,2.29,0,0,0,1.88-1.78A30.67,30.67,0,0,0,18,9,29.49,29.49,0,0,0,17.5,4.64ZM6.68,11.91V6.09L11.78,9l-5.1,2.91Z"/></symbol>', '<symbol id="twitter" viewBox="0 0 510 510"><path d="M459,0H51A51.15,51.15,0,0,0,0,51V459a51.15,51.15,0,0,0,51,51H459a51.15,51.15,0,0,0,51-51V51A51.15,51.15,0,0,0,459,0ZM400.35,186.15c-2.55,117.3-76.5,198.9-188.7,204-45.9,2.55-79.05-12.75-109.65-30.6,33.15,5.1,76.5-7.65,99.45-28.05C168.3,329,147.9,311.1,137.7,283.05c10.2,2.55,20.4,0,28.05,0-30.6-10.2-51-28.05-53.55-68.85,7.65,5.1,17.85,7.65,28.05,7.65-23-12.75-38.25-61.2-20.4-91.8,33.15,35.7,74,66.3,140.25,71.4-17.85-71.4,79-109.65,117.3-61.2,17.85-2.55,30.6-10.2,43.35-15.3-5.1,17.85-15.3,28.05-28.05,38.25,12.75-2.55,25.5-5.1,35.7-10.2C425.85,165.75,413.1,176,400.35,186.15Z"/></symbol>', '<symbol id="age" viewBox="0 0 39.8 39.8"><path d="M12.09,11H9.51c-1,0-1.51.18-1.51,1v1c0,.87.51,1.05,1.51,1.05h.59c.37,0,.54.21.54.81V27.78c0,1,.17,1.59,1,1.59h1c.83,0,1-.54,1-1.59V12c0-.87-.51-1-1.51-1"/><path d="M37.18,17.67c0,.45-.21.69-.63.69h-2V17c0-1-.15-1.6-1.05-1.6h-.91c-.9,0-1.05.55-1.05,1.6v1.41H30.11c-1.06,0-1.6.15-1.6,1.06v1c0,.91.54,1.06,1.6,1.06h1.41v1.41c0,1,.15,1.6,1.05,1.6h.91c.9,0,1.05-.55,1.05-1.6V21.44h2a.57.57,0,0,1,.63.6v4.57a3.48,3.48,0,0,1-1.11,2.71L29.35,36a3.66,3.66,0,0,1-2.74,1.14H13.19A3.66,3.66,0,0,1,10.45,36L3.73,29.32a3.42,3.42,0,0,1-1.11-2.71V13.34A3.87,3.87,0,0,1,3.8,10.45l6.83-6.93a3.4,3.4,0,0,1,2.56-.9H26.62a3.39,3.39,0,0,1,2.55.9L36,10.45a4,4,0,0,1,1.17,2.89v4.33ZM31,1.78A6.1,6.1,0,0,0,26.58,0H13.22A6,6,0,0,0,8.79,1.78l-7.07,7A5.84,5.84,0,0,0,0,13V26.61a6,6,0,0,0,1.9,4.55l6.71,6.71a6.07,6.07,0,0,0,4.7,1.9H26.49a6.22,6.22,0,0,0,4.7-1.9l6.71-6.71a6.15,6.15,0,0,0,1.9-4.55V13a5.86,5.86,0,0,0-1.72-4.22Z"/><path d="M21.6,26.49c-1.89,0-2.56-.75-2.56-2.66S19.71,21,21.6,21s2.56.88,2.56,2.79-.67,2.66-2.56,2.66M21.6,13c1.62,0,2.27.6,2.27,2.63s-.65,2.64-2.27,2.64-2.27-.67-2.27-2.64S20,13,21.6,13m3.48,6.51a3.84,3.84,0,0,0,1.68-3.55v-1c-.18-3.42-1.3-4.72-5.16-4.72s-5,1.3-5.16,4.73v1a3.84,3.84,0,0,0,1.68,3.54C16.15,20.25,16,22,16,24.25c0,3.36,1.15,5,5.6,5.12,4.45-.09,5.6-1.76,5.6-5.12,0-2.27-.15-4-2.12-4.78"/></symbol>', '<symbol id="basketball" viewBox="0 0 32 32"><path d="M30.87,16a15.92,15.92,0,0,0-9.47,4l-4-4,9.89-9.9a1,1,0,1,0-1.41-1.41h0L16,14.59l-4-4a15.92,15.92,0,0,0,4-9.47A1,1,0,0,0,15,0,1,1,0,0,0,13.94,1a13.92,13.92,0,0,1-3.4,8.19L6.08,4.69a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.38l4.47,4.47A14,14,0,0,1,.94,14,1,1,0,1,0,1,16h0a15.87,15.87,0,0,0,9.46-4l4,4-9.9,9.9a1,1,0,0,0,0,1.41,1,1,0,0,0,1.42,0h0L16,17.41l4,4a15.87,15.87,0,0,0-4,9.47,1,1,0,1,0,2,.17v0a13.91,13.91,0,0,1,3.39-8.19l4.47,4.47a1,1,0,0,0,1.41-1.42l-4.46-4.46A13.93,13.93,0,0,1,31,18a1,1,0,0,0-.1-2h0"/><path d="M25.88,25.9A13.7,13.7,0,0,1,16,30a13.77,13.77,0,0,1-9.91-4.1,14,14,0,1,1,19.79,0ZM16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0Z"/></symbol>', '<symbol id="combat" viewBox="0 0 32 32"><path d="M7,14.43A4.77,4.77,0,0,1,9,14h5a2,2,0,1,1,0,4H9a1,1,0,1,0,0,2h5a4,4,0,0,0,4-4h5a7,7,0,0,0,7-7,1,1,0,0,0-1-1,1,1,0,0,0-1,1V9a5,5,0,0,1-5,5H17.42A4,4,0,0,0,14,12H9a6.9,6.9,0,0,0-2.72.56,1,1,0,0,0-.53,1.31A1,1,0,0,0,7,14.43M28,25a1,1,0,0,0-1-1H9a1,1,0,0,0-.71.3A1,1,0,0,0,8,25a1,1,0,0,0,.29.71A1,1,0,0,0,9,26H27a1,1,0,0,0,1-1"/><path d="M7.32,14.34a.94.94,0,0,0,.56-.51,1,1,0,0,0,0-.76V13H8V7a5,5,0,0,1,5-5H23V2a4.85,4.85,0,0,1,5,5V23a1,1,0,0,1-1,1,1,1,0,0,0-1,1h0v4a1,1,0,0,1-1,1H11a1,1,0,0,1-1-.92V25a1,1,0,0,0-.31-.7A1,1,0,0,0,9,24a5,5,0,0,1-1.66-9.69ZM8,26V29a3,3,0,0,0,2.93,3H25a3,3,0,0,0,3-3V25.89A2.78,2.78,0,0,0,30,23V7a6.93,6.93,0,0,0-7-7V0H13A7,7,0,0,0,6,7v5.71A7,7,0,0,0,8,26Z"/></symbol>', '<symbol id="football" viewBox="0 0 32 32"><path d="M24,27.47l-4.45-1.21L18.4,22l3.36-3.36,4.34,1.17,1.21,4.44A14.06,14.06,0,0,1,24,27.47Zm-19.16-3,2,.55.58,2.09A13.94,13.94,0,0,1,4.86,24.45ZM3.07,10.64l.57,2.06L2.13,14.21A13.71,13.71,0,0,1,3.07,10.64ZM7.7,4.74,12,5.92l1.17,4.29L9.89,13.52,5.62,12.37,4.44,8.1A14.45,14.45,0,0,1,7.7,4.74ZM27.33,7.8l-2.54-.69L24.1,4.6A14,14,0,0,1,27.33,7.8ZM24.27,9l4.49,1.22a13.9,13.9,0,0,1,1.17,4.43l-3.2,3.2-4.56-1.23L21,12.32ZM12.54,4l-2.45-.67a14.14,14.14,0,0,1,4.35-1.23Zm7,6.92L15.13,9.69,14,5.4,17.3,2.07A13.82,13.82,0,0,1,21.65,3.2l1.21,4.42Zm-2.5,9.57-4.42-1.19-1.23-4.47,3.19-3.19,4.45,1.21,1.21,4.44ZM7.35,23.05,3.35,22a13.9,13.9,0,0,1-1.29-4.86l2.86-2.86L9.53,15.5l1.16,4.21Zm11.8,5.17,2.38.64a13.63,13.63,0,0,1-4.08,1.06Zm-4.53,1.71A13.75,13.75,0,0,1,10,28.62l-1.15-4.2L12,21.19l4.4,1.19,1.22,4.5ZM28.06,19.39l1.85-1.85a13.58,13.58,0,0,1-1.19,4.28ZM16,0A16,16,0,0,0,0,16c0,.11,0,.22,0,.32l-.08.08.08.09a15.92,15.92,0,0,0,1.91,7.13v0H2A16,16,0,1,0,16,0Z"/></symbol>', '<symbol id="crown" viewBox="0 0 23 23"><path d="M2,5.45V15.53H21V5.44L18.6,7.52a3,3,0,0,1-4.23-.32A1.84,1.84,0,0,1,14.2,7L11.5,3.19,8.78,7a3,3,0,0,1-4.19.69l-.21-.17ZM1.65,2.51,5.69,6A1,1,0,0,0,7.1,5.9a.35.35,0,0,0,.05-.08L10.69.89A1,1,0,0,1,12.08.65a1,1,0,0,1,.23.24l3.52,4.93a1,1,0,0,0,1.39.24L17.29,6l4.06-3.5a1,1,0,0,1,1.41.11,1,1,0,0,1,.24.65V16.53a1,1,0,0,1-1,1H1a1,1,0,0,1-1-1V3.27a1,1,0,0,1,1-1,1,1,0,0,1,.65.25ZM1,20.53H22a1,1,0,0,1,0,2H1a1,1,0,0,1,0-2"/></symbol>', '<symbol id="forecast" viewBox="0 0 30 30"><path d="M9.72,28V26.14H20.31a2,2,0,0,0,2-2V5.86H28L28,28Zm-2-3.89h0L2,24.17,2,2l18.3,0V4.86h0l0,19.28ZM28,3.86H22.28V2a2,2,0,0,0-2-2H2A2,2,0,0,0,0,2v22.2a2,2,0,0,0,2,2H7.72V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V5.83a2,2,0,0,0-2-2Z"/><path d="M11.38,15.12l1.9,1L12.92,14l1.54-1.5-2.13-.31-.95-1.93-1,1.93L8.3,12.5,9.84,14l-.36,2.12,1.9-1ZM6.82,19.78l.87-5.08L4,11.1l5.1-.74,2.28-4.62,2.28,4.62,5.1.74-3.69,3.6.87,5.08-4.56-2.4Z"/></symbol>', '<symbol id="hockey" viewBox="0 0 31 31"><path d="M15.5,24C7.26,24,2,21.83,2,20.33V14.1C4.81,16,10.18,17,15.5,17S26.19,16,29,14.1v6.23C29,21.83,23.74,24,15.5,24m0-17C23.74,7,29,9.37,29,11s-5.26,4-13.5,4S2,12.63,2,11,7.26,7,15.5,7m0-2C7.8,5,0,7.06,0,11v9.33C0,24.05,7.8,26,15.5,26S31,24.05,31,20.33V11c0-3.94-7.8-6-15.5-6"/></symbol>', '<symbol id="tennis" viewBox="0 0 32 32"><path d="M18,2c0-.35,0-.69,0-1a1,1,0,0,0-2,.06v.06a13.94,13.94,0,0,1-4.07,10.8A14,14,0,0,1,1.07,16a1,1,0,0,0-.13,2c.34,0,.69,0,1,0A16,16,0,0,0,18,2M31,14c-.34,0-.68,0-1,0A16,16,0,0,0,14,30c0,.35,0,.69,0,1a1,1,0,1,0,2-.13h0A14,14,0,0,1,30.88,16,1,1,0,0,0,31,14h0"/><path d="M6.08,6.1a14,14,0,0,1,19.8,19.79A13.67,13.67,0,0,1,16,30a13.74,13.74,0,0,1-9.91-4.11,14,14,0,0,1,0-19.79ZM16,32A16,16,0,1,0,0,16,15.92,15.92,0,0,0,16,32Z"/></symbol>', '<symbol id="volleyball" viewBox="0 0 32 32"><path d="M16.34,30a13,13,0,0,0,8-13.72,7.91,7.91,0,0,1,4.41,5.59A11.26,11.26,0,0,1,28.12,23a14,14,0,0,1-11.78,7m-9.62-3.5.32,0A10.08,10.08,0,0,0,14,23.7c.13-.12.25-.26.38-.4s0,0,.05-.05A9.74,9.74,0,0,0,17,16.57,7.85,7.85,0,0,1,20.9,15.5a8.25,8.25,0,0,1,1.22.1A11.12,11.12,0,0,1,22.4,18a11,11,0,0,1-11,11q-.37,0-.75,0a13.9,13.9,0,0,1-3.92-2.45m-3-17.2A15,15,0,0,0,3.59,11a13,13,0,0,0,8,12A8.05,8.05,0,0,1,7.05,24.5a8,8,0,0,1-2.47-.42A14,14,0,0,1,2,16,13.85,13.85,0,0,1,3.72,9.28M23,3.87a13.88,13.88,0,0,1,4.94,4.84,13,13,0,0,0-15.85,0c0-.19,0-.39,0-.59a8,8,0,0,1,2.66-6C15.14,2,15.58,2,16,2a14,14,0,0,1,7,1.87m-10.42,7a11,11,0,0,1,17.28,3.25A13.1,13.1,0,0,1,30,16a13.56,13.56,0,0,1-.28,2.77,10,10,0,0,0-6.58-5l-.06,0a9.89,9.89,0,0,0-2.17-.25A9.75,9.75,0,0,0,16,14.83a7.76,7.76,0,0,1-3.41-3.94m-5.12-6a14.16,14.16,0,0,1,4.1-2.17A10.25,10.25,0,0,0,10.05,8.1a9.76,9.76,0,0,0,5,8.47,7.74,7.74,0,0,1-1.74,4.94A11,11,0,0,1,5.59,11,11.11,11.11,0,0,1,7.46,4.9m24.38,8.94s0-.06,0-.09A16,16,0,0,0,6.19,3.36l0,0A16,16,0,0,0,8,29.85,15.72,15.72,0,0,0,16,32,15.9,15.9,0,0,0,31.84,13.84"/></symbol>', '<symbol id="other" viewBox="0 0 31.8 31.8"><path d="M11,22.81a2,2,0,1,1,2.74.74A2,2,0,0,1,11,22.81Zm5.2-3a4,4,0,1,0-1.46,5.47A4,4,0,0,0,16.18,19.81Z"/><path d="M28,8.31,18,14.1a1,1,0,0,0-.48.79,1,1,0,0,0,.35.86,7.73,7.73,0,0,1,1.76,2.06A8,8,0,1,1,8.7,14.86L26,4.84ZM25.93,2.64l0,0L7.7,13.12a10,10,0,1,0,13.67,3.69A6.71,6.71,0,0,0,20,15.24l9.85-5.69a1,1,0,0,0,.48-.6.94.94,0,0,0-.08-.75L27.29,3a1,1,0,0,0-.6-.47A1.81,1.81,0,0,0,25.93,2.64ZM6.57,1.11A1,1,0,0,0,6.2,2.48l2,3.46a1,1,0,0,0,1.74-1l-2-3.46a1,1,0,0,0-1.37-.37h0m7.1-.37-1,3.86a1,1,0,0,0,1.94.52l1-3.87A1,1,0,0,0,13.67.74M1.42,7.81A1,1,0,0,0,2.13,9h0l3.86,1a1,1,0,0,0,1.22-.72,1,1,0,0,0-.7-1.21l-3.86-1a1,1,0,0,0-1.23.71h0"/></symbol>', '<symbol id="snooker" viewBox="0 0 28.15 28.15"><path d="M14,10.07a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2m-5,10a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,0,0,0-4H9a2,2,0,1,0,0,4m-5,10a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2m15-6a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2m-5,10a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2h0m10,2a4,4,0,1,1,4-4,4,4,0,0,1-4,4m0-2a2,2,0,1,0-2-2,2,2,0,0,0,2,2"/></symbol>', '<symbol id="baseball" viewBox="0 0 32.04 32.04"><path d="M5.12,24.09A1,1,0,0,0,3.71,25.5h0l2.83,2.83a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.39L5.12,24.09m6.6-7.54a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l3.78,3.78a1,1,0,0,0,1.41-1.42l-3.77-3.77"/><path d="M29.17,7.11l-.26.24L6.58,26.87a1,1,0,0,0-.34.72,1,1,0,0,0,.3.74,1,1,0,0,1,0,1.42,1,1,0,0,1-.71.29,1,1,0,0,1-.71-.29L2.29,26.92A1,1,0,0,1,2,26.21a1,1,0,0,1,.29-.71,1,1,0,0,1,1.42,0,1,1,0,0,0,1.41,0,.12.12,0,0,1,0-.05L24.69,3.14l.24-.27a3,3,0,0,1,4.24,4.24Zm1.41-5.65a5,5,0,0,0-7.07,0l0,0-.27.3h0l-19,21.68A2.88,2.88,0,0,0,3,23.21,3,3,0,0,0,.88,28.33l2.83,2.83a3,3,0,0,0,4.23,0H8A3,3,0,0,0,8.83,29a3,3,0,0,0-.28-1.23l21.68-19h0l.3-.27,0,0A5,5,0,0,0,32,5,5,5,0,0,0,30.58,1.46ZM6.16,4.31a2.06,2.06,0,0,1-2,2,2.08,2.08,0,0,1-2-2,2,2,0,1,1,4,0Zm-6,0a4.15,4.15,0,0,0,4,4,4.14,4.14,0,0,0,4-4,4,4,0,1,0-8,0Z"/></symbol>', '<symbol id="handball" viewBox="0 0 30.66 30.66"><path d="M26.26,24.36a5.78,5.78,0,0,1-2.13,3.28,5,5,0,0,1-3.43,1,5.39,5.39,0,0,1-2.2-.56L18.31,28a4.74,4.74,0,0,1-1-.69c-1-1-2.08-2.06-3.11-3.09L8.56,18.55a.76.76,0,0,1-.11-.14.28.28,0,0,1,.21-.12l1.42,1.41,1.36,1.36,2,2.05a1.61,1.61,0,0,0,2.21,0,1.56,1.56,0,0,0,0-2.22L13.81,19,9,14.16A.44.44,0,0,1,8.87,14h0c.06-.09.12-.14.21-.12.41.39.81.8,1.21,1.2l4.82,4.82a1.52,1.52,0,0,0,1.09.46h0a1.56,1.56,0,0,0,1.11-.48,1.52,1.52,0,0,0,0-2.2L9.81,10.17,9.68,10a.26.26,0,0,1,.21-.14l7.23,7.22a1.57,1.57,0,0,0,2.21-2.22L18,13.57l-5-5a.76.76,0,0,1-.11-.14h0c.09-.13.16-.16.14-.18a.27.27,0,0,0,.08.07l1.28,1.27L21.85,17a1.57,1.57,0,0,0,2.68-1.37,19.15,19.15,0,0,1-.24-3,4.83,4.83,0,0,1,.19-1.51A.48.48,0,0,1,24.6,11V11c0,.33,0,.65,0,1a30.49,30.49,0,0,0,.77,6.52,4.39,4.39,0,0,0,.21.61l.08.16c.05.13.11.26.15.39h0a7.71,7.71,0,0,1,.4,4.66M2.83,14.5a12.5,12.5,0,1,1,25,0,12.35,12.35,0,0,1-.49,3.42A28.07,28.07,0,0,1,26.65,12c0-.36,0-.72,0-1.08v-.17a2,2,0,0,0-3-1.53,2.49,2.49,0,0,0-1,1.26,6.86,6.86,0,0,0-.3,2.15,17.57,17.57,0,0,0,.11,2.11L15.81,8.15l-1.3-1.29a2,2,0,0,0-2.18-.49,2.37,2.37,0,0,0-1.08.89,2,2,0,0,0-.36.88A1.94,1.94,0,0,0,9,8.06,2.4,2.4,0,0,0,7.89,9.14a1.86,1.86,0,0,0,0,1.8,3.05,3.05,0,0,0,.5.65l.29.28a2.4,2.4,0,0,0-1.46,1A1.88,1.88,0,0,0,7,14.8a2.87,2.87,0,0,0,.55.77l.7.7a2.06,2.06,0,0,0-.74.31,2.35,2.35,0,0,0-1,1.19,1.84,1.84,0,0,0,.16,1.63,2.87,2.87,0,0,0,.44.57l3.75,3.75,1.83,1.84,1.39,1.38A12.52,12.52,0,0,1,2.83,14.5m27,0A14.5,14.5,0,1,0,15.33,29c.29,0,.57,0,.86,0a6.72,6.72,0,0,0,1.14.79l.27.13a7.45,7.45,0,0,0,3,.77H21a7,7,0,0,0,4.36-1.44,7.77,7.77,0,0,0,2.84-4.38A9,9,0,0,0,28.29,21a14.52,14.52,0,0,0,1.54-6.5"/></symbol>', '<symbol id="gamer" viewBox="0 0 33 33"><path d="M31.11,18.5a6.82,6.82,0,0,1-6.6,7h-16a6.82,6.82,0,0,1-6.6-7v-4a6.82,6.82,0,0,1,6.6-7h16a6.82,6.82,0,0,1,6.6,7Zm-6.6-13h-16A8.77,8.77,0,0,0,0,14.5v4a8.77,8.77,0,0,0,8.49,9h16a8.77,8.77,0,0,0,8.49-9v-4A8.77,8.77,0,0,0,24.51,5.5Z"/><path d="M11,15.5H9v-2a1,1,0,0,0-2,0v2H5a1,1,0,0,0,0,2H7v2a1,1,0,0,0,2,0v-2h2a1,1,0,0,0,0-2m13.5-3A1.5,1.5,0,1,0,26,14a1.5,1.5,0,0,0-1.5-1.5m2,5A1.5,1.5,0,1,0,28,19a1.5,1.5,0,0,0-1.5-1.5"/></symbol>', '<symbol id="more" viewBox="0 0 35 35"><path d="M22.83,12.17H35V22.83H22.83V35H12.17V22.83H0V12.17H12.17V0H22.83Z"/></symbol>', '<symbol id="vk-share" viewBox="0 0 34 34"><defs><rect id="path-1" x="0" y="0" width="34" height="34" rx="4"></rect></defs><g id="блоки-в-новостях" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group-12"><mask id="mask-2" fill="white"><use xlink:href="#path-1"></use></mask><use id="Mask" fill="#2A82BB" xlink:href="#path-1"></use><path d="M27.4704597,10.872391 C27.6322841,10.3592708 27.4704597,10 26.7153958,10 L24.1987733,10 C23.5515456,10 23.2640058,10.325045 23.1021813,10.6842492 C23.1021813,10.6842492 21.8258857,13.6605595 20.0102687,15.576337 C19.4170293,16.1408292 19.1653881,16.3118248 18.8418093,16.3118248 C18.6799849,16.3118248 18.446293,16.1408292 18.446293,15.6276424 L18.446293,10.872391 C18.446293,10.2566601 18.2665192,10 17.727268,10 L13.7724553,10 C13.376939,10 13.1252277,10.2908192 13.1252277,10.5474127 C13.1252277,11.1289844 14.0240966,11.2657542 14.1320029,12.8736997 L14.1320029,16.3974227 C14.1320029,17.1671363 13.9881278,17.3039727 13.6646191,17.3039727 C12.8196684,17.3039727 10.7344609,14.3276624 9.51201322,10.9066168 C9.26030189,10.273673 9.02661001,10 8.37952258,10 L5.86275986,10 C5.14373488,10 5,10.325045 5,10.6842492 C5,11.3171262 5.84481053,14.4644989 8.97276201,18.621099 C11.0579695,21.4605728 13.9881278,23 16.6486254,23 C18.2485699,23 18.446293,22.6579421 18.446293,22.0763704 L18.446293,19.921079 C18.446293,19.2368965 18.590098,19.0999933 19.1113999,19.0999933 C19.4888967,19.0999933 20.118105,19.2711223 21.6101431,20.6394872 C23.3178538,22.2645122 23.6055339,23 24.5583208,23 L27.0749433,23 C27.7940384,23 28.1535159,22.6579421 27.9378434,21.9908392 C27.7041515,21.3237364 26.8952397,20.3487347 25.816597,19.1855912 C25.2234277,18.5184216 24.3425783,17.8171596 24.0909371,17.4579555 C23.7133701,16.996074 23.8212063,16.7908526 24.0909371,16.3974227 C24.0909371,16.3803431 27.1649003,12.2749817 27.4704597,10.872391" id="Fill-6" fill="#FFFFFF" mask="url(#mask-2)"></path></g></g></symbol>', '<symbol id="fb-share" viewBox="0 0 30 30"><defs><rect id="a" width="30" height="30" rx="4"/><path id="c" d="M0 .032h29.957V30H0z"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#D8D8D8" xlink:href="#a"/><g mask="url(#b)"><path fill="#FFF" d="M10.588 30h15.883V2.647H10.588z"/><path fill="#000" d="M10.588 30h15.883V1.765H10.588V30zm.06-.061H26.41V1.826H10.65V29.94z"/><mask id="d" fill="#fff"><use xlink:href="#c"/></mask><path fill="#007EC6" d="M16.012 29.98c-1.252.003-2.504.007-3.757.007-3.474.001-6.948-.019-10.422.013-1.007.01-1.835-.723-1.833-1.83.021-8.767.021-17.534 0-26.3C-.003.76.832.03 1.827.032c8.767.02 17.534.012 26.3.012 1.172 0 1.83.664 1.83 1.844v26.27c0 1.159-.665 1.83-1.814 1.83-2.373 0-4.747-.004-7.12.005-.26.001-.355-.044-.354-.336.011-3.646.01-7.293 0-10.938-.001-.28.083-.329.338-.325 1.1.014 2.202.002 3.302.01.185.001.265-.044.289-.24.164-1.341.334-2.682.517-4.022.034-.25-.058-.279-.273-.277-1.282.008-2.565-.006-3.847.012-.28.003-.33-.083-.325-.338.016-.818.006-1.636.007-2.454 0-.172 0-.344.01-.515.055-1.062.619-1.645 1.679-1.742.877-.081 1.756-.03 2.634-.035.226-.001.312-.043.309-.294a172.097 172.097 0 0 1-.002-3.484c.001-.21-.039-.293-.274-.313-1.239-.101-2.478-.171-3.721-.116-2.922.129-4.952 2.047-5.239 4.952-.131 1.33-.041 2.664-.05 3.996-.003.288-.088.344-.354.34-1.1-.014-2.202 0-3.302-.01-.212-.002-.273.058-.271.27.009 1.333.009 2.666 0 4-.001.214.066.272.275.27 1.121-.01 2.243.002 3.364-.01.228-.002.284.06.284.286-.008 3.767-.007 7.534-.007 11.301v-.001z" mask="url(#d)"/></g></g></symbol>', '<symbol id="wp-share" viewBox="0 0 30 30"><defs><rect id="a" width="30" height="30" rx="4"/><path id="c" d="M.124 11.806c0 2.075.544 4.102 1.58 5.888L.025 23.797l6.272-1.638a11.866 11.866 0 0 0 5.653 1.434h.006c6.52 0 11.828-5.284 11.83-11.778a11.679 11.679 0 0 0-3.462-8.332A11.781 11.781 0 0 0 11.955.029C5.435.029.127 5.312.124 11.806"/><linearGradient id="d" x1="50%" x2="50%" y1="100%" y2="0%"><stop offset="0%" stop-color="#00B025"/><stop offset="100%" stop-color="#00D761"/></linearGradient><path id="f" d="M0 .002h24.694v24.704H0z"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#00CB4E" xlink:href="#a"/><g mask="url(#b)"><g transform="translate(2.647 3.53)"><mask id="e" fill="#fff"><use xlink:href="#c"/></mask><path fill="url(#d)" d="M.124 11.806c0 2.075.544 4.102 1.58 5.888L.025 23.797l6.272-1.638a11.866 11.866 0 0 0 5.653 1.434h.006c6.52 0 11.828-5.284 11.83-11.778a11.679 11.679 0 0 0-3.462-8.332A11.781 11.781 0 0 0 11.955.029C5.435.029.127 5.312.124 11.806" mask="url(#e)"/></g><path fill="#FFF" d="M11.973 9.772c-.23-.51-.473-.52-.692-.528-.179-.008-.384-.007-.588-.007a1.13 1.13 0 0 0-.82.382c-.281.307-1.075 1.047-1.075 2.552 0 1.505 1.101 2.96 1.255 3.164.153.204 2.125 3.392 5.247 4.619 2.596 1.019 3.124.816 3.687.765.563-.05 1.818-.74 2.074-1.454.256-.715.256-1.327.179-1.455-.077-.127-.282-.204-.589-.357s-1.818-.893-2.1-.995c-.28-.102-.486-.153-.69.153-.205.306-.794.995-.973 1.2-.18.204-.359.23-.666.076-.307-.153-1.296-.476-2.47-1.518-.914-.811-1.53-1.813-1.71-2.12-.179-.305-.019-.471.136-.624.137-.137.307-.357.46-.535.154-.18.205-.307.307-.51.103-.205.052-.384-.025-.537-.077-.153-.674-1.666-.947-2.27"/><g transform="translate(2.647 2.647)"><mask id="g" fill="#fff"><use xlink:href="#f"/></mask><path fill="#FFF" d="M12.399 22.426h-.004a10.239 10.239 0 0 1-5.202-1.418l-.373-.22-3.868 1.01 1.033-3.755-.244-.385a10.118 10.118 0 0 1-1.562-5.415C2.181 6.633 6.766 2.07 12.403 2.07c2.73.002 5.295 1.061 7.224 2.984a10.092 10.092 0 0 1 2.99 7.199c-.002 5.61-4.586 10.174-10.218 10.174m8.697-18.834a12.244 12.244 0 0 0-8.697-3.59C5.62.002.106 5.493.103 12.242c0 2.158.565 4.264 1.641 6.12L0 24.707l6.518-1.702a12.327 12.327 0 0 0 5.875 1.49h.006c6.776 0 12.292-5.492 12.295-12.242a12.142 12.142 0 0 0-3.598-8.66" mask="url(#g)"/></g></g></g></symbol>'];
   $(document.body).append('<svg class="hidden">' + symbols.join('') + '</svg>');
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
