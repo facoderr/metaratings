@@ -23805,6 +23805,7 @@ $(function () {
       storiesCountVal,
       storiesTick,
       storiesLast,
+      storiesItemButtons = $('.stories-item-button'),
       swipeLink,
       swipeStart,
       swipeEnd,
@@ -23896,7 +23897,11 @@ $(function () {
           }
         } else {
           if (swipeEnd.pageX > doc.outerWidth() / 2 && swipeEnd.clientY < storiesFor.outerHeight() - 85) {
-            sliderFor.slideNext();
+            if (storiesFor.find('.swiper-slide:last-child').index() === sliderFor.activeIndex) {
+              $(modalHide).trigger('click');
+            } else {
+              sliderFor.slideNext();
+            }
           } else if (swipeEnd.pageX < doc.outerWidth() / 2 && swipeEnd.clientY < storiesFor.outerHeight() - 85) {
             sliderFor.slidePrev();
           }
@@ -23920,6 +23925,43 @@ $(function () {
   }
 
   ;
+
+  function disabled($element) {
+    $element.css('pointer-events', 'none');
+  }
+
+  function enabled($element) {
+    $element.removeAttr('style');
+  }
+
+  function sendAjax(id, action, $this) {
+    disabled(storiesItemButtons);
+    var request = $.ajax({
+      url: stories.attr('data-ajax-path'),
+      type: "POST",
+      data: {
+        id: id,
+        action: action
+      },
+      dataType: 'json'
+    });
+    request.done(function (response) {
+      if (response.status == 'error') {
+        console.log(response.error_message); // для дебага
+      } else {
+        var itemTools = $this.closest('.stories-item-tools');
+        if (!$this.hasClass('is-select') && $this.hasClass('js-like-history')) itemTools.find('.js-dislike-history').removeClass('is-select');
+        if (!$this.hasClass('is-select') && $this.hasClass('js-dislike-history')) itemTools.find('.js-like-history').removeClass('is-select');
+        $this.toggleClass('is-select');
+      }
+
+      enabled(storiesItemButtons);
+    });
+    request.fail(function (jqXHR, textStatus) {
+      alert("Request failed: " + textStatus);
+    });
+  }
+
   var sliderNav = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](storiesNav.get(0), {
     slidesPerView: 'auto',
     freeMode: true,
@@ -24003,6 +24045,16 @@ $(function () {
     }
   });
   sliderFor.autoplay.stop();
+  doc.on('click', '.js-like-history', function () {
+    var id = $(this).closest('.stories-item').attr('data-id');
+    sendAjax(id, 'like', $(this));
+    return false;
+  });
+  doc.on('click', '.js-dislike-history', function () {
+    var id = $(this).closest('.stories-item').attr('data-id');
+    sendAjax(id, 'dislike', $(this));
+    return false;
+  });
   doc.on('click', modalShow, function () {
     storiesSlideTime = storiesTime, storiesBarTime = storiesTime / 1000;
     startProgress(storiesBarTime, storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
