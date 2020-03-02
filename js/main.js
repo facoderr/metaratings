@@ -22590,12 +22590,21 @@ $(function () {
       if (dateM < 10) {
         dateM = dateM + 1;
         matchCalendarDate.html(dateD + '.' + '0' + dateM + '.' + dateY);
+        var matchData = {
+          'matchType': 'date',
+          'matchSection': $('.match-tabHead').data('section'),
+          'startDate': dateD + '.' + '0' + dateM + '.' + dateY
+        };
+        $.get('/local/components/metaratings/match.list/ajax.php', matchData, function (html) {
+          var list = $('.match-list');
+          list.empty();
+          list.replaceWith($(html).find('.match-list'));
+        });
       } else {
         matchCalendarDate.html(dateD + '.' + dateM + '.' + dateY);
       }
     }
-  });
-  matchCalendar.data('datepicker').selectDate(new Date()); // -- Match Tab
+  }); // -- Match Tab
 
   tabInit('.js-tab', '.js-tabList', '.js-tabItem', '.js-tabBlock'); // -- Match Slider Best
 
