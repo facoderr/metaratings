@@ -23116,7 +23116,7 @@ $(function () {
     }
   });
   var videoSlider = $('.js-overview-bk-video'),
-      videoLength = videoSlider.find('.swiper-slide').length,
+      videoLength,
       videoClick;
 
   function videoPlayer(e) {
@@ -23131,66 +23131,70 @@ $(function () {
     }
   }
 
-  if (videoLength < 2) {
-    new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](videoSlider.get(0), {
-      slidesPerView: 1,
-      spaceBetween: 15,
-      navigation: {
-        nextEl: videoSlider.siblings('.swiper-button-next'),
-        prevEl: videoSlider.siblings('.swiper-button-prev')
-      },
-      on: {
-        click: function click(e) {
-          videoPlayer(e);
-        }
-      }
-    });
-  } else if (videoLength < 3) {
-    videoSlider.parent().addClass('is-double');
-    new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](videoSlider.get(0), {
-      slidesPerView: 'auto',
-      navigation: {
-        nextEl: videoSlider.siblings('.swiper-button-next'),
-        prevEl: videoSlider.siblings('.swiper-button-prev')
-      },
-      breakpointsInverse: true,
-      breakpoints: {
-        1100: {
-          slidesPerView: 2,
-          spaceBetween: 16,
-          freeMode: false
-        }
-      },
-      on: {
-        click: function click(e) {
-          videoPlayer(e);
-        }
-      }
-    });
-  } else {
-    videoSlider.parent().addClass('is-triple');
-    new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](videoSlider.get(0), {
-      slidesPerView: 'auto',
-      navigation: {
-        nextEl: videoSlider.siblings('.swiper-button-next'),
-        prevEl: videoSlider.siblings('.swiper-button-prev')
-      },
-      breakpointsInverse: true,
-      breakpoints: {
-        1100: {
-          slidesPerView: 3,
-          spaceBetween: 16,
-          freeMode: false
-        }
-      },
-      on: {
-        click: function click(e) {
-          videoPlayer(e);
-        }
-      }
-    });
-  }
+  videoSlider.each(function () {
+    videoLength = $(this).find('.swiper-slide').length;
 
+    if (videoLength < 2) {
+      new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]($(this).get(0), {
+        slidesPerView: 1,
+        spaceBetween: 15,
+        navigation: {
+          nextEl: $(this).siblings('.swiper-button-next'),
+          prevEl: $(this).siblings('.swiper-button-prev')
+        },
+        on: {
+          click: function click(e) {
+            videoPlayer(e);
+          }
+        }
+      });
+    } else if (videoLength < 3) {
+      $(this).parent().addClass('is-double');
+      new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]($(this).get(0), {
+        slidesPerView: 'auto',
+        navigation: {
+          nextEl: $(this).siblings('.swiper-button-next'),
+          prevEl: $(this).siblings('.swiper-button-prev')
+        },
+        breakpointsInverse: true,
+        breakpoints: {
+          1100: {
+            allowTouchMove: false,
+            slidesPerView: 2,
+            spaceBetween: 16,
+            freeMode: false
+          }
+        },
+        on: {
+          click: function click(e) {
+            videoPlayer(e);
+          }
+        }
+      });
+    } else {
+      $(this).parent().addClass('is-triple');
+      new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]($(this).get(0), {
+        slidesPerView: 'auto',
+        navigation: {
+          nextEl: $(this).siblings('.swiper-button-next'),
+          prevEl: $(this).siblings('.swiper-button-prev')
+        },
+        breakpointsInverse: true,
+        breakpoints: {
+          1100: {
+            slidesPerView: 3,
+            spaceBetween: 16,
+            freeMode: false
+          }
+        },
+        on: {
+          click: function click(e) {
+            videoPlayer(e);
+          }
+        }
+      });
+    }
+  });
   var faqInput = $('.js-faq-input'),
       faqNothing = $('.js-faq-nothing'),
       faqList = $('.js-faq-list').parent(),
