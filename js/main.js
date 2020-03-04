@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"e9d9041b04bcda58ea0f","1":"b3c06e53c2e78a1fce35"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21784,42 +21784,6 @@ $(function () {
 
 /***/ }),
 
-/***/ "../blocks/comment/script.js":
-/*!***********************************!*\
-  !*** ../blocks/comment/script.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {$(function () {
-  var comment = $('.comment');
-  if (comment.length === 0) return;
-  var doc = $(document),
-      commentBody = $('.js-comment-body'),
-      commentText = $('.js-comment-text'),
-      commentFull = '.js-comment-full';
-  commentBody.each(function () {
-    var maxH = $(this).outerHeight();
-    commentTextHeight = $(this).find(commentText).outerHeight();
-
-    if (commentTextHeight > maxH) {
-      $(this).css('max-height', maxH);
-      $(this).siblings(commentFull).css('display', 'flex');
-    } else {
-      $(this).css('max-height', '');
-      $(this).siblings(commentFull).css('display', 'none');
-    }
-  });
-  doc.on('click', commentFull, function () {
-    var commentTextHeight = $(this).parent().find(commentText).outerHeight();
-    $(this).fadeOut(300);
-    $(this).parent().find(commentBody).css('max-height', commentTextHeight);
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
-
-/***/ }),
-
 /***/ "../blocks/event/script.js":
 /*!*********************************!*\
   !*** ../blocks/event/script.js ***!
@@ -22961,9 +22925,12 @@ $(function () {
   });
   var toggleMore = '.js-overview-bk-more',
       toggleHide = $('.js-overview-bk-hide'),
-      blockFull = $('.js-overview-bk-full');
+      blockFull = $('.js-overview-bk-full'),
+      substance = $('.substance');
+  ;
   doc.on('click', toggleMore, function () {
     var $this = $(this);
+    substance.slideToggle(300);
     $this.toggleClass('is-full');
     setTimeout(function () {
       $this.parent().toggleClass('is-full');
@@ -23328,6 +23295,28 @@ $(function () {
       $tab.find('.js-tabBlock').removeClass('is-open');
       $tab.find('.js-tabBlock').eq(clickedTabIndex).show().addClass('is-open');
     });
+  });
+  var doc = $(document),
+      overviewBkRatingStar = '.js-obk-rating-star',
+      overviewBkRatingCount = $('.js-obk-rating-count'),
+      overviewBkRatingClick = $('.js-obk-rating-click'),
+      overviewBkRatingClickNumb = parseFloat(overviewBkRatingClick.html()),
+      overviewBkRatingTotal = $('.js-obk-rating-total'),
+      overviewBkRatingTotalNumb = parseFloat(overviewBkRatingTotal.html()),
+      overviewBkRatingMask = $('.js-obk-rating-mask'),
+      overviewBkRatingPercent;
+  doc.on('click', overviewBkRatingStar, function () {
+    overviewBkRatingClickNumb = parseFloat(overviewBkRatingClick.html());
+    overviewBkRatingTotalNumb = parseFloat(overviewBkRatingTotal.html());
+    var overviewBkRatingData = $(this).data('rating'),
+        overviewBkRatingClickSum = overviewBkRatingClickNumb + 1,
+        overviewBkRatingTotalSum = overviewBkRatingTotalNumb + overviewBkRatingData,
+        overviewBkRatingCountSum = overviewBkRatingTotalSum / overviewBkRatingClickSum;
+    overviewBkRatingClick.html(overviewBkRatingClickSum);
+    overviewBkRatingTotal.html(overviewBkRatingTotalSum);
+    overviewBkRatingCount.html(overviewBkRatingCountSum);
+    overviewBkRatingPercent = parseFloat(overviewBkRatingCountSum) * 100 / 5;
+    overviewBkRatingMask.css('width', overviewBkRatingPercent + '%');
   });
   var overviewBkNews = '.js-overview-bk-news';
   new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](overviewBkNews, {
@@ -24087,6 +24076,46 @@ $(function () {
 
 /***/ }),
 
+/***/ "../blocks/substance/script.js":
+/*!*************************************!*\
+  !*** ../blocks/substance/script.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var substance = $('.substance');
+  if (substance.length === 0) return;
+  var win = $(window),
+      substanceHead = $('.js-substance-head'),
+      substanceBody = $('.js-substance-body'),
+      substanceAnchor = $('.js-substance-anchor');
+  substanceHead.on('click', function () {
+    $(this).toggleClass('is-close');
+    $(this).parent().find(substanceBody).slideToggle(300);
+  });
+  substanceAnchor.on('click', function () {
+    var html = $(document.body).add(document.documentElement),
+        substanceTag = $(this).attr('href'),
+        substancePos = $(substanceTag);
+
+    if (win.outerWidth() <= 1099) {
+      html.animate({
+        scrollTop: substancePos.offset().top - 55
+      }, 500);
+    } else {
+      html.animate({
+        scrollTop: substancePos.offset().top - 75
+      }, 500);
+    }
+
+    return false;
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./libs/countdowns.min.js":
 /*!********************************!*\
   !*** ./libs/countdowns.min.js ***!
@@ -24440,15 +24469,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_footer_script__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/footer/script */ "../blocks/footer/script.js");
 /* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/block-sports/script */ "../blocks/block-sports/script.js");
 /* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/pagination/script */ "../blocks/pagination/script.js");
-/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_blocks_pagination_script__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/catfish/script */ "../blocks/catfish/script.js");
-/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_blocks_catfish_script__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _blocks_rating_bk_script__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/rating-bk/script */ "../blocks/rating-bk/script.js");
-/* harmony import */ var _blocks_stories_script__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../blocks/stories/script */ "../blocks/stories/script.js");
-/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../blocks/comment/script */ "../blocks/comment/script.js");
-/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_blocks_comment_script__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _blocks_banner_script__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/banner/script */ "../blocks/banner/script.js");
+/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/catfish/script */ "../blocks/catfish/script.js");
+/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_blocks_catfish_script__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _blocks_banner_script__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/banner/script */ "../blocks/banner/script.js");
+/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/pagination/script */ "../blocks/pagination/script.js");
+/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_blocks_pagination_script__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _blocks_substance_script__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../blocks/substance/script */ "../blocks/substance/script.js");
+/* harmony import */ var _blocks_substance_script__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_blocks_substance_script__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _blocks_rating_bk_script__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../blocks/rating-bk/script */ "../blocks/rating-bk/script.js");
+/* harmony import */ var _blocks_stories_script__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/stories/script */ "../blocks/stories/script.js");
 /* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../blocks/modal/script */ "../blocks/modal/script.js");
 /* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_blocks_modal_script__WEBPACK_IMPORTED_MODULE_17__);
 /* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
@@ -24476,7 +24505,6 @@ window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 
 /** CORE */
-
 
 
 
