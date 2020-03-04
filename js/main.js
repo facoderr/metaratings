@@ -21784,6 +21784,149 @@ $(function () {
 
 /***/ }),
 
+/***/ "../blocks/comment/script.js":
+/*!***********************************!*\
+  !*** ../blocks/comment/script.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var comment = $('.comment');
+  if (comment.length === 0) return;
+  var doc = $(document),
+      commentBody = $('.js-comment-body'),
+      commentText = $('.js-comment-text'),
+      commentFull = '.js-comment-full';
+  commentBody.each(function () {
+    var maxH = $(this).outerHeight();
+    commentTextHeight = $(this).find(commentText).outerHeight();
+
+    if (commentTextHeight > maxH) {
+      $(this).css('max-height', maxH);
+      $(this).siblings(commentFull).css('display', 'flex');
+    } else {
+      $(this).css('max-height', '');
+      $(this).siblings(commentFull).css('display', 'none');
+    }
+  });
+  doc.on('click', commentFull, function () {
+    var commentTextHeight = $(this).parent().find(commentText).outerHeight();
+    $(this).fadeOut(300);
+    $(this).parent().find(commentBody).css('max-height', commentTextHeight);
+  });
+
+  function showError($form, errorText) {
+    console.log(errorText);
+    $form.find('.comment-form-error').text(errorText);
+    $form.addClass('is-error');
+  }
+
+  function removeError($form) {
+    $form.find('.comment-form-error').text('');
+    $form.removeClass('is-error');
+  }
+
+  function disabled($element) {
+    $element.css('pointer-events', 'none');
+  }
+
+  function enabled($element) {
+    $element.removeAttr('style');
+  }
+
+  doc.on('keyup', '.js-comment-form .comment-form-textarea', function (e) {
+    var $form = $('.js-comment-form');
+    if ($form.hasClass('is-error')) removeError($form);
+  });
+  doc.on('submit', '.js-comment-form', function (e) {
+    e.preventDefault();
+    var $form = $(this);
+    var $textarea = $form.find('textarea');
+    var text = $textarea.val();
+    var commentFormButton = $form.find('.comment-form-btn');
+    var id = comment.attr('data-comment-id');
+    var request = $.ajax({
+      url: comment.attr('data-ajax-path'),
+      type: "POST",
+      data: {
+        action: 'add_comment',
+        id: id,
+        text: text
+      },
+      dataType: 'html'
+    });
+    disabled(commentFormButton);
+    request.done(function (response, status, xhr) {
+      var ct = xhr.getResponseHeader("content-type") || "";
+
+      if (ct.indexOf('json') > -1) {
+        response = JSON.parse(response);
+        showError($form, response.error_message);
+      } else {
+        removeError($form);
+        var $responseHTML = $(response);
+        var commentTitle = $responseHTML.find('.comment-title').html();
+        var commentsList = $responseHTML.find('.comment-result').html();
+        var $commentsShowMore = $responseHTML.find('.comment-more');
+        var $commentsOldShowMore = comment.find('.comment-more');
+        var $commentsNone = comment.find('.comment-none');
+        if ($commentsNone.length > 0) $commentsNone.remove();
+        if ($commentsOldShowMore.length > 0) $commentsOldShowMore.remove();
+        if ($commentsShowMore.length > 0) comment.find('.comment-result').after($commentsShowMore);
+        $textarea.val('');
+        comment.find('.comment-title').html(commentTitle);
+        comment.find('.comment-result').html(commentsList);
+      }
+
+      enabled(commentFormButton);
+    });
+    request.fail(function (jqXHR, textStatus) {
+      alert("Request failed: " + textStatus);
+    });
+    return false;
+  });
+  doc.on('click', '.js-show-more-comments', function (e) {
+    e.preventDefault();
+    var $showMoreButton = $(this);
+    var page = $showMoreButton.attr('data-page');
+    var id = comment.attr('data-comment-id');
+    var request = $.ajax({
+      url: comment.attr('data-ajax-path') + '?PAGEN_1=' + page,
+      type: "POST",
+      data: {
+        action: 'show_more',
+        id: id
+      },
+      dataType: 'html'
+    });
+    disabled($showMoreButton);
+    request.done(function (response, status, xhr) {
+      var ct = xhr.getResponseHeader("content-type") || "";
+
+      if (ct.indexOf('json') > -1) {
+        response = JSON.parse(response);
+        console.log(response.error_message);
+      } else {
+        var $responseHTML = $(response);
+        var $commentResult = $responseHTML.find('.comment-result');
+        var commentsList = $commentResult.html();
+        var $commentsShowMore = $responseHTML.find('.comment-more');
+        if ($showMoreButton.length > 0) $showMoreButton.remove();
+        if ($commentsShowMore.length > 0) comment.find('.comment-result').after($commentsShowMore);
+        comment.find('.comment-result').append(commentsList);
+      }
+    });
+    request.fail(function (jqXHR, textStatus) {
+      alert("Request failed: " + textStatus);
+    });
+    return false;
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "../blocks/event/script.js":
 /*!*********************************!*\
   !*** ../blocks/event/script.js ***!
@@ -24478,19 +24621,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_substance_script__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_blocks_substance_script__WEBPACK_IMPORTED_MODULE_14__);
 /* harmony import */ var _blocks_rating_bk_script__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../blocks/rating-bk/script */ "../blocks/rating-bk/script.js");
 /* harmony import */ var _blocks_stories_script__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/stories/script */ "../blocks/stories/script.js");
-/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../blocks/modal/script */ "../blocks/modal/script.js");
-/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_blocks_modal_script__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
-/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
-/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
-/* harmony import */ var _blocks_match_script__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../blocks/match/script */ "../blocks/match/script.js");
-/* harmony import */ var _blocks_match_detail_script__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../blocks/match-detail/script */ "../blocks/match-detail/script.js");
-/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../blocks/event/script */ "../blocks/event/script.js");
-/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_blocks_event_script__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var _blocks_overview_bk_script__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../blocks/overview-bk/script */ "../blocks/overview-bk/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
+/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../blocks/comment/script */ "../blocks/comment/script.js");
+/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_blocks_comment_script__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../blocks/modal/script */ "../blocks/modal/script.js");
+/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_blocks_modal_script__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
+/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
+/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
+/* harmony import */ var _blocks_match_script__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../blocks/match/script */ "../blocks/match/script.js");
+/* harmony import */ var _blocks_match_detail_script__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../blocks/match-detail/script */ "../blocks/match-detail/script.js");
+/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../blocks/event/script */ "../blocks/event/script.js");
+/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_blocks_event_script__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _blocks_overview_bk_script__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../blocks/overview-bk/script */ "../blocks/overview-bk/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
 
 
 
@@ -24505,6 +24650,7 @@ window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 
 /** CORE */
+
 
 
 
