@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"e9d9041b04bcda58ea0f","1":"b3c06e53c2e78a1fce35"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "chunks/" + chunkId + ".js?v=" + {"0":"e9d9041b04bcda58ea0f","1":"0f56b6c9bcd56a160c6e","2":"388b54d28d6ecc81a122"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21817,7 +21817,6 @@ $(function () {
   });
 
   function showError($form, errorText) {
-    console.log(errorText);
     $form.find('.comment-form-error').text(errorText);
     $form.addClass('is-error');
   }
@@ -21850,22 +21849,19 @@ $(function () {
       url: comment.attr('data-ajax-path'),
       type: "POST",
       data: {
-        action: 'add_comment',
+        action: 'comments-add-comment',
         id: id,
         text: text
       },
       dataType: 'html'
     });
     disabled(commentFormButton);
-    request.done(function (response, status, xhr) {
-      var ct = xhr.getResponseHeader("content-type") || "";
+    request.done(function (response) {
+      response = JSON.parse(response);
 
-      if (ct.indexOf('json') > -1) {
-        response = JSON.parse(response);
-        showError($form, response.error_message);
-      } else {
+      if (response.success > 0) {
         removeError($form);
-        var $responseHTML = $(response);
+        var $responseHTML = $(response.html);
         var commentTitle = $responseHTML.find('.comment-title').html();
         var commentsList = $responseHTML.find('.comment-result').html();
         var $commentsShowMore = $responseHTML.find('.comment-more');
@@ -21877,12 +21873,14 @@ $(function () {
         $textarea.val('');
         comment.find('.comment-title').html(commentTitle);
         comment.find('.comment-result').html(commentsList);
+      } else {
+        showError($form, response.errors.join('\n'));
       }
 
       enabled(commentFormButton);
     });
     request.fail(function (jqXHR, textStatus) {
-      alert("Request failed: " + textStatus);
+      console.log("Request failed: " + textStatus);
     });
     return false;
   });
@@ -21895,20 +21893,17 @@ $(function () {
       url: comment.attr('data-ajax-path') + '?PAGEN_1=' + page,
       type: "POST",
       data: {
-        action: 'show_more',
+        action: 'comments-load-more',
         id: id
       },
       dataType: 'html'
     });
     disabled($showMoreButton);
     request.done(function (response, status, xhr) {
-      var ct = xhr.getResponseHeader("content-type") || "";
+      response = JSON.parse(response);
 
-      if (ct.indexOf('json') > -1) {
-        response = JSON.parse(response);
-        console.log(response.error_message);
-      } else {
-        var $responseHTML = $(response);
+      if (response.success > 0) {
+        var $responseHTML = $(response.html);
         var $commentResult = $responseHTML.find('.comment-result');
         var commentsList = $commentResult.html();
         var $commentsShowMore = $responseHTML.find('.comment-more');
@@ -21918,9 +21913,16 @@ $(function () {
       }
     });
     request.fail(function (jqXHR, textStatus) {
-      alert("Request failed: " + textStatus);
+      console.log("Request failed: " + textStatus);
     });
     return false;
+  });
+  doc.on('click', '.comment-form-login-link', function () {
+    var onclick = $(this).attr('data-onclick');
+    __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! ./comment.js */ "../blocks/comment/comment.js", 7)).then(function () {
+      eval(onclick);
+    });
+    return true;
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
@@ -23073,11 +23075,11 @@ $(function () {
   ;
   doc.on('click', toggleMore, function () {
     var $this = $(this);
-    substance.slideToggle(300);
     $this.toggleClass('is-full');
     setTimeout(function () {
       $this.parent().toggleClass('is-full');
     }, 300);
+    $this.parent().find(substance).slideToggle(300);
     $this.parent().find(blockFull).slideToggle(300);
   });
   toggleHide.on('click', function () {
@@ -23309,8 +23311,20 @@ $(function () {
       faqNothing = $('.js-faq-nothing'),
       faqList = $('.js-faq-list').parent(),
       faqItem = $('.js-faq-item'),
-      toggleMore = '.js-overview-bk-more',
-      blockFull = '.js-overview-bk-full';
+      blockFull = '.js-overview-bk-full',
+      faqСontainer = $('.js-bk-faq-load');
+  faqInput.focus(function () {
+    if (!$.trim(faqСontainer.html()).length) {
+      $.get(window.location.href, {
+        'action': 'load-faq'
+      }, function (response) {
+        var html = $(response),
+            elements = html.is('.js-bk-faq-load') ? html.filter('.js-bk-faq-load') : html.find('.js-bk-faq-load');
+        faqСontainer.empty().append(elements.children());
+        faqItem = $('.js-faq-item');
+      });
+    }
+  });
   faqInput.on('keyup', function () {
     var input = $(this),
         value = input.val();
@@ -23318,7 +23332,6 @@ $(function () {
     if (value) {
       var reg = new RegExp(value, 'i');
       faqList.find(blockFull).show();
-      faqList.find(toggleMore).hide();
       faqItem.each(function () {
         var $this = $(this);
 
@@ -23339,7 +23352,6 @@ $(function () {
       faqNothing.hide();
       faqItem.show();
       faqList.find(blockFull).hide();
-      faqList.find(toggleMore).show();
     }
   });
   var progress = $('.js-overview-bk-path');
@@ -23859,7 +23871,7 @@ $(function () {
             bound = sentimentThis.getBoundingClientRect();
 
         if (bound.top <= window.innerHeight && bound.bottom >= 0) {
-          Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./sentiment.js */ "../blocks/sentiment/sentiment.js")).then(function (module) {
+          Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./sentiment.js */ "../blocks/sentiment/sentiment.js")).then(function (module) {
             module.init();
           });
           sentimentObs.unobserve(sentimentThis);
