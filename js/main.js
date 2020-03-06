@@ -23311,20 +23311,8 @@ $(function () {
       faqNothing = $('.js-faq-nothing'),
       faqList = $('.js-faq-list').parent(),
       faqItem = $('.js-faq-item'),
-      blockFull = '.js-overview-bk-full',
-      faqСontainer = $('.js-bk-faq-load');
-  faqInput.focus(function () {
-    if (!$.trim(faqСontainer.html()).length) {
-      $.get(window.location.href, {
-        'action': 'load-faq'
-      }, function (response) {
-        var html = $(response),
-            elements = html.is('.js-bk-faq-load') ? html.filter('.js-bk-faq-load') : html.find('.js-bk-faq-load');
-        faqСontainer.empty().append(elements.children());
-        faqItem = $('.js-faq-item');
-      });
-    }
-  });
+      toggleMore = '.js-overview-bk-more',
+      blockFull = '.js-overview-bk-full';
   faqInput.on('keyup', function () {
     var input = $(this),
         value = input.val();
@@ -23332,6 +23320,7 @@ $(function () {
     if (value) {
       var reg = new RegExp(value, 'i');
       faqList.find(blockFull).show();
+      faqList.find(toggleMore).hide();
       faqItem.each(function () {
         var $this = $(this);
 
@@ -23352,6 +23341,7 @@ $(function () {
       faqNothing.hide();
       faqItem.show();
       faqList.find(blockFull).hide();
+      faqList.find(toggleMore).show();
     }
   });
   var progress = $('.js-overview-bk-path');
