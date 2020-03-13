@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "chunks/" + chunkId + ".js?v=" + {"0":"e9d9041b04bcda58ea0f","1":"0f56b6c9bcd56a160c6e","2":"388b54d28d6ecc81a122"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "chunks/" + chunkId + ".js?v=" + {"0":"e9d9041b04bcda58ea0f","1":"b3c06e53c2e78a1fce35"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21798,22 +21798,11 @@ $(function () {
       commentBody = $('.js-comment-body'),
       commentText = $('.js-comment-text'),
       commentFull = '.js-comment-full';
-  commentBody.each(function () {
-    var maxH = $(this).outerHeight();
-    commentTextHeight = $(this).find(commentText).outerHeight();
-
-    if (commentTextHeight > maxH) {
-      $(this).css('max-height', maxH);
-      $(this).siblings(commentFull).css('display', 'flex');
-    } else {
-      $(this).css('max-height', '');
-      $(this).siblings(commentFull).css('display', 'none');
-    }
-  });
+  checkCommentsHeight(commentBody);
   doc.on('click', commentFull, function () {
-    var commentTextHeight = $(this).parent().find(commentText).outerHeight();
+    var commentTextHeight = $(this).parent().find('.js-comment-text').outerHeight();
     $(this).fadeOut(300);
-    $(this).parent().find(commentBody).css('max-height', commentTextHeight);
+    $(this).parent().find('.js-comment-body').css('max-height', commentTextHeight);
   });
 
   function showError($form, errorText) {
@@ -21832,6 +21821,22 @@ $(function () {
 
   function enabled($element) {
     $element.removeAttr('style');
+  }
+
+  function checkCommentsHeight(commentBody) {
+    commentBody.each(function () {
+      var maxH = $(this).outerHeight(),
+          commentFull = '.js-comment-full';
+      commentTextHeight = $(this).find('.js-comment-text').outerHeight();
+
+      if (commentTextHeight > maxH) {
+        $(this).css('max-height', maxH);
+        $(this).siblings(commentFull).css('display', 'flex');
+      } else {
+        $(this).css('max-height', '');
+        $(this).siblings(commentFull).css('display', 'none');
+      }
+    });
   }
 
   doc.on('keyup', '.js-comment-form .comment-form-textarea', function (e) {
@@ -21873,6 +21878,7 @@ $(function () {
         $textarea.val('');
         comment.find('.comment-title').html(commentTitle);
         comment.find('.comment-result').html(commentsList);
+        checkCommentsHeight($('.js-comment-body'));
       } else {
         showError($form, response.errors.join('\n'));
       }
@@ -21887,6 +21893,7 @@ $(function () {
   doc.on('click', '.js-show-more-comments', function (e) {
     e.preventDefault();
     var $showMoreButton = $(this);
+    var commentBodyOld = $('.js-comment-body');
     var page = $showMoreButton.attr('data-page');
     var id = comment.attr('data-comment-id');
     var request = $.ajax({
@@ -21910,6 +21917,7 @@ $(function () {
         if ($showMoreButton.length > 0) $showMoreButton.remove();
         if ($commentsShowMore.length > 0) comment.find('.comment-result').after($commentsShowMore);
         comment.find('.comment-result').append(commentsList);
+        checkCommentsHeight($('.js-comment-body').not(commentBodyOld));
       }
     });
     request.fail(function (jqXHR, textStatus) {
@@ -21918,11 +21926,12 @@ $(function () {
     return false;
   });
   doc.on('click', '.comment-form-login-link', function () {
-    var onclick = $(this).attr('data-onclick');
-    __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! ./comment.js */ "../blocks/comment/comment.js", 7)).then(function () {
-      eval(onclick);
-    });
-    return true;
+    var url = $(this).data('url');
+    var width = 660,
+        height = 425,
+        w = screen.width,
+        h = screen.height;
+    window.open(url, '', 'status=no,scrollbars=yes,resizable=yes,width=' + width + ',height=' + height + ',top=' + Math.floor((h - height) / 2 - 14) + ',left=' + Math.floor((w - width) / 2 - 5));
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
@@ -22926,6 +22935,7 @@ $(function () {
       toggleBack = '.js-back',
       toggleSearch = '.js-search',
       toggleAlert = '.js-alert',
+      headVirus = $('.js-virus'),
       bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
       disableBodyScroll = bodyScrollLock.disableBodyScroll,
       enableBodyScroll = bodyScrollLock.enableBodyScroll,
@@ -22967,6 +22977,7 @@ $(function () {
     navMenu.addClass('is-active');
     $(navItem).removeClass('is-hover');
     navMore.children('.nav-submenu').children('.nav-menu-item').addClass('nav-menu-clone').appendTo(navMenu);
+    headVirus.appendTo(navMenu);
     doc.on('click', toggleNext, function () {
       $(togglePrev).html(navArrow);
       navSub.removeClass('is-active');
@@ -22993,6 +23004,7 @@ $(function () {
     navMenu.addClass('is-active');
     navSub.removeAttr('style');
     $('.nav-menu-clone').removeClass('nav-menu-clone').appendTo(navMore.children('.nav-submenu'));
+    headVirus.appendTo('.head-tools');
     doc.on('mouseover mouseout', navItem, function () {
       if (win.outerWidth() <= 1099) return;
       navHead.toggleClass('is-active', $(this).children('.nav-submenu').length != 0);
@@ -23071,8 +23083,8 @@ $(function () {
   var toggleMore = '.js-overview-bk-more',
       toggleHide = $('.js-overview-bk-hide'),
       blockFull = $('.js-overview-bk-full'),
+      html = $(document.body).add(document.documentElement),
       substance = $('.substance');
-  ;
   doc.on('click', toggleMore, function () {
     var $this = $(this);
     $this.toggleClass('is-full');
@@ -23081,6 +23093,12 @@ $(function () {
     }, 300);
     $this.parent().find(substance).slideToggle(300);
     $this.parent().find(blockFull).slideToggle(300);
+
+    if (substance.length > 0) {
+      html.animate({
+        scrollTop: substance.offset().top - 55
+      }, 500);
+    }
   });
   toggleHide.on('click', function () {
     $(this).parents('.is-full').find(blockFull).slideToggle(300);
@@ -23861,7 +23879,7 @@ $(function () {
             bound = sentimentThis.getBoundingClientRect();
 
         if (bound.top <= window.innerHeight && bound.bottom >= 0) {
-          Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./sentiment.js */ "../blocks/sentiment/sentiment.js")).then(function (module) {
+          Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./sentiment.js */ "../blocks/sentiment/sentiment.js")).then(function (module) {
             module.init();
           });
           sentimentObs.unobserve(sentimentThis);
@@ -25271,59 +25289,6 @@ $(function () {
   if ($('.head-expert').length > 0) {
     $.get("/include/ajax/head-expert.php", function (data) {
       $('.head-expert').prepend(data);
-    });
-  }
-
-  if ($('div.material-panel').length > 0 && $('a.material-item').length > 0) {
-    var firstMaterial = $('.material-panel .material-item:eq(0)');
-    var curentMaterial = firstMaterial.data('material');
-    var idAuthor = firstMaterial.parent().data('author');
-    firstMaterial.addClass('active');
-    loadMaterial(idAuthor, curentMaterial);
-  }
-
-  $('.material-item').on('click', function () {
-    $('.material-item').removeClass('active');
-    var curentMaterial = $(this).data('material');
-    var idAuthor = $(this).parent().data('author');
-
-    if (curentMaterial === 'm-forecast') {
-      $('.material-content').addClass('forecast-items');
-      loadMaterial(idAuthor, curentMaterial, true);
-    } else {
-      loadMaterial(idAuthor, curentMaterial);
-    }
-
-    $(this).addClass('active');
-  });
-
-  function loadMaterial(idAuthor, curentMaterial) {
-    var timer = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    $.ajax({
-      type: 'GET',
-      url: '/include/ajax/load-author-content.php',
-      data: 'id_author=' + idAuthor + '&material=' + curentMaterial,
-      success: function success(msg) {
-        $('.material-content').empty();
-        $('.material-content').append(msg);
-        $('.star-time span').each(function () {
-          !function (s, n) {
-            function t() {
-              var t = s.split(':'),
-                  e = 60 * +t[0] * 60 + 60 * +t[1] + +t[2];
-              a = e - ((Date.now() - l) / 1e3 | 0), hours = a / 3600 | 0, r = a / 60 - 60 * hours | 0, o = a % 60 | 0, hours = hours < 10 ? '0' + hours : hours, r = r < 10 ? '0' + r : r, o = o < 10 ? '0' + o : o;
-              var i = hours + ':' + r + ':' + o;
-              n.text(i), a <= 0 && (l = Date.now() + 1e3);
-            }
-
-            var a,
-                r,
-                o,
-                l = Date.now();
-            setInterval(t, 1e3);
-          }($(this).text(), $(this));
-        });
-      }
     });
   }
 
