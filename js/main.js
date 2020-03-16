@@ -23954,7 +23954,9 @@ __webpack_require__.r(__webpack_exports__);
 $(function () {
   var stories = $('.stories');
   if (stories.length === 0) return;
+
   var doc = $(document),
+      html = $(document.documentElement),
       storiesNav = $('.js-stories'),
       storiesFor = $('.js-stories-modal'),
       storiesProgress = $('.js-stories-progress'),
@@ -23974,7 +23976,12 @@ $(function () {
       swipeLink,
       swipeStart,
       swipeEnd,
+      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
+      disableBodyScroll = bodyScrollLock.disableBodyScroll,
+      enableBodyScroll = bodyScrollLock.enableBodyScroll,
+      BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
       modalWrap = $('.js-modal-wrap'),
+      modalTarget = document.querySelectorAll('.js-modal-wrap'),
       modalShow = '.js-modal-show',
       modalHide = '.js-modal-hide';
 
@@ -24054,12 +24061,7 @@ $(function () {
             yAbs = Math.abs(swipeStart.pageY - swipeEnd.pageY);
 
         if (xAbs > 150 || yAbs > 150) {
-          if (xAbs < yAbs) {
-            if (swipeEnd.pageY < swipeStart.pageY) {
-              if (swipeLink.length === 0) return;
-              location.href = swipeLink.attr('href');
-            }
-          }
+          if (xAbs < yAbs && swipeEnd.pageY < swipeStart.pageY && swipeLink.length != 0) location.href = swipeLink.attr('href');
         } else {
           if (swipeEnd.pageX > doc.outerWidth() / 2 && swipeEnd.clientY < storiesFor.outerHeight() - 85) {
             if (storiesFor.find('.swiper-slide:last-child').index() === sliderFor.activeIndex) {
@@ -24221,6 +24223,12 @@ $(function () {
     return false;
   });
   doc.on('click', modalShow, function () {
+    html.css('overflow', 'initial');
+    modalTarget.forEach(function (modalTarget) {
+      disableBodyScroll(modalTarget, BodyScrollOptions = {
+        reserveScrollBarGap: true
+      });
+    });
     storiesSlideTime = storiesTime, storiesBarTime = storiesTime / 1000;
     startProgress(storiesBarTime, storiesBarTime, storiesBarTime, storiesBar.eq(sliderFor.activeIndex));
     sliderFor.params.autoplay.delay = storiesSlideTime;
@@ -24228,10 +24236,18 @@ $(function () {
     doc.on('mouseup touchend', function (e) {
       if ($('.modal.is-open').length === 0) return;
       if ($(e.target).closest(modalWrap).length) return;
+      html.css('overflow', '');
+      modalTarget.forEach(function (modalTarget) {
+        enableBodyScroll(modalTarget);
+      });
       stopStories();
     });
   });
   doc.on('click', modalHide, function () {
+    html.css('overflow', '');
+    modalTarget.forEach(function (modalTarget) {
+      enableBodyScroll(modalTarget);
+    });
     stopStories();
   });
 });
