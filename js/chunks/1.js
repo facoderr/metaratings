@@ -36,7 +36,6 @@ function init() {
 
   var win = $(window),
       doc = $(document),
-      html = $(document.documentElement),
       sentiment = 'js-sentiment',
       sentimentLoad = $('.js-sentiment-load'),
       sentimentTool = $('.js-sentiment-tool'),
@@ -61,16 +60,7 @@ function init() {
       reviewHighlight = '.js-review-highlight',
       reviewGap = '.js-review-gap',
       sentimentSliderNav = $('.js-review-slideNav'),
-      sentimentSliderFor = $('.js-review-slideFor'),
-      bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "../../node_modules/body-scroll-lock/lib/bodyScrollLock.min.js"),
-      disableBodyScroll = bodyScrollLock.disableBodyScroll,
-      enableBodyScroll = bodyScrollLock.enableBodyScroll,
-      BodyScrollOptions = bodyScrollLock.BodyScrollOptions,
-      modalWrap = $('.js-modal-wrap'),
-      modalTarget = document.querySelectorAll('.js-review-body'),
-      modalShow = '.js-modal-show',
-      modalHide = '.js-modal-hide';
-
+      sentimentSliderFor = $('.js-review-slideFor');
   sentimentTool.clone().appendTo('.sentiment-graph-body');
   sentimentTool = $('.js-sentiment-tool'); // Sentiment Chart
 
@@ -645,28 +635,6 @@ function init() {
     var reviewTextHeight = $(this).siblings().outerHeight();
     $(this).fadeOut(300);
     $(this).parent().css('max-height', reviewTextHeight);
-  });
-  doc.on('click', modalShow, function () {
-    html.css('overflow', 'initial');
-    modalTarget.forEach(function (modalTarget) {
-      disableBodyScroll(modalTarget, BodyScrollOptions = {
-        reserveScrollBarGap: true
-      });
-    });
-    doc.on('mouseup touchend', function (e) {
-      if ($(e.target).closest(modalWrap).length) return;
-      html.css('overflow', '');
-      modalTarget.forEach(function (modalTarget) {
-        enableBodyScroll(modalTarget);
-      });
-    });
-    return false;
-  });
-  doc.on('click', modalHide, function () {
-    html.css('overflow', '');
-    modalTarget.forEach(function (modalTarget) {
-      enableBodyScroll(modalTarget);
-    });
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
