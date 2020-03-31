@@ -25162,7 +25162,7 @@ var scriptFunctions = {
       freeMode: !1,
       spaceBetween: 0,
       autoHeight: 1,
-      loop: true,
+      loop: false,
       navigation: {
         nextEl: '#neighbourR',
         prevEl: '#neighbourL'
@@ -25170,6 +25170,7 @@ var scriptFunctions = {
       breakpoints: {
         768: {
           slidesPerView: '1',
+          loop: true,
           spaceBetween: 13
         }
       }
