@@ -146,7 +146,7 @@ function init() {
               var parseDrillDown = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '" data-id="' + data.dataId + '">' + data.name + ' <span>(' + data.z + ')</span></a>');
               $(reviewGap).unwrap().remove();
               setTimeout(function () {
-                reviewText.highlight(data.name, i, 'sentiment-review-highlight js-review-highlight ' + data.class + '', 'js-review-gap');
+                reviewText.highlight(data.name, i, 'is-highlight js-review-highlight ' + data.class + '', 'js-review-gap');
 
                 if (data.y >= 0) {
                   $(parseDrillDown).appendTo(sentimentScrollSuccess);
@@ -183,7 +183,7 @@ function init() {
               var parseMain = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>');
               $(reviewGap).unwrap().remove();
               setTimeout(function () {
-                reviewText.highlight(serie.data[0].name, i, 'sentiment-review-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
+                reviewText.highlight(serie.data[0].name, i, 'is-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
 
                 if (serie.yData[0] >= 0) {
                   $(parseMain).appendTo(sentimentScrollSuccess);
@@ -315,7 +315,7 @@ function init() {
                   $('' + sentimentItem + '[data-series=' + i + ']').toggleClass('is-hover', $('.highcharts-series-' + i + '.highcharts-series-hover').length > 0);
 
                   if ($('.highcharts-series-' + i + '.highcharts-series-hover').length > 0) {
-                    $('.widget-review-highlight').addClass('is-disable');
+                    $(reviewHighlight).addClass('is-disable');
                     $('' + reviewHighlight + '[data-series=' + i + ']').removeClass('is-disable');
                   } else {
                     $('' + reviewHighlight + '[data-series=' + i + ']').addClass('is-disable');
@@ -419,7 +419,7 @@ function init() {
     listNav.html('');
     listFor.html('');
     $(comments).each(function (i, comment) {
-      var parseSlide = $.parseHTML('<div class="swiper-slide">\n' + '<a class="sentiment-review-block-link js-modal-show" href="#review"></a>\n' + '<div class="sentiment-review-item">\n' + '<div class="sentiment-review-item-head">\n' + '<div class="sentiment-review-item-user">\n' + '<div class="sentiment-review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="sentiment-review-item-info">\n' + '<div class="sentiment-review-item-name">' + comment.author + '</div>\n' + (comment.source.name ? '<span class="sentiment-review-item-link">' + comment.source.name + '</span>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="sentiment-review-item-body js-review-body">\n' + '<div class="sentiment-review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="sentiment-review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>\n' + '</div>');
+      var parseSlide = $.parseHTML('<div class="swiper-slide">\n' + '<a class="review-item-toggle js-modal-show" href="#review"></a>\n' + '<div class="review-item">\n' + '<div class="review-item-head">\n' + '<div class="review-item-user">\n' + '<div class="review-item-img">\n' + '<img src="/local/templates/main/img/icons/user.svg" alt="User" />\n' + '</div>\n' + '<div class="review-item-info">\n' + '<div class="review-item-name">' + comment.author + '</div>\n' + (comment.source.name ? '<span class="review-item-link">' + comment.source.name + '</span>' : ' ') + '\n' + '</div>\n' + '</div>\n' + '<div class="review-item-date">' + comment.date + '</div>\n' + '</div>\n' + '<div class="review-item-body js-review-body js-modal-scroll">\n' + '<div class="review-item-text js-review-text">' + comment.text + '</div>\n' + '<div class="review-item-full js-review-full">еще</div>\n' + '</div>\n' + '</div>\n' + '</div>');
       $(parseSlide).clone().appendTo(listNav);
       $(parseSlide).clone().appendTo(listFor);
     });
@@ -430,7 +430,7 @@ function init() {
     reviewBody = $('.js-review-body');
     reviewText = $('.js-review-text');
     reviewFull = '.js-review-full';
-    modalTarget = document.querySelectorAll('.js-review-body');
+    modalTarget = document.querySelectorAll('.js-modal-scroll');
     autoHeight();
   }
 
@@ -528,7 +528,7 @@ function init() {
 
   $(sentimentChart.series).each(function (i, serie) {
     var parseMain = $.parseHTML('<a href="javascript:void(0);" class="sentiment-graph-item js-sentiment-item" data-series="' + i + '">' + serie.data[0].name + ' <span>(' + serie.zData[0] + ')</span></a>');
-    reviewText.highlight(serie.data[0].name, i, 'sentiment-review-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
+    reviewText.highlight(serie.data[0].name, i, 'is-highlight js-review-highlight ' + serie.data[0].drilldown + '', 'js-review-gap');
 
     if (serie.yData[0] >= 0) {
       $(parseMain).appendTo(sentimentScrollSuccess);
