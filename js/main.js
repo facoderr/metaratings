@@ -24819,6 +24819,123 @@ $(function () {
 
 /***/ }),
 
+/***/ "./libs/site.js":
+/*!**********************!*\
+  !*** ./libs/site.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SiteClass =
+/*#__PURE__*/
+function () {
+  function SiteClass() {
+    _classCallCheck(this, SiteClass);
+  }
+
+  _createClass(SiteClass, [{
+    key: "getSessid",
+    value: function getSessid() {
+      if (window.BX) {
+        return BX.message('bitrix_sessid');
+      } else if (window.mr_bitrix_sessid) {
+        return window.mr_bitrix_sessid;
+      } else if (window.frameDataString && typeof window.frameDataString === 'string' && window.frameDataString.length > 0) {
+        var frameResult = JSON.parse(window.frameDataString.split('\'').join('"'));
+
+        if (frameResult && frameResult.lang && frameResult.lang.bitrix_sessid) {
+          return frameResult.lang.bitrix_sessid;
+        }
+      }
+
+      return '';
+    }
+  }, {
+    key: "loadSessid",
+    value: function loadSessid() {
+      var _this = this;
+
+      return new Promise(function (resolve, reject) {
+        var sessid = _this.getSessid();
+
+        if (sessid) {
+          window.mr_bitrix_sessid = sessid;
+          return resolve(sessid);
+        }
+        /**
+         * Во время авто композита делается ajax запрос, который возращает window.frameDataString
+         * Не придумал ничего умнее, чем ждать ответ запроса используя interval
+         */
+
+
+        if (_this.isAutoComposite()) {
+          var interval = setInterval(function () {
+            sessid = _this.getSessid();
+
+            if (sessid) {
+              clearInterval(interval);
+              window.mr_bitrix_sessid = sessid;
+              resolve(sessid);
+            }
+          }, 200);
+        } else {
+          resolve('');
+        }
+      });
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var _this2 = this;
+
+      this.loadSessid().then(function (sessid) {
+        /**
+         * Когда используется композит, input-ты, оставляемые bitrix_sessid_post() будут с пустым value
+         * Поэтому устанавливаем сессию js-ом
+         */
+        if (sessid && _this2.isComposite()) {
+          var inputs = document.getElementsByName('sessid');
+
+          for (var i = 0; i < inputs.length; i++) {
+            inputs[i].value = sessid;
+          }
+        }
+      });
+    }
+    /**
+     * Когда используется композит, в теле страницы есть script, который делает ajax запрос
+     * */
+
+  }, {
+    key: "isComposite",
+    value: function isComposite() {
+      return window.frameCacheVars && window.frameCacheVars.CACHE_MODE === 'HTMLCACHE' || false;
+    }
+  }, {
+    key: "isAutoComposite",
+    value: function isAutoComposite() {
+      return window.frameCacheVars && window.frameCacheVars.AUTO_UPDATE || false;
+    }
+  }]);
+
+  return SiteClass;
+}();
+
+var Site = new SiteClass();
+/* harmony default export */ __webpack_exports__["default"] = (Site);
+
+/***/ }),
+
 /***/ "./libs/slinky.min.js":
 /*!****************************!*\
   !*** ./libs/slinky.min.js ***!
@@ -25088,45 +25205,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _libs_slinky_min__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_libs_slinky_min__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _libs_countdowns_min__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./libs/countdowns.min */ "./libs/countdowns.min.js");
 /* harmony import */ var _libs_countdowns_min__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_libs_countdowns_min__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _old__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./old */ "./old.js");
-/* harmony import */ var _blocks_redirect_script__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../blocks/redirect/script */ "../blocks/redirect/script.js");
-/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/header/script */ "../blocks/header/script.js");
-/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_blocks_header_script__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/nav/script */ "../blocks/nav/script.js");
-/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_blocks_nav_script__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _blocks_runet_script__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/runet/script */ "../blocks/runet/script.js");
-/* harmony import */ var _blocks_feed_bar_script__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/feed-bar/script */ "../blocks/feed-bar/script.js");
-/* harmony import */ var _blocks_footer_script__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/footer/script */ "../blocks/footer/script.js");
-/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/block-sports/script */ "../blocks/block-sports/script.js");
-/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/catfish/script */ "../blocks/catfish/script.js");
-/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_blocks_catfish_script__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _blocks_banner_script__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/banner/script */ "../blocks/banner/script.js");
-/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../blocks/pagination/script */ "../blocks/pagination/script.js");
-/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_blocks_pagination_script__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _blocks_substance_script__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../blocks/substance/script */ "../blocks/substance/script.js");
-/* harmony import */ var _blocks_substance_script__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_blocks_substance_script__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _blocks_rating_bk_script__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/rating-bk/script */ "../blocks/rating-bk/script.js");
-/* harmony import */ var _blocks_stories_script__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../blocks/stories/script */ "../blocks/stories/script.js");
-/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../blocks/comment/script */ "../blocks/comment/script.js");
-/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_blocks_comment_script__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../blocks/modal/script */ "../blocks/modal/script.js");
-/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_blocks_modal_script__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
-/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
-/* harmony import */ var _blocks_reward_casino_script__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../blocks/reward-casino/script */ "../blocks/reward-casino/script.js");
-/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
-/* harmony import */ var _blocks_match_script__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../blocks/match/script */ "../blocks/match/script.js");
-/* harmony import */ var _blocks_match_detail_script__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../blocks/match-detail/script */ "../blocks/match-detail/script.js");
-/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../blocks/event/script */ "../blocks/event/script.js");
-/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_blocks_event_script__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _blocks_overview_script__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../blocks/overview/script */ "../blocks/overview/script.js");
-/* harmony import */ var _blocks_overview_loto_script__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../blocks/overview-loto/script */ "../blocks/overview-loto/script.js");
-/* harmony import */ var _blocks_overview_casino_script__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../blocks/overview-casino/script */ "../blocks/overview-casino/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_31__);
+/* harmony import */ var _libs_site__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./libs/site */ "./libs/site.js");
+/* harmony import */ var _old__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./old */ "./old.js");
+/* harmony import */ var _blocks_redirect_script__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/redirect/script */ "../blocks/redirect/script.js");
+/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/header/script */ "../blocks/header/script.js");
+/* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_blocks_header_script__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/nav/script */ "../blocks/nav/script.js");
+/* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_blocks_nav_script__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _blocks_runet_script__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/runet/script */ "../blocks/runet/script.js");
+/* harmony import */ var _blocks_feed_bar_script__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/feed-bar/script */ "../blocks/feed-bar/script.js");
+/* harmony import */ var _blocks_footer_script__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/footer/script */ "../blocks/footer/script.js");
+/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/block-sports/script */ "../blocks/block-sports/script.js");
+/* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/catfish/script */ "../blocks/catfish/script.js");
+/* harmony import */ var _blocks_catfish_script__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_blocks_catfish_script__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _blocks_banner_script__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../blocks/banner/script */ "../blocks/banner/script.js");
+/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../blocks/pagination/script */ "../blocks/pagination/script.js");
+/* harmony import */ var _blocks_pagination_script__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_blocks_pagination_script__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _blocks_substance_script__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/substance/script */ "../blocks/substance/script.js");
+/* harmony import */ var _blocks_substance_script__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_blocks_substance_script__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _blocks_rating_bk_script__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../blocks/rating-bk/script */ "../blocks/rating-bk/script.js");
+/* harmony import */ var _blocks_stories_script__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../blocks/stories/script */ "../blocks/stories/script.js");
+/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../blocks/comment/script */ "../blocks/comment/script.js");
+/* harmony import */ var _blocks_comment_script__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_blocks_comment_script__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../blocks/modal/script */ "../blocks/modal/script.js");
+/* harmony import */ var _blocks_modal_script__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_blocks_modal_script__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
+/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
+/* harmony import */ var _blocks_reward_casino_script__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../blocks/reward-casino/script */ "../blocks/reward-casino/script.js");
+/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
+/* harmony import */ var _blocks_match_script__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../blocks/match/script */ "../blocks/match/script.js");
+/* harmony import */ var _blocks_match_detail_script__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../blocks/match-detail/script */ "../blocks/match-detail/script.js");
+/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../blocks/event/script */ "../blocks/event/script.js");
+/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_blocks_event_script__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _blocks_overview_script__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../blocks/overview/script */ "../blocks/overview/script.js");
+/* harmony import */ var _blocks_overview_loto_script__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../blocks/overview-loto/script */ "../blocks/overview-loto/script.js");
+/* harmony import */ var _blocks_overview_casino_script__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../blocks/overview-casino/script */ "../blocks/overview-casino/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_32__);
 
 
 
@@ -25137,6 +25255,8 @@ window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 
 
+
+_libs_site__WEBPACK_IMPORTED_MODULE_4__["default"].init();
 /** OLD */
 
 
@@ -25170,7 +25290,7 @@ window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 
 
- //import '../blocks/sentiment/sentiment';
+
 
 /***/ }),
 
