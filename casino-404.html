@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Все страницы</title>
+    <title>Страница не найдена</title>
     <meta charset="utf-8">
     <meta name="theme-color" content="#601dc0">
     <meta name="description" content="">
@@ -13,8 +13,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/overview-casino.css">
   </head>
-  <body>
+  <body class="dark-theme">
     <div class="redirect hidden">
       <div class="container">
         <div class="redirect-row">
@@ -307,32 +308,36 @@
             <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
           </ol>
         </div>
-        <div class="workarea-title">
-          <h1>Все страницы</h1>
-        </div>
         <div class="workarea-description">
         </div>
         <div class="workarea-row">
+          <div class="workarea-sidebar">
+            <div class="hidden-mobile">
+              <ul class="casino-menu">
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Рейтинг казино</a></li>
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Турниры</a></li>
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Провайдеры</a></li>
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Игры</a></li>
+              </ul>
+            </div>
+          </div>
           <div class="workarea-content">
-            <div class="workarea-text">
-              <ul>
-                <li><a href="js/report.html">JS отчет</a></li>
-                <li><a href="home.html">Гавная</a></li>
-                <li><a href="forecast.html">Ставки и прогнозы</a></li>
-                <li><a href="forecast-inner.html">Прогнозы на футбол</a></li>
-                <li><a href="match.html">Матч-центр</a></li>
-                <li><a href="match-detail.html">Детальная матча</a></li>
-                <li><a href="event.html">Турнирое событие</a></li>
-                <li><a href="overview-bk.html">Обзор букмекерской конторы</a></li>
-                <li><a href="sentiment.html">Упоминания в отзывах (Сентименты)</a></li>
-                <li><a href="overview-loto.html">Обзор лотереи</a></li>
-                <li><a href="casino-rating.html">Список казино</a></li>
-                <li><a href="overview-casino.html">Обзор казино</a></li>
-                <li><a href="casino-404.html">Страница не найдена для казино</a></li>
-                <li><a href="reward.html">Акции и бонусы</a></li>
-                <li><a href="reward-inner.html">Рездел бонусусов</a></li>
-                <li><a href="feed.html">События</a></li>
-                <li><a href="feed-inner.html">Детальная события</a></li>
+            <div class="casino-404">
+              <div class="casino-404-center">
+                <picture>
+                  <source srcset="/img/404/casino-404-mobile.png 1x, /img/404/casino-404-mobile@2x.png 2x" type="image/png" media="(max-width: 992px)"/>
+                  <source srcset="/img/404/casino-404.png 1x, /img/404/casino-404@2x.png 2x" type="image/png"/><img src="/img/404/casino-404.png" alt="404 casino page"/>
+                </picture>
+                <p>По вашему запросу ничего не найдено :(<br/>Вернитесь назад и попытайтесь еще раз.</p>
+              </div>
+              <div class="casino-404-btns"><a class="btn btn-grey" href="home.html">Вернуться назад</a><a class="btn btn-primary" href="home.html">На главную</a></div>
+            </div>
+            <div class="hidden-desktop">
+              <ul class="casino-menu">
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Рейтинг казино</a></li>
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Турниры</a></li>
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Провайдеры</a></li>
+                <li class="casino-menu-item"><a class="casino-menu-link" href="">Игры</a></li>
               </ul>
             </div>
           </div>
@@ -661,6 +666,358 @@
               </svg></span><span class="toolbar-list-text">Меню</span></a></li>
       </ul>
     </div>
+    <aside class="feed-bar" id="feed-bar" role="feed"><a class="feed-anchor feed-anchor-top js-feed-totop" href="javascript:void(0);">
+        <div class="feed-anchor-icon">
+          <svg>
+            <use xlink:href="#arrow"></use>
+          </svg>
+        </div>
+        <div class="feed-anchor-text"><span>23</span> новых события
+        </div></a>
+      <div class="feed-setting">
+        <div class="feed-setting-title">Настройки ленты</div>
+        <form class="feed-setting-form" action="/">
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-1"/><span>Прогнозы</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-2"/><span>Жалобы</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-3"/><span>Отзывы</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-4"/><span>Комментарии</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-5"/><span>Новости</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-6"/><span>Материал</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-7"/><span>Бонусы</span>
+          </label>
+          <div class="feed-setting-group">
+            <button class="feed-setting-btn feed-setting-reset" type="reset">Сбросить</button>
+            <button class="feed-setting-btn feed-setting-apply" type="submit">Применить</button>
+          </div>
+        </form><a class="feed-setting-close js-setting-close" href="javascript:void(0);">
+          <svg>
+            <use xlink:href="#close"></use>
+          </svg></a>
+      </div>
+      <div class="feed-bar-head">
+        <div class="feed-bar-title">Лента<span class="feed-bar-icon">
+            <svg>
+              <use xlink:href="#round"></use>
+            </svg></span></div><a class="feed-bar-setting js-setting-open" href="javascript:void(0);">
+          <svg>
+            <use xlink:href="#setting"></use>
+          </svg>Настроить ленту</a>
+      </div>
+      <div class="feed-bar-list">
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-other">
+                <div class="feed-forecast-img"><img src=" images/feed-demo-formula.jpg" alt="«Локомотив» – «Динамо» Рига: силы рижан небезграничны"/></div>
+                <div class="feed-forecast-detail">
+                  <div class="feed-forecast-odds">K: 4.36</div>
+                  <div class="feed-forecast-time">
+                    <div class="feed-forecast-date">24.06.18</div>
+                    <div class="feed-forecast-clock">13:30</div>
+                  </div>
+                </div>
+              </div>
+              <div class="feed-box-title">«Локомотив» – «Динамо» Рига: силы рижан небезграничны</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+              <div class="feed-box-label feed-primary-bg">От эксперта</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-forecast">
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-5.png" alt="Лидс Юнайтед"/></div>
+                <div class="feed-forecast-detail">
+                  <div class="feed-forecast-odds">K: 4.36</div>
+                  <div class="feed-forecast-time">
+                    <div class="feed-forecast-date">24.06.18</div>
+                    <div class="feed-forecast-clock">13:30</div>
+                  </div>
+                </div>
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-6.png" alt="Дерби Каунти"/></div>
+              </div>
+              <div class="feed-box-title">«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Новость</li>
+                <li>Баскетбол</li>
+              </ul>
+              <div class="feed-box-label feed-success-bg">Новость дня</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-title">Президент «ПСЖ» намерен установить рамки поведения для игроков</div>
+              <div class="feed-box-subtitle">Сумма перехода может составить 150 млн евро.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Статья</li>
+                <li>Баскетбол</li>
+              </ul>
+              <div class="feed-box-label feed-primary-bg">Эксклюзив</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-title">Аленичев не будет уволен из «Енисея»</div>
+              <div class="feed-box-subtitle">Как сообщил министр спорта Красноярского края Сергей Алексеев, Дмитрий Аленичев</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">3 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Новость</li>
+                <li>Баскетбол</li>
+              </ul>
+              <div class="feed-box-label feed-success-bg">Новость дня</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-title">Президент «ПСЖ» намерен установить рамки поведения для игроков</div>
+              <div class="feed-box-subtitle">Сумма перехода может составить 150 млн евро.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+              <div class="feed-box-label feed-primary-bg">От эксперта</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-forecast">
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-7.png" alt="Лидс Юнайтед"/></div>
+                <div class="feed-forecast-detail">
+                  <div class="feed-forecast-odds">K: 4.36</div>
+                  <div class="feed-forecast-time">
+                    <div class="feed-forecast-date">24.06.18</div>
+                    <div class="feed-forecast-clock">13:30</div>
+                  </div>
+                </div>
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-8.png" alt="Дерби Каунти"/></div>
+              </div>
+              <div class="feed-box-title">«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Статья</li>
+                <li>Баскетбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-logo"><img src="images/feed-demo-bookmaker-1.svg" alt="«Марафон» дарит путешествие в Париж или фрибет 5000 рублей"/></div>
+              <div class="feed-box-title">«Марафон» дарит путешествие в Париж или фрибет 5000 рублей</div>
+              <div class="feed-box-limit">24/06/18 — 24/06/18</div></a><a class="feed-box-btn" href="feed-inner.html">Получить 1000 ₽</a>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Жалоба</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-logo"><img src="images/feed-demo-bookmaker-2.svg" alt="Блокировка счета"/></div>
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-box-title">Блокировка счета</div>
+              <div class="feed-box-subtitle">Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Комментарий</li>
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-comment-forecast">
+                <div class="feed-forecast">
+                  <div class="feed-forecast-team"><img src="images/feed-demo-team-5.png" alt="Лидс Юнайтед"/></div>
+                  <div class="feed-forecast-detail">
+                    <div class="feed-forecast-odds">K: 4.36</div>
+                    <div class="feed-forecast-time">
+                      <div class="feed-forecast-date">24.06.18</div>
+                      <div class="feed-forecast-clock">13:30</div>
+                    </div>
+                  </div>
+                  <div class="feed-forecast-team"><img src="images/feed-demo-team-6.png" alt="Дерби Каунти"/></div>
+                </div>
+                <div class="feed-box-title">«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?</div>
+              </div>
+              <div class="feed-box-subtitle">На этой странице опубликованы самые качественные прогнозы, отобранные нами на основании логичности анализа. На этой странице опубликованы самые качественные прогнозы, отобранные нами на основании логичности анализа.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Комментарий</li>
+                <li>Новость</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-comment-event">
+                <div class="feed-comment-head">
+                  <div class="feed-comment-tag">Футбол</div>
+                  <div class="feed-comment-time">
+                    <div class="feed-comment-date">26/03/19</div>
+                    <div class="feed-comment-clock">12:24</div>
+                  </div>
+                </div>
+                <div class="feed-box-title">Президент «ПСЖ» намерен установить рамки поведения для игроков.</div>
+              </div>
+              <div class="feed-box-subtitle">Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки. Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Комментарий</li>
+                <li>Новость</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-comment-user">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Борис Клюворотов
+                  <div class="feed-comment-prof">Каппер</div>
+                </div>
+              </div>
+              <div class="feed-box-subtitle">Полный мудак и прогнозы у него гавно, слил все бабки!</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+      </div><a class="feed-anchor feed-anchor-back js-feed-toback" href="javascript:void(0);">
+        <div class="feed-anchor-icon">
+          <svg>
+            <use xlink:href="#arrow"></use>
+          </svg>
+        </div>
+        <div class="feed-anchor-text">Вернуться назад</div></a>
+    </aside>
     <script src="js/main.js"></script>
     <!-- убираем пробелы из пустых .workarea-description, нужно только на маркапе-->
     <script>

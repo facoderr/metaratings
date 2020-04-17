@@ -730,11 +730,11 @@
                   </div>
                   <div class="casino-filter-item-body js-casino-target">
                     <div class="casino-filter-range js-casino-range">
-                      <div class="casino-filter-range-val js-casino-range-val">5 000 ₽</div>
+                      <div class="casino-filter-range-val">5 000 ₽</div>
                       <input type="range" min="1000" max="50000" step="500" value="5000"/>
                       <div class="casino-filter-range-count">
-                        <div class="casino-filter-range-numb js-casino-range-min">1 000 ₽</div>
-                        <div class="casino-filter-range-numb js-casino-range-max">50 000 ₽</div>
+                        <div class="casino-filter-range-numb">1 000 ₽</div>
+                        <div class="casino-filter-range-numb">50 000 ₽</div>
                       </div>
                     </div>
                   </div>
@@ -802,27 +802,40 @@
                 </div>
               </div>
               <button class="casino-filter-apply" type="button">Применить</button>
-            </div><a class="casino-filter-btn js-casino-filter js-modal-show" href="#filter">Фильтр</a>
+            </div><a class="casino-filter-btn js-casino-filter-btn js-modal-show" href="#filter">Фильтр</a>
           </div>
           <div class="workarea-content">
             <div class="casino-rating">
               <div class="casino-rating-title">
-                <h1>Рейтинг казино</h1><a class="casino-sort js-modal-show" href="#sort">
-                  <div class="casino-sort-icon"><img src="img/icons/sort.svg"/></div>
-                  <div class="casino-sort-text">Сортировать по</div>
-                  <div class="casino-sort-arrow">
-                    <svg>
-                      <use xlink:href="#arrow"></use>
-                    </svg>
-                  </div></a><a class="casino-rating-filter js-casino-rating-filter js-modal-show" href="#filter">
+                <h1>Рейтинг казино</h1>
+                <div class="casino-sort">
+                  <div class="casino-sort-placeholder js-casino-sort-toggle">
+                    <div class="casino-sort-icon"><img src="img/icons/sort.svg"/></div>
+                    <div class="casino-sort-text">Сортировать по</div>
+                    <div class="casino-sort-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="casino-sort-block js-casino-sort-target">
+                    <ul class="casino-sort-list">
+                      <li><a>По популярности</a></li>
+                      <li><a>По Метаоценке</a></li>
+                      <li><a>По размеру бонуса</a></li>
+                      <li><a>По количеству Игр</a></li>
+                      <li><a>Новые</a></li>
+                    </ul>
+                  </div>
+                </div><a class="casino-rating-filter js-casino-rating-filter js-modal-show" href="#filter">
                   <svg>
-                    <use xlink:href="#filter"></use>
+                    <use xlink:href="#filter_o"></use>
                   </svg></a>
               </div>
               <div class="casino-rating-list">
-                <div class="casino-rating-item js-casino is-success is-highlight">
+                <div class="casino-rating-item js-casino-rating is-success is-highlight">
                   <div class="casino-rating-item-head">
-                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">92</a><a class="casino-rating-item-meta-help" href="/">?</a></div>
+                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">92</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_1">?</a></div>
                     <div class="casino-rating-item-numb">#1
                     </div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_1.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
                       <svg>
@@ -834,7 +847,7 @@
                       <svg>
                         <use xlink:href="#gift"></use>
                       </svg><span>200% за $500</span></a>
-                    <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                    <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                       <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                       <div class="casino-rating-item-arrow-icon">
                         <svg>
@@ -843,7 +856,7 @@
                       </div>
                     </button>
                   </div>
-                  <div class="casino-rating-item-body js-casino-target">
+                  <div class="casino-rating-item-body js-casino-rating-target">
                     <div class="casino-rating-item-wrap">
                       <div class="casino-rating-achieve">
                         <div class="casino-rating-achieve-box">
@@ -936,7 +949,7 @@
                         </div>
                       </div>
                       <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                        <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                        <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                           <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                           <div class="casino-rating-item-arrow-icon">
                             <svg>
@@ -953,9 +966,9 @@
                     </svg><span>Выбор редакции</span>
                   </div>
                 </div>
-                <div class="casino-rating-item js-casino is-success">
+                <div class="casino-rating-item js-casino-rating is-success">
                   <div class="casino-rating-item-head">
-                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">89</a><a class="casino-rating-item-meta-help" href="/">?</a></div>
+                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">89</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_2">?</a></div>
                     <div class="casino-rating-item-numb">#2
                     </div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_2.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
                       <svg>
@@ -967,7 +980,7 @@
                       <svg>
                         <use xlink:href="#gift"></use>
                       </svg><span>200% за $500</span></a>
-                    <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                    <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                       <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                       <div class="casino-rating-item-arrow-icon">
                         <svg>
@@ -976,7 +989,7 @@
                       </div>
                     </button>
                   </div>
-                  <div class="casino-rating-item-body js-casino-target">
+                  <div class="casino-rating-item-body js-casino-rating-target">
                     <div class="casino-rating-item-wrap">
                       <div class="casino-rating-achieve">
                         <div class="casino-rating-achieve-box">
@@ -1069,7 +1082,7 @@
                         </div>
                       </div>
                       <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                        <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                        <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                           <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                           <div class="casino-rating-item-arrow-icon">
                             <svg>
@@ -1081,9 +1094,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="casino-rating-item js-casino is-success">
+                <div class="casino-rating-item js-casino-rating is-success">
                   <div class="casino-rating-item-head">
-                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">80</a><a class="casino-rating-item-meta-help" href="/">?</a></div>
+                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">80</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_3">?</a></div>
                     <div class="casino-rating-item-numb">#3
                     </div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_3.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
                       <svg>
@@ -1095,7 +1108,7 @@
                       <svg>
                         <use xlink:href="#gift"></use>
                       </svg><span>200% за $500</span></a>
-                    <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                    <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                       <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                       <div class="casino-rating-item-arrow-icon">
                         <svg>
@@ -1104,7 +1117,7 @@
                       </div>
                     </button>
                   </div>
-                  <div class="casino-rating-item-body js-casino-target">
+                  <div class="casino-rating-item-body js-casino-rating-target">
                     <div class="casino-rating-item-wrap">
                       <div class="casino-rating-achieve">
                         <div class="casino-rating-achieve-box">
@@ -1197,7 +1210,7 @@
                         </div>
                       </div>
                       <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                        <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                        <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                           <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                           <div class="casino-rating-item-arrow-icon">
                             <svg>
@@ -1209,9 +1222,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="casino-rating-item js-casino is-average is-highlight">
+                <div class="casino-rating-item js-casino-rating is-average is-highlight">
                   <div class="casino-rating-item-head">
-                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">74</a><a class="casino-rating-item-meta-help" href="/">?</a></div>
+                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">74</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_4">?</a></div>
                     <div class="casino-rating-item-numb">#4
                     </div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_4.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
                       <svg>
@@ -1223,7 +1236,7 @@
                       <svg>
                         <use xlink:href="#gift"></use>
                       </svg><span>200% за $500</span></a>
-                    <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                    <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                       <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                       <div class="casino-rating-item-arrow-icon">
                         <svg>
@@ -1232,7 +1245,7 @@
                       </div>
                     </button>
                   </div>
-                  <div class="casino-rating-item-body js-casino-target">
+                  <div class="casino-rating-item-body js-casino-rating-target">
                     <div class="casino-rating-item-wrap">
                       <div class="casino-rating-achieve">
                         <div class="casino-rating-achieve-box">
@@ -1325,7 +1338,7 @@
                         </div>
                       </div>
                       <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                        <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                        <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                           <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                           <div class="casino-rating-item-arrow-icon">
                             <svg>
@@ -1342,9 +1355,9 @@
                     </svg><span>Лучший фриспин</span>
                   </div>
                 </div>
-                <div class="casino-rating-item js-casino is-average">
+                <div class="casino-rating-item js-casino-rating is-average">
                   <div class="casino-rating-item-head">
-                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">65</a><a class="casino-rating-item-meta-help" href="/">?</a></div>
+                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">65</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_5">?</a></div>
                     <div class="casino-rating-item-numb">#5
                     </div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_5.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
                       <svg>
@@ -1356,7 +1369,7 @@
                       <svg>
                         <use xlink:href="#gift"></use>
                       </svg><span>200% за $500</span></a>
-                    <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                    <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                       <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                       <div class="casino-rating-item-arrow-icon">
                         <svg>
@@ -1365,7 +1378,7 @@
                       </div>
                     </button>
                   </div>
-                  <div class="casino-rating-item-body js-casino-target">
+                  <div class="casino-rating-item-body js-casino-rating-target">
                     <div class="casino-rating-item-wrap">
                       <div class="casino-rating-achieve">
                         <div class="casino-rating-achieve-box">
@@ -1458,7 +1471,7 @@
                         </div>
                       </div>
                       <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                        <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                        <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                           <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                           <div class="casino-rating-item-arrow-icon">
                             <svg>
@@ -1470,9 +1483,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="casino-rating-item js-casino is-danger">
+                <div class="casino-rating-item js-casino-rating is-danger">
                   <div class="casino-rating-item-head">
-                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">49</a><a class="casino-rating-item-meta-help" href="/">?</a></div>
+                    <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">49</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_6">?</a></div>
                     <div class="casino-rating-item-numb">#6
                     </div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_6.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
                       <svg>
@@ -1484,7 +1497,7 @@
                       <svg>
                         <use xlink:href="#gift"></use>
                       </svg><span>200% за $500</span></a>
-                    <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                    <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                       <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                       <div class="casino-rating-item-arrow-icon">
                         <svg>
@@ -1493,7 +1506,7 @@
                       </div>
                     </button>
                   </div>
-                  <div class="casino-rating-item-body js-casino-target">
+                  <div class="casino-rating-item-body js-casino-rating-target">
                     <div class="casino-rating-item-wrap">
                       <div class="casino-rating-achieve">
                         <div class="casino-rating-achieve-box">
@@ -1586,7 +1599,7 @@
                         </div>
                       </div>
                       <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                        <button class="casino-rating-item-arrow js-casino-toggle" type="button">
+                        <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
                           <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
                           <div class="casino-rating-item-arrow-icon">
                             <svg>
@@ -1617,7 +1630,7 @@
                   <li class="pagination-item"><a class="pagination-link" href="/">4</a></li>
                   <li class="pagination-item"><a class="pagination-link" href="/">5</a></li>
                   <li class="pagination-item"><a class="pagination-link" href="/">6</a></li>
-                  <li class="pagination-item"><a class="pagination-link" href="javascript:void(0);">...</a></li>
+                  <li class="pagination-item"><span class="pagination-link">...</span></li>
                   <li class="pagination-item"><a class="pagination-link" href="/">23</a></li>
                   <li class="pagination-item"><a class="pagination-link" href="/">
                       <svg>
@@ -1627,6 +1640,306 @@
               </div>
               <div class="casino-rating-description">
                 <p>Metaratings.ru предлагает вашему вниманию рейтинг самых лучших казино в интернете. это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов.</p>
+              </div>
+            </div>
+            <div class="modal js-modal" role="dialog" id="meta_1">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="casino-rating-meta is-success">
+                    <div class="casino-rating-meta-head">
+                      <div class="casino-rating-meta-numb">92</div>
+                      <div class="casino-rating-meta-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                    </div>
+                    <div class="casino-rating-meta-body">
+                      <div class="casino-rating-meta-title">Формирование метаоценки:</div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Рейтинг экспертов:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Надежность:</span><span>50</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 50%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Коэффициенты:</span><span>80</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 80%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Выбор ставок:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Бонусы:</span><span>30</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 30%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Вывод средств:</span><span>70</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 70%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Служба поддержки:</span><span>10</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 10%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="modal js-modal" role="dialog" id="meta_2">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="casino-rating-meta is-success">
+                    <div class="casino-rating-meta-head">
+                      <div class="casino-rating-meta-numb">92</div>
+                      <div class="casino-rating-meta-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                    </div>
+                    <div class="casino-rating-meta-body">
+                      <div class="casino-rating-meta-title">Формирование метаоценки:</div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Рейтинг экспертов:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Надежность:</span><span>50</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 50%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Коэффициенты:</span><span>80</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 80%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Выбор ставок:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Бонусы:</span><span>30</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 30%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Вывод средств:</span><span>70</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 70%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Служба поддержки:</span><span>10</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 10%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="modal js-modal" role="dialog" id="meta_3">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="casino-rating-meta is-success">
+                    <div class="casino-rating-meta-head">
+                      <div class="casino-rating-meta-numb">92</div>
+                      <div class="casino-rating-meta-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                    </div>
+                    <div class="casino-rating-meta-body">
+                      <div class="casino-rating-meta-title">Формирование метаоценки:</div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Рейтинг экспертов:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Надежность:</span><span>50</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 50%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Коэффициенты:</span><span>80</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 80%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Выбор ставок:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Бонусы:</span><span>30</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 30%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Вывод средств:</span><span>70</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 70%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Служба поддержки:</span><span>10</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 10%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="modal js-modal" role="dialog" id="meta_4">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="casino-rating-meta is-success">
+                    <div class="casino-rating-meta-head">
+                      <div class="casino-rating-meta-numb">92</div>
+                      <div class="casino-rating-meta-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                    </div>
+                    <div class="casino-rating-meta-body">
+                      <div class="casino-rating-meta-title">Формирование метаоценки:</div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Рейтинг экспертов:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Надежность:</span><span>50</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 50%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Коэффициенты:</span><span>80</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 80%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Выбор ставок:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Бонусы:</span><span>30</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 30%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Вывод средств:</span><span>70</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 70%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Служба поддержки:</span><span>10</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 10%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="modal js-modal" role="dialog" id="meta_5">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="casino-rating-meta is-success">
+                    <div class="casino-rating-meta-head">
+                      <div class="casino-rating-meta-numb">92</div>
+                      <div class="casino-rating-meta-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                    </div>
+                    <div class="casino-rating-meta-body">
+                      <div class="casino-rating-meta-title">Формирование метаоценки:</div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Рейтинг экспертов:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Надежность:</span><span>50</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 50%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Коэффициенты:</span><span>80</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 80%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-average">
+                        <div class="casino-rating-meta-item-label"><span>Выбор ставок:</span><span>60</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 60%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Бонусы:</span><span>30</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 30%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-success">
+                        <div class="casino-rating-meta-item-label"><span>Вывод средств:</span><span>70</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 70%;"></div>
+                        </div>
+                      </div>
+                      <div class="casino-rating-meta-item is-danger">
+                        <div class="casino-rating-meta-item-label"><span>Служба поддержки:</span><span>10</span></div>
+                        <div class="casino-rating-meta-item-progress">
+                          <div class="casino-rating-meta-item-line" role="progressbar" style="width: 10%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
               </div>
             </div>
             <div class="modal js-modal" role="dialog" id="filter">
@@ -2051,11 +2364,11 @@
                           </div>
                           <div class="casino-filter-item-body js-casino-target">
                             <div class="casino-filter-range js-casino-range">
-                              <div class="casino-filter-range-val js-casino-range-val">5 000 ₽</div>
+                              <div class="casino-filter-range-val">5 000 ₽</div>
                               <input type="range" min="1000" max="50000" step="500" value="5000"/>
                               <div class="casino-filter-range-count">
-                                <div class="casino-filter-range-numb js-casino-range-min">1 000 ₽</div>
-                                <div class="casino-filter-range-numb js-casino-range-max">50 000 ₽</div>
+                                <div class="casino-filter-range-numb">1 000 ₽</div>
+                                <div class="casino-filter-range-numb">50 000 ₽</div>
                               </div>
                             </div>
                           </div>
@@ -2123,29 +2436,7 @@
                         </div>
                       </div>
                       <button class="casino-filter-apply" type="button">Применить</button>
-                    </div><a class="casino-filter-btn js-casino-filter js-modal-show" href="#filter">Фильтр</a>
-                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
-                    <svg>
-                      <use xlink:href="#close"></use>
-                    </svg></a>
-                </div>
-              </div>
-            </div>
-            <div class="modal js-modal" role="dialog" id="sort">
-              <div class="modal-overlay">
-                <div class="modal-wrap js-modal-wrap">
-                  <div class="casino-sort-modal">
-                    <div class="casino-sort-modal-title">Сортировать по:</div>
-                    <ul class="casino-sort-modal-list">
-                      <li><a>Сортировка</a></li>
-                      <li><a>Длинная сортировка </a></li>
-                      <li><a>Сортировка три</a></li>
-                      <li><a>Длинная сортировка 4</a></li>
-                      <li><a>Сортировка пять</a></li>
-                      <li><a>Сортировка шесть</a></li>
-                      <li><a>Длинная сортировка семь</a></li>
-                      <li><a>Сортировка восемь</a></li>
-                    </ul>
+                    </div><a class="casino-filter-btn js-casino-filter-btn js-modal-show" href="#filter">Фильтр</a>
                   </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
                     <svg>
                       <use xlink:href="#close"></use>
@@ -2406,23 +2697,7 @@
           </ul>
         </nav>
         <div class="footer-info">
-          <div class="left-col"><a class="logo" href="/" aria-label="Metaratings">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="161" height="38" viewBox="0 0 312 72">
-                <defs>
-                  <path d="M0 0h135v72H0z"></path>
-                </defs>
-                <g fill="none" fill-rule="evenodd">
-                  <g>
-                    <mask fill="#fff">
-                      <use xlink:href="#a"></use>
-                    </mask>
-                    <path fill="#601DC0" d="M3.24 72C1.45 72 0 70.595 0 68.86V3.14C0 1.404 1.45 0 3.24 0h115.818C127.864 0 135 6.916 135 15.446v53.415c0 1.734-1.45 3.139-3.24 3.139H3.24z" mask="url(#b)"></path>
-                  </g>
-                  <path fill="#FFF" d="M99.347 15.9v6.22h-7.242v34.1h-6.38v-34.1h-7.3V15.9zM108.805 39.746h6.955l-3.45-16.474-3.505 16.474zm10 16.474l-2.3-10.022h-8.39l-2.356 10.022h-6.38l8.85-40.32h8.104l8.851 40.32h-6.38z"></path>
-                  <path fill="#FFF" fill-rule="nonzero" d="M49.39 15.9H72.55v6h-13.15l7.55 14.091-7.593 14.353 13.209.072-.033 6-23.098-.126 10.73-20.281zM27.841 34.057l9.854-18.103 5.963-.01.087 40.12-6 .014-.05-27.699-9.851 16.75-9.906-16.75v27.692h-6V15.954h6z"></path>
-                  <path fill="#000" d="M145 16.515h9.293c1.596 0 3.098.18 4.504.543 1.406.362 2.737.934 3.991 1.715 1.254.782 2.252 1.906 2.993 3.374.741 1.468 1.112 3.212 1.112 5.232v2.173c0 4.27-1.9 7.224-5.701 8.864l6.328 18.127h-6.67l-5.303-16.183h-4.219v16.183H145V16.515zm15.679 12.18v-.458c0-2.02-.514-3.46-1.54-4.317-1.026-.858-2.318-1.287-3.877-1.287h-3.934v11.608h3.934c1.52 0 2.803-.429 3.849-1.286 1.045-.858 1.568-2.278 1.568-4.26zm29.287 27.848l-2.28-9.95h-8.325l-2.337 9.95h-6.329l8.78-40.028h8.04l8.78 40.028h-6.33zm-9.92-16.355h6.898l-3.42-16.354-3.479 16.354zm36.185-23.673v6.175h-7.183v33.853h-6.329V22.69h-7.24v-6.175h20.752zm4.6 40.028V16.515h6.557v40.028h-6.556zm29.23-40.028h6.101v40.028h-6.214l-11.346-25.504v25.504h-6.157V16.515h6.271l11.346 25.503V16.515zm11.158 26.647V29.838c0-2.554.323-4.755.97-6.604.645-1.85 1.53-3.279 2.65-4.29 1.122-1.01 2.338-1.753 3.65-2.23 1.31-.476 2.726-.714 4.247-.714 1.482 0 2.86.229 4.133.686 1.273.458 2.47 1.182 3.592 2.173 1.121.991 2.005 2.402 2.65 4.232.647 1.83.99 4.002 1.027 6.518v.572h-6.157v-.4c-.076-2.63-.59-4.556-1.54-5.775-.95-1.22-2.185-1.83-3.705-1.83-3.46 0-5.189 2.687-5.189 8.062v12.466c0 5.414 1.73 8.12 5.189 8.12 1.558 0 2.822-.62 3.791-1.858.97-1.24 1.454-3.25 1.454-6.033V40.36h-5.074v-6.176h11.231v8.978c0 2.554-.323 4.765-.97 6.633-.645 1.868-1.529 3.307-2.65 4.317-1.121 1.01-2.328 1.744-3.62 2.202-1.293.457-2.68.686-4.162.686-1.52 0-2.937-.238-4.248-.715-1.311-.476-2.527-1.22-3.649-2.23-1.12-1.01-2.005-2.44-2.65-4.289-.647-1.849-.97-4.05-.97-6.604zm27.292.972h6.1c0 2.25.532 3.926 1.596 5.032 1.065 1.106 2.376 1.658 3.934 1.658 1.787 0 3.155-.495 4.105-1.486.95-.992 1.426-2.383 1.426-4.175 0-1.906-.523-3.288-1.568-4.146-1.046-.857-2.784-1.572-5.217-2.144-.912-.19-1.73-.41-2.451-.658-.723-.247-1.55-.657-2.48-1.229-.932-.572-1.71-1.22-2.338-1.944-.627-.724-1.16-1.706-1.596-2.945-.438-1.239-.656-2.62-.656-4.146 0-2.173.313-4.06.94-5.66.628-1.602 1.483-2.841 2.566-3.718a11.181 11.181 0 0 1 3.506-1.944c1.255-.42 2.604-.629 4.048-.629 1.445 0 2.785.22 4.02.658 1.235.438 2.394 1.134 3.478 2.087 1.083.953 1.948 2.297 2.594 4.031.646 1.735.969 3.784.969 6.147h-6.1c0-2.21-.466-3.888-1.397-5.032-.932-1.143-2.11-1.715-3.535-1.715-1.425 0-2.575.476-3.45 1.43-.874.952-1.31 2.268-1.31 3.945 0 .762.132 1.449.398 2.058.266.61.57 1.087.913 1.43.342.343.826.648 1.453.915.628.267 1.131.448 1.511.543.38.096.893.22 1.54.372.19.038.323.057.399.057C308.636 34.375 312 38.244 312 44.534c0 2.287-.314 4.26-.94 5.919-.628 1.658-1.512 2.954-2.652 3.888a11.012 11.012 0 0 1-3.734 2.03c-1.35.42-2.86.629-4.533.629-1.482 0-2.879-.22-4.19-.658-1.311-.438-2.537-1.134-3.677-2.087-1.14-.953-2.053-2.297-2.737-4.031-.684-1.735-1.026-3.765-1.026-6.09z"></path>
-                </g>
-              </svg></a>
+          <div class="left-col"><a class="logo" href="/"><img src="img/logo.svg" alt="Metaratings"/><img src="img/logo_light.svg" alt="Metaratings"/></a>
             <div class="copyright">
               <p>Сетевое издание «Metarating»<br/>(адрес в сети Интернет -<a href="//www.metaratings.ru">www.metaratings.ru</a>)<br/>Свидетельство о регистрации СМИ серия ЭЛ № ФС77-74641 от 24 декабря 2018 года выдано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций.</p>
               <p>Издание может содержать информационную продукцию, предназначенную для лиц старше 18 лет.</p>
