@@ -21872,6 +21872,24 @@ $(function () {
 
 /***/ }),
 
+/***/ "../blocks/casino-category/script.js":
+/*!*******************************************!*\
+  !*** ../blocks/casino-category/script.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var gameTypeButton = $('.js-casino-game-type-toggle');
+  gameTypeButton.on('click', function () {
+    $(this).toggleClass('is-active');
+    $(this).parent().toggleClass('is-active');
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "../blocks/casino-filter/script.js":
 /*!*****************************************!*\
   !*** ../blocks/casino-filter/script.js ***!
@@ -21943,18 +21961,156 @@ $(function () {
 
 /***/ }),
 
-/***/ "../blocks/casino-game-type/script.js":
-/*!********************************************!*\
-  !*** ../blocks/casino-game-type/script.js ***!
-  \********************************************/
+/***/ "../blocks/casino-games-about/script.js":
+/*!**********************************************!*\
+  !*** ../blocks/casino-games-about/script.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
-  var gameTypeButton = $('.js-casino-game-type-toggle');
-  gameTypeButton.on('click', function () {
+  var casinoGamesToggle = $('.js-games-about-toggle'),
+      casinoGamesTarget = $('.js-games-about-target');
+  if (casinoGamesToggle.length === 0 || casinoGamesTarget.length === 0) return;
+  casinoGamesToggle.on('click', function () {
     $(this).toggleClass('is-active');
-    $(this).parent().toggleClass('is-active');
+    $(this).parent().find(casinoGamesTarget).slideToggle(300);
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "../blocks/casino-games-detail/script.js":
+/*!***********************************************!*\
+  !*** ../blocks/casino-games-detail/script.js ***!
+  \***********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
+/* harmony import */ var _casino_games_about_script__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../casino-games-about/script */ "../blocks/casino-games-about/script.js");
+/* harmony import */ var _casino_games_about_script__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_casino_games_about_script__WEBPACK_IMPORTED_MODULE_1__);
+
+
+$(function () {
+  var casinoGamesDetail = $('.casino-games-detail');
+  if (casinoGamesDetail.length === 0) return;
+  var win = $(window),
+      html = $(document.documentElement),
+      casinoGamesTab = $('.js-casino-games-tab'),
+      casinoGamesAnchor = $('.js-casino-games-anchor'),
+      casinoGamesMain = $('.js-casino-games-main');
+
+  function scrollAnchor() {
+    var limitAnchorMob = win.scrollTop() >= casinoGamesTab.offset().top,
+        limitAnchorWeb = win.scrollTop() >= casinoGamesTab.offset().top - 15;
+
+    if (win.outerWidth() <= 1099) {
+      casinoGamesTab.find('.casino-games-detail-tabHead').toggleClass('is-fix', limitAnchorMob);
+    } else {
+      casinoGamesTab.find('.casino-games-detail-tabHead').toggleClass('is-fix', limitAnchorWeb);
+    }
+
+    casinoGamesAnchor.each(function (i) {
+      var anchorTag = $(this).attr('href'),
+          anchorPos = $('div' + anchorTag);
+      if (anchorPos.length === 0) return;
+
+      if (win.outerWidth() <= 1099) {
+        if (win.scrollTop() >= anchorPos.offset().top - 135) {
+          casinoGamesAnchor.removeClass('is-select');
+          casinoGamesAnchor.eq(i).addClass('is-select');
+        }
+      } else {
+        if (win.scrollTop() >= anchorPos.offset().top - 201) {
+          casinoGamesAnchor.removeClass('is-select');
+          casinoGamesAnchor.eq(i).addClass('is-select');
+        }
+      }
+    });
+  }
+
+  win.on('scroll', function () {
+    scrollAnchor();
+  });
+  scrollAnchor();
+  casinoGamesAnchor.on('click', function () {
+    var anchorTag = $(this).attr('href'),
+        anchorPos = $('div' + anchorTag);
+
+    if (win.outerWidth() <= 1099) {
+      html.animate({
+        scrollTop: anchorPos.offset().top - 55
+      }, 500);
+    } else {
+      html.animate({
+        scrollTop: anchorPos.offset().top - 101
+      }, 500);
+    }
+
+    return false;
+  });
+  casinoGamesMain.on('click', function () {
+    html.animate({
+      scrollTop: html.offset().top
+    }, 500);
+    return false;
+  });
+  var gallerySliderNav = $('.js-gallery-slideNav');
+  gallerySliderNav.each(function (i) {
+    var $this = $(this),
+        gallerySliderFor = $('#gallery_' + (i + 1)).find('.js-gallery-slideFor');
+    var slideNav = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]($this.get(0), {
+      slidesPerView: 'auto',
+      freeMode: true,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+      breakpointsInverse: true,
+      breakpoints: {
+        1100: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+          freeMode: false,
+          navigation: {
+            nextEl: $this.siblings('.swiper-button-next'),
+            prevEl: $this.siblings('.swiper-button-prev')
+          }
+        }
+      }
+    });
+    new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](gallerySliderFor.get(0), {
+      spaceBetween: 15,
+      pagination: {
+        el: gallerySliderFor.siblings('.swiper-pagination'),
+        clickable: true
+      },
+      thumbs: {
+        swiper: slideNav
+      }
+    });
+  });
+  var casinoGamesSimilar = $('.js-casino-games-similar');
+  casinoGamesSimilar.each(function () {
+    var $this = $(this);
+    new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]($this.get(0), {
+      slidesPerView: 'auto',
+      freeMode: true,
+      navigation: {
+        nextEl: $this.siblings('.swiper-button-next'),
+        prevEl: $this.siblings('.swiper-button-prev')
+      },
+      breakpointsInverse: true,
+      breakpoints: {
+        1100: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+          freeMode: false
+        }
+      }
+    });
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
@@ -22223,12 +22379,14 @@ $(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
-  var comparison = $('.js-comparison-show'),
+  var comparison = '.comparison';
+  if (comparison.length === 0) return;
+  var comparisonShow = $('.js-comparison-show'),
       comparisonResult = $('.js-comparsion-result'),
       comparisonClear = $('.js-comparison-clear'),
       comparisonApply = $('.js-comparison-apply'),
       comparisonTable = $('.js-comparison-table-result');
-  comparison.on('click', function () {
+  comparisonShow.on('click', function () {
     var items = [],
         comparisonResult = $('.js-comparsion-result'),
         comparisonItem = $('.js-comparison-item');
@@ -23510,9 +23668,6 @@ $(function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
-/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../comparison/script */ "../blocks/comparison/script.js");
-/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_comparison_script__WEBPACK_IMPORTED_MODULE_1__);
-
 
 $(function () {
   var casinoSlider = $('.js-overview-casino-slider');
@@ -23551,9 +23706,6 @@ $(function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
-/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../comparison/script */ "../blocks/comparison/script.js");
-/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_comparison_script__WEBPACK_IMPORTED_MODULE_1__);
-
 
 $(function () {
   var lotoSlider = $('.js-overview-loto-slider');
@@ -23601,6 +23753,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _faq_script__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../faq/script */ "../blocks/faq/script.js");
 /* harmony import */ var _faq_script__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_faq_script__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _payment_script__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../payment/script */ "../blocks/payment/script.js");
+/* harmony import */ var _related_script__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../related/script */ "../blocks/related/script.js");
+/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../comparison/script */ "../blocks/comparison/script.js");
+/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_comparison_script__WEBPACK_IMPORTED_MODULE_8__);
+
+
 
 
 
@@ -23682,8 +23839,7 @@ $(function () {
       overviewPanel = $('.js-overview-panel');
 
   function scrollAnchor() {
-    var limitPanel = win.scrollTop() >= overviewFeature.offset().top,
-        limitAnchorMob = win.scrollTop() >= overviewTab.offset().top,
+    var limitAnchorMob = win.scrollTop() >= overviewTab.offset().top,
         limitAnchorWeb = win.scrollTop() >= overviewTab.offset().top - 15;
 
     if (win.outerWidth() <= 1099) {
@@ -23692,7 +23848,7 @@ $(function () {
       overviewTab.find('.overview-tabHead').toggleClass('is-fix', limitAnchorWeb);
     }
 
-    overviewPanel.toggleClass('is-active', limitPanel);
+    if (overviewFeature.length > 0) overviewPanel.toggleClass('is-active', win.scrollTop() >= overviewFeature.offset().top);
     overviewAnchor.each(function (i) {
       var anchorTag = $(this).attr('href'),
           anchorPos = $('div' + anchorTag);
@@ -24094,6 +24250,42 @@ $(function () {
       }
     }
   }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "../blocks/related/script.js":
+/*!***********************************!*\
+  !*** ../blocks/related/script.js ***!
+  \***********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
+
+$(function () {
+  var related = $('.related');
+  if (related.length === 0) return;
+  var relatedSlider = $('.js-related-slider');
+  new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](relatedSlider, {
+    slidesPerView: 'auto',
+    freeMode: true,
+    navigation: {
+      nextEl: relatedSlider.siblings('.swiper-button-next'),
+      prevEl: relatedSlider.siblings('.swiper-button-prev')
+    },
+    breakpointsInverse: true,
+    breakpoints: {
+      1100: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+        freeMode: false
+      }
+    }
+  });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
@@ -25508,11 +25700,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_33__);
 /* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../blocks/casino-sort/script */ "../blocks/casino-sort/script.js");
 /* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_34__);
-/* harmony import */ var _blocks_casino_game_type_script__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../blocks/casino-game-type/script */ "../blocks/casino-game-type/script.js");
-/* harmony import */ var _blocks_casino_game_type_script__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_game_type_script__WEBPACK_IMPORTED_MODULE_35__);
-/* harmony import */ var _blocks_casino_provider_detail_script__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../blocks/casino-provider-detail/script */ "../blocks/casino-provider-detail/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_37___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_37__);
+/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../blocks/casino-category/script */ "../blocks/casino-category/script.js");
+/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_35__);
+/* harmony import */ var _blocks_casino_games_detail_script__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../blocks/casino-games-detail/script */ "../blocks/casino-games-detail/script.js");
+/* harmony import */ var _blocks_casino_provider_detail_script__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../blocks/casino-provider-detail/script */ "../blocks/casino-provider-detail/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_38__);
 
 
 
@@ -25547,6 +25740,7 @@ _libs_site__WEBPACK_IMPORTED_MODULE_4__["default"].init();
 
 
 /** PAGES */
+
 
 
 
@@ -25776,14 +25970,27 @@ var scriptFunctions = {
     this.initSwipers();
     this.advancedMoreHandler();
   }
-}; // current script
+};
+
+function loadSource() {
+  var source = $('.js-source').last();
+  if (source.length === 0) return;
+  source.html('');
+  var sourceDecode = decodeURIComponent(escape(atob(source.attr('data-source')))).split('|'),
+      sourceTitle = $.trim(sourceDecode['0']),
+      sourceLink = $.trim(sourceDecode['1']);
+
+  if (sourceTitle && sourceLink) {
+    source.html('Источник:' + '<a href="' + sourceLink + '" target="_blank" rel="nofollow"  class="ap-source">' + sourceTitle + '</a>');
+  } else {
+    source.html('Источник: <p class="ap-source">' + sourceTitle + '</p>');
+  }
+} // current script
+
 
 $(function () {
   /** Подгрузка ссылки на источник */
-  if ($('.news-src').length === 1) {
-    $('.news-src').load('/include/ajax/news-src.php?NID=' + $('.news-src').attr('date-id'));
-  }
-
+  setTimeout(loadSource, 1000);
   scriptFunctions.init();
   var $sideMenu = $('.sidebar-menu');
 
@@ -25886,11 +26093,7 @@ $(function () {
               action: 'load-next-news'
             }, function (data) {
               $('.news-infinitely').last().after(data);
-
-              if ($('.news-src').is(':empty')) {
-                $('.news-src').last().load('/include/ajax/news-src.php?NID=' + $('.news-src').last().attr('date-id'));
-              }
-
+              setTimeout(loadSource, 1000);
               loadingHeight = come('#next_news');
               page = $('#next_news').data('url');
               loading = false;
