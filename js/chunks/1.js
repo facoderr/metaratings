@@ -543,7 +543,6 @@ function init() {
       $(this).find(sentimentScrollDanger).parent().toggle(sentimentScrollDanger.children().length > 0);
     });
   });
-  autoHeight();
   sentimentLoad.addClass('is-load'); // Interaction
 
   var chartSeries = $('.highcharts-series'),
@@ -630,11 +629,6 @@ function init() {
     var sentimentScrollHeight = $(this).siblings().outerHeight();
     $(this).fadeOut(300);
     $(this).parent().css('max-height', sentimentScrollHeight + 10);
-  });
-  doc.on('click', reviewFull, function () {
-    var reviewTextHeight = $(this).siblings().outerHeight();
-    $(this).fadeOut(300);
-    $(this).parent().css('max-height', reviewTextHeight);
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))

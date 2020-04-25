@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "chunks/" + chunkId + ".js?v=" + {"0":"e9d9041b04bcda58ea0f","1":"6965177b2b5c4f9b6295"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "chunks/" + chunkId + ".js?v=" + {"0":"e9d9041b04bcda58ea0f","1":"29f8718c4996c8ccc3c9"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21872,6 +21872,47 @@ $(function () {
 
 /***/ }),
 
+/***/ "../blocks/casino-best/script.js":
+/*!***************************************!*\
+  !*** ../blocks/casino-best/script.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var casinoBest = $('.casino-best');
+  if (casinoBest.length === 0) return;
+  $('.workarea').addClass('workarea-has-best');
+  var win = $(window),
+      casinoBestTarget = $('.js-casino-best'),
+      casinoBestScrollPrev = win.scrollTop();
+  casinoBestPosition = 44, casinoBestLaunch = 350;
+  win.on('scroll', function () {
+    if (win.outerWidth() <= 1099) {
+      var casinoBestScroll = win.scrollTop();
+
+      if (casinoBestScroll >= casinoBestPosition + casinoBestLaunch) {
+        casinoBestTarget.addClass('is-fix');
+
+        if (casinoBestScroll < casinoBestScrollPrev) {
+          casinoBestTarget.addClass('is-active');
+          casinoBestTarget.css('transition', 'all 0.3s ease-in-out');
+        } else {
+          casinoBestTarget.removeClass('is-active');
+        }
+      } else if (casinoBestScroll < casinoBestPosition) {
+        casinoBestTarget.removeClass('is-fix');
+        casinoBestTarget.css('transition', 'none');
+      }
+
+      casinoBestScrollPrev = casinoBestScroll;
+    }
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "../blocks/casino-category/script.js":
 /*!*******************************************!*\
   !*** ../blocks/casino-category/script.js ***!
@@ -22001,8 +22042,7 @@ $(function () {
   var win = $(window),
       html = $(document.documentElement),
       casinoGamesTab = $('.js-casino-games-tab'),
-      casinoGamesAnchor = $('.js-casino-games-anchor'),
-      casinoGamesMain = $('.js-casino-games-main');
+      casinoGamesAnchor = $('.js-casino-games-anchor');
 
   function scrollAnchor() {
     var limitAnchorMob = win.scrollTop() >= casinoGamesTab.offset().top,
@@ -22051,12 +22091,6 @@ $(function () {
       }, 500);
     }
 
-    return false;
-  });
-  casinoGamesMain.on('click', function () {
-    html.animate({
-      scrollTop: html.offset().top
-    }, 500);
     return false;
   });
   var gallerySliderNav = $('.js-gallery-slideNav');
@@ -22195,6 +22229,95 @@ $(function () {
     $(this).toggleClass('is-active');
     casinoSortTarget.slideToggle(300);
   });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "../blocks/casino-tournaments-detail/script.js":
+/*!*****************************************************!*\
+  !*** ../blocks/casino-tournaments-detail/script.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var countdownBlock = $('.casino-tournament-detail-countdown');
+  if (countdownBlock.length === 0) return;
+  updateCountDown();
+  setInterval(function () {
+    updateCountDown();
+  }, 1000);
+
+  function updateCountDown() {
+    var countdownRangeBlock = $('.casino-tournament-detail-range');
+    var rusDateStart = createRusDate(countdownBlock.attr('data-start'));
+    var rusDateEnd = createRusDate(countdownBlock.attr('data-end'));
+    var utfNow = Date.now();
+    var utfDateStart = Date.parse(rusDateStart);
+    var utfDateEnd = Date.parse(rusDateEnd);
+    countdownBlock.removeClass('hidden');
+    countdownRangeBlock.removeClass('hidden');
+
+    if (utfNow < utfDateStart) {
+      // если турнир еще не начался
+      countdownBlock.addClass('hidden');
+      $('.casino-tournament-detail-range:eq(0)').addClass('hidden');
+      return;
+    }
+
+    $('.casino-tournament-detail-range:eq(1)').addClass('hidden');
+
+    if (utfNow > utfDateEnd) {
+      // если турнир закончился
+      countdownBlock.addClass('hidden');
+      updateThumbRange(100);
+      return;
+    }
+
+    var utfRangeTime = utfDateEnd - utfDateStart;
+    var utfRangeTimeStart = utfNow - utfDateStart;
+    var iProcent = utfRangeTimeStart / utfRangeTime * 100;
+    updateThumbRange(iProcent);
+    timeLeft(new Date(rusDateStart));
+  }
+
+  function createRusDate(date) {
+    var sNewDate = '';
+    var arDate = date.split(' ');
+    sNewDate = arDate[0].split('.').reverse().join('-') + ' ' + arDate[1];
+    return sNewDate;
+  }
+
+  function updateThumbRange(iProcent) {
+    if ($('.casino-tournament-detail-range-block').length < 1) return;
+    var $thumbRange = $('.casino-tournament-detail-range-track');
+    $('.casino-tournament-detail-range-thumb').css('left', 'calc(' + iProcent + '% - 6px)');
+    $thumbRange.css('background', 'linear-gradient(to right, #20a94a  ' + iProcent + '%, #999999 ' + iProcent + '%)');
+  }
+
+  function timeLeft(timeTournament) {
+    var dateToday = new Date();
+    var timeDiffrence = dateToday.getTime() - timeTournament.getTime();
+    var daysLag = Math.floor(timeDiffrence / (1000 * 3600 * 24));
+    var hoursLag = Math.floor(timeDiffrence / (1000 * 3600) - daysLag * 24);
+    var minitesLag = Math.floor(timeDiffrence / (1000 * 60) - daysLag * 24 * 60 - hoursLag * 60);
+    var secondsLag = Math.floor(timeDiffrence / 1000 - daysLag * 24 * 60 * 60 - hoursLag * 60 * 60 - minitesLag * 60);
+    daysLag = checkTime(daysLag);
+    hoursLag = checkTime(hoursLag);
+    minitesLag = checkTime(minitesLag);
+    secondsLag = checkTime(secondsLag);
+    $('[data-countdown-unit=days]').text(daysLag);
+    $('[data-countdown-unit=hours]').text(hoursLag);
+    $('[data-countdown-unit=minutes]').text(minitesLag);
+    $('[data-countdown-unit=seconds]').text(secondsLag);
+    return daysLag + ":" + hoursLag + ":" + minitesLag + ":" + secondsLag;
+  }
+
+  function checkTime(i) {
+    if (i < 10) i = "0" + i;
+    return i;
+  }
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
@@ -22365,80 +22488,6 @@ $(function () {
         w = screen.width,
         h = screen.height;
     window.open(url, '', 'status=no,scrollbars=yes,resizable=yes,width=' + width + ',height=' + height + ',top=' + Math.floor((h - height) / 2 - 14) + ',left=' + Math.floor((w - width) / 2 - 5));
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
-
-/***/ }),
-
-/***/ "../blocks/comparison/script.js":
-/*!**************************************!*\
-  !*** ../blocks/comparison/script.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {$(function () {
-  var comparison = '.comparison';
-  if (comparison.length === 0) return;
-  var comparisonShow = $('.js-comparison-show'),
-      comparisonResult = $('.js-comparsion-result'),
-      comparisonClear = $('.js-comparison-clear'),
-      comparisonApply = $('.js-comparison-apply'),
-      comparisonTable = $('.js-comparison-table-result');
-  comparisonShow.on('click', function () {
-    var items = [],
-        comparisonResult = $('.js-comparsion-result'),
-        comparisonItem = $('.js-comparison-item');
-    comparisonResult.empty();
-    comparisonItem.each(function () {
-      items.push($(this).data('id'));
-    });
-    var data = {
-      action: 'get-list',
-      iblockId: comparison.data('iblockid'),
-      iblockType: comparison.data('iblocktype'),
-      itemsSelected: items
-    };
-    $.get('/local/components/metaratings/comparison/ajax.php', data, function (html) {
-      comparisonResult.append(html);
-    });
-  });
-  comparisonResult.on('click', '.comparison-modal-item', function () {
-    $(this).toggleClass('is-select');
-  });
-  comparisonClear.on('click', function () {
-    $('.comparison-modal-item').removeClass('is-select');
-  });
-  comparisonApply.on('click', function () {
-    var items = [],
-        property = [],
-        html = $(document.documentElement),
-        modalVisible = $('.js-modal-visible'),
-        modalDefault = $('.js-modal'),
-        comparisonTableHead = $('.js-comparison-table-head');
-    html.removeClass('is-overflow');
-    modalVisible.removeClass('is-open');
-    modalDefault.fadeOut().removeClass('is-open');
-    $('.comparison-modal-item').each(function () {
-      if ($(this).hasClass('is-select')) {
-        items.push($(this).data('id'));
-      }
-    });
-    comparisonTableHead.each(function () {
-      property.push($(this).data('property'));
-    });
-    var data = {
-      action: 'load-items',
-      iblockId: comparison.data('iblockid'),
-      iblockType: comparison.data('iblocktype'),
-      itemsSelected: items,
-      property: property
-    };
-    $.get('/local/components/metaratings/comparison/ajax.php', data, function (html) {
-      comparisonTable.empty();
-      comparisonTable.append(html);
-    });
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
@@ -23754,9 +23803,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _faq_script__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_faq_script__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _payment_script__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../payment/script */ "../blocks/payment/script.js");
 /* harmony import */ var _related_script__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../related/script */ "../blocks/related/script.js");
-/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../comparison/script */ "../blocks/comparison/script.js");
-/* harmony import */ var _comparison_script__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_comparison_script__WEBPACK_IMPORTED_MODULE_8__);
-
 
 
 
@@ -24415,6 +24461,41 @@ $(function () {
       swiper: sliderNav
     }
   });
+});
+$(function () {
+  var review = $('.review'),
+      sentiment = $('.sentiment');
+
+  function reviewHeight() {
+    var reviewBody = $('.js-review-body'),
+        reviewText = $('.js-review-text'),
+        reviewFull = '.js-review-full';
+    reviewBody.each(function () {
+      var maxH = 102,
+          reviewTextHeight = $(this).find(reviewText).outerHeight();
+
+      if (reviewTextHeight > maxH) {
+        $(this).css('max-height', maxH);
+        $(this).find(reviewFull).css('display', 'flex');
+      } else {
+        $(this).css('max-height', '');
+        $(this).find(reviewFull).css('display', 'none');
+      }
+    });
+    $(document).on('click', reviewFull, function () {
+      var reviewTextHeight = $(this).siblings().outerHeight();
+      $(this).fadeOut(300);
+      $(this).parent().css('max-height', reviewTextHeight);
+    });
+  }
+
+  if (review.length != 0) {
+    reviewHeight();
+  } else if (sentiment.length != 0) {
+    reviewHeight();
+  } else {
+    return;
+  }
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
@@ -25694,18 +25775,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_overview_script__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../blocks/overview/script */ "../blocks/overview/script.js");
 /* harmony import */ var _blocks_overview_loto_script__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../blocks/overview-loto/script */ "../blocks/overview-loto/script.js");
 /* harmony import */ var _blocks_overview_casino_script__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../blocks/overview-casino/script */ "../blocks/overview-casino/script.js");
-/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../blocks/casino-rating/script */ "../blocks/casino-rating/script.js");
-/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../blocks/casino-filter/script */ "../blocks/casino-filter/script.js");
-/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_33__);
-/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../blocks/casino-sort/script */ "../blocks/casino-sort/script.js");
-/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_34__);
-/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../blocks/casino-category/script */ "../blocks/casino-category/script.js");
-/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_35__);
-/* harmony import */ var _blocks_casino_games_detail_script__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../blocks/casino-games-detail/script */ "../blocks/casino-games-detail/script.js");
-/* harmony import */ var _blocks_casino_provider_detail_script__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../blocks/casino-provider-detail/script */ "../blocks/casino-provider-detail/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_38__);
+/* harmony import */ var _blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../blocks/casino-best/script */ "../blocks/casino-best/script.js");
+/* harmony import */ var _blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../blocks/casino-rating/script */ "../blocks/casino-rating/script.js");
+/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../blocks/casino-filter/script */ "../blocks/casino-filter/script.js");
+/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_34__);
+/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../blocks/casino-sort/script */ "../blocks/casino-sort/script.js");
+/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_35__);
+/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../blocks/casino-category/script */ "../blocks/casino-category/script.js");
+/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_36__);
+/* harmony import */ var _blocks_casino_games_detail_script__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../blocks/casino-games-detail/script */ "../blocks/casino-games-detail/script.js");
+/* harmony import */ var _blocks_casino_provider_detail_script__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../blocks/casino-provider-detail/script */ "../blocks/casino-provider-detail/script.js");
+/* harmony import */ var _blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../blocks/casino-tournaments-detail/script */ "../blocks/casino-tournaments-detail/script.js");
+/* harmony import */ var _blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_39__);
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_40__);
 
 
 
@@ -25740,6 +25825,8 @@ _libs_site__WEBPACK_IMPORTED_MODULE_4__["default"].init();
 
 
 /** PAGES */
+
+
 
 
 

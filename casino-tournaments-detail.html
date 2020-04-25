@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Страница не найдена</title>
+    <title>Детальная турнира казино</title>
     <meta charset="utf-8">
     <meta name="theme-color" content="#601dc0">
     <meta name="description" content="">
@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/pages/overview-casino.css">
+    <link rel="stylesheet" href="css/pages/casino-tournaments-detail.css">
   </head>
   <body class="dark-theme">
     <div class="redirect hidden">
@@ -300,45 +300,910 @@
       </div>
     </header>
     <main class="workarea">
-      <div class="container">
-        <div class="workarea-breadcrumb" aria-label="breadcrumb">
-          <ol class="workarea-breadcrumb-list">
-            <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Главная</a></li>
-            <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Страница</a></li>
-            <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
-          </ol>
+      <div class="workarea-head">
+        <div class="casino-tournament-bg">
+          <picture>
+            <source srcset="images/casino-tournament-bg.png"><img src="images/casino-tournament-bg.png" alt="">
+          </picture>
         </div>
+        <div class="container">
+          <div class="workarea-breadcrumb" aria-label="breadcrumb">
+            <ol class="workarea-breadcrumb-list">
+              <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Главная</a></li>
+              <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Страница</a></li>
+              <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
+            </ol>
+          </div>
+          <div class="casino-tournament-detail" id="casino-tournament">
+            <div class="casino-tournament-detail-img"><img src="images/tournament-img.png" alt=""/></div>
+            <div class="casino-tournament-detail-text">
+              <div class="casino-tournament-detail-block">
+                <div class="casino-tournament-detail-title">
+                  <h1 class="casino-tournament-detail-h1">Турнир золотая корона</h1>
+                </div>
+                <div class="casino-tournament-detail-casino"><span class="casino-tournament-detail-casino-text">Проводит казино:</span>
+                  <div class="casino-tournament-detail-casino-img"><img src="images/kazinoigri.svg" alt=""/></div>
+                </div>
+              </div>
+              <div class="casino-tournament-detail-block">
+                <div class="casino-tournament-detail-prize"><span>Призовой фонд: 1 000 000 ₽</span></div>
+              </div>
+              <div class="casino-tournament-detail-block">
+                <div class="casino-tournament-detail-timer">
+                  <div class="casino-tournament-detail-start">
+                    <div class="casino-tournament-detail-start-title">Турнир идет</div>
+                    <div class="casino-tournament-detail-countdown" data-start="27.04.2020 12:00" data-end="28.04.2020 12:00">
+                      <div class="casino-tournament-detail-countdown-item">
+                        <time data-countdown-unit="days">00</time><span>Дней</span>
+                      </div>
+                      <div class="casino-tournament-detail-countdown-item">
+                        <time data-countdown-unit="hours">00</time><span>Часов</span>
+                      </div>
+                      <div class="casino-tournament-detail-countdown-item">
+                        <time data-countdown-unit="minutes">00</time><span>Минут</span>
+                      </div>
+                      <div class="casino-tournament-detail-countdown-item">
+                        <time data-countdown-unit="seconds">00</time><span>Секунд</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="casino-tournament-detail-range-container">
+                    <div class="casino-tournament-detail-range">
+                      <div class="casino-tournament-detail-range-text"><span>Старт</span><span class="right">Финиш</span></div>
+                      <div class="casino-tournament-detail-range-block">
+                        <div class="casino-tournament-detail-range-thumb"></div>
+                        <div class="casino-tournament-detail-range-track"></div>
+                      </div>
+                      <div class="casino-tournament-detail-range-date"><span>13 апреля, 00:01</span><span class="right">19 апреля, 23:59</span></div>
+                    </div>
+                    <div class="casino-tournament-detail-range text-center hidden">
+                      <div class="casino-tournament-detail-range-text"><span>Время проведения:</span></div>
+                      <div class="casino-tournament-detail-range-date">
+                        <div>с 13 апреля, 00:01</div>
+                        <div>по 19 апреля, 23:59</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
         <div class="workarea-description">
         </div>
         <div class="workarea-row">
           <div class="workarea-sidebar">
-            <div class="hidden-mobile">
-              <ul class="casino-menu">
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Рейтинг казино</a></li>
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Турниры</a></li>
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Провайдеры</a></li>
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Игры</a></li>
-              </ul>
+            <div class="casino-best js-casino-best">
+              <div class="casino-best-title">Рунет выбирает</div>
+              <div class="casino-best-row">
+                <div class="casino-best-scroll">
+                  <div class="casino-best-item is-success is-highlight">
+                    <div class="casino-best-item-wrap">
+                      <div class="casino-best-item-meta">92
+                      </div><a class="casino-best-item-img" href="/"><img src="img/casino/casino_1.png" alt=""/></a><a class="casino-best-item-link casino-best-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg></a><a class="casino-best-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>1500 EUR + 150 FS</span></a><a class="casino-best-item-link casino-best-item-overview" href="/">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg></a>
+                    </div>
+                    <div class="casino-best-item-label">
+                      <svg>
+                        <use xlink:href="#star"></use>
+                      </svg><span>Выбор редакции</span>
+                    </div>
+                  </div>
+                  <div class="casino-best-item is-success is-highlight">
+                    <div class="casino-best-item-wrap">
+                      <div class="casino-best-item-meta">89
+                      </div><a class="casino-best-item-img" href="/"><img src="img/casino/casino_2.png" alt=""/></a><a class="casino-best-item-link casino-best-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg></a><a class="casino-best-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>100000 RUB + 200 FS</span></a><a class="casino-best-item-link casino-best-item-overview" href="/">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg></a>
+                    </div>
+                    <div class="casino-best-item-label"><span>Первый в России</span>
+                    </div>
+                  </div>
+                  <div class="casino-best-item is-success">
+                    <div class="casino-best-item-wrap">
+                      <div class="casino-best-item-meta">80
+                      </div><a class="casino-best-item-img" href="/"><img src="img/casino/casino_3.png" alt=""/></a><a class="casino-best-item-link casino-best-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg></a><a class="casino-best-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>2000 EUR + 200 FS</span></a><a class="casino-best-item-link casino-best-item-overview" href="/">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg></a>
+                    </div>
+                  </div>
+                  <div class="casino-best-item is-average">
+                    <div class="casino-best-item-wrap">
+                      <div class="casino-best-item-meta">74
+                      </div><a class="casino-best-item-img" href="/"><img src="img/casino/casino_4.png" alt=""/></a><a class="casino-best-item-link casino-best-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg></a><a class="casino-best-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>100 EUR + 100 FS</span></a><a class="casino-best-item-link casino-best-item-overview" href="/">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg></a>
+                    </div>
+                  </div>
+                  <div class="casino-best-item is-average">
+                    <div class="casino-best-item-wrap">
+                      <div class="casino-best-item-meta">65
+                      </div><a class="casino-best-item-img" href="/"><img src="img/casino/casino_5.png" alt=""/></a><a class="casino-best-item-link casino-best-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg></a><a class="casino-best-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>24000 RUB</span></a><a class="casino-best-item-link casino-best-item-overview" href="/">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg></a>
+                    </div>
+                  </div>
+                  <div class="casino-best-item is-danger">
+                    <div class="casino-best-item-wrap">
+                      <div class="casino-best-item-meta">49
+                      </div><a class="casino-best-item-img" href="/"><img src="img/casino/casino_6.png" alt=""/></a><a class="casino-best-item-link casino-best-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg></a><a class="casino-best-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>-</span></a><a class="casino-best-item-link casino-best-item-overview" href="/">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="workarea-content">
-            <div class="casino-404">
-              <div class="casino-404-center">
-                <picture>
-                  <source srcset="/img/404/casino-404-mobile.png 1x, /img/404/casino-404-mobile@2x.png 2x" type="image/png" media="(max-width: 992px)"/>
-                  <source srcset="/img/404/casino-404.png 1x, /img/404/casino-404@2x.png 2x" type="image/png"/><img src="/img/404/casino-404.png" alt="404 casino page"/>
-                </picture>
-                <p>По вашему запросу ничего не найдено :(<br/>Вернитесь назад и попытайтесь еще раз.</p>
+            <div class="table-wrap casino-tournament-table-wrap">
+              <table class="table casino-tournament-detail-table">
+                <thead>
+                  <tr>
+                    <th>Провайдеры
+                    </th>
+                    <th>Вид турнира
+                    </th>
+                    <th>Вейджер
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="casino-tournament-detail-table-imgBlock"><img src="images/provider-1.png" alt=""/><img src="images/provider-2.png" alt=""/><img src="images/provider-3.png" alt=""/><img src="images/provider-4.png" alt=""/><img src="images/provider-5.png" alt=""/></div>
+                      <div class="casino-tournament-detail-table-txtBlock"><a class="js-modal-show" href="#providers">Еще 31</a></div>
+                    </td>
+                    <td>Игровые автоматы</td>
+                    <td>х</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div><a class="btn btn-grey btn-block btn-margin-top" href="#">Участвовать</a>
+            <div class="overview">
+              <div class="overview-tab js-sticky-tab">
+                <div class="overview-tabAbsolute">
+                  <div class="overview-tabHead">
+                    <div class="overview-tabList"><a class="overview-tabItem js-overview-anchor" href="#casino"><img src="img/casino/casino_0.svg" alt="Казино"/></a><a class="overview-tabItem js-overview-anchor" href="#score">Оценка</a><a class="overview-tabItem js-overview-anchor" href="#pluses-minuses">Плюсы и минусы</a><a class="overview-tabItem js-overview-anchor" href="#games">Игры</a><a class="overview-tabItem js-overview-anchor" href="#sames">Похожие турниры</a><a class="overview-tabItem js-overview-anchor" href="#compare">Сравнения</a><a class="overview-tabItem js-overview-anchor" href="#rules">Правила</a>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="casino-404-btns"><a class="btn btn-grey" href="home.html">Вернуться назад</a><a class="btn btn-primary" href="home.html">На главную</a></div>
+              <div class="casino-tournament-detail-score" id="score">
+                <div class="casino-tournament-detail-score-numb"><span>8.1</span></div>
+                <div class="casino-tournament-detail-score-text">
+                  <div class="casino-tournament-detail-score-title">Оценка турнира от редакции</div>
+                  <div class="casino-tournament-detail-score-desc">Популярный по какой-то причине, этот слот крадет у классика, хранит то, что было хорошо, и полирует его, пока он не засияет, как спина жука-скарабея.</div>
+                </div>
+              </div>
+              <div class="casino-tournament-detail-info">
+                <h2 class="casino-tournament-detail-info-title">Информация о турнире</h2>
+                <div class="casino-tournament-detail-info-text workarea-text">
+                  Любители игры на рулетке наверняка оценят по достоинству мероприятие, которое на постоянной основе проводится в онлайн-казино Х. Это увлекательный турнир, проводящийся на всех основных видах самой популярной азартной игры. Участие в нем бесплатное, поэтому дополнительных расходов от вас не потребуется.
+                  
+                  Просто играйте на рулетке и боритесь за дополнительные призы. Все подробности правил вы узнаете далее из статьи от обозревателей портала Casinoz.
+                </div>
+              </div>
+              <div class="overview-casino-difference" id="pluses-minuses">
+                <div class="casino-difference-row">
+                  <div class="casino-difference-item">
+                    <div class="casino-difference-item-label">Плюсы турнира</div>
+                    <ul class="casino-difference-list casino-difference-list-plus">
+                      <li class="casino-difference-list-item">
+                        <svg>
+                          <use xlink:href="#done"></use>
+                        </svg><span>Регулярное мероприятие</span>
+                      </li>
+                      <li class="casino-difference-list-item">
+                        <svg>
+                          <use xlink:href="#done"></use>
+                        </svg><span>Нет вступительного взноса</span>
+                      </li>
+                      <li class="casino-difference-list-item">
+                        <svg>
+                          <use xlink:href="#done"></use>
+                        </svg><span>Не нужна регистрация</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="casino-difference-item">
+                    <div class="casino-difference-item-label">Минусы турнира</div>
+                    <ul class="casino-difference-list casino-difference-list-minus">
+                      <li class="casino-difference-list-item">
+                        <svg>
+                          <use xlink:href="#close"></use>
+                        </svg><span>Несколько сложные правила</span>
+                      </li>
+                      <li class="casino-difference-list-item">
+                        <svg>
+                          <use xlink:href="#close"></use>
+                        </svg><span>Призовые выплаты нужно отыгрывать</span>
+                      </li>
+                      <li class="casino-difference-list-item">
+                        <svg>
+                          <use xlink:href="#close"></use>
+                        </svg><span>Ежедневные фриспины</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="casino-tournament-detail-games" id="games">
+                <div class="casino-games-list">
+                  <h2 class="casino-tournament-detail-info-title">Игры участвующие в турнире</h2>
+                  <div class="casino-games-wrap">
+                    <div class="casino-games-item is-success">
+                      <div class="casino-games-item-label">
+                        <svg>
+                          <use xlink:href="#star"></use>
+                        </svg><span>Выбор редакции</span>
+                      </div>
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-games-item">
+                      <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                      <div class="casino-games-item-detail">
+                        <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                          <div class="casino-games-item-btn-icon">
+                            <svg>
+                              <use xlink:href="#triangle"></use>
+                            </svg>
+                          </div>
+                          <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                        <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                        <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                        <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                        <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                      </div>
+                      <div class="casino-games-item-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pagination js-pagination"><a class="pagination-more js-load-more-btn" href="/"><span>Больше игр</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                        <path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+                        <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
+                          <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+                        </path>
+                      </svg></a>
+                  </div>
+                </div>
+              </div>
+              <div class="overview-casino-reward" id="sames">
+                <div class="casino-same-tournaments-block">
+                  <h2 class="casino-same-tournaments-block-title">Похожие турниры
+                  </h2>
+                  <div class="casino-same-tournaments-block-slider">
+                    <div class="swiper-container js-reward-casino-slider">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <div class="casino-same-tournaments-box casino-same-tournaments-box-green">
+                            <div class="casino-same-tournaments-box-green-title">
+                              <svg>
+                                <use xlink:href="#star"></use>
+                              </svg><span>Выбор редакции</span>
+                            </div>
+                            <div class="casino-same-tournaments-box-timer"><img src="images/clock.svg" alt=""/><span>1:38:24</span></div>
+                            <div class="casino-same-tournaments-box-img"><img src="img/casino/same-tournament.png" alt=""/></div><a class="casino-same-tournaments-box-info" href="/">
+                              <div class="casino-same-tournaments-box-text">Удача в стране чудес
+                              </div>
+                              <div class="casino-same-tournaments-box-logo"><img src="img/casino/casino_0.svg" alt="Casino"/></div>
+                              <div class="casino-same-tournaments-box-limit">24/06 — 24/07
+                              </div>
+                              <div class="casino-same-tournaments-box-prize"><img src="images/cup.svg" alt=""/><span>1 000 000 ₽</span></div></a><a class="casino-same-tournaments-box-btn" href="/">Участвовать</a>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="casino-same-tournaments-box casino-same-tournaments-box-green">
+                            <div class="casino-same-tournaments-box-green-title">
+                              <svg>
+                                <use xlink:href="#star"></use>
+                              </svg><span>Выбор редакции</span>
+                            </div>
+                            <div class="casino-same-tournaments-box-timer"><img src="images/clock.svg" alt=""/><span>1:38:24</span></div>
+                            <div class="casino-same-tournaments-box-img"><img src="img/casino/same-tournament.png" alt=""/></div><a class="casino-same-tournaments-box-info" href="/">
+                              <div class="casino-same-tournaments-box-text">Удача в стране чудес
+                              </div>
+                              <div class="casino-same-tournaments-box-logo"><img src="img/casino/casino_0.svg" alt="Casino"/></div>
+                              <div class="casino-same-tournaments-box-limit">24/06 — 24/07
+                              </div>
+                              <div class="casino-same-tournaments-box-prize"><img src="images/cup.svg" alt=""/><span>1 000 000 ₽</span></div></a><a class="casino-same-tournaments-box-btn" href="/">Участвовать</a>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="casino-same-tournaments-box casino-same-tournaments-box-green">
+                            <div class="casino-same-tournaments-box-green-title">
+                              <svg>
+                                <use xlink:href="#star"></use>
+                              </svg><span>Выбор редакции</span>
+                            </div>
+                            <div class="casino-same-tournaments-box-timer"><img src="images/clock.svg" alt=""/><span>1:38:24</span></div>
+                            <div class="casino-same-tournaments-box-img"><img src="img/casino/same-tournament.png" alt=""/></div><a class="casino-same-tournaments-box-info" href="/">
+                              <div class="casino-same-tournaments-box-text">А что если заголовок будет в две строчки
+                              </div>
+                              <div class="casino-same-tournaments-box-logo"><img src="img/casino/casino_0.svg" alt="Casino"/></div>
+                              <div class="casino-same-tournaments-box-limit">24/06 — 24/07
+                              </div>
+                              <div class="casino-same-tournaments-box-prize"><img src="images/cup.svg" alt=""/><span>1 200 000 ₽</span></div></a><a class="casino-same-tournaments-box-btn" href="/">Участвовать</a>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="casino-same-tournaments-box casino-same-tournaments-box-green">
+                            <div class="casino-same-tournaments-box-green-title">
+                              <svg>
+                                <use xlink:href="#star"></use>
+                              </svg><span>Выбор редакции</span>
+                            </div>
+                            <div class="casino-same-tournaments-box-timer"><img src="images/clock.svg" alt=""/><span>1:38:24</span></div>
+                            <div class="casino-same-tournaments-box-img"><img src="img/casino/same-tournament.png" alt=""/></div><a class="casino-same-tournaments-box-info" href="/">
+                              <div class="casino-same-tournaments-box-text">Удача в стране чудес
+                              </div>
+                              <div class="casino-same-tournaments-box-logo"><img src="img/casino/casino_0.svg" alt="Casino"/></div>
+                              <div class="casino-same-tournaments-box-limit">24/06 — 24/07
+                              </div>
+                              <div class="casino-same-tournaments-box-prize"><img src="images/cup.svg" alt=""/><span>1 000 000 ₽</span></div></a><a class="casino-same-tournaments-box-btn" href="/">Участвовать</a>
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="casino-same-tournaments-box casino-same-tournaments-box-green">
+                            <div class="casino-same-tournaments-box-green-title">
+                              <svg>
+                                <use xlink:href="#star"></use>
+                              </svg><span>Выбор редакции</span>
+                            </div>
+                            <div class="casino-same-tournaments-box-timer"><img src="images/clock.svg" alt=""/><span>1:38:24</span></div>
+                            <div class="casino-same-tournaments-box-img"><img src="img/casino/same-tournament.png" alt=""/></div><a class="casino-same-tournaments-box-info" href="/">
+                              <div class="casino-same-tournaments-box-text">Удача в стране чудес
+                              </div>
+                              <div class="casino-same-tournaments-box-logo"><img src="img/casino/casino_0.svg" alt="Casino"/></div>
+                              <div class="casino-same-tournaments-box-limit">24/06 — 24/07
+                              </div>
+                              <div class="casino-same-tournaments-box-prize"><img src="images/cup.svg" alt=""/><span>1 000 000 ₽</span></div></a><a class="casino-same-tournaments-box-btn" href="/">Участвовать</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-button-next">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                    <div class="swiper-button-prev">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div><a class="casino-same-tournaments-block-more btn btn-grey btn-block btn-margin-top" href="/">Больше турниров</a>
+                </div>
+              </div>
+              <div class="overview-casino-comparison" id="compare">
+                <div class="comparison comparison-casino-tournament">
+                  <h2 class="comparison-title">Сравнение с другими турнирами</h2>
+                  <div class="table-wrap">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Название
+                          </th>
+                          <th>Казино
+                          </th>
+                          <th>Метаоценка
+                          </th>
+                          <th>Размер выигрыша
+                          </th>
+                          <th>Софт
+                          </th>
+                          <th>Количество игр
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Голубой огонек
+                          </td>
+                          <td><a href="/"><img src="img/casino/casino_0.svg" alt=""/></a>
+                          </td>
+                          <td><a class="comparison-meta is-success" href="/">93</a>
+                          </td>
+                          <td>1 000 000 ₽
+                          </td>
+                          <td>87
+                          </td>
+                          <td>34
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Удача в стране чудес
+                          </td>
+                          <td><a href="/"><img src="img/casino/casino_1.png" alt=""/></a>
+                          </td>
+                          <td><a class="comparison-meta is-success" href="/">75</a>
+                          </td>
+                          <td>1 000 000 ₽
+                          </td>
+                          <td>47
+                          </td>
+                          <td>39
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Супер турнир
+                          </td>
+                          <td><a href="/"><img src="img/casino/casino_2.png" alt=""/></a>
+                          </td>
+                          <td><a class="comparison-meta is-average" href="/">56</a>
+                          </td>
+                          <td>1 000 000 ₽
+                          </td>
+                          <td>37
+                          </td>
+                          <td>54
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><a class="comparison-more btn btn-grey btn-block btn-margin-top js-modal-show" href="#comparison">Сравнить</a>
+                </div>
+              </div>
+              <div class="casino-tournament-detail-info" id="rules">
+                <h2 class="casino-tournament-detail-info-title">Правила проведения</h2>
+                <div class="casino-tournament-detail-info-text workarea-text">
+                  Пользователь, делающий ставки от одного евро в любых турнирных рулетках, автоматически считается участником мероприятия и претендует на часть призового фонда.
+                  
+                  За выигрыши, которые он получает, начисляются баллы. Их количество зависит от коэффициентов выплат. Например, если выигрыш от х2 до х3, ему полагается один балл, а если выплата рассчитывается по множителю х36, он получает пятьсот баллов.
+                  
+                  По набранным очкам определяются призеры. Если участники собирают равное количество пойнтов, выше в таблице оказывается тот, кто сделал это первым.
+                  
+                  Также в рулеточном турнире казино X действуют «бустеры», позволяющие собирать больше очков. О них читайте на официальном сайте заведения.
+                  
+                  По любым вопросам, которые могут у вас возникнуть относительно правил участия в рулеточном турнире, обращайтесь за советом к сотрудникам службы поддержки. Удобнее всего делать это прямо в онлайн-чате.
+                  
+                  На сайте казино есть страница, посвященная турниру. На ней представлена таблица, в которой в режиме реального времени отражаются текущие результаты с достижениями лидеров и непосредственно участника.
+                </div>
+              </div>
+              <div class="overview-comment">
+                <div class="comment">
+                  <div class="comment-title">Комментарии (<span class="comment-title-count">3</span>)</div>
+                  <form class="comment-form is-error" action="/">
+                    <div class="comment-form-user">
+                      <div class="comment-form-img"></div>
+                      <div class="comment-form-name">Автор Комментария</div>
+                    </div>
+                    <div class="comment-form-block">
+                      <textarea class="comment-form-textarea" name="comment" placeholder="Ваш комментарий" maxlength="1000"></textarea>
+                      <div class="comment-form-action">
+                        <div class="comment-form-login">
+                          <div class="comment-form-login-label">Войти через:</div>
+                          <div class="comment-form-login-socials"><a class="comment-form-login-link" href="/"><img src="img/socials/vk.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/ok.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/gg.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/fb.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/tw.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/yad.svg" alt=""/></a>
+                          </div>
+                        </div>
+                        <button class="comment-form-btn" type="submit">Оставить комментарий</button>
+                      </div>
+                    </div>
+                    <div class="comment-form-error">Мы не публикуем комментарии с ненормативной лексикой. </div>
+                  </form>
+                  <div class="comment-none">Нет комментариев. Будьте первым!</div>
+                </div>
+                <div class="comment is-auth">
+                  <div class="comment-title">Комментарии (<span class="comment-title-count">3</span>)</div>
+                  <form class="comment-form is-error" action="/">
+                    <div class="comment-form-user">
+                      <div class="comment-form-img"></div>
+                      <div class="comment-form-name">Автор Комментария</div>
+                    </div>
+                    <div class="comment-form-block">
+                      <textarea class="comment-form-textarea" name="comment" placeholder="Ваш комментарий" maxlength="1000"></textarea>
+                      <div class="comment-form-action">
+                        <div class="comment-form-login">
+                          <div class="comment-form-login-label">Войти через:</div>
+                          <div class="comment-form-login-socials"><a class="comment-form-login-link" href="/"><img src="img/socials/vk.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/ok.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/gg.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/fb.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/tw.svg" alt=""/></a><a class="comment-form-login-link" href="/"><img src="img/socials/yad.svg" alt=""/></a>
+                          </div>
+                        </div>
+                        <button class="comment-form-btn" type="submit">Оставить комментарий</button>
+                      </div>
+                    </div>
+                    <div class="comment-form-error">Мы не публикуем комментарии с ненормативной лексикой. </div>
+                  </form>
+                  <div class="comment-result">
+                    <div class="comment-item">
+                      <div class="comment-item-img"></div>
+                      <div class="comment-item-info">
+                        <div class="comment-item-head">
+                          <div class="comment-item-name">Кирилл Фролов</div>
+                          <div class="comment-item-time">
+                            <div class="comment-item-date">24.06.20</div>
+                            <div class="comment-item-clock">13:30</div>
+                          </div>
+                          <div class="comment-item-status">Ваш комментарий на модерации</div>
+                        </div>
+                        <div class="comment-item-body js-comment-body">
+                          <div class="comment-item-text js-comment-text">Статья восхитительна, автор прелесть!</div>
+                        </div>
+                        <button class="comment-item-full js-comment-full" type="button">Подробнее</button>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="comment-item-img"></div>
+                      <div class="comment-item-info">
+                        <div class="comment-item-head">
+                          <div class="comment-item-name">Константин Константинопольский</div>
+                          <div class="comment-item-time">
+                            <div class="comment-item-date">24.06.20</div>
+                            <div class="comment-item-clock">13:30</div>
+                          </div>
+                          <div class="comment-item-status">Ваш комментарий на модерации</div>
+                        </div>
+                        <div class="comment-item-body js-comment-body">
+                          <div class="comment-item-text js-comment-text">Норм</div>
+                        </div>
+                        <button class="comment-item-full js-comment-full" type="button">Подробнее</button>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="comment-item-img"></div>
+                      <div class="comment-item-info">
+                        <div class="comment-item-head">
+                          <div class="comment-item-name">Кирилл Фролов</div>
+                          <div class="comment-item-time">
+                            <div class="comment-item-date">24.06.20</div>
+                            <div class="comment-item-clock">13:30</div>
+                          </div>
+                        </div>
+                        <div class="comment-item-body js-comment-body">
+                          <div class="comment-item-text js-comment-text">На этой странице опубликованы самые качественные прогнозы, отобранные нами на основании логичности анализа, полноты аргументации, грамотности и каких-либо других характеристик.</div>
+                        </div>
+                        <button class="comment-item-full js-comment-full" type="button">Подробнее</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="comment-more" type="button">Больше комметариев</button>
+                </div>
+              </div>
             </div>
-            <div class="hidden-desktop">
-              <ul class="casino-menu">
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Рейтинг казино</a></li>
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Турниры</a></li>
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Провайдеры</a></li>
-                <li class="casino-menu-item"><a class="casino-menu-link" href="">Игры</a></li>
-              </ul>
+            <div class="comparison comparison-casino-tournament">
+              <h2 class="comparison-title">Сравнение с другими турнирами</h2>
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Название
+                      </th>
+                      <th>Казино
+                      </th>
+                      <th>Метаоценка
+                      </th>
+                      <th>Размер выигрыша
+                      </th>
+                      <th>Софт
+                      </th>
+                      <th>Количество игр
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Голубой огонек
+                      </td>
+                      <td><a href="/"><img src="img/casino/casino_0.svg" alt=""/></a>
+                      </td>
+                      <td><a class="comparison-meta is-success" href="/">93</a>
+                      </td>
+                      <td>1 000 000 ₽
+                      </td>
+                      <td>87
+                      </td>
+                      <td>34
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Удача в стране чудес
+                      </td>
+                      <td><a href="/"><img src="img/casino/casino_1.png" alt=""/></a>
+                      </td>
+                      <td><a class="comparison-meta is-success" href="/">75</a>
+                      </td>
+                      <td>1 000 000 ₽
+                      </td>
+                      <td>47
+                      </td>
+                      <td>39
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Супер турнир
+                      </td>
+                      <td><a href="/"><img src="img/casino/casino_2.png" alt=""/></a>
+                      </td>
+                      <td><a class="comparison-meta is-average" href="/">56</a>
+                      </td>
+                      <td>1 000 000 ₽
+                      </td>
+                      <td>37
+                      </td>
+                      <td>54
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div><a class="comparison-more btn btn-grey btn-block btn-margin-top js-modal-show" href="#comparison">Сравнить</a>
+            </div>
+            <div class="modal js-modal" role="dialog" id="providers">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="providers-modal">
+                    <div class="providers-modal-title">Провайдеры:</div>
+                    <div class="providers-modal-body js-modal-scroll">
+                      <div class="providers-modal-list">
+                        <div class="providers-modal-column">
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-1.png" alt=""/></div><span>Genesis Gaming</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-2.png" alt=""/></div><span>Fortune Factory Studios</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-5.png" alt=""/></div><span>Toptrend Gaming</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-4.png" alt=""/></div><span>GameART</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-2.png" alt=""/></div><span>Fortune Factory Studios</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-5.png" alt=""/></div><span>Toptrend Gaming</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-4.png" alt=""/></div><span>GameART</span>
+                          </div>
+                        </div>
+                        <div class="providers-modal-column">
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-1.png" alt=""/></div><span>Kalamba Games</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-2.png" alt=""/></div><span>Foxium</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-5.png" alt=""/></div><span>Kalamba Games</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-4.png" alt=""/></div><span>Genesis Gaming</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-1.png" alt=""/></div><span>Kalamba Games</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-2.png" alt=""/></div><span>Foxium</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-5.png" alt=""/></div><span>Kalamba Games</span>
+                          </div>
+                          <div class="providers-modal-item">
+                            <div class="providers-modal-item-imgBlock"><img src="images/provider-4.png" alt=""/></div><span>Genesis Gaming</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
