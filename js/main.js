@@ -22026,6 +22026,42 @@ $(function () {
 
 /***/ }),
 
+/***/ "../blocks/casino-articles-same/script.js":
+/*!************************************************!*\
+  !*** ../blocks/casino-articles-same/script.js ***!
+  \************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
+
+$(function () {
+  var casinoArticlesSame = $('.casino-articles-same');
+  if (casinoArticlesSame.length === 0) return;
+  var casinoArticlesSameSlider = $('.js-casino-articles-same-slider');
+  new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](casinoArticlesSameSlider, {
+    slidesPerView: 'auto',
+    freeMode: true,
+    navigation: {
+      nextEl: casinoArticlesSameSlider.siblings('.swiper-button-next'),
+      prevEl: casinoArticlesSameSlider.siblings('.swiper-button-prev')
+    },
+    breakpointsInverse: true,
+    breakpoints: {
+      1100: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+        freeMode: false
+      }
+    }
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "../blocks/casino-best/script.js":
 /*!***************************************!*\
   !*** ../blocks/casino-best/script.js ***!
@@ -24858,10 +24894,10 @@ $(function () {
     reviewSelectVal.val(reviewSelectData);
     $(reviewSelectItem).removeClass('is-select');
     $(this).addClass('is-select');
-    $(this).parents('.bk-search-field').find(reviewSelect).removeClass('is-active');
-    $(this).parents('.bk-search-field').find(reviewSelectInput).val('').removeClass('is-active');
-    $(this).parents('.bk-search-field').find(reviewSelectResult).removeClass('is-active');
-    $(this).parents('.bk-search-field').find(reviewSelectResult).slideUp(300);
+    $(this).parents(reviewSelect).find(reviewSelect).removeClass('is-active');
+    $(this).parents(reviewSelect).find(reviewSelectInput).val('').removeClass('is-active');
+    $(this).parents(reviewSelect).find(reviewSelectResult).removeClass('is-active');
+    $(this).parents(reviewSelect).find(reviewSelectResult).slideUp(300);
   });
   reviewSelectInput.on('input', function () {
     var $this = $(this),
@@ -24891,6 +24927,8 @@ $(function () {
   });
   doc.on('mouseup touchend', function (e) {
     if ($(e.target).closest(reviewSelectInput).length || $(e.target).closest(reviewSelectResult).length) return;
+    $(reviewSelectSearch).parent().find(reviewSelect).removeClass('is-active');
+    $(reviewSelectSearch).parent().find(reviewSelectInput).val('').removeClass('is-active');
     reviewSelectResult.removeClass('is-active');
     reviewSelectResult.slideUp(300);
   });
@@ -24988,7 +25026,7 @@ $(function () {
 });
 $(function () {
   var review = $('.review'),
-      sentiment = $('.sentiment');
+      sentiment = $('.sentiment-review');
 
   function reviewHeight() {
     var reviewBody = $('.js-review-body'),
@@ -26334,8 +26372,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_52___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_52__);
 /* harmony import */ var _blocks_casino_bonus_item_script__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ../blocks/casino-bonus-item/script */ "../blocks/casino-bonus-item/script.js");
 /* harmony import */ var _blocks_casino_bonus_list_script__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ../blocks/casino-bonus-list/script */ "../blocks/casino-bonus-list/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_55___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_55__);
+/* harmony import */ var _blocks_casino_articles_same_script__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ../blocks/casino-articles-same/script */ "../blocks/casino-articles-same/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_56___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_56__);
 
 
 
@@ -26379,6 +26418,7 @@ _libs_site__WEBPACK_IMPORTED_MODULE_4__["default"].init();
 
 
 /** PAGES */
+
 
 
 
