@@ -34,7 +34,7 @@
         <div class="head-row">
           <div class="head-mobile"></div>
           <nav class="nav">
-            <div class="nav-head"><a class="nav-close js-toggle-menu" href="javascript:void(0);">
+            <div class="nav-head has-tabs"><a class="nav-close js-toggle-menu" href="javascript:void(0);">
                 <svg>
                   <use xlink:href="#close"></use>
                 </svg>
@@ -655,56 +655,22 @@
               <div class="casino-games-list-description">
                 <p>Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного</p>
               </div>
-              <div class="casino-game-type">
-                <div class="casino-game-type-content">
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/all.svg"/><span>Все</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/roulette.svg"/><span>Рулетка</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item is-select">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/poker.svg"/><span>Слоты</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/live.svg"/><span>Лайв дилер</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/video-poker.svg"/><span>Видео покер</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/lottery.svg"/><span>Лотерея</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/scratch.svg"/><span>Скреч-карты</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/jackpots.svg"/><span>Джекпоты</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/baccarat.svg"/><span>Баккара</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/desktop.svg"/><span>Настольные</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/arcade.svg"/><span>Аркада</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/slot-machines.svg"/><span>Игровые автоматы</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/blackjack.svg"/><span>Блэкджек</span></a></div>
-                  </div>
-                  <div class="casino-game-type-item">
-                    <div class="casino-game-type-item-label"><a href="/"><img src="img/game/others.svg"/><span>Другие</span></a></div>
-                  </div>
+              <div class="casino-category">
+                <div class="casino-category-scroll"><a class="casino-category-item" href="/"><img src="img/games/all.svg"/><span>Все</span></a><a class="casino-category-item" href="/"><img src="img/games/roulette.svg"/><span>Рулетка</span></a><a class="casino-category-item is-select" href="/"><img src="img/games/poker.svg"/><span>Слоты</span></a><a class="casino-category-item" href="/"><img src="img/games/dealer.svg"/><span>Лайв дилер</span></a><a class="casino-category-item" href="/"><img src="img/games/vpoker.svg"/><span>Видео покер</span></a><a class="casino-category-item" href="/"><img src="img/games/lottery.svg"/><span>Лотерея</span></a><a class="casino-category-item" href="/"><img src="img/games/scratch.svg"/><span>Скреч-карты</span></a><a class="casino-category-item" href="/"><img src="img/games/jackpot.svg"/><span>Джекпоты</span></a><a class="casino-category-item" href="/"><img src="img/games/baccarat.svg"/><span>Баккара</span></a><a class="casino-category-item" href="/"><img src="img/games/board.svg"/><span>Настольные</span></a><a class="casino-category-item" href="/"><img src="img/games/slot.svg"/><span>Игровые автоматы</span></a><a class="casino-category-item" href="/"><img src="img/games/arcade.svg"/><span>Аркада</span></a><a class="casino-category-item" href="/"><img src="img/games/blackjack.svg"/><span>Блэкджек</span></a><a class="casino-category-item" href="/"><img src="img/games/others.svg"/><span>Другие</span></a>
                 </div>
-                <button class="casino-game-type-arrow js-casino-game-type-toggle" type="button">
-                  <svg>
-                    <use xlink:href="#arrow"></use>
-                  </svg>
+                <button class="casino-category-arrow js-casino-category-toggle" type="button">
+                  <div class="casino-category-arrow-icon">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
                 </button>
+                <div class="casino-category-load">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                    <path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+                    <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
+                  </svg>
+                </div>
               </div>
               <div class="casino-games-list-tools">
                 <div class="casino-sort">
@@ -780,7 +746,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -801,7 +767,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -822,7 +788,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -843,7 +809,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -864,7 +830,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -885,7 +851,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -906,7 +872,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -927,7 +893,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">
@@ -948,7 +914,7 @@
                       <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
                     <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
                     <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                    <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
+                    <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
                     <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                   </div>
                   <div class="casino-games-item-arrow">

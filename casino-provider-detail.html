@@ -34,7 +34,7 @@
         <div class="head-row">
           <div class="head-mobile"></div>
           <nav class="nav">
-            <div class="nav-head"><a class="nav-close js-toggle-menu" href="javascript:void(0);">
+            <div class="nav-head has-tabs"><a class="nav-close js-toggle-menu" href="javascript:void(0);">
                 <svg>
                   <use xlink:href="#close"></use>
                 </svg>
@@ -264,886 +264,730 @@
             <div class="workarea-title">
               <h1>Обзор провайдера Endorphina</h1>
             </div>
-            <div class="casino-provider-detail" id="casino-provider">
-              <div class="casino-provider-logo"><img src="images/casino-provider-1.png" alt="Endorphina"/></div>
-              <div class="provider-top-list">
-                <div class="accordion">
-                  <div class="accordion-head js-accordion-toggle">
-                    <h2 class="accordion-title">Лучшие казино с играми провайдера
-                    </h2>
-                    <div class="accordion-arrow">
+            <div class="casino-provider-detail">
+              <div class="casino-provider-detail-logo"><img src="images/casino-provider-1.png" alt="Endorphina"/></div>
+              <div class="casino-provider-detail-block">
+                <div class="casino-provider-detail-title">
+                  <h2> Лучшие казино с играми провайдера</h2>
+                </div>
+                <div class="casino-provider-detail-rating">
+                  <div class="casino-rating-item js-casino-rating is-success is-highlight">
+                    <div class="casino-rating-item-head"><a class="casino-rating-item-meta js-modal-show" href="#meta_1">93
+                        <div class="casino-rating-item-meta-help">?</div></a><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_1.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg><span>Обзор</span></a><a class="casino-rating-item-link casino-rating-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg><span>На сайт</span></a><a class="casino-rating-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>200% за $500</span></a>
+                      <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
+                        <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
+                        <div class="casino-rating-item-arrow-icon">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="casino-rating-item-body js-casino-rating-target">
+                      <div class="casino-rating-item-wrap">
+                        <div class="casino-rating-achieve">
+                          <div class="casino-rating-achieve-box">
+                            <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_1.svg"/></div>
+                            <div class="casino-rating-achieve-text">№1 по играм</div>
+                          </div>
+                          <div class="casino-rating-achieve-box">
+                            <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_2.svg"/></div>
+                            <div class="casino-rating-achieve-text">Лучший фриспин</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-feature">
+                          <div class="casino-rating-feature-box is-success">
+                            <div class="casino-rating-feature-label">Софт:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#licensed"></use>
+                              </svg>Лицензионный
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Идентификация:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#cashout"></use>
+                              </svg>Вывод средств
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Размер кешбека:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#pig"></use>
+                              </svg>50%
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Лимит на вывод:</div>
+                            <div class="casino-rating-feature-text">5 000 $ в день</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-games">
+                          <div class="casino-rating-games-scroll">
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/roulette.svg"/></div>
+                              <div class="casino-rating-games-text">Рулетка</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/dealer.svg"/></div>
+                              <div class="casino-rating-games-text">Live-дилер</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/poker.svg"/></div>
+                              <div class="casino-rating-games-text">Покер</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/baccarat.svg"/></div>
+                              <div class="casino-rating-games-text">Баккара</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/blackjack.svg"/></div>
+                              <div class="casino-rating-games-text">Блэкджек</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/vpoker.svg"/></div>
+                              <div class="casino-rating-games-text">Видеопокер</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-difference">
+                          <div class="casino-rating-difference-box is-success">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#done"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">ежедневные фриспины за участие в акциях</div>
+                          </div>
+                          <div class="casino-rating-difference-box is-success">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#done"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">программа лояльности с кешбэком до 11%</div>
+                          </div>
+                          <div class="casino-rating-difference-box is-danger">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#close"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">стартовый бонусный пакет на сумму до 1 500 евро</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
+                          <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
+                            <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
+                            <div class="casino-rating-item-arrow-icon">
+                              <svg>
+                                <use xlink:href="#arrow"></use>
+                              </svg>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="casino-rating-item-label">
+                      <svg>
+                        <use xlink:href="#star"></use>
+                      </svg><span>Выбор редакции</span>
+                    </div>
+                  </div>
+                  <div class="casino-rating-item js-casino-rating is-success">
+                    <div class="casino-rating-item-head"><a class="casino-rating-item-meta js-modal-show" href="#meta_2">89
+                        <div class="casino-rating-item-meta-help">?</div></a><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_2.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg><span>Обзор</span></a><a class="casino-rating-item-link casino-rating-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg><span>На сайт</span></a><a class="casino-rating-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>200% за $500</span></a>
+                      <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
+                        <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
+                        <div class="casino-rating-item-arrow-icon">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="casino-rating-item-body js-casino-rating-target">
+                      <div class="casino-rating-item-wrap">
+                        <div class="casino-rating-achieve">
+                          <div class="casino-rating-achieve-box">
+                            <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_1.svg"/></div>
+                            <div class="casino-rating-achieve-text">№1 по играм</div>
+                          </div>
+                          <div class="casino-rating-achieve-box">
+                            <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_2.svg"/></div>
+                            <div class="casino-rating-achieve-text">Лучший фриспин</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-feature">
+                          <div class="casino-rating-feature-box is-success">
+                            <div class="casino-rating-feature-label">Софт:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#licensed"></use>
+                              </svg>Лицензионный
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Идентификация:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#cashout"></use>
+                              </svg>Вывод средств
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Размер кешбека:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#pig"></use>
+                              </svg>50%
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Лимит на вывод:</div>
+                            <div class="casino-rating-feature-text">5 000 $ в день</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-games">
+                          <div class="casino-rating-games-scroll">
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/roulette.svg"/></div>
+                              <div class="casino-rating-games-text">Рулетка</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/dealer.svg"/></div>
+                              <div class="casino-rating-games-text">Live-дилер</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/poker.svg"/></div>
+                              <div class="casino-rating-games-text">Покер</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/baccarat.svg"/></div>
+                              <div class="casino-rating-games-text">Баккара</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/blackjack.svg"/></div>
+                              <div class="casino-rating-games-text">Блэкджек</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/vpoker.svg"/></div>
+                              <div class="casino-rating-games-text">Видеопокер</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-difference">
+                          <div class="casino-rating-difference-box is-success">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#done"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">ежедневные фриспины за участие в акциях</div>
+                          </div>
+                          <div class="casino-rating-difference-box is-success">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#done"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">программа лояльности с кешбэком до 11%</div>
+                          </div>
+                          <div class="casino-rating-difference-box is-danger">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#close"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">стартовый бонусный пакет на сумму до 1 500 евро</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
+                          <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
+                            <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
+                            <div class="casino-rating-item-arrow-icon">
+                              <svg>
+                                <use xlink:href="#arrow"></use>
+                              </svg>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="casino-rating-item js-casino-rating is-success">
+                    <div class="casino-rating-item-head"><a class="casino-rating-item-meta js-modal-show" href="#meta_3">80
+                        <div class="casino-rating-item-meta-help">?</div></a><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_3.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
+                        <svg>
+                          <use xlink:href="#paper"></use>
+                        </svg><span>Обзор</span></a><a class="casino-rating-item-link casino-rating-item-site" href="/">
+                        <svg>
+                          <use xlink:href="#web"></use>
+                        </svg><span>На сайт</span></a><a class="casino-rating-item-bonus" href="/">
+                        <svg>
+                          <use xlink:href="#gift"></use>
+                        </svg><span>200% за $500</span></a>
+                      <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
+                        <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
+                        <div class="casino-rating-item-arrow-icon">
+                          <svg>
+                            <use xlink:href="#arrow"></use>
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="casino-rating-item-body js-casino-rating-target">
+                      <div class="casino-rating-item-wrap">
+                        <div class="casino-rating-achieve">
+                          <div class="casino-rating-achieve-box">
+                            <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_1.svg"/></div>
+                            <div class="casino-rating-achieve-text">№1 по играм</div>
+                          </div>
+                          <div class="casino-rating-achieve-box">
+                            <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_2.svg"/></div>
+                            <div class="casino-rating-achieve-text">Лучший фриспин</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-feature">
+                          <div class="casino-rating-feature-box is-success">
+                            <div class="casino-rating-feature-label">Софт:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#licensed"></use>
+                              </svg>Лицензионный
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Идентификация:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#cashout"></use>
+                              </svg>Вывод средств
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Размер кешбека:</div>
+                            <div class="casino-rating-feature-text">
+                              <svg>
+                                <use xlink:href="#pig"></use>
+                              </svg>50%
+                            </div>
+                          </div>
+                          <div class="casino-rating-feature-box">
+                            <div class="casino-rating-feature-label">Лимит на вывод:</div>
+                            <div class="casino-rating-feature-text">5 000 $ в день</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-games">
+                          <div class="casino-rating-games-scroll">
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/roulette.svg"/></div>
+                              <div class="casino-rating-games-text">Рулетка</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/dealer.svg"/></div>
+                              <div class="casino-rating-games-text">Live-дилер</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/poker.svg"/></div>
+                              <div class="casino-rating-games-text">Покер</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/baccarat.svg"/></div>
+                              <div class="casino-rating-games-text">Баккара</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/blackjack.svg"/></div>
+                              <div class="casino-rating-games-text">Блэкджек</div>
+                            </div>
+                            <div class="casino-rating-games-box">
+                              <div class="casino-rating-games-icon"><img src="img/games/vpoker.svg"/></div>
+                              <div class="casino-rating-games-text">Видеопокер</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-difference">
+                          <div class="casino-rating-difference-box is-success">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#done"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">ежедневные фриспины за участие в акциях</div>
+                          </div>
+                          <div class="casino-rating-difference-box is-success">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#done"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">программа лояльности с кешбэком до 11%</div>
+                          </div>
+                          <div class="casino-rating-difference-box is-danger">
+                            <div class="casino-rating-difference-icon">
+                              <svg>
+                                <use xlink:href="#close"></use>
+                              </svg>
+                            </div>
+                            <div class="casino-rating-difference-text">стартовый бонусный пакет на сумму до 1 500 евро</div>
+                          </div>
+                        </div>
+                        <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
+                          <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
+                            <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
+                            <div class="casino-rating-item-arrow-icon">
+                              <svg>
+                                <use xlink:href="#arrow"></use>
+                              </svg>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><a class="btn btn-block btn-gradient" href="/">Больше казино</a>
+              </div>
+              <div class="casino-provider-detail-block">
+                <div class="casino-provider-detail-title">
+                  <h2> Обзор провайдера Endorphina</h2>
+                </div>
+                <div class="workarea-text">
+                  <p>Endorphina - чешская компания, которая использует передовые технологии и успешный мировой опыт в разработке игрового софта. Слоты компании отличаются высоким качеством, функциональностью, надежностью и безопасностью. Среди самых популярных слотов - Taboo, Satoshi's Secret и Durga.</p>
+                  <div class="casino-provider-detail-hidden js-more-full">
+                    <p>Endorphina - чешская компания, которая использует передовые технологии и успешный мировой опыт в разработке игрового софта. Слоты компании отличаются высоким качеством, функциональностью, надежностью и безопасностью. Среди самых популярных слотов - Taboo, Satoshi's Secret и Durga.</p>
+                    <p>Endorphina - чешская компания, которая использует передовые технологии и успешный мировой опыт в разработке игрового софта. Слоты компании отличаются высоким качеством, функциональностью, надежностью и безопасностью. Среди самых популярных слотов - Taboo, Satoshi's Secret и Durga.</p>
+                    <p>Endorphina - чешская компания, которая использует передовые технологии и успешный мировой опыт в разработке игрового софта. Слоты компании отличаются высоким качеством, функциональностью, надежностью и безопасностью. Среди самых популярных слотов - Taboo, Satoshi's Secret и Durga.</p>
+                  </div>
+                  <button class="btn btn-block btn-gradient js-more-show" type="button" data-toggle-text="Скрыть">Читать полный обзор</button>
+                </div>
+              </div>
+              <div class="casino-difference-row">
+                <div class="casino-difference-item">
+                  <div class="casino-difference-item-label">Плюсы провайдера:</div>
+                  <ul class="casino-difference-list casino-difference-list-plus">
+                    <li class="casino-difference-list-item">
+                      <svg>
+                        <use xlink:href="#done"></use>
+                      </svg><span>Регулярное мероприятие</span>
+                    </li>
+                    <li class="casino-difference-list-item">
+                      <svg>
+                        <use xlink:href="#done"></use>
+                      </svg><span>Нет вступительного взноса</span>
+                    </li>
+                    <li class="casino-difference-list-item">
+                      <svg>
+                        <use xlink:href="#done"></use>
+                      </svg><span>Не нужна регистрация</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="casino-difference-item">
+                  <div class="casino-difference-item-label">Минусы провайдера:</div>
+                  <ul class="casino-difference-list casino-difference-list-minus">
+                    <li class="casino-difference-list-item">
+                      <svg>
+                        <use xlink:href="#close"></use>
+                      </svg><span>Несколько сложные правила</span>
+                    </li>
+                    <li class="casino-difference-list-item">
+                      <svg>
+                        <use xlink:href="#close"></use>
+                      </svg><span>Призовые выплаты нужно отыгрывать</span>
+                    </li>
+                    <li class="casino-difference-list-item">
+                      <svg>
+                        <use xlink:href="#close"></use>
+                      </svg><span>Ежедневные фриспины</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="casino-provider-detail-block">
+                <div class="casino-provider-detail-title">
+                  <h2> Популярные игры провайдера Endorphina</h2><a class="casino-provider-detail-link" href="/">Еще 230</a>
+                </div>
+                <div class="casino-category">
+                  <div class="casino-category-scroll"><a class="casino-category-item" href="/"><img src="img/games/all.svg"/><span>Все</span></a><a class="casino-category-item" href="/"><img src="img/games/roulette.svg"/><span>Рулетка</span></a><a class="casino-category-item is-select" href="/"><img src="img/games/poker.svg"/><span>Слоты</span></a><a class="casino-category-item" href="/"><img src="img/games/dealer.svg"/><span>Лайв дилер</span></a><a class="casino-category-item" href="/"><img src="img/games/vpoker.svg"/><span>Видео покер</span></a><a class="casino-category-item" href="/"><img src="img/games/lottery.svg"/><span>Лотерея</span></a><a class="casino-category-item" href="/"><img src="img/games/scratch.svg"/><span>Скреч-карты</span></a><a class="casino-category-item" href="/"><img src="img/games/jackpot.svg"/><span>Джекпоты</span></a><a class="casino-category-item" href="/"><img src="img/games/baccarat.svg"/><span>Баккара</span></a><a class="casino-category-item" href="/"><img src="img/games/board.svg"/><span>Настольные</span></a><a class="casino-category-item" href="/"><img src="img/games/slot.svg"/><span>Игровые автоматы</span></a><a class="casino-category-item" href="/"><img src="img/games/arcade.svg"/><span>Аркада</span></a><a class="casino-category-item" href="/"><img src="img/games/blackjack.svg"/><span>Блэкджек</span></a><a class="casino-category-item" href="/"><img src="img/games/others.svg"/><span>Другие</span></a>
+                  </div>
+                  <button class="casino-category-arrow js-casino-category-toggle" type="button">
+                    <div class="casino-category-arrow-icon">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </button>
+                  <div class="casino-category-load">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                      <path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+                      <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="casino-provider-detail-tools">
+                  <div class="casino-sort">
+                    <div class="casino-sort-placeholder js-casino-sort-toggle">
+                      <div class="casino-sort-icon"><img src="img/icons/sort.svg"/></div>
+                      <div class="casino-sort-text">Сортировать по
+                      </div>
+                      <div class="casino-sort-arrow">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="casino-sort-block js-casino-sort-target">
+                      <ul class="casino-sort-list">
+                        <li><a>По популярности</a></li>
+                        <li><a>По Метаоценке</a></li>
+                        <li><a>По размеру бонуса</a></li>
+                        <li><a>По количеству Игр</a></li>
+                        <li><a>Новые</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="casino-games-wrap">
+                  <div class="casino-games-item is-success">
+                    <div class="casino-games-item-label">
+                      <svg>
+                        <use xlink:href="#star"></use>
+                      </svg><span>Выбор редакции</span>
+                    </div>
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
+                        </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
                       <svg>
                         <use xlink:href="#arrow"></use>
                       </svg>
                     </div>
                   </div>
-                  <div class="accordion-body js-accordion-target">
-                    <div class="casino-rating-list">
-                      <div class="casino-rating-item js-casino-rating is-success is-highlight">
-                        <div class="casino-rating-item-head">
-                          <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">93</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_1">?</a></div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_1.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
-                            <svg>
-                              <use xlink:href="#paper"></use>
-                            </svg><span>Обзор</span></a><a class="casino-rating-item-link casino-rating-item-site" href="/">
-                            <svg>
-                              <use xlink:href="#web"></use>
-                            </svg><span>На сайт</span></a><a class="casino-rating-item-bonus" href="/">
-                            <svg>
-                              <use xlink:href="#gift"></use>
-                            </svg><span>200% за $500</span></a>
-                          <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
-                            <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
-                            <div class="casino-rating-item-arrow-icon">
-                              <svg>
-                                <use xlink:href="#arrow"></use>
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                        <div class="casino-rating-item-body js-casino-rating-target">
-                          <div class="casino-rating-item-wrap">
-                            <div class="casino-rating-achieve">
-                              <div class="casino-rating-achieve-box">
-                                <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_1.svg"/></div>
-                                <div class="casino-rating-achieve-text">№1 по играм</div>
-                              </div>
-                              <div class="casino-rating-achieve-box">
-                                <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_2.svg"/></div>
-                                <div class="casino-rating-achieve-text">Лучший фриспин</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-feature">
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Софт:</div>
-                                <div class="casino-rating-feature-text">Лицензионный</div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Идентификация:</div>
-                                <div class="casino-rating-feature-text">
-                                  <svg>
-                                    <use xlink:href="#cashout"></use>
-                                  </svg>Вывод средств
-                                </div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Размер кешбека:</div>
-                                <div class="casino-rating-feature-text">
-                                  <svg>
-                                    <use xlink:href="#pig"></use>
-                                  </svg>50%
-                                </div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Лимит на вывод:</div>
-                                <div class="casino-rating-feature-text">5 000 $ в день</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-games">
-                              <div class="casino-rating-games-scroll">
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/roulette.svg"/></div>
-                                  <div class="casino-rating-games-text">Рулетка</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/dealer.svg"/></div>
-                                  <div class="casino-rating-games-text">Live-дилер</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/poker.svg"/></div>
-                                  <div class="casino-rating-games-text">Покер</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/baccarat.svg"/></div>
-                                  <div class="casino-rating-games-text">Баккара</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/blackjack.svg"/></div>
-                                  <div class="casino-rating-games-text">Блэкджек</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/vpoker.svg"/></div>
-                                  <div class="casino-rating-games-text">Видеопокер</div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-difference">
-                              <div class="casino-rating-difference-box is-success">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#done"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">ежедневные фриспины за участие в акциях</div>
-                              </div>
-                              <div class="casino-rating-difference-box is-success">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#done"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">программа лояльности с кешбэком до 11%</div>
-                              </div>
-                              <div class="casino-rating-difference-box is-danger">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#close"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">стартовый бонусный пакет на сумму до 1 500 евро</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                              <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
-                                <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
-                                <div class="casino-rating-item-arrow-icon">
-                                  <svg>
-                                    <use xlink:href="#arrow"></use>
-                                  </svg>
-                                </div>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="casino-rating-item-label">
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
                           <svg>
-                            <use xlink:href="#star"></use>
-                          </svg><span>Выбор редакции</span>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
                         </div>
-                      </div>
-                      <div class="casino-rating-item js-casino-rating is-success">
-                        <div class="casino-rating-item-head">
-                          <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">89</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_2">?</a></div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_2.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
-                            <svg>
-                              <use xlink:href="#paper"></use>
-                            </svg><span>Обзор</span></a><a class="casino-rating-item-link casino-rating-item-site" href="/">
-                            <svg>
-                              <use xlink:href="#web"></use>
-                            </svg><span>На сайт</span></a><a class="casino-rating-item-bonus" href="/">
-                            <svg>
-                              <use xlink:href="#gift"></use>
-                            </svg><span>200% за $500</span></a>
-                          <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
-                            <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
-                            <div class="casino-rating-item-arrow-icon">
-                              <svg>
-                                <use xlink:href="#arrow"></use>
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                        <div class="casino-rating-item-body js-casino-rating-target">
-                          <div class="casino-rating-item-wrap">
-                            <div class="casino-rating-achieve">
-                              <div class="casino-rating-achieve-box">
-                                <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_1.svg"/></div>
-                                <div class="casino-rating-achieve-text">№1 по играм</div>
-                              </div>
-                              <div class="casino-rating-achieve-box">
-                                <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_2.svg"/></div>
-                                <div class="casino-rating-achieve-text">Лучший фриспин</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-feature">
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Софт:</div>
-                                <div class="casino-rating-feature-text">Лицензионный</div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Идентификация:</div>
-                                <div class="casino-rating-feature-text">
-                                  <svg>
-                                    <use xlink:href="#cashout"></use>
-                                  </svg>Вывод средств
-                                </div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Размер кешбека:</div>
-                                <div class="casino-rating-feature-text">
-                                  <svg>
-                                    <use xlink:href="#pig"></use>
-                                  </svg>50%
-                                </div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Лимит на вывод:</div>
-                                <div class="casino-rating-feature-text">5 000 $ в день</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-games">
-                              <div class="casino-rating-games-scroll">
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/roulette.svg"/></div>
-                                  <div class="casino-rating-games-text">Рулетка</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/dealer.svg"/></div>
-                                  <div class="casino-rating-games-text">Live-дилер</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/poker.svg"/></div>
-                                  <div class="casino-rating-games-text">Покер</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/baccarat.svg"/></div>
-                                  <div class="casino-rating-games-text">Баккара</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/blackjack.svg"/></div>
-                                  <div class="casino-rating-games-text">Блэкджек</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/vpoker.svg"/></div>
-                                  <div class="casino-rating-games-text">Видеопокер</div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-difference">
-                              <div class="casino-rating-difference-box is-success">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#done"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">ежедневные фриспины за участие в акциях</div>
-                              </div>
-                              <div class="casino-rating-difference-box is-success">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#done"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">программа лояльности с кешбэком до 11%</div>
-                              </div>
-                              <div class="casino-rating-difference-box is-danger">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#close"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">стартовый бонусный пакет на сумму до 1 500 евро</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                              <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
-                                <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
-                                <div class="casino-rating-item-arrow-icon">
-                                  <svg>
-                                    <use xlink:href="#arrow"></use>
-                                  </svg>
-                                </div>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="casino-rating-item js-casino-rating is-success">
-                        <div class="casino-rating-item-head">
-                          <div class="casino-rating-item-meta"><a class="casino-rating-item-meta-numb" href="/">80</a><a class="casino-rating-item-meta-help js-modal-show" href="#meta_3">?</a></div><a class="casino-rating-item-img" href="/"><img src="img/casino/casino_3.png" alt=""/></a><a class="casino-rating-item-link casino-rating-item-overview" href="overview-casino.html">
-                            <svg>
-                              <use xlink:href="#paper"></use>
-                            </svg><span>Обзор</span></a><a class="casino-rating-item-link casino-rating-item-site" href="/">
-                            <svg>
-                              <use xlink:href="#web"></use>
-                            </svg><span>На сайт</span></a><a class="casino-rating-item-bonus" href="/">
-                            <svg>
-                              <use xlink:href="#gift"></use>
-                            </svg><span>200% за $500</span></a>
-                          <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
-                            <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
-                            <div class="casino-rating-item-arrow-icon">
-                              <svg>
-                                <use xlink:href="#arrow"></use>
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                        <div class="casino-rating-item-body js-casino-rating-target">
-                          <div class="casino-rating-item-wrap">
-                            <div class="casino-rating-achieve">
-                              <div class="casino-rating-achieve-box">
-                                <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_1.svg"/></div>
-                                <div class="casino-rating-achieve-text">№1 по играм</div>
-                              </div>
-                              <div class="casino-rating-achieve-box">
-                                <div class="casino-rating-achieve-icon"><img src="img/achieve/achieve_2.svg"/></div>
-                                <div class="casino-rating-achieve-text">Лучший фриспин</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-feature">
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Софт:</div>
-                                <div class="casino-rating-feature-text">Лицензионный</div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Идентификация:</div>
-                                <div class="casino-rating-feature-text">
-                                  <svg>
-                                    <use xlink:href="#cashout"></use>
-                                  </svg>Вывод средств
-                                </div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Размер кешбека:</div>
-                                <div class="casino-rating-feature-text">
-                                  <svg>
-                                    <use xlink:href="#pig"></use>
-                                  </svg>50%
-                                </div>
-                              </div>
-                              <div class="casino-rating-feature-box">
-                                <div class="casino-rating-feature-label">Лимит на вывод:</div>
-                                <div class="casino-rating-feature-text">5 000 $ в день</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-games">
-                              <div class="casino-rating-games-scroll">
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/roulette.svg"/></div>
-                                  <div class="casino-rating-games-text">Рулетка</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/dealer.svg"/></div>
-                                  <div class="casino-rating-games-text">Live-дилер</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/poker.svg"/></div>
-                                  <div class="casino-rating-games-text">Покер</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/baccarat.svg"/></div>
-                                  <div class="casino-rating-games-text">Баккара</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/blackjack.svg"/></div>
-                                  <div class="casino-rating-games-text">Блэкджек</div>
-                                </div>
-                                <div class="casino-rating-games-box">
-                                  <div class="casino-rating-games-icon"><img src="img/games/vpoker.svg"/></div>
-                                  <div class="casino-rating-games-text">Видеопокер</div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-difference">
-                              <div class="casino-rating-difference-box is-success">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#done"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">ежедневные фриспины за участие в акциях</div>
-                              </div>
-                              <div class="casino-rating-difference-box is-success">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#done"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">программа лояльности с кешбэком до 11%</div>
-                              </div>
-                              <div class="casino-rating-difference-box is-danger">
-                                <div class="casino-rating-difference-icon">
-                                  <svg>
-                                    <use xlink:href="#close"></use>
-                                  </svg>
-                                </div>
-                                <div class="casino-rating-difference-text">стартовый бонусный пакет на сумму до 1 500 евро</div>
-                              </div>
-                            </div>
-                            <div class="casino-rating-link"><a class="casino-rating-link-site" href="/">Начать играть</a><a class="casino-rating-link-overview" href="/">Полный обзор</a>
-                              <button class="casino-rating-item-arrow js-casino-rating-toggle" type="button">
-                                <div class="casino-rating-item-arrow-text"><span>Подробнее</span><span>Свернуть</span></div>
-                                <div class="casino-rating-item-arrow-icon">
-                                  <svg>
-                                    <use xlink:href="#arrow"></use>
-                                  </svg>
-                                </div>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
                     </div>
-                    <div class="pagination js-pagination"><a class="pagination-more js-load-more-btn" href="/"><span>Больше казино</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                          <path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
-                          <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
-                            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
-                          </path>
-                        </svg></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="overview-content" id="overview">
-                <div class="accordion">
-                  <div class="accordion-head js-accordion-toggle">
-                    <h2 class="accordion-title">Обзор провайдера Endorphina
-                    </h2>
-                    <div class="accordion-arrow">
+                    <div class="casino-games-item-arrow">
                       <svg>
                         <use xlink:href="#arrow"></use>
                       </svg>
                     </div>
                   </div>
-                  <div class="accordion-body js-accordion-target">
-                    <div class="workarea-text">
-                      <div class="substance">
-                        <button class="substance-head js-substance-head" type="button">
-                          <div class="substance-title">Содержание</div>
-                          <div class="substance-arrow">
-                            <svg>
-                              <use xlink:href="#arrow"></use>
-                            </svg>
-                          </div>
-                        </button>
-                        <div class="substance-body js-substance-body">
-                          <ul class="substance-list">
-                            <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-0">Официальный сайт букмекерской конторы</a>
-                              <div class="substance-arrow js-substance-head">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg>
-                              </div>
-                              <div class="substance-block">
-                                <ul class="substance-list js-substance-body">
-                                  <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-01">Как зарегистрироваться на сайте 888</a></li>
-                                  <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-02">Регистрация в ЦУПИС</a></li>
-                                  <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-03">Как пройти регистрацию с мобильного</a></li>
-                                </ul>
-                                <ul class="substance-list js-substance-body">
-                                  <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-04">Идентификация</a></li>
-                                  <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-05">Бонус за регистрацию</a></li>
-                                  <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-06">Как пройти регистрацию с мобильного</a></li>
-                                </ul>
-                              </div>
-                            </li>
-                            <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-1">Как пройти идентификацию</a>
-                              <div class="substance-arrow">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg>
-                              </div>
-                            </li>
-                            <li class="substance-item"><a class="substance-anchor js-substance-anchor" href="#nav-2">Для этого нужно</a>
-                              <div class="substance-arrow">
-                                <svg>
-                                  <use xlink:href="#arrow"></use>
-                                </svg>
-                              </div>
-                            </li>
-                          </ul>
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
                         </div>
-                      </div>
-                      <p id="nav-0">Endorphina - чешская компания, которая использует передовые технологии и успешный мировой опыт в разработке игрового софта. Слоты компании отличаются высоким качеством, функциональностью, надежностью и безопасностью. Среди самых популярных слотов - Taboo, Satoshi's Secret и Durga.</p>
-                      <div class="overview-content-hidden js-more-full">
-                        <p id="nav-01">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                        <p id="nav-02">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                        <p id="nav-1">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                        <p id="nav-2">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                        <p id="nav-3">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                        <p id="nav-4">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                        <p id="nav-5">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                        <p id="nav-6">Казино́ — игорное заведение, в котором с использованием рулетки, игровых столов для карточных игр и игры в кости, игровых автоматов, а также другого игорного оборудования осуществляется проведение азартных игр с объявленным денежным или иным имущественным выигрышем. Настольная игра проводится с помощью помощников (ассистентов) — крупье.</p>
-                      </div>
-                      <button class="overview-content-more btn btn-grey btn-block js-more-show" type="button" data-toggle-text="Скрыть">Читать полный обзор</button>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
+                        </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
+                        </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
+                        </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
+                        </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
+                        </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="casino-games-item">
+                    <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
+                    <div class="casino-games-item-detail">
+                      <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
+                        <div class="casino-games-item-btn-icon">
+                          <svg>
+                            <use xlink:href="#triangle"></use>
+                          </svg>
+                        </div>
+                        <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
+                      <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
+                      <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
+                      <div class="casino-games-item-company"><img src="img/provider/provider_55.png" alt=""/><span>Yggdrasil Gaming</span></div>
+                      <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
+                    </div>
+                    <div class="casino-games-item-arrow">
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="overview-casino-difference">
-                <div class="accordion">
-                  <div class="casino-difference-row">
-                    <div class="casino-difference-item">
-                      <div class="casino-difference-item-label">Плюсы провайдера:</div>
-                      <ul class="casino-difference-list">
-                        <li class="casino-difference-list-item">
-                          <svg>
-                            <use xlink:href="#done"></use>
-                          </svg><span>Ежедневные фриспины за участие в акциях</span>
-                        </li>
-                        <li class="casino-difference-list-item">
-                          <svg>
-                            <use xlink:href="#done"></use>
-                          </svg><span>Программа лояльности с кешбэком до 11%</span>
-                        </li>
-                        <li class="casino-difference-list-item">
-                          <svg>
-                            <use xlink:href="#done"></use>
-                          </svg><span>Стартовый бонусный пакет на сумму до 1 500 евро</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="casino-difference-item">
-                      <div class="casino-difference-item-label">Минусы провайдера:</div>
-                      <ul class="casino-difference-list">
-                        <li class="casino-difference-list-item">
-                          <svg>
-                            <use xlink:href="#close"></use>
-                          </svg><span>Ежедневные фриспины за участие в акциях</span>
-                        </li>
-                        <li class="casino-difference-list-item">
-                          <svg>
-                            <use xlink:href="#close"></use>
-                          </svg><span>Программа лояльности с кешбэком до 11%</span>
-                        </li>
-                        <li class="casino-difference-list-item">
-                          <svg>
-                            <use xlink:href="#close"></use>
-                          </svg><span>Стартовый бонусный пакет на сумму до 1 500 евро</span>
-                        </li>
-                      </ul>
+              <div class="casino-provider-detail-block">
+                <div class="casino-provider-detail-title">
+                  <h2> Другие популярные провайдеры</h2><a class="casino-provider-detail-link" href="/">Еще 8 323</a>
+                </div>
+                <div class="provider-slider">
+                  <div class="swiper-container js-provider-slider">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide"><a href="/"><img src="images/casino-provider-1.png" alt=""/></a></div>
+                      <div class="swiper-slide"><a href="/"><img src="images/casino-provider-2.png" alt=""/></a></div>
+                      <div class="swiper-slide"><a href="/"><img src="images/casino-provider-1.png" alt=""/></a></div>
+                      <div class="swiper-slide"><a href="/"><img src="images/casino-provider-2.png" alt=""/></a></div>
+                      <div class="swiper-slide"><a href="/"><img src="images/casino-provider-1.png" alt=""/></a></div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="accordion">
-                <div class="accordion-head js-accordion-toggle">
-                  <h2 class="accordion-title">Популярные игры провайдера Endorphina
-                  </h2>
-                  <div class="accordion-arrow">
+                  <div class="swiper-button-next">
                     <svg>
                       <use xlink:href="#arrow"></use>
                     </svg>
                   </div>
-                </div>
-                <div class="accordion-body js-accordion-target">
-                  <div class="casino-game-type">
-                    <div class="casino-game-type-content">
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/all.svg"/><span>Все</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/roulette.svg"/><span>Рулетка</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item is-select">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/poker.svg"/><span>Слоты</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/live.svg"/><span>Лайв дилер</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/video-poker.svg"/><span>Видео покер</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/lottery.svg"/><span>Лотерея</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/scratch.svg"/><span>Скреч-карты</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/jackpots.svg"/><span>Джекпоты</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/baccarat.svg"/><span>Баккара</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/desktop.svg"/><span>Настольные</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/arcade.svg"/><span>Аркада</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/slot-machines.svg"/><span>Игровые автоматы</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/blackjack.svg"/><span>Блэкджек</span></a></div>
-                      </div>
-                      <div class="casino-game-type-item">
-                        <div class="casino-game-type-item-label"><a href="/"><img src="img/game/others.svg"/><span>Другие</span></a></div>
-                      </div>
-                    </div>
-                    <button class="casino-game-type-arrow js-casino-game-type-toggle" type="button">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </button>
-                  </div>
-                  <div class="casino-provider-list-tools">
-                    <div class="casino-sort">
-                      <div class="casino-sort-placeholder js-casino-sort-toggle">
-                        <div class="casino-sort-icon"><img src="img/icons/sort.svg"/></div>
-                        <div class="casino-sort-text">Сортировать по
-                        </div>
-                        <div class="casino-sort-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-sort-block js-casino-sort-target">
-                        <ul class="casino-sort-list">
-                          <li><a>По популярности</a></li>
-                          <li><a>По Метаоценке</a></li>
-                          <li><a>По размеру бонуса</a></li>
-                          <li><a>По количеству Игр</a></li>
-                          <li><a>Новые</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="casino-games-wrap">
-                      <div class="casino-games-item is-success">
-                        <div class="casino-games-item-label">
-                          <svg>
-                            <use xlink:href="#star"></use>
-                          </svg><span>Выбор редакции</span>
-                        </div>
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="casino-games-item">
-                        <div class="casino-games-item-img"><img src="images/casino-games-demo.png" alt=""/></div>
-                        <div class="casino-games-item-detail">
-                          <div class="casino-games-item-title">Kawaii Kitty</div><a class="casino-games-item-btn" href="/">
-                            <div class="casino-games-item-btn-icon">
-                              <svg>
-                                <use xlink:href="#triangle"></use>
-                              </svg>
-                            </div>
-                            <div class="casino-games-item-btn-text">Играть бесплатно</div></a>
-                          <div class="casino-games-item-text">RTP: <span> 96.2%</span></div>
-                          <div class="casino-games-item-text">Волатильность: <span> Средняя</span></div>
-                          <div class="casino-games-item-company"><img src="img/games/vpoker.svg" alt=""/><span>Yggdrasil Gaming</span></div>
-                          <div class="casino-games-item-available">Доступно в <a href="/">345 казино</a></div>
-                        </div>
-                        <div class="casino-games-item-arrow">
-                          <svg>
-                            <use xlink:href="#arrow"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="pagination js-pagination"><a class="pagination-more js-load-more-btn" href="/"><span>Больше игр</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                          <path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
-                          <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
-                            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
-                          </path>
-                        </svg></a>
-                      <ul class="pagination-list">
-                        <li class="pagination-item"><a class="pagination-link" href="/">
-                            <svg>
-                              <use xlink:href="#arrow"></use>
-                            </svg></a></li>
-                        <li class="pagination-item is-select"><a class="pagination-link" href="/">1</a></li>
-                        <li class="pagination-item"><a class="pagination-link" href="/">2</a></li>
-                        <li class="pagination-item"><a class="pagination-link" href="/">3</a></li>
-                        <li class="pagination-item"><a class="pagination-link" href="/">4</a></li>
-                        <li class="pagination-item"><a class="pagination-link" href="/">5</a></li>
-                        <li class="pagination-item"><a class="pagination-link" href="/">6</a></li>
-                        <li class="pagination-item"><span class="pagination-link">...</span></li>
-                        <li class="pagination-item"><a class="pagination-link" href="/">23</a></li>
-                        <li class="pagination-item"><a class="pagination-link" href="/">
-                            <svg>
-                              <use xlink:href="#arrow"></use>
-                            </svg></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion">
-                <div class="accordion-head js-accordion-toggle">
-                  <h2 class="accordion-title">Другие популярные провайдеры
-                  </h2>
-                  <div class="accordion-arrow">
+                  <div class="swiper-button-prev">
                     <svg>
                       <use xlink:href="#arrow"></use>
                     </svg>
-                  </div>
-                </div>
-                <div class="accordion-body js-accordion-target">
-                  <div class="provider-slider">
-                    <div class="swiper-container js-provider-slider">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide"><a href="/"><img src="images/casino-provider-1.png" alt=""/></a></div>
-                        <div class="swiper-slide"><a href="/"><img src="images/casino-provider-2.png" alt=""/></a></div>
-                        <div class="swiper-slide"><a href="/"><img src="images/casino-provider-1.png" alt=""/></a></div>
-                        <div class="swiper-slide"><a href="/"><img src="images/casino-provider-2.png" alt=""/></a></div>
-                        <div class="swiper-slide"><a href="/"><img src="images/casino-provider-1.png" alt=""/></a></div>
-                      </div>
-                    </div>
-                    <div class="swiper-button-next">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                    <div class="swiper-button-prev">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="pagination js-pagination"><a class="pagination-more js-load-more-btn" href="/"><span>Больше провайдеров</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                        <path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
-                        <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
-                          <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
-                        </path>
-                      </svg></a>
                   </div>
                 </div>
               </div>

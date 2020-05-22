@@ -510,7 +510,7 @@ function init() {
   }
 
   function updateUrlMetaByPage(page) {
-    var $sentimentMain = $('.sentiment-main');
+    var $sentimentMain = $('.js-meta-sentiments');
     var title = $sentimentMain.attr('data-title');
     var desc = $sentimentMain.attr('data-desc');
     var url = document.location.pathname;
