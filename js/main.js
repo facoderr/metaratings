@@ -24445,7 +24445,7 @@ $(function () {
   if ($(moreShow).length === 0) return;
   var win = $(window),
       doc = $(document),
-      html = $(document.documentElement),
+      html = $(document.documentElement).add(document.body),
       moreHide = $('.js-more-hide'),
       moreFull = $('.js-more-full'),
       substance = $('.substance');
@@ -24504,6 +24504,7 @@ $(function () {
   scrollBar();
 });
 $(function () {
+  var ua = window.navigator.userAgent.toLowerCase();
   var overview = $('.overview');
   if (overview.length === 0) return;
   var win = $(window),
@@ -24705,8 +24706,14 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
 
 $(function () {
+  var UA = navigator.userAgent;
   var ratingSwipe = '.js-rating-swipe',
       swipeItemFirst = document.querySelectorAll('.js-rating-item:first-child .js-rating-swipe');
+
+  if (!UA.includes('Mac') && !UA.includes('Chrome')) {
+    document.body.classList.add('rating-page-initialized');
+  }
+
   $(ratingSwipe).each(function () {
     var ratingSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]($(this), {
       slidesPerView: 'auto',
