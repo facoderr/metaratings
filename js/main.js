@@ -24505,16 +24505,34 @@ $(function () {
 });
 $(function () {
   var ua = window.navigator.userAgent.toLowerCase();
-  var overview = $('.overview');
+
+  var overview = $('.overview'),
+      debounce = function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+      var context = this,
+          args = arguments;
+
+      var later = function later() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
   if (overview.length === 0) return;
   var win = $(window),
       html = $(document.documentElement),
       overviewFeature = $('.js-overview-feature'),
       overviewTab = $('.js-sticky-tab'),
       overviewAnchor = $('.js-overview-anchor'),
-      overviewPanel = $('.js-overview-panel');
-
-  function scrollAnchor() {
+      overviewPanel = $('.js-overview-panel'),
+      scrollAnchor = debounce(function () {
     var limitAnchorMob = win.scrollTop() >= overviewTab.offset().top,
         limitAnchorWeb = win.scrollTop() >= overviewTab.offset().top - 15;
 
@@ -24526,24 +24544,28 @@ $(function () {
 
     if (overviewFeature.length > 0) overviewPanel.toggleClass('is-active', win.scrollTop() >= overviewFeature.offset().top);
     overviewAnchor.each(function (i) {
-      var anchorTag = $(this).attr('href'),
-          anchorPos = $('div' + anchorTag);
+      var $that = $(this),
+          that = this,
+          anchorTag = $that.attr('href'),
+          anchorPos = $('div' + anchorTag),
+          scrollPosition = document.documentElement.scrollTop || document.body.scrollTop,
+          offset = anchorPos.offset().top,
+          height = parseInt(offset) + anchorPos.get(0).offsetHeight - 210;
       if (anchorPos.length === 0) return;
 
       if (win.outerWidth() <= 1099) {
         if (win.scrollTop() >= anchorPos.offset().top - 135) {
-          overviewAnchor.removeClass('is-select');
-          overviewAnchor.eq(i).addClass('is-select');
+          overviewAnchor.not($that).stop(1, 1).removeClass('is-select');
+          $that.stop(1, 1).addClass('is-select');
         }
       } else {
-        if (win.scrollTop() >= anchorPos.offset().top - 201) {
-          overviewAnchor.removeClass('is-select');
-          overviewAnchor.eq(i).addClass('is-select');
+        if (scrollPosition > offset - 210 && scrollPosition <= height && !that.classList.contains('is-select')) {
+          overviewAnchor.not($that).stop(1, 1).removeClass('is-select');
+          $that.stop(1, 1).addClass('is-select');
         }
       }
     });
-  }
-
+  }, 10);
   win.on('scroll', function () {
     scrollAnchor();
   });
