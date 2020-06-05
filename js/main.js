@@ -25384,122 +25384,6 @@ $(function () {
 
 /***/ }),
 
-/***/ "../blocks/runet/script.js":
-/*!*********************************!*\
-  !*** ../blocks/runet/script.js ***!
-  \*********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "../../node_modules/swiper/dist/js/swiper.esm.bundle.js");
-
-$(function () {
-  var runetBlock = $('.runet-block'),
-      mainTopBookmakers = $('.main-top-bookmakers');
-
-  if (runetBlock.length > 0 && mainTopBookmakers.length === 0) {
-    $('.workarea').addClass('workarea-has-runet-block');
-  }
-
-  if ($(window).width() > 990 && parseInt($('.workarea').height()) < 1360) {
-    runetBlock.addClass('hold');
-    runetBlock.fadeIn(0);
-  } else {
-    runetBlock.removeClass('hold');
-    runetBlock.fadeIn(0);
-  }
-
-  var scrollPrev = $(window).scrollTop(),
-      minStartEvent = 350,
-      startPosition = 0; // Если главная страница задаем отличные параметры от других страниц
-
-  if (mainTopBookmakers.length > 0) minStartEvent = mainTopBookmakers.height() / 2;
-  $(window).scroll(function () {
-    var currentWidth = parseInt($('header').css('width')),
-        workWidth = 990; // От какой ширины страницы будет работать скрипт
-
-    if (currentWidth <= workWidth) {
-      var scrollCurrent = $(window).scrollTop();
-
-      if (scrollCurrent > startPosition + minStartEvent) {
-        // Если текущее положение больше больше стартовой позиции + высотой начала действия
-        if (!runetBlock.hasClass('scroll')) {
-          runetBlock.addClass('scroll');
-        }
-
-        if (scrollCurrent > scrollPrev) {
-          runetBlock.stop();
-          runetBlock.css('opacity', '0');
-        } else {
-          runetBlock.stop();
-          runetBlock.css('opacity', '1');
-
-          if (scrollCurrent > startPosition) {
-            startPosition = $(window).scrollTop();
-          }
-        }
-      } else if (scrollCurrent < startPosition) {
-        startPosition = $(window).scrollTop() - minStartEvent * 2;
-
-        if (startPosition < minStartEvent) {
-          startPosition = minStartEvent;
-        }
-      } else {
-        // Если главная страница то прячем сразу как заканчивается зона показа
-        if (mainTopBookmakers.length > 0) {
-          runetBlock.removeClass('scroll');
-        }
-      } // Если находимся в самом верху страницы, клас для скрола будет удален
-
-
-      if ($(window).scrollTop() < 10 && runetBlock.hasClass('scroll')) {
-        runetBlock.removeClass('scroll');
-      }
-    }
-
-    scrollPrev = scrollCurrent;
-  }); // Рунет выбирает слайдер
-
-  var items = runetBlock.find('.items');
-  initResizeJS();
-  $(window).on('resize', initResizeJS);
-
-  function initResizeJS() {
-    var hasRunetBlock = runetBlock.length > 0;
-
-    if ($(window).width() < 990 && hasRunetBlock) {
-      initRuNetMobileSlider();
-    } else if (hasRunetBlock) {
-      removeRuNetMobileSlider();
-    }
-  }
-
-  function initRuNetMobileSlider() {
-    var mySwiper = items.get(0).swiper;
-
-    if (!mySwiper) {
-      items.addClass('swiper-container').children('.wrapper').addClass('swiper-wrapper').children('.item').addClass('swiper-slide');
-      setTimeout(function () {
-        mySwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](items.get(0), {
-          slidesPerView: 'auto',
-          freeMode: true
-        });
-      }, 1000);
-    }
-  }
-
-  function removeRuNetMobileSlider() {
-    var mySwiper = items.get(0).swiper;
-    if (mySwiper) mySwiper.destroy();
-    items.removeClass('swiper-container').children('.wrapper').removeClass('swiper-wrapper').children('.item').removeClass('swiper-slide');
-  }
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
-
-/***/ }),
-
 /***/ "../blocks/sentiment/script.js":
 /*!*************************************!*\
   !*** ../blocks/sentiment/script.js ***!
@@ -25881,6 +25765,82 @@ $(function () {
 
     return false;
   });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "../blocks/user-selection/script.js":
+/*!******************************************!*\
+  !*** ../blocks/user-selection/script.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var arUserSelections = document.querySelectorAll('.user-selection'),
+      $mainTopBookmakers = $('.main-top-bookmakers'),
+      minStartEvent = parseInt(window.screen.height / 4),
+      currentWidth = parseInt(document.body.offsetWidth),
+      workWidth = 990,
+      isNeedEmulateSticky = currentWidth <= workWidth,
+      scrollClassName = 'scroll';
+
+  if (arUserSelections) {
+    if (!$mainTopBookmakers.length) {
+      $('.workarea').addClass('workarea-has-runet-block');
+    } else {
+      minStartEvent = parseInt($mainTopBookmakers.height() / 2);
+    }
+
+    window.addEventListener('resize', function () {
+      currentWidth = parseInt(document.body.offsetWidth);
+      isNeedEmulateSticky = currentWidth <= workWidth;
+    });
+    arUserSelections.forEach(function (userSelect) {
+      var $userSelection = $(userSelect),
+          scrollPrev = window.scrollY,
+          startPosition = 0;
+      window.addEventListener('scroll', function () {
+        if (isNeedEmulateSticky) {
+          var scrollCurrent = window.scrollY;
+
+          if (scrollCurrent > startPosition + minStartEvent) {
+            // Если текущее положение больше больше стартовой позиции + высотой начала действия
+            if (!userSelect.classList.contains(scrollClassName)) {
+              userSelect.classList.add(scrollClassName);
+            }
+
+            if (scrollCurrent > scrollPrev) {
+              userSelect.classList.add(scrollClassName);
+            } else {
+              userSelect.classList.remove(scrollClassName);
+
+              if (scrollCurrent > startPosition) {
+                startPosition = window.scrollY;
+              }
+            }
+          } else if (scrollCurrent < startPosition) {
+            startPosition = window.scrollY - minStartEvent * 2;
+
+            if (startPosition < minStartEvent) {
+              startPosition = minStartEvent;
+            }
+          } else {
+            // Если главная страница то прячем сразу как заканчивается зона показа
+            if ($mainTopBookmakers.length > 0) {
+              userSelect.classList.remove(scrollClassName);
+            }
+          } // Если находимся в самом верху страницы, клас для скрола будет удален
+
+
+          if (window.scrollY < 10 && userSelect.classList.contains(scrollClassName)) {
+            userSelect.classList.remove(scrollClassName);
+          }
+        }
+      });
+    });
+  }
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
 
@@ -26479,7 +26439,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_header_script__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_blocks_header_script__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/nav/script */ "../blocks/nav/script.js");
 /* harmony import */ var _blocks_nav_script__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_blocks_nav_script__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _blocks_runet_script__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/runet/script */ "../blocks/runet/script.js");
+/* harmony import */ var _blocks_user_selection_script__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/user-selection/script */ "../blocks/user-selection/script.js");
+/* harmony import */ var _blocks_user_selection_script__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_blocks_user_selection_script__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _blocks_feed_bar_script__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/feed-bar/script */ "../blocks/feed-bar/script.js");
 /* harmony import */ var _blocks_footer_script__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/footer/script */ "../blocks/footer/script.js");
 /* harmony import */ var _blocks_block_sports_script__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/block-sports/script */ "../blocks/block-sports/script.js");
@@ -26573,6 +26534,7 @@ _libs_site__WEBPACK_IMPORTED_MODULE_5__["default"].init();
 
 
 
+ //import '../blocks/runet/script';
 
 
 
