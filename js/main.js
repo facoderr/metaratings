@@ -25415,6 +25415,56 @@ $(function () {
 
 /***/ }),
 
+/***/ "../blocks/sidebar-menu/script.js":
+/*!****************************************!*\
+  !*** ../blocks/sidebar-menu/script.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var arSideMenus = document.querySelectorAll('.sidebar-menu');
+
+  if (arSideMenus) {
+    arSideMenus.forEach(function (sideMenu) {
+      var arSubMenus = sideMenu.querySelectorAll('.submenu');
+
+      if (arSubMenus) {
+        arSubMenus.forEach(function (subMenu) {
+          var i = document.createElement("i"),
+              parent = subMenu.parentNode,
+              $submenu = $(subMenu);
+          parent.insertBefore(i, subMenu);
+          i.addEventListener('click', function (event) {
+            event.preventDefault();
+            parent.classList.toggle('active');
+          });
+
+          if ($(window).width() < 768) {
+            var $item = $submenu.parent(),
+                $link = $item.children().first(),
+                $tempSelect = $('<select><option value="' + ($link.attr('href') ? $link.attr('href') : '') + '">' + $link.text() + '</option></select>');
+            $item.append($tempSelect);
+            $submenu.find('a').each(function () {
+              $tempSelect.append('<option value="' + $(this).attr("href") + '">' + $(this).text() + '</option>');
+            });
+            $tempSelect.on('change', function (event) {
+              $(this).parent().removeClass('active');
+              location.href = $(this).val();
+            }).on('click blur keypress', function (event) {
+              $(this).parent().removeClass('active');
+            });
+            $submenu.remove();
+          }
+        });
+      }
+    });
+  }
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "../blocks/stories/script.js":
 /*!***********************************!*\
   !*** ../blocks/stories/script.js ***!
@@ -26472,48 +26522,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_comparison_script__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../blocks/comparison/script */ "../blocks/comparison/script.js");
 /* harmony import */ var _blocks_comparison_script__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_blocks_comparison_script__WEBPACK_IMPORTED_MODULE_30__);
 /* harmony import */ var _blocks_article_gallery_script__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../blocks/article-gallery/script */ "../blocks/article-gallery/script.js");
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
-/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
-/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
-/* harmony import */ var _blocks_reward_casino_script__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../blocks/reward-casino/script */ "../blocks/reward-casino/script.js");
-/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
-/* harmony import */ var _blocks_match_script__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../blocks/match/script */ "../blocks/match/script.js");
-/* harmony import */ var _blocks_match_detail_script__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../blocks/match-detail/script */ "../blocks/match-detail/script.js");
-/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../blocks/event/script */ "../blocks/event/script.js");
-/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(_blocks_event_script__WEBPACK_IMPORTED_MODULE_39__);
-/* harmony import */ var _blocks_overview_script__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../blocks/overview/script */ "../blocks/overview/script.js");
-/* harmony import */ var _blocks_overview_script__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(_blocks_overview_script__WEBPACK_IMPORTED_MODULE_40__);
-/* harmony import */ var _blocks_overview_loto_script__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../blocks/overview-loto/script */ "../blocks/overview-loto/script.js");
-/* harmony import */ var _blocks_overview_casino_script__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../blocks/overview-casino/script */ "../blocks/overview-casino/script.js");
-/* harmony import */ var _blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../blocks/casino-best/script */ "../blocks/casino-best/script.js");
-/* harmony import */ var _blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_43___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_43__);
-/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../blocks/casino-rating/script */ "../blocks/casino-rating/script.js");
-/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_44___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_44__);
-/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../blocks/casino-filter/script */ "../blocks/casino-filter/script.js");
-/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_45___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_45__);
-/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../blocks/casino-sort/script */ "../blocks/casino-sort/script.js");
-/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_46___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_46__);
-/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../blocks/casino-category/script */ "../blocks/casino-category/script.js");
-/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_47___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_47__);
-/* harmony import */ var _blocks_casino_rating_item_script__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ../blocks/casino-rating-item/script */ "../blocks/casino-rating-item/script.js");
-/* harmony import */ var _blocks_casino_rating_item_script__WEBPACK_IMPORTED_MODULE_48___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_rating_item_script__WEBPACK_IMPORTED_MODULE_48__);
-/* harmony import */ var _blocks_casino_main_script__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ../blocks/casino-main/script */ "../blocks/casino-main/script.js");
-/* harmony import */ var _blocks_casino_games_about_script__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ../blocks/casino-games-about/script */ "../blocks/casino-games-about/script.js");
-/* harmony import */ var _blocks_casino_games_about_script__WEBPACK_IMPORTED_MODULE_50___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_games_about_script__WEBPACK_IMPORTED_MODULE_50__);
-/* harmony import */ var _blocks_casino_games_detail_script__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ../blocks/casino-games-detail/script */ "../blocks/casino-games-detail/script.js");
-/* harmony import */ var _blocks_casino_provider_detail_script__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ../blocks/casino-provider-detail/script */ "../blocks/casino-provider-detail/script.js");
-/* harmony import */ var _blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ../blocks/casino-tournaments-detail/script */ "../blocks/casino-tournaments-detail/script.js");
-/* harmony import */ var _blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_53___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_53__);
-/* harmony import */ var _blocks_casino_tournaments_item_script__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ../blocks/casino-tournaments-item/script */ "../blocks/casino-tournaments-item/script.js");
-/* harmony import */ var _blocks_casino_tournaments_item_script__WEBPACK_IMPORTED_MODULE_54___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_tournaments_item_script__WEBPACK_IMPORTED_MODULE_54__);
-/* harmony import */ var _blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ../blocks/casino-bonus-filter/script */ "../blocks/casino-bonus-filter/script.js");
-/* harmony import */ var _blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_55___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_55__);
-/* harmony import */ var _blocks_casino_bonus_item_script__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ../blocks/casino-bonus-item/script */ "../blocks/casino-bonus-item/script.js");
-/* harmony import */ var _blocks_casino_bonus_list_script__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ../blocks/casino-bonus-list/script */ "../blocks/casino-bonus-list/script.js");
-/* harmony import */ var _blocks_casino_articles_same_script__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ../blocks/casino-articles-same/script */ "../blocks/casino-articles-same/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
-/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_59___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_59__);
+/* harmony import */ var _blocks_sidebar_menu_script__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../blocks/sidebar-menu/script */ "../blocks/sidebar-menu/script.js");
+/* harmony import */ var _blocks_sidebar_menu_script__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_blocks_sidebar_menu_script__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./sprite */ "./sprite.js");
+/* harmony import */ var _sprite__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_sprite__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var _blocks_forecast_script__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../blocks/forecast/script */ "../blocks/forecast/script.js");
+/* harmony import */ var _blocks_reward_script__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../blocks/reward/script */ "../blocks/reward/script.js");
+/* harmony import */ var _blocks_reward_casino_script__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../blocks/reward-casino/script */ "../blocks/reward-casino/script.js");
+/* harmony import */ var _blocks_feed_script__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../blocks/feed/script */ "../blocks/feed/script.js");
+/* harmony import */ var _blocks_match_script__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../blocks/match/script */ "../blocks/match/script.js");
+/* harmony import */ var _blocks_match_detail_script__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../blocks/match-detail/script */ "../blocks/match-detail/script.js");
+/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../blocks/event/script */ "../blocks/event/script.js");
+/* harmony import */ var _blocks_event_script__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(_blocks_event_script__WEBPACK_IMPORTED_MODULE_40__);
+/* harmony import */ var _blocks_overview_script__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../blocks/overview/script */ "../blocks/overview/script.js");
+/* harmony import */ var _blocks_overview_script__WEBPACK_IMPORTED_MODULE_41___default = /*#__PURE__*/__webpack_require__.n(_blocks_overview_script__WEBPACK_IMPORTED_MODULE_41__);
+/* harmony import */ var _blocks_overview_loto_script__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../blocks/overview-loto/script */ "../blocks/overview-loto/script.js");
+/* harmony import */ var _blocks_overview_casino_script__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../blocks/overview-casino/script */ "../blocks/overview-casino/script.js");
+/* harmony import */ var _blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../blocks/casino-best/script */ "../blocks/casino-best/script.js");
+/* harmony import */ var _blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_44___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_best_script__WEBPACK_IMPORTED_MODULE_44__);
+/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../blocks/casino-rating/script */ "../blocks/casino-rating/script.js");
+/* harmony import */ var _blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_45___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_rating_script__WEBPACK_IMPORTED_MODULE_45__);
+/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../blocks/casino-filter/script */ "../blocks/casino-filter/script.js");
+/* harmony import */ var _blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_46___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_filter_script__WEBPACK_IMPORTED_MODULE_46__);
+/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../blocks/casino-sort/script */ "../blocks/casino-sort/script.js");
+/* harmony import */ var _blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_47___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_sort_script__WEBPACK_IMPORTED_MODULE_47__);
+/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ../blocks/casino-category/script */ "../blocks/casino-category/script.js");
+/* harmony import */ var _blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_48___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_category_script__WEBPACK_IMPORTED_MODULE_48__);
+/* harmony import */ var _blocks_casino_rating_item_script__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ../blocks/casino-rating-item/script */ "../blocks/casino-rating-item/script.js");
+/* harmony import */ var _blocks_casino_rating_item_script__WEBPACK_IMPORTED_MODULE_49___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_rating_item_script__WEBPACK_IMPORTED_MODULE_49__);
+/* harmony import */ var _blocks_casino_main_script__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ../blocks/casino-main/script */ "../blocks/casino-main/script.js");
+/* harmony import */ var _blocks_casino_games_about_script__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ../blocks/casino-games-about/script */ "../blocks/casino-games-about/script.js");
+/* harmony import */ var _blocks_casino_games_about_script__WEBPACK_IMPORTED_MODULE_51___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_games_about_script__WEBPACK_IMPORTED_MODULE_51__);
+/* harmony import */ var _blocks_casino_games_detail_script__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ../blocks/casino-games-detail/script */ "../blocks/casino-games-detail/script.js");
+/* harmony import */ var _blocks_casino_provider_detail_script__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ../blocks/casino-provider-detail/script */ "../blocks/casino-provider-detail/script.js");
+/* harmony import */ var _blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ../blocks/casino-tournaments-detail/script */ "../blocks/casino-tournaments-detail/script.js");
+/* harmony import */ var _blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_54___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_tournaments_detail_script__WEBPACK_IMPORTED_MODULE_54__);
+/* harmony import */ var _blocks_casino_tournaments_item_script__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ../blocks/casino-tournaments-item/script */ "../blocks/casino-tournaments-item/script.js");
+/* harmony import */ var _blocks_casino_tournaments_item_script__WEBPACK_IMPORTED_MODULE_55___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_tournaments_item_script__WEBPACK_IMPORTED_MODULE_55__);
+/* harmony import */ var _blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ../blocks/casino-bonus-filter/script */ "../blocks/casino-bonus-filter/script.js");
+/* harmony import */ var _blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_56___default = /*#__PURE__*/__webpack_require__.n(_blocks_casino_bonus_filter_script__WEBPACK_IMPORTED_MODULE_56__);
+/* harmony import */ var _blocks_casino_bonus_item_script__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ../blocks/casino-bonus-item/script */ "../blocks/casino-bonus-item/script.js");
+/* harmony import */ var _blocks_casino_bonus_list_script__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ../blocks/casino-bonus-list/script */ "../blocks/casino-bonus-list/script.js");
+/* harmony import */ var _blocks_casino_articles_same_script__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ../blocks/casino-articles-same/script */ "../blocks/casino-articles-same/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ../blocks/sentiment/script */ "../blocks/sentiment/script.js");
+/* harmony import */ var _blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_60___default = /*#__PURE__*/__webpack_require__.n(_blocks_sentiment_script__WEBPACK_IMPORTED_MODULE_60__);
 
 
 
@@ -26535,6 +26587,7 @@ _libs_site__WEBPACK_IMPORTED_MODULE_5__["default"].init();
 
 
  //import '../blocks/runet/script';
+
 
 
 
@@ -26824,46 +26877,6 @@ $(function () {
   /** Подгрузка ссылки на источник */
   setTimeout(loadSource, 1000);
   scriptFunctions.init();
-  var $sideMenu = $('.sidebar-menu');
-
-  if ($sideMenu.length > 0) {
-    $sideMenu.find('.submenu').each(function () {
-      var $submenu = $(this);
-      var $item = $submenu.parent();
-      var $link = $item.children().first();
-      $item.addClass('parent');
-      $('<i></i>').insertBefore($submenu);
-
-      if ($(window).width() < 768) {
-        var $tempSelect = $('<select><option value="' + ($link.attr('href') ? $link.attr('href') : '') + '">' + $link.text() + '</option></select>'); //.prop("multiple", true);
-
-        $item.append($tempSelect);
-        $submenu.find('a').each(function () {
-          $tempSelect.append('<option value="' + $(this).attr("href") + '">' + $(this).text() + '</option>');
-        });
-        $tempSelect.on('change', function (event) {
-          $(this).parent().removeClass('active');
-          location.href = $(this).val();
-        }).on('click blur keypress', function (event) {
-          $(this).parent().removeClass('active');
-        });
-        $submenu.remove();
-      }
-    });
-    $sideMenu.on('click', function (event) {
-      if ($(event.target).is('.sidebar-menu')) {
-        $(this).toggleClass('active');
-      }
-    });
-    $sideMenu.find('li').on('click', function (event) {
-      if ($(this).hasClass('parent')) {
-        $(this).toggleClass('active');
-      } else {
-        if (!$(event.target).is('a')) event.preventDefault();
-      }
-    });
-  }
-
   $('.tag-tabs li a').click(function (e) {
     e.preventDefault();
     window.location.href = $(this).attr('href');

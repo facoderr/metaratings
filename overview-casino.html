@@ -2946,7 +2946,7 @@
     <script src="js/main.js"></script>
     <!-- убираем пробелы из пустых .workarea-description, нужно только на маркапе-->
     <script>
-      $('.workarea-description').each(function() {
+      $('.workarea-description').each(function () {
           if ($(this).children().length === 0 && $.trim($(this).text()).length === 0)
               $(this).text('');
       });
