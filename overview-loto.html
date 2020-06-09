@@ -901,7 +901,7 @@
                 <div class="video">
                   <h2 class="video-title">Видео</h2>
                   <div class="video-iframe">
-                    <iframe src="https://www.youtube.com/embed/l4xekOIbz9g?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/l4xekOIbz9g" frameborder="0" allowfullscreen=""></iframe>
                   </div>
                   <div class="video-info">Видео обзор лото
                   </div>
@@ -911,67 +911,37 @@
                   <div class="video-slider">
                     <div class="swiper-container js-video-slider">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/l4xekOIbz9g?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                          </div>
+                        <div class="swiper-slide"><a class="video-iframe js-modal-show" href="#fullscreen">
+                            <iframe src="https://www.youtube.com/embed/2kNf2jB4Npg" frameborder="0" allowfullscreen=""></iframe><img src="https://i.ytimg.com/vi/2kNf2jB4Npg/hqdefault.jpg" alt=""/>
+                            <div class="video-icon">
+                              <svg>
+                                <use xlink:href="#play"></use>
+                              </svg>
+                            </div></a>
                           <div class="video-info">Видео обзор лото
                           </div>
                         </div>
-                        <div class="swiper-slide">
-                          <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/l4xekOIbz9g?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                          </div>
+                        <div class="swiper-slide"><a class="video-iframe js-modal-show" href="#fullscreen">
+                            <iframe src="https://www.youtube.com/embed/I3wF4JRDoiw" frameborder="0" allowfullscreen=""></iframe><img src="https://i.ytimg.com/vi/I3wF4JRDoiw/hqdefault.jpg" alt=""/>
+                            <div class="video-icon">
+                              <svg>
+                                <use xlink:href="#play"></use>
+                              </svg>
+                            </div></a>
                           <div class="video-info">Видео обзор лото
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="swiper-button-next">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                    <div class="swiper-button-prev">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div class="video">
-                  <h2 class="video-title">Видео</h2>
-                  <div class="video-slider">
-                    <div class="swiper-container js-video-slider">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/l4xekOIbz9g?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                          </div>
+                        <div class="swiper-slide"><a class="video-iframe js-modal-show" href="#fullscreen">
+                            <iframe src="https://www.youtube.com/embed/_fX4mvWt2ko" frameborder="0" allowfullscreen=""></iframe><img src="https://i.ytimg.com/vi/_fX4mvWt2ko/hqdefault.jpg" alt=""/>
+                            <div class="video-icon">
+                              <svg>
+                                <use xlink:href="#play"></use>
+                              </svg>
+                            </div></a>
                           <div class="video-info">Видео обзор лото
                           </div>
                         </div>
-                        <div class="swiper-slide">
-                          <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/l4xekOIbz9g?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                          </div>
-                          <div class="video-info">Видео обзор лото
-                          </div>
-                        </div>
-                        <div class="swiper-slide">
-                          <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/l4xekOIbz9g?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                          </div>
-                          <div class="video-info">Видео обзор лото
-                          </div>
-                        </div>
-                        <div class="swiper-slide">
-                          <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/l4xekOIbz9g?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                          </div>
-                          <div class="video-info">Видео обзор лото
-                          </div>
-                        </div>
+                        <div class="swiper-slide"><a class="video-img js-modal-show" href="#fullscreen"><img src="images/casino-articles-1.jpg" alt=""/></a></div>
                       </div>
                     </div>
                     <div class="swiper-button-next">
@@ -2480,6 +2450,38 @@
                       <button class="comparison-modal-btn" type="button">Сбросить</button>
                       <button class="comparison-modal-btn" type="button">Применить</button>
                     </div>
+                  </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="modal js-modal" role="dialog" id="fullscreen">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="video-modal js-modal-scroll">
+                    <div class="video-modal-container">
+                      <div class="video-modal-embed js-video-modal"></div>
+                      <div class="video-modal-load">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                          <path opacity="0.2" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+                          <path d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="video-modal-buttons">
+                      <button class="video-modal-btn video-modal-prev js-video-modal-prev" type="button">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </button>
+                      <button class="video-modal-btn video-modal-next js-video-modal-next" type="button">
+                        <svg>
+                          <use xlink:href="#arrow"></use>
+                        </svg>
+                      </button>
+                    </div><a class="video-modal-link" href="/">Начать играть</a>
                   </div><a class="modal-close js-modal-hide" href="javascript:void(0)">
                     <svg>
                       <use xlink:href="#close"></use>
