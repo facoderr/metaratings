@@ -22147,7 +22147,8 @@ $(function () {
       casinoBestTarget = $('.js-casino-best'),
       casinoBestScrollPrev = win.scrollTop();
   casinoBestPosition = 44, casinoBestLaunch = 350;
-  win.on('scroll', function () {
+
+  function isActivate() {
     if (win.outerWidth() <= 1099) {
       var casinoBestScroll = win.scrollTop();
 
@@ -22161,12 +22162,19 @@ $(function () {
           casinoBestTarget.removeClass('is-active');
         }
       } else if (casinoBestScroll < casinoBestPosition) {
-        casinoBestTarget.removeClass('is-fix');
-        casinoBestTarget.css('transition', 'none');
+        casinoBestTarget.removeClass('is-fix is-active');
+        casinoBestTarget.removeAttr('style');
       }
 
       casinoBestScrollPrev = casinoBestScroll;
+    } else {
+      casinoBestTarget.removeClass('is-fix is-active');
+      casinoBestTarget.removeAttr('style');
     }
+  }
+
+  win.on('scroll resize', function () {
+    isActivate();
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../../node_modules/jquery/dist/jquery.js")))
