@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Все страницы</title>
+    <title>Все жалобы</title>
     <link rel="stylesheet" href="css/critical.css">
     <meta charset="utf-8">
     <meta name="theme-color" content="#601dc0">
@@ -14,8 +14,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/complaints.css">
   </head>
-  <body>
+  <body class="page-complaints">
     <div class="redirect hidden">
       <div class="container">
         <div class="redirect-row">
@@ -323,57 +324,927 @@
             <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
           </ol>
         </div>
-        <div class="workarea-title">
-          <h1>Все страницы</h1>
-        </div>
         <div class="workarea-description">
         </div>
         <div class="workarea-row">
-          <div class="workarea-content">
-            <div class="workarea-text">
-              <ul>
-                <li><a href="js/report.html">JS отчет</a></li>
-                <li><a href="home.html">Гавная</a></li>
-                <li><a href="forecast.html">Ставки и прогнозы</a></li>
-                <li><a href="forecast-inner.html">Прогнозы на футбол</a></li>
-                <li><a href="match.html">Матч-центр</a></li>
-                <li><a href="match-detail.html">Детальная матча</a></li>
-                <li><a href="event.html">Турнирое событие</a></li>
-                <li><a href="overview-bk.html">Обзор букмекерской конторы</a></li>
-                <li><a href="sentiment.html">Упоминания в отзывах (Сентименты)</a></li>
-                <li><a href="overview-loto.html">Обзор лотереи</a></li>
-                <li><a href="reward.html">Акции и бонусы</a></li>
-                <li><a href="reward-inner.html">Рездел бонусусов</a></li>
-                <li><a href="feed.html">События</a></li>
-                <li><a href="feed-inner.html">Детальная события</a></li>
-                <li><a href="rating.html">Рейтинг</a></li>
-                <li><a href="articles-list.html">Список статей</a></li>
-                <li><a href="articles-detail.html">Детальная статьи</a></li>
-                <li><a href="complaints_list.html">Все жалобы</a></li>
-                <li><a href="complaints_section.html">Все жалобы, конкретный раздел </a></li>
-                <li><a href="complaints_detail.html">Жалоба</a></li>
-                <li><a href="complaints_detail_comments.html">Жалоба отзывы</a></li>
-              </ul>
-              <ul>
-                <li><a href="casino-main.html">Гавная казино</a></li>
-                <li><a href="casino-rating.html">Список казино</a></li>
-                <li><a href="overview-casino.html">Обзор казино</a></li>
-                <li><a href="casino-games-list.html">Список игр казино</a></li>
-                <li><a href="casino-games-detail.html">Детальная игры казино</a></li>
-                <li><a href="casino-tournaments-list.html">Список турниров казино</a></li>
-                <li><a href="casino-tournaments-detail.html">Детальная турнира казино</a></li>
-                <li><a href="casino-provider-list.html">Список провайдеров казино</a></li>
-                <li><a href="casino-provider-detail.html">Детальная провайдера казино</a></li>
-                <li><a href="casino-bonus-list.html">Список бонусов казино</a></li>
-                <li><a href="casino-bonus-type.html">Тип бонуса казино</a></li>
-                <li><a href="casino-bonus-detail.html">Детальная бонуса казино</a></li>
-                <li><a href="casino-news-list.html">Список новостей казино</a></li>
-                <li><a href="casino-news-detail.html">Детальная новости казино</a></li>
-                <li><a href="casino-articles-list.html">Список статей казино</a></li>
-                <li><a href="casino-articles-detail.html">Детальная статьи казино</a></li>
-                <li><a href="casino-404.html">Страница не найдена для казино</a></li>
-              </ul>
+          <div class="workarea-sidebar">
+            <aside class="aside-filters">
+              <header class="aside-filters-head">Фильтры</header>
+              <section class="aside-filters-section">
+                <div class="aside-filters-toggler js-toggler is-open" role="button">Популярные фильтры</div>
+                <div class="aside-filters-wrapper js-collapse is-open">
+                  <div class="aside-filters-body">
+                    <div class="aside-filters-scroller">
+                      <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                      <label for="section_1_checkbox_0">Фильтр1</label>
+                      <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                      <label for="section_1_checkbox_1">Фильтр2</label>
+                      <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                      <label for="section_1_checkbox_2">Фильтр3</label>
+                      <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                      <label for="section_1_checkbox_3">Фильтр4</label>
+                      <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                      <label for="section_1_checkbox_4">Фильтр5</label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="aside-filters-section">
+                <div class="aside-filters-toggler js-toggler" role="button">Все букмекеры</div>
+                <div class="aside-filters-wrapper js-collapse">
+                  <div class="aside-filters-body">
+                    <div class="aside-filters-filter js-values-filter">
+                      <svg>
+                        <use xlink:href="#search"></use>
+                      </svg>
+                      <input name="section_2_filter" placeholder="Поиск" type="text"/>
+                    </div>
+                    <div class="aside-filters-scroller">
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_0" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_0">William Hill</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_1" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_1">1xbet</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_2" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_2">Фонбет</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_3" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_3">William Hill</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_4" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_4">1xbet</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_5" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_5">Фонбет</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_6" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_6">William Hill</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_7" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_7">1xbet</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_8" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_8">Фонбет</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_9" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_9">William Hill</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_10" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_10">1xbet</label>
+                      <input class="i-checkbox" name="section_2_checkbox" id="section_2_checkbox_11" type="checkbox"/>
+                      <label class="is-big" for="section_2_checkbox_11">Фонбет</label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="aside-filters-section">
+                <div class="aside-filters-toggler js-toggler" role="button">Статус жалобы</div>
+                <div class="aside-filters-wrapper js-collapse">
+                  <div class="aside-filters-body">
+                    <div class="aside-filters-scroller">
+                      <input class="i-checkbox" name="section_3_checkbox" id="section_3_checkbox_0" type="checkbox"/>
+                      <label class="is-have-icon" for="section_3_checkbox_0"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 26c7.18 0 13-5.82 13-13S20.18 0 13 0 0 5.82 0 13s5.82 13 13 13z" fill="#20A94A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C7.48 3 3 7.48 3 13s4.48 10 10 10 10-4.48 10-10S18.52 3 13 3zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-5.83l5.88-5.88c.39-.39 1.03-.39 1.42 0 .39.39.39 1.02 0 1.41l-6.59 6.59a.996.996 0 01-1.41 0L7.71 14.7a.996.996 0 111.41-1.41L11 15.17z" fill="#fff"/></svg> Удовлетворена</label>
+                      <input class="i-checkbox" name="section_3_checkbox" id="section_3_checkbox_1" type="checkbox"/>
+                      <label class="is-have-icon" for="section_3_checkbox_1"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 26c7.18 0 13-5.82 13-13S20.18 0 13 0 0 5.82 0 13s5.82 13 13 13z" fill="#F8E71C"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3.99 13c0-5.06 4.17-9.14 9.26-9 4.69.13 8.61 4.05 8.74 8.74.14 5.09-3.95 9.26-9 9.26-2.08 0-4-.71-5.52-1.9-.47-.37-.5-1.07-.08-1.5.36-.36.92-.39 1.32-.08 1.18.93 2.67 1.48 4.28 1.48 3.9 0 7.05-3.19 7-7.1-.05-3.72-3.18-6.85-6.9-6.9-3.92-.05-7.1 3.1-7.1 7h1.8c.44 0 .67.54.35.85l-2.79 2.8c-.2.2-.51.2-.71 0l-2.79-2.8c-.32-.31-.1-.85.35-.85h1.79zm8-3.25c0-.41.34-.75.75-.75.42 0 .75.34.75.74v3.4l2.88 1.71c.35.21.47.67.26 1.03-.21.35-.67.47-1.03.26l-3.12-1.85c-.3-.18-.49-.51-.49-.86V9.75z" fill="#000"/></svg> Обрабатывается</label>
+                      <input class="i-checkbox" name="section_3_checkbox" id="section_3_checkbox_2" type="checkbox"/>
+                      <label class="is-have-icon" for="section_3_checkbox_2"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 26c7.18 0 13-5.82 13-13S20.18 0 13 0 0 5.82 0 13s5.82 13 13 13z" fill="#D0021B"/><path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C7.47 3 3 7.47 3 13s4.47 10 10 10 10-4.47 10-10S18.53 3 13 3zm1.89 6.7L13 11.59 11.11 9.7a.996.996 0 10-1.41 1.41L11.59 13 9.7 14.89a.996.996 0 101.41 1.41L13 14.41l1.89 1.89a.996.996 0 101.41-1.41L14.41 13l1.89-1.89a.996.996 0 000-1.41c-.39-.38-1.03-.38-1.41 0zM5 13c0 4.41 3.59 8 8 8s8-3.59 8-8-3.59-8-8-8-8 3.59-8 8z" fill="#fff"/></svg> Не удовлетворена</label>
+                      <input class="i-checkbox" name="section_3_checkbox" id="section_3_checkbox_3" type="checkbox"/>
+                      <label class="is-have-icon" for="section_3_checkbox_3"><svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 27c7.18 0 13-5.82 13-13S20.18 1 13 1 0 6.82 0 14s5.82 13 13 13z" fill="#F5A623"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3.133 19.503c-.38.67.1 1.5.87 1.5h18.53c.77 0 1.25-.83.87-1.5l-9.27-16a.996.996 0 00-1.73 0l-9.27 16zm17.669-.5H5.734l7.534-13.004 7.534 13.004zM12.272 18h2v-2h-2v2zm1-4c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2c0 .55-.45 1-1 1z" fill="#fff"/></svg> Проигнорирована</label>
+                      <input class="i-checkbox" name="section_3_checkbox" id="section_3_checkbox_4" type="checkbox"/>
+                      <label class="is-have-icon" for="section_3_checkbox_4"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 26c7.18 0 13-5.82 13-13S20.18 0 13 0 0 5.82 0 13s5.82 13 13 13z" fill="#EBEBEB"/><path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C7.48 3 3 7.48 3 13s4.48 10 10 10 10-4.48 10-10S18.52 3 13 3zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L17.9 19.31A7.902 7.902 0 0113 21zM8.1 6.69L19.31 17.9A7.902 7.902 0 0021 13c0-4.42-3.58-8-8-8-1.85 0-3.55.63-4.9 1.69z" fill="#000"/></svg> Безосновательная</label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="aside-filters-section">
+                <div class="aside-filters-toggler js-toggler" role="button">Тип жалобы</div>
+                <div class="aside-filters-wrapper js-collapse">
+                  <div class="aside-filters-body">
+                    <div class="aside-filters-scroller">
+                      <input class="i-checkbox" name="section_4_checkbox" id="section_4_checkbox_0" type="checkbox"/>
+                      <label class="is-big" for="section_4_checkbox_0">Блокировка счета</label>
+                      <input class="i-checkbox" name="section_4_checkbox" id="section_4_checkbox_1" type="checkbox"/>
+                      <label class="is-big" for="section_4_checkbox_1">Задержка выплат</label>
+                      <input class="i-checkbox" name="section_4_checkbox" id="section_4_checkbox_2" type="checkbox"/>
+                      <label class="is-big" for="section_4_checkbox_2">Неправильный расчёт</label>
+                      <input class="i-checkbox" name="section_4_checkbox" id="section_4_checkbox_3" type="checkbox"/>
+                      <label class="is-big" for="section_4_checkbox_3">Конфискация баланса</label>
+                      <input class="i-checkbox" name="section_4_checkbox" id="section_4_checkbox_4" type="checkbox"/>
+                      <label class="is-big" for="section_4_checkbox_4">Незачисленный бонус</label>
+                      <input class="i-checkbox" name="section_4_checkbox" id="section_4_checkbox_5" type="checkbox"/>
+                      <label class="is-big" for="section_4_checkbox_5">Другое</label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="aside-filters-section">
+                <div class="aside-filters-toggler js-toggler" role="button">За все время</div>
+                <div class="aside-filters-wrapper js-collapse">
+                  <div class="aside-filters-body">
+                    <div class="aside-filters-date">
+                      <label class="icon" for="datepicker">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M18 3h1c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H5a2 2 0 01-2-2l.01-14c0-1.1.88-2 1.99-2h1V1h2v2h8V1h2v2zM7 10h10v2H7v-2zm12 9H5V8h14v11zM7 14h7v2H7v-2z" fill="#000"></path>
+                        </svg>
+                      </label>
+                      <input class="js-datepicker aside-filters-datepicker" id="datepicker" data-range="true" data-multiple-dates-separator=" - "/>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </aside><a class="aside-filters-show js-aside-filters-show" href="#">Фильтр</a>
+            <div class="aside-filters-backdrop js-aside-filters-backdrop">
+              <svg>
+                <use xlink:href="#close"></use>
+              </svg>
             </div>
+          </div>
+          <div class="workarea-content">
+            <div class="workarea-title">
+              <h1>Все жалобы</h1>
+            </div>
+            <div class="complaints">
+              <div class="complaints-description">На этой странице «Metaratings» публикует поступающие жалобы на букмекерские конторы. В целях безопасности из жалоб удаляются все личные данные и любая другая информация, позволяющая идентифицировать жалующегося игрока.</div><a class="btn complaints-btn btn-block js-show-complaints-add-modal" href="#addModal" data-target="#addModal">
+                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 14.25V18h3.75L14.81 6.94l-3.75-3.75L0 14.25zM2.92 16H2v-.92l9.06-9.06.92.92L2.92 16zM17.71 2.63L15.37.29c-.2-.2-.45-.29-.71-.29-.26 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 000-1.41z"></path>
+                </svg><span>Написать жалобу</span></a>
+              <div class="complaints-amount">
+                <div class="complaints-amount-title">Мы помогли игрокам вернуть</div>
+                <div class="complaints-amount-value">789 023 010 <span class="currency">RUB</span></div>
+              </div>
+              <div class="accordion">
+                <div class="accordion-head js-accordion-toggle">
+                  <h2 class="accordion-title">Количество жалоб
+                  </h2>
+                  <div class="accordion-arrow">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                </div>
+                <div class="accordion-body js-accordion-target">
+                  <div class="complaints-graph">
+                    <div class="complaints-graph-inner js-round-chart">
+                      <div class="complaints-graph-some-chart">
+                        <div class="complaints-graph-total">195</div>
+                        <div class="js-chart-container chart-container"></div>
+                      </div>
+                      <div class="complaints-graph-legend">
+                        <div class="item is-success js-chart-item" data-count="89" data-caption="Удовлетворена" data-color="#20A94A">Удовлетворена
+                          <div class="count">(89)</div>
+                          <svg class="icon">
+                            <use xlink:href="#success_complaints"></use>
+                          </svg>
+                        </div>
+                        <div class="item is-ignored js-chart-item" data-count="23" data-caption="Проигнорирована" data-color="#F5A623">Проигнорирована
+                          <div class="count">(23)</div>
+                          <svg class="icon">
+                            <use xlink:href="#ignored_complaints"></use>
+                          </svg>
+                        </div>
+                        <div class="item is-process js-chart-item" data-count="35" data-caption="Обрабатывается" data-color="#F8E502">Обрабатывается
+                          <div class="count">(35)</div>
+                          <svg class="icon">
+                            <use xlink:href="#process_complaints"></use>
+                          </svg>
+                        </div>
+                        <div class="item is-baseless js-chart-item" data-count="34" data-caption="Безосновательная" data-color="#CECECE">Безосновательная
+                          <div class="count">(34)</div>
+                          <svg class="icon">
+                            <use xlink:href="#baseless_complaints"></use>
+                          </svg>
+                        </div>
+                        <div class="item is-not_satisfied js-chart-item" data-count="14" data-caption="Не удовлетворена" data-color="#D0021B">Не удовлетворена
+                          <div class="count">(14)</div>
+                          <svg class="icon">
+                            <use xlink:href="#not_satisfied_complaints"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="complaints-slider">
+                <div class="title"><span>Блокировка счета</span><a href="complaints_section.html">Еще 28</a></div>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-success">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#success_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Блокировка счета
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-ignored">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#ignored_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Блокировка счета
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-process">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Обрабатывается
+                            <svg class="icon">
+                              <use xlink:href="#process_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Блокировка счета
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-baseless">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Безосновательная
+                            <svg class="icon">
+                              <use xlink:href="#baseless_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Блокировка счета
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-not_satisfied">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Не удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#not_satisfied_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Блокировка счета
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="complaints-slider">
+                <div class="title"><span>Задержка выплаты</span><a href="complaints_section.html">Еще 56</a></div>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-success">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#success_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Задержка выплаты
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-ignored">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#ignored_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Задержка выплаты
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-process">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Обрабатывается
+                            <svg class="icon">
+                              <use xlink:href="#process_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Задержка выплаты
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-baseless">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Безосновательная
+                            <svg class="icon">
+                              <use xlink:href="#baseless_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Задержка выплаты
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-not_satisfied">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Не удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#not_satisfied_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Задержка выплаты
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="complaints-slider">
+                <div class="title"><span>Неправильный расчет</span><a href="complaints_section.html">Еще 56</a></div>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-success">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#success_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Неправильный расчёт
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-ignored">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#ignored_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Неправильный расчёт
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-process">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Обрабатывается
+                            <svg class="icon">
+                              <use xlink:href="#process_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Неправильный расчёт
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-baseless">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Безосновательная
+                            <svg class="icon">
+                              <use xlink:href="#baseless_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Неправильный расчёт
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-not_satisfied">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Не удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#not_satisfied_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Неправильный расчёт
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="complaints-slider">
+                <div class="title"><span>Конфискация баланса</span><a href="complaints_section.html">Еще 56</a></div>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-success">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#success_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Конфискация баланса
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-ignored">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#ignored_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Конфискация баланса
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-process">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Обрабатывается
+                            <svg class="icon">
+                              <use xlink:href="#process_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Конфискация баланса
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-baseless">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Безосновательная
+                            <svg class="icon">
+                              <use xlink:href="#baseless_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Конфискация баланса
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-not_satisfied">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Не удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#not_satisfied_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Конфискация баланса
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="complaints-slider">
+                <div class="title"><span>Незачисленнвй бонус</span><a href="complaints_section.html">Еще 56</a></div>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-success">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#success_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Незачисленнвй бонус
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-ignored">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#ignored_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Незачисленнвй бонус
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-process">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Обрабатывается
+                            <svg class="icon">
+                              <use xlink:href="#process_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Незачисленнвй бонус
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-baseless">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Безосновательная
+                            <svg class="icon">
+                              <use xlink:href="#baseless_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Незачисленнвй бонус
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-not_satisfied">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Не удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#not_satisfied_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">15 мин. назад</time>
+                        <div class="category">Незачисленнвй бонус
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="complaints-slider">
+                <div class="title"><span>Другое</span><a href="complaints_section.html">Еще 96</a></div>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-success">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#success_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">08.03.018</time>
+                        <div class="category">Другое
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-ignored">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#ignored_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">08.03.018</time>
+                        <div class="category">Другое
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-process">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Обрабатывается
+                            <svg class="icon">
+                              <use xlink:href="#process_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">08.03.018</time>
+                        <div class="category">Другое
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-baseless">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Безосновательная
+                            <svg class="icon">
+                              <use xlink:href="#baseless_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">08.03.018</time>
+                        <div class="category">Другое
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="complaints-item is-not_satisfied">
+                        <div class="complaints-item-header">
+                          <div class="logo"><img src="img/bookmaker/bookmaker_0.png"/></div>
+                          <div class="status">Не удовлетворена
+                            <svg class="icon">
+                              <use xlink:href="#not_satisfied_complaints"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <time class="time">08.03.018</time>
+                        <div class="category">Другое
+                          <div class="sum"></div>
+                        </div>
+                        <div class="name">Константин Константипонольский</div>
+                        <div class="text">Сделал ставку на тотал карт 51,5 больше — коэф. 1.2 — матч Astralis — G2 (чистая победа Астралис 1.17)</div><a class="link" href="complaints_detail.html">Еще</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="complaints-add" id="addModal"><a class="complaints-add-close js-modal-close" href="#">
+                <svg>
+                  <use xlink:href="#close"></use>
+                </svg></a>
+              <div class="complaints-add-body">
+                <div class="complaints-add-title">Форма жалобы на букмекерскую контору</div>
+                <div class="complaints-add-pager">Шаг <strong class="js-current">1</strong>/<span class="js-total total">2</span></div>
+                <form class="complaints-add-step is-active js-form" action="#">
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Фамилия и имя"/>
+                  </div>
+                  <div class="form-group form-group-pseudo-textarea">
+                    <textarea class="form-control" placeholder="Введите текст жалобы" data-maxlength="10"></textarea>
+                    <div class="complaints-add-uploader">
+                      <div class="counter js-counter">осталось <span class="js-val">500 символа</span></div>
+                      <input class="js-file-input" type="file" accept="image/*"/>
+                      <div class="label">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M16.309 8.822l-6.777 6.776a3.333 3.333 0 11-4.714-4.714l7.366-7.366a2.084 2.084 0 012.946 2.947l-6.187 6.187a.836.836 0 01-1.178 0 .836.836 0 010-1.179l5.598-5.598-.884-.884L6.88 10.59a2.084 2.084 0 002.946 2.947l6.187-6.188a3.332 3.332 0 000-4.714 3.332 3.332 0 00-4.714 0L3.935 10a4.58 4.58 0 000 6.482 4.58 4.58 0 006.481 0l6.777-6.777-.884-.883z" fill="#000"></path>
+                        </svg><span>Прикрепить файл</span>
+                      </div>
+                      <div class="complaints-add-file-preview">
+                        <div class="icon remove js-remove-preview">
+                          <svg>
+                            <use xlink:href="#remove"></use>
+                          </svg>
+                        </div>
+                        <div class="icon resize">
+                          <svg>
+                            <use xlink:href="#resize"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button class="form-btn">Далее</button>
+                  </div>
+                </form>
+                <form class="complaints-add-step js-form" action="#">
+                  <div class="complaints-add-row">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Электронная почта"/>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Ваш логин в букмекерской конторе"/>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Ссылка на букмекерскую контору"/>
+                    </div>
+                    <div class="form-group sum">
+                      <input class="form-control" type="text" placeholder="Сумма спора"/>
+                    </div>
+                    <div class="form-group currency">
+                      <select class="form-control js-select">
+                        <option value="1">RUB</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control js-select" placeholder="Тип жалобы" data-placeholder="Тип жалобы">
+                        <option></option>
+                        <option value="1">Блокировка счета</option>
+                        <option value="2">Задержка выплат</option>
+                        <option value="3">Неправильный расчёт</option>
+                        <option value="4">Конфискация баланса</option>
+                        <option value="5">Незачисленный бонус</option>
+                        <option value="6">Другое</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input class="i-checkbox" name="agree_checkbox" id="agree_checkbox" type="checkbox"/>
+                    <label for="agree_checkbox">Я согласен на обработку <a href="#">персональных данных</a>.</label>
+                  </div>
+                  <div class="form-group d-flex">
+                    <button class="form-btn is-small js-back">
+                      <svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 5H3.83L7.41 1.41L6 0L0 6L6 12L7.41 10.59L3.83 7H18V5Z"></path>
+                      </svg>
+                    </button>
+                    <button class="form-btn">Отправить жалобу</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="complaints-add-backdrop"></div>
           </div>
         </div>
         <div class="workarea-description">
@@ -661,6 +1532,358 @@
         </li>
       </ul>
     </div>
+    <aside class="feed-bar" id="feed-bar" role="feed"><span class="feed-anchor feed-anchor-top js-feed-totop pseudo-link">
+        <div class="feed-anchor-icon">
+          <svg>
+            <use xlink:href="#arrow"></use>
+          </svg>
+        </div>
+        <div class="feed-anchor-text"><span>23</span> новых события
+        </div></span>
+      <div class="feed-setting">
+        <div class="feed-setting-title">Настройки ленты</div>
+        <form class="feed-setting-form" action="/">
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-1"/><span>Прогнозы</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-2"/><span>Жалобы</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-3"/><span>Отзывы</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-4"/><span>Комментарии</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-5"/><span>Новости</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-6"/><span>Материал</span>
+          </label>
+          <label class="feed-setting-checkbox">
+            <input type="checkbox" name="setting-7"/><span>Бонусы</span>
+          </label>
+          <div class="feed-setting-group">
+            <button class="feed-setting-btn feed-setting-reset" type="reset">Сбросить</button>
+            <button class="feed-setting-btn feed-setting-apply" type="submit">Применить</button>
+          </div>
+        </form><span class="feed-setting-close js-setting-close pseudo-link">
+          <svg>
+            <use xlink:href="#close"></use>
+          </svg></span>
+      </div>
+      <div class="feed-bar-head">
+        <div class="feed-bar-title">Лента<span class="feed-bar-icon">
+            <svg>
+              <use xlink:href="#round"></use>
+            </svg></span></div><span class="feed-bar-setting js-setting-open pseudo-link">
+          <svg>
+            <use xlink:href="#setting"></use>
+          </svg>Настроить ленту</span>
+      </div>
+      <div class="feed-bar-list">
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-other">
+                <div class="feed-forecast-img"><img src=" images/feed-demo-formula.jpg" alt="«Локомотив» – «Динамо» Рига: силы рижан небезграничны"/></div>
+                <div class="feed-forecast-detail">
+                  <div class="feed-forecast-odds">K: 4.36</div>
+                  <div class="feed-forecast-time">
+                    <div class="feed-forecast-date">24.06.18</div>
+                    <div class="feed-forecast-clock">13:30</div>
+                  </div>
+                </div>
+              </div>
+              <div class="feed-box-title">«Локомотив» – «Динамо» Рига: силы рижан небезграничны</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+              <div class="feed-box-label feed-primary-bg">От эксперта</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-forecast">
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-5.png" alt="Лидс Юнайтед"/></div>
+                <div class="feed-forecast-detail">
+                  <div class="feed-forecast-odds">K: 4.36</div>
+                  <div class="feed-forecast-time">
+                    <div class="feed-forecast-date">24.06.18</div>
+                    <div class="feed-forecast-clock">13:30</div>
+                  </div>
+                </div>
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-6.png" alt="Дерби Каунти"/></div>
+              </div>
+              <div class="feed-box-title">«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Новость</li>
+                <li>Баскетбол</li>
+              </ul>
+              <div class="feed-box-label feed-success-bg">Новость дня</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-title">Президент «ПСЖ» намерен установить рамки поведения для игроков</div>
+              <div class="feed-box-subtitle">Сумма перехода может составить 150 млн евро.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Статья</li>
+                <li>Баскетбол</li>
+              </ul>
+              <div class="feed-box-label feed-primary-bg">Эксклюзив</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-title">Аленичев не будет уволен из «Енисея»</div>
+              <div class="feed-box-subtitle">Как сообщил министр спорта Красноярского края Сергей Алексеев, Дмитрий Аленичев</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">3 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Новость</li>
+                <li>Баскетбол</li>
+              </ul>
+              <div class="feed-box-label feed-success-bg">Новость дня</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-title">Президент «ПСЖ» намерен установить рамки поведения для игроков</div>
+              <div class="feed-box-subtitle">Сумма перехода может составить 150 млн евро.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+              <div class="feed-box-label feed-primary-bg">От эксперта</div>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-forecast">
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-7.png" alt="Лидс Юнайтед"/></div>
+                <div class="feed-forecast-detail">
+                  <div class="feed-forecast-odds">K: 4.36</div>
+                  <div class="feed-forecast-time">
+                    <div class="feed-forecast-date">24.06.18</div>
+                    <div class="feed-forecast-clock">13:30</div>
+                  </div>
+                </div>
+                <div class="feed-forecast-team"><img src="images/feed-demo-team-8.png" alt="Дерби Каунти"/></div>
+              </div>
+              <div class="feed-box-title">«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">1 мин. назад</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Статья</li>
+                <li>Баскетбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-logo"><img src="images/feed-demo-bookmaker-1.svg" alt="«Марафон» дарит путешествие в Париж или фрибет 5000 рублей"/></div>
+              <div class="feed-box-title">«Марафон» дарит путешествие в Париж или фрибет 5000 рублей</div>
+              <div class="feed-box-limit">24/06/18 — 24/06/18</div></a><a class="feed-box-btn" href="feed-inner.html">Получить 1000 ₽</a>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Жалоба</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-box-logo"><img src="images/feed-demo-bookmaker-2.svg" alt="Блокировка счета"/></div>
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-box-title">Блокировка счета</div>
+              <div class="feed-box-subtitle">Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Комментарий</li>
+                <li>Прогноз</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-comment-forecast">
+                <div class="feed-forecast">
+                  <div class="feed-forecast-team"><img src="images/feed-demo-team-5.png" alt="Лидс Юнайтед"/></div>
+                  <div class="feed-forecast-detail">
+                    <div class="feed-forecast-odds">K: 4.36</div>
+                    <div class="feed-forecast-time">
+                      <div class="feed-forecast-date">24.06.18</div>
+                      <div class="feed-forecast-clock">13:30</div>
+                    </div>
+                  </div>
+                  <div class="feed-forecast-team"><img src="images/feed-demo-team-6.png" alt="Дерби Каунти"/></div>
+                </div>
+                <div class="feed-box-title">«Лидс Юнайтед» – «Дерби Каунти»: состоится ли четвёртая победа бельгийца над аргентинцем?</div>
+              </div>
+              <div class="feed-box-subtitle">На этой странице опубликованы самые качественные прогнозы, отобранные нами на основании логичности анализа. На этой странице опубликованы самые качественные прогнозы, отобранные нами на основании логичности анализа.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Комментарий</li>
+                <li>Новость</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-comment-event">
+                <div class="feed-comment-head">
+                  <div class="feed-comment-tag">Футбол</div>
+                  <div class="feed-comment-time">
+                    <div class="feed-comment-date">26/03/19</div>
+                    <div class="feed-comment-clock">12:24</div>
+                  </div>
+                </div>
+                <div class="feed-box-title">Президент «ПСЖ» намерен установить рамки поведения для игроков.</div>
+              </div>
+              <div class="feed-box-subtitle">Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки. Решил сегодня поставить все деньги на игру Юта Джаз против Сакраменто Кингз, тип ставки.</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+        <article class="feed-box">
+          <div class="feed-box-link">
+            <div class="feed-box-tools">
+              <ul class="feed-box-tag">
+                <li>Комментарий</li>
+                <li>Новость</li>
+                <li>Футбол</li>
+              </ul>
+            </div><a class="feed-box-info" href="feed.html">
+              <div class="feed-comment-author">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Кирилл Фролов</div>
+              </div>
+              <div class="feed-comment-user">
+                <div class="feed-comment-photo"></div>
+                <div class="feed-comment-name">Борис Клюворотов
+                  <div class="feed-comment-prof">Каппер</div>
+                </div>
+              </div>
+              <div class="feed-box-subtitle">Полный мудак и прогнозы у него гавно, слил все бабки!</div></a>
+            <div class="feed-box-detail">
+              <div class="feed-box-review">
+                <svg>
+                  <use xlink:href="#chat"></use>
+                </svg>25
+              </div>
+              <div class="feed-box-time">Вчера</div>
+            </div>
+          </div>
+        </article>
+      </div><span class="feed-anchor feed-anchor-back js-feed-toback pseudo-link">
+        <div class="feed-anchor-icon">
+          <svg>
+            <use xlink:href="#arrow"></use>
+          </svg>
+        </div>
+        <div class="feed-anchor-text">Вернуться назад</div></span>
+    </aside>
     <script src="js/main.js"></script>
     <!-- убираем пробелы из пустых .workarea-description, нужно только на маркапе-->
     <script>
