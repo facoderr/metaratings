@@ -326,29 +326,31 @@
             </div>
           </div>
           <div class="workarea-content">
-            <div class="table-wrap casino-tournament-table-wrap">
-              <table class="table casino-tournament-detail-table">
-                <thead>
-                  <tr>
-                    <th>Провайдеры
-                    </th>
-                    <th>Вид турнира
-                    </th>
-                    <th>Вейджер
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="casino-tournament-detail-table-imgBlock"><img src="images/provider-1.png" alt=""/><img src="images/provider-2.png" alt=""/><img src="images/provider-3.png" alt=""/><img src="images/provider-4.png" alt=""/><img src="images/provider-5.png" alt=""/></div>
-                      <div class="casino-tournament-detail-table-txtBlock"><a class="js-modal-show" href="#providers">Еще 31</a></div>
-                    </td>
-                    <td>Игровые автоматы</td>
-                    <td>х</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="table">
+              <div class="table-wrap">
+                <table class="casino-tournament-detail-table">
+                  <thead>
+                    <tr>
+                      <th>Провайдеры
+                      </th>
+                      <th>Вид турнира
+                      </th>
+                      <th>Вейджер
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="casino-tournament-detail-table-imgBlock"><img src="images/provider-1.png" alt=""/><img src="images/provider-2.png" alt=""/><img src="images/provider-3.png" alt=""/><img src="images/provider-4.png" alt=""/><img src="images/provider-5.png" alt=""/></div>
+                        <div class="casino-tournament-detail-table-txtBlock"><a class="js-modal-show" href="#providers">Еще 31</a></div>
+                      </td>
+                      <td>Игровые автоматы</td>
+                      <td>х</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div><a class="casino-tournament-detail-btn" href="/">Участвовать</a>
             <div class="overview">
               <div class="overview-tab js-sticky-tab">
@@ -717,7 +719,74 @@
                 </div>
               </div>
               <div class="overview-casino-comparison" id="compare">
-                <!--+comparison-casino-tournaments-->
+                <div class="casino-tournament-detail-info-head">
+                  <h2 class="casino-tournament-detail-info-title">Сравнение с другими турнирами</h2>
+                </div>
+                <div class="comparison">
+                  <div class="table">
+                    <div class="table-wrap">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Казино</th>
+                            <th>Метаоценка</th>
+                            <th>Провайдеры</th>
+                            <th>Количество игр</th>
+                            <th>Размер кешбека</th>
+                            <th>Онлайн техподдержка</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Melbet
+                            </td>
+                            <td><span class="table-meta is-success">93</span>
+                            </td>
+                            <td>87
+                            </td>
+                            <td>34
+                            </td>
+                            <td>20%
+                            </td>
+                            <td>Да
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Maraphon Bet
+                            </td>
+                            <td><span class="table-meta is-average">65</span>
+                            </td>
+                            <td>93
+                            </td>
+                            <td>120
+                            </td>
+                            <td>30%
+                            </td>
+                            <td>Нет
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>1XBet
+                            </td>
+                            <td><span class="table-meta is-danger">48</span>
+                            </td>
+                            <td>45
+                            </td>
+                            <td>58
+                            </td>
+                            <td>30%
+                            </td>
+                            <td>Да
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div><a class="comparison-add js-modal-show js-comparison-show" href="#comparison">
+                    <svg>
+                      <use xlink:href="#plus"></use>
+                    </svg>Добавить казино</a>
+                </div>
               </div>
               <div class="casino-tournament-detail-info" id="rules">
                 <h2 class="casino-tournament-detail-info-title">Правила проведения</h2>
@@ -807,7 +876,6 @@
                 </div>
               </div>
             </div>
-            <!--+comparison-casino-tournaments-modal-->
             <div class="modal js-modal" role="dialog" id="providers">
               <div class="modal-overlay">
                 <div class="modal-wrap js-modal-wrap">
@@ -865,6 +933,263 @@
                           </div>
                         </div>
                       </div>
+                    </div>
+                  </div><span class="modal-close js-modal-hide pseudo-link">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></span>
+                </div>
+              </div>
+            </div>
+            <div class="modal js-modal" role="dialog" id="comparison">
+              <div class="modal-overlay">
+                <div class="modal-wrap js-modal-wrap">
+                  <div class="comparison-modal">
+                    <div class="comparison-modal-title">Выберите казино для сравнения</div>
+                    <div class="comparison-modal-field">
+                      <div class="comparison-modal-search">
+                        <input class="js-comparison-input" placeholder="Поиск казино"/><span>
+                          <svg>
+                            <use xlink:href="#search-o"></use>
+                          </svg></span>
+                      </div>
+                      <div class="comparison-modal-result js-comparison-search-result">
+                        <ul class="comparison-modal-list">
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pokerdom
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Vip Casino CLUB
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>RedStar
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pin-Up Casino
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Kazinoigi
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Vip Casino CLUB
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pin-Up Casino
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pokerdom
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pokerdom
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Vip Casino CLUB
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>RedStar
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pin-Up Casino
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Kazinoigi
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Vip Casino CLUB
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pin-Up Casino
+                            </button>
+                          </li>
+                          <li>
+                            <button class="js-comparison-item" type="button"><span><img src="img/icons/check.svg"/></span>Pokerdom
+                            </button>
+                          </li>
+                        </ul>
+                        <div class="comparison-modal-nothing js-comparison-nothing"><img src="img/comparison/comparison-search-casino.svg"/><span>По вашему запросу <br> ничего не найдено. <br> Попробуйте изменить запрос.</span></div>
+                      </div>
+                    </div>
+                    <div class="comparison-modal-body js-modal-scroll">
+                      <div class="comparison-modal-scroll js-comparison-result">
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pokerdom
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_2.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Vip Casino CLUB
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_3.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">RedStar
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_6.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pin-Up Casino
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_0.svg" alt=""/></div>
+                          <div class="comparison-modal-item-label">Kazinoigi
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_2.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Vip Casino CLUB
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_6.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pin-Up Casino
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pokerdom
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pokerdom
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_2.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Vip Casino CLUB
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_3.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">RedStar
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_6.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pin-Up Casino
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_0.svg" alt=""/></div>
+                          <div class="comparison-modal-item-label">Kazinoigi
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_2.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Vip Casino CLUB
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_6.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pin-Up Casino
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                        <button class="comparison-modal-item js-comparison-item" type="button">
+                          <div class="comparison-modal-item-img"><img src="img/casino/casino_1.png" alt=""/></div>
+                          <div class="comparison-modal-item-label">Pokerdom
+                          </div>
+                          <div class="comparison-modal-item-status">
+                            <svg>
+                              <use xlink:href="#close"></use>
+                            </svg><img src="img/icons/check.svg"/>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="comparison-modal-buttons">
+                      <button class="comparison-modal-btn js-comparison-clear" type="button">Сбросить</button>
+                      <button class="comparison-modal-btn js-comparison-apply" type="button">Применить</button>
                     </div>
                   </div><span class="modal-close js-modal-hide pseudo-link">
                     <svg>
