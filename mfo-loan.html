@@ -136,57 +136,216 @@
         </div>
         <div class="workarea-row">
           <div class="workarea-sidebar">
-            <form class="aside-filters aside-filters_transparent js-aside-filters" id="loan-filter">
-              <header class="aside-filters-head">Фильтр</header>
-              <section class="aside-filters-section">
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox0" type="checkbox"/>
-                <label for="aside_checkbox0">0 % на первый займ
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox1" type="checkbox"/>
-                <label for="aside_checkbox1">Займ до ЗП
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox2" type="checkbox"/>
-                <label for="aside_checkbox2">Быстрый займ
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox3" type="checkbox"/>
-                <label for="aside_checkbox3">Займ онлайн
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox4" type="checkbox"/>
-                <label for="aside_checkbox4">Займ на электронный кошелек
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox5" type="checkbox"/>
-                <label for="aside_checkbox5">Займ без залога
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox6" type="checkbox"/>
-                <label for="aside_checkbox6">Займ по паспорту
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox7" type="checkbox"/>
-                <label for="aside_checkbox7">Займ на ремонт
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox8" type="checkbox"/>
-                <label for="aside_checkbox8">Займ на отдых
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox9" type="checkbox"/>
-                <label for="aside_checkbox9">Займ на образование
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox10" type="checkbox"/>
-                <label for="aside_checkbox10">Займ на электронику
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox11" type="checkbox"/>
-                <label for="aside_checkbox11">Займ для студентов
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox12" type="checkbox"/>
-                <label for="aside_checkbox12">Займ для пенсионеров
-                </label>
-                <input class="i-checkbox" name="aside_checkbox" id="aside_checkbox13" type="checkbox"/>
-                <label for="aside_checkbox13">Индивидуальный порядок погашения
-                </label>
-              </section>
-            </form><a class="aside-filters-button" type="button" role="submit">Показать результаты (234)</a>
-            <div class="aside-filters-backdrop js-aside-filters-backdrop">
-              <svg>
-                <use xlink:href="#close"></use>
-              </svg>
+            <div class="mfo-sidebar hidden-mobile">
+              <div class="mfo-sidebar-head js-mfo-sidebar-toggle">Выбрать условие
+                <svg>
+                  <use xlink:href="#arrow"></use>
+                </svg>
+              </div>
+              <div class="mfo-sidebar-body js-mfo-sidebar-target">
+                <ul class="mfo-sidebar-menu">
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Способ получения
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">На карту</a></li>
+                      <li><a href="/">Qiwi</a></li>
+                      <li><a href="/">Сбербанк</a></li>
+                      <li><a href="/">Тинькофф</a></li>
+                      <li><a href="/">VISA</a></li>
+                      <li><a href="/">Mastercard</a></li>
+                      <li><a href="/">Мир</a></li>
+                      <li><a href="/">Маэстро</a></li>
+                      <li><a href="/">Моментум</a></li>
+                      <li><a href="/">Дебетовая карта</a></li>
+                      <li><a href="/">Кредитная карта</a></li>
+                      <li><a href="/">Виртульная карта</a></li>
+                      <li><a href="/">На карту с нулевым балансом</a></li>
+                      <li><a href="/">Без привязки карты</a></li>
+                      <li><a href="/">Без карты</a></li>
+                      <li><a href="/">Золотая корона</a></li>
+                      <li><a href="/">Сберкнижка</a></li>
+                      <li><a href="/">На банковский счет</a></li>
+                      <li><a href="/">Кукуруза</a></li>
+                      <li><a href="/">Система Контакт</a></li>
+                      <li><a href="/">Электронный кошелек</a></li>
+                      <li><a href="/">Яндекс деньги</a></li>
+                      <li><a href="/">Онлайнперевод</a></li>
+                      <li><a href="/">Webmoney</a></li>
+                      <li><a href="/">SMS</a></li>
+                      <li><a href="/">На номер телефона</a></li>
+                      <li><a href="/">В офисе</a></li>
+                      <li><a href="/">Без посещения офиса</a></li>
+                      <li><a href="/">На дом</a></li>
+                      <li><a href="/">В руки</a></li>
+                      <li><a href="/">Наличными</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Залог
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Под залог</a></li>
+                      <li><a href="/">Без залога</a></li>
+                      <li><a href="/">Под ПТС</a></li>
+                      <li><a href="/">Под авто</a></li>
+                      <li><a href="/">Под грузовой автомобиль</a></li>
+                      <li><a href="/">Под долю в квартире</a></li>
+                      <li><a href="/">Под квартиру</a></li>
+                      <li><a href="/">Под недвижимость</a></li>
+                      <li><a href="/">Под паспорт</a></li>
+                      <li><a href="/">Под материнский капитал</a></li>
+                      <li><a href="/">Под технику</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Документы
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Без документов</a></li>
+                      <li><a href="/">Без поручителей</a></li>
+                      <li><a href="/">Без справок</a></li>
+                      <li><a href="/">Без доходов</a></li>
+                      <li><a href="/">Без паспорта</a></li>
+                      <li><a href="/">Без фото паспорта</a></li>
+                      <li><a href="/">Без прописки</a></li>
+                      <li><a href="/">Без указания работы</a></li>
+                      <li><a href="/">Без СНИЛС</a></li>
+                      <li><a href="/">Без звонков оператора</a></li>
+                      <li><a href="/">По паспорту</a></li>
+                      <li><a href="/">По военному билету</a></li>
+                      <li><a href="/">С временной регистрацией</a></li>
+                      <li><a href="/">Через госуслуги</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle is-select">Для кого
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Должникам</a></li>
+                      <li><a href="/">Безработным</a></li>
+                      <li><a class="is-select" href="/">Студентам</a></li>
+                      <li><a href="/">Пенсионерам</a></li>
+                      <li><a href="/">Для ИП</a></li>
+                      <li><a href="/">Для бизнеса</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Возраст
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">С 18 лет</a></li>
+                      <li><a href="/">С 19 лет</a></li>
+                      <li><a href="/">С 20 лет</a></li>
+                      <li><a href="/">С 21 года</a></li>
+                      <li><a href="/">До 70 лет</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Кредитная история
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">100 одобрение</a></li>
+                      <li><a href="/">Без кредитной истории</a></li>
+                      <li><a href="/">Без отказа</a></li>
+                      <li><a href="/">Без проверок</a></li>
+                      <li><a href="/">Для исправления кредитной истории</a></li>
+                      <li><a href="/">С плохой кредитной историей</a></li>
+                      <li><a href="/">С просрочками</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Сроки
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Надежные</a></li>
+                      <li><a href="/">До зарплаты</a></li>
+                      <li><a href="/">На месяц</a></li>
+                      <li><a href="/">На 2 месяца</a></li>
+                      <li><a href="/">На полгода</a></li>
+                      <li><a href="/">На год</a></li>
+                      <li><a href="/">Долгосрочные</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Ставка
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Лучшие микрозаймы</a></li>
+                      <li><a href="/">Без комиссии</a></li>
+                      <li><a href="/">Без процентов</a></li>
+                      <li><a href="/">Под 0 процентов</a></li>
+                      <li><a href="/">Под низкий процент</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Скорость получения
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Автоматические</a></li>
+                      <li><a href="/">Быстрые</a></li>
+                      <li><a href="/">За 5 минут</a></li>
+                      <li><a href="/">За 10 минут</a></li>
+                      <li><a href="/">За 15 минут</a></li>
+                      <li><a href="/">Круглосуточно</a></li>
+                      <li><a href="/">Мгновенные</a></li>
+                      <li><a href="/">Моментальные</a></li>
+                      <li><a href="/">По телефону</a></li>
+                      <li><a href="/">Срочные</a></li>
+                      <li><a href="/">Экспресс</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Сумма
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">100</a></li>
+                      <li><a href="/">500</a></li>
+                      <li><a href="/">1000</a></li>
+                      <li><a href="/">2000</a></li>
+                      <li><a href="/">4000</a></li>
+                      <li><a href="/">5000</a></li>
+                      <li><a href="/">20000</a></li>
+                      <li><a href="/">30000</a></li>
+                      <li><a href="/">40000</a></li>
+                      <li><a href="/">70000</a></li>
+                      <li><a href="/">80000</a></li>
+                      <li><a href="/">500000</a></li>
+                      <li><a href="/">Большие</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="mfo-best js-mfo-best">
               <div class="mfo-best-title">рейтинг мфо</div>
@@ -237,7 +396,220 @@
             </div>
           </div>
           <div class="workarea-content">
-            <h1>Займы и предложения</h1>
+            <div class="workarea-title">
+              <h1>Займы и предложения</h1>
+            </div>
+            <div class="mfo-sidebar hidden-desktop">
+              <div class="mfo-sidebar-head js-mfo-sidebar-toggle">Выбрать условие
+                <svg>
+                  <use xlink:href="#arrow"></use>
+                </svg>
+              </div>
+              <div class="mfo-sidebar-body js-mfo-sidebar-target">
+                <ul class="mfo-sidebar-menu">
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Способ получения
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">На карту</a></li>
+                      <li><a href="/">Qiwi</a></li>
+                      <li><a href="/">Сбербанк</a></li>
+                      <li><a href="/">Тинькофф</a></li>
+                      <li><a href="/">VISA</a></li>
+                      <li><a href="/">Mastercard</a></li>
+                      <li><a href="/">Мир</a></li>
+                      <li><a href="/">Маэстро</a></li>
+                      <li><a href="/">Моментум</a></li>
+                      <li><a href="/">Дебетовая карта</a></li>
+                      <li><a href="/">Кредитная карта</a></li>
+                      <li><a href="/">Виртульная карта</a></li>
+                      <li><a href="/">На карту с нулевым балансом</a></li>
+                      <li><a href="/">Без привязки карты</a></li>
+                      <li><a href="/">Без карты</a></li>
+                      <li><a href="/">Золотая корона</a></li>
+                      <li><a href="/">Сберкнижка</a></li>
+                      <li><a href="/">На банковский счет</a></li>
+                      <li><a href="/">Кукуруза</a></li>
+                      <li><a href="/">Система Контакт</a></li>
+                      <li><a href="/">Электронный кошелек</a></li>
+                      <li><a href="/">Яндекс деньги</a></li>
+                      <li><a href="/">Онлайнперевод</a></li>
+                      <li><a href="/">Webmoney</a></li>
+                      <li><a href="/">SMS</a></li>
+                      <li><a href="/">На номер телефона</a></li>
+                      <li><a href="/">В офисе</a></li>
+                      <li><a href="/">Без посещения офиса</a></li>
+                      <li><a href="/">На дом</a></li>
+                      <li><a href="/">В руки</a></li>
+                      <li><a href="/">Наличными</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Залог
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Под залог</a></li>
+                      <li><a href="/">Без залога</a></li>
+                      <li><a href="/">Под ПТС</a></li>
+                      <li><a href="/">Под авто</a></li>
+                      <li><a href="/">Под грузовой автомобиль</a></li>
+                      <li><a href="/">Под долю в квартире</a></li>
+                      <li><a href="/">Под квартиру</a></li>
+                      <li><a href="/">Под недвижимость</a></li>
+                      <li><a href="/">Под паспорт</a></li>
+                      <li><a href="/">Под материнский капитал</a></li>
+                      <li><a href="/">Под технику</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Документы
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Без документов</a></li>
+                      <li><a href="/">Без поручителей</a></li>
+                      <li><a href="/">Без справок</a></li>
+                      <li><a href="/">Без доходов</a></li>
+                      <li><a href="/">Без паспорта</a></li>
+                      <li><a href="/">Без фото паспорта</a></li>
+                      <li><a href="/">Без прописки</a></li>
+                      <li><a href="/">Без указания работы</a></li>
+                      <li><a href="/">Без СНИЛС</a></li>
+                      <li><a href="/">Без звонков оператора</a></li>
+                      <li><a href="/">По паспорту</a></li>
+                      <li><a href="/">По военному билету</a></li>
+                      <li><a href="/">С временной регистрацией</a></li>
+                      <li><a href="/">Через госуслуги</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle is-select">Для кого
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Должникам</a></li>
+                      <li><a href="/">Безработным</a></li>
+                      <li><a class="is-select" href="/">Студентам</a></li>
+                      <li><a href="/">Пенсионерам</a></li>
+                      <li><a href="/">Для ИП</a></li>
+                      <li><a href="/">Для бизнеса</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Возраст
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">С 18 лет</a></li>
+                      <li><a href="/">С 19 лет</a></li>
+                      <li><a href="/">С 20 лет</a></li>
+                      <li><a href="/">С 21 года</a></li>
+                      <li><a href="/">До 70 лет</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Кредитная история
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">100 одобрение</a></li>
+                      <li><a href="/">Без кредитной истории</a></li>
+                      <li><a href="/">Без отказа</a></li>
+                      <li><a href="/">Без проверок</a></li>
+                      <li><a href="/">Для исправления кредитной истории</a></li>
+                      <li><a href="/">С плохой кредитной историей</a></li>
+                      <li><a href="/">С просрочками</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Сроки
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Надежные</a></li>
+                      <li><a href="/">До зарплаты</a></li>
+                      <li><a href="/">На месяц</a></li>
+                      <li><a href="/">На 2 месяца</a></li>
+                      <li><a href="/">На полгода</a></li>
+                      <li><a href="/">На год</a></li>
+                      <li><a href="/">Долгосрочные</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Ставка
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Лучшие микрозаймы</a></li>
+                      <li><a href="/">Без комиссии</a></li>
+                      <li><a href="/">Без процентов</a></li>
+                      <li><a href="/">Под 0 процентов</a></li>
+                      <li><a href="/">Под низкий процент</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Скорость получения
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">Автоматические</a></li>
+                      <li><a href="/">Быстрые</a></li>
+                      <li><a href="/">За 5 минут</a></li>
+                      <li><a href="/">За 10 минут</a></li>
+                      <li><a href="/">За 15 минут</a></li>
+                      <li><a href="/">Круглосуточно</a></li>
+                      <li><a href="/">Мгновенные</a></li>
+                      <li><a href="/">Моментальные</a></li>
+                      <li><a href="/">По телефону</a></li>
+                      <li><a href="/">Срочные</a></li>
+                      <li><a href="/">Экспресс</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button class="js-mfo-sidebar-toggle">Сумма
+                      <svg>
+                        <use xlink:href="#arrow"></use>
+                      </svg>
+                    </button>
+                    <ul class="mfo-sidebar-submenu js-mfo-sidebar-target">
+                      <li><a href="/">100</a></li>
+                      <li><a href="/">500</a></li>
+                      <li><a href="/">1000</a></li>
+                      <li><a href="/">2000</a></li>
+                      <li><a href="/">4000</a></li>
+                      <li><a href="/">5000</a></li>
+                      <li><a href="/">20000</a></li>
+                      <li><a href="/">30000</a></li>
+                      <li><a href="/">40000</a></li>
+                      <li><a href="/">70000</a></li>
+                      <li><a href="/">80000</a></li>
+                      <li><a href="/">500000</a></li>
+                      <li><a href="/">Большие</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div class="applied-filters">
               <div class="applied-filters-params">
                 <div class="item">Займ под 0 %</div>
