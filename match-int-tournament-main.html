@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Все страницы</title>
+    <title>Чемпионат Европы 2021</title>
     <link rel="stylesheet" href="css/critical.css">
     <meta charset="utf-8">
     <meta name="theme-color" content="#601dc0">
@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/match-tournament.css">
   </head>
   <body>
     <div class="redirect hidden">
@@ -324,86 +325,1009 @@
             <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
           </ol>
         </div>
-        <div class="workarea-title">
-          <h1>Все страницы</h1>
-        </div>
         <div class="workarea-description">
         </div>
         <div class="workarea-row">
+          <div class="workarea-sidebar">
+            <div class="match-aside">
+              <section class="match-aside-section">
+                <header class="match-aside-header">Мои лиги</header>
+                <div class="match-aside-body"><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Премьер-лига</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Бундеслига</span></a><a class="match-aside-league is-active" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Примера</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Премьер-лига</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Евро</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Лига чемпионов</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Лига Европы</span></a></div>
+              </section>
+              <section class="match-aside-section">
+                <header class="match-aside-header">Страны</header>
+                <form class="match-aside-sorting js-sorting" action="#">
+                  <input type="text" placeholder="Введите страну"/>
+                  <svg>
+                    <use xlink:href="#search-o"></use>
+                  </svg>
+                </form>
+                <div class="match-aside-scroller js-scroller"><a class="item" href="#">Россия</a><a class="item" href="#">Англия</a><a class="item" href="#">Австрия</a><a class="item" href="#">Германия</a><a class="item" href="#">Франция</a><a class="item" href="#">Украина</a><a class="item" href="#">Италия</a><a class="item" href="#">Россия</a><a class="item" href="#">Англия</a><a class="item" href="#">Австрия</a><a class="item" href="#">Германия</a><a class="item" href="#">Франция</a><a class="item" href="#">Украина</a><a class="item" href="#">Италия</a>
+                </div>
+              </section>
+            </div>
+          </div>
           <div class="workarea-content">
-            <div class="workarea-text">
-              <h3>Спорт</h3>
-              <ul>
-                <li><a href="js/report.html">JS отчет</a></li>
-                <li><a href="home.html">Гавная</a></li>
-                <li><a href="forecast.html">Ставки и прогнозы</a></li>
-                <li><a href="forecast-inner.html">Прогнозы на футбол</a></li>
-                <li><a href="event.html">Турнирое событие</a></li>
-                <li><a href="bk-overview.html">Обзор букмекерской конторы</a></li>
-                <li><a href="sentiment.html">Упоминания в отзывах (Сентименты)</a></li>
-                <li><a href="overview-loto.html">Обзор лотереи</a></li>
-                <li><a href="reward.html">Акции и бонусы</a></li>
-                <li><a href="reward-inner.html">Раздел бонусов</a></li>
-                <li><a href="feed.html">События</a></li>
-                <li><a href="feed-inner.html">Детальная события</a></li>
-                <li><a href="rating.html">Рейтинг</a></li>
-                <li><a href="articles-list.html">Список статей</a></li>
-                <li><a href="articles-detail.html">Детальная статьи</a></li>
-                <li><a href="complaints_list.html">Все жалобы</a></li>
-                <li><a href="complaints_section.html">Все жалобы, конкретный раздел </a></li>
-                <li><a href="complaints_detail.html">Жалоба</a></li>
-                <li><a href="complaints_detail_comments.html">Жалоба отзывы</a></li>
-                <li><a href="news-list.html">Список новостей</a></li>
-                <li><a href="news-list_without_sidebar.html">Список новостей, вариант без сайдбара</a></li>
-              </ul>
-              <h3>Матч центр</h3>
-              <ul>
-                <li><a href="match.html">Матч-центр</a></li>
-                <li><a href="match-before.html">Начало матча</a></li>
-                <li><a href="match-after.html">Конец матча</a></li>
-                <li><a href="match-ongoing.html">Идущий матч</a></li>
-                <li><a href="match-player.html">Страница игрока</a></li>
-                <li><a href="match-team.html">Спортивные команды</a></li>
-                <li><a href="match-team.html">Таблица турнира</a></li>
-                <li><a href="match-tournament-main.html">Главная страница турнира</a></li>
-                <li><a href="match-int-tournament-main.html">Главная страница турнира, международный</a></li>
-              </ul>
-              <h3>Казино</h3>
-              <ul>
-                <li><a href="casino-main.html">Гавная казино</a></li>
-                <li><a href="casino-rating.html">Список казино</a></li>
-                <li><a href="casino-overview.html">Обзор казино</a></li>
-                <li><a href="casino-games-list.html">Список игр казино</a></li>
-                <li><a href="casino-games-detail.html">Детальная игры казино</a></li>
-                <li><a href="casino-tournaments-list.html">Список турниров казино</a></li>
-                <li><a href="casino-tournaments-detail.html">Детальная турнира казино</a></li>
-                <li><a href="casino-provider-list.html">Список провайдеров казино</a></li>
-                <li><a href="casino-provider-detail.html">Детальная провайдера казино</a></li>
-                <li><a href="casino-bonus-list.html">Список бонусов казино</a></li>
-                <li><a href="casino-bonus-type.html">Тип бонуса казино</a></li>
-                <li><a href="casino-bonus-detail.html">Детальная бонуса казино</a></li>
-                <li><a href="casino-news-list.html">Список новостей казино</a></li>
-                <li><a href="casino-news-detail.html">Детальная новости казино</a></li>
-                <li><a href="casino-articles-list.html">Список статей казино</a></li>
-                <li><a href="casino-articles-detail.html">Детальная статьи казино</a></li>
-                <li><a href="casino-404.html">Страница не найдена для казино</a></li>
-              </ul>
-              <h3>МФО</h3>
-              <ul>
-                <li><a href="mfo-home.html">Гавная МФО</a></li>
-                <li><a href="mfo-overview.html">Обзор МФО</a></li>
-                <li><a href="mfo-news-list.html">Список новостей</a></li>
-                <li><a href="mfo-news-detail.html">Детальная страница новости</a></li>
-                <li><a href="mfo-articles-list.html">Список статей</a></li>
-                <li><a href="mfo-articles-detail.html">Детальная страница статьи</a></li>
-                <li><a href="mfo-loan.html">Займы и предложения</a></li>
-                <li><a href="mfo-loan-detail.html">Детальная займа</a></li>
-                <li><a href="mfo-rating.html">Рейтинг онлайн МФО</a></li>
-                <li><a href="mfo-help-list.html">Помощь заемщику</a></li>
-                <li><a href="mfo-help-detail.html">Детальная страница помощь заемщику</a></li>
-                <li><a href="mfo-author-list.html">Все авторы</a></li>
-                <li><a href="mfo-author-detail.html">Детальная страница автора</a></li>
-              </ul>
+            <div class="match-tournament">
+              <h1 class="match-tournament-title">Чемпионат Европы 2021</h1>
+              <div class="match-navigation">
+                <div class="match-navigation-scroller"><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-overview">
+                        <use xlink:href="#match-navigation-overview"></use>
+                      </svg></span><span>Обзор</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-versus">
+                        <use xlink:href="#match-navigation-versus"></use>
+                      </svg></span><span>Очные</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-cal">
+                        <use xlink:href="#match-navigation-cal"></use>
+                      </svg></span><span>Календарь</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-table">
+                        <use xlink:href="#match-navigation-table"></use>
+                      </svg></span><span>Таблица</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-team">
+                        <use xlink:href="#match-navigation-team"></use>
+                      </svg></span><span>Команды</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-archive">
+                        <use xlink:href="#match-navigation-archive"></use>
+                      </svg></span><span>Архив</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-referee">
+                        <use xlink:href="#match-navigation-referee"></use>
+                      </svg></span><span>Судьи</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-stadium">
+                        <use xlink:href="#match-navigation-stadium"></use>
+                      </svg></span><span>Стадионы</span></a>
+                </div>
+              </div>
+              <div class="match-qualification">
+                <div class="match-qualification-title">Плей-офф</div>
+                <div class="match-qualification-body is-flex">
+                  <div class="column">
+                    <div class="match-qualification-subtitle">1/8</div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">1B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">2A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                        <div class="match-qualification-open">
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">2B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">1A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">1B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">2A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                        <div class="match-qualification-open">
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">2B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">1A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">1B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">2A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                        <div class="match-qualification-open">
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">2B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">1A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">1B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">2A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                        <div class="match-qualification-open">
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                          <div class="match-qualification-game">
+                            <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                            <div class="match-qualification-team">
+                              <div class="name">1B</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">2A</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">2B</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">1A</div>
+                          </div>
+                          <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                              <svg>
+                                <use xlink:href="#filterArrow"></use>
+                              </svg></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column is-quatro">
+                    <div class="match-qualification-subtitle">Четвертьфиналы</div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="match-qualification-subtitle">Полуфиналы</div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="match-qualification-subtitle">Финал</div>
+                    <div class="match-qualification-pair">
+                      <div class="match-qualification-item">
+                        <div class="match-qualification-closed">
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                          <div class="match-qualification-team">
+                            <div class="name">Ожидает соперника</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Группа А</div>
+                <div class="match-statistics-block">
+                  <div class="match-tournament-row is-head">
+                    <div class="column is-left pos">Поз.</div>
+                    <div class="column"></div>
+                    <div class="column is-left team">Команда</div>
+                    <div class="column">И</div>
+                    <div class="column is-highlight">В</div>
+                    <div class="column is-low-accent">Н</div>
+                    <div class="column is-danger">П</div>
+                    <div class="column hide-on-mobile">З</div>
+                    <div class="column hide-on-mobile">П</div>
+                    <div class="column points">Разн.</div>
+                    <div class="column points">Очки</div>
+                  </div>
+                  <div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">1.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">2.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">3.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">4.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Группа B</div>
+                <div class="match-statistics-block">
+                  <div class="match-tournament-row is-head">
+                    <div class="column is-left pos">Поз.</div>
+                    <div class="column"></div>
+                    <div class="column is-left team">Команда</div>
+                    <div class="column">И</div>
+                    <div class="column is-highlight">В</div>
+                    <div class="column is-low-accent">Н</div>
+                    <div class="column is-danger">П</div>
+                    <div class="column hide-on-mobile">З</div>
+                    <div class="column hide-on-mobile">П</div>
+                    <div class="column points">Разн.</div>
+                    <div class="column points">Очки</div>
+                  </div>
+                  <div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">1.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">2.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">3.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">4.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Группа C</div>
+                <div class="match-statistics-block">
+                  <div class="match-tournament-row is-head">
+                    <div class="column is-left pos">Поз.</div>
+                    <div class="column"></div>
+                    <div class="column is-left team">Команда</div>
+                    <div class="column">И</div>
+                    <div class="column is-highlight">В</div>
+                    <div class="column is-low-accent">Н</div>
+                    <div class="column is-danger">П</div>
+                    <div class="column hide-on-mobile">З</div>
+                    <div class="column hide-on-mobile">П</div>
+                    <div class="column points">Разн.</div>
+                    <div class="column points">Очки</div>
+                  </div>
+                  <div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">1.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">2.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">3.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">4.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Группа D</div>
+                <div class="match-statistics-block">
+                  <div class="match-tournament-row is-head">
+                    <div class="column is-left pos">Поз.</div>
+                    <div class="column"></div>
+                    <div class="column is-left team">Команда</div>
+                    <div class="column">И</div>
+                    <div class="column is-highlight">В</div>
+                    <div class="column is-low-accent">Н</div>
+                    <div class="column is-danger">П</div>
+                    <div class="column hide-on-mobile">З</div>
+                    <div class="column hide-on-mobile">П</div>
+                    <div class="column points">Разн.</div>
+                    <div class="column points">Очки</div>
+                  </div>
+                  <div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">1.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">2.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">3.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">4.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Группа E</div>
+                <div class="match-statistics-block">
+                  <div class="match-tournament-row is-head">
+                    <div class="column is-left pos">Поз.</div>
+                    <div class="column"></div>
+                    <div class="column is-left team">Команда</div>
+                    <div class="column">И</div>
+                    <div class="column is-highlight">В</div>
+                    <div class="column is-low-accent">Н</div>
+                    <div class="column is-danger">П</div>
+                    <div class="column hide-on-mobile">З</div>
+                    <div class="column hide-on-mobile">П</div>
+                    <div class="column points">Разн.</div>
+                    <div class="column points">Очки</div>
+                  </div>
+                  <div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">1.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">2.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">3.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">4.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Группа F</div>
+                <div class="match-statistics-block">
+                  <div class="match-tournament-row is-head">
+                    <div class="column is-left pos">Поз.</div>
+                    <div class="column"></div>
+                    <div class="column is-left team">Команда</div>
+                    <div class="column">И</div>
+                    <div class="column is-highlight">В</div>
+                    <div class="column is-low-accent">Н</div>
+                    <div class="column is-danger">П</div>
+                    <div class="column hide-on-mobile">З</div>
+                    <div class="column hide-on-mobile">П</div>
+                    <div class="column points">Разн.</div>
+                    <div class="column points">Очки</div>
+                  </div>
+                  <div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">1.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos is-europa-league-qualifying">2.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">3.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                    <div class="match-tournament-row">
+                      <div class="column is-left pos">4.</div>
+                      <div class="column">
+                        <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                        </svg>
+                      </div>
+                      <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Турция</strong></div>
+                      <div class="column">2</div>
+                      <div class="column is-highlight">2</div>
+                      <div class="column is-low-accent">0</div>
+                      <div class="column is-danger">0</div>
+                      <div class="column hide-on-mobile">100</div>
+                      <div class="column hide-on-mobile">32</div>
+                      <div class="column points">68</div>
+                      <div class="column points">82</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="match-statistics-info">
+                  <p>Если две (или более) команды финишируют с одинаковым количеством очков, следующие показатели помогут выявить победителя:</p>
+                  <p>1. Очные встречи между этими командами</p>
+                  <p>1а. Общее кол-во очков</p>
+                  <p>1b. Разница забитых/пропущенных мячей</p>
+                  <p>1c. Кол-во забитых мячей</p>
+                  <p>2. Разница забитых/пропущенных мячей</p>
+                  <p>3. Кол-во забитых мячей</p>
+                  <div class="match-tournament-description-legend">
+                    <div class="item is-europa-league-qualifying">Плей-офф</div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Последние матчи</div>
+                <div class="match-statistics-block">
+                  <div class="match-sport-team-row is-head">
+                    <div class="column tournament is-left">Турнир</div>
+                    <div class="column long-match">Матч</div>
+                  </div>
+                  <div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">4:<span class="is-lose">1</span></div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">БУН<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body"><span class="is-lose">1</span>:4</div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name is-highlight"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">4:<span class="is-lose">1</span></div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">БУН<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body"><span class="is-lose">1</span>:4</div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name is-highlight"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">4:<span class="is-lose">1</span></div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">БУН<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body"><span class="is-lose">1</span>:4</div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name is-highlight"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="match-sport-team-more"><a href="#">Показать еще
+                      <svg>
+                        <use xlink:href="#filterArrow"></use>
+                      </svg></a></div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Следующие матчи</div>
+                <div class="match-statistics-block is-incoming">
+                  <div class="match-sport-team-row is-head">
+                    <div class="column tournament is-left">Турнир</div>
+                    <div class="column long-match">Матч</div>
+                  </div>
+                  <div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>1/8</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">- : -</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

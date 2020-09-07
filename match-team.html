@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Все страницы</title>
+    <title>Бавария</title>
     <link rel="stylesheet" href="css/critical.css">
     <meta charset="utf-8">
     <meta name="theme-color" content="#601dc0">
@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/match-sport-team.css">
   </head>
   <body>
     <div class="redirect hidden">
@@ -324,86 +325,1196 @@
             <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
           </ol>
         </div>
-        <div class="workarea-title">
-          <h1>Все страницы</h1>
-        </div>
         <div class="workarea-description">
         </div>
         <div class="workarea-row">
+          <div class="workarea-sidebar">
+            <div class="match-aside">
+              <section class="match-aside-section">
+                <header class="match-aside-header">Мои лиги</header>
+                <div class="match-aside-body"><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Премьер-лига</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Бундеслига</span></a><a class="match-aside-league is-active" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Примера</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Премьер-лига</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Евро</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Лига чемпионов</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Лига Европы</span></a></div>
+              </section>
+              <section class="match-aside-section">
+                <header class="match-aside-header">Страны</header>
+                <form class="match-aside-sorting js-sorting" action="#">
+                  <input type="text" placeholder="Введите страну"/>
+                  <svg>
+                    <use xlink:href="#search-o"></use>
+                  </svg>
+                </form>
+                <div class="match-aside-scroller js-scroller"><a class="item" href="#">Россия</a><a class="item" href="#">Англия</a><a class="item" href="#">Австрия</a><a class="item" href="#">Германия</a><a class="item" href="#">Франция</a><a class="item" href="#">Украина</a><a class="item" href="#">Италия</a><a class="item" href="#">Россия</a><a class="item" href="#">Англия</a><a class="item" href="#">Австрия</a><a class="item" href="#">Германия</a><a class="item" href="#">Франция</a><a class="item" href="#">Украина</a><a class="item" href="#">Италия</a>
+                </div>
+              </section>
+            </div>
+          </div>
           <div class="workarea-content">
-            <div class="workarea-text">
-              <h3>Спорт</h3>
-              <ul>
-                <li><a href="js/report.html">JS отчет</a></li>
-                <li><a href="home.html">Гавная</a></li>
-                <li><a href="forecast.html">Ставки и прогнозы</a></li>
-                <li><a href="forecast-inner.html">Прогнозы на футбол</a></li>
-                <li><a href="event.html">Турнирое событие</a></li>
-                <li><a href="bk-overview.html">Обзор букмекерской конторы</a></li>
-                <li><a href="sentiment.html">Упоминания в отзывах (Сентименты)</a></li>
-                <li><a href="overview-loto.html">Обзор лотереи</a></li>
-                <li><a href="reward.html">Акции и бонусы</a></li>
-                <li><a href="reward-inner.html">Раздел бонусов</a></li>
-                <li><a href="feed.html">События</a></li>
-                <li><a href="feed-inner.html">Детальная события</a></li>
-                <li><a href="rating.html">Рейтинг</a></li>
-                <li><a href="articles-list.html">Список статей</a></li>
-                <li><a href="articles-detail.html">Детальная статьи</a></li>
-                <li><a href="complaints_list.html">Все жалобы</a></li>
-                <li><a href="complaints_section.html">Все жалобы, конкретный раздел </a></li>
-                <li><a href="complaints_detail.html">Жалоба</a></li>
-                <li><a href="complaints_detail_comments.html">Жалоба отзывы</a></li>
-                <li><a href="news-list.html">Список новостей</a></li>
-                <li><a href="news-list_without_sidebar.html">Список новостей, вариант без сайдбара</a></li>
-              </ul>
-              <h3>Матч центр</h3>
-              <ul>
-                <li><a href="match.html">Матч-центр</a></li>
-                <li><a href="match-before.html">Начало матча</a></li>
-                <li><a href="match-after.html">Конец матча</a></li>
-                <li><a href="match-ongoing.html">Идущий матч</a></li>
-                <li><a href="match-player.html">Страница игрока</a></li>
-                <li><a href="match-team.html">Спортивные команды</a></li>
-                <li><a href="match-team.html">Таблица турнира</a></li>
-                <li><a href="match-tournament-main.html">Главная страница турнира</a></li>
-                <li><a href="match-int-tournament-main.html">Главная страница турнира, международный</a></li>
-              </ul>
-              <h3>Казино</h3>
-              <ul>
-                <li><a href="casino-main.html">Гавная казино</a></li>
-                <li><a href="casino-rating.html">Список казино</a></li>
-                <li><a href="casino-overview.html">Обзор казино</a></li>
-                <li><a href="casino-games-list.html">Список игр казино</a></li>
-                <li><a href="casino-games-detail.html">Детальная игры казино</a></li>
-                <li><a href="casino-tournaments-list.html">Список турниров казино</a></li>
-                <li><a href="casino-tournaments-detail.html">Детальная турнира казино</a></li>
-                <li><a href="casino-provider-list.html">Список провайдеров казино</a></li>
-                <li><a href="casino-provider-detail.html">Детальная провайдера казино</a></li>
-                <li><a href="casino-bonus-list.html">Список бонусов казино</a></li>
-                <li><a href="casino-bonus-type.html">Тип бонуса казино</a></li>
-                <li><a href="casino-bonus-detail.html">Детальная бонуса казино</a></li>
-                <li><a href="casino-news-list.html">Список новостей казино</a></li>
-                <li><a href="casino-news-detail.html">Детальная новости казино</a></li>
-                <li><a href="casino-articles-list.html">Список статей казино</a></li>
-                <li><a href="casino-articles-detail.html">Детальная статьи казино</a></li>
-                <li><a href="casino-404.html">Страница не найдена для казино</a></li>
-              </ul>
-              <h3>МФО</h3>
-              <ul>
-                <li><a href="mfo-home.html">Гавная МФО</a></li>
-                <li><a href="mfo-overview.html">Обзор МФО</a></li>
-                <li><a href="mfo-news-list.html">Список новостей</a></li>
-                <li><a href="mfo-news-detail.html">Детальная страница новости</a></li>
-                <li><a href="mfo-articles-list.html">Список статей</a></li>
-                <li><a href="mfo-articles-detail.html">Детальная страница статьи</a></li>
-                <li><a href="mfo-loan.html">Займы и предложения</a></li>
-                <li><a href="mfo-loan-detail.html">Детальная займа</a></li>
-                <li><a href="mfo-rating.html">Рейтинг онлайн МФО</a></li>
-                <li><a href="mfo-help-list.html">Помощь заемщику</a></li>
-                <li><a href="mfo-help-detail.html">Детальная страница помощь заемщику</a></li>
-                <li><a href="mfo-author-list.html">Все авторы</a></li>
-                <li><a href="mfo-author-detail.html">Детальная страница автора</a></li>
-              </ul>
+            <div class="match-sport-team">
+              <h1 class="match-sport-team-title">Бавария</h1>
+              <nav class="match-sport-team-navigation">
+                <div class="item">
+                  <div class="select">
+                    <select class="js-styled-select">
+                      <option value="#">Бундеслига 19/20</option>
+                      <option value="#">Бундеслига 18/19</option>
+                      <option value="#">Бундеслига 17/18</option>
+                      <option value="#">Бундеслига 16/17</option>
+                      <option value="#">Бундеслига 15/16</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="select">
+                    <select class="js-styled-select">
+                      <option value="#">Бавария</option>
+                      <option value="#">Бавария</option>
+                      <option value="#">Бавария</option>
+                      <option value="#">Бавария</option>
+                      <option value="#">Бавария</option>
+                      <option value="#">Бавария</option>
+                      <option value="#">Бавария</option>
+                    </select>
+                  </div>
+                </div>
+              </nav>
+              <div class="match-navigation">
+                <div class="match-navigation-scroller"><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-overview">
+                        <use xlink:href="#match-navigation-overview"></use>
+                      </svg></span><span>Обзор</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-versus">
+                        <use xlink:href="#match-navigation-versus"></use>
+                      </svg></span><span>Очные</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-cal">
+                        <use xlink:href="#match-navigation-cal"></use>
+                      </svg></span><span>Календарь</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-table">
+                        <use xlink:href="#match-navigation-table"></use>
+                      </svg></span><span>Таблица</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-team">
+                        <use xlink:href="#match-navigation-team"></use>
+                      </svg></span><span>Команды</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-archive">
+                        <use xlink:href="#match-navigation-archive"></use>
+                      </svg></span><span>Архив</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-referee">
+                        <use xlink:href="#match-navigation-referee"></use>
+                      </svg></span><span>Судьи</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-stadium">
+                        <use xlink:href="#match-navigation-stadium"></use>
+                      </svg></span><span>Стадионы</span></a>
+                </div>
+              </div>
+              <div class="match-sport-team-info">
+                <div class="row">
+                  <table class="match-sport-team-table">
+                    <tr>
+                      <td class="caption">Тренер:</td>
+                      <td><strong>Flick, Hans-Dieter</strong><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/></td>
+                    </tr>
+                    <tr>
+                      <td class="caption">Место:</td>
+                      <td><strong class="is-highlight">Альянц Арена, Мюнхен</strong></td>
+                    </tr>
+                  </table>
+                  <div class="match-sport-team-kits">
+                    <div class="kit home">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 64 65">
+                        <path d="M63.8 25.8l-9-14.6v-.1c-2.1-3.3-5.4-5.6-9.1-6.6l-4.5-1.2-.7-2.8c0-.1-.1-.3-.2-.4-.2-.1-.4-.1-.5-.1H24.1c-.1 0-.3 0-.4.1-.1.1-.2.2-.2.4l-.7 2.8-4.5 1.2c-3.8 1-7 3.3-9.1 6.6l-9 14.7c-.2.2-.2.3-.2.5s.1.3.2.4l10.1 9.5c.1.1.1.1.2.1h.3c.1 0 .2 0 .3-.1.1 0 .1-.1.2-.2l1.9-2.3v29.6c0 .2.1.3.2.5.1.1.3.2.5.2H50c.2 0 .3-.1.5-.2.1-.1.2-.3.2-.5V33.8s.1 0 .1.1l1.8 2.2.2.2c.1 0 .2.1.3.1h.3c.1 0 .2-.1.2-.1l10.2-9.4c.1-.1.2-.2.2-.4 0-.4-.1-.6-.2-.7zM24.6 1.3h14.8l.4 1.6H24.2l.4-1.6zM10.7 34.7L1.4 26l.9-1.4 9.5 8.8-1.1 1.3zm1.9-2.3L3 23.5l7.1-11.6v-.1c.3-.5.7-1 1.1-1.4l1.9 21.4-.5.6zm36.7-.5v30.8H14.4V32c0-.1 0-.2-.1-.3l-2-22.6c1.7-1.6 3.8-2.7 6.1-3.3l5.3-1.4H40l5.3 1.4c2.2.6 4.3 1.7 6 3.3l-2 22.8zm1.4-.2l1.9-21.4c.4.5.8 1 1.2 1.6l7.1 11.5-9.6 8.9-.6-.6zm2.5 3l-1.1-1.4 9.5-8.8.9 1.5-9.3 8.7z"></path>
+                        <path class="second-color" d="M62.5 26l-9.3 8.6-1.1-1.3 9.5-8.8.9 1.5z" fill="#000"></path>
+                        <path class="main-color" d="M60.8 23.4l-9.6 8.9-.5-.6 1.9-21.4c.4.5.8 1 1.2 1.6l7 11.5z" fill="#fff"></path>
+                        <path class="second-color" d="M39.7 2.9H24.2l.4-1.6h14.8l.3 1.6zM11.8 33.4l-1.1 1.3L1.4 26l.9-1.4 9.5 8.8z" fill="#000"></path>
+                        <path class="main-color" d="M13.1 31.8l-.5.6L3 23.5l7.1-11.6v-.1c.3-.5.7-1 1.1-1.4l1.9 21.4zM49.3 31.9v30.8H14.4V32c0-.1 0-.2-.1-.3l-2-22.6c1.7-1.6 3.8-2.7 6.1-3.3l5.3-1.4H40l5.3 1.4c2.2.6 4.3 1.7 6 3.3l-2 22.8z" fill="#fff"></path>
+                      </svg>
+                    </div>
+                    <div class="kit away">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 64 65">
+                        <path d="M63.8 25.8l-9-14.6v-.1c-2.1-3.3-5.4-5.6-9.1-6.6l-4.5-1.2-.7-2.8c0-.1-.1-.3-.2-.4-.2-.1-.4-.1-.5-.1H24.1c-.1 0-.3 0-.4.1-.1.1-.2.2-.2.4l-.7 2.8-4.5 1.2c-3.8 1-7 3.3-9.1 6.6l-9 14.7c-.2.2-.2.3-.2.5s.1.3.2.4l10.1 9.5c.1.1.1.1.2.1h.3c.1 0 .2 0 .3-.1.1 0 .1-.1.2-.2l1.9-2.3v29.6c0 .2.1.3.2.5.1.1.3.2.5.2H50c.2 0 .3-.1.5-.2.1-.1.2-.3.2-.5V33.8s.1 0 .1.1l1.8 2.2.2.2c.1 0 .2.1.3.1h.3c.1 0 .2-.1.2-.1l10.2-9.4c.1-.1.2-.2.2-.4 0-.4-.1-.6-.2-.7zM24.6 1.3h14.8l.4 1.6H24.2l.4-1.6zM10.7 34.7L1.4 26l.9-1.4 9.5 8.8-1.1 1.3zm1.9-2.3L3 23.5l7.1-11.6v-.1c.3-.5.7-1 1.1-1.4l1.9 21.4-.5.6zm36.7-.5v30.8H14.4V32c0-.1 0-.2-.1-.3l-2-22.6c1.7-1.6 3.8-2.7 6.1-3.3l5.3-1.4H40l5.3 1.4c2.2.6 4.3 1.7 6 3.3l-2 22.8zm1.4-.2l1.9-21.4c.4.5.8 1 1.2 1.6l7.1 11.5-9.6 8.9-.6-.6zm2.5 3l-1.1-1.4 9.5-8.8.9 1.5-9.3 8.7z"></path>
+                        <path class="second-color" d="M62.5 26l-9.3 8.6-1.1-1.3 9.5-8.8.9 1.5z" fill="#000"></path>
+                        <path class="main-color" d="M60.8 23.4l-9.6 8.9-.5-.6 1.9-21.4c.4.5.8 1 1.2 1.6l7 11.5z" fill="#c00"></path>
+                        <path class="second-color" d="M39.7 2.9H24.2l.4-1.6h14.8l.3 1.6zM11.8 33.4l-1.1 1.3L1.4 26l.9-1.4 9.5 8.8z" fill="#000"></path>
+                        <path class="main-color" d="M13.1 31.8l-.5.6L3 23.5l7.1-11.6v-.1c.3-.5.7-1 1.1-1.4l1.9 21.4zM49.3 31.9v30.8H14.4V32c0-.1 0-.2-.1-.3l-2-22.6c1.7-1.6 3.8-2.7 6.1-3.3l5.3-1.4H40l5.3 1.4c2.2.6 4.3 1.7 6 3.3l-2 22.8z" fill="#c00"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-end">
+                  <div class="match-recent">
+                    <div class="match-recent-title">Недавнее выступление</div>
+                    <div class="match-recent-body">
+                      <div class="item is-highlight is-highlight_background">В</div>
+                      <div class="item is-negative is-negative_background">П</div>
+                      <div class="item">Н</div>
+                      <div class="item is-negative is-negative_background">П</div>
+                      <div class="item is-highlight is-highlight_background">В</div>
+                      <div class="item">Н</div>
+                    </div>
+                  </div>
+                  <div class="match-sport-team-success">
+                    <div class="percent js-percent" data-total-games="100" data-wins="20">
+                      <div class="inner js-inner"></div>
+                    </div>
+                    <div class="caption">
+                      <div class="value js-value"></div><span class="desctop">Результативность</span><span class="mobile">Результ-ть</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Бундеслига 19/20</div>
+                <div class="match-statistics-block">
+                  <div class="match-statistics-tab js-tabMain">
+                    <div class="match-statistics-tabList js-tabMain-list">
+                      <div class="match-statistics-tabItem js-tabMain-item is-select">Итого</div>
+                      <div class="match-statistics-tabItem js-tabMain-item">Дома</div>
+                      <div class="match-statistics-tabItem js-tabMain-item">В гостях</div>
+                    </div>
+                    <div class="match-statistics-tabWrap">
+                      <div class="match-statistics-tabBlock js-tabMain-block is-open">
+                        <div class="match-sport-team-row is-head">
+                          <div class="column is-left pos">Поз.</div>
+                          <div class="column"></div>
+                          <div class="column is-left team">Команда</div>
+                          <div class="column">И</div>
+                          <div class="column is-highlight">В</div>
+                          <div class="column is-low-accent">Н</div>
+                          <div class="column is-danger">П</div>
+                          <div class="column hide-on-mobile">З</div>
+                          <div class="column hide-on-mobile">П</div>
+                          <div class="column points">Разн.</div>
+                          <div class="column points">Очки</div>
+                        </div>
+                        <div>
+                          <div class="match-sport-team-row">
+                            <div class="column is-left pos">1.</div>
+                            <div class="column">
+                              <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                              </svg>
+                            </div>
+                            <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Челси</strong></div>
+                            <div class="column">2</div>
+                            <div class="column is-highlight">2</div>
+                            <div class="column is-low-accent">0</div>
+                            <div class="column is-danger">0</div>
+                            <div class="column hide-on-mobile">100</div>
+                            <div class="column hide-on-mobile">32</div>
+                            <div class="column points">68</div>
+                            <div class="column points">82</div>
+                          </div>
+                          <div class="match-sport-team-row">
+                            <div class="column is-left pos">2.</div>
+                            <div class="column">
+                              <svg width="12" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="6" cy="6" r="5" stroke="#000"></circle>
+                              </svg>
+                            </div>
+                            <div class="column is-left team"><img src="img/team/team_2.png" alt="Team 2"/><strong>ПСЖ</strong></div>
+                            <div class="column">2</div>
+                            <div class="column is-highlight">2</div>
+                            <div class="column is-low-accent">0</div>
+                            <div class="column is-danger">0</div>
+                            <div class="column hide-on-mobile">100</div>
+                            <div class="column hide-on-mobile">32</div>
+                            <div class="column points">68</div>
+                            <div class="column points">82</div>
+                          </div>
+                          <div class="match-sport-team-row">
+                            <div class="column is-left pos">3.</div>
+                            <div class="column">
+                              <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.5 4.5l-4 4-4-4M4.5 8V0" stroke="#000"></path>
+                              </svg>
+                            </div>
+                            <div class="column is-left team"><img src="img/team/team_3.png" alt="Team 3"/><strong>Барселона</strong></div>
+                            <div class="column">2</div>
+                            <div class="column is-highlight">2</div>
+                            <div class="column is-low-accent">0</div>
+                            <div class="column is-danger">0</div>
+                            <div class="column hide-on-mobile">100</div>
+                            <div class="column hide-on-mobile">32</div>
+                            <div class="column points">68</div>
+                            <div class="column points">82</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="match-statistics-tabBlock js-tabMain-block">
+                        <div class="match-sport-team-row is-head">
+                          <div class="column is-left pos">Поз.</div>
+                          <div class="column"></div>
+                          <div class="column is-left team">Команда</div>
+                          <div class="column">И</div>
+                          <div class="column">В</div>
+                          <div class="column">Н</div>
+                          <div class="column">П</div>
+                          <div class="column hide-on-mobile">З</div>
+                          <div class="column hide-on-mobile">П</div>
+                          <div class="column points">Разн.</div>
+                          <div class="column points">Очки</div>
+                        </div>
+                        <div>
+                          <div class="match-sport-team-row">
+                            <div class="column is-left pos">1.</div>
+                            <div class="column">
+                              <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                              </svg>
+                            </div>
+                            <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Челси</strong></div>
+                            <div class="column">2</div>
+                            <div class="column is-highlight">2</div>
+                            <div class="column is-low-accent">0</div>
+                            <div class="column is-danger">0</div>
+                            <div class="column hide-on-mobile">100</div>
+                            <div class="column hide-on-mobile">32</div>
+                            <div class="column points">68</div>
+                            <div class="column points">82</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="match-statistics-tabBlock js-tabMain-block">
+                        <div class="match-sport-team-row is-head">
+                          <div class="column is-left pos">Поз.</div>
+                          <div class="column"></div>
+                          <div class="column is-left team">Команда</div>
+                          <div class="column">И</div>
+                          <div class="column">В</div>
+                          <div class="column">Н</div>
+                          <div class="column">П</div>
+                          <div class="column hide-on-mobile">З</div>
+                          <div class="column hide-on-mobile">П</div>
+                          <div class="column points">Разн.</div>
+                          <div class="column points">Очки</div>
+                        </div>
+                        <div>
+                          <div class="match-sport-team-row">
+                            <div class="column is-left pos">1.</div>
+                            <div class="column">
+                              <svg width="9" height="10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M.5 5l4-4 4 4M4.5 1.5v8" stroke="#000"></path>
+                              </svg>
+                            </div>
+                            <div class="column is-left team"><img src="img/team/team_1.png" alt="Team 1"/><strong>Челси</strong></div>
+                            <div class="column">2</div>
+                            <div class="column is-highlight">2</div>
+                            <div class="column is-low-accent">0</div>
+                            <div class="column is-danger">0</div>
+                            <div class="column hide-on-mobile">100</div>
+                            <div class="column hide-on-mobile">32</div>
+                            <div class="column points">68</div>
+                            <div class="column points">82</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Последние матчи</div>
+                <div class="match-statistics-block">
+                  <div class="match-sport-team-row is-head">
+                    <div class="column tournament is-left">Турнир</div>
+                    <div class="column long-match">Матч</div>
+                  </div>
+                  <div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">4:<span class="is-lose">1</span></div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">БУН<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body"><span class="is-lose">1</span>:4</div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name is-highlight"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">4:<span class="is-lose">1</span></div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">БУН<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body"><span class="is-lose">1</span>:4</div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name is-highlight"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">4:<span class="is-lose">1</span></div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">БУН<br/>34</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body"><span class="is-lose">1</span>:4</div>
+                            <div class="additional">(Р)</div>
+                          </div><span class="team-name is-highlight"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="match-sport-team-more"><a href="#">Показать еще
+                      <svg>
+                        <use xlink:href="#filterArrow"></use>
+                      </svg></a></div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Следующие матчи</div>
+                <div class="match-statistics-block is-incoming">
+                  <div class="match-sport-team-row is-head">
+                    <div class="column tournament is-left">Турнир</div>
+                    <div class="column long-match">Матч</div>
+                  </div>
+                  <div>
+                    <div class="match-sport-team-row is-match-row">
+                      <div class="column tournament">ЛЧ<br/>1/8</div>
+                      <div class="column long-match">
+                        <div class="date">27.06.2020</div>
+                        <div class="match-sport-team-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Вольфсбург</span><span class="hide-on-desctop">ВОЛ</span></span>
+                          <div class="value">
+                            <div class="body">- : -</div>
+                          </div><span class="team-name"><span class="hide-on-mobile">Бавария</span><span class="hide-on-desctop">БАВ</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Статистика игрока</div>
+                <div class="match-statistics-block">
+                  <div class="match-statistics-tab js-tabMain">
+                    <div class="match-statistics-tabList js-tabMain-list">
+                      <div class="match-statistics-tabItem js-tabMain-item is-select">Голы</div>
+                      <div class="match-statistics-tabItem js-tabMain-item">Передачи</div>
+                      <div class="match-statistics-tabItem js-tabMain-item">Карточки</div>
+                      <div class="match-statistics-tabItem js-tabMain-item">Травмы</div>
+                    </div>
+                    <div class="match-statistics-tabWrap">
+                      <div class="match-statistics-tabBlock js-tabMain-block is-open">
+                        <div class="match-sport-team-row is-head">
+                          <div class="column is-left player-pos">Поз.</div>
+                          <div class="column is-left name">Игрок</div>
+                          <div class="column"><span class="hide-on-mobile">Игры</span><span class="hide-on-desctop">И</span></div>
+                          <div class="column"><span class="hide-on-mobile">Голы</span><span class="hide-on-desctop">Г</span></div>
+                          <div class="column"><span class="hide-on-mobile">Пенальти</span><span class="hide-on-desctop">П</span></div>
+                          <div class="column">Г/М</div>
+                        </div>
+                        <div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Хавертц, Кай</span></div>
+                            <div class="column">31</div>
+                            <div class="column">31</div>
+                            <div class="column">5</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Баумгартлингер, Юлиан</span></div>
+                            <div class="column">2</div>
+                            <div class="column">2</div>
+                            <div class="column">-</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Бендер, Свен</span></div>
+                            <div class="column">9</div>
+                            <div class="column">9</div>
+                            <div class="column">-</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Хавертц, Кай</span></div>
+                            <div class="column">31</div>
+                            <div class="column">31</div>
+                            <div class="column">5</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Баумгартлингер, Юлиан</span></div>
+                            <div class="column">2</div>
+                            <div class="column">2</div>
+                            <div class="column">-</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Бендер, Свен</span></div>
+                            <div class="column">9</div>
+                            <div class="column">9</div>
+                            <div class="column">-</div>
+                            <div class="column">1.10</div>
+                          </div>
+                        </div>
+                        <div class="match-sport-team-more"><a href="#">Показать еще
+                            <svg>
+                              <use xlink:href="#filterArrow"></use>
+                            </svg></a></div>
+                      </div>
+                      <div class="match-statistics-tabBlock js-tabMain-block">
+                        <div class="match-sport-team-row is-head">
+                          <div class="column is-left player-pos">Поз.</div>
+                          <div class="column is-left name">Игрок</div>
+                          <div class="column"><span class="hide-on-mobile">Игры</span><span class="hide-on-desctop">И</span></div>
+                          <div class="column"><span class="hide-on-mobile">Передачи</span><span class="hide-on-desctop">П</span></div>
+                          <div class="column">А/М</div>
+                        </div>
+                        <div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Хавертц, Кай</span></div>
+                            <div class="column">31</div>
+                            <div class="column">31</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Баумгартлингер, Юлиан</span></div>
+                            <div class="column">2</div>
+                            <div class="column">2</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Бендер, Свен</span></div>
+                            <div class="column">9</div>
+                            <div class="column">9</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Хавертц, Кай</span></div>
+                            <div class="column">31</div>
+                            <div class="column">31</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Баумгартлингер, Юлиан</span></div>
+                            <div class="column">2</div>
+                            <div class="column">2</div>
+                            <div class="column">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Бендер, Свен</span></div>
+                            <div class="column">9</div>
+                            <div class="column">9</div>
+                            <div class="column">1.10</div>
+                          </div>
+                        </div>
+                        <div class="match-sport-team-more"><a href="#">Показать еще
+                            <svg>
+                              <use xlink:href="#filterArrow"></use>
+                            </svg></a></div>
+                      </div>
+                      <div class="match-statistics-tabBlock js-tabMain-block">
+                        <div class="match-sport-team-row is-head">
+                          <div class="column is-left player-pos">Поз.</div>
+                          <div class="column is-left name">Игрок</div>
+                          <div class="column"><span class="hide-on-mobile">Игры</span><span class="hide-on-desctop">И</span></div>
+                          <div class="column">
+                            <svg class="card">
+                              <use xlink:href="#card"></use>
+                            </svg>
+                          </div>
+                          <div class="column">
+                            <svg class="card">
+                              <use xlink:href="#card"></use>
+                            </svg>
+                            <svg class="card is-red">
+                              <use xlink:href="#card"></use>
+                            </svg>
+                          </div>
+                          <div class="column">
+                            <svg class="card is-red">
+                              <use xlink:href="#card"></use>
+                            </svg>
+                          </div>
+                          <div class="column card-per-min"><span class="hide-on-mobile">Минуты/Карточки</span><span class="hide-on-desctop">М/К</span></div>
+                        </div>
+                        <div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Хавертц, Кай</span></div>
+                            <div class="column">31</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column card-per-min">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Баумгартлингер, Юлиан</span></div>
+                            <div class="column">2</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column card-per-min">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Бендер, Свен</span></div>
+                            <div class="column">2</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column card-per-min">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Хавертц, Кай</span></div>
+                            <div class="column">2</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column card-per-min">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Баумгартлингер, Юлиан</span></div>
+                            <div class="column">2</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column card-per-min">1.10</div>
+                          </div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Бендер, Свен</span></div>
+                            <div class="column">2</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column">1</div>
+                            <div class="column card-per-min">1.10</div>
+                          </div>
+                        </div>
+                        <div class="match-sport-team-more"><a href="#">Показать еще
+                            <svg>
+                              <use xlink:href="#filterArrow"></use>
+                            </svg></a></div>
+                      </div>
+                      <div class="match-statistics-tabBlock js-tabMain-block">
+                        <div class="match-sport-team-row is-head">
+                          <div class="column is-left player-pos">Поз.</div>
+                          <div class="column is-left name">Игрок</div>
+                          <div class="column">
+                            <div class="hide-on-mobile">Отсутствующие</div>
+                            <div class="hide-on-mobile">О</div>
+                          </div>
+                          <div class="column">
+                            <div class="hide-on-mobile">Статус</div>
+                            <div class="hide-on-mobile">С</div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="match-sport-team-row is-stat">
+                            <div class="column is-left player-pos">НАП</div>
+                            <div class="column is-left name"><img class="flag match-player-title-flag" src="/img/flag/russia.svg" alt="#"/><span>Хавертц, Кай</span></div>
+                            <div class="column">Да</div>
+                            <div class="column">Травмирован</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="match-graph" data-team-info="{&quot;name&quot;:&quot;Бавария&quot;,&quot;data&quot;:[1,1,1,1,5,6,7,8,1,10,1,2,3,14,1,15,1,1,3,1,1,1,2,1,4,1,4,1,1,5,1,3,1,3],&quot;color&quot;:&quot;#20A94A&quot;}" data-x-axis="{&quot;title&quot;:false,&quot;min&quot;:1,&quot;max&quot;:34}" data-y-axis="{&quot;title&quot;:false,&quot;reversed&quot;:true,&quot;max&quot;:18,&quot;min&quot;:1,&quot;tickAmount&quot;:18,&quot;plotBands&quot;:[{&quot;from&quot;:1,&quot;to&quot;:2},{&quot;from&quot;:3,&quot;to&quot;:4},{&quot;from&quot;:5,&quot;to&quot;:6},{&quot;from&quot;:7,&quot;to&quot;:8},{&quot;from&quot;:9,&quot;to&quot;:10},{&quot;from&quot;:11,&quot;to&quot;:12},{&quot;from&quot;:13,&quot;to&quot;:14},{&quot;from&quot;:15,&quot;to&quot;:16},{&quot;from&quot;:17,&quot;to&quot;:18}],&quot;plotLines&quot;:[{&quot;className&quot;:&quot;match-graph-is-out js-start&quot;,&quot;width&quot;:1,&quot;value&quot;:16,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-out js-end&quot;,&quot;width&quot;:1,&quot;value&quot;:18,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-play-off-out js-start&quot;,&quot;width&quot;:1,&quot;value&quot;:14,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-play-off-out js-end&quot;,&quot;width&quot;:1,&quot;value&quot;:16,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-champions-league js-start&quot;,&quot;width&quot;:1,&quot;value&quot;:1,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-champions-league js-end&quot;,&quot;width&quot;:1,&quot;value&quot;:4,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-europa-league js-start&quot;,&quot;width&quot;:1,&quot;value&quot;:4,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-europa-league js-end&quot;,&quot;width&quot;:1,&quot;value&quot;:6,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-europa-league-qualifying js-start&quot;,&quot;width&quot;:1,&quot;value&quot;:6,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3},{&quot;className&quot;:&quot;match-graph-is-europa-league-qualifying js-end&quot;,&quot;width&quot;:1,&quot;value&quot;:8,&quot;dashStyle&quot;:&quot;Dash&quot;,&quot;zIndex&quot;:3}]}">
+                <div class="match-graph-title">Позиция команды</div>
+                <div class="js-graph match-graph-body"></div>
+                <div class="match-graph-tournament-legend">
+                  <div class="item is-champions-league">Лига Чемпионов (1-4)</div>
+                  <div class="item is-europa-league">УЕФА Лига Европы (5-6)</div>
+                  <div class="item is-europa-league-qualifying">УЕФА Лига Европы. Квалификация (7)</div>
+                  <div class="item is-play-off-out">Плей-офф на вылет (16)</div>
+                  <div class="item is-out">Вылет (17-18)</div>
+                </div>
+              </div>
+              <div class="match-statistics">
+                <div class="match-statistics-title">Текущий состав</div>
+                <div class="match-statistics-block">
+                  <div class="match-sport-team-row is-head is-stat">
+                    <div class="column is-left comp"><span class="hide-on-mobile">Состав</span><span class="hide-on-desctop">Игрок</span></div>
+                    <div class="column birthday hide-on-mobile">Дата рождения</div>
+                    <div class="column hide-on-mobile">Выст.</div>
+                    <div class="column">Мин.</div>
+                    <div class="column"><span class="hide-on-mobile">Голы</span><span class="hide-on-desctop">Г</span></div>
+                    <div class="column"><span class="hide-on-mobile">Передачи</span><span class="hide-on-desctop">П</span></div>
+                    <div class="column hide-on-mobile">
+                      <svg class="card">
+                        <use xlink:href="#card"></use>
+                      </svg>
+                    </div>
+                    <div class="column hide-on-mobile">
+                      <svg class="card is-red">
+                        <use xlink:href="#card"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ГК</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Баумгартлингер, Юлиан</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ПЗЩ</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Баумгартлингер, Юлиан</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ЗАЩ</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Бендер, Свен</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">НАП</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Ян Веннегоор оф Хесселинк</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ГК</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Баумгартлингер, Юлиан</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ПЗЩ</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Баумгартлингер, Юлиан</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ЗАЩ</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Бендер, Свен</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">НАП</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Ян Веннегоор оф Хесселинк</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ГК</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Баумгартлингер, Юлиан</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ПЗЩ</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Баумгартлингер, Юлиан</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">ЗАЩ</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Бендер, Свен</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                    <div class="match-sport-team-row is-stat">
+                      <div class="column is-left comp">
+                        <div class="match-sport-team-player-detail">
+                          <div class="position">НАП</div>
+                          <div class="name">
+                            <div class="number"><span>34</span><img src="/img/flag/russia.svg" alt="#"/></div><span>Ян Веннегоор оф Хесселинк</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column birthday hide-on-mobile">21.08.88</div>
+                      <div class="column">1</div>
+                      <div class="column">566</div>
+                      <div class="column">1</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                      <div class="column hide-on-mobile">-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="formation-title">Традиционный состав (текущие матчи)</div>
+              <div class="match-sport-team-formation">
+                <div class="match-sport-team-formation-list hide-on-desctop">
+                  <div class="match-sport-team-formation-stat">
+                    <div class="item">
+                      <div class="value">30</div>Численность команды
+                    </div>
+                    <div class="item">
+                      <div class="value">25</div>Средний<br/>возраст
+                    </div>
+                  </div>
+                </div>
+                <div class="formation">
+                  <div class="formation-field formation-field_vertical">
+                    <div class="formation-field-inner">
+                      <div class="formation-sub is-full">
+                        <div class="formation-row"><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">1</span><span class="name" title="Тер Стеген">Тер Стеген</span></a>
+                        </div>
+                        <div class="formation-row"><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">18</span><span class="name" title="Альба">Альба</span></a><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">15</span><span class="name" title="Лангле">Лангле</span></a><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">3</span><span class="name" title="Пике">Пике</span></a><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">2</span><span class="name" title="Самеду">Самеду</span></a>
+                        </div>
+                        <div class="formation-row"><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">22</span><span class="name" title="Видаль">Видаль</span></a><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">21</span><span class="name" title="Де Йонг">Де Йонг</span></a><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">5</span><span class="name" title="Бускетс">Бускетс</span></a><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">20</span><span class="name" title="Серджи Роберто">Серджи Роберто</span></a>
+                        </div>
+                        <div class="formation-row"><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">9</span><span class="name" title="Суарес">Суарес</span></a><a class="player" href="#" target="_blank" rel="nofollow"><span class="number">10</span><span class="name" title="Месси">Месси</span></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="match-sport-team-formation-list">
+                  <div class="match-sport-team-formation-stat hide-on-mobile">
+                    <div class="item">
+                      <div class="value">30</div>Численность команды
+                    </div>
+                    <div class="item">
+                      <div class="value">25</div>Средний<br/>возраст
+                    </div>
+                  </div><a class="line" href="#"><span class="pos">ГК</span><span class="number">1</span><span class="name">Храдеки, Лукас</span></a><a class="line" href="#"><span class="pos">ЗАЩ</span><span class="number">2</span><span class="name">Бендер, Ларс</span></a><a class="line" href="#"><span class="pos">ЗАЩ</span><span class="number">6</span><span class="name">Бендер, Свен</span></a><a class="line" href="#"><span class="pos">ЗАЩ</span><span class="number">30</span><span class="name">Та, Джонатан</span></a><a class="line" href="#"><span class="pos">ЗАЩ</span><span class="number">19</span><span class="name">Венделл</span></a><a class="line" href="#"><span class="pos">ПЗЩ</span><span class="number">7</span><span class="name">Ян Веннегоор оф Хесселинк</span></a><a class="line" href="#"><span class="pos">ПЗЩ</span><span class="number">18</span><span class="name">Арангис, Чарлес</span></a><a class="line" href="#"><span class="pos">ПЗЩ</span><span class="number">36</span><span class="name">Демирбай, Керем</span></a><a class="line" href="#"><span class="pos">ПЗЩ</span><span class="number">13</span><span class="name">Амири, Надим</span></a><a class="line" href="#"><span class="pos">ПЗЩ</span><span class="number">34</span><span class="name">Фолланд, Кевин</span></a><a class="line" href="#"><span class="pos">НАП</span><span class="number">13</span><span class="name">Хавертц, Кай</span></a>
+                </div>
+              </div>
+              <div class="match-qualification">
+                <div class="match-qualification-title">Квалификация</div>
+                <div class="match-qualification-body">
+                  <div class="swiper-button-next">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-button-prev">
+                    <svg>
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </div>
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="match-qualification-subtitle">Квалификационный раунд 1</div>
+                        <div class="match-qualification-item">
+                          <div class="match-qualification-closed">
+                            <div class="match-qualification-team">
+                              <div class="name">Айнтрахт Франкфурт</div>
+                              <div class="value">1</div>
+                              <div class="value">1</div>
+                              <div class="value is-total">2</div>
+                            </div>
+                            <div class="match-qualification-team is-win">
+                              <div class="name">Celtic</div>
+                              <div class="value">3</div>
+                              <div class="value">2</div>
+                              <div class="value is-total">5</div>
+                            </div>
+                            <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                                <svg>
+                                  <use xlink:href="#filterArrow"></use>
+                                </svg></span></div>
+                          </div>
+                          <div class="match-qualification-open">
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Айнтрахт Франкфурт</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">3</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Айнтрахт Франкфурт</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">2</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="match-qualification-subtitle">Квалификационный раунд 2</div>
+                        <div class="match-qualification-item">
+                          <div class="match-qualification-closed">
+                            <div class="match-qualification-team">
+                              <div class="name">Атлетико Мадрид</div>
+                              <div class="value">1</div>
+                              <div class="value">1</div>
+                              <div class="value is-total">2</div>
+                            </div>
+                            <div class="match-qualification-team is-win">
+                              <div class="name">Celtic</div>
+                              <div class="value">3</div>
+                              <div class="value">2</div>
+                              <div class="value is-total">5</div>
+                            </div>
+                            <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                                <svg>
+                                  <use xlink:href="#filterArrow"></use>
+                                </svg></span></div>
+                          </div>
+                          <div class="match-qualification-open">
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Атлетико Мадрид</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">3</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Атлетико Мадрид</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">2</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="match-qualification-subtitle">Квалификационный раунд 3</div>
+                        <div class="match-qualification-item">
+                          <div class="match-qualification-closed">
+                            <div class="match-qualification-team is-win">
+                              <div class="name">Боруссия М</div>
+                              <div class="value">2</div>
+                              <div class="value">1</div>
+                              <div class="value is-total">3</div>
+                            </div>
+                            <div class="match-qualification-team">
+                              <div class="name">Celtic</div>
+                              <div class="value">0</div>
+                              <div class="value">0</div>
+                              <div class="value is-total">0</div>
+                            </div>
+                            <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                                <svg>
+                                  <use xlink:href="#filterArrow"></use>
+                                </svg></span></div>
+                          </div>
+                          <div class="match-qualification-open">
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Боруссия М</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">2</div>
+                              </div>
+                              <div class="match-qualification-team">
+                                <div class="name">Celtic</div>
+                                <div class="value">0</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Боруссия М</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team">
+                                <div class="name">Celtic</div>
+                                <div class="value">0</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="match-qualification-subtitle">Квалификационный раунд 4</div>
+                        <div class="match-qualification-item">
+                          <div class="match-qualification-closed">
+                            <div class="match-qualification-team">
+                              <div class="name">Айнтрахт Франкфурт</div>
+                              <div class="value">1</div>
+                              <div class="value">1</div>
+                              <div class="value is-total">2</div>
+                            </div>
+                            <div class="match-qualification-team is-win">
+                              <div class="name">Celtic</div>
+                              <div class="value">3</div>
+                              <div class="value">2</div>
+                              <div class="value is-total">5</div>
+                            </div>
+                            <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                                <svg>
+                                  <use xlink:href="#filterArrow"></use>
+                                </svg></span></div>
+                          </div>
+                          <div class="match-qualification-open">
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Айнтрахт Франкфурт</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">3</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Айнтрахт Франкфурт</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">2</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="match-qualification-subtitle">Квалификационный раунд 5</div>
+                        <div class="match-qualification-item">
+                          <div class="match-qualification-closed">
+                            <div class="match-qualification-team">
+                              <div class="name">Айнтрахт Франкфурт</div>
+                              <div class="value">1</div>
+                              <div class="value">1</div>
+                              <div class="value is-total">2</div>
+                            </div>
+                            <div class="match-qualification-team is-win">
+                              <div class="name">Celtic</div>
+                              <div class="value">3</div>
+                              <div class="value">2</div>
+                              <div class="value is-total">5</div>
+                            </div>
+                            <div class="match-qualification-toggler"><span class="js-toggler toggler">Развернуть
+                                <svg>
+                                  <use xlink:href="#filterArrow"></use>
+                                </svg></span></div>
+                          </div>
+                          <div class="match-qualification-open">
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>18.02.20</span><span>Ванда Метрополитано</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Айнтрахт Франкфурт</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">3</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                            <div class="match-qualification-game">
+                              <div class="match-qualification-info"><span>23:00</span><span>11.03.20</span><span>Энфилд</span></div>
+                              <div class="match-qualification-team">
+                                <div class="name">Айнтрахт Франкфурт</div>
+                                <div class="modifier">ОТ</div>
+                                <div class="value">1</div>
+                              </div>
+                              <div class="match-qualification-team is-win">
+                                <div class="name">Celtic</div>
+                                <div class="value">2</div>
+                              </div>
+                              <div class="match-qualification-more"><a href="#">Детали матча</a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
