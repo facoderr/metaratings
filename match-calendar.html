@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Все страницы</title>
+    <title>Российская Премьер-Лига 20/21</title>
     <link rel="stylesheet" href="css/critical.css">
     <meta charset="utf-8">
     <meta name="theme-color" content="#601dc0">
@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/match-calendar.css">
   </head>
   <body>
     <div class="redirect hidden">
@@ -324,86 +325,894 @@
             <li class="workarea-breadcrumb-item"><a class="workarea-breadcrumb-link" href="/">Внутренняя страница</a></li>
           </ol>
         </div>
-        <div class="workarea-title">
-          <h1>Все страницы</h1>
-        </div>
         <div class="workarea-description">
         </div>
         <div class="workarea-row">
+          <div class="workarea-sidebar">
+            <div class="match-aside">
+              <section class="match-aside-section">
+                <header class="match-aside-header">Мои лиги</header>
+                <div class="match-aside-body"><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Премьер-лига</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Бундеслига</span></a><a class="match-aside-league is-active" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Примера</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Премьер-лига</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Евро</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Лига чемпионов</span></a><a class="match-aside-league" href="#"><img src="/img/flag/russia.svg" alt="#"/><span>Лига Европы</span></a></div>
+              </section>
+              <section class="match-aside-section">
+                <header class="match-aside-header">Страны</header>
+                <form class="match-aside-sorting js-sorting" action="#">
+                  <input type="text" placeholder="Введите страну"/>
+                  <svg>
+                    <use xlink:href="#search-o"></use>
+                  </svg>
+                </form>
+                <div class="match-aside-scroller js-scroller"><a class="item" href="#">Россия</a><a class="item" href="#">Англия</a><a class="item" href="#">Австрия</a><a class="item" href="#">Германия</a><a class="item" href="#">Франция</a><a class="item" href="#">Украина</a><a class="item" href="#">Италия</a><a class="item" href="#">Россия</a><a class="item" href="#">Англия</a><a class="item" href="#">Австрия</a><a class="item" href="#">Германия</a><a class="item" href="#">Франция</a><a class="item" href="#">Украина</a><a class="item" href="#">Италия</a>
+                </div>
+              </section>
+            </div>
+          </div>
           <div class="workarea-content">
-            <div class="workarea-text">
-              <h3>Спорт</h3>
-              <ul>
-                <li><a href="js/report.html">JS отчет</a></li>
-                <li><a href="home.html">Гавная</a></li>
-                <li><a href="forecast.html">Ставки и прогнозы</a></li>
-                <li><a href="forecast-inner.html">Прогнозы на футбол</a></li>
-                <li><a href="event.html">Турнирое событие</a></li>
-                <li><a href="bk-overview.html">Обзор букмекерской конторы</a></li>
-                <li><a href="sentiment.html">Упоминания в отзывах (Сентименты)</a></li>
-                <li><a href="overview-loto.html">Обзор лотереи</a></li>
-                <li><a href="reward.html">Акции и бонусы</a></li>
-                <li><a href="reward-inner.html">Раздел бонусов</a></li>
-                <li><a href="feed.html">События</a></li>
-                <li><a href="feed-inner.html">Детальная события</a></li>
-                <li><a href="rating.html">Рейтинг</a></li>
-                <li><a href="articles-list.html">Список статей</a></li>
-                <li><a href="articles-detail.html">Детальная статьи</a></li>
-                <li><a href="complaints_list.html">Все жалобы</a></li>
-                <li><a href="complaints_section.html">Все жалобы, конкретный раздел </a></li>
-                <li><a href="complaints_detail.html">Жалоба</a></li>
-                <li><a href="complaints_detail_comments.html">Жалоба отзывы</a></li>
-                <li><a href="news-list.html">Список новостей</a></li>
-                <li><a href="news-list_without_sidebar.html">Список новостей, вариант без сайдбара</a></li>
-              </ul>
-              <h3>Матч центр</h3>
-              <ul>
-                <li><a href="match.html">Матч-центр</a></li>
-                <li><a href="match-before.html">Начало матча</a></li>
-                <li><a href="match-after.html">Конец матча</a></li>
-                <li><a href="match-ongoing.html">Идущий матч</a></li>
-                <li><a href="match-player.html">Страница игрока</a></li>
-                <li><a href="match-team.html">Спортивные команды</a></li>
-                <li><a href="match-calendar.html">Календарь спортивных событий</a></li>
-                <li><a href="match-tournament-main.html">Главная страница турнира</a></li>
-                <li><a href="match-int-tournament-main.html">Главная страница турнира, международный</a></li>
-              </ul>
-              <h3>Казино</h3>
-              <ul>
-                <li><a href="casino-main.html">Гавная казино</a></li>
-                <li><a href="casino-rating.html">Список казино</a></li>
-                <li><a href="casino-overview.html">Обзор казино</a></li>
-                <li><a href="casino-games-list.html">Список игр казино</a></li>
-                <li><a href="casino-games-detail.html">Детальная игры казино</a></li>
-                <li><a href="casino-tournaments-list.html">Список турниров казино</a></li>
-                <li><a href="casino-tournaments-detail.html">Детальная турнира казино</a></li>
-                <li><a href="casino-provider-list.html">Список провайдеров казино</a></li>
-                <li><a href="casino-provider-detail.html">Детальная провайдера казино</a></li>
-                <li><a href="casino-bonus-list.html">Список бонусов казино</a></li>
-                <li><a href="casino-bonus-type.html">Тип бонуса казино</a></li>
-                <li><a href="casino-bonus-detail.html">Детальная бонуса казино</a></li>
-                <li><a href="casino-news-list.html">Список новостей казино</a></li>
-                <li><a href="casino-news-detail.html">Детальная новости казино</a></li>
-                <li><a href="casino-articles-list.html">Список статей казино</a></li>
-                <li><a href="casino-articles-detail.html">Детальная статьи казино</a></li>
-                <li><a href="casino-404.html">Страница не найдена для казино</a></li>
-              </ul>
-              <h3>МФО</h3>
-              <ul>
-                <li><a href="mfo-home.html">Гавная МФО</a></li>
-                <li><a href="mfo-overview.html">Обзор МФО</a></li>
-                <li><a href="mfo-news-list.html">Список новостей</a></li>
-                <li><a href="mfo-news-detail.html">Детальная страница новости</a></li>
-                <li><a href="mfo-articles-list.html">Список статей</a></li>
-                <li><a href="mfo-articles-detail.html">Детальная страница статьи</a></li>
-                <li><a href="mfo-loan.html">Займы и предложения</a></li>
-                <li><a href="mfo-loan-detail.html">Детальная займа</a></li>
-                <li><a href="mfo-rating.html">Рейтинг онлайн МФО</a></li>
-                <li><a href="mfo-help-list.html">Помощь заемщику</a></li>
-                <li><a href="mfo-help-detail.html">Детальная страница помощь заемщику</a></li>
-                <li><a href="mfo-author-list.html">Все авторы</a></li>
-                <li><a href="mfo-author-detail.html">Детальная страница автора</a></li>
-              </ul>
+            <div class="match-calendar">
+              <div class="match-calendar-title">Российская Премьер-Лига 20/21</div>
+              <div class="match-navigation">
+                <div class="match-navigation-scroller"><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-overview">
+                        <use xlink:href="#match-navigation-overview"></use>
+                      </svg></span><span>Обзор</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-versus">
+                        <use xlink:href="#match-navigation-versus"></use>
+                      </svg></span><span>Очные</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-cal">
+                        <use xlink:href="#match-navigation-cal"></use>
+                      </svg></span><span>Календарь</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-table">
+                        <use xlink:href="#match-navigation-table"></use>
+                      </svg></span><span>Таблица</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-team">
+                        <use xlink:href="#match-navigation-team"></use>
+                      </svg></span><span>Команды</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-archive">
+                        <use xlink:href="#match-navigation-archive"></use>
+                      </svg></span><span>Архив</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-referee">
+                        <use xlink:href="#match-navigation-referee"></use>
+                      </svg></span><span>Судьи</span></a><a class="match-navigation-item" href="#"><span class="icon-wrapper">
+                      <svg class="match-navigation-stadium">
+                        <use xlink:href="#match-navigation-stadium"></use>
+                      </svg></span><span>Стадионы</span></a>
+                </div>
+              </div>
+              <div class="match-calendar-tab js-tab">
+                <div class="match-calendar-tabHead">
+                  <div class="match-calendar-tabList js-tabList">
+                    <div class="match-calendar-tabItem js-tabItem is-select">Туры</div>
+                    <div class="match-calendar-tabItem js-tabItem">Недели</div>
+                    <div class="match-calendar-tabItem js-tabItem">Месяцы</div>
+                    <div class="match-calendar-tabItem js-tabItem">Полный Список</div>
+                  </div>
+                </div>
+                <div class="match-calendar-tabWrap">
+                  <div class="match-calendar-tabBlock js-tabBlock is-open">
+                    <div class="match-calendar-select-pagination">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </div>
+                    <div class="match-calendar-pagination">
+                      <div class="match-calendar-pagination-control is-locked"><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon">
+                            <use xlink:href="#pagination"></use>
+                          </svg></a><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon pagination-link-step">
+                            <use xlink:href="#pagination_step"></use>
+                          </svg></a></div><a class="is-active" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a><a href="#">11</a><a href="#">12</a><a href="#">13</a><a href="#">14</a>
+                      <div class="match-calendar-pagination-control"><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon is-rotated">
+                            <use xlink:href="#pagination"></use>
+                          </svg></a><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon pagination-link-step is-rotated">
+                            <use xlink:href="#pagination_step"></use>
+                          </svg></a></div>
+                    </div>
+                    <div class="match-statistics">
+                      <div class="match-statistics-row">
+                        <h2 class="match-statistics-title">Тур 1</h2>
+                        <div class="match-statistics-block">
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">08/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right">Результат</div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">09/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">21/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="match-calendar-tabBlock js-tabBlock">
+                    <div class="match-calendar-select-pagination">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </div>
+                    <div class="match-calendar-pagination">
+                      <div class="match-calendar-pagination-control is-locked"><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon">
+                            <use xlink:href="#pagination"></use>
+                          </svg></a><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon pagination-link-step">
+                            <use xlink:href="#pagination_step"></use>
+                          </svg></a></div><a class="is-active" href="#">2020 / 32</a><a href="#">2020 / 33</a><a href="#">2020 / 34</a><a href="#">2020 / 35</a><a href="#">2020 / 36</a>
+                      <div class="match-calendar-pagination-control"><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon is-rotated">
+                            <use xlink:href="#pagination"></use>
+                          </svg></a><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon pagination-link-step is-rotated">
+                            <use xlink:href="#pagination_step"></use>
+                          </svg></a></div>
+                    </div>
+                    <div class="match-statistics">
+                      <div class="match-statistics-row">
+                        <h2 class="match-statistics-title">Тур 1</h2>
+                        <div class="match-statistics-block">
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">08/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right">Результат</div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">09/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">21/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="match-calendar-tabBlock js-tabBlock">
+                    <div class="match-calendar-select-pagination">
+                      <select>
+                        <option value="1">1</option>
+                      </select>
+                    </div>
+                    <div class="match-calendar-pagination">
+                      <div class="match-calendar-pagination-control is-locked"><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon">
+                            <use xlink:href="#pagination"></use>
+                          </svg></a><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon pagination-link-step">
+                            <use xlink:href="#pagination_step"></use>
+                          </svg></a></div><a class="is-active" href="#">Август 2020</a><a href="#">Сентябрь 2020</a><a href="#">Октябрь 2020</a><a href="#">Ноябрь 2020</a>
+                      <div class="match-calendar-pagination-control"><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon is-rotated">
+                            <use xlink:href="#pagination"></use>
+                          </svg></a><a class="pagination-icon-container" href="#">
+                          <svg class="pagination-icon pagination-link-step is-rotated">
+                            <use xlink:href="#pagination_step"></use>
+                          </svg></a></div>
+                    </div>
+                    <div class="match-statistics">
+                      <div class="match-statistics-row">
+                        <h2 class="match-statistics-title">Тур 1</h2>
+                        <div class="match-statistics-block">
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">08/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right">Результат</div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">09/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">21/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="match-calendar-tabBlock js-tabBlock">
+                    <div class="match-statistics">
+                      <div class="match-statistics-row">
+                        <h2 class="match-statistics-title">Тур 1</h2>
+                        <div class="match-statistics-block">
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">08/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right">Результат</div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">09/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="match-calendar-row is-head">
+                            <div class="column is-left">21/08/20</div>
+                            <div class="column"></div>
+                            <div class="column is-right"></div>
+                          </div>
+                          <div class="match-calendar-body">
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">18:30</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name is-highlight"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">0:2 (0:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="match-calendar-row">
+                              <div class="column is-left">
+                                <time class="date">16:00</time>
+                                <svg class="stadio">
+                                  <use xlink:href="#match-navigation-stadium"></use>
+                                </svg>
+                              </div>
+                              <div class="column">
+                                <div class="match-calendar-score"><span class="team-name is-highlight"><span class="hide-on-mobile">Химки</span><span class="hide-on-desctop">ХИМ</span></span>
+                                  <div class="value">-</div><span class="team-name"><span class="hide-on-mobile">ЦСКА М</span><span class="hide-on-desctop">ЦСКА</span></span>
+                                </div>
+                              </div>
+                              <div class="column is-right">
+                                <div class="match-calendar-score">
+                                  <div class="value">
+                                    <div class="body">3:2 (3:2)</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
