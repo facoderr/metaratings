@@ -136,6 +136,421 @@
         </div>
         <div class="workarea-row">
           <div class="workarea-sidebar">
+            <form class="aside-filters aside-filters_transparent js-aside-filters" id="loan-filter" action="#">
+              <header class="aside-filters-head">Фильтры</header>
+              <section class="js-filter-body">
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="popular">
+                        <use xlink:href="#popular"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Популярные</span>
+                      <div class="count"></div>
+                      <div class="preview"></div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler is-open js-toggler">
+                    <div class="icon">
+                      <svg class="bonus_type">
+                        <use xlink:href="#bonus_type"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Способы получения</span>
+                      <div class="count"></div>
+                      <div class="preview">Наличными, На карту...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper is-open js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="cons_period">
+                        <use xlink:href="#cons_period"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Срок рассмотрения</span>
+                      <div class="count"></div>
+                      <div class="preview">За час, За 3 часа...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="pay_period">
+                        <use xlink:href="#pay_period"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Срок выплаты</span>
+                      <div class="count"></div>
+                      <div class="preview">1 минута, 15 минут, 1 час...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="loan_processing">
+                        <use xlink:href="#loan_processing"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Оформление займа</span>
+                      <div class="count"></div>
+                      <div class="preview">В офисе, дома</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="repayment_order">
+                        <use xlink:href="#repayment_order"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Порядок погашения</span>
+                      <div class="count"></div>
+                      <div class="preview">Аннуитетные платежи...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="borrower_age">
+                        <use xlink:href="#borrower_age"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Возраст заемщика</span>
+                      <div class="count"></div>
+                      <div class="preview">с 16, с 18, с 21, до 65...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="borrower_category">
+                        <use xlink:href="#borrower_category"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Категория заемщика</span>
+                      <div class="count"></div>
+                      <div class="preview">Безработным...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="reg">
+                        <use xlink:href="#reg"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Регистрация</span>
+                      <div class="count"></div>
+                      <div class="preview">На территории гос...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="credit_history">
+                        <use xlink:href="#credit_history"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Кредитная история</span>
+                      <div class="count"></div>
+                      <div class="preview">Плохая, хорошая</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="guarantee">
+                        <use xlink:href="#guarantee"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Обеспечение</span>
+                      <div class="count"></div>
+                      <div class="preview">Под залог, Без залога...</div>
+                    </div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_0" type="checkbox"/>
+                        <label for="section_1_checkbox_0">Фильтр1
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_1" type="checkbox"/>
+                        <label for="section_1_checkbox_1">Фильтр2
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_2" type="checkbox"/>
+                        <label for="section_1_checkbox_2">Фильтр3
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_3" type="checkbox"/>
+                        <label for="section_1_checkbox_3">Фильтр4
+                        </label>
+                        <input class="i-checkbox" name="section_1_checkbox" id="section_1_checkbox_4" type="checkbox"/>
+                        <label for="section_1_checkbox_4">Фильтр5
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section><a class="aside-filters-button" type="button" role="submit">Показать результаты (234)</a>
+              </section>
+            </form><a class="aside-filters-show js-aside-filters-show" href="#">&Fcy;&icy;&lcy;&softcy;&tcy;&rcy;</a>
+            <div class="aside-filters-backdrop js-aside-filters-backdrop">
+              <svg></svg>
+            </div>
             <div class="mfo-best js-mfo-best">
               <div class="mfo-best-title">рейтинг мфо</div>
               <div class="mfo-best-row">
@@ -188,6 +603,16 @@
             <div class="casino-bonus-detail">
               <h1 class="casino-bonus-detail-title">Бонус от казино 777 3000 ₽
               </h1>
+              <div class="applied-filters">
+                <div class="applied-filters-params">
+                </div><span class="applied-filters-controls js-show-filters" data-target="#loan-filter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.92 14.77h-7a3.12 3.12 0 00-6 0H2.08a.88.88 0 000 1.76h6.83a3.13 3.13 0 006 0h7a.87.87 0 00.88-.88.9.9 0 00-.87-.88zm-8.64.88a1.37 1.37 0 11-1.37-1.37 1.39 1.39 0 011.37 1.37zM4.35 11.48a3.13 3.13 0 003-2.25H21.9a.88.88 0 000-1.76H7.35a3.13 3.13 0 10-3 4v.01zM3 8.35a1.37 1.37 0 111.35 1.37A1.38 1.38 0 013 8.35z" fill="#1D2D4A"/></svg><span>Фильтр</span></span><a class="applied-filters-sorting js-filter-sorting" href="/" data-sort="desc"><span>Сортировать</span>
+                  <svg>
+                    <use xlink:href="#sort_desc"></use>
+                  </svg>
+                  <svg class="asc">
+                    <use xlink:href="#sort_asc"></use>
+                  </svg></a>
+              </div>
               <div class="workarea-text">
                 <div class="casino-bonus-detail-list">
                   <ul>

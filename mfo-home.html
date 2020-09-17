@@ -145,27 +145,27 @@
             </div>
             <h1 class="h1">Рейтинг онлайн МФО</h1>
             <div class="block-filters">
-              <form class="block-filters-body" action="#">
+              <form class="block-filters-body js-filter-body" action="/mfos.json" method="get" data-attached-list="js-home-rating">
                 <div class="block-filters-row">
                   <div class="column">
                     <label class="block-filters-label">Сумма займа руб.</label>
                     <div class="block-filters-range-slider js-range" data-min="1000" data-max="100000" data-step="500">
-                      <input class="js-range_from" type="hidden" name="FILTER_NAME_1_FROM" value="1000"/>
-                      <input class="js-range_to" type="hidden" name="FILTER_NAME_1_TO" value="20000"/>
+                      <input class="js-range_from" type="hidden" name="min-money" value="1000"/>
+                      <input class="js-range_to" type="hidden" name="max-money" value="20000"/>
                     </div>
                   </div>
                   <div class="column">
                     <label class="block-filters-label">Срок займа дн.</label>
                     <div class="block-filters-range-slider js-range" data-min="1" data-max="365" data-step="1">
-                      <input class="js-range_from" type="hidden" name="FILTER_NAME_2_FROM" value="1"/>
-                      <input class="js-range_to" type="hidden" name="FILTER_NAME_2_TO" value="31"/>
+                      <input class="js-range_from" type="hidden" name="dates-from" value="1"/>
+                      <input class="js-range_to" type="hidden" name="dates-to" value="31"/>
                     </div>
                   </div>
                   <div class="column">
                     <label class="block-filters-label">Ставка %</label>
-                    <div class="block-filters-range-slider js-range" data-min="0" data-max="100" data-step="0.1">
-                      <input class="js-range_from" type="hidden" name="FILTER_NAME_2_FROM" value="1"/>
-                      <input class="js-range_to" type="hidden" name="FILTER_NAME_2_TO" value="20"/>
+                    <div class="block-filters-range-slider js-range" data-min="0" data-max="1" data-step="0.1">
+                      <input class="js-range_from" type="hidden" name="rate-from" value="1"/>
+                      <input class="js-range_to" type="hidden" name="rate-to" value="0.5"/>
                     </div>
                   </div>
                 </div>
@@ -173,10 +173,10 @@
             </div>
             <div class="mfo-home">
               <div class="mfo-home-tools">
-                <div class="mfo-home-tools-scroll"><a class="mfo-home-tools-item" href="#"><img src="img/mfo-home/new.svg"/><span>Новые МФО</span></a><a class="mfo-home-tools-item" href="#"><img src="img/mfo-home/star.svg"/><span>Рекомендованные МФО</span></a><a class="mfo-home-tools-item" href="#"><img src="img/mfo-home/compare.svg"/><span>Сравнение МФО</span></a>
+                <div class="mfo-home-tools-scroll"><span class="mfo-home-tools-item js-ajax-link" data-href="mfos.json" data-attached-list="js-home-rating"><img src="img/mfo-home/new.svg"/><span>Новые МФО</span></span><span class="mfo-home-tools-item js-ajax-link" data-href="mfos.json" data-attached-list="js-home-rating"><img src="img/mfo-home/star.svg"/><span>Рекомендованные МФО</span></span><a class="mfo-home-tools-item js-anchor-link" href="#compare"><img src="img/mfo-home/compare.svg"/><span>Сравнение МФО</span></a>
                 </div>
               </div>
-              <div class="mfo-home-rating">
+              <div class="mfo-home-rating js-home-rating">
                 <div class="mfo-home-rating-list">
                   <div class="mfo-rating-item js-mfo-rating is-rounded is-highlight">
                     <div class="mfo-rating-verified"><img src="img/mfo-home/star.svg"/><span>Проверено Метарейтингом</span></div>
@@ -3981,7 +3981,7 @@
                       </div><a class="button button-block">На сайт</a>
                     </div>
                   </div>
-                </div><a class="button button-block button-outline" href="/">Показать еще</a>
+                </div><a class="button button-block button-outline js-show-more" href="/">Показать еще</a>
               </div>
             </div>
             <div class="mfo-slider js-mfo-slider">
@@ -4066,7 +4066,7 @@
                 </div>
               </div>
             </div>
-            <div class="comparison">
+            <div class="comparison" id="compare">
               <h2 class="comparison-title">Сравнение МФО
               </h2>
               <div class="table">
