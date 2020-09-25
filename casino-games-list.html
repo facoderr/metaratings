@@ -157,497 +157,165 @@
         </div>
         <div class="workarea-row">
           <div class="workarea-sidebar">
-            <div class="casino-filter">
-              <div class="casino-filter-title">Фильтры
-              </div>
-              <div class="casino-filter-wrap js-modal-scroll">
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_1.svg"/></div>
-                    <div class="casino-filter-item-text">Популярные</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-list js-casino-filter-list">
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Мобильное казино
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Биткоин / Крипто казино
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Живая рулетка казино
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Анонимные казино
-                          </div></span>
-                      </label>
-                    </div>
-                  </div>
+            <form class="aside-filters" data-ajax-url="js/data.json" action="#">
+              <section class="aside-filters-applied">
+                <div class="title">Примененые фильтры:</div>
+                <div class="wrapper">
+                  <button class="item item_reset js-reset-all-filters" type="reset">
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg>
+                  </button><a class="item" href="#"><span>1xbet</span>
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a><a class="item" href="#"><span>&Dcy;&lcy;&yacy; &dcy;&iecy;&jcy;&scy;&tcy;&vcy;&ucy;&yucy;&shchcy;&icy;&khcy; &icy;&gcy;&rcy;&ocy;&kcy;&ocy;&vcy;</span>
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a><a class="item" href="#"><span>&Dcy;&lcy;&yacy; &dcy;&iecy;&jcy;&scy;&tcy;&vcy;&ucy;&yucy;&shchcy;&icy;&khcy; &icy;&gcy;&rcy;&ocy;&kcy;&ocy;&vcy;</span>
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
                 </div>
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_2.svg"/></div>
-                    <div class="casino-filter-item-text">Для игроков из</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
+              </section>
+              <header class="aside-filters-head">Фильтры</header>
+              <section class="js-filter-body">
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="genre">
+                        <use xlink:href="#genre"></use>
                       </svg>
                     </div>
+                    <div class="title"><span>Жанр</span>
+                      <div class="count">55</div>
+                      <div class="preview">3D, 777, Азия, Алмазы...</div>
+                    </div>
+                    <div class="filter-title" data-title="popular"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
                   </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-search js-casino-filter-search">
-                      <input class="casino-filter-search-input" type="text" placeholder="Поиск страны"/>
-                      <svg>
-                        <use xlink:href="#search-o"></use>
-                      </svg>
-                    </div>
-                    <div class="casino-filter-list js-casino-filter-list">
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/flag/ru.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Россия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/flag/ru.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Англия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/flag/ru.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Португалия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/flag/ru.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Россия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/flag/ru.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Англия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/flag/ru.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Португалия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/flag/ru.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Россия
-                          </div></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_3.svg"/></div>
-                    <div class="casino-filter-item-text">Игры казино</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-search js-casino-filter-search">
-                      <input class="casino-filter-search-input" type="text" placeholder="Поиск провайдера"/>
-                      <svg>
-                        <use xlink:href="#search-o"></use>
-                      </svg>
-                    </div>
-                    <div class="casino-filter-list js-casino-filter-list">
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/games/roulette.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Рулетка
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/games/dealer.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Live-дилер
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/games/baccarat.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Баккара
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/games/vpoker.svg"/></div>
-                          <div class="casino-filter-checkbox-text">Видеопокер
-                          </div></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_4.svg"/></div>
-                    <div class="casino-filter-item-text">Провайдеры</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-search js-casino-filter-search">
-                      <input class="casino-filter-search-input" type="text" placeholder="Поиск провайдера"/>
-                      <svg>
-                        <use xlink:href="#search-o"></use>
-                      </svg>
-                    </div>
-                    <div class="casino-filter-list js-casino-filter-list">
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_1.png"/></div>
-                          <div class="casino-filter-checkbox-text">1X2 Gamingе
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_2.png"/></div>
-                          <div class="casino-filter-checkbox-text">2 By 2 Gaming
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_3.png"/></div>
-                          <div class="casino-filter-checkbox-text">Ainsworth Game Technology
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_4.png"/></div>
-                          <div class="casino-filter-checkbox-text">Amatic
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_5.png"/></div>
-                          <div class="casino-filter-checkbox-text">Belatra
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_6.png"/></div>
-                          <div class="casino-filter-checkbox-text">Betsoft
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_7.png"/></div>
-                          <div class="casino-filter-checkbox-text">BGAMING
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_8.png"/></div>
-                          <div class="casino-filter-checkbox-text">Blazesoft
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_9.png"/></div>
-                          <div class="casino-filter-checkbox-text">Blueprint Gaming
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_10.png"/></div>
-                          <div class="casino-filter-checkbox-text">Booongo
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_11.png"/></div>
-                          <div class="casino-filter-checkbox-text">casino technology
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_12.png"/></div>
-                          <div class="casino-filter-checkbox-text">EGT
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_13.png"/></div>
-                          <div class="casino-filter-checkbox-text">Elk Studios
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_14.png"/></div>
-                          <div class="casino-filter-checkbox-text">Endorphina
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_15.png"/></div>
-                          <div class="casino-filter-checkbox-text">Evolution Gaming
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-icon"><img src="img/provider/provider_16.png"/></div>
-                          <div class="casino-filter-checkbox-text">Eyecon
-                          </div></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_5.svg"/></div>
-                    <div class="casino-filter-item-text">Способ оплаты</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-search js-casino-filter-search">
-                      <input class="casino-filter-search-input" type="text" placeholder="Поиск способа оплаты"/>
-                      <svg>
-                        <use xlink:href="#search-o"></use>
-                      </svg>
-                    </div>
-                    <div class="casino-filter-list js-casino-filter-list">
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">24 Все время
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">24pay
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Abaqoos
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">NetEnt
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">24 Все время
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">24pay
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Abaqoos
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">NetEnt
-                          </div></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_6.svg"/></div>
-                    <div class="casino-filter-item-text">Лицензия</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-search js-casino-filter-search">
-                      <input class="casino-filter-search-input" type="text" placeholder="Поиск лицензии"/>
-                      <svg>
-                        <use xlink:href="#search-o"></use>
-                      </svg>
-                    </div>
-                    <div class="casino-filter-list js-casino-filter-list">
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Чехия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Олдерни
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Остров Мен
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Канаваке
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Чехия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Олдерни
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Остров Мен
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Канаваке
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Чехия
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Олдерни
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Остров Мен
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">Канаваке
-                          </div></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_7.svg"/></div>
-                    <div class="casino-filter-item-text">Лимит вывода</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-range js-casino-range">
-                      <div class="casino-filter-range-val">5 000 ₽</div>
-                      <input type="range" min="1000" max="50000" step="500" value="5000"/>
-                      <div class="casino-filter-range-count">
-                        <div class="casino-filter-range-numb">1 000 ₽</div>
-                        <div class="casino-filter-range-numb">50 000 ₽</div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" id="arFilter2_1074_856880138" name="arFilter2_1074_856880138" value="rossijskie" type="checkbox"/>
+                        <label for="arFilter2_1074_856880138"><span class="d-flex"><span class="filter-element-title">3D</span><span class="count">1</span></span></label>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="casino-filter-item js-casino">
-                  <div class="casino-filter-item-head js-casino-toggle">
-                    <div class="casino-filter-item-icon"><img src="img/filter/filter_8.svg"/></div>
-                    <div class="casino-filter-item-text">Валюта</div>
-                    <div class="casino-filter-item-arrow">
-                      <svg>
-                        <use xlink:href="#arrow"></use>
+                </section>
+                <section class="aside-filters-section" data-id="1075">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="popular">
+                        <use xlink:href="#popular"></use>
                       </svg>
                     </div>
+                    <div class="title"><span>Популярные</span>
+                      <div class="count">23</div>
+                      <div class="preview">Новые Игры, Популярные...</div>
+                    </div>
+                    <div class="filter-title" data-title="popular"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
                   </div>
-                  <div class="casino-filter-item-body js-casino-target">
-                    <div class="casino-filter-search js-casino-filter-search">
-                      <input class="casino-filter-search-input" type="text" placeholder="Поиск валюты"/>
-                      <svg>
-                        <use xlink:href="#search-o"></use>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" id="arFilter3" name="arFilter3" value="popular" type="checkbox"/>
+                        <label for="arFilter3"><span class="d-flex"><span class="filter-element-title">Новые Игры</span><span class="count">1</span></span></label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1076">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="provider">
+                        <use xlink:href="#provider"></use>
                       </svg>
                     </div>
-                    <div class="casino-filter-list js-casino-filter-list">
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">РУБ
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">МПБ
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">BDD
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">PPP
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">РУБ
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">МПБ
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">BDD
-                          </div></span>
-                      </label>
-                      <label class="casino-filter-checkbox">
-                        <input type="checkbox"/><span class="casino-filter-checkbox-wrap">
-                          <div class="casino-filter-checkbox-text">PPP
-                          </div></span>
-                      </label>
+                    <div class="title"><span>Провайдер</span>
+                      <div class="count">43</div>
+                      <div class="preview">2By2, Belatra, Betsoft...</div>
+                    </div>
+                    <div class="filter-title" data-title="popular"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" id="arFilter4" name="arFilter4" value="popular" type="checkbox"/>
+                        <label for="arFilter4"><span class="d-flex"><span class="filter-element-title">2By2</span><span class="count">1</span></span></label>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <button class="casino-filter-apply" type="button">Применить</button>
-            </div><a class="casino-filter-btn js-casino-filter js-modal-show" href="#filter">Фильтр</a>
+                </section>
+                <section class="aside-filters-section" data-id="1076">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="game-type">
+                        <use xlink:href="#game-type"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Тип</span>
+                      <div class="count">54</div>
+                      <div class="preview">Live-дилер, Баккара...</div>
+                    </div>
+                    <div class="filter-title" data-title="popular"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" id="arFilter5" name="arFilter5" value="popular" type="checkbox"/>
+                        <label for="arFilter5"><span class="d-flex"><span class="filter-element-title">Live-дилер</span><span class="count">1</span></span></label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1076">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="calendar">
+                        <use xlink:href="#calendar"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Год выхода</span>
+                      <div class="count"></div>
+                      <div class="preview"></div>
+                    </div>
+                    <div class="filter-title" data-title="popular"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller is-no-scroll">
+                        <div class="slider-values min">1900</div>
+                        <div class="slider-values max">2020</div>
+                        <input class="js-range-min" id="arFilter2_482_MIN" type="hidden" name="arFilter2_482_MIN" value="1900"/>
+                        <input class="js-range-max" id="arFilter2_482_MAX" type="hidden" name="arFilter2_482_MAX" value="2020"/>
+                        <input class="aside-filters-range-slider-values js-values" type="text" placeholder="Введите значение"/>
+                        <div class="js-slider" data-min="1900" data-max="2020" data-step="1" data-from="1900" data-to="2020"></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </form>
           </div>
           <div class="workarea-content">
             <div class="casino-games-list">
