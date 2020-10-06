@@ -351,6 +351,16 @@
             <div class="match-stadium">
               <div class="match-stadium-subtitle">Бундеслига 19/20</div>
               <div class="match-navigation">
+                <div class="match-navigation-right js-to-right">
+                  <svg>
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                </div>
+                <div class="match-navigation-left js-to-left">
+                  <svg>
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                </div>
                 <div class="match-navigation-scroller"><a class="match-navigation-item" href="#"><span class="icon-wrapper">
                       <svg class="match-navigation-overview">
                         <use xlink:href="#match-navigation-overview"></use>
@@ -537,7 +547,32 @@
                 <div class="match-stadium-subtitle is-have-small-margin">Статистика</div>
                 <div class="match-stadium-subtitle is-small">Период голы</div>
                 <div class="match-stadium-column">
-                  <div class="match-stadium-bar js-bar" data-x="1-15',16-30',31-45',46-60',61-75',76-90'" data-title="Голов" data-values="5, 15, 6, 7, 16, 14"></div>
+                  <div class="match-stadium-bar js-bar">
+                    <div class="js-item item" data-value="7">
+                      <div class="value">7</div>
+                      <div class="bar"></div><span>1-15'</span>
+                    </div>
+                    <div class="js-item item" data-value="8">
+                      <div class="value">8</div>
+                      <div class="bar"></div><span>16-30'</span>
+                    </div>
+                    <div class="js-item item" data-value="15">
+                      <div class="value">15</div>
+                      <div class="bar"></div><span>31-45'</span>
+                    </div>
+                    <div class="js-item item" data-value="14">
+                      <div class="value">14</div>
+                      <div class="bar"></div><span>46-60'</span>
+                    </div>
+                    <div class="js-item item" data-value="11">
+                      <div class="value">11</div>
+                      <div class="bar"></div><span>61-75'</span>
+                    </div>
+                    <div class="js-item item" data-value="13">
+                      <div class="value">13</div>
+                      <div class="bar"></div><span>76-90'</span>
+                    </div>
+                  </div>
                   <div class="match-stadium-column is-center">
                     <div class="donut is-home" data-total="38" data-value="9">
                       <div class="donut-item">
@@ -589,7 +624,7 @@
                 <div class="match-stadium-subtitle">Голов за матч</div>
                 <div class="match-stadium-column is-adaptive-row">
                   <div class="match-stadium-donut">
-                    <div class="match-stadium-donut-total"><span>17</span> Матчей</div>
+                    <div class="match-stadium-donut-total"><span>17</span> Забитые голы</div>
                     <div class="match-stadium-donut-body js-donut" data-values="[[&quot;Хозяева&quot;,13],[&quot;Гости&quot;,2]]"></div>
                   </div>
                   <div class="legend-item">
@@ -610,7 +645,7 @@
                 <div class="match-stadium-subtitle">Средн. Угловых</div>
                 <div class="match-stadium-column is-adaptive-row">
                   <div class="match-stadium-donut">
-                    <div class="match-stadium-donut-total"><span>17</span> Матчей</div>
+                    <div class="match-stadium-donut-total"><span>17</span> Угловые</div>
                     <div class="match-stadium-donut-body js-donut" data-values="[[&quot;Угловые хозяев&quot;,13],[&quot;Угловые гостей&quot;,2]]"></div>
                   </div>
                   <div class="legend-item">
