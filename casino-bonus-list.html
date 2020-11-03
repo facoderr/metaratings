@@ -157,48 +157,262 @@
         </div>
         <div class="workarea-row">
           <div class="workarea-sidebar">
-            <div class="casino-reward-filter">
-              <div class="casino-reward-filter-title">
-                <svg>
-                  <use xlink:href="#filter"></use>
-                </svg>Фильтр бонусов
-              </div>
-              <div class="select js-casino-select">
-                <div class="select-field">
-                  <div class="select-field-text">Выберите тип бонуса</div>
-                  <div class="select-field-icon">
+            <form class="aside-filters" action="#" method="POST">
+              <section class="aside-filters-applied">
+                <div class="title">Примененые фильтры:</div>
+                <div class="wrapper">
+                  <button class="item item_reset js-reset-all-filters" type="reset">
                     <svg>
-                      <use xlink:href="#arrow"></use>
+                      <use xlink:href="#close"></use>
+                    </svg>
+                  </button><a class="item" href="#"><span>1xbet</span>
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a><a class="item" href="#"><span>&Dcy;&lcy;&yacy; &dcy;&iecy;&jcy;&scy;&tcy;&vcy;&ucy;&yucy;&shchcy;&icy;&khcy; &icy;&gcy;&rcy;&ocy;&kcy;&ocy;&vcy;</span>
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a><a class="item" href="#"><span>&Dcy;&lcy;&yacy; &dcy;&iecy;&jcy;&scy;&tcy;&vcy;&ucy;&yucy;&shchcy;&icy;&khcy; &icy;&gcy;&rcy;&ocy;&kcy;&ocy;&vcy;</span>
+                    <svg>
+                      <use xlink:href="#close"></use>
+                    </svg></a>
+                </div>
+              </section>
+              <header class="aside-filters-head">Фильтры</header>
+              <section class="js-filter-body">
+                <section class="aside-filters-section" data-id="1075">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="popular">
+                        <use xlink:href="#popular"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Популярные</span>
+                      <div class="count">23</div>
+                      <div class="preview">Новые Игры, Популярные...</div>
+                    </div>
+                    <div class="filter-title" data-title="popular"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
                     </svg>
                   </div>
-                </div>
-                <input class="select-input" type="hidden" name="type"/>
-                <ul class="select-menu">
-                  <li data-value="value-1"><a href="/">Бонус на первый депозит</a></li>
-                  <li data-value="value-2"><a href="/">Бездепозитный бонус</a></li>
-                  <li data-value="value-3"><a href="/">Фриспины</a></li>
-                  <li data-value="value-4"><a href="/">Эксклюзивные бонусы</a></li>
-                  <li data-value="value-5"><a href="/">Бонус на 2ой депозит</a></li>
-                  <li data-value="value-6"><a href="/">Бонус на 3й депозит</a></li>
-                  <li data-value="value-6"><a href="/">бонус на 4й депозит</a></li>
-                </ul>
-              </div>
-              <div class="select js-casino-select-search">
-                <div class="select-field">
-                  <input class="select-field-input js-casino-select-input" placeholder="Введите казино"/>
-                  <div class="select-field-icon">
-                    <svg>
-                      <use xlink:href="#arrow"></use>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-scroller">
+                        <input class="i-checkbox" id="arFilter3" name="arFilter3" value="popular" type="checkbox"/>
+                        <label for="arFilter3"><span class="d-flex"><span class="filter-element-title">Новые Игры</span><span class="count">1</span></span></label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="casino">
+                        <use xlink:href="#casino"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Казино</span>
+                      <div class="count">93</div>
+                      <div class="preview">1XСтавка, 888.ru, Betcity, BingoBoom, GGbet...</div>
+                    </div>
+                    <div class="filter-title" data-title="casino"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
                     </svg>
                   </div>
-                </div>
-                <input class="select-input" type="hidden" name="casino"/>
-                <ul class="select-menu">
-                  <li data-value="value-1"><a href="/">Kazinoigri</a></li>
-                  <li data-value="value-2"><a href="/">King Billy Casino</a></li>
-                  <li data-value="value-3"><a href="/">Vip casino club</a></li>
-                </ul>
-              </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller"><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр1</span><span class="count">1</span></span></span></a><a class="i-checkbox is-link is-active" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр2</span><span class="count">2</span></span></span></a><a class="i-checkbox is-link is-disabled" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр3</span><span class="count">3</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр4</span><span class="count">4</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр5</span><span class="count">5</span></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="type">
+                        <use xlink:href="#type"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Вид бонуса</span>
+                      <div class="count">55</div>
+                      <div class="preview">Акции, Фрибеты,Высокие кэфы, Кэшбэки...</div>
+                    </div>
+                    <div class="filter-title" data-title="type"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller"><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр1</span><span class="count">1</span></span></span></a><a class="i-checkbox is-link is-active" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр2</span><span class="count">2</span></span></span></a><a class="i-checkbox is-link is-disabled" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр3</span><span class="count">3</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр4</span><span class="count">4</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр5</span><span class="count">5</span></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="conditions">
+                        <use xlink:href="#conditions"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Условия бонуса</span>
+                      <div class="count">23</div>
+                      <div class="preview">Экспрессы, Для мобильных, Приведи друга...</div>
+                    </div>
+                    <div class="filter-title" data-title="condition"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller"><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр1</span><span class="count">1</span></span></span></a><a class="i-checkbox is-link is-active" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр2</span><span class="count">2</span></span></span></a><a class="i-checkbox is-link is-disabled" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр3</span><span class="count">3</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр4</span><span class="count">4</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр5</span><span class="count">5</span></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="wager">
+                        <use xlink:href="#wager"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Вейджер</span>
+                      <div class="count">43</div>
+                      <div class="preview">Футбол, Баскетбол, Теннис, Киберспорт...</div>
+                    </div>
+                    <div class="filter-title" data-title="condition"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller"><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр1</span><span class="count">1</span></span></span></a><a class="i-checkbox is-link is-active" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр2</span><span class="count">2</span></span></span></a><a class="i-checkbox is-link is-disabled" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр3</span><span class="count">3</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр4</span><span class="count">4</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр5</span><span class="count">5</span></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="min-deposit">
+                        <use xlink:href="#min-deposit"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Мин. депозит</span>
+                      <div class="count">12</div>
+                      <div class="preview">Новые, Завершенные, Новогодние...</div>
+                    </div>
+                    <div class="filter-title" data-title="min-deposit"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller"><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр1</span><span class="count">1</span></span></span></a><a class="i-checkbox is-link is-active" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр2</span><span class="count">2</span></span></span></a><a class="i-checkbox is-link is-disabled" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр3</span><span class="count">3</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр4</span><span class="count">4</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр5</span><span class="count">5</span></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="size">
+                        <use xlink:href="#size"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Размер бонуса</span>
+                      <div class="count">23</div>
+                      <div class="preview"></div>
+                    </div>
+                    <div class="filter-title" data-title="min-deposit"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller"><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр1</span><span class="count">1</span></span></span></a><a class="i-checkbox is-link is-active" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр2</span><span class="count">2</span></span></span></a><a class="i-checkbox is-link is-disabled" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр3</span><span class="count">3</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр4</span><span class="count">4</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр5</span><span class="count">5</span></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="aside-filters-section" data-id="1074">
+                  <div class="aside-filters-toggler js-toggler">
+                    <div class="icon">
+                      <svg class="currency">
+                        <use xlink:href="#currency"></use>
+                      </svg>
+                    </div>
+                    <div class="title"><span>Валюта</span>
+                      <div class="count">32</div>
+                      <div class="preview">USD, RUB, USD, RUB,USD...</div>
+                    </div>
+                    <div class="filter-title" data-title="currency"></div>
+                    <svg class="arrow">
+                      <use xlink:href="#filterArrow"></use>
+                    </svg>
+                  </div>
+                  <div class="aside-filters-wrapper js-collapse">
+                    <div class="aside-filters-body">
+                      <div class="aside-filters-filter js-values-filter">
+                        <svg>
+                          <use xlink:href="#search"></use>
+                        </svg>
+                        <input placeholder="Поиск" type="text"/>
+                      </div>
+                      <div class="aside-filters-scroller"><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр1</span><span class="count">1</span></span></span></a><a class="i-checkbox is-link is-active" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр2</span><span class="count">2</span></span></span></a><a class="i-checkbox is-link is-disabled" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр3</span><span class="count">3</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр4</span><span class="count">4</span></span></span></a><a class="i-checkbox is-link" href="#" data-value="value"><span class="pseudo-checkbox-body"><span class="d-flex"><span class="filter-element-title">Фильтр5</span><span class="count">5</span></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </form><a class="aside-filters-show js-aside-filters-show" href="#">Фильтр</a>
+            <div class="aside-filters-backdrop js-aside-filters-backdrop">
+              <svg>
+                <use xlink:href="#close"></use>
+              </svg>
             </div>
             <div class="casino-best js-casino-best">
               <div class="casino-best-title">Рунет выбирает</div>
